@@ -1,15 +1,15 @@
 <?php
 
-	class Corperate_title extends Eloquent {
+	class Corporate_title extends Eloquent {
 
-		protected $table = 'corperate_titles';
+		protected $table = 'corporate_titles';
 		public static $rules = array(
 			'name'=>'required',
-			'corperate_title_group_id'=>'required'
+			'corporate_title_group_id'=>'required'
 		);
 		 public function group()
 		  {
-		    return $this->belongsTo('Corperate_title_group');
+		    return $this->belongsTo('Corporate_title_group');
 		  }
-		protected $primaryKey = 'corperate_title_id';
+		protected $primaryKey = 'corporate_title_id';
 	}
