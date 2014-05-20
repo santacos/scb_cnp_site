@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.1.*",
 		"laravelbook/ardent": "2.4.*",
-		"zizaco/confide": "3.1.x"
+		"zizaco/confide": "3.1.x",
+		"artdarek/oauth-4-laravel": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
