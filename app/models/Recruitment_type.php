@@ -1,0 +1,10 @@
+<?php
+
+	class Recruitment_type extends Eloquent {
+
+		protected $table = 'recruitment_types';
+		public static $rules = array(
+			'name'=>'required',
+		);
+		protected $primaryKey = 'recruitment_type_id';
+	}

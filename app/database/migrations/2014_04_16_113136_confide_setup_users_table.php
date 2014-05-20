@@ -83,19 +83,19 @@ class ConfideSetupUsersTable extends Migration {
             $table->string('name',100);
             $table->timestamps();//f
         });
-          Schema::create('coperate_title_groups', function($table)
+          Schema::create('corperate_title_groups', function($table)
         {
-            $table->increments('coperate_title_group_id');
+            $table->increments('corperate_title_group_id');
             $table->string('name',45);
             $table->integer('totle_SLA');
             $table->timestamps();//f
         });
-         Schema::create('coperate_titles', function($table)
+         Schema::create('corperate_titles', function($table)
         {
-            $table->increments('coperate_title_id');
+            $table->increments('corperate_title_id');
             $table->string('name',45);
-            $table->unsignedInteger('coperate_title_group_id');
-            $table->foreign('coperate_title_group_id')->references('coperate_title_group_id')->on('coperate_title_groups')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedInteger('corperate_title_group_id');
+            $table->foreign('corperate_title_group_id')->references('corperate_title_group_id')->on('corperate_title_groups')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();//f
         });
          Schema::create('recruitment_types', function($table)
@@ -178,8 +178,8 @@ class ConfideSetupUsersTable extends Migration {
             $table->timestamp('datetime_prev_status');
             $table->unsignedInteger('location_id');
             $table->foreign('location_id')->references('location_id')->on('locations')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedInteger('coperate_title_id');
-            $table->foreign('coperate_title_id')->references('coperate_title_id')->on('coperate_titles')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedInteger('corperate_title_id');
+            $table->foreign('corperate_title_id')->references('corperate_title_id')->on('corperate_titles')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('position_id');
             $table->foreign('position_id')->references('position_id')->on('positions')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('dept_id');
@@ -381,23 +381,23 @@ class ConfideSetupUsersTable extends Migration {
         });
              Schema::create('SLA_requisitions', function($table)
         {
-            $table->unsignedInteger('coperate_tg_id');
-            $table->foreign('coperate_tg_id')->references('coperate_title_group_id')->on('coperate_title_groups')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedInteger('corperate_tg_id');
+            $table->foreign('corperate_tg_id')->references('corperate_title_group_id')->on('corperate_title_groups')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('requisition_cs_id');
             $table->foreign('requisition_cs_id')->references('requisition_current_status_id')->on('requisition_current_statuses')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('SLA');
-            $table->primary(array('coperate_tg_id','requisition_cs_id'));
+            $table->primary(array('corperate_tg_id','requisition_cs_id'));
             $table->timestamps();//f
         });
                Schema::create('SLA_candidates', function($table)
         {
-            $table->unsignedInteger('coperate_tg_id');
-            $table->foreign('coperate_tg_id')->references('coperate_title_group_id')->on('coperate_title_groups')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedInteger('corperate_tg_id');
+            $table->foreign('corperate_tg_id')->references('corperate_title_group_id')->on('corperate_title_groups')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('application_cs_id');
             $table->foreign('application_cs_id')->references('application_current_status_id')->on('application_current_statuses')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('visit_number');
             $table->integer('SLA');
-             $table->primary(array('coperate_tg_id','application_cs_id'));
+             $table->primary(array('corperate_tg_id','application_cs_id'));
             $table->timestamps();//f
         });
                Schema::create('job_carts', function($table)
@@ -499,8 +499,8 @@ class ConfideSetupUsersTable extends Migration {
             Schema::drop('skill_categories');
             Schema::drop('skills');
             Schema::drop('locations');
-            Schema::drop('coperate_title_groups');
-            Schema::drop('coperate_titles');
+            Schema::drop('corperate_title_groups');
+            Schema::drop('corperate_titles');
             Schema::drop('recruitment_types');
             Schema::drop('requisition_current_statuses');
             Schema::drop('recruitment_objective_templates');
