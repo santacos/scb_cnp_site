@@ -1,6 +1,6 @@
 <?php
 
-	class Requisition_current_statuse extends Eloquent {
+	class Requisition_current_status extends Eloquent {
 
 		protected $table = 'requisition_current_statuses';
 		public static $rules = array(

@@ -108,7 +108,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Zizaco\Confide\ConfideServiceProvider',
 		'Artdarek\OAuth\OAuthServiceProvider',
-
+		'Way\Generators\GeneratorsServiceProvider',
 	),
 
 	/*
