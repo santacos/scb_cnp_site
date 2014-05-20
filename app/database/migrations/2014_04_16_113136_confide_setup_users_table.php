@@ -256,7 +256,7 @@ class ConfideSetupUsersTable extends Migration {
             $table->unsignedInteger('application_current_status_id');
             $table->foreign('application_current_status_id')->references('application_current_status_id')->on('application_current_statuses')->onDelete('cascade')->onUpdate('cascade');
             $table->boolean('is_in_basket');
-            $table->integer('question_point');->nullable()->default(NULL);
+            $table->integer('question_point')->nullable()->default(NULL);
             $table->integer('send_number')->nullable()->default(NULL);
             $table->timestamp('datetime_create');
             $table->timestamp('datetime_prev_status');
