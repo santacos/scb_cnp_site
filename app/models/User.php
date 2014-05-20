@@ -2,7 +2,7 @@
 	use Zizaco\Confide\ConfideUser;
 
 
-	class User extends ConfideUser {
+	class User extends Eloquent/*ConfideUser*/ {
 		/**
 	     * Validation rules
 	     */
@@ -12,9 +12,9 @@
 	    	'username'=> 'required|alpha_dash',
 	        'email' => 'required|email',
 	        'password' => 'required|alpha_num|between:4,11|confirmed',
-	        'firstname' => 'required|alpha',
-	        'lastname' => 'required|alpha',
-	        'mobilephonenumber' =>'required|digits:10'
+	        'first' => 'required|alpha',
+	        'last' => 'required|alpha',
+	        'contact_number' =>'required|digits:10'
 	    );
 
 	    protected $primaryKey = 'user_id';
