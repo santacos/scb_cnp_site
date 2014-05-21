@@ -3,6 +3,13 @@ var nameApp = angular.module('nameApp',['ui.bootstrap']);
 	  		function ($scope, $http) {
 	  		//for process
 	  		$scope.count = 0;
+	  		$scope.isShowSkill=false;
+
+	  		//skill relate
+	  		$scope.skills=[
+	  			{category:'Programming', name:'java'},
+	  			{category:'English', name:'writing'}
+	  		];
 			
 	  		//default of industry
 	  		$scope.chooseIndustry = 'choose industry';
@@ -124,6 +131,12 @@ var nameApp = angular.module('nameApp',['ui.bootstrap']);
 			 	$scope.count = $scope.temp;
 
 			 };
+
+			 $scope.addSkill = function(){
+			 	$scope.skills.push({category:$scope.tempBranch,name:$scope.tempName});
+			 	$scope.tempBranch='';
+			 	$scope.tempName='';
+			 }
 
 
     	

@@ -83,7 +83,7 @@
 
 				  <div class="form-group">
 				    <label for="NoOfVacancy">No. of Vacancy :</label>
-				    <input type="number" class="form-control" id="NoOfVacancy" ng-model="try2" ng-blur="checkProgress()" placeholder="" >
+				    <input type="number" min="0" max="100" class="form-control" name="NoOfVacancy" id="NoOfVacancy" ng-model="try2" ng-blur="checkProgress()" placeholder="" >		  	
 				  </div>
 
 
@@ -147,7 +147,49 @@
 
 				  <div class="form-group">
 				    <label for="relatedSkill">Related skill :</label>
-				    <input type="textfield" class="form-control" id="relatedSkill" placeholder="">
+				    <!-- buttob add-->
+					<button type="submit" class="btn btn-sm btn-default" ng-click="isShowSkill=!isShowSkill">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					</button><br><br>
+
+					@{{skills}}
+
+					<!-- show suggest skill-->
+					<div class="row" ng-repeat="skill in skills">
+
+						<div class="col-sm-1">
+							
+						</div>
+
+						<div class="col-sm-11">
+							<div class="panel panel-success">
+							  <div class="panel-heading">
+							    <h3 class="panel-title">@{{skill.category}}</h3>
+							  </div>
+							  <div class="panel-body">
+							    @{{skill.name}}
+							  </div>
+							</div>
+						</div>
+					</div>
+
+					<!-- add skill -->
+					<div ng-show="isShowSkill">
+						<br>
+						<div class="well">
+							
+							<label for="skillBranch">Skill branch :</label>
+					    	<input type="text" ng-model="tempBranch" class="form-control" id="skillBranch" placeholder="enter skill branch">
+					    	<br>
+							<label for="skillName">Skill name :</label>
+					    	<input type="text" ng-model="tempName" class="form-control" id="skillName" placeholder="enter skill name">
+
+					    	<br>
+					    	<button type="submit" class="btn btn-info" ng-click="addSkill()">Add</button>
+						</div>
+					</div>
+
+
 				  </div>
 
 				  <div class="form-group">
