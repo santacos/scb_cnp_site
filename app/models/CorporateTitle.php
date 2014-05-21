@@ -1,6 +1,6 @@
 <?php
 
-	class Corporate_title extends Eloquent {
+	class CorporateTitle extends Eloquent {
 
 		protected $table = 'corporate_titles';
 		public static $rules = array(

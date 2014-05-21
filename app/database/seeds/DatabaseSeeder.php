@@ -20,11 +20,14 @@ class AllTableSeeder extends Seeder {
 
 		DB::table('users')->delete();
 		DB::table('candidates')->delete();
-		DB::table('employees')->delete();
-		DB::table('corporate_titles')->delete();
-		DB::table('depts')->delete();
 		DB::table('positions')->delete();
+		DB::table('depts')->delete();
+		DB::table('corporate_title_groups')->delete();
+		DB::table('corporate_titles')->delete();
 		DB::table('locations')->delete();
+		DB::table('employees')->delete();
+		DB::table('skill_categories')->delete();
+		DB::table('skills')->delete();
 
 //USER
 		
@@ -74,7 +77,6 @@ class AllTableSeeder extends Seeder {
 							'status' => 2,
 							'facebook_uid' => '444444444444'));
 		
-
 //CANDIDATE
 		Candidate::create(array('user_id' => 1
 							));
@@ -127,59 +129,242 @@ class AllTableSeeder extends Seeder {
 							'recruiter_user_id' => 2
 							));
 
+//CORPORRATE TITLE GROUP
+		CorporateTitleGroup::create(array(	'corporate_title_group_id' => 1,
+							'name' => 'Officer',
+							'total_SLA' => 30
+							));
+		CorporateTitleGroup::create(array(	'corporate_title_group_id' => 2,
+							'name' => 'AVP/VP',
+							'total_SLA' => 45
+							));
+		CorporateTitleGroup::create(array(	'corporate_title_group_id' => 3,
+							'name' => 'SVP up',
+							'total_SLA' => 60
+							));
+
 //CORPORRATE TITLE
-		CorporateTitle::create(array(	'name' => 'officer1',
-							'SLA' => 30
+		CorporateTitle::create(array(	'corporate_title_id' => 1,
+							'name' => 'Staff 1',
+							'corporate_title_group_id' => 1
 							));
-		CorporateTitle::create(array(	'name' => 'officer2',
-							'SLA' => 45
+		CorporateTitle::create(array(	'corporate_title_id' => 2,
+							'name' => 'Staff 2',
+							'corporate_title_group_id' => 1
 							));
-		CorporateTitle::create(array(	'name' => 'officer3',
-							'SLA' => 60
+		CorporateTitle::create(array(	'corporate_title_id' => 3,
+							'name' => 'Staff 3',
+							'corporate_title_group_id' => 1
+							));
+		CorporateTitle::create(array(	'corporate_title_id' => 4,
+							'name' => 'Staff 4',
+							'corporate_title_group_id' => 1
+							));
+		CorporateTitle::create(array(	'corporate_title_id' => 5,
+							'name' => 'Associate',
+							'corporate_title_group_id' => 1
+							));
+		CorporateTitle::create(array(	'corporate_title_id' => 6,
+							'name' => 'Officer 1',
+							'corporate_title_group_id' => 1
+							));
+		CorporateTitle::create(array(	'corporate_title_id' => 7,
+							'name' => 'Officer 2',
+							'corporate_title_group_id' => 1
+							));
+		CorporateTitle::create(array(	'corporate_title_id' => 8,
+							'name' => 'Officer 3',
+							'corporate_title_group_id' => 1
+							));
+		CorporateTitle::create(array(	'corporate_title_id' => 9,
+							'name' => 'Officer 4',
+							'corporate_title_group_id' => 1
+							));
+		CorporateTitle::create(array(	'corporate_title_id' => 10,
+							'name' => 'AVP',
+							'corporate_title_group_id' => 2
+							));
+		CorporateTitle::create(array(	'corporate_title_id' => 11,
+							'name' => 'VP',
+							'corporate_title_group_id' => 2
+							));
+		CorporateTitle::create(array(	'corporate_title_id' => 12,
+							'name' => 'SVP',
+							'corporate_title_group_id' => 3
+							));
+		CorporateTitle::create(array(	'corporate_title_id' => 13,
+							'name' => 'FSVP',
+							'corporate_title_group_id' => 3
+							));
+		CorporateTitle::create(array(	'corporate_title_id' => 14,
+							'name' => 'EVP',
+							'corporate_title_group_id' => 3
+							));
+		CorporateTitle::create(array(	'corporate_title_id' => 15,
+							'name' => 'FEVP',
+							'corporate_title_group_id' => 3
+							));
+		CorporateTitle::create(array(	'corporate_title_id' => 16,
+							'name' => 'SEVP',
+							'corporate_title_group_id' => 3
+							));
+		CorporateTitle::create(array(	'corporate_title_id' => 17,
+							'name' => 'President',
+							'corporate_title_group_id' => 3
 							));
 
 //LOCATION
-		Location::create(array(	'name' => 'location1'
+		Location::create(array(	'location_id' => 1,
+							'name' => 'location1',
 							));
-		Location::create(array(	'name' => 'location2'
+		Location::create(array(	'location_id' => 2,
+							'name' => 'location2',
 							));
-		Location::create(array(	'name' => 'location3'
+		Location::create(array(	'location_id' => 3,
+							'name' => 'location3',
 							));
-		Location::create(array(	'name' => 'location4'
+		Location::create(array(	'location_id' => 4,
+							'name' => 'location4',
 							));
-		Location::create(array(	'name' => 'location5'
+		Location::create(array(	'location_id' => 5,
+							'name' => 'location5',
 							));
-		Location::create(array(	'name' => 'location6'
+		Location::create(array(	'location_id' => 6,
+							'name' => 'location6',
 							));
-		Location::create(array(	'name' => 'location7'
+		Location::create(array(	'location_id' => 7,
+							'name' => 'location7',
 							));
-		Location::create(array(	'name' => 'location8'
+		Location::create(array(	'location_id' => 8,
+							'name' => 'location8',
+							));
+		Location::create(array(	'location_id' => 9,
+							'name' => 'location9',
 							));
 
 //EMPLOYEE
 		Employee::create(array(	'user_id' => 4,
 							'position_id' => 1,
 							'dept_id' => 1,
-							'employee_supervisor_user_id' => null,
+							'next_level_user_id' => null,
 							'is_manager' => false
 							));
 		Employee::create(array(	'user_id' => 1,
 							'position_id' => 2,
 							'dept_id' => 1,
-							'employee_supervisor_user_id' => 4,
+							'next_level_user_id' => 4,
 							'is_manager' => false
 							));
 		Employee::create(array(	'user_id' => 2,
 							'position_id' => 3,
 							'dept_id' => 3,
-							'employee_supervisor_user_id' => 4,
+							'next_level_user_id' => 4,
 							'is_manager' => false
 							));
 		Employee::create(array(	'user_id' => 3,
 							'position_id' => 4,
 							'dept_id' => 5,
-							'employee_supervisor_user_id' => 2,
+							'next_level_user_id' => 2,
 							'is_manager' => false
+							));
+
+//SKILL CATEGORY
+		SkillCategory::create(array(	'skill_category_id' => 1,
+							'name' => 'Programming Language'
+							));
+		SkillCategory::create(array(	'skill_category_id' => 2,
+							'name' => 'Sport'
+							));
+		SkillCategory::create(array(	'skill_category_id' => 3,
+							'name' => 'English Test Score'
+							));
+		SkillCategory::create(array(	'skill_category_id' => 4,
+							'name' => 'Communication'
+							));
+		SkillCategory::create(array(	'skill_category_id' => 5,
+							'name' => 'Banking'
+							));
+
+//SKILL
+		Skill::create(array(	'skill_id' => 1,
+							'name' => 'JAVA',
+							'skill_category_id' => 1,
+							'is_star' => true
+							));
+		Skill::create(array(	'skill_id' => 2,
+							'name' => 'PHP',
+							'skill_category_id' => 1,
+							'is_star' => true
+							));
+		Skill::create(array(	'skill_id' => 3,
+							'name' => 'C',
+							'skill_category_id' => 1,
+							'is_star' => true
+							));
+		Skill::create(array(	'skill_id' => 4,
+							'name' => 'JavaScript',
+							'skill_category_id' => 1,
+							'is_star' => true
+							));
+		Skill::create(array(	'skill_id' => 5,
+							'name' => 'Running',
+							'skill_category_id' => 2,
+							'is_star' => true
+							));
+		Skill::create(array(	'skill_id' => 6,
+							'name' => 'Swimming',
+							'skill_category_id' => 2,
+							'is_star' => true
+							));
+		Skill::create(array(	'skill_id' => 7,
+							'name' => 'Scuba Diving',
+							'skill_category_id' => 2,
+							'is_star' => true
+							));
+		Skill::create(array(	'skill_id' => 8,
+							'name' => 'TOFEL',
+							'skill_category_id' => 3,
+							'is_star' => false
+							));
+		Skill::create(array(	'skill_id' => 9,
+							'name' => 'CU-TEP',
+							'skill_category_id' => 3,
+							'is_star' => false
+							));
+		Skill::create(array(	'skill_id' => 10,
+							'name' => 'Negotiation',
+							'skill_category_id' => 4,
+							'is_star' => true
+							));
+		Skill::create(array(	'skill_id' => 11,
+							'name' => 'Price Bargain',
+							'skill_category_id' => 4,
+							'is_star' => true
+							));
+		Skill::create(array(	'skill_id' => 12,
+							'name' => 'Persuasion',
+							'skill_category_id' => 4,
+							'is_star' => true
+							));
+		Skill::create(array(	'skill_id' => 13,
+							'name' => 'Compromise',
+							'skill_category_id' => 4,
+							'is_star' => true
+							));
+		Skill::create(array(	'skill_id' => 14,
+							'name' => 'Taking on Loan',
+							'skill_category_id' => 5,
+							'is_star' => true
+							));
+		Skill::create(array(	'skill_id' => 15,
+							'name' => 'Stock Market',
+							'skill_category_id' => 5,
+							'is_star' => true
+							));
+		Skill::create(array(	'skill_id' => 16,
+							'name' => 'Credit Analysis',
+							'skill_category_id' => 5,
+							'is_star' => true
 							));
 
 /*
