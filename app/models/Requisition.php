@@ -7,7 +7,7 @@
 	     */
 		protected $table = 'requisitions';
        
-	   /* public static $rules = array(
+	    public static $rules = array(
 			'total_number'=>'required',
 			'get_number'=>'required',
 			'datetime_create'=>'required',
@@ -17,7 +17,7 @@
 			'responsibility'=>'required',
 			'qualification'=>'required',
 			'note'=>'required'
-			);
+			);/*
 	    public function employee_user() {
 			return $this->belongsTo('Employee');
 		}
