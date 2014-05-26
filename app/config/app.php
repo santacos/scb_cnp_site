@@ -109,6 +109,10 @@ return array(
 		'Zizaco\Confide\ConfideServiceProvider',
 		'Artdarek\OAuth\OAuthServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
+		'Barryvdh\Debugbar\ServiceProvider',
+		'Intervention\Image\ImageServiceProvider',
+		'Former\FormerServiceProvider',
+		'Chumper\Datatable\DatatableServiceProvider',
 	),
 
 	/*
@@ -176,6 +180,10 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Confide'  		  => 'Zizaco\Confide\ConfideFacade',
 		'OAuth' => 'Artdarek\OAuth\Facade\OAuth',
+		'Former'          => 'Former\Facades\Former',
+		'Datatable'       => 'Chumper\Datatable\Facades\DatatableFacade',
+		'Image'           => 'Intervention\Image\Facades\Image',
+		'Carbon'          => 'Carbon\Carbon',
 	),
 
 );

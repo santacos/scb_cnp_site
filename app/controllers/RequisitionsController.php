@@ -21,7 +21,7 @@ class RequisitionsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('requisitions.create');
+		return View::make('HM.create');
 	}
 
 	/**
@@ -38,7 +38,23 @@ class RequisitionsController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		Requisition::create($data);
+			$requisition = new Requisition;
+			$requisition->total_number = Input::get('total_number');
+			$requisition->employee_user_id = Input::get('employee_user_id');
+			$requisition->datetime_create = Input::get('datetime_create');
+			$requisition->datetime_prev_status = Input::get('datetime_prev_status');
+			$requisition->location_id = Input::get('location_id');
+			$requisition->corporate_title_id = Input::get('corporate_title_id');
+			$requisition->position_id = Input::get('position_id');
+			$requisition->dept_id = Input::get('dept_id');
+			$requisition->requisition_current_status_id = Input::get('requisition_current_status_id');
+			$requisition->recruitment_type_id = Input::get('recruitment_type_id');
+			$requisition->year_of_experience = Input::get('year_of_experience');
+			$requisition->recruitment_objective = Input::get('recruitment_objective');
+			$requisition->responsibility = Input::get('responsibility');
+			$requisition->qualification = Input::get('qualification');
+			$requisition->note = Input::get('note');
+			$requisition->save();
 
 		return Redirect::route('requisitions.index');
 	}
