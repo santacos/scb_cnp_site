@@ -34,12 +34,12 @@ class UserController extends BaseController {
         } else {
             $user = new User;
 
-            $user->username = Input::get( 'username' );
-            $user->email = Input::get( 'email' );
+            $user->username = trim(Input::get( 'username' ));
+            $user->email = trim(strtolower(Input::get( 'email' )));
             $user->password = Input::get( 'password' );
-            $user->firstname = Input::get( 'firstname' );
-            $user->lastname = Input::get( 'lastname' );
-            $user->mobilephonenumber = Input::get( 'mobilephonenumber' );
+            $user->first = trim(Input::get( 'first' ));
+            $user->last = trim(Input::get( 'last' ));
+            $user->contact_number = Input::get( 'contact_number' );
 
             // The password confirmation will be removed from model
             // before saving. This field will be used in Ardent's
@@ -49,7 +49,7 @@ class UserController extends BaseController {
             // Save if valid. Password field will be hashed before save
             $user->save();
 
-            if ( $user->id )
+            if ( !$user->errors()->all())
             {
                 // Redirect with success message, You may replace "Lang::get(..." for your custom message.
                             return Redirect::action('UserController@login')
@@ -58,7 +58,7 @@ class UserController extends BaseController {
             else
             {
                 // Get validation errors (see Ardent package)
-                $error = $user->errors()->all(':message');
+                $error = $user->errors()->all();
 
                             return Redirect::action('UserController@create')
                                 ->withInput(Input::except('password'))

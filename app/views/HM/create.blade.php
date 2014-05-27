@@ -40,11 +40,15 @@
 
 		<!-- paste error message here!!! -->
 
+
 		<div class="row">	
 			location = <br>
 			@{{locations}} <br>
 			sentLocation is @{{sentLocation}}
 		</div>
+
+	
+
 
 		<!--start Form -->
 		<div class="row">
@@ -52,8 +56,8 @@
 				<form role="form" name="myForm" ng-submit="addLocation()">
 
 				  <div class="form-group">
-				    <label for="jobtitle">Job title :</label>
-				    <input type="text" ng-model="try1" ng-blur="checkProgress()" class="form-control" id="jobtitle" placeholder="Enter job title" required>
+				    <label for="job_title">Job title :</label>
+				    <input type="text" ng-model="try1" ng-blur="checkProgress()" class="form-control" id="job_title" placeholder="Enter job title" value="{{{ Input::old('job_title') }}}" required>
 				  	
 				  </div>
 
@@ -86,8 +90,8 @@
 
 
 				  <div class="form-group">
-				    <label for="NoOfVacancy">No. of Vacancy :</label>
-				    <input type="number" min="0" max="100" class="form-control" name="NoOfVacancy" id="NoOfVacancy" ng-model="try2" ng-blur="checkProgress()" placeholder="" >		  	
+				    <label for="total_number">No. of Vacancy :</label>
+				    <input type="number" min="0" max="100" class="form-control" name="total_number" id="total_number" ng-model="try2" ng-blur="checkProgress()" placeholder="0" >		  	
 				  </div>
 
 
@@ -138,7 +142,7 @@
 
 				  <div class="form-group">
 				    <label for="yearOfEx">Years of experience :</label>
-				    <input type="number" class="form-control" id="yearOfEx" placeholder="" ng-model="try3" ng-blur="checkProgress()">
+				    <input type="number"  min="0" max="100"  class="form-control" id="yearOfEx" placeholder="0" ng-model="try3" ng-blur="checkProgress()"  >
 				  </div>
 
 				  <div class="form-group">
@@ -205,7 +209,7 @@
 
 				  <button type="submit" class="btn btn-default">Submit</button>
 				</form>
-
+				
 
 			</div> <!-- end column-->
 		</div> <!--end row-->
