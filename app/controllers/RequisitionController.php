@@ -11,7 +11,7 @@ class RequisitionController extends \BaseController {
 	{
 		$requisitions = Requisition::all();
 
-		return View::make('requisitions.index', compact('requisitions'));
+		return View::make('requisition.index', compact('requisitions'));
 	}
 
 	/**
@@ -21,7 +21,9 @@ class RequisitionController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('HM.create');
+		
+
+		return View::make('requisition.create');
 	}
 
 	/**

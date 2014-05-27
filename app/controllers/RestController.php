@@ -10,8 +10,8 @@ class RestController extends \BaseController {
 			$Corporate_titles = CorporateTitle::All()->toJson();
 			return $Corporate_titles ;
 	}
-	public function getCorporate_title_group(){
-			$Corporate_title_groups = Corporate_title_group::All()->toJson();
+	public function getCorporateTitleGroup(){
+			$Corporate_title_groups = CorporateTitleGroup::All()->toJson();
 			return $Corporate_title_groups ;
 	}
 	public function getDept(){
@@ -25,6 +25,7 @@ class RestController extends \BaseController {
 	public function getLocation(){
 			$locations = Location::All()->toJson();
 			return $locations ;
+			
 	}
 	public function getPosition(){
 			$positions = Position::All()->toJson();

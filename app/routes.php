@@ -178,9 +178,7 @@ Route::post('user/forgot_password',        'UserController@do_forgot_password');
 Route::get( 'user/reset_password/{token}', 'UserController@reset_password');
 Route::post('user/reset_password',         'UserController@do_reset_password');
 Route::get( 'user/logout',                 'UserController@logout');
-Route::get( 'requisition/create',                 'RequisitionController@create');
-Route::post('requisition',                        'RequisitionController@store');
-
+Route::resource('requisition', 'RequisitionController');
 Route::controller('requisitionrest', 'RequisitionRestController');
 
 Route::controller('userrest', 'UserRestController');
