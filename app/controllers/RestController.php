@@ -5,6 +5,7 @@ class RestController extends \BaseController {
 	public function getUser(){
 			$users = User::All()->toJson();
 			return $users;
+
 	}
 	public function getCorporateTitle(){
 			$Corporate_titles = CorporateTitle::All()->toJson();
