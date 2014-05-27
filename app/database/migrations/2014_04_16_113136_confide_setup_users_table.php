@@ -235,7 +235,9 @@ class ConfideSetupUsersTable extends Migration {
             $table->unsignedInteger('recruitment_type_id');
             $table->foreign('recruitment_type_id')->references('recruitment_type_id')->on('recruitment_types')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('year_of_experience')->nullable()->default(NULL);
-            $table->string('recruitment_objective',100);
+            $table->unsignedInteger('recruitment_obj_template_id');
+            $table->foreign('recruitment_obj_template_id')->references('recruitment_objective_template_id')->on('recruitment_objective_templates')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('recruitment_objective',100)->nullable();
             $table->string('responsibility',300);
             $table->string('qualification',300); 
             $table->string('note',100)->nullable()->default(NULL);

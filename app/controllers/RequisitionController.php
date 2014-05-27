@@ -68,9 +68,7 @@ class RequisitionController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$requisition = Requisition::findOrFail($id);
-
-		return View::make('requisitions.show', compact('requisition'));
+		return Response::json(Requisition::find($id));
 	}
 
 	/**
@@ -118,7 +116,7 @@ class RequisitionController extends \BaseController {
 	{
 		Requisition::destroy($id);
 
-		return Redirect::route('requisitions.index');
+		return Response::json(array('success' => true));
 	}
 
 }

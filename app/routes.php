@@ -181,4 +181,4 @@ Route::controller('userrest', 'UserRestController');
 /*App::missing(function($exception)
 {
    return View::make('user.home');
-});
+});*/
