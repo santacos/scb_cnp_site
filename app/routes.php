@@ -11,6 +11,12 @@
 |
 */
 
+// Test
+
+Route::get('testtest',function(){
+	return View::make('testtest');
+});
+Route::controller('testrest','TestRestController');
 
 //////////////////// test area/////////////////////////////
 Route::get('tryAngular',function(){
@@ -22,6 +28,7 @@ Route::get('createReq',function(){
 });
 
 Route::controller('userrest','UserRestController');
+Route::controller('rest','RestController');
 
 Route::get('home',function(){
 	return View::make('user.home');
@@ -56,6 +63,7 @@ Route::get('checklogin',function(){
 
 
 ///////////////////////////////////////////////////
+
 Route::get('/default', function()
 {
 	return View::make('admin.home');
@@ -171,4 +179,3 @@ Route::post('user/forgot_password',        'UserController@do_forgot_password');
 Route::get( 'user/reset_password/{token}', 'UserController@reset_password');
 Route::post('user/reset_password',         'UserController@do_reset_password');
 Route::get( 'user/logout',                 'UserController@logout');
-

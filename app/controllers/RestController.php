@@ -5,6 +5,7 @@ class RestController extends \BaseController {
 	public function getUser(){
 			$users = User::All()->toJson();
 			return $users;
+
 	}
 	public function getCorperate_title(){
 			$corperate_titles = Corperate_title::All()->toJson();
