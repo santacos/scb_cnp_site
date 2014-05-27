@@ -1,7 +1,7 @@
 <?php
 	use Zizaco\Confide\ConfideUser;
 
-
+	//class User extends Eloquent  {
 	class User extends ConfideUser  {
 		/**
 	     * Validation rules

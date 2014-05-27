@@ -48,8 +48,8 @@
 				<form role="form" name="myForm">
 
 				  <div class="form-group">
-				    <label for="jobtitle">Job title :</label>
-				    <input type="text" ng-model="try1" ng-blur="checkProgress()" class="form-control" id="jobtitle" placeholder="Enter job title" value="{{{ Input::old('job_title') }}}" required>
+				    <label for="job_title">Job title :</label>
+				    <input type="text" ng-model="try1" ng-blur="checkProgress()" class="form-control" id="job_title" placeholder="Enter job title" value="{{{ Input::old('job_title') }}}" required>
 				  	
 				  </div>
 
@@ -132,7 +132,7 @@
 
 				  <div class="form-group">
 				    <label for="yearOfEx">Years of experience :</label>
-				    <input type="number"  min="0" max="100"  class="form-control" id="yearOfEx" placeholder="0" ng-model="try3" ng-blur="checkProgress()"  ">
+				    <input type="number"  min="0" max="100"  class="form-control" id="yearOfEx" placeholder="0" ng-model="try3" ng-blur="checkProgress()"  >
 				  </div>
 
 				  <div class="form-group">

@@ -215,6 +215,7 @@ class ConfideSetupUsersTable extends Migration {
           Schema::create('requisitions', function($table)
         {
             $table->increments('requisition_id');
+            $table->string('job_title',100);
             $table->integer('total_number');
             $table->integer('get_number');
             $table->unsignedInteger('employee_user_id');

@@ -1,6 +1,6 @@
 <?php
 
-class RequisitionsController extends \BaseController {
+class RequisitionController extends \BaseController {
 
 	/**
 	 * Display a listing of requisitions
@@ -31,14 +31,15 @@ class RequisitionsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Requisition::$rules);
+		/*$validator = Validator::make($data = Input::all(), Requisition::$rules);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
-		}
+		}*/
 
 			$requisition = new Requisition;
+			$requisition->job_title = Input::get('job_title');
 			$requisition->total_number = Input::get('total_number');
 			$requisition->employee_user_id = Input::get('employee_user_id');
 			$requisition->datetime_create = Input::get('datetime_create');
@@ -56,7 +57,7 @@ class RequisitionsController extends \BaseController {
 			$requisition->note = Input::get('note');
 			$requisition->save();
 
-		return Redirect::route('requisitions.index');
+		return Response::json(array('success' => true));
 	}
 
 	/**
