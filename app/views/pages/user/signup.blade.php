@@ -18,16 +18,16 @@
             <input class="form-control" placeholder="{{{ Lang::get('confide::confide.password_confirmation') }}}" type="password" name="password_confirmation" id="password_confirmation">
         </div>
          <div class="form-group">
-                <label for="firstname">Firstname</label>
-                <input class="form-control" placeholder="Firstname" type="text" name="firstname" id="firstname" value="{{{ Input::old('firstname') }}}">
+                <label for="first">Firstname</label>
+                <input class="form-control" placeholder="Firstname" type="text" name="first" id="first" value="{{{ Input::old('first') }}}">
             </div>
             <div class="form-group">
-                <label for="lastname">Lastname</label>
-                <input class="form-control" placeholder="Lastname" type="text" name="lastname" id="lastname" value="{{{ Input::old('lastname') }}}">
+                <label for="last">Lastname</label>
+                <input class="form-control" placeholder="Lastname" type="text" name="last" id="last" value="{{{ Input::old('last') }}}">
             </div>
             <div class="form-group">
-                <label for="mobilephonenumber">Mobilephone</label>
-                <input class="form-control" placeholder="08xxxxxxxx" type="text" name="mobilephonenumber" id="mobilephonenumber" value="{{{ Input::old('mobilephonenumber') }}}">
+                <label for="contact_number">Mobilephone</label>
+                <input class="form-control" placeholder="08xxxxxxxx" type="text" name="contact_number" id="contact_number" value="{{{ Input::old('contact_number') }}}">
             </div>
 
         @if ( Session::get('error') )

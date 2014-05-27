@@ -1,6 +1,6 @@
 <?php
 
-class RequisitionsController extends \BaseController {
+class RequisitionController extends \BaseController {
 
 	/**
 	 * Display a listing of requisitions
@@ -21,7 +21,7 @@ class RequisitionsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('requisitions.create');
+		return View::make('HM.create');
 	}
 
 	/**
@@ -31,16 +31,33 @@ class RequisitionsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Requisition::$rules);
+		/*$validator = Validator::make($data = Input::all(), Requisition::$rules);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
-		}
+		}*/
 
-		Requisition::create($data);
+			$requisition = new Requisition;
+			$requisition->job_title = Input::get('job_title');
+			$requisition->total_number = Input::get('total_number');
+			$requisition->employee_user_id = Input::get('employee_user_id');
+			$requisition->datetime_create = Input::get('datetime_create');
+			$requisition->datetime_prev_status = Input::get('datetime_prev_status');
+			$requisition->location_id = Input::get('location_id');
+			$requisition->corporate_title_id = Input::get('corporate_title_id');
+			$requisition->position_id = Input::get('position_id');
+			$requisition->dept_id = Input::get('dept_id');
+			$requisition->requisition_current_status_id = Input::get('requisition_current_status_id');
+			$requisition->recruitment_type_id = Input::get('recruitment_type_id');
+			$requisition->year_of_experience = Input::get('year_of_experience');
+			$requisition->recruitment_objective = Input::get('recruitment_objective');
+			$requisition->responsibility = Input::get('responsibility');
+			$requisition->qualification = Input::get('qualification');
+			$requisition->note = Input::get('note');
+			$requisition->save();
 
-		return Redirect::route('requisitions.index');
+		return Response::json(array('success' => true));
 	}
 
 	/**
@@ -51,9 +68,7 @@ class RequisitionsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$requisition = Requisition::findOrFail($id);
-
-		return View::make('requisitions.show', compact('requisition'));
+		return Response::json(Requisition::find($id));
 	}
 
 	/**
@@ -101,7 +116,7 @@ class RequisitionsController extends \BaseController {
 	{
 		Requisition::destroy($id);
 
-		return Redirect::route('requisitions.index');
+		return Response::json(array('success' => true));
 	}
 
 }

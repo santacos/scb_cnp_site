@@ -16,7 +16,7 @@
 			'recruitment_objective'=>'required',
 			'responsibility'=>'required',
 			'qualification'=>'required',
-			'note'=>'required'
+			//'note'=>'required'
 			);/*
 	    public function employee_user() {
 			return $this->belongsTo('Employee');

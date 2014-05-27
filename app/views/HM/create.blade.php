@@ -41,15 +41,23 @@
 		<!-- paste error message here!!! -->
 
 
+		<div class="row">	
+			location = <br>
+			@{{locations}} <br>
+			sentLocation is @{{sentLocation}}
+		</div>
+
+	
+
 
 		<!--start Form -->
 		<div class="row">
 			<div class="col-md-6">
-				<form role="form" name="myForm">
+				<form role="form" name="myForm" ng-submit="addLocation()">
 
 				  <div class="form-group">
-				    <label for="jobtitle">Job title :</label>
-				    <input type="text" ng-model="try1" ng-blur="checkProgress()" class="form-control" id="jobtitle" placeholder="Enter job title" required>
+				    <label for="job_title">Job title :</label>
+				    <input type="text" ng-model="try1" ng-blur="checkProgress()" class="form-control" id="job_title" placeholder="Enter job title" value="{{{ Input::old('job_title') }}}" required>
 				  	
 				  </div>
 
@@ -62,7 +70,7 @@
 				        @{{chooseCorp}} <span class="caret"></span>
 				      </button>
 				      <ul class="dropdown-menu scrollable-menu" role="menu">
-				      	<li ng-repeat="temp in corps"><a ng-click="whenClickCorp(temp)">@{{temp}}</a></li>
+				      	<li ng-repeat="temp in corporatetitles"><a ng-click="whenClickCorp(temp)">@{{temp.name}}</a></li>
 				      </ul>
 				    </div>
 				  </div>
@@ -82,8 +90,8 @@
 
 
 				  <div class="form-group">
-				    <label for="NoOfVacancy">No. of Vacancy :</label>
-				    <input type="number" class="form-control" id="NoOfVacancy" ng-model="try2" ng-blur="checkProgress()" placeholder="" >
+				    <label for="total_number">No. of Vacancy :</label>
+				    <input type="number" min="0" max="100" class="form-control" name="total_number" id="total_number" ng-model="try2" ng-blur="checkProgress()" placeholder="0" >		  	
 				  </div>
 
 
@@ -99,6 +107,8 @@
 					    </div>
 					    <div>
 					    <br>
+
+					    <!-- name replacement -->
 					    <input ng-show="chooseRecOb === 'Replace resign of'" type="text" class="form-control" placeholder="Enter name of replacement">
 				  		</div>
 				  </div>
@@ -124,7 +134,7 @@
 				        @{{chooseLocation}} <span class="caret"></span>
 				      </button>
 				      <ul class="dropdown-menu scrollable-menu" role="menu">
-				      	<li ng-repeat="location in locations"><a ng-click="whenClickLocation(location)">@{{location}}</a></li>
+				      	<li ng-repeat="location in locations"><a ng-click="whenClickLocation(location)">@{{location.name}}</a></li>
 				      </ul>
 				    </div>
 				    
@@ -132,7 +142,7 @@
 
 				  <div class="form-group">
 				    <label for="yearOfEx">Years of experience :</label>
-				    <input type="number" class="form-control" id="yearOfEx" placeholder="" ng-model="try3" ng-blur="checkProgress()">
+				    <input type="number"  min="0" max="100"  class="form-control" id="yearOfEx" placeholder="0" ng-model="try3" ng-blur="checkProgress()"  >
 				  </div>
 
 				  <div class="form-group">
@@ -147,7 +157,49 @@
 
 				  <div class="form-group">
 				    <label for="relatedSkill">Related skill :</label>
-				    <input type="textfield" class="form-control" id="relatedSkill" placeholder="">
+				    <!-- buttob add-->
+					<button type="submit" class="btn btn-sm btn-default" ng-click="isShowSkill=!isShowSkill">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+					</button><br><br>
+
+					@{{skills}}
+
+					<!-- show suggest skill-->
+					<div class="row" ng-repeat="skill in skills">
+
+						<div class="col-sm-1">
+							
+						</div>
+
+						<div class="col-sm-11">
+							<div class="panel panel-success">
+							  <div class="panel-heading">
+							    <h3 class="panel-title">@{{skill.category}}</h3>
+							  </div>
+							  <div class="panel-body">
+							    @{{skill.name}}
+							  </div>
+							</div>
+						</div>
+					</div>
+
+					<!-- add skill -->
+					<div ng-show="isShowSkill">
+						<br>
+						<div class="well">
+							
+							<label for="skillBranch">Skill branch :</label>
+					    	<input type="text" ng-model="tempBranch" class="form-control" id="skillBranch" placeholder="enter skill branch">
+					    	<br>
+							<label for="skillName">Skill name :</label>
+					    	<input type="text" ng-model="tempName" class="form-control" id="skillName" placeholder="enter skill name">
+
+					    	<br>
+					    	<button type="submit" class="btn btn-info" ng-click="addSkill()">Add</button>
+						</div>
+					</div>
+
+
 				  </div>
 
 				  <div class="form-group">
@@ -157,7 +209,7 @@
 
 				  <button type="submit" class="btn btn-default">Submit</button>
 				</form>
-
+				
 
 			</div> <!-- end column-->
 		</div> <!--end row-->

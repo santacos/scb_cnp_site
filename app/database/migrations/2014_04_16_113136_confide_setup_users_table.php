@@ -10,6 +10,50 @@ class ConfideSetupUsersTable extends Migration {
      */
     public function up()
     {
+            Schema::dropIfExists('users');
+            Schema::dropIfExists('password_reminders');
+            Schema::dropIfExists('application_current_statuses');
+            Schema::dropIfExists('positions');
+            Schema::dropIfExists('responsibilities');
+            Schema::dropIfExists('qualifications');
+            Schema::dropIfExists('skill_categories');
+            Schema::dropIfExists('skills');
+            Schema::dropIfExists('locations');
+            Schema::dropIfExists('corporate_title_groups');
+            Schema::dropIfExists('corporate_titles');
+            Schema::dropIfExists('recruitment_types');
+            Schema::dropIfExists('requisition_current_statuses');
+            Schema::dropIfExists('recruitment_objective_templates');
+            Schema::dropIfExists('candidates');
+            Schema::dropIfExists('depts');
+            Schema::dropIfExists('employees');
+            Schema::dropIfExists('requisitions');
+            Schema::dropIfExists('tags');
+            Schema::dropIfExists('requisition_skills');
+            Schema::dropIfExists('questions');
+            Schema::dropIfExists('answers');
+            Schema::dropIfExists('question_answers');
+            Schema::dropIfExists('position_questions');
+            Schema::dropIfExists('applications');
+            Schema::dropIfExists('application_question_answers');
+            Schema::dropIfExists('interview_logs');
+            Schema::dropIfExists('int_off_schedules');
+            Schema::dropIfExists('application_logs');
+            Schema::dropIfExists('interview_evaluations');
+            Schema::dropIfExists('candidate_skills');
+            Schema::dropIfExists('requisition_logs');
+            Schema::dropIfExists('folders');
+            Schema::dropIfExists('candidate_folders');
+            Schema::dropIfExists('menu_visits');
+            Schema::dropIfExists('SLA_requisitions');
+            Schema::dropIfExists('SLA_candidates');
+            Schema::dropIfExists('job_carts');
+            Schema::dropIfExists('work_experiences');
+            Schema::dropIfExists('educations');
+            Schema::dropIfExists('awards');
+            Schema::dropIfExists('following_jobs');
+            Schema::dropIfExists('certificates');
+            Schema::dropIfExists('public_holidays');
         // Creates the users table
         Schema::create('users', function($table)
         {
@@ -171,6 +215,7 @@ class ConfideSetupUsersTable extends Migration {
           Schema::create('requisitions', function($table)
         {
             $table->increments('requisition_id');
+            $table->string('job_title',100);
             $table->integer('total_number');
             $table->integer('get_number');
             $table->unsignedInteger('employee_user_id');
@@ -190,7 +235,9 @@ class ConfideSetupUsersTable extends Migration {
             $table->unsignedInteger('recruitment_type_id');
             $table->foreign('recruitment_type_id')->references('recruitment_type_id')->on('recruitment_types')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('year_of_experience')->nullable()->default(NULL);
-            $table->string('recruitment_objective',100);
+            $table->unsignedInteger('recruitment_obj_template_id');
+            $table->foreign('recruitment_obj_template_id')->references('recruitment_objective_template_id')->on('recruitment_objective_templates')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('recruitment_objective',100)->nullable();
             $table->string('responsibility',300);
             $table->string('qualification',300); 
             $table->string('note',100)->nullable()->default(NULL);

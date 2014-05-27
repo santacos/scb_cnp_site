@@ -23,8 +23,16 @@
 
 	   		$scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
+	   		$http.get('rest/corperate_title').success(function(dataa) {
+	     		 $scope.corperate_title = dataa;
+	     		 
+	    	}).error(function(data, status, headers, config) {
+			      // called asynchronously if an error occurs
+			      // or server returns response with an error status.
+			      console.log('error_corperate_title');
+   			 });
 
-    	
+    		
   			}
 
   	
@@ -39,6 +47,8 @@
 	</head>
 	<body ng-controller="NameCtrl">
 		<div class="container-fluid">
+
+			<h4>@{{corperate_title}}</h4><br>
 
 		    <h4>Static arrays</h4>
 		    <pre>Model: @{{selected | json}}</pre>
