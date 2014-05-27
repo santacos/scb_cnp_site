@@ -40,12 +40,16 @@
 
 		<!-- paste error message here!!! -->
 
-
+		<div class="row">	
+			location = <br>
+			@{{locations}} <br>
+			sentLocation is @{{sentLocation}}
+		</div>
 
 		<!--start Form -->
 		<div class="row">
 			<div class="col-md-6">
-				<form role="form" name="myForm">
+				<form role="form" name="myForm" ng-submit="addLocation()">
 
 				  <div class="form-group">
 				    <label for="jobtitle">Job title :</label>
@@ -62,7 +66,7 @@
 				        @{{chooseCorp}} <span class="caret"></span>
 				      </button>
 				      <ul class="dropdown-menu scrollable-menu" role="menu">
-				      	<li ng-repeat="temp in corps"><a ng-click="whenClickCorp(temp)">@{{temp}}</a></li>
+				      	<li ng-repeat="temp in corporatetitles"><a ng-click="whenClickCorp(temp)">@{{temp.name}}</a></li>
 				      </ul>
 				    </div>
 				  </div>
@@ -99,6 +103,8 @@
 					    </div>
 					    <div>
 					    <br>
+
+					    <!-- name replacement -->
 					    <input ng-show="chooseRecOb === 'Replace resign of'" type="text" class="form-control" placeholder="Enter name of replacement">
 				  		</div>
 				  </div>
@@ -124,7 +130,7 @@
 				        @{{chooseLocation}} <span class="caret"></span>
 				      </button>
 				      <ul class="dropdown-menu scrollable-menu" role="menu">
-				      	<li ng-repeat="location in locations"><a ng-click="whenClickLocation(location)">@{{location}}</a></li>
+				      	<li ng-repeat="location in locations"><a ng-click="whenClickLocation(location)">@{{location.name}}</a></li>
 				      </ul>
 				    </div>
 				    

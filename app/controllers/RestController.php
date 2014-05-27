@@ -6,13 +6,13 @@ class RestController extends \BaseController {
 			$users = User::All()->toJson();
 			return $users;
 	}
-	public function getCorperate_title(){
-			$corperate_titles = Corperate_title::All()->toJson();
-			return $corperate_titles ;
+	public function getCorporateTitle(){
+			$Corporate_titles = CorporateTitle::All()->toJson();
+			return $Corporate_titles ;
 	}
-	public function getCorperate_title_group(){
-			$corperate_title_groups = Corperate_title_group::All()->toJson();
-			return $corperate_title_groups ;
+	public function getCorporate_title_group(){
+			$Corporate_title_groups = Corporate_title_group::All()->toJson();
+			return $Corporate_title_groups ;
 	}
 	public function getDept(){
 			$depts = Dept::All()->toJson();

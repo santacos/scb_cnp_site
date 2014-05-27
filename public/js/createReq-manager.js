@@ -19,6 +19,8 @@ var nameApp = angular.module('nameApp',['ui.bootstrap']);
 	  		$scope.chooseLocation = 'choose job location';
 
 
+
+
 	  		//change information of industry here
 	    	$scope.industries = [
 			    'The first choice!',
@@ -27,41 +29,63 @@ var nameApp = angular.module('nameApp',['ui.bootstrap']);
 			    'a','b','c','d','e','f','g'
 			  ];
 			//change information of Corporate here
-	    	$scope.corps = [
-			    'President',
-				'SEVP',
-				'FEVP',
-				'EVP',
-				'FSVP',
-				'SVP',
-				'VP',
-				'AVP',
-				'Officer 4',
-				'Officer 3',
-				'Officer 2',
-				'Officer 1',
-				'Associate',
-				'Staff 4',
-				'Staff 3',
-				'Staff 2',
-				'Staff 1'
-			  ];
 
+			$http.get('rest/corporate-title').success(function(dataa) {
+	     		 $scope.corporatetitles = dataa;
+	     		 
+	    	}).error(function(data, status, headers, config) {
+			      // called asynchronously if an error occurs
+			      // or server returns response with an error status.
+			      console.log('error_corperate_title');
+   			});
+
+
+
+	    	//objective seed here!
 			 $scope.objectives = [
 			 	'new',
 			 	'Replace resign of'
 			 ];
+
+
 			 $scope.recTypes = [
 			 	'All',
 			 	'internal',
 			 	'external'
 
 			 ];
-			 $scope.locations=[
-			 	'Bangkok',
-			 	'Chiangmai',
-			 	'Nakhon Pathom'
-			 ];
+
+
+
+			$http.get('rest/location').success(function(dataa) {
+	     		 $scope.locations = dataa;
+	     		 
+	    	}).error(function(data, status, headers, config) {
+			      // called asynchronously if an error occurs
+			      // or server returns response with an error status.
+			      console.log('error_corperate_title');
+   			});
+
+   			$scope.addLocation = function(){
+
+   				console.log('add location');
+   				
+
+		    	$http.post('setlocation',{ 'name' :$scope.chooseLocation }).success(function(){
+		    		console.log('post_location_success');
+		    	});
+
+	    	}
+
+   			$http({method: 'GET', url: '/someUrl'}).
+		    success(function(data, status, headers, config) {
+		      // this callback will be called asynchronously
+		      // when the response is available
+		    }).
+		    error(function(data, status, headers, config) {
+		      // called asynchronously if an error occurs
+		      // or server returns response with an error status.
+		    });
 
 			/////////////////
 			$scope.status = {
@@ -90,8 +114,9 @@ var nameApp = angular.module('nameApp',['ui.bootstrap']);
 			  };
 
 			 $scope.whenClickCorp = function(temp){
-			  	$scope.chooseCorp = temp;
+			  	$scope.chooseCorp = temp.name;
 			  	$scope.status.isopenCorp = !$scope.status.isopenCorp;
+			  	$scope.sentCorp =temp;
 
 			  };
 
@@ -108,8 +133,9 @@ var nameApp = angular.module('nameApp',['ui.bootstrap']);
 			  };
 
 			  $scope.whenClickLocation = function(location){
-			  	$scope.chooseLocation = location;
+			  	$scope.chooseLocation = location.name;
 			  	$scope.status.isopenLocation = !$scope.status.isopenLocation;
+			  	$scope.sentLocation=location;
 
 			  };
 

@@ -14,7 +14,12 @@
 
 //////////////////// test area/////////////////////////////
 Route::get('tryAngular',function(){
-	return View::make('angular.try3');
+	return View::make('angular.try2');
+});
+
+Route::post('setlocation',function(){
+	return Location::create(Input::all());
+
 });
 
 Route::get('createReq',function(){
@@ -22,6 +27,8 @@ Route::get('createReq',function(){
 });
 
 Route::controller('userrest','UserRestController');
+
+Route::controller('rest','RestController');
 
 Route::get('home',function(){
 	return View::make('user.home');
