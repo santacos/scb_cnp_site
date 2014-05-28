@@ -1,1 +1,0 @@
-C:\wamp\www\scb_cnp_site\app/views/requisitions/create.blade.php

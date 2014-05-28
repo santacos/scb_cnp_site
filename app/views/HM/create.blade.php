@@ -43,8 +43,9 @@
 
 		<div class="row">	
 			location = <br>
-			@{{locations}} <br>
-			sentLocation is @{{sentLocation}}
+			@{{industries}} <br>
+			<h1 ng-repeat="industry in industries">@{{industry.name}}</h1><br>
+			
 		</div>
 
 	
@@ -83,7 +84,7 @@
 				        @{{chooseIndustry}} <span class="caret"></span>
 				      </button>
 				      <ul class="dropdown-menu scrollable-menu" role="menu">
-				      	<li ng-repeat="item in industries"><a ng-click="whenClickIndustry(item)">@{{item}}</a></li>
+				      	<li ng-repeat="item in industries"><a ng-click="whenClickIndustry(item)">@{{item.name}}</a></li>
 				      </ul>
 				    </div>
 				  </div>

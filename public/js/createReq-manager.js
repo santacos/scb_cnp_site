@@ -22,12 +22,16 @@ var nameApp = angular.module('nameApp',['ui.bootstrap']);
 
 
 	  		//change information of industry here
-	    	$scope.industries = [
-			    'The first choice!',
-			    'And another choice for you.',
-			    'but wait! A third!',
-			    'a','b','c','d','e','f','g'
-			  ];
+	    	
+			  $http.get('rest/dept').success(function(dataa) {
+	     		 $scope.industries = dataa;
+	     		 
+	    	}).error(function(data, status, headers, config) {
+			      // called asynchronously if an error occurs
+			      // or server returns response with an error status.
+			      console.log('error_corperate_title');
+   			});
+
 			//change information of Corporate here
 
 			$http.get('rest/corporate-title').success(function(dataa) {
