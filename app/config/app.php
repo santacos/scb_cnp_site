@@ -109,10 +109,10 @@ return array(
 		'Zizaco\Confide\ConfideServiceProvider',
 		'Artdarek\OAuth\OAuthServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
-		'Barryvdh\Debugbar\ServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
 		'Former\FormerServiceProvider',
 		'Chumper\Datatable\DatatableServiceProvider',
+		'Raahul\LarryFour\LarryFourServiceProvider',
 	),
 
 	/*

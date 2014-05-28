@@ -9,7 +9,11 @@
       nameApp.controller('NameCtrl',['$scope', '$http', function ($scope, $http) {
         $http.get('testrest/user').success(function(data) {
            $scope.users = data;
-        });
+        }).error(function(){
+          console.log('error');
+        }
+
+        );
       }]);
     </script>
   </head>
@@ -34,6 +38,6 @@
     <span>{{ users | json }}</span>
     <br>
     <br>
-    <span><?=CorporateTitle::whereName('Officer 3')->first()->toJson()?></span>
+    <span><?=Dept::find(2)->recruiter->toJson()?></span>
   </body>
 </html>

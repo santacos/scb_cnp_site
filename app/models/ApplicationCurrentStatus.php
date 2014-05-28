@@ -7,4 +7,12 @@
 			'name'=>'required'
 		);
 		protected $primaryKey = 'application_current_status_id';
+
+		public function application(){
+			return $this->hasMany('Application');
+		}
+
+		public function intOffSchedule(){
+			return $this->hasMany('IntOffSchedule');
+		}
 	}
