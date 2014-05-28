@@ -15,6 +15,6 @@
 		}
 
 		public function requisition(){
-			return $this->belongsTo('Requisition','corporate_title_id','corporate_title_id');
+			return $this->hasMany('Requisition','corporate_title_id','corporate_title_id');
 		}
 	}

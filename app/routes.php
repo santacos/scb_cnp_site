@@ -16,7 +16,7 @@
 Route::get('testtest',function(){
 	return View::make('testtest');
 });
-Route::controller('testrest','TestRestController');
+Route::controller('testrest','RestController');
 
 //////////////////// test area/////////////////////////////
 Route::get('tryAngular',function(){
