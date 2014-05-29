@@ -1,8 +1,8 @@
 <?php
 	use Zizaco\Confide\ConfideUser;
 
-	//class User extends Eloquent  {
-	class User extends ConfideUser  {
+	class User extends Eloquent  {
+	//class User extends ConfideUser  {
 		/**
 	     * Validation rules
 	     */
@@ -18,5 +18,9 @@
 	    );
 
 	    protected $primaryKey = 'user_id';
+
+	    public function employee(){
+	    	return $this->hasOne('Employee');
+	    }
 	}
 
