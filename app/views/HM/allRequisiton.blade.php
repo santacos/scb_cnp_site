@@ -41,6 +41,7 @@ thisIsTitle
                                             </div>
                                         </div>
                                     </div><!-- /.box-header -->
+                                    
                                     <!--table style "table-striped"-->
                                     <div class="box-body table-responsive no-padding">
                                         
