@@ -18,5 +18,17 @@
 		public function user(){
 			return $this->belongsTo('User');
 		}
+
+		public function position(){
+			return $this->belongsTo('Position');
+		}
+
+		public function dept(){
+			return $this->belongsTo('Dept');
+		}
+
+		public function nextLevel(){
+			return $this->belongsTo('User','next_level_user_id','user_id');
+		}
 }
 

@@ -9,4 +9,16 @@
 			'is_star'=>'required'
 		);
 		protected $primaryKey = 'skill_id';
+
+		public function category(){
+			return $this->belongsTo('SkillCategory');
+		}
+
+		public function requisition(){
+			return $this->belongsToMany('Requisition');
+		}
+
+		public function candidate(){
+			return $this->belongsToMany('Candidate');
+		}
 	}

@@ -7,4 +7,8 @@
 			'name'=>'required'
 		);
 		protected $primaryKey = 'recruitment_type_id';
+
+		function requisition(){
+			return $this->hasMany('Requisition');
+		}
 	}

@@ -7,4 +7,8 @@
 			'name'=>'required'
 		);
 		protected $primaryKey = 'location_id';
+
+		function requisition(){
+			return $this->hasMany('Requisition');
+		}
 	}
