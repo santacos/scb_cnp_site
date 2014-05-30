@@ -23,10 +23,11 @@ Route::get('tryAngular',function(){
 	return View::make('angular.try2');
 });
 
-Route::post('setlocation',function(){
-	return Location::create(Input::all());
-
+Route::get('showReq',function(){
+	return View::make('HM.allRequisiton');
 });
+
+Route::resource('setlocation','LocationController');
 
 Route::get('createReq',function(){
 	return View::make('HM.create');

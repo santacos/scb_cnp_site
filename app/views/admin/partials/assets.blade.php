@@ -41,6 +41,7 @@
 	{{ HTML::style('assets/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}
 	<!-- Theme style -->
 	{{ HTML::style('assets/css/AdminLTE.css') }}
+	
 	<!-- iCheck for checkboxes and radio inputs -->
 	{{ HTML::style('assets/css/iCheck/all.css') }}
 	<!-- Bootstrap Color Picker -->

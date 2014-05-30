@@ -5,12 +5,10 @@ thisIsTitle
 @stop
 
 @section('libs')
-      <link rel="stylesheet" href="<?php echo asset('assets/css/AdminLTE.css')?>">
-      <link rel="stylesheet" href="<?php echo asset('css/bootstrap-lightbox.css')?>">
+   <link rel="stylesheet" href="<?php echo asset('css/coshome.css')?>">
 @stop
 
 @section('content')
- 
         <!--welcome box-->
         <div class="alert alert-info alert-bold-border fade in alert-dismissable" style="margin-left:0px;">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -23,39 +21,100 @@ thisIsTitle
         <!--recruiter tool-->
         @include('admin.partials.recruiter.statBox')
 
-
-        <!--box morris test-->
-
-        <!--end box morris test-->
-
         <!--row two for TO DO REQUISITION-->
-
         <div class="box box-primary">
-
-                    <div class="box-header">
-                        <h3 class="box-title">  To do..</h3>
-                        <div class="box-tools pull-right">
-                            <button class="btn btn-primary btn-xs" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                            <button class="btn btn-primary btn-xs" data-widget="remove">
-                                <i class="fa fa-times"></i>
-                            </button>
-                        </div>
-                    </div>
-
+        <div class="box-header">
+            <h3 class="box-title">To do..</h3>
+            <div class="box-tools pull-right">
+                <button class="btn btn-primary btn-xs" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button class="btn btn-primary btn-xs" data-widget="remove">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+        </div>
                    <div class="box-body">
-                       @include('admin.partials.recruiter.ReqTable')
-                       @include('admin.partials.recruiter.CanTable')
-
-
-
-                    </div><!-- /.box-body -->
-                        <!--
+                       <div class="box box-solid box-primary">
+                   <div class="box-header">
+                       <h1 class="box-title">Requisition</h1>
+                       <div class="box-tools">
+                           <div class="input-group">
+                               <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <!--table style "table-striped"-->
+                                <div class="box-body table-responsive no-padding">
+                                    <br>
+                                    <!--start table-->
+                                    <table class="table-fill">
+                                        <thead>
+                                            <tr>
+                                            <th class="text-left">Month</th>
+                                            <th class="text-left">Sales</th>
+                                            <th class="text-left">Month</th>
+                                            <th class="text-left">Sales</th>
+                                            <th class="text-left">Sales</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-hover">
+                                        <tr>
+                                        <td class="text-left">January</td>
+                                        <td class="text-left">$ 50,000.00</td>
+                                        <td class="text-left">January</td>
+                                        <td class="text-left">$ 50,000.00</td>
+                                        <td class="text-left">$ 50,000.00</td>
+                                        </tr>
+                                        <tr>
+                                        <td class="text-left">February</td>
+                                        <td class="text-left">$ 10,000.00</td>
+                                        <td class="text-left">January</td>
+                                        <td class="text-left">$ 50,000.00</td>
+                                        <td class="text-left">$ 50,000.00</td>
+                                        </tr>
+                                        <tr>
+                                        <td class="text-left">March</td>
+                                        <td class="text-left">$ 85,000.00</td>
+                                        <td class="text-left">January</td>
+                                        <td class="text-left">$ 50,000.00</td>
+                                        <td class="text-left">$ 50,000.00</td>
+                                        </tr>
+                                        <tr>
+                                        <td class="text-left">April</td>
+                                        <td class="text-left">$ 56,000.00</td>
+                                        <td class="text-left">January</td>
+                                        <td class="text-left">$ 50,000.00</td>
+                                        <td class="text-left">$ 50,000.00</td>
+                                        </tr>
+                                        <tr>
+                                        <td class="text-left">May</td>
+                                        <td class="text-left">$ 98,000.00</td>
+                                        <td class="text-left">January</td>
+                                        <td class="text-left">$ 50,000.00</td>
+                                        <td class="text-left">$ 50,000.00</td>
+                                        </tr>
+                                        </tbody>
+                                        </table>
+                                    <!--end table-->
+                                </div><!-- /.box-body -->
+                                <div class="box-footer clearfix">
+                                    <ul class="pagination pagination-sm no-margin pull-right">
+                                        <li><a href="#">&laquo;</a></li>
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">&raquo;</a></li>
+                                    </ul>
+                        </div>
+                    </div><!-- /.box -->
+                        </div><!-- /.box-body -->
                         <div class="box-footer">
                             <br>
-                        </div>
-                        -->
+                        </div><!-- /.box-footer-->
                     </div>
                     <!--end TO DO REQUISITION-->
 
@@ -96,7 +155,18 @@ thisIsTitle
                                 </div><!-- /.box-header -->
                                 <div class="box-body no-padding">
                                     <!--The calendar -->
-                                    <div id="calendar"></div>
+                              
+                                    <div class="contain-clock">
+                                        <div class="face-1 abs">
+                                            <div class="hour lines"></div>
+                                            <div class="minute lines"></div>
+                                            <div class="second lines"></div>
+                                            <div class="center abs"></div>
+                                        </div>
+                                        <div class="face-2">
+                                        </div>
+                                    </div><!--end contain clock-->
+
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->            
                                     
@@ -205,8 +275,12 @@ thisIsTitle
 
                     <!--end HOT EVENT-->
 
-@stop
 
-@section('script')
-    <script src="<?php echo asset('js/bootstrap-lightbox.js')?>"></script>
+    
+
+						
+
+
+
+
 @stop

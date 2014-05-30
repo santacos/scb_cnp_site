@@ -18,9 +18,27 @@
 
 
     </style>
-    
-    </head>
+    <script src="<?php echo asset('vendor/angular.min.js')?>"></script> 
+    <script src="<?php echo asset('vendor/ui-bootstrap-tpls-0.11.0.min.js')?>"></script>
+    <script src="<?php echo asset('js/createReq-manager.js')?>"></script>
 
+    </head>
+    <body ng-controller="NameCtrl">
+        <div class="container">
+        <h1>create requisition</h1>
+        <hr/>
+    
+        <div class="row">
+            <div class="col-sm-6">
+            <progressbar max="3" value="count"></progressbar>
+            </div>
+            <div class="col-sm-6">
+            <progressbar class="progress-striped active" max="3" value="count" type="danger"><i>@{{count}} / 3</i></progressbar>
+            </div>
+        </div>
+
+
+        <!-- paste error message here!!! -->
     <!-- will be used to show any messages -->
     @if (Session::has('message'))
     <div class="alert alert-info">{{ Session::get('message') }}</div>
@@ -34,58 +52,53 @@
 
 
         {{ Form::open(array('url' => 'requisition','files'=>true ))}}
-
         <div class="form-group">
-            {{ Form::label('job_title', 'Job title') }}
-            {{ Form::text('job_title', Input::old('job_title'), array('class' => 'form-control', 'id' => 'form')) }}
-        </div>
+          {{ Form::label('job_title_id', 'Job Title :') }}  
+         {{ Form::text('job_title', Input::old('job_title'), array('class' => 'form-control', 'id' => 'form','ng-model'=>'try1','ng-blur'=>'checkProgress()','placeholder'=>'Enter job title','required')) }}
+          </div>
+
 
     <div class="form-group">
-        {{ Form::label('corporate_title_id', 'Corporate Title') }}
-        <select name="corporate_title_id" class="form-control scrollable-menu">
-            <option value=null >Select Corporate Title</option>
-            @foreach(CorporateTitle::All() as $corporate_title)
-            <option value="{{$corporate_title->corporate_title_id}}">{{$corporate_title->name}}</option>
-            @endforeach
-        </select>
+        {{ Former::select('corporate_title_id', 'Corporate Title :')->attributes(array('class' => 'form-control scrollable-menu'))->addOption('Select Corporate Title')
+                ->fromQuery(CorporateTitle::All(), 'name', 'corporate_title_id') }}    
+    </div>
+
+    <div class="form-group">
+        {{ Former::select('dept_id', 'Department :')->class('form-control scrollable-menu')->addOption('Select Department')
+                ->fromQuery(Dept::All(), 'name', 'dept_id') }}    
     </div>
 
     <div class="form-group">
             {{ Form::label('total_number', 'No. of Vacancy :') }}
-            {{ Form::input('number','total_number', Input::old('qualification'), array('min'=>'0','max'=>'1000','placeholder'=>'0','class' => 'form-control', 'id' => 'form')) }}
+            {{ Form::input('number','total_number', Input::old('qualification'), array('min'=>'0','max'=>'1000','placeholder'=>'0','class' => 'form-control', 'id' => 'form', 'required')) }}
         </div>
+    <div class="form-group">
+        {{ Former::select('recruitment_obj_template_id','Recruitment Objective :')->class('form-control scrollable-menu')->addOption('Select Recruitment Objective')
+                ->fromQuery(RecruitmentObjTemplate::All(), 'message', 'recruitment_objective_template_id') }}  
+         {{ Form::text('recruitment_objective', Input::old('recruitment_objective'), array('class' => 'form-control', 'id' => 'form','placeholder'=>'Recruitment Objective Note')) }}   
+    </div>
 
     <div class="form-group">
-        {{ Form::label('recruitment_type_id', 'Recruitment Type') }}
-        <select name="recruitment_type_id" class="form-control scrollable-menu">
-            <option value=null >Select Recruitment Type</option>
-            @foreach(RecruitmentType::All() as $recruitment_type)
-            <option value="{{$recruitment_type->recruitment_type_id}}">{{$recruitment_type->name}}</option>
-            @endforeach
-        </select>
+        {{ Former::select('recruitment_type_id','Recruitment type :')->class('form-control scrollable-menu')->addOption('Select Recruitment Type')
+                ->fromQuery(RecruitmentType::All(), 'name', 'recruitment_type_id') }}  
     </div>
      <div class="form-group">
-        {{ Form::label('location_id', 'Location') }}
-        <select name="location_id" class="form-control scrollable-menu">
-            <option value=null >Select Location</option>
-            @foreach(Location::All() as $location)
-            <option value="{{$location->location_id}}">{{$location->name}}</option>
-            @endforeach
-        </select>
+         {{ Former::select('location_id', 'Location :')->class('form-control scrollable-menu')->addOption('Select Location')
+                ->fromQuery(Location::All(), 'name', 'location_id') }}  
     </div>
             
                 <div class="form-group">
-                    <label for="year_of_experience">Years of experience :</label>
-                    <input type="number"  min="0" max="100"  class="form-control" id="year_of_experience" placeholder="0"  >
-                  </div>
-
+            {{ Form::label('year_of_experience', 'Years of experience :') }}
+            {{ Form::input('number','year_of_experience', Input::old('qualification'), array('min'=>'0','max'=>'100','placeholder'=>'0','class' => 'form-control', 'id' => 'form', 'required')) }}
+        </div>
+         
         <div class="form-group">
             {{ Form::label('responsibility', 'Responsibilities :') }}
-            {{ Form::text('responsibility', Input::old('responsibility'), array('class' => 'form-control', 'id' => 'form')) }}
+            {{ Form::text('responsibility', Input::old('responsibility'), array('class' => 'form-control', 'id' => 'form', 'required')) }}
         </div>
         <div class="form-group">
             {{ Form::label('qualification', 'Qualifications :') }}
-            {{ Form::text('qualification', Input::old('qualification'), array('class' => 'form-control', 'id' => 'form')) }}
+            {{ Form::text('qualification', Input::old('qualification'), array('class' => 'form-control', 'id' => 'form','required')) }}
         </div>
         <div class="form-group">
             {{ Form::label('note', 'Note :') }}

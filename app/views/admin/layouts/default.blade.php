@@ -6,6 +6,8 @@
 		@yield('title')
 	</title>
 
+	@yield('libs')
+
 	</head>
 	<body class="skin-black">
 		<!-- header logo: style can be found in header.less -->
@@ -21,6 +23,7 @@
 			<!-- Right side column. Contains the navbar and content of the page -->
 			<aside class="right-side">
 				<!-- Content Header (Page header) -->
+				<!--
 				<section class="content-header">
                     <h1>
                         Dashboard
@@ -31,11 +34,13 @@
                         <li class="active">Dashboard</li>
                     </ol>
                 </section>
+            -->
 
 				<!-- Main content -->
 				<section class="content">
+				
 
-					@include('admin.partials.statBox')
+					
 
 					@yield('content')
 
@@ -53,7 +58,7 @@
 		
 		<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 		{{ HTML::script('assets/js/AdminLTE/dashboard.js') }}
-		
+		@yield('script')
 		@include('admin.partials.footer')
 	</body>
 </html>

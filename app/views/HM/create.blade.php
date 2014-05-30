@@ -135,7 +135,7 @@
 				        @{{chooseLocation}} <span class="caret"></span>
 				      </button>
 				      <ul class="dropdown-menu scrollable-menu" role="menu">
-				      	<li ng-repeat="location in locations"><a ng-click="whenClickLocation(location)">@{{location.name}}</a></li>
+				      	<li ng-repeat="location in locations track by $index"><a ng-click="whenClickLocation(location)">@{{location.name}}</a></li>
 				      </ul>
 				    </div>
 				    
@@ -159,7 +159,7 @@
 				  <div class="form-group">
 				    <label for="relatedSkill">Related skill :</label>
 				    <!-- buttob add-->
-					<button type="submit" class="btn btn-sm btn-default" ng-click="isShowSkill=!isShowSkill">
+					<button type="button" class="btn btn-sm btn-default" ng-click="isShowSkill=!isShowSkill">
 					<span class="glyphicon glyphicon-plus-sign"></span>
 					</button><br><br>
 
@@ -196,7 +196,7 @@
 					    	<input type="text" ng-model="tempName" class="form-control" id="skillName" placeholder="enter skill name">
 
 					    	<br>
-					    	<button type="submit" class="btn btn-info" ng-click="addSkill()">Add</button>
+					    	<button type="button" class="btn btn-info" ng-click="addSkill()">Add</button>
 						</div>
 					</div>
 
