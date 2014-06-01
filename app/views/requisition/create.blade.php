@@ -18,10 +18,12 @@
 
 
     </style>
+    
     <script src="<?php echo asset('vendor/angular.min.js')?>"></script> 
     <script src="<?php echo asset('vendor/ui-bootstrap-tpls-0.11.0.min.js')?>"></script>
     <script src="<?php echo asset('js/createReq-manager.js')?>"></script>
 
+  
     </head>
     <body ng-controller="NameCtrl">
         <div class="container">
@@ -108,6 +110,7 @@
     {{ Form::submit('Create', array('class' => 'btn btn-primary btn-lg btn-block')) }}
 
     {{ Form::close() }}
+                                    
 </div>
 
 

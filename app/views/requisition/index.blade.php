@@ -1,14 +1,17 @@
 @extends('admin.layouts.default')
-
 @section('title')
 thisIsTitle
 @stop
 
-
+@section('libs')
+    <link rel="stylesheet" href="<?php echo asset('assets/css/AdminLTE.css')?>">
+      <link rel="stylesheet" href="<?php echo asset('css/bootstrap-lightbox.css')?>">
+@stop
 
 @section('content')
          <!--row two for TO DO REQUISITION-->
-
+          {{ HTML::style('css/jquery.dataTables.css')}}
+        {{ HTML::script('js/jquery.dataTables.js')}}
         <div class="box box-primary">
 
                     <div class="box-header">
@@ -38,94 +41,14 @@ thisIsTitle
                                             </div>
                                         </div>
                                     </div><!-- /.box-header -->
+                                    
                                     <!--table style "table-striped"-->
                                     <div class="box-body table-responsive no-padding">
                                         
-                                        <table class="table table-bordered  text-center  table-hover ">
-                                            <thead>
-                                            <tr>
-                                                <th width="5%">ID</th>
-                                                <th width="10%">Job title</th>
-                                                <th width="10%">Location</th>
-                                                <th width="5%">Status</th>
-                                                <th width="25%">Detail</th>
-                                                <th width="10%">SLA</th>
-                                                <th width="10%">Date Order</th>
-                                                <th width="10%">Deadline</th>
-                                                <th width="5%">Note</th>
-                                      
-                                                <th width="10%">Progress</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            
-                                            <tr  class="danger">
-                                                <td><span class="badge bg-grey">13</span></td>
-                                                <td>John Doe</td>
-                                                <td>11-7-2014</td>
-                                                <td><span class="label label-success">Waiting for posting job</span></td>
-                                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                                <td>8 / 7 days </td>
-                                                <td>24 Apr 2014</td>
-                                                <td>1 May 2014 </td>
-                                                <td>
-                                                           <div id="demoLightbox" class="lightbox hide fade" tabindex = "-1" role="dialog" aria-hidden="true">
-                                                                <div class="lightbox-caption">
-                                                                    <div class="lightbox-caption">
-                                                                    <p>Hi!</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                    <a data-toggle="lightbox" href = "#demoLightbox">
-                                                        <i class="fa fa-fw fa-envelope-o"></i>
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <div class="progressbar-xs no-margin progress ng-isolate-scope" value="55">
-                                                        <div class="progress-bar"   ng-transclude="" style="width: 55%;">
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                       
-                                            <tr class="warning">
-                                                <td><span class="badge bg-grey">219</span></td>
-                                                <td>Jane Doe</td>
-                                                <td>11-7-2014</td>
-                                                <td><span class="label label-warning">Pending</span></td>
-                                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                                <td>9 / 13 days </td>
-                                                <td>24 Apr 2014</td>
-                                                <td>1 May 2014 </td>
-                                                <td><i class="fa fa-fw fa-envelope-o"></i></td>
-                                                <td>
-                                                    <div class="progressbar-xs no-margin progress ng-isolate-scope" value="55">
-                                                        <div class="progress-bar"   ng-transclude="" style="width: 55%;">
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-                                             <tr>
-                                                <td><span class="badge bg-grey">219</span></td>
-                                                <td>Jane Doe</td>
-                                                <td>11-7-2014</td>
-                                                <td><span class="label label-warning">Pending</span></td>
-                                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                                <td>9 / 13 days </td>
-                                                <td>24 Apr 2014</td>
-                                                <td>1 May 2014 </td>
-                                                <td><i class="fa fa-fw fa-envelope-o"></i></td>
-                                                <td>
-                                                    <div class="progressbar-xs no-margin progress ng-isolate-scope" value="55">
-                                                        <div class="progress-bar"   ng-transclude="" style="width: 55%;">
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            
-                                            </tbody>
-                                        </table>
+                                       {{ Datatable::table()
+    ->addColumn('requisition_id','job_title')       // these are the column headings to be shown
+    ->setUrl(route('api.requisition'))   // this is the route where data will be retrieved
+    ->render('datatable') }}
                                     </div><!-- /.box-body -->
                                     <div class="box-footer clearfix">
                                         <ul class="pagination pagination-sm no-margin pull-right">
@@ -151,4 +74,5 @@ thisIsTitle
                   
 
 @stop
+
 
