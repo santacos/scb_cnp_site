@@ -38,6 +38,7 @@
     <span>{{ users | json }}</span>
     <br>
     <br>
-    <span><?=Dept::find(2)->recruiter->toJson()?></span>
+    <p style="color:blue" ><?=User::find(1)->candidate->skill->first()->pivot->toJson()?></p>
+    <p style="color:green"><?=""?></p>
   </body>
 </html>
