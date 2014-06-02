@@ -82,9 +82,9 @@ class RequisitionController extends \BaseController {
     {    	
     	return  Datatable::collection(Requisition::all())
     ->showColumns('requisition_id','job_title')
-    ->addColumn('job_title',function($model)
+    ->addColumn('location_id',function($model)
         {
-            return $model->job_title;
+            return $model->location()->first()->name;
         }
     )->make();
     	 return Datatable::collection(Requisition::all())
