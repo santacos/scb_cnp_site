@@ -34,25 +34,18 @@
                                         <tbody>
                                         
                                         <tr  class="danger">
-                                            <td><span class="badge bg-grey">13</span></td>
-                                            <td>John Doe</td>
-                                            <td>11-7-2014</td>
-                                            <td><span class="label label-success">Waiting for posting job</span></td>
-                                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                            <td>8 / 7 days </td>
-                                            <td>24 Apr 2014</td>
-                                            <td>1 May 2014 </td>
+                                            <td><a href="#myModal" data-toggle="modal"><span class="badge bg-grey">13</span></a> </td>
+                                            <td><a href="#myModal" data-toggle="modal">John Doe</a> </td>
+                                            <td><a href="#myModal" data-toggle="modal">11-7-2014</a> </td>
+                                            <td><a href="#myModal" data-toggle="modal"><span class="label label-success">Waiting for posting job</span></a> </td>
+                                            <td><a href="#myModal" data-toggle="modal">Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</a> </td>
+                                            <td><a href="#myModal" data-toggle="modal">8 / 7 days </a> </td>
+                                            <td><a href="#myModal" data-toggle="modal">24 Apr 2014</a> </td>
+                                            <td><a href="#myModal" data-toggle="modal">1 May 2014 </a> </td>
                                             <td>
-                                            	       <div id="demoLightbox" class="lightbox hide fade" tabindex = "-1" role="dialog" aria-hidden="true">
-												            <div class="lightbox-caption">
-												                <div class="lightbox-caption">
-												                <p>Hi!</p>
-												                </div>
-												            </div>
-												        </div>
-                                            	<a data-toggle="lightbox" href = "#demoLightbox">
-                                            		<i class="fa fa-fw fa-envelope-o"></i>
-                                            	</a>
+                                        	    <a href="#myModal" data-toggle="modal">
+                                        	    	<i class="fa fa-fw fa-envelope-o"></i>
+                                        	    </a>   
                                             </td>
                                             <td>
                                                 <div class="progressbar-xs no-margin progress ng-isolate-scope" value="55">
