@@ -19,8 +19,8 @@ Route::get('testtest',function(){
 Route::controller('testrest','RestController');
 
 //////////////////// test area/////////////////////////////
-Route::get('tryAngular',function(){
-	return View::make('angular.try2');
+Route::get('tryView',function(){
+	return View::make('hrbp.home');
 });
 
 Route::get('showReq',function(){

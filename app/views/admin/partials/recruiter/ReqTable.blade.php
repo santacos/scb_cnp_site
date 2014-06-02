@@ -34,9 +34,9 @@
                                         <tbody>
                                         
                                         <tr  class="danger">
-                                            <td><a href="#myModal" data-toggle="modal"><span class="badge bg-grey">13</span></a> </td>
-                                            <td><a href="#myModal" data-toggle="modal">John Doe</a> </td>
-                                            <td><a href="#myModal" data-toggle="modal">11-7-2014</a> </td>
+                                            <td><a href="#myModal" style="text-decoration:none;" data-toggle="modal"><span class="badge bg-grey">13</span></a> </td>
+                                            <td><a href="#myModal" style="text-decoration:none;color:black;" data-toggle="modal">John Doe</a> </td>
+                                            <td><a href="#myModal" style="text-decoration:none;" data-toggle="modal">11-7-2014</a> </td>
                                             <td><a href="#myModal" data-toggle="modal"><span class="label label-success">Waiting for posting job</span></a> </td>
                                             <td><a href="#myModal" data-toggle="modal">Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</a> </td>
                                             <td><a href="#myModal" data-toggle="modal">8 / 7 days </a> </td>
