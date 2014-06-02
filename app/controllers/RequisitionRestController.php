@@ -8,8 +8,6 @@ class RequisitionRestController extends \BaseController {
 		{
 			$corporate_titles = CorporateTitle::All()->toJson();
 			return $corporate_titles;
-
-
 		}
 
 		public function getDept()
