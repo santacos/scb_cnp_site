@@ -10,7 +10,7 @@
 		protected $primaryKey = 'answer_id';
 
 		public function question(){
-			return $this->belongsToMany('Question');
+			return $this->belongsToMany('Question');// no pivot
 		}
 
 		// NO APPLICATION_QUESTION_ANSWER NEEDED

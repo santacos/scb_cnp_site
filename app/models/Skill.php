@@ -15,10 +15,10 @@
 		}
 
 		public function requisition(){
-			return $this->belongsToMany('Requisition');
+			return $this->belongsToMany('Requisition');// no pivot
 		}
 
 		public function candidate(){
-			return $this->belongsToMany('Candidate');
+			return $this->belongsToMany('Candidate')->withPivot('level');
 		}
 	}
