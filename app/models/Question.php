@@ -13,14 +13,14 @@
 		}
 
 		public function position(){
-			return $this->belongsToMany('Position');
+			return $this->belongsToMany('Position')->withPivot('is_checked');
 		}
 
 		public function answer(){
-			return $this->belongsToMany('Answer');
+			return $this->belongsToMany('Answer');// no pivot
 		}
 
 		public function application(){
-			return $this->belongsToMany('Application');
+			return $this->belongsToMany('Application')->withPivot('answer_id');
 		}
 	}

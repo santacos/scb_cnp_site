@@ -40,7 +40,7 @@
 			return $this->belongsTo('Dept');
 		}
 
-		public function recruitmentCurrentStatus() {
+		public function requisitionCurrentStatus() {
 			return $this->belongsTo('RequisitionCurrentStatus');
 		}
 
@@ -61,7 +61,7 @@
 		}
 
 		public function skill(){
-			return $this->belongsToMany('Skill');
+			return $this->belongsToMany('Skill');// no pivot
 		}
 
 		public function question(){

@@ -33,6 +33,8 @@ class AllTableSeeder extends Seeder {
 		DB::table('application_current_statuses')->delete();
 		DB::table('SLA_requisitions')->delete();
 		DB::table('SLA_candidates')->delete();
+		DB::table('recruitment_objective_templates')->delete();
+		DB::table('recruitment_types')->delete();
 
 //USER	
 		User::create(array(	'user_id' => 4,
@@ -589,6 +591,27 @@ class AllTableSeeder extends Seeder {
 							'visit_number' => 3,
 							'SLA' => 9
 							));
+
+//RECRUITMENT OBJECTIVE TEMPLATE
+		DB::table('recruitment_objective_templates')->insert(array(
+							'recruitment_objective_template_id' => 1,
+							'message' => 'Replace Resignation of'
+							));
+		DB::table('recruitment_objective_templates')->insert(array(
+							'recruitment_objective_template_id' => 2,
+							'message' => 'New'
+							));
+
+//RECRUITMENT TYPE
+		DB::table('recruitment_types')->insert(array(
+							'recruitment_type_id' => 1,
+							'name' => 'Fulltime'
+							));
+		DB::table('recruitment_types')->insert(array(
+							'recruitment_type_id' => 2,
+							'name' => 'Parttime'
+							));
+
 
 /*
 

@@ -48,7 +48,7 @@
 	    }
 
 	    public function folder(){
-	    	return $this->belongsToMany('Folder');
+	    	return $this->belongsToMany('Folder');// no pivot
 	    }
 	}
 

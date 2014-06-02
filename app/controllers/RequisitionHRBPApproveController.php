@@ -1,6 +1,6 @@
 <?php
 
-class RequisitionController extends \BaseController {
+class RequisitionHRBPApproveController extends \BaseController {
 
 	/**
 	 * Display a listing of requisitions
@@ -21,9 +21,7 @@ class RequisitionController extends \BaseController {
 	 */
 	public function create()
 	{
-		
-
-		return View::make('requisition.create');
+		return NULL;
 	}
 
 	/**
@@ -33,39 +31,7 @@ class RequisitionController extends \BaseController {
 	 */
 	public function store()
 	{
-		/*$validator = Validator::make($data = Input::all(), Requisition::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}*/
-
-			$requisition = new Requisition;
-			$requisition->job_title = Input::get('job_title');
-			$requisition->total_number = Input::get('total_number');
-			$requisition->employee_user_id = 1;
-			//Input::get('employee_user_id');
-			$date=date_create();
-			$requisition->datetime_create = date_timestamp_get($date);
-			//$requisition->datetime_prev_status = Input::get('datetime_prev_status');
-			$requisition->location_id = Input::get('location_id');
-			$requisition->corporate_title_id = Input::get('corporate_title_id');
-			$requisition->position_id = 1;
-			//Input::get('position_id');
-			$requisition->dept_id =Input::get('dept_id');
-			$requisition->requisition_current_status_id = 2;
-			//Input::get('requisition_current_status_id');
-			$requisition->recruitment_type_id = Input::get('recruitment_type_id');
-			$requisition->recruitment_obj_template_id=Input::get('recruitment_obj_template_id');
-			$requisition->recruitment_objective = Input::get('recruitment_objective');
-			$requisition->year_of_experience = Input::get('year_of_experience');
-			//$requisition->recruitment_objective = Input::get('recruitment_objective');
-			$requisition->responsibility = Input::get('responsibility');
-			$requisition->qualification = Input::get('qualification');
-			$requisition->note = Input::get('note');
-			$requisition->save();
-
-		return Response::json(array('success' => true));
+		return NULL;
 	}
 
 	/**
@@ -129,7 +95,7 @@ class RequisitionController extends \BaseController {
 	public function edit($requisition_id)
 	{
 		$requisition = Requisition::find($requisition_id);
-		return View::make('requisition.edit', array( 'requisition'=> $requisition));
+		return View::make('requisitionHRBPApprove.edit', array( 'requisition'=> $requisition));
 	}
 
 	/**
@@ -166,20 +132,9 @@ class RequisitionController extends \BaseController {
 			$date=date_create();
 			$requisition->datetime_create = date_timestamp_get($date);
 			//$requisition->datetime_prev_status = Input::get('datetime_prev_status');
-			$requisition->location_id = Input::get('location_id');
-			$requisition->corporate_title_id = Input::get('corporate_title_id');
-			$requisition->position_id = 1;
-			//Input::get('position_id');
 			$requisition->dept_id =Input::get('dept_id');
-			$requisition->requisition_current_status_id = 1;
+			$requisition->requisition_current_status_id = 3;// Unchanged Because of HRBP officer
 			//Input::get('requisition_current_status_id');
-			$requisition->recruitment_type_id = Input::get('recruitment_type_id');
-			$requisition->recruitment_obj_template_id=Input::get('recruitment_obj_template_id');
-			$requisition->recruitment_objective = Input::get('recruitment_objective');
-			$requisition->year_of_experience = Input::get('year_of_experience');
-			//$requisition->recruitment_objective = Input::get('recruitment_objective');
-			$requisition->responsibility = Input::get('responsibility');
-			$requisition->qualification = Input::get('qualification');
 			$requisition->note = Input::get('note');
 			$requisition->save();
 
