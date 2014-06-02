@@ -1,13 +1,13 @@
 <?php
 
-	class Education extends Eloquent {
+	class WorkExperience extends Eloquent {
 
-		protected $table = 'educations';
+		protected $table = 'work_experiences';
 		public static $rules = array(
 			'candidate_user_id'=>'required|integer',
-			'school_name'=>'required'
+			'company_name'=>'required'
 		);
-		protected $primaryKey = 'education_id';
+		protected $primaryKey = 'work_experience_id';
 
 		function candidate(){
 			return $this->belongsTo('Candidate','candidate_user_id','user_id');

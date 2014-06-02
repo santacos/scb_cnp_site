@@ -44,9 +44,11 @@
 	    }
 
 	    public function skill(){
-	    	return $this->hasMany('CandidateSkill','candidate_user_id','user_id'); // Table, Child, Parent
+	    	return $this->belongsToMany('Skill','candidate_skills','candidate_user_id','skill_id')->withPivot('level'); // Table, Child, Parent
 	    }
 
-
+	    public function folder(){
+	    	return $this->belongsToMany('Folder');
+	    }
 	}
 

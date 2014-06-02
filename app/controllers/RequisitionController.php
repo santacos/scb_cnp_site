@@ -78,7 +78,21 @@ class RequisitionController extends \BaseController {
 	{
 		return Response::json(Requisition::find($id));
 	}
-
+	public function getDatatable()
+    {    	
+    	return  Datatable::collection(Requisition::all())
+    ->showColumns('requisition_id','job_title')
+    ->addColumn('location_id',function($model)
+        {
+            return $model->location()->first()->name;
+        }
+    )->make();
+    	 return Datatable::collection(Requisition::all())
+        ->showColumns('requisition_id','job_title')
+        ->searchColumns('job_title')
+        ->orderColumns('requisition_id','job_title')
+        ->make();    	
+    }
 	/**
 	 * Show the form for editing the specified requisition.
 	 *

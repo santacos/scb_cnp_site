@@ -22,5 +22,33 @@
 	    public function employee(){
 	    	return $this->hasOne('Employee');
 	    }
+
+	    public function candidate(){
+	    	return $this->hasOne('Candidate');
+	    }
+
+	    public function requisition(){
+	    	return $this->hasMany('Requisition');
+	    }
+
+	    public function requisitionLog(){
+	    	return $this->hasMany('RequisitionLog');
+	    }
+
+	    public function applicationLog(){
+	    	return $this->hasMany('ApplicationLog');
+	    }
+
+	    public function interviewEvalution(){
+	    	return $this->hasMany('InterviewEvalution');
+	    }
+
+	    public function folder(){
+	    	return $this->hasMany('Folder');
+	    }
+
+	    public function menuVisit(){
+	    	return $this->hasMany('MenuVisit');
+	    }
 	}
 

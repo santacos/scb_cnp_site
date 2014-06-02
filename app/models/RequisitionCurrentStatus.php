@@ -7,4 +7,12 @@
 			'name'=>'required'
 		);
 		protected $primaryKey = 'requisition_current_status_id';
+
+		public function requisition(){
+			return $this->hasMany('Requisition');
+		}
+
+		public function SLARequisition(){
+			return $this->hasMany('SLARequisition');
+		}
 	}

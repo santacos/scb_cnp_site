@@ -18,6 +18,7 @@ HM-create-requisition
 
 
     </style>
+    
     <script src="<?php echo asset('vendor/angular.min.js')?>"></script> 
     <script src="<?php echo asset('vendor/ui-bootstrap-tpls-0.11.0.min.js')?>"></script>
     <script src="<?php echo asset('js/createReq-manager.js')?>"></script>
@@ -25,20 +26,11 @@ HM-create-requisition
 
 @section('content')
     <div ng-app="nameApp">
-
         <div class="container" ng-controller="NameCtrl">
-                   
 
-                <!-- paste error message here!!! -->
-            <!-- will be used to show any messages -->
-            @if (Session::has('message'))
-            <div class="alert alert-info">{{ Session::get('message') }}</div>
-            @endif
-
-            <div class="col-md-6 col-md-offset-3" style="margin-top:10px">
+            <div class="col-md-7 col-md-offset-1" style="margin-top:10px">
                 <h1>Create a requisition</h1>
                 <hr/>
-                <!--progress bar-->
                 <div class="row">
                     <div class="col-sm-6">
                     <progressbar max="3" value="count"></progressbar>
@@ -47,7 +39,12 @@ HM-create-requisition
                     <progressbar class="progress-striped active" max="3" value="count" type="danger"><i>@{{count}} / 3</i></progressbar>
                     </div>
                 </div>
-                <hr/>
+                
+
+                @if (Session::has('message'))
+                <div class="alert alert-info">{{ Session::get('message') }}</div>
+                @endif
+
                 <!-- if there are creation errors, they will show here -->
                 {{ HTML::ul($errors->all()) }}
 
@@ -60,7 +57,10 @@ HM-create-requisition
 
 
             <div class="form-group">
-                {{ Former::select('corporate_title_id', 'Corporate Title :')->attributes(array('class' => 'form-control scrollable-menu'))->addOption('Select Corporate Title')
+                {{ Former::select('corporate_title_id', 'Corporate Title :')->attributes(array('class' => 'form-control scrollable-menu','style'=>'         width:250px;
+                height: auto;
+                max-height: 100px;
+                overflow-x: hidden;'))->addOption('Select Corporate Title')
                         ->fromQuery(CorporateTitle::All(), 'name', 'corporate_title_id') }}    
             </div>
 
@@ -76,6 +76,7 @@ HM-create-requisition
             <div class="form-group">
                 {{ Former::select('recruitment_obj_template_id','Recruitment Objective :')->class('form-control scrollable-menu')->addOption('Select Recruitment Objective')
                         ->fromQuery(RecruitmentObjTemplate::All(), 'message', 'recruitment_objective_template_id') }}  
+                 <br>
                  {{ Form::text('recruitment_objective', Input::old('recruitment_objective'), array('class' => 'form-control', 'id' => 'form','placeholder'=>'Recruitment Objective Note')) }}   
             </div>
 
@@ -109,12 +110,15 @@ HM-create-requisition
             {{ Form::submit('Create', array('class' => 'btn btn-primary btn-lg btn-block')) }}
 
             {{ Form::close() }}
-        </div>
-
-
+            </div>
         </div>
     </div>
+              
 @stop
+
+
+
+
 
 @section('script')
     <script src="<?php echo asset('js/bootstrap-lightbox.js')?>"></script>
