@@ -40,7 +40,7 @@
 			return $this->belongsTo('Dept');
 		}
 
-		public function recruitmentCurrentStatus() {
+		public function requisitionCurrentStatus() {
 			return $this->belongsTo('RequisitionCurrentStatus');
 		}
 

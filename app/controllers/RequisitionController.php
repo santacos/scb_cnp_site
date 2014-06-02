@@ -81,17 +81,39 @@ class RequisitionController extends \BaseController {
 	public function getDatatable()
     {    	
     	return  Datatable::collection(Requisition::all())
-    ->showColumns('requisition_id','job_title')
+    ->addColumn('requisitsssion_id',function($model)
+   		{
+   			return '<span class="badge bg-grey">'.$model->requisition_id.'</span>';
+   		})
+    ->showColumns('job_title')
     ->addColumn('location_id',function($model)
         {
             return $model->location()->first()->name;
-        }
-    )->make();
-    	 return Datatable::collection(Requisition::all())
-        ->showColumns('requisition_id','job_title')
-        ->searchColumns('job_title')
-        ->orderColumns('requisition_id','job_title')
-        ->make();    	
+        })
+    ->addColumn('requisition_current_status_id',function($model)
+        {
+            return '<span class="label label-success">'.$model->requisitionCurrentStatus()->first()->name.'</span>';
+        })
+    ->addColumn('total_number',function($model)
+        { return $model->total_number;
+        })
+    /*->addColumn('total_number',function($model)
+        { return $model->total_number;
+        })
+    ->addColumn('total_number',function($model)
+        { return $model->total_number;
+        })
+    ->addColumn('total_number',function($model)
+        { return $model->total_number;
+        })
+    ->addColumn('total_number',function($model)
+        { return $model->total_number;
+        })
+    ->addColumn('total_number',function($model)
+        { return $model->total_number;
+        })*/
+    ->searchColumns('job_title')
+    ->make();
     }
 	/**
 	 * Show the form for editing the specified requisition.

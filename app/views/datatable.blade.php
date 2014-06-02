@@ -1,6 +1,6 @@
 <table class="table stripe hover row-border cell-border   {{ $class = str_random(8) }}">
     <colgroup>
-        @for ($i = 1; $i <= count($columns); $i++)
+        @for ($i = 0; $i < count($columns); $i++)
         <col class="con{{ $i }}" />
         @endfor
     </colgroup>
