@@ -37,14 +37,15 @@ thisIsTitle
                                        {{ Datatable::table()
     ->addColumn( 'Requisition ID',
                 'Job Title',
+                'Corporate Title',
                'Location',
                'Status',
-               'Detail'
-              /* 'SLA',
+               'Detail',
+               'SLA',
                'Date Order',
                'Deadline',
                'Note',
-               'Progress'*/
+               'Progress'
                 )    
     ->setUrl(route('api.requisition'))  
     ->render('datatable') }}

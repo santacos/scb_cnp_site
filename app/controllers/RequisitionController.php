@@ -81,11 +81,15 @@ class RequisitionController extends \BaseController {
 	public function getDatatable()
     {    	
     	return  Datatable::collection(Requisition::all())
-    ->addColumn('requisitsssion_id',function($model)
+    ->addColumn('requisitsion_id',function($model)
    		{
    			return '<span class="badge bg-grey">'.$model->requisition_id.'</span>';
    		})
     ->showColumns('job_title')
+    ->addColumn('corporate_title_id',function($model)
+        {
+            return $model->corporateTitle()->first()->name;
+        })
     ->addColumn('location_id',function($model)
         {
             return $model->location()->first()->name;
@@ -97,21 +101,22 @@ class RequisitionController extends \BaseController {
     ->addColumn('total_number',function($model)
         { return $model->total_number;
         })
-    /*->addColumn('total_number',function($model)
+    ->addColumn('SLA',function($model)
         { return $model->total_number;
         })
-    ->addColumn('total_number',function($model)
+    ->addColumn('Date Order',function($model)
         { return $model->total_number;
         })
-    ->addColumn('total_number',function($model)
+    ->addColumn('Deadline',function($model)
         { return $model->total_number;
         })
-    ->addColumn('total_number',function($model)
+    ->addColumn('Note',function($model)
+        { return '<i class="fa fa-fw fa-envelope-o"></i>';
+        })
+    ->addColumn('Progress',function($model)
         { return $model->total_number;
         })
-    ->addColumn('total_number',function($model)
-        { return $model->total_number;
-        })*/
+    
     ->searchColumns('job_title')
     ->make();
     }
