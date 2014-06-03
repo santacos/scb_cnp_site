@@ -130,11 +130,11 @@ class RequisitionHRBPApproveController extends \BaseController {
 			}else{
 				$prev_action = NULL;
 			}
-			$date = new Datetime();
+			$timestamp = Carbon::now();
 			if(is_null($prev_action)){
-				$length_to_prev_action_in_hour = $date->getTimestamp();
+				$prev_action_datetime = 0;
 			}else{
-				$length_to_prev_action_in_hour = ($date->getTimestamp()-($prev_action->action_datetime))/(60.0*60.0);
+				$prev_action_datetime = ($timestamp-($prev_action->action_datetime))/(60.0*60.0);
 			}
 			DB::table('requisition_logs')->insert(array(
 							'action_type' => 3,
@@ -144,8 +144,8 @@ class RequisitionHRBPApproveController extends \BaseController {
 							/**
 							change 'employee_user_id' to real employee id
 							*/
-							'action_datetime' => time(),
-							'length_to_prev_action_in_hour' => $length_to_prev_action_in_hour,
+							'action_datetime' => $timestamp,
+							'prev_action_datetime' => $prev_action_datetime,
 							'result' => Input::get('approve'),
 							'note' => Input::get('note')
 			));

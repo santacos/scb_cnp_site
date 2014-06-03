@@ -74,6 +74,6 @@
 		}
 
 		public function objective(){
-			return $this->belongsTo('RecruitmentObjectiveTemplate');
+			return $this->belongsTo('RecruitmentObjectiveTemplate','recruitment_obj_template_id','recruitment_objective_template_id');
 		}
 	}

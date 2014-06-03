@@ -125,6 +125,7 @@ HM-create-requisition
             </div>
 
             <div class="form-group">
+<<<<<<< HEAD
                 {{ Former::select('dept_id', 'Department :')->class('form-control scrollable-menu')->addOption('Select Department')
                         ->fromQuery(Dept::All(), 'name', 'dept_id') }}    
             </div>

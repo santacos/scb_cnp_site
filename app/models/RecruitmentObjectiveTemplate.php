@@ -6,9 +6,9 @@
 		public static $rules = array(
 			'message'=>'required'
 		);
-		protected $primaryKey = 'recruitment_objective_template_id';
+		protected $primaryKey = 'recruitment_obj_template_id';
 
 		public function requisition(){
-			return $this->belongsTo('Requisition');
+			return $this->hasMany('Requisition','recruitment_obj_template_id','recruitment_objective_template_id');
 		}
 	}

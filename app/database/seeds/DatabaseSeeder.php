@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder {
 
 class AllTableSeeder extends Seeder {
 	public function run(){
-
+		DB::connection()->disableQueryLog();
 		DB::table('users')->delete();
 		DB::table('candidates')->delete();
 		DB::table('positions')->delete();

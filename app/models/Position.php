@@ -4,7 +4,7 @@
 
 		protected $table = 'positions';
 		public static $rules = array(
-			'name'=>'required'
+			'job_title'=>'required'
 		);
 		protected $primaryKey = 'position_id';
 
@@ -22,5 +22,9 @@
 
 		function employee(){
 			return $this->hasMany('Employee');
+		}
+
+		function requisition(){
+			return $this->hasMany('Requisition');
 		}
 	}
