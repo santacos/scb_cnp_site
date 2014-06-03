@@ -7,9 +7,29 @@
     <thead>
     <tr>
         @foreach($columns as $i => $c)
-        <th align="center" valign="middle" class="head{{ $i }}" 
+        <th align="center" valign="middle" class="head{{ $c }}" 
             @if ($c == 'checkbox')
-                style="width:20px"            
+                style="width:20px"
+            @elseif ($c == 'Requisition ID')
+                 width="5%"       
+            @elseif ($c == 'Job Title')
+                 width="10%"   
+            @elseif ($c == 'Corporate Title')
+                 width="5%"
+            @elseif ($c == 'Location')
+                 width="10%"      
+            @elseif ($c == 'Status')
+                 width="5%"       
+            @elseif ($c == 'SLA')
+                 width="10%"
+            @elseif ($c == 'Date Order')
+                 width="10%"  
+            @elseif ($c == 'Deadline')
+                 width="10%"
+            @elseif ($c == 'Note')
+                 width="5%"
+            @elseif ($c == 'Progress')
+                 width="10%"                               
             @endif
         >
             @if ($c == 'checkbox' && $hasCheckboxes = true)
@@ -23,7 +43,7 @@
     </thead>
     <tbody>
     @foreach($data as $d)
-    <tr>
+    <tr class="danger">
         @foreach($d as $dd)
         <td>{{ $dd }}</td>
         @endforeach
@@ -58,3 +78,4 @@
         });
     });
 </script>
+

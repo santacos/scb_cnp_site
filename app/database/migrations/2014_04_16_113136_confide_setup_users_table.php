@@ -228,6 +228,7 @@ class ConfideSetupUsersTable extends Migration {
             $table->foreign('location_id')->references('location_id')->on('locations')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('corporate_title_id');
             $table->foreign('corporate_title_id')->references('corporate_title_id')->on('corporate_titles')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('job_title',100);
             $table->unsignedInteger('position_id');
             $table->foreign('position_id')->references('position_id')->on('positions')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('dept_id');
