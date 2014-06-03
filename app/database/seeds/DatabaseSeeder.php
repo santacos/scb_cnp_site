@@ -22413,26 +22413,22 @@ class AllTableSeeder extends Seeder {
 		Employee::create(array(	'user_id' => 4,
 							'position_id' => 1,
 							'dept_id' => 1,
-							'next_level_user_id' => null,
-							'is_manager' => false
+							'next_level_user_id' => null
 							));
 		Employee::create(array(	'user_id' => 1,
 							'position_id' => 2,
 							'dept_id' => 1,
-							'next_level_user_id' => 4,
-							'is_manager' => false
+							'next_level_user_id' => 4
 							));
 		Employee::create(array(	'user_id' => 2,
 							'position_id' => 3,
 							'dept_id' => 3,
-							'next_level_user_id' => 4,
-							'is_manager' => false
+							'next_level_user_id' => 4
 							));
 		Employee::create(array(	'user_id' => 3,
 							'position_id' => 4,
 							'dept_id' => 5,
-							'next_level_user_id' => 2,
-							'is_manager' => false
+							'next_level_user_id' => 2
 							));
 //SKILL CATEGORY
 		SkillCategory::create(array(	'skill_category_id' => 1,
