@@ -38,7 +38,7 @@ Route::get('createReq',function(){
 });
 
 Route::controller('userrest','UserRestController');
-Route::controller('rest','RestController');
+Route::controller('requisition/rest','RestController');
 
 Route::get('home',function(){
 	return View::make('user.home');
