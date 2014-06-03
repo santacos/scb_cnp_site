@@ -361,7 +361,7 @@ class ConfideSetupUsersTable extends Migration {
             $table->unsignedInteger('employee_user_id');
             $table->foreign('employee_user_id')->references('user_id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamp('action_datetime');
-            $table->float('length_to_prev_action_in_hour');
+            $table->timestamp('prev_action_datetime');
             $table->boolean('result');
             $table->string('note',100)->nullable()->default(NULL);
             $table->primary(array('application_id', 'action_type','visit_number'));
