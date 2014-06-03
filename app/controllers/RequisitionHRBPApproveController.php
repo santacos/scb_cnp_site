@@ -11,7 +11,7 @@ class RequisitionHRBPApproveController extends \BaseController {
 	{
 		$requisitions = Requisition::all();
 
-		return View::make('requisition.index', compact('requisitions'));
+		return View::make('requisition.index', compact('requisitions')); // Same as Hiring Manager
 	}
 
 	/**
@@ -21,7 +21,7 @@ class RequisitionHRBPApproveController extends \BaseController {
 	 */
 	public function create()
 	{
-		return NULL;
+		return Response::json(array('success' => false));
 	}
 
 	/**
@@ -31,7 +31,7 @@ class RequisitionHRBPApproveController extends \BaseController {
 	 */
 	public function store()
 	{
-		return NULL;
+		return Response::json(array('success' => false));
 	}
 
 	/**
@@ -42,7 +42,7 @@ class RequisitionHRBPApproveController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return Response::json(Requisition::find($id));
+		return View::make('HRBPOfficer.show')->with('requisition',Requisition::find($id));
 	}
 	public function getDatatable()
     {    	
@@ -94,8 +94,7 @@ class RequisitionHRBPApproveController extends \BaseController {
 	 */
 	public function edit($requisition_id)
 	{
-		$requisition = Requisition::find($requisition_id);
-		return View::make('requisitionHRBPApprove.edit', array( 'requisition'=> $requisition));
+		return Response::json(array('success' => false));
 	}
 
 	/**
@@ -125,14 +124,33 @@ class RequisitionHRBPApproveController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}*/
 			$requisition = Requisition::findOrFail($id);
-			$requisition->job_title = Input::get('job_title');
-			$requisition->total_number = Input::get('total_number');
-			$requisition->employee_user_id = 1;
-			//Input::get('employee_user_id');
-			$date=date_create();
-			$requisition->datetime_create = date_timestamp_get($date);
-			//$requisition->datetime_prev_status = Input::get('datetime_prev_status');
-			$requisition->dept_id =Input::get('dept_id');
+			$prev_action = RequisitionLog::where('requisition_id','===',$id)->orderBy('action_datetime','desc');
+			if($prev_action->count() > 0){
+				$prev_action = $prev_action->first();
+			}else{
+				$prev_action = NULL;
+			}
+			$date = new Datetime();
+			if(is_null($prev_action)){
+				$length_to_prev_action_in_hour = $date->getTimestamp();
+			}else{
+				$length_to_prev_action_in_hour = ($date->getTimestamp()-($prev_action->action_datetime))/(60.0*60.0);
+			}
+			DB::table('requisition_logs')->insert(array(
+							'action_type' => 3,
+							'requisition_id' => $id,
+							'send_number' => 1,
+							'employee_user_id' => 1,
+							/**
+							change 'employee_user_id' to real employee id
+							*/
+							'action_datetime' => time(),
+							'length_to_prev_action_in_hour' => $length_to_prev_action_in_hour,
+							'result' => Input::get('approve'),
+							'note' => Input::get('note')
+			));
+			//if(Input::get('approve')){
+			//$requisition->datetime_prev_status = Input::get('datetime_prev_status');// Unchanged Because of HRBP officer
 			$requisition->requisition_current_status_id = 3;// Unchanged Because of HRBP officer
 			//Input::get('requisition_current_status_id');
 			$requisition->note = Input::get('note');
@@ -149,9 +167,7 @@ class RequisitionHRBPApproveController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		Requisition::destroy($id);
-
-		return Response::json(array('success' => true));
+		return Response::json(array('success' => false));
 	}
 
 }
