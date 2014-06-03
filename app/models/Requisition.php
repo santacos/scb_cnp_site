@@ -61,11 +61,8 @@
 		}
 
 		public function skill(){
-<<<<<<< HEAD
 			return $this->belongsToMany('Skill');// no pivot;
-=======
-			return $this->belongsToMany('Skill');// no pivot
->>>>>>> 2384d88209309fe267810c11be0ca9d5aac99322
+
 		}
 
 		public function question(){

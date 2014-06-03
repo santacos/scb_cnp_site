@@ -92,53 +92,52 @@ class AllTableSeeder extends Seeder {
 							));
 
 //POSITION
-		
 					Position::create(array('position_id' => 1,
 			'group' => 'President',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'President',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2,
 			'group' => 'President',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to President',
 			'total' => 2
 			));
 			Position::create(array('position_id' => 3,
 			'group' => 'Audit and Compliance Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Chief Audit and Compliance Officer',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 4,
 			'group' => 'Audit and Compliance Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Chief Audit and Compliance Officer',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 5,
 			'group' => 'Audit and Compliance Group',
 			'division' => 'Audit Division 1',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Advisor',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 6,
 			'group' => 'Audit and Compliance Group',
 			'division' => 'Audit Division 1',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Division Head, Audit Division 1',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 7,
 			'group' => 'Audit and Compliance Group',
 			'division' => 'Audit Division 1',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary',
 			'total' => 1
 			));
@@ -299,7 +298,7 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 30,
 			'group' => 'Audit and Compliance Group',
 			'division' => 'Audit Division 2',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Division Head, Audit Division 2',
 			'total' => 1
 			));
@@ -390,14 +389,14 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 43,
 			'group' => 'Audit and Compliance Group',
 			'division' => 'Compliance & Operational Control Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'EVP, Compliance & Operational Control Division',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 44,
 			'group' => 'Audit and Compliance Group',
 			'division' => 'Compliance & Operational Control Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to EVP, Compliance & Operational Control Division',
 			'total' => 1
 			));
@@ -543,43 +542,43 @@ class AllTableSeeder extends Seeder {
 			));
 			Position::create(array('position_id' => 65,
 			'group' => 'Business Banking Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Advisor',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 66,
 			'group' => 'Business Banking Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'BBG Trainee',
 			'total' => 14
 			));
 			Position::create(array('position_id' => 67,
 			'group' => 'Business Banking Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Personal Assistant',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 68,
 			'group' => 'Business Banking Group',
 			'division' => 'BBG Strategy & Development',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Division Head, RBG Strategy and BBG Strategy & Development',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 69,
 			'group' => 'Business Banking Group',
 			'division' => 'BBG Strategy & Development',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, BBG Business Alliance Relationship',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 70,
 			'group' => 'Business Banking Group',
 			'division' => 'BBG Strategy & Development',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Division Head, RBG Strategy&BBG Strategy&Dev',
 			'total' => 1
 			));
@@ -796,7 +795,7 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 101,
 			'group' => 'Business Banking Group',
 			'division' => 'Deputy Business Banking',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to FEVP, Deputy Group Head, Business Banking',
 			'total' => 1
 			));
@@ -957,84 +956,84 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 124,
 			'group' => 'Business Banking Group',
 			'division' => 'WIN Application Service Team',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Deal Builder Officer',
 			'total' => 7
 			));
 			Position::create(array('position_id' => 125,
 			'group' => 'Business Banking Group',
 			'division' => 'WIN Application Service Team',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Team Manager, WIN Application Service',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 126,
 			'group' => 'Business Banking Group',
 			'division' => 'WIN Application Service Team',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'WIN Application Service Officer',
 			'total' => 17
 			));
 			Position::create(array('position_id' => 127,
 			'group' => 'Change Program',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to SEVP, Change Program',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 128,
 			'group' => 'Change Program',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'SEVP, Chief Financial Officer, Finance Group&Change Program',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 129,
 			'group' => 'Change Program',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Strategy Coordination & Special Projects',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 130,
 			'group' => 'Change Program',
 			'division' => 'ATM Switch Replacement Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'IT Development Lead',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 131,
 			'group' => 'Change Program',
 			'division' => 'ATM Switch Replacement Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'IT Tandem System Lead',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 132,
 			'group' => 'Change Program',
 			'division' => 'ATM Switch Replacement Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Manager',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 133,
 			'group' => 'Change Program',
 			'division' => 'ATM Switch Replacement Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Officer',
 			'total' => 2
 			));
 			Position::create(array('position_id' => 134,
 			'group' => 'Change Program',
 			'division' => 'Change Program Management Office',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, Change Program Management Office',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 135,
 			'group' => 'Change Program',
 			'division' => 'Change Program Management Office',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Support Officer',
 			'total' => 1
 			));
@@ -1090,126 +1089,126 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 143,
 			'group' => 'Change Program',
 			'division' => 'Cheque Collection Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Manager',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 144,
 			'group' => 'Change Program',
 			'division' => 'Collections Debt Management System Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Manager',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 145,
 			'group' => 'Change Program',
 			'division' => 'Collections Debt Management System Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Officer',
 			'total' => 15
 			));
 			Position::create(array('position_id' => 146,
 			'group' => 'Change Program',
 			'division' => 'Collections Debt Management System Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Team Manager - Business',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 147,
 			'group' => 'Change Program',
 			'division' => 'Corebank Deposit Customer Upgrade Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Consultant, Systematic Application for Core Bank upgrade',
 			'total' => 2
 			));
 			Position::create(array('position_id' => 148,
 			'group' => 'Change Program',
 			'division' => 'Corebank Deposit Customer Upgrade Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Manager',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 149,
 			'group' => 'Change Program',
 			'division' => 'Corebank Deposit Customer Upgrade Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Officer',
 			'total' => 21
 			));
 			Position::create(array('position_id' => 150,
 			'group' => 'Change Program',
 			'division' => 'Corebank Deposit Customer Upgrade Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Relationship Manager',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 151,
 			'group' => 'Change Program',
 			'division' => 'Corebank Upgrade Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'ALS Application Lead',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 152,
 			'group' => 'Change Program',
 			'division' => 'Corebank Upgrade Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Manager',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 153,
 			'group' => 'Change Program',
 			'division' => 'Corebank Upgrade Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Officer',
 			'total' => 17
 			));
 			Position::create(array('position_id' => 154,
 			'group' => 'Change Program',
 			'division' => 'Foreign Account Tax Compliance Act Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Manager',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 155,
 			'group' => 'Change Program',
 			'division' => 'Foreign Account Tax Compliance Act Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Officer',
 			'total' => 2
 			));
 			Position::create(array('position_id' => 156,
 			'group' => 'Change Program',
 			'division' => 'Governance Risk & Compliance Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Manager',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 157,
 			'group' => 'Change Program',
 			'division' => 'Governance Risk & Compliance Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Officer',
 			'total' => 6
 			));
 			Position::create(array('position_id' => 158,
 			'group' => 'Change Program',
 			'division' => 'Intelligent Payment System Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'IT Management Trainee',
 			'total' => 2
 			));
 			Position::create(array('position_id' => 159,
 			'group' => 'Change Program',
 			'division' => 'Intelligent Payment System Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Manager',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 160,
 			'group' => 'Change Program',
 			'division' => 'Intelligent Payment System Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Officer',
 			'total' => 5
 			));
@@ -1251,98 +1250,98 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 166,
 			'group' => 'Change Program',
 			'division' => 'Know Your Customer/Customer Due Diligence Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Manager',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 167,
 			'group' => 'Change Program',
 			'division' => 'Know Your Customer/Customer Due Diligence Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Manager (IT)',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 168,
 			'group' => 'Change Program',
 			'division' => 'Lending Approval and Decision System Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Manager',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 169,
 			'group' => 'Change Program',
 			'division' => 'Lending Approval and Decision System Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Manager (IT)',
 			'total' => 2
 			));
 			Position::create(array('position_id' => 170,
 			'group' => 'Change Program',
 			'division' => 'Lending Approval and Decision System Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Officer',
 			'total' => 17
 			));
 			Position::create(array('position_id' => 171,
 			'group' => 'Change Program',
 			'division' => 'New Top Level Domain Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Manager',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 172,
 			'group' => 'Change Program',
 			'division' => 'One Loyalty System Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Manager',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 173,
 			'group' => 'Change Program',
 			'division' => 'One Loyalty System Project',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Officer',
 			'total' => 4
 			));
 			Position::create(array('position_id' => 174,
 			'group' => 'Change Program',
 			'division' => 'Quantitative Models and Enterprise Analytics',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, Quantitative Models and Enterprise Analystics',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 175,
 			'group' => 'Change Program',
 			'division' => 'Quantitative Models and Enterprise Analytics',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Quantitative Analyst',
 			'total' => 5
 			));
 			Position::create(array('position_id' => 176,
 			'group' => 'Corporate Communications Division',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Division Head, Corporate Communications Division',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 177,
 			'group' => 'Corporate Communications Division',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Division Head, Corp. Communications Division',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 178,
 			'group' => 'Corporate Communications Division',
 			'division' => 'Corporate Branding and Communications',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, Corporate Branding & Communications',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 179,
 			'group' => 'Corporate Communications Division',
 			'division' => 'Corporate Branding and Communications',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Public Relations Officer',
 			'total' => 1
 			));
@@ -1461,35 +1460,35 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 196,
 			'group' => 'Corporate Communications Division',
 			'division' => 'Corporate Social Responsibilities',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Corporate Social Activities Officer',
 			'total' => 6
 			));
 			Position::create(array('position_id' => 197,
 			'group' => 'Corporate Communications Division',
 			'division' => 'Corporate Social Responsibilities',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, Corporate Social Activities',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 198,
 			'group' => 'Corporate Communications Division',
 			'division' => 'Corporate Social Responsibilities',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, Corporate Social Network Relation',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 199,
 			'group' => 'Corporate Communications Division',
 			'division' => 'Corporate Social Responsibilities',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, Corporate Social Responsibilities',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 200,
 			'group' => 'Corporate Communications Division',
 			'division' => 'Corporate Social Responsibilities',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, CSR Communications',
 			'total' => 1
 			));
@@ -1503,7 +1502,7 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 202,
 			'group' => 'Corporate Communications Division',
 			'division' => 'Internal Communications Management',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, Internal Communications Management',
 			'total' => 1
 			));
@@ -1565,36 +1564,36 @@ class AllTableSeeder extends Seeder {
 			));
 			Position::create(array('position_id' => 211,
 			'group' => 'Finance Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Executive Officer',
 			'total' => 2
 			));
 			Position::create(array('position_id' => 212,
 			'group' => 'Finance Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Finance Management Trainee',
 			'total' => 20
 			));
 			Position::create(array('position_id' => 213,
 			'group' => 'Finance Group',
 			'division' => 'Financial Management',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'EVP, Head of Financial Management',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 214,
 			'group' => 'Finance Group',
 			'division' => 'Financial Reporting and Controls',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'FEVP, Financial Reporting and Controls',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 215,
 			'group' => 'Finance Group',
 			'division' => 'Financial Reporting and Controls',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Head of Financial Reporting and Controls',
 			'total' => 1
 			));
@@ -1951,14 +1950,14 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 266,
 			'group' => 'Finance Group',
 			'division' => 'MIS and Client Services',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'EVP, Head of MIS and Client Services',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 267,
 			'group' => 'Finance Group',
 			'division' => 'MIS and Client Services',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Head of MIS and Client Service',
 			'total' => 1
 			));
@@ -2041,64 +2040,64 @@ class AllTableSeeder extends Seeder {
 			));
 			Position::create(array('position_id' => 279,
 			'group' => 'General Counsel Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Law and Language Specialist',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 280,
 			'group' => 'General Counsel Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Lawyer',
 			'total' => 3
 			));
 			Position::create(array('position_id' => 281,
 			'group' => 'General Counsel Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Legal Advisor',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 282,
 			'group' => 'General Counsel Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Legal Advisor for General Counsel Group',
 			'total' => 4
 			));
 			Position::create(array('position_id' => 283,
 			'group' => 'General Counsel Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary SEVP, General Counsel Group',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 284,
 			'group' => 'General Counsel Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'SEVP, Group General Counsel',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 285,
 			'group' => 'General Counsel Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Tax Advisor',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 286,
 			'group' => 'General Counsel Group',
 			'division' => 'Banking Finance 1 & Capital Market Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'EVP, Banking Finance 1 & Capital Market Division',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 287,
 			'group' => 'General Counsel Group',
 			'division' => 'Banking Finance 1 & Capital Market Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to EVP, Banking Finance 1 & Capital Market Div.',
 			'total' => 1
 			));
@@ -2189,14 +2188,14 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 300,
 			'group' => 'General Counsel Group',
 			'division' => 'Banking Finance 2 Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Division Head, Banking Finance 2 Division',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 301,
 			'group' => 'General Counsel Group',
 			'division' => 'Banking Finance 2 Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to EVP, Banking Finance 2',
 			'total' => 1
 			));
@@ -2252,21 +2251,21 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 309,
 			'group' => 'General Counsel Group',
 			'division' => 'Board Secretariat and Shareholder Services',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Company Secretary',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 310,
 			'group' => 'General Counsel Group',
 			'division' => 'Board Secretariat and Shareholder Services',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 311,
 			'group' => 'General Counsel Group',
 			'division' => 'Board Secretariat and Shareholder Services',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Translator',
 			'total' => 1
 			));
@@ -2315,7 +2314,7 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 318,
 			'group' => 'General Counsel Group',
 			'division' => 'Legal Services and Litigation Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Division Head, Legal Services and Litigation Division',
 			'total' => 1
 			));
@@ -2581,56 +2580,56 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 356,
 			'group' => 'General Counsel Group',
 			'division' => 'Taxation Law',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, Taxation Law',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 357,
 			'group' => 'General Counsel Group',
 			'division' => 'Taxation Law',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Tax Lawyer',
 			'total' => 6
 			));
 			Position::create(array('position_id' => 358,
 			'group' => 'General Counsel Group',
 			'division' => 'Taxation Law',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Taxation Law Support Officer',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 359,
 			'group' => 'Group Treasury',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Head of Group Treasury',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 360,
 			'group' => 'Group Treasury',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Head of Group Treasury',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 361,
 			'group' => 'Group Treasury',
 			'division' => 'Balance Sheet Analytic Management',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Balance Sheet Analytic & Monitoring Officer',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 362,
 			'group' => 'Group Treasury',
 			'division' => 'Balance Sheet Analytic Management',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Head of Balance Sheet Analytic Management',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 363,
 			'group' => 'Group Treasury',
 			'division' => 'Balance Sheet Strategy & Management',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'EVP, Head of Balance Sheet Strategy & Management',
 			'total' => 1
 			));
@@ -2671,43 +2670,43 @@ class AllTableSeeder extends Seeder {
 			));
 			Position::create(array('position_id' => 369,
 			'group' => 'Human Resources Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Advisor to Chairman of the Executive Committee',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 370,
 			'group' => 'Human Resources Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'FEVP, Group Head, Human Resources Group',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 371,
 			'group' => 'Human Resources Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, HR Transformation Project',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 372,
 			'group' => 'Human Resources Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Group Head, Human Resources Group',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 373,
 			'group' => 'Human Resources Group',
 			'division' => 'Center of Expertise',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Head of HR Center of Expertise',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 374,
 			'group' => 'Human Resources Group',
 			'division' => 'Center of Expertise',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary',
 			'total' => 1
 			));
@@ -2980,14 +2979,14 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 413,
 			'group' => 'Human Resources Group',
 			'division' => 'HR Business Partner 1',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Head of HR Business Partner 1',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 414,
 			'group' => 'Human Resources Group',
 			'division' => 'HR Business Partner 1',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary',
 			'total' => 1
 			));
@@ -3316,14 +3315,14 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 461,
 			'group' => 'Human Resources Group',
 			'division' => 'HR Business Partner 2',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Head of HR Business Partner 2',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 462,
 			'group' => 'Human Resources Group',
 			'division' => 'HR Business Partner 2',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, Training and Development - WBG & BBG(30-03-2014)',
 			'total' => 1
 			));
@@ -3414,14 +3413,14 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 475,
 			'group' => 'Human Resources Group',
 			'division' => 'HR Operations',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Head of HR Operations',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 476,
 			'group' => 'Human Resources Group',
 			'division' => 'HR Operations',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary',
 			'total' => 1
 			));
@@ -3547,49 +3546,49 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 494,
 			'group' => 'Human Resources Group',
 			'division' => 'HR Operations Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => '-',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 495,
 			'group' => 'Human Resources Group',
 			'division' => 'HR Strategy and Policy',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Head of HR Strategy and Policy',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 496,
 			'group' => 'Human Resources Group',
 			'division' => 'HR Strategy and Policy',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'HR Strategy Officer',
 			'total' => 2
 			));
 			Position::create(array('position_id' => 497,
 			'group' => 'Human Resources Group',
 			'division' => 'HR Strategy and Policy',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, HR Analytics',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 498,
 			'group' => 'Human Resources Group',
 			'division' => 'HR Strategy and Policy',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, HR Strategy',
 			'total' => 2
 			));
 			Position::create(array('position_id' => 499,
 			'group' => 'Human Resources Group',
 			'division' => 'Staff attached to HR Group',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => '-',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 500,
 			'group' => 'Human Resources Group',
 			'division' => 'Staff attached to HR Group',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary of Executive Committee',
 			'total' => 1
 			));
@@ -3630,78 +3629,78 @@ class AllTableSeeder extends Seeder {
 			));
 			Position::create(array('position_id' => 506,
 			'group' => 'i-OFFICE',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Business Coordinator',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 507,
 			'group' => 'i-OFFICE',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Head of Innovation',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 508,
 			'group' => 'i-OFFICE',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Idea Communication',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 509,
 			'group' => 'i-OFFICE',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Innovation Strategist',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 510,
 			'group' => 'i-OFFICE',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, Program Management',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 511,
 			'group' => 'i-OFFICE',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Project Manager',
 			'total' => 2
 			));
 			Position::create(array('position_id' => 512,
 			'group' => 'i-OFFICE',
 			'division' => 'Idea Communication Management',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Idea Communication',
 			'total' => 2
 			));
 			Position::create(array('position_id' => 513,
 			'group' => 'Retail Banking Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'FEVP, Division Head, Auto Finance and Personal Loan',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 514,
 			'group' => 'Retail Banking Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Group Head, Retail and Business Banking Groups',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 515,
 			'group' => 'Retail Banking Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Group Head, Retail and Business Banking Groups',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 516,
 			'group' => 'Retail Banking Group',
 			'division' => 'Auto Finance and Personal Loan Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary',
 			'total' => 1
 			));
@@ -4156,7 +4155,7 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 581,
 			'group' => 'Retail Banking Group',
 			'division' => 'Bancassurance Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'FEVP, Division Head, Bancassurance',
 			'total' => 1
 			));
@@ -4541,14 +4540,14 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 636,
 			'group' => 'Retail Banking Group',
 			'division' => 'Credit and Debit Cards Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'EVP, Division Head, Credit & Debit Cards',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 637,
 			'group' => 'Retail Banking Group',
 			'division' => 'Credit and Debit Cards Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to EVP, Division Head, Credit & Debit Cards',
 			'total' => 1
 			));
@@ -4681,35 +4680,35 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 656,
 			'group' => 'Retail Banking Group',
 			'division' => 'Credit Card and Personal Loan Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, Direct Sales and Telesales Management',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 657,
 			'group' => 'Retail Banking Group',
 			'division' => 'Credit Card and Personal Loan Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, Sales Governance & Support',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 658,
 			'group' => 'Retail Banking Group',
 			'division' => 'Credit Card and Personal Loan Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 659,
 			'group' => 'Retail Banking Group',
 			'division' => 'Customer Segment Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'FEVP, Division Head, Customer Segment',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 660,
 			'group' => 'Retail Banking Group',
 			'division' => 'Customer Segment Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Division Head, Customer Segment',
 			'total' => 1
 			));
@@ -5577,14 +5576,14 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 784,
 			'group' => 'Retail Banking Group',
 			'division' => 'Financial Crime & Security Services Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'FEVP, Division Head, Financial Crime & Security Services',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 785,
 			'group' => 'Retail Banking Group',
 			'division' => 'Financial Crime & Security Services Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Division Head,Financial Crime&Security Services',
 			'total' => 1
 			));
@@ -5808,42 +5807,42 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 817,
 			'group' => 'Retail Banking Group',
 			'division' => 'Management Services and Retail Operations Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Legal Expense Control Officer',
 			'total' => 2
 			));
 			Position::create(array('position_id' => 818,
 			'group' => 'Retail Banking Group',
 			'division' => 'Management Services and Retail Operations Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, Corporate Communications Support',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 819,
 			'group' => 'Retail Banking Group',
 			'division' => 'Management Services and Retail Operations Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, Legal Expense Control',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 820,
 			'group' => 'Retail Banking Group',
 			'division' => 'Management Services and Retail Operations Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, MIS, Administration and Support Management',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 821,
 			'group' => 'Retail Banking Group',
 			'division' => 'Management Services and Retail Operations Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'MSRO Management Trainee',
 			'total' => 6
 			));
 			Position::create(array('position_id' => 822,
 			'group' => 'Retail Banking Group',
 			'division' => 'Management Services and Retail Operations Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Team Manager, New Initiative Project Management',
 			'total' => 2
 			));
@@ -6368,28 +6367,28 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 897,
 			'group' => 'Retail Banking Group',
 			'division' => 'Mortgage Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'FEVP, Division Head, Mortgage Business',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 898,
 			'group' => 'Retail Banking Group',
 			'division' => 'Mortgage Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secreatary to Division Head, Mortgage Business',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 899,
 			'group' => 'Retail Banking Group',
 			'division' => 'Mortgage Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 900,
 			'group' => 'Retail Banking Group',
 			'division' => 'Mortgage Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Team Manager, Mortgage Sales',
 			'total' => 1
 			));
@@ -6949,56 +6948,56 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 980,
 			'group' => 'Retail Banking Group',
 			'division' => 'Network Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Branch Network Support Officer',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 981,
 			'group' => 'Retail Banking Group',
 			'division' => 'Network Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'EVP, Channel Strategic Planning and Branch Transformation',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 982,
 			'group' => 'Retail Banking Group',
 			'division' => 'Network Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'FEVP, Network Division',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 983,
 			'group' => 'Retail Banking Group',
 			'division' => 'Network Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Financial Advisor Trainee',
 			'total' => 20
 			));
 			Position::create(array('position_id' => 984,
 			'group' => 'Retail Banking Group',
 			'division' => 'Network Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Manager',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 985,
 			'group' => 'Retail Banking Group',
 			'division' => 'Network Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Relationship Manager',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 986,
 			'group' => 'Retail Banking Group',
 			'division' => 'Network Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 987,
 			'group' => 'Retail Banking Group',
 			'division' => 'Network Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Division Head, Network',
 			'total' => 1
 			));
@@ -8720,119 +8719,119 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 1233,
 			'group' => 'Retail Banking Group',
 			'division' => 'Private Banking',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'VP',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1234,
 			'group' => 'Retail Banking Group',
 			'division' => 'Private Banking',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'AVP',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1235,
 			'group' => 'Retail Banking Group',
 			'division' => 'Private Banking',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Assistant Banker',
 			'total' => 7
 			));
 			Position::create(array('position_id' => 1236,
 			'group' => 'Retail Banking Group',
 			'division' => 'Private Banking',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Business Coordinator',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1237,
 			'group' => 'Retail Banking Group',
 			'division' => 'Private Banking',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Head of Private Banking',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1238,
 			'group' => 'Retail Banking Group',
 			'division' => 'Private Banking',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Investment Management Officer',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1239,
 			'group' => 'Retail Banking Group',
 			'division' => 'Private Banking',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Investment Strategics Officer',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1240,
 			'group' => 'Retail Banking Group',
 			'division' => 'Private Banking',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Operations Officer',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1241,
 			'group' => 'Retail Banking Group',
 			'division' => 'Private Banking',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Private Banker',
 			'total' => 3
 			));
 			Position::create(array('position_id' => 1242,
 			'group' => 'Retail Banking Group',
 			'division' => 'Private Banking',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Private Banking Assistant',
 			'total' => 2
 			));
 			Position::create(array('position_id' => 1243,
 			'group' => 'Retail Banking Group',
 			'division' => 'Private Banking',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Relationship Associate',
 			'total' => 17
 			));
 			Position::create(array('position_id' => 1244,
 			'group' => 'Retail Banking Group',
 			'division' => 'Private Banking',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1245,
 			'group' => 'Retail Banking Group',
 			'division' => 'Private Banking',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Senior Private Banker',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1246,
 			'group' => 'Retail Banking Group',
 			'division' => 'Private Banking',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Team Leader Private Banking',
 			'total' => 2
 			));
 			Position::create(array('position_id' => 1247,
 			'group' => 'Retail Banking Group',
 			'division' => 'Private Banking',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Team Leader, Business Improvement',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1248,
 			'group' => 'Retail Banking Group',
 			'division' => 'Private Banking',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Team Leader, Private Banking Operation',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1249,
 			'group' => 'Retail Banking Group',
 			'division' => 'Private Banking',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Team Manager, Private Banking',
 			'total' => 4
 			));
@@ -8972,21 +8971,21 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 1269,
 			'group' => 'Retail Banking Group',
 			'division' => 'Retail Credit Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Division Head, Retail Credit Division',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1270,
 			'group' => 'Retail Banking Group',
 			'division' => 'Retail Credit Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'RC Management Trainee',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1271,
 			'group' => 'Retail Banking Group',
 			'division' => 'Retail Credit Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary',
 			'total' => 1
 			));
@@ -9609,77 +9608,77 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 1360,
 			'group' => 'Retail Banking Group',
 			'division' => 'Wealth Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'FEVP, Division Head, Wealth',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1361,
 			'group' => 'Retail Banking Group',
 			'division' => 'Wealth Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Head of Wealth Academy',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1362,
 			'group' => 'Retail Banking Group',
 			'division' => 'Wealth Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Project Manager',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1363,
 			'group' => 'Retail Banking Group',
 			'division' => 'Wealth Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'SCB First Relationship Management Officer',
 			'total' => 18
 			));
 			Position::create(array('position_id' => 1364,
 			'group' => 'Retail Banking Group',
 			'division' => 'Wealth Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1365,
 			'group' => 'Retail Banking Group',
 			'division' => 'Wealth Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Division Head, Wealth',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1366,
 			'group' => 'Retail Banking Group',
 			'division' => 'Wealth Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Strategic Planning Officer',
 			'total' => 2
 			));
 			Position::create(array('position_id' => 1367,
 			'group' => 'Retail Banking Group',
 			'division' => 'Wealth Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Team Manager, SCB First Relationship Management',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1368,
 			'group' => 'Retail Banking Group',
 			'division' => 'Wealth Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'VP (Level)',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1369,
 			'group' => 'Retail Banking Group',
 			'division' => 'Wealth Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Wealth Advisor Trainer',
 			'total' => 3
 			));
 			Position::create(array('position_id' => 1370,
 			'group' => 'Retail Banking Group',
 			'division' => 'Wealth Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Wealth Trainee',
 			'total' => 28
 			));
@@ -9755,15 +9754,15 @@ class AllTableSeeder extends Seeder {
 			));
 			Position::create(array('position_id' => 1381,
 			'group' => 'Risk Management Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Chief Risk Officer',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1382,
 			'group' => 'Risk Management Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Chief Risk Officer',
 			'total' => 1
 			));
@@ -9840,7 +9839,7 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 1393,
 			'group' => 'Risk Management Group',
 			'division' => 'Credit Risk Management',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Head of Credit Risk Management',
 			'total' => 1
 			));
@@ -10176,14 +10175,14 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 1441,
 			'group' => 'Risk Management Group',
 			'division' => 'Market and Operational Risk',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'FEVP, Head of Market and Operational Risk',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1442,
 			'group' => 'Risk Management Group',
 			'division' => 'Market and Operational Risk',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to FEVP, Market and Operational Risk',
 			'total' => 1
 			));
@@ -10456,70 +10455,70 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 1481,
 			'group' => 'Risk Management Group',
 			'division' => 'Risk Management SCBAM',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Head of Risk Management',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1482,
 			'group' => 'Risk Management Group',
 			'division' => 'Risk Management SCBAM',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Risk Management Officer',
 			'total' => 5
 			));
 			Position::create(array('position_id' => 1483,
 			'group' => 'Risk Management Group',
 			'division' => 'Risk Management SCBAM',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Team Manager, Risk Management - SCBAM',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1484,
 			'group' => 'Risk Management Group',
 			'division' => 'Risk Management SCBS',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Head of Risk Management',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1485,
 			'group' => 'Risk Management Group',
 			'division' => 'Risk Management SCBS',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Risk Management Officer',
 			'total' => 5
 			));
 			Position::create(array('position_id' => 1486,
 			'group' => 'Special Business Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Group Head, Special Business Group',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1487,
 			'group' => 'Special Business Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Group Head, Special Assets Group',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1488,
 			'group' => 'Special Business Group',
 			'division' => 'Central & Southern Region, Special Business',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Business Coordinator',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1489,
 			'group' => 'Special Business Group',
 			'division' => 'Central & Southern Region, Special Business',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager Business Development',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1490,
 			'group' => 'Special Business Group',
 			'division' => 'Central & Southern Region, Special Business',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Sector Manager',
 			'total' => 1
 			));
@@ -10673,21 +10672,21 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 1512,
 			'group' => 'Special Business Group',
 			'division' => 'Northern and Northeastern Region, Special Business',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Business Coordinator',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1513,
 			'group' => 'Special Business Group',
 			'division' => 'Northern and Northeastern Region, Special Business',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager Business Development',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1514,
 			'group' => 'Special Business Group',
 			'division' => 'Northern and Northeastern Region, Special Business',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Sector Manager',
 			'total' => 1
 			));
@@ -10890,35 +10889,35 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 1543,
 			'group' => 'Special Business Group',
 			'division' => 'Process Improvement',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, Process Improvement, Special Business Group',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1544,
 			'group' => 'Special Business Group',
 			'division' => 'Process Improvement',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Process Improvement Officer, Special Business Group',
 			'total' => 5
 			));
 			Position::create(array('position_id' => 1545,
 			'group' => 'Special Business Group',
 			'division' => 'Retail Special Business',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Business Coordinator',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1546,
 			'group' => 'Special Business Group',
 			'division' => 'Retail Special Business',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager Business Development',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1547,
 			'group' => 'Special Business Group',
 			'division' => 'Retail Special Business',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Sector Manager',
 			'total' => 1
 			));
@@ -11002,28 +11001,28 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 1559,
 			'group' => 'Special Business Group',
 			'division' => 'Special Industry',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Special Business Manager',
 			'total' => 2
 			));
 			Position::create(array('position_id' => 1560,
 			'group' => 'Special Business Group',
 			'division' => 'Wholesale and Bangkok, Special Business',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Business Coordinator',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1561,
 			'group' => 'Special Business Group',
 			'division' => 'Wholesale and Bangkok, Special Business',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager Business Development',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1562,
 			'group' => 'Special Business Group',
 			'division' => 'Wholesale and Bangkok, Special Business',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Sector Manager',
 			'total' => 1
 			));
@@ -11156,7 +11155,7 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 1581,
 			'group' => 'Special Business Group',
 			'division' => 'Workout Execution',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Sector Manager',
 			'total' => 1
 			));
@@ -11260,29 +11259,29 @@ class AllTableSeeder extends Seeder {
 			));
 			Position::create(array('position_id' => 1596,
 			'group' => 'Technology and Operations Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Consultant, Systematic Application for Core Bank upgrade',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1597,
 			'group' => 'Technology and Operations Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Group Head, Technology and Operations Group',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1598,
 			'group' => 'Technology and Operations Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'SEVP, Group Head, Technology and Operations',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1599,
 			'group' => 'Technology and Operations Group',
 			'division' => 'Enterprise Architecture',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, Enterprise Architecture',
 			'total' => 1
 			));
@@ -11310,28 +11309,28 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 1603,
 			'group' => 'Technology and Operations Group',
 			'division' => 'IT Business Alignment',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'EVP, CIO, IT Business Alignment Division',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1604,
 			'group' => 'Technology and Operations Group',
 			'division' => 'IT Business Alignment',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'IT Client Service Manager and Team Lead, Lending',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1605,
 			'group' => 'Technology and Operations Group',
 			'division' => 'IT Business Alignment',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'IT Client Service Manager, Digital Banking and Innovation',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1606,
 			'group' => 'Technology and Operations Group',
 			'division' => 'IT Business Alignment',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to EVP, CIO, Business Alignment',
 			'total' => 1
 			));
@@ -11485,14 +11484,14 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 1628,
 			'group' => 'Technology and Operations Group',
 			'division' => 'IT Development Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'EVP, CIO, IT Development Division',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1629,
 			'group' => 'Technology and Operations Group',
 			'division' => 'IT Development Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to EVP,CIO, Development',
 			'total' => 1
 			));
@@ -11933,14 +11932,14 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 1692,
 			'group' => 'Technology and Operations Group',
 			'division' => 'IT Operations Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'EVP, CIO, IT Operations Division',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1693,
 			'group' => 'Technology and Operations Group',
 			'division' => 'IT Operations Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to EVP, CIO, Operations',
 			'total' => 1
 			));
@@ -12633,35 +12632,35 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 1792,
 			'group' => 'Technology and Operations Group',
 			'division' => 'IT Security and IT Solution Quality Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'IT Management Trainee',
 			'total' => 4
 			));
 			Position::create(array('position_id' => 1793,
 			'group' => 'Technology and Operations Group',
 			'division' => 'IT Security and IT Solution Quality Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, Data Breach Investigation',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1794,
 			'group' => 'Technology and Operations Group',
 			'division' => 'IT Security and IT Solution Quality Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, IT Security',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1795,
 			'group' => 'Technology and Operations Group',
 			'division' => 'IT Security and IT Solution Quality Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, IT Solution Quality',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1796,
 			'group' => 'Technology and Operations Group',
 			'division' => 'IT Security and IT Solution Quality Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secure Coding Specialist',
 			'total' => 1
 			));
@@ -12829,14 +12828,14 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 1820,
 			'group' => 'Technology and Operations Group',
 			'division' => 'Retail Operations Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'FEVP, Division Head, Retail Operations',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 1821,
 			'group' => 'Technology and Operations Group',
 			'division' => 'Retail Operations Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary',
 			'total' => 1
 			));
@@ -14537,14 +14536,14 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 2064,
 			'group' => 'Technology and Operations Group',
 			'division' => 'Wholesale Operations Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'FEVP, Division Head, Wholesales Operations',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2065,
 			'group' => 'Technology and Operations Group',
 			'division' => 'Wholesale Operations Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Group Head, Operations',
 			'total' => 1
 			));
@@ -16419,43 +16418,43 @@ class AllTableSeeder extends Seeder {
 			));
 			Position::create(array('position_id' => 2333,
 			'group' => 'Wholesale Banking Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Group Head, Wholesale Banking Group',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2334,
 			'group' => 'Wholesale Banking Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Personal Assistant',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2335,
 			'group' => 'Wholesale Banking Group',
-			'division' => '',
-			'organization' => '',
+			'division' => 'No division',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Group Head, Wholesale Banking Group',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2336,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'Capital Markets Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Business Coordinator',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2337,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'Capital Markets Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Division Head, Capital Markets Division',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2338,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'Capital Markets Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Division Head, Capital Markets Division',
 			'total' => 1
 			));
@@ -16532,14 +16531,14 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 2349,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'Corporate Banking 1',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Head of Corporate Banking 1',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2350,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'Corporate Banking 1',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Head of Corporate Banking 1',
 			'total' => 1
 			));
@@ -16707,14 +16706,14 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 2374,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'Corporate Banking 2',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Head of Corporate Banking 2',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2375,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'Corporate Banking 2',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Head of Corporate Banking 2',
 			'total' => 1
 			));
@@ -16931,14 +16930,14 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 2406,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'Corporate Banking 3',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Head of Corporate Banking 3',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2407,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'Corporate Banking 3',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to Head of Corporate Banking 3',
 			'total' => 1
 			));
@@ -17029,14 +17028,14 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 2420,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'Economic Intelligence Center',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Chief Economist, Economic Intelligence Center and Sectorial',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2421,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'Economic Intelligence Center',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Financial Economist',
 			'total' => 1
 			));
@@ -17099,21 +17098,21 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 2430,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'Financial Market Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Business Coordinator',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2431,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'Financial Market Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'FEVP, Head of Financial Market Division',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2432,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'Financial Market Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to FEVP,Financial Market Division',
 			'total' => 1
 			));
@@ -17351,21 +17350,21 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 2466,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'GTS Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Business Coordinator',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2467,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'GTS Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Head of GTS',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2468,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'GTS Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to EVP,GTS Division',
 			'total' => 1
 			));
@@ -17869,154 +17868,154 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 2540,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => '-',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2541,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Assistant Branch Manager, Vientiane Branch',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2542,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Branch Manager, Hong Kong Branch',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2543,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Branch Manager, Phnom Penh, Cambodian Commercial Bank Ltd.',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2544,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Branch Manager,Vientiane Branch',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2545,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Business Analyst - Greater China',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2546,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Business Coordinator',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2547,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Business Development Officer',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2548,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Chinese Coordinator',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2549,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Deputy GM Vina Siam Bank',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2550,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Director & GM Cambodian Commercial Bank Limited',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2551,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'EVP, Head of China',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2552,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'FSVP, Head of Greater China, China Chief Representative',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2553,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Head of Asean Strategy',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2554,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Manager, Business Development',
 			'total' => 2
 			));
 			Position::create(array('position_id' => 2555,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Relationship Manager, CCB',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2556,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to EVP, Head of China',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2557,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Sector Head',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2558,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Senior Business Development Officer',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2559,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Senior Strategist',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2560,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'International Banking Business Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Strategist - Asean',
 			'total' => 2
 			));
 			Position::create(array('position_id' => 2561,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'Investment Banking Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Associate - IB',
 			'total' => 1
 			));
@@ -18296,21 +18295,21 @@ class AllTableSeeder extends Seeder {
 			Position::create(array('position_id' => 2601,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'Wholesale Banking Academy Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Strategist - Wholesale Banking Academy',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2602,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'Wholesale Credit Product Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Head of Wholesale Credit Product&Biz Strategy&Dvlp Division',
 			'total' => 1
 			));
 			Position::create(array('position_id' => 2603,
 			'group' => 'Wholesale Banking Group',
 			'division' => 'Wholesale Credit Product Division',
-			'organization' => '',
+			'organization' => 'No organization',
 			'job_title' => 'Secretary to FEVP, Wholesale Credit Product Division',
 			'total' => 1
 			));
@@ -18595,33 +18594,87 @@ class AllTableSeeder extends Seeder {
 			'total' => 5
 			));
 
-		
 //DEPT
 		Dept::create(array(	'dept_id' => 1,
-							'name' => 'department1',
-							'hrbp_user_id' => 1,
-							'recruiter_user_id' => 1
-							));
-		Dept::create(array(	'dept_id' => 2,
-							'name' => 'department2',
-							'hrbp_user_id' => 4,
-							'recruiter_user_id' => 3
-							));
-		Dept::create(array(	'dept_id' => 3,
-							'name' => 'department3',
-							'hrbp_user_id' => 1,
-							'recruiter_user_id' => 3
-							));
-		Dept::create(array(	'dept_id' => 4,
-							'name' => 'department4',
-							'hrbp_user_id' => 1,
-							'recruiter_user_id' => 2
-							));
-		Dept::create(array(	'dept_id' => 5,
-							'name' => 'department4',
-							'hrbp_user_id' => 1,
-							'recruiter_user_id' => 2
-							));
+			'name' => 'President',
+			'hrbp_user_id' => 2,
+			'recruiter_user_id' => 1
+			));
+			Dept::create(array(	'dept_id' => 2,
+			'name' => 'Audit and Compliance Group',
+			'hrbp_user_id' => 4,
+			'recruiter_user_id' => 1
+			));
+			Dept::create(array(	'dept_id' => 3,
+			'name' => 'Business Banking Group',
+			'hrbp_user_id' => 3,
+			'recruiter_user_id' => 1
+			));
+			Dept::create(array(	'dept_id' => 4,
+			'name' => 'Change Program',
+			'hrbp_user_id' => 1,
+			'recruiter_user_id' => 1
+			));
+			Dept::create(array(	'dept_id' => 5,
+			'name' => 'Corporate Communications Division',
+			'hrbp_user_id' => 2,
+			'recruiter_user_id' => 1
+			));
+			Dept::create(array(	'dept_id' => 6,
+			'name' => 'Finance Group',
+			'hrbp_user_id' => 1,
+			'recruiter_user_id' => 1
+			));
+			Dept::create(array(	'dept_id' => 7,
+			'name' => 'General Counsel Group',
+			'hrbp_user_id' => 3,
+			'recruiter_user_id' => 1
+			));
+			Dept::create(array(	'dept_id' => 8,
+			'name' => 'Group Treasury',
+			'hrbp_user_id' => 3,
+			'recruiter_user_id' => 1
+			));
+			Dept::create(array(	'dept_id' => 9,
+			'name' => 'Human Resources Group',
+			'hrbp_user_id' => 3,
+			'recruiter_user_id' => 1
+			));
+			Dept::create(array(	'dept_id' => 10,
+			'name' => 'i-OFFICE',
+			'hrbp_user_id' => 1,
+			'recruiter_user_id' => 1
+			));
+			Dept::create(array(	'dept_id' => 11,
+			'name' => 'Retail Banking Group',
+			'hrbp_user_id' => 2,
+			'recruiter_user_id' => 1
+			));
+			Dept::create(array(	'dept_id' => 12,
+			'name' => 'Risk Management Group',
+			'hrbp_user_id' => 2,
+			'recruiter_user_id' => 1
+			));
+			Dept::create(array(	'dept_id' => 13,
+			'name' => 'Special Business Group',
+			'hrbp_user_id' => 2,
+			'recruiter_user_id' => 1
+			));
+			Dept::create(array(	'dept_id' => 14,
+			'name' => 'Technology and Operations Group',
+			'hrbp_user_id' => 4,
+			'recruiter_user_id' => 1
+			));
+			Dept::create(array(	'dept_id' => 15,
+			'name' => 'Wholesale Banking Group',
+			'hrbp_user_id' => 2,
+			'recruiter_user_id' => 1
+			));
+			Dept::create(array(	'dept_id' => 16,
+			'name' => 'Wholesale Banking Group',
+			'hrbp_user_id' => 4,
+			'recruiter_user_id' => 1
+			));
 
 
 //CORPORRATE TITLE GROUP
@@ -22522,22 +22575,25 @@ class AllTableSeeder extends Seeder {
 
 //REQUISITION CURRENT STATUS
 		RequisitionCurrentStatus::create(array(	'requisition_current_status_id' => 1,
-							'name' => 'aaa'
+							'name' => 'Saved Requisition'
 							));
 		RequisitionCurrentStatus::create(array(	'requisition_current_status_id' => 2,
-							'name' => 'bbb'
+							'name' => 'Waiting for Next Level Approve'
 							));
 		RequisitionCurrentStatus::create(array(	'requisition_current_status_id' => 3,
-							'name' => 'ccc'
+							'name' => 'Waiting for HRBP Approve'
 							));
 		RequisitionCurrentStatus::create(array(	'requisition_current_status_id' => 4,
-							'name' => 'ddd'
+							'name' => 'Waiting for Post Job'
 							));
 		RequisitionCurrentStatus::create(array(	'requisition_current_status_id' => 5,
-							'name' => 'eee'
+							'name' => 'Waiting for Send Shortlist'
 							));
 		RequisitionCurrentStatus::create(array(	'requisition_current_status_id' => 6,
-							'name' => 'fff'
+							'name' => 'Waiting for all aplication to finish'
+							));
+		RequisitionCurrentStatus::create(array(	'requisition_current_status_id' => 7,
+							'name' => 'END SLA'
 							));
 
 //APPLICATION CURRENT STATUS
@@ -22562,6 +22618,13 @@ class AllTableSeeder extends Seeder {
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 7,
 							'name' => 'GGG'
 							));
+		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 8,
+							'name' => 'HHH'
+							));
+
+//Requisition
+
+
 
 //SLA REQUISITION
 		DB::table('SLA_requisitions')->insert(array(

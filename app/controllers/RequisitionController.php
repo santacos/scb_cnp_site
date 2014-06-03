@@ -41,7 +41,6 @@ class RequisitionController extends \BaseController {
 		}*/
 
 			$requisition = new Requisition;
-			$requisition->job_title = Input::get('job_title');
 			$requisition->total_number = Input::get('total_number');
 			$requisition->employee_user_id = 1;
 			//Input::get('employee_user_id');
@@ -50,7 +49,7 @@ class RequisitionController extends \BaseController {
 			//$requisition->datetime_prev_status = Input::get('datetime_prev_status');
 			$requisition->location_id = Input::get('location_id');
 			$requisition->corporate_title_id = Input::get('corporate_title_id');
-			$requisition->position_id = 1;
+			$requisition->position_id =  Input::get('position_id');
 			//Input::get('position_id');
 			$requisition->dept_id =Input::get('dept_id');
 			$requisition->requisition_current_status_id = 2;
