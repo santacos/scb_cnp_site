@@ -58,7 +58,6 @@ HM-create-requisition
                   {{ Form::label('job_title_id', 'Job Title :') }}  
                  {{ Form::text('job_title', Input::old('job_title'), array('class' => 'form-control', 'id' => 'form','ng-model'=>'try1','ng-blur'=>'checkProgress()','placeholder'=>'Enter job title','required')) }}
                   </div>-->
-                  <p>group</p> @{{group}}<br>
                   <!--
                 <div class="form-group">
                     {{ Former::select('group', 'Group :')->attributes(array('ng-model' => 'GGroup','ng-blur'=>'checkGroup()'))->class('form-control scrollable-menu')->addOption('Select Group')
@@ -137,7 +136,7 @@ HM-create-requisition
                 </div>
             <div class="form-group">
                 {{ Former::select('recruitment_obj_template_id','Recruitment Objective :')->class('form-control scrollable-menu')->addOption('Select Recruitment Objective')
-                        ->fromQuery(RecruitmentObjTemplate::All(), 'message', 'recruitment_objective_template_id') }}  
+                        ->fromQuery(RecruitmentObjectiveTemplate::All(), 'message', 'recruitment_objective_template_id') }}  
                  <br>
                  {{ Form::text('recruitment_objective', Input::old('recruitment_objective'), array('class' => 'form-control', 'id' => 'form','placeholder'=>'Recruitment Objective Note')) }}   
             </div>
