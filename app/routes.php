@@ -19,8 +19,8 @@ Route::get('testtest',function(){
 Route::controller('testrest','RestController');
 
 //////////////////// test area/////////////////////////////
-Route::get('tryAngular',function(){
-	return View::make('angular.try2');
+Route::get('tryView',function(){
+	return View::make('hrbp.home');
 });
 
 Route::get('showReq',function(){
@@ -186,11 +186,16 @@ Route::get( 'user/reset_password/{token}', 'UserController@reset_password');
 Route::post('user/reset_password',         'UserController@do_reset_password');
 
 Route::get( 'user/logout',                 'UserController@logout');
+
+Route::controller('userrest', 'UserRestController');
+
+// Hiring Manager
 Route::resource('requisition', 'RequisitionController');
 Route::get('api/requisition', array('as'=>'api.requisition', 'uses'=>'RequisitionController@getDatatable'));
 Route::controller('requisitionrest', 'RequisitionRestController');
 
-Route::controller('userrest', 'UserRestController');
+// HRBP
+Route::resource('requisition-hrbp-approve', 'RequisitionHRBPApproveController');
 
 /*App::missing(function($exception)
 {

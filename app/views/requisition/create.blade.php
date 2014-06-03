@@ -32,10 +32,11 @@ HM-create-requisition
                 <h1>Create a requisition</h1>
                 <hr/>
                 <div class="row">
+                    <!--
                     <div class="col-sm-6">
                     <progressbar max="3" value="count"></progressbar>
-                    </div>
-                    <div class="col-sm-6">
+                    </div>-->
+                    <div class="col-sm-12">
                     <progressbar class="progress-striped active" max="3" value="count" type="danger"><i>@{{count}} / 3</i></progressbar>
                     </div>
                 </div>
@@ -52,7 +53,7 @@ HM-create-requisition
                 {{ Form::open(array('url' => 'requisition','files'=>true ))}}
                 <div class="form-group">
                   {{ Form::label('job_title_id', 'Job Title :') }}  
-                 {{ Form::text('job_title', Input::old('job_title'), array('class' => 'form-control', 'id' => 'form','ng-model'=>'try1','ng-blur'=>'checkProgress()','placeholder'=>'Enter job title','required')) }}
+                 {{ Form::text('job_title', Input::old('job_title'), array('class' => 'form-control', 'id' => 'form','ng-model'=>'try1','ng-blur'=>'checkProgress()','autocomplete'=>'off','placeholder'=>'Enter job title','required')) }}
                   </div>
 
 
