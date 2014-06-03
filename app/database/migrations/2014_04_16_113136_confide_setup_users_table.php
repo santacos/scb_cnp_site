@@ -87,7 +87,11 @@ class ConfideSetupUsersTable extends Migration {
            Schema::create('positions', function($table)
         {
             $table->increments('position_id');
-            $table->string('name',45);
+            $table->string('group',100);
+            $table->string('division',100)->nullable()->default(NULL);
+            $table->string('organization',100)->nullable()->default(NULL);
+            $table->string('job_title',100);
+            $table->integer('total');
             $table->timestamps();
         });
             Schema::create('responsibilities', function($table)
@@ -186,7 +190,7 @@ class ConfideSetupUsersTable extends Migration {
             $table->primary('user_id');
             $table->timestamps();
         });
-          Schema::create('depts', function($table)
+            Schema::create('depts', function($table)
         {
             $table->increments('dept_id');
             $table->string('name');
@@ -206,7 +210,6 @@ class ConfideSetupUsersTable extends Migration {
             $table->foreign('dept_id')->references('dept_id')->on('depts')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('next_level_user_id')->nullable()->default(NULL);
             $table->foreign('next_level_user_id')->references('user_id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->boolean('is_manager');
             $table->string('award_display_name',45);
             $table->integer('award_point');
             $table->primary('user_id');
@@ -215,7 +218,6 @@ class ConfideSetupUsersTable extends Migration {
           Schema::create('requisitions', function($table)
         {
             $table->increments('requisition_id');
-            $table->string('job_title',100);
             $table->integer('total_number');
             $table->integer('get_number');
             $table->unsignedInteger('employee_user_id');

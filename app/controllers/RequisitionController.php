@@ -41,7 +41,6 @@ class RequisitionController extends \BaseController {
 		}*/
 
 			$requisition = new Requisition;
-			$requisition->job_title = Input::get('job_title');
 			$requisition->total_number = Input::get('total_number');
 			$requisition->employee_user_id = 1;
 			//Input::get('employee_user_id');
@@ -50,7 +49,7 @@ class RequisitionController extends \BaseController {
 			//$requisition->datetime_prev_status = Input::get('datetime_prev_status');
 			$requisition->location_id = Input::get('location_id');
 			$requisition->corporate_title_id = Input::get('corporate_title_id');
-			$requisition->position_id = 1;
+			$requisition->position_id =  Input::get('position_id');
 			//Input::get('position_id');
 			$requisition->dept_id =Input::get('dept_id');
 			$requisition->requisition_current_status_id = 2;
@@ -83,7 +82,10 @@ class RequisitionController extends \BaseController {
     	return  Datatable::collection(Requisition::all())
     ->addColumn('requisitsion_id',function($model)
    		{
-   			return '<span class="badge bg-grey">'.$model->requisition_id.'</span>';
+   			if($model->requisition_id==3){
+   				return $model->requisition_id;
+   				}
+   					return '<span class="badge bg-grey">'.$model->requisition_id.'</span>';
    		})
     ->showColumns('job_title')
     ->addColumn('corporate_title_id',function($model)
@@ -105,7 +107,7 @@ class RequisitionController extends \BaseController {
         { return $model->total_number;
         })
     ->addColumn('Date Order',function($model)
-        { return $model->total_number;
+        { return Carbon::createFromTimestamp(strtotime($model->created_at))->format('j F Y');
         })
     ->addColumn('Deadline',function($model)
         { return $model->total_number;
