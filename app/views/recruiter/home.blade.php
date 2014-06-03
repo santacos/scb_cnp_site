@@ -1,17 +1,12 @@
-@extends('admin.layouts.default')
+@extends('admin.layouts.main.recruiter')
 
 @section('title')
-thisIsTitle
+home-recruiter
 @stop
 
-@section('libs')
-      <link rel="stylesheet" href="<?php echo asset('assets/css/AdminLTE.css')?>">
-      <link rel="stylesheet" href="<?php echo asset('css/bootstrap-lightbox.css')?>">
-@stop
 
 @section('content')
- 
-        <!--welcome box-->
+<!--welcome box-->
         <div class="alert alert-info alert-bold-border fade in alert-dismissable" style="margin-left:0px;">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <h3><i class="fa fa-fw fa-smile-o"></i><strong>Welcome to SCB recruitment system!</strong></h3>
@@ -44,7 +39,7 @@ thisIsTitle
 
 
         <!--recruiter tool-->
-        @include('admin.partials.hrbp.statBox')
+        @include('admin.partials.recruiter.statBox')
 
 
         <!--box morris test-->
@@ -228,8 +223,4 @@ thisIsTitle
 
                     <!--end HOT EVENT-->
 
-@stop
-
-@section('script')
-    <script src="<?php echo asset('js/bootstrap-lightbox.js')?>"></script>
 @stop

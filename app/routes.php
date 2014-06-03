@@ -19,8 +19,12 @@ Route::get('testtest',function(){
 Route::controller('testrest','RestController');
 
 //////////////////// test area/////////////////////////////
+Route::get('tryView',function(){
+	return View::make('user.profile');
+});
+
 Route::get('tryAngular',function(){
-	return View::make('angular.try2');
+	return View::make('angular.try4');
 });
 
 Route::get('showReq',function(){
@@ -72,7 +76,7 @@ Route::get('checklogin',function(){
 
 Route::get('/default', function()
 {
-	return View::make('admin.home');
+	return View::make('recruiter.home');
 	//return View::make('admin.layouts.home2');
 });
 

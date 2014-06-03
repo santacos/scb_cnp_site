@@ -32,10 +32,11 @@ HM-create-requisition
                 <h1>Create a requisition</h1>
                 <hr/>
                 <div class="row">
+                    <!--
                     <div class="col-sm-6">
                     <progressbar max="3" value="count"></progressbar>
-                    </div>
-                    <div class="col-sm-6">
+                    </div>-->
+                    <div class="col-sm-12">
                     <progressbar class="progress-striped active" max="3" value="count" type="danger"><i>@{{count}} / 3</i></progressbar>
                     </div>
                 </div>
@@ -50,11 +51,27 @@ HM-create-requisition
 
 
                 {{ Form::open(array('url' => 'requisition','files'=>true ))}}
+
                 <div class="form-group">
                   {{ Form::label('job_title_id', 'Job Title :') }}  
                  {{ Form::text('job_title', Input::old('job_title'), array('class' => 'form-control', 'id' => 'form','ng-model'=>'try1','ng-blur'=>'checkProgress()','placeholder'=>'Enter job title','required')) }}
                   </div>
-
+                  <div class="form-group">
+                    {{ Former::select('group', 'Group :')->class('form-control scrollable-menu')->addOption('Select Group')
+                            ->fromQuery(Position::All()->unique(), 'group', 'group') }}    
+                </div>
+                <div class="form-group">
+                    {{ Former::select('devision', 'Devision :')->class('form-control scrollable-menu')->addOption('Select Devision')
+                            ->fromQuery(Position::All()->unique(), 'division','division') }}    
+                </div>
+                <div class="form-group">
+                    {{ Former::select('organization', 'Organization :')->class('form-control scrollable-menu')->addOption('Select Organization')
+                            ->fromQuery(Position::All()->unique(), 'organization','organization') }}    
+                </div>
+                <div class="form-group">
+                    {{ Former::select('job_title', 'Job Title :')->class('form-control scrollable-menu')->addOption('Select Job Title')
+                            ->fromQuery(Position::All()->unique(), 'job_title','position_id') }}    
+                </div>
 
             <div class="form-group">
                 {{ Former::select('corporate_title_id', 'Corporate Title :')->attributes(array('class' => 'form-control scrollable-menu','style'=>'         width:250px;
