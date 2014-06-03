@@ -8,6 +8,8 @@ class RestController extends \BaseController {
 			//return 'ccc';
 
 	}
+
+
 	public function getCorporateTitle(){
 			$Corporate_titles = CorporateTitle::All()->toJson();
 			return $Corporate_titles ;

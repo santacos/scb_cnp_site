@@ -1,4 +1,5 @@
-var nameApp = angular.module('nameApp',['ui.bootstrap']);
+
+var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils']);
     	nameApp.controller('NameCtrl',['$scope', '$http',
 	  		function ($scope, $http) {
 	  		//for process
@@ -11,53 +12,55 @@ var nameApp = angular.module('nameApp',['ui.bootstrap']);
 	  			{category:'English', name:'writing'}
 	  		];
 			
-	  		//default of industry
-	  		$scope.chooseIndustry = 'choose industry';
-	  		$scope.chooseCorp = 'choose corporate title';
-	  		$scope.chooseRecOb = 'choose Objective';
-	  		$scope.chooseRecType = 'choose recruitment type';
-	  		$scope.chooseLocation = 'choose job location';
 
-
-
-
-	  		//change information of industry here
-	    	
-			  $http.get('rest/dept').success(function(dataa) {
-	     		 $scope.industries = dataa;
+			$http.get('rest/position').success(function(dataa) {
+	     		 $scope.allPosition = dataa;
 	     		 
 	    	}).error(function(data, status, headers, config) {
 			      // called asynchronously if an error occurs
 			      // or server returns response with an error status.
-			      console.log('error_corperate_title');
+			      console.log('error_position');
    			});
 
-			//change information of Corporate here
-
-			$http.get('rest/corporate-title').success(function(dataa) {
-	     		 $scope.corporatetitles = dataa;
+   			$http.get('rest/dept').success(function(dataa) {
+	     		 $scope.allDept = dataa;
 	     		 
 	    	}).error(function(data, status, headers, config) {
 			      // called asynchronously if an error occurs
 			      // or server returns response with an error status.
-			      console.log('error_corperate_title');
+			      console.log('error_dept');
    			});
 
 
+			 $scope.checkGroup = function(){
+			 	if($scope.group==""){
+			 		$scope.showDivision = false;
+			 	}else{
+			 		$scope.showDivision = true;
+			 	}
+   				console.log('checkGroup');
+   	
+	    	}
 
-	    	//objective seed here!
-			 $scope.objectives = [
-			 	'new',
-			 	'Replace resign of'
-			 ];
+	    	$scope.checkDivision = function(){
+			 	if($scope.division==""){
+			 		$scope.showOrganization = false;
+			 	}else{
+			 		$scope.showOrganization = true;
+			 	}
+   				console.log('checkGroup');
+   	
+	    	}
 
-
-			 $scope.recTypes = [
-			 	'All',
-			 	'internal',
-			 	'external'
-
-			 ];
+	    	$scope.checkOrganization = function(){
+			 	if($scope.organization==""){
+			 		$scope.showJobTitle = false;
+			 	}else{
+			 		$scope.showJobTitle = true;
+			 	}
+   				console.log('checkGroup');
+   	
+	    	}
 
 
 
