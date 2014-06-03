@@ -52,16 +52,16 @@ HM-create-requisition
 
                 {{ Form::open(array('url' => 'requisition','files'=>true ))}}
 
-                <div class="form-group">
+            <!--    <div class="form-group">
                   {{ Form::label('job_title_id', 'Job Title :') }}  
                  {{ Form::text('job_title', Input::old('job_title'), array('class' => 'form-control', 'id' => 'form','ng-model'=>'try1','ng-blur'=>'checkProgress()','placeholder'=>'Enter job title','required')) }}
-                  </div>
+                  </div>-->
                   <div class="form-group">
                     {{ Former::select('group', 'Group :')->class('form-control scrollable-menu')->addOption('Select Group')
                             ->fromQuery(Position::All()->unique(), 'group', 'group') }}    
                 </div>
                 <div class="form-group">
-                    {{ Former::select('devision', 'Devision :')->class('form-control scrollable-menu')->addOption('Select Devision')
+                    {{ Former::select('division', 'Devision :')->class('form-control scrollable-menu')->addOption('Select Division')
                             ->fromQuery(Position::All()->unique(), 'division','division') }}    
                 </div>
                 <div class="form-group">
@@ -69,7 +69,7 @@ HM-create-requisition
                             ->fromQuery(Position::All()->unique(), 'organization','organization') }}    
                 </div>
                 <div class="form-group">
-                    {{ Former::select('job_title', 'Job Title :')->class('form-control scrollable-menu')->addOption('Select Job Title')
+                    {{ Former::select('position_id', 'Job Title :')->class('form-control scrollable-menu')->addOption('Select Job Title')
                             ->fromQuery(Position::All()->unique(), 'job_title','position_id') }}    
                 </div>
 
