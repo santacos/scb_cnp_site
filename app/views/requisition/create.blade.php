@@ -82,11 +82,6 @@ HM-create-requisition
             </div>
 
             <div class="form-group">
-                {{ Former::select('dept_id', 'Department :')->class('form-control scrollable-menu')->addOption('Select Department')
-                        ->fromQuery(Dept::All(), 'name', 'dept_id') }}    
-            </div>
-
-            <div class="form-group">
                     {{ Form::label('total_number', 'No. of Vacancy :') }}
                     {{ Form::input('number','total_number', Input::old('qualification'), array('min'=>'0','max'=>'1000','placeholder'=>'0','class' => 'form-control', 'id' => 'form', 'required')) }}
                 </div>
