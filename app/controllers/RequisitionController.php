@@ -83,7 +83,10 @@ class RequisitionController extends \BaseController {
     	return  Datatable::collection(Requisition::all())
     ->addColumn('requisitsion_id',function($model)
    		{
-   			return '<span class="badge bg-grey">'.$model->requisition_id.'</span>';
+   			if($model->requisition_id==3){
+   				return $model->requisition_id;
+   				}
+   					return '<span class="badge bg-grey">'.$model->requisition_id.'</span>';
    		})
     ->showColumns('job_title')
     ->addColumn('corporate_title_id',function($model)
@@ -105,7 +108,7 @@ class RequisitionController extends \BaseController {
         { return $model->total_number;
         })
     ->addColumn('Date Order',function($model)
-        { return $model->total_number;
+        { return Carbon::createFromTimestamp(strtotime($model->created_at))->format('j F Y');
         })
     ->addColumn('Deadline',function($model)
         { return $model->total_number;

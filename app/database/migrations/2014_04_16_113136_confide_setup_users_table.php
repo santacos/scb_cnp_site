@@ -87,7 +87,11 @@ class ConfideSetupUsersTable extends Migration {
            Schema::create('positions', function($table)
         {
             $table->increments('position_id');
-            $table->string('name',45);
+            $table->string('group',100);
+            $table->string('division',100)->nullable()->default(NULL);
+            $table->string('organization',100)->nullable()->default(NULL);
+            $table->string('job_title',100);
+            $table->integer('total');
             $table->timestamps();
         });
             Schema::create('responsibilities', function($table)
@@ -186,7 +190,7 @@ class ConfideSetupUsersTable extends Migration {
             $table->primary('user_id');
             $table->timestamps();
         });
-          Schema::create('depts', function($table)
+            Schema::create('depts', function($table)
         {
             $table->increments('dept_id');
             $table->string('name');

@@ -1,4 +1,4 @@
-<table class="table stripe hover row-border cell-border   {{ $class = str_random(8) }}">
+<table class="table stripe hover row-border cell-border text-center  {{ $class = str_random(8) }}">
     <colgroup>
         @for ($i = 0; $i < count($columns); $i++)
         <col class="con{{ $i }}" />
