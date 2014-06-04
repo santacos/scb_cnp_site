@@ -56,7 +56,7 @@ HM-create-requisition
 
             <!--    <div class="form-group">
                   {{ Form::label('job_title_id', 'Job Title :') }}  
-                 {{ Form::text('job_title', Input::old('job_title'), array('class' => 'form-control', 'id' => 'form','ng-model'=>'try1','ng-blur'=>'checkProgress()','placeholder'=>'Enter job title','required')) }}
+                 {{ Form::text('job_title', Input::old('job_title'), array('class' => 'form-control','ng-model'=>'try1','ng-blur'=>'checkProgress()','placeholder'=>'Enter job title','required')) }}
                   </div>-->
                   <!--
                 <div class="form-group">
@@ -111,13 +111,13 @@ HM-create-requisition
 
             <div class="form-group">
                     {{ Form::label('total_number', 'No. of Vacancy :') }}
-                    {{ Form::input('number','total_number', Input::old('qualification'), array('min'=>'0','max'=>'1000','placeholder'=>'0','class' => 'form-control', 'id' => 'form', 'required')) }}
+                    {{ Form::input('number','total_number', Input::old('qualification'), array('min'=>'0','max'=>'1000','placeholder'=>'0','class' => 'form-control', 'required')) }}
                 </div>
             <div class="form-group">
                 {{ Former::select('recruitment_obj_template_id','Recruitment Objective :')->class('form-control scrollable-menu')->addOption('Select Recruitment Objective')
                         ->fromQuery(RecruitmentObjectiveTemplate::All(), 'message', 'recruitment_objective_template_id') }}  
                  <br>
-                 {{ Form::text('recruitment_objective', Input::old('recruitment_objective'), array('class' => 'form-control', 'id' => 'form','placeholder'=>'Recruitment Objective Note')) }}   
+                 {{ Form::text('recruitment_objective', Input::old('recruitment_objective'), array('class' => 'form-control','placeholder'=>'Recruitment Objective Note')) }}   
             </div>
 
             <div class="form-group">
@@ -131,20 +131,20 @@ HM-create-requisition
                     
                         <div class="form-group">
                     {{ Form::label('year_of_experience', 'Years of experience :') }}
-                    {{ Form::input('number','year_of_experience', Input::old('qualification'), array('min'=>'0','max'=>'100','placeholder'=>'0','class' => 'form-control', 'id' => 'form', 'required')) }}
+                    {{ Form::input('number','year_of_experience', Input::old('qualification'), array('min'=>'0','max'=>'100','placeholder'=>'0','class' => 'form-control', 'required')) }}
                 </div>
                  
                 <div class="form-group">
                     {{ Form::label('responsibility', 'Responsibilities :') }}
-                    {{ Form::text('responsibility', Input::old('responsibility'), array('class' => 'form-control', 'id' => 'form', 'required')) }}
+                    {{ Form::text('responsibility', Input::old('responsibility'), array('class' => 'form-control', 'required')) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('qualification', 'Qualifications :') }}
-                    {{ Form::text('qualification', Input::old('qualification'), array('class' => 'form-control', 'id' => 'form','required')) }}
+                    {{ Form::text('qualification', Input::old('qualification'), array('class' => 'form-control','required')) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('note', 'Note :') }}
-                    {{ Form::textarea('note', Input::old('note'), array('class' => 'form-control', 'id' => 'form','size' => '30x5')) }}
+                    {{ Form::textarea('note', Input::old('note'), array('class' => 'form-control','size' => '30x5')) }}
                 </div>
 
             {{ Form::submit('Create', array('class' => 'btn btn-primary btn-lg btn-block')) }}

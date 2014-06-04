@@ -30,7 +30,7 @@ Route::get('showReq',function(){
 	return View::make('HM.allRequisiton');
 });
 
-Route::controller('requisition/rest','RestController');
+Route::controller('rest','RestController');
 
 
 ///////////////////////candidate/////////////////////
@@ -193,12 +193,14 @@ Route::resource('hm-requisition', 'HMRequisitionController');
 Route::get('api/requisition', array('as'=>'api.requisition', 'uses'=>'HMRequisitionController@getDatatable'));
 Route::controller('requisitionrest', 'RequisitionRestController');
 
+// Next Level Hiring Manager
+Route::resource('hm-nl-requisition', 'HMNLRequisitionController');
+
 // HRBP Officer
 Route::resource('hrbp-officer-requisition', 'HRBPOfficerRequisitionController');
 
 // HRBP Manager
 Route::resource('hrbp-manager-requisition', 'HRBPManagerRequisitionController');
-
 
 // Application
 Route::resource('application', 'ApplicationController');
