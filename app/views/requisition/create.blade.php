@@ -50,7 +50,7 @@ HM-create-requisition
                 {{ HTML::ul($errors->all()) }}
 
 
-                {{ Form::open(array('url' => 'requisition','files'=>true ))}}
+                {{ Form::open(array('url' => 'hm-requisition','files'=>true ))}}
 
             <!--    <div class="form-group">
                   {{ Form::label('job_title_id', 'Job Title :') }}  
@@ -87,7 +87,7 @@ HM-create-requisition
                 </div>
             <div class="form-group">
                 {{ Former::select('recruitment_obj_template_id','Recruitment Objective :')->class('form-control scrollable-menu')->addOption('Select Recruitment Objective')
-                        ->fromQuery(RecruitmentObjTemplate::All(), 'message', 'recruitment_objective_template_id') }}  
+                        ->fromQuery(RecruitmentObjectiveTemplate::All(), 'message', 'recruitment_objective_template_id') }}  
                  <br>
                  {{ Form::text('recruitment_objective', Input::old('recruitment_objective'), array('class' => 'form-control', 'id' => 'form','placeholder'=>'Recruitment Objective Note')) }}   
             </div>

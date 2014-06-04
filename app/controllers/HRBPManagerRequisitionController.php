@@ -1,6 +1,6 @@
 <?php
 
-class RequisitionHRBPApproveController extends \BaseController {
+class HRBPManagerRequisitionController extends \BaseController {
 
 	/**
 	 * Display a listing of requisitions
@@ -42,7 +42,7 @@ class RequisitionHRBPApproveController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return View::make('HRBPOfficer.show')->with('requisition',Requisition::find($id));
+		return View::make('HRBPManager.approve.show')->with('requisition',Requisition::find($id));
 	}
 	public function getDatatable()
     {    	
@@ -124,7 +124,7 @@ class RequisitionHRBPApproveController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}*/
 			$requisition = Requisition::findOrFail($id);
-			$prev_action = RequisitionLog::where('requisition_id','===',$id)->orderBy('action_datetime','desc');
+			$prev_action = RequisitionLog::where('requisition_id','=',$id)->orderBy('action_datetime','desc');
 			if($prev_action->count() > 0){
 				$prev_action = $prev_action->first();
 			}else{
@@ -134,13 +134,13 @@ class RequisitionHRBPApproveController extends \BaseController {
 			if(is_null($prev_action)){
 				$prev_action_datetime = 0;
 			}else{
-				$prev_action_datetime = ($timestamp-($prev_action->action_datetime))/(60.0*60.0);
+				$prev_action_datetime = $prev_action->action_datetime;
 			}
 			DB::table('requisition_logs')->insert(array(
 							'action_type' => 3,
 							'requisition_id' => $id,
-							'send_number' => 1,
-							'employee_user_id' => 1,
+							'send_number' => 2,// Number 2 Because of HRBP Manager
+							'employee_user_id' => 2,
 							/**
 							change 'employee_user_id' to real employee id
 							*/
@@ -151,7 +151,7 @@ class RequisitionHRBPApproveController extends \BaseController {
 			));
 			//if(Input::get('approve')){
 			//$requisition->datetime_prev_status = Input::get('datetime_prev_status');// Unchanged Because of HRBP officer
-			$requisition->requisition_current_status_id = 3;// Unchanged Because of HRBP officer
+			$requisition->requisition_current_status_id = Input::get('approve')?4:7;// Change!!
 			//Input::get('requisition_current_status_id');
 			$requisition->note = Input::get('note');
 			$requisition->save();

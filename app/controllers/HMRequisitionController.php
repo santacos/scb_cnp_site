@@ -1,6 +1,6 @@
 <?php
 
-class RequisitionController extends \BaseController {
+class HMRequisitionController extends \BaseController {
 
 	/**
 	 * Display a listing of requisitions
@@ -21,8 +21,6 @@ class RequisitionController extends \BaseController {
 	 */
 	public function create()
 	{
-		
-
 		return View::make('requisition.create');
 	}
 
