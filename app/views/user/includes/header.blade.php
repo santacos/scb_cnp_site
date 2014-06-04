@@ -218,7 +218,7 @@
 	  </div><!-- .primary -->
 	  
 	  <div class="col-xs-6 col-md-3">
-		
+		@if(Auth::check())
 		<div class="btn-group cart-header">
 		  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			<div class="icon">
@@ -280,7 +280,7 @@
 			</div>
 		  </div>
 		</div><!-- .cart-header -->
-		
+		@endif
 
 		<div class="phone-header">
 		  <a href="#">
@@ -304,16 +304,16 @@
 
 
 		@if(Auth::check())
-			<button class="btn btn-mini btn-default" type="button" style="margin-top:10px;margin-left:50px;">log out</button>
-		@endif
+			<button class="btn btn-sm btn-default" type="button" style="margin-top:10px;margin-left:50px;">log out</button>
 		
-
-		<div>
+		
+		@else
+		
 			<a href="{{URL::to('user/login')}}"> 
-			<button class="btn btn-mini btn-default" type="button" style="margin-top:10px;margin-left:50px;">log in</button>
+			<button class="btn btn-sm btn-default" type="button" style="margin-top:10px;margin-left:50px;">log in</button>
 			</a>
-		</div>
 		
+		@endif
 	  </div>
 	  
 	  <div class="phone-active col-sm-9 col-md-9">
