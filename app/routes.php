@@ -204,8 +204,6 @@ Route::resource('hrbp-officer-requisition', 'HRBPOfficerRequisitionController');
 // HRBP Manager
 Route::resource('hrbp-manager-requisition', 'HRBPManagerRequisitionController');
 
-// Requisition
-Route::resource('requisition', 'RequisitionController');
 
 // Application
 Route::resource('application', 'ApplicationController');

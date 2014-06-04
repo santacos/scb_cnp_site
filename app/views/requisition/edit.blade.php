@@ -52,7 +52,7 @@ HM-create-requisition
                 {{ HTML::ul($errors->all()) }}
 
 
-        {{ Form::model($requisition, array('route' => array('requisition.update', $requisition->requisition_id), 'method' => 'PUT')) }}
+        {{ Form::model($requisition, array('route' => array('hm-requisition.update', $requisition->requisition_id), 'method' => 'PUT')) }}
         {{ Former::populate($requisition) }}
         {{ Former::populateField('group', $requisition->position()->first()->group) }}
         {{ Former::populateField('division', $requisition->position()->first()->division) }}
