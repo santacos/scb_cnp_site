@@ -11,7 +11,6 @@
 		"intervention/image": "dev-master",
 		"anahkiasen/former": "dev-master",
 		"chumper/datatable": "2.x",
-		"raahul/larryfour": "1.*",
 		"way/generators": "2.*",
 		"nesbot/Carbon": "*"
 
