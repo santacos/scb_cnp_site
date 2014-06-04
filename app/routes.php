@@ -198,6 +198,9 @@ Route::resource('requisition', 'RequisitionController');
 Route::get('api/requisition', array('as'=>'api.requisition', 'uses'=>'RequisitionController@getDatatable'));
 Route::controller('requisitionrest', 'RequisitionRestController');
 
+
+Route::resource('application', 'ApplicationController');
+Route::resource('candidate', 'CandidateController');
 // HRBP
 Route::resource('requisition-hrbp-approve', 'RequisitionHRBPApproveController');
 

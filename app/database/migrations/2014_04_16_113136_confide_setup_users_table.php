@@ -182,7 +182,7 @@ class ConfideSetupUsersTable extends Migration {
             $table->string('nationality',45)->nullable()->default(NULL);
             $table->string('country',45)->nullable()->default(NULL);
             $table->string('city',45)->nullable()->default(NULL);
-            $table->string('full_location',200)->nullable()->default(NULL);
+            $table->string('full_location',500)->nullable()->default(NULL);
             $table->string('current_living_location',200)->nullable()->default(NULL);
             $table->string('filepath_picture',100)->nullable()->default(NULL);
             $table->string('filepath_profile_picture',100)->nullable()->default(NULL);
