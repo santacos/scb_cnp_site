@@ -44,8 +44,8 @@ class ApplicationController extends \BaseController {
 			$application->requisitsion_id = Input::get('requisitsion_id');
 			$application->candidate_user_id = 1;
 			//Input::get('employee_user_id');
-			$application->datetime_create = Carbon::now();
-			$application->datetime_prev_status = Carbon::now();
+			// $application->datetime_create = Carbon::now();
+			// $application->datetime_prev_status = Carbon::now();
 			
 			$application->application_current_status_id = 2;
 			//Input::get('application_current_status_id');
@@ -125,7 +125,25 @@ class ApplicationController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		/*$validator = Validator::make($data = Input::all(), Application::$rules);
+
+		if ($validator->fails())
+		{
+			return Redirect::back()->withErrors($validator)->withInput();
+		}*/
+			$application = Application::findOrFail($id);
+			$application->requisitsion_id = Input::get('requisitsion_id');
+			$application->candidate_user_id = 1;
+			//Input::get('employee_user_id');
+			$application->datetime_create = Carbon::now();
+			$application->datetime_prev_status = Carbon::now();
+			
+			$application->application_current_status_id = 2;
+			//Input::get('application_current_status_id');
+			$application->note = Input::get('note');
+			$application->save();
+
+		return Response::json(array('success' => true));
 	}
 
 	/**

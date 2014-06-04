@@ -164,7 +164,7 @@ class HMRequisitionController extends \BaseController {
 			$requisition->total_number = Input::get('total_number');
 			$requisition->employee_user_id = 1;
 			//Input::get('employee_user_id');
-			$requisition->datetime_create = Carbon::now();
+			// $requisition->datetime_create = Carbon::now();
 			//$requisition->datetime_prev_status = Input::get('datetime_prev_status');
 			$requisition->location_id = Input::get('location_id');
 			$requisition->corporate_title_id = Input::get('corporate_title_id');

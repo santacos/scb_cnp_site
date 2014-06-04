@@ -309,8 +309,6 @@ class ConfideSetupUsersTable extends Migration {
             $table->boolean('is_in_basket')->default(false);
             $table->integer('question_point')->nullable()->default(NULL);
             $table->integer('send_number')->nullable()->default(NULL);
-            $table->timestamp('datetime_create');
-            $table->timestamp('datetime_prev_status');
             $table->boolean('result')->nullable()->default(NULL);
             $table->integer('color')->nullable()->default(NULL);
             $table->string('note',100)->nullable()->default(NULL);
