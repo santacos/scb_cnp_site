@@ -160,7 +160,6 @@ class HMRequisitionController extends \BaseController {
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}*/
-		return Input::get('group');
 			$requisition = Requisition::findOrFail($id);
 			$requisition->total_number = Input::get('total_number');
 			$requisition->employee_user_id = 1;
