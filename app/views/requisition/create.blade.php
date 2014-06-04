@@ -67,7 +67,7 @@ HM-create-requisition
 
                 <div class="form-group">
                     <label for="group">Group :</label>
-                    <select ng-model="group" ng-blur="checkGroup()" class="form-control scrollable-menu ng-valid ng-dirty" id="group" name="group">
+                    <select ng-model="group"  ng-blur="checkGroup()" class="form-control scrollable-menu ng-valid ng-dirty" id="group" name="group">
                         <option value="">Select Group</option>
                         <option ng-repeat="position in allPosition | unique:'group'" value="@{{position.group}}">@{{position.group}}</option>
                         
@@ -94,25 +94,11 @@ HM-create-requisition
 
                  <div class="form-group" ng-show="showJobTitle">
                     <label for="job_title">Job Title :</label>
-                    <select ng-model="job_title" ng-blur="" class="form-control scrollable-menu" id="job_title" name="job_title">
+                    <select ng-model="job_title" ng-blur="" class="form-control scrollable-menu" id="position_id" name="position_id">
                         <option value="">Select Job Title</option>
-                        <option ng-repeat="position in allPosition | filter:{group:group,division:division,organization:organization} | unique:'job_title'" value="@{{position.position_id}}">@{{position.job_title}}</option>
+                        <option ng-repeat="position in allPosition | filter:{group:group,division:division,organization:organization} | unique:'position_id'" value="@{{position.position_id}}">@{{position.job_title}}</option>
                         
                     </select>
-                </div>
-
-                <!--
-                <div class="form-group" ng-show="showDivision">
-                    {{ Former::select('division', 'Division :')->class('form-control scrollable-menu')->addOption('Select Division')
-                            ->fromQuery(Position::All()->unique(), 'division','division') }}    
-                </div>
-                <div class="form-group">
-                    {{ Former::select('organization', 'Organization :')->class('form-control scrollable-menu')->addOption('Select Organization')
-                            ->fromQuery(Position::All()->unique(), 'organization','organization') }}    
-                </div>
-                <div class="form-group">
-                    {{ Former::select('position_id', 'Job Title :')->class('form-control scrollable-menu')->addOption('Select Job Title')
-                            ->fromQuery(Position::All()->unique(), 'job_title','position_id') }}    
                 </div>
 
             <div class="form-group">
@@ -122,13 +108,6 @@ HM-create-requisition
                 overflow-x: hidden;'))->addOption('Select Corporate Title')
                         ->fromQuery(CorporateTitle::All(), 'name', 'corporate_title_id') }}    
             </div>
-
-            <div class="form-group">
-<<<<<<< HEAD
-                {{ Former::select('dept_id', 'Department :')->class('form-control scrollable-menu')->addOption('Select Department')
-                        ->fromQuery(Dept::All(), 'name', 'dept_id') }}    
-            </div>
-            -->
 
             <div class="form-group">
                     {{ Form::label('total_number', 'No. of Vacancy :') }}

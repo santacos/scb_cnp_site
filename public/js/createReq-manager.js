@@ -152,6 +152,7 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils']);
 			 	if($scope.try3){
 			 		$scope.temp = $scope.temp+1;
 			 	}
+			 	
 
 			 	$scope.count = $scope.temp;
 
