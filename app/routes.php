@@ -33,8 +33,6 @@ Route::get('showReq',function(){
 Route::controller('rest','RestController');
 
 
-///////////////////////candidate/////////////////////
-
 Route::get('home',function(){
 	return View::make('user.home');
 });

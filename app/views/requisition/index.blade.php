@@ -4,14 +4,15 @@ thisIsTitle
 @stop
 
 @section('libs')
-    <link rel="stylesheet" href="<?php echo asset('assets/css/AdminLTE.css')?>">
+      <link rel="stylesheet" href="<?php echo asset('assets/css/AdminLTE.css')?>">
       <link rel="stylesheet" href="<?php echo asset('css/bootstrap-lightbox.css')?>">
+      {{ HTML::style('assets/css/bootstrap.css') }}
+        {{ HTML::script('js/jquery.dataTables.js')}}
 @stop
 
 @section('content')
          <!--row two for TO DO REQUISITION-->
-          {{ HTML::style('css/jquery.dataTables.css')}}
-        {{ HTML::script('js/jquery.dataTables.js')}}
+         
         <div class="box box-primary">
 
                     <div class="box-header">

@@ -1,11 +1,11 @@
-<table class="table stripe hover row-border cell-border text-center  {{ $class = str_random(8) }}">
+<table class="table table-hover text-center  {{ $class = str_random(8) }}">
     <colgroup>
         @for ($i = 0; $i < count($columns); $i++)
         <col class="con{{ $i }}" />
         @endfor
     </colgroup>
     <thead>
-    <tr>
+    <tr class="danger">
         @foreach($columns as $i => $c)
         <th align="center" valign="middle" class="head{{ $c }}" 
             @if ($c == 'checkbox')
@@ -45,7 +45,7 @@
     @foreach($data as $d)
     <tr class="danger">
         @foreach($d as $dd)
-        <td>{{ $dd }}</td>
+        <td >{{ $dd }}</td>
         @endforeach
     </tr>
     @endforeach
@@ -55,6 +55,14 @@
     jQuery(document).ready(function(){
         // dynamic table
         jQuery('.{{ $class }}').dataTable({
+            "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+                  // Bold the grade for all 'A' grade browsers
+                  if ( aData[0] == 3 )
+                  {
+                    $( nRow).addClass('danger');
+                  }
+                },
+
             "bAutoWidth": false,            
             @if (isset($hasCheckboxes) && $hasCheckboxes)
             'aaSorting': [['1', 'asc']],
