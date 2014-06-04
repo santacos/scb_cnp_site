@@ -112,7 +112,6 @@ return array(
 		'Intervention\Image\ImageServiceProvider',
 		'Former\FormerServiceProvider',
 		'Chumper\Datatable\DatatableServiceProvider',
-		'Raahul\LarryFour\LarryFourServiceProvider',
 	),
 
 	/*

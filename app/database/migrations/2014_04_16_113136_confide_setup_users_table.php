@@ -182,7 +182,7 @@ class ConfideSetupUsersTable extends Migration {
             $table->string('nationality',45)->nullable()->default(NULL);
             $table->string('country',45)->nullable()->default(NULL);
             $table->string('city',45)->nullable()->default(NULL);
-            $table->string('full_location',200)->nullable()->default(NULL);
+            $table->string('full_location',500)->nullable()->default(NULL);
             $table->string('current_living_location',200)->nullable()->default(NULL);
             $table->string('filepath_picture',100)->nullable()->default(NULL);
             $table->string('filepath_profile_picture',100)->nullable()->default(NULL);
@@ -229,6 +229,7 @@ class ConfideSetupUsersTable extends Migration {
             $table->foreign('location_id')->references('location_id')->on('locations')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('corporate_title_id');
             $table->foreign('corporate_title_id')->references('corporate_title_id')->on('corporate_titles')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('job_title',100);
             $table->unsignedInteger('position_id');
             $table->foreign('position_id')->references('position_id')->on('positions')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('dept_id');

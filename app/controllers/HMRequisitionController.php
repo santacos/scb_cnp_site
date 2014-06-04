@@ -87,7 +87,10 @@ class HMRequisitionController extends \BaseController {
    				}
    					return '<span class="badge bg-grey">'.$model->requisition_id.'</span>';
    		})
-    ->showColumns('job_title')
+    ->addColumn('job_title',function($model)
+        {
+            return $model->position()->first()->job_title;
+        })
     ->addColumn('corporate_title_id',function($model)
         {
             return $model->corporateTitle()->first()->name;
@@ -99,9 +102,6 @@ class HMRequisitionController extends \BaseController {
     ->addColumn('requisition_current_status_id',function($model)
         {
             return '<span class="label label-success">'.$model->requisitionCurrentStatus()->first()->name.'</span>';
-        })
-    ->addColumn('total_number',function($model)
-        { return $model->total_number;
         })
     ->addColumn('SLA',function($model)
         { return $model->total_number;

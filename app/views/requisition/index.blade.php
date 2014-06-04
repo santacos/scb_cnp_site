@@ -40,7 +40,6 @@ thisIsTitle
                 'Corporate Title',
                'Location',
                'Status',
-               'Detail',
                'SLA',
                'Date Order',
                'Deadline',
@@ -49,6 +48,9 @@ thisIsTitle
                 )    
     ->setUrl(route('api.requisition'))  
     ->render('datatable') }}
+
+
+    
                                     </div><!-- /.box-body -->
                         </div><!-- /.box -->
 

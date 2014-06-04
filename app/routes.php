@@ -38,7 +38,7 @@ Route::get('createReq',function(){
 });
 
 Route::controller('userrest','UserRestController');
-Route::controller('rest','RestController');
+Route::controller('requisition/rest','RestController');
 
 Route::get('home',function(){
 	return View::make('user.home');
@@ -203,6 +203,15 @@ Route::resource('hrbp-officer-requisition', 'HRBPOfficerRequisitionController');
 
 // HRBP Manager
 Route::resource('hrbp-manager-requisition', 'HRBPManagerRequisitionController');
+
+// Requisition
+Route::resource('requisition', 'RequisitionController');
+
+// Application
+Route::resource('application', 'ApplicationController');
+
+// Candidate
+Route::resource('candidate', 'CandidateController');
 
 /*App::missing(function($exception)
 {

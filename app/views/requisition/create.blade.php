@@ -22,6 +22,8 @@ HM-create-requisition
     <script src="<?php echo asset('vendor/angular.min.js')?>"></script> 
     <script src="<?php echo asset('vendor/ui-bootstrap-tpls-0.11.0.min.js')?>"></script>
     <script src="<?php echo asset('js/createReq-manager.js')?>"></script>
+    <script src="<?php echo asset('vendor/ui-utils.js')?>"></script> 
+    <script src="<?php echo asset('vendor/ui-utils.min.js')?>"></script>
 @stop
 
 @section('content')
@@ -56,21 +58,47 @@ HM-create-requisition
                   {{ Form::label('job_title_id', 'Job Title :') }}  
                  {{ Form::text('job_title', Input::old('job_title'), array('class' => 'form-control', 'id' => 'form','ng-model'=>'try1','ng-blur'=>'checkProgress()','placeholder'=>'Enter job title','required')) }}
                   </div>-->
-                  <div class="form-group">
-                    {{ Former::select('group', 'Group :')->class('form-control scrollable-menu')->addOption('Select Group')
+                  <!--
+                <div class="form-group">
+                    {{ Former::select('group', 'Group :')->attributes(array('ng-model' => 'GGroup','ng-blur'=>'checkGroup()'))->class('form-control scrollable-menu')->addOption('Select Group')
                             ->fromQuery(Position::All()->unique(), 'group', 'group') }}    
                 </div>
+            -->
+
                 <div class="form-group">
-                    {{ Former::select('division', 'Devision :')->class('form-control scrollable-menu')->addOption('Select Division')
-                            ->fromQuery(Position::All()->unique(), 'division','division') }}    
+                    <label for="group">Group :</label>
+                    <select ng-model="group"  ng-blur="checkGroup()" class="form-control scrollable-menu ng-valid ng-dirty" id="group" name="group">
+                        <option value="">Select Group</option>
+                        <option ng-repeat="position in allPosition | unique:'group'" value="@{{position.group}}">@{{position.group}}</option>
+                        
+                    </select>    
                 </div>
-                <div class="form-group">
-                    {{ Former::select('organization', 'Organization :')->class('form-control scrollable-menu')->addOption('Select Organization')
-                            ->fromQuery(Position::All()->unique(), 'organization','organization') }}    
+
+                <div class="form-group" ng-show="showDivision">
+                    <label for="division">Division :</label>
+                    <select ng-model="division" ng-blur="checkDivision()" class="form-control scrollable-menu" id="division" name="division">
+                        <option value="">Select Division</option>
+                        <option ng-repeat="position in allPosition | filter:{group:group} | unique:'division'" value="@{{position.division}}">@{{position.division}}</option>
+                        
+                    </select>
                 </div>
-                <div class="form-group">
-                    {{ Former::select('position_id', 'Job Title :')->class('form-control scrollable-menu')->addOption('Select Job Title')
-                            ->fromQuery(Position::All()->unique(), 'job_title','position_id') }}    
+
+                <div class="form-group" ng-show="showOrganization">
+                    <label for="organization">Organization :</label>
+                    <select ng-model="organization" ng-blur="checkOrganization()" class="form-control scrollable-menu" id="organization" name="organization">
+                        <option value="">Select Organization</option>
+                        <option ng-repeat="position in allPosition | filter:{group:group,division:division} | unique:'organization'" value="@{{position.organization}}">@{{position.organization}}</option>
+                        
+                    </select>
+                </div>
+
+                 <div class="form-group" ng-show="showJobTitle">
+                    <label for="job_title">Job Title :</label>
+                    <select ng-model="job_title" ng-blur="" class="form-control scrollable-menu" id="position_id" name="position_id">
+                        <option value="">Select Job Title</option>
+                        <option ng-repeat="position in allPosition | filter:{group:group,division:division,organization:organization} | unique:'position_id'" value="@{{position.position_id}}">@{{position.job_title}}</option>
+                        
+                    </select>
                 </div>
 
             <div class="form-group">
