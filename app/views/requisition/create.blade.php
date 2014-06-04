@@ -67,7 +67,7 @@ HM-create-requisition
 
                 <div class="form-group">
                     <label for="group">Group :</label>
-                    <select ng-model="group"  ng-blur="checkGroup()" class="form-control scrollable-menu ng-valid ng-dirty" id="group" name="group">
+                    <select ng-model="group" ng-blur="checkGroup()" ng-blur="checkGroup()" class="form-control scrollable-menu ng-valid ng-dirty" id="group" name="group">
                         <option value="">Select Group</option>
                         <option ng-repeat="position in allPosition | unique:'group'" value="@{{position.group}}">@{{position.group}}</option>
                         

@@ -13,7 +13,7 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils']);
 	  		];
 			
 
-			$http.get('rest/position').success(function(dataa) {
+			$http.get('../rest/position').success(function(dataa) {
 	     		 $scope.allPosition = dataa;
 	     		 
 	    	}).error(function(data, status, headers, config) {
@@ -22,7 +22,7 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils']);
 			      console.log('error_position');
    			});
 
-   			$http.get('rest/dept').success(function(dataa) {
+   			$http.get('../rest/dept').success(function(dataa) {
 	     		 $scope.allDept = dataa;
 	     		 
 	    	}).error(function(data, status, headers, config) {
@@ -64,7 +64,7 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils']);
 
 
 
-			$http.get('rest/location').success(function(dataa) {
+			$http.get('../rest/location').success(function(dataa) {
 	     		 $scope.locations = dataa;
 	     		 
 	    	}).error(function(data, status, headers, config) {
