@@ -52,7 +52,7 @@ HM-create-requisition
                 {{ HTML::ul($errors->all()) }}
 
 
-                {{ Form::open(array('url' => 'requisition','files'=>true ))}}
+                {{ Form::open(array('url' => 'hm-requisition','files'=>true ))}}
 
             <!--    <div class="form-group">
                   {{ Form::label('job_title_id', 'Job Title :') }}  

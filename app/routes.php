@@ -194,15 +194,24 @@ Route::get( 'user/logout',                 'UserController@logout');
 Route::controller('userrest', 'UserRestController');
 
 // Hiring Manager
-Route::resource('requisition', 'RequisitionController');
-Route::get('api/requisition', array('as'=>'api.requisition', 'uses'=>'RequisitionController@getDatatable'));
+Route::resource('hm-requisition', 'HMRequisitionController');
+Route::get('api/requisition', array('as'=>'api.requisition', 'uses'=>'HMRequisitionController@getDatatable'));
 Route::controller('requisitionrest', 'RequisitionRestController');
 
+// HRBP Officer
+Route::resource('hrbp-officer-requisition', 'HRBPOfficerRequisitionController');
 
+// HRBP Manager
+Route::resource('hrbp-manager-requisition', 'HRBPManagerRequisitionController');
+
+// Requisition
+Route::resource('requisition', 'RequisitionController');
+
+// Application
 Route::resource('application', 'ApplicationController');
+
+// Candidate
 Route::resource('candidate', 'CandidateController');
-// HRBP
-Route::resource('requisition-hrbp-approve', 'RequisitionHRBPApproveController');
 
 /*App::missing(function($exception)
 {

@@ -37,7 +37,7 @@ thisIsTitle
     ?>
     <center>
 
-      <table id='thetable'>
+      <table>
         <?php $i=0; $col=2?>
         @foreach($display as $key => $value)
           <?php echo (($i%$col==0)?'<tr>':'');?>
@@ -48,7 +48,20 @@ thisIsTitle
         @endforeach
       </table>
 
-      {{ Form::model($requisition, array('route' => array('requisition-hrbp-approve.update', $requisition->requisition_id), 'method' => 'PUT')) }}
+      <p style="color:brown; font-size:20px; font-weight:bold; padding:15px;">Result From HRBP Officer : <span style="color:orange; font-size:20px;">
+        <?php
+          $query = $requisition->requisitionLog()->whereActionType(3)->whereSendNumber(1)->first();
+          if(is_null($query)){
+            echo 'Not Approved Yet';
+          }else if($query->result){
+            echo 'Accepted';
+          }else{
+            echo 'Declined';
+          }
+        ?>
+      </span></p>
+
+      {{ Form::model($requisition, array('route' => array('hrbp-manager-requisition.update', $requisition->requisition_id), 'method' => 'PUT')) }}
 
         {{ Form::button('Decline', array('name' => 'approve', 'value' => false, 'type' => 'submit')) }}
         {{ Form::button('Accept', array('name' => 'approve', 'value' => true, 'type' => 'submit')) }}
