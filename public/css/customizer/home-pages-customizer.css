@@ -20,7 +20,8 @@
 .sidebar .banners .banner-text,
 #catalog .category-img .description,
 .product-bottom .related-products header:before,
-#slider.rs-slider .tparrows:hover,
+.slider.rs-slider .tparrows,
+.slider.rs-slider .tparrows:hover,
 .toolbar .sort-catalog .dropdown-toggle,
 .toolbar .grid-list .grid,
 .toolbar .grid-list .list,
@@ -41,25 +42,22 @@
 .product-page .col-md-7 .actions a:hover,
 .product-page .image-box .thumblist-box .prev:hover,
 .product-page .image-box .thumblist-box .next:hover,
-.btn.btn-inverse:hover,
-.btn.btn-inverse:focus,
-.btn.btn-inverse:active,
-.btn.btn-inverse.active,
-.btn.btn-inverse.disabled,
-.btn.btn-inverse[disabled],
 .accordion-tab > li > a .open-sub:before,
 .accordion-tab > li > a .open-sub:after,
 .products-tab .accordion-tab > li > a .open-sub:before,
 .products-tab .accordion-tab > li > a .open-sub:after,
-.sidebar .calendar-wrap caption {
-  background-color: #40499b;
+.sidebar .calendar-wrap caption,
+.btn-group.open .btn.dropdown-toggle,
+.product .limit-offer,
+.product .not-rotation-actions {
+  background-color: #5E0DAC;
 }
 .slider .slider-nav {
-  background-color: rgba(64,73,155,.97);
+  background-color: rgba(193,8,65,.97);
 }
-.product .product-hover,
-.rotation .employee-hover {
-  background-color: rgba(64,73,155,.9);
+.product .limit-offer,
+.product .not-rotation-actions {
+  background-color: rgba(193,8,65,.9);
 }
 .btn:hover,
 .btn:focus,
@@ -67,8 +65,8 @@
 .btn.active,
 .btn.disabled,
 .btn[disabled] {
-  background-color: #40499b;
-  background-color: rgba(64,73,155,.8);
+  background-color: #5E0DAC;
+  background-color: rgba(82, 23, 230, 0.84);
 }
 #catalog .category-img .description,
 .toolbar .sort-catalog .dropdown-toggle,
@@ -79,25 +77,29 @@
 .pagination > .active > a,
 .pagination > .active > span,
 .pagination > .active > span:hover,
-.sidebar .tags a {
-  background-color: rgba(64,73,155,.7);
+.sidebar .tags a,
+.btn-group.open .btn.dropdown-toggle {
+  background-color: rgba(193,8,65,.7);
 }
 .sidebar .banners .banner-text {
-  background-color: rgba(64,73,155,.65);
+  background-color: rgba(193,8,65,.65);
 }
-#slider.rs-slider .tparrows,
+.slider.rs-slider .tparrows,
 .product-page .add-cart-form .number .regulator a:hover {
-  background-color: rgba(64,73,155,.5);
+  background-color: rgba(193,8,65,.5);
 }
 .pricing .bottom-box {
-  background-color: rgba(64,73,155,.05);
+  background-color: rgba(193,8,65,.05);
 }
-.pricing {
-  background-color: rgba(64,73,155,.06);
+.pricing:before {
+  background-color: rgba(193,8,65,.06);
+}
+.btn.btn-border {
+  border-color: #f89406;
 }
 .pricing .options li,
 .pricing .bottom-box {
-  border-color: rgba(64,73,155,.1);
+  border-color: rgba(193,8,65,.1);
 }
 .header .cart-header .dropdown-toggle,
 #footer .newsletter input:focus + .submit,
@@ -121,19 +123,21 @@
 .pricing .options li span,
 .pricing .options li.active,
 .banner-set .next:hover,
-.banner-set .prev:hover {
-  color: #40499b;
+.banner-set .prev:hover,
+.btn.btn-border,
+.btn.btn-border .caret,
+.product-remove:hover {
+  color: #c10841;
 }
 .pricing .bottom-box .more {
-  color: rgba(64,73,155,.7);
+  color: rgba(193,8,65,.7);
 }
 .pricing .options li {
-  color: rgba(64,73,155,.4);
+  color: rgba(193,8,65,.4);
 }
 .phone-header a svg path,
 .search-header a svg path,
 .product .actions a svg path,
-.product-remove:hover path,
 .sidebar .wishlist .add-cart:hover path,
 .header .cart-header .dropdown-toggle .icon svg path,
 .search-active .search-submit svg path,
@@ -142,7 +146,7 @@
 .jslider .jslider-pointer svg path,
 .rating-box .rating svg polygon,
 .search-result .search-form .search-submit svg path {
-  fill: #40499b;
+  fill: #c10841;
 }
 .carousel-box .pagination a.selected,
 .banner-set .pagination a.selected {
@@ -154,16 +158,14 @@
   .header .primary .navbar .nav > .parent.active:hover > a,
   .header .primary .navbar .nav .open-sub span,
   .header .primary .navbar .btn-navbar .icon-bar,
-  .header.header-two .primary .navbar .btn-navbar.collapsed .icon-bar,
   .accordion-tab > li.active > a,
   .accordion-tab > li.active:hover > a,
   .products-tab .accordion-tab > li.active > a,
   .products-tab .accordion-tab > li.active:hover > a {
-    background-color: #40499b;
+    background-color: #c10841;
   }
 }
-.navbar-inverse .brand,
-.navbar-inverse .nav > li > a,
+.top-navbar .nav > li a,
 .btn-group.btn-select .dropdown-toggle,
 .product .product-hover,
 .employee .employee-hover,

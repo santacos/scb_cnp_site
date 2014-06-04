@@ -16,7 +16,6 @@
 Route::get('testtest',function(){
 	return View::make('testtest');
 });
-Route::controller('testrest','RestController');
 
 //////////////////// test area/////////////////////////////
 Route::get('tryView',function(){
@@ -31,14 +30,10 @@ Route::get('showReq',function(){
 	return View::make('HM.allRequisiton');
 });
 
-Route::resource('setlocation','LocationController');
-
-Route::get('createReq',function(){
-	return View::make('HM.create');
-});
-
-Route::controller('userrest','UserRestController');
 Route::controller('requisition/rest','RestController');
+
+
+///////////////////////candidate/////////////////////
 
 Route::get('home',function(){
 	return View::make('user.home');
@@ -72,7 +67,7 @@ Route::get('checklogin',function(){
 });
 
 
-///////////////////////////////////////////////////
+///////////////////////////////////////////////////admin/////////////////////////
 
 Route::get('/default', function()
 {

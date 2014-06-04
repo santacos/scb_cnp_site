@@ -1,31 +1,11 @@
 /* Buttons */
-.social-icons {
-    margin: 0;
-    list-style: none;
+.btn-icon.sbtnf,
+.btn-icon .sbtnf {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: auto;
 }
-.social-icons li {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 4px;
-    margin-bottom: 4px;
-}
-.social-icons li a {
-    display: inline-block;
-    width: 31px;
-    height: 31px;
-    text-indent: -9999px;
-    -webkit-border-radius: 31px;
-    -moz-border-radius: 31px;
-    border-radius: 31px;
-    background-color: #444444;
-    position: relative;
-    background-repeat: no-repeat;
-    -webkit-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out;
-}
-.social-icons li a:hover{
-    background-color: #000000;
-}
+
 /* End Buttons */
 
 .sbtnf,
@@ -35,13 +15,14 @@
     height: 31px;
     line-height: 31px;
     text-align: center;
-    margin: 0 4px 5px 0;
+    margin: 2px 0;
     background-position: -10000px;
     -webkit-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
     text-decoration: none;
     color: #ffffff;
     overflow: hidden;
+    vertical-align: top;
 }
 .sbtnf:hover {
     text-decoration: none;
@@ -52,18 +33,9 @@
         float: left;
     }
 }
-
-.sbtnf:after,
-.sbtnf:after {
-    content: 'compensation_of_lacking_text';
-    display: inline;
-}
-
-
 .sbtnf-circle {
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
+    border-radius: 400px;
+    -webkit-border-radius: 400px;
     position: relative;
 }
 .sbtnf-rounded {
@@ -273,30 +245,10 @@
 
 .sbtnf-icon-white{color: #ffffff;}
 
-.sbtnf.icon-fivehundredpx:before,
-.sbtnf.icon-windows:before,
-.sbtnf.icon-aim:before,
-.sbtnf.icon-stumbleupon:before,
-.sbtnf.icon-meetup:before,
-.sbtnf.icon-googleplay:before,
-.sbtnf.icon-lastfm:before,
-.sbtnf.icon-opentable:before,
-.sbtnf.icon-cart:before,
-.sbtnf.icon-yahoo:before,
-.sbtnf.icon-vimeo:before,
-.sbtnf.icon-steam:before,
-.sbtnf.icon-ebay:before,
-.sbtnf.icon-ninetyninedesigns:before,
-.sbtnf.icon-vk:before,
-.sbtnf.icon-reddit:before,
-.sbtnf.icon-twitter:before{
-    padding-right: 0.3em;
-}
 .sbtnf.icon-gmail:before {padding-right: 0.28em;}
 .sbtnf.icon-pocket:before {padding-right: 0.1em;}
 .sbtnf.icon-wikipedia:before {
-    padding-right: 0.2em;
-    padding-top: 0.8em;
+    padding-top: 0.6em;
 }
 .sbtnf.icon-digg:before,
 .sbtnf.icon-soundcloud:before,
@@ -311,7 +263,6 @@
 .sbtnf.icon-googleplay:before {
     padding-left: 0.4em;
 }
-
 
 .sbtnf.icon-myspace:before{
     padding-left: 0.1em;

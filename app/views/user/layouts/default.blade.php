@@ -19,7 +19,7 @@
 		
 
 		
-			@include('user.includes.topbox')
+
 		
 
 		<header class= @yield('header-class')>
