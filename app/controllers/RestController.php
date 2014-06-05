@@ -9,6 +9,12 @@ class RestController extends \BaseController {
 
 	}
 
+	public function getEditRequisition($id){
+			$requisition = Requisition::find($id);
+			$position_id = $requisition ->position_id;
+			$position = Position::find($position_id);
+			return $position ;
+	}
 
 	public function getCorporateTitle(){
 			$Corporate_titles = CorporateTitle::All()->toJson();

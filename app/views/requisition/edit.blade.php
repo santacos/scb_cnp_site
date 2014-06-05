@@ -21,7 +21,11 @@ HM-create-requisition
     
     <script src="<?php echo asset('vendor/angular.min.js')?>"></script> 
     <script src="<?php echo asset('vendor/ui-bootstrap-tpls-0.11.0.min.js')?>"></script>
-    <script src="<?php echo asset('js/createReq-manager.js')?>"></script>
+
+    <!--angular file-->
+    <script src="<?php echo asset('js/editReq-manager.js')?>"></script>
+    <!-- end anugular-->
+
     <script src="<?php echo asset('vendor/ui-utils.js')?>"></script> 
     <script src="<?php echo asset('vendor/ui-utils.min.js')?>"></script>
 @stop
@@ -62,45 +66,58 @@ HM-create-requisition
 
         {{$requisition->group}}
 
-
+        aaa @{{group}}
         <div class="form-group">
                     <label for="group">Group : </label>
-                    <select ng-model="group"  ng-blur="checkGroup()"  class="form-control scrollable-menu ng-valid ng-dirty " id="group" name="group">
+
+                   <!--  <select ng-model="group"  ng-click="checkGroup()"  class="form-control scrollable-menu ng-valid ng-dirty " id="group" name="group">
                         <option value="{{$requisition->group}}" selected="selected">{{$requisition->group}}</option>
                         <option ng-repeat="position in allPosition | unique:'group'" value="@{{position.group}}" >@{{position.group}}</option>
                         
-                        <!-- <div ng-repeat="position in allPosition | unique:'group'">
+                        <div ng-repeat="position in allPosition | unique:'group'">
                             <div ng-if="$requisition->group==position.group"><option value="@{{position.group}}" selected>@{{position.group}}</option></div>
                             <div ng-if="$requisition->group!=position.group"><option value="@{{position.group}}">@{{position.group}}</option></div>
-                        </div> -->
+                        </div>
                     
-                    </select>    
+                    </select>   -->  
+
+                    HEY groupgroup : @{{requisition}}<br>
+                    <select ng-model="requisition.group"  ng-change="checkGroup()"  
+                        class="form-control scrollable-menu ng-valid ng-dirty " 
+                        id="group" name="group"
+                        ng-options="position.group as position.group for position in allPosition     | unique:'group'">
+                        
+                    </select> 
                 </div>
 
-                <div class="form-group" ng-show="showDivision">
+                <div class="form-group">
                     <label for="division">Division :</label>
-                    <select ng-model="division" ng-blur="checkDivision()" class="form-control scrollable-menu" id="division" name="division">
-                        <option value="{{$requisition->division}}" >{{$requisition->division}}</option>
-                        <option ng-repeat="position in allPosition | filter:{group:group} | unique:'division'" value="@{{position.division}}">@{{position.division}}</option>
+                    <select ng-model="requisition.division" ng-change="checkDivision()" class="form-control scrollable-menu" id="division" name="division">
+                         <option ng-repeat="position in allPosition | filter:{group:requisition.group} | unique:'division'" value="@{{position.division}}">@{{position.division}}</option>
                         
                     </select>
                 </div>
 
-                <div class="form-group" ng-show="showOrganization">
+                <div class="form-group">
                     <label for="organization">Organization :</label>
-                    <select ng-model="organization" ng-blur="checkOrganization()" class="form-control scrollable-menu" id="organization" name="organization">
-                        <option value="{{$requisition->organization}}" >{{$requisition->organization}}</option>
-                        <option ng-repeat="position in allPosition | filter:{group:group,division:division} | unique:'organization'" value="@{{position.organization}}">@{{position.organization}}</option>
+                    <select ng-model="requisition.organization" ng-change="checkOrganization()" 
+                        class="form-control scrollable-menu" id="organization" name="organization"
+                        ng-options="position.organization as position.organization 
+                        for position in allPosition | filter:{group:requisition.group,division:requisition.division} | unique:'organization' "
+                        >
                         
                     </select>
                 </div>
-
-                 <div class="form-group" ng-show="showJobTitle">
+                
+                <div class="form-group">
                     <label for="job_title">Job Title :</label>
-                    <select ng-model="position_id" ng-blur="" class="form-control scrollable-menu" id="position_id" name="position_id">
-                       <option value="{{$requisition->position_id}}" >{{$requisition->jobTitle}}</option>
-                        <option ng-repeat="position in allPosition | filter:{group:group,division:division,organization:organization} | unique:'position_id'" value="@{{position.position_id}}">@{{position.job_title}}</option>
-                        
+                    <select ng-model="requisition.position_id"  
+                    class="form-control scrollable-menu" id="position_id" name="position_id"
+                    ng-options="position.position_id as position.job_title 
+                    for position in allPosition 
+                    | filter:{group:requisition.group,division:requisition.division,organization:requisition.organization} | unique:'position_id'"
+                    >
+                       
                     </select>
                 </div>
 
