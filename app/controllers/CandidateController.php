@@ -145,8 +145,8 @@ class CandidateController extends \BaseController {
             $user->first = trim(Input::get( 'first' ));
             $user->last = trim(Input::get( 'last' ));
             $user->contact_number = Input::get( 'contact_number' );
-            $user->updateUniques(); 
-            return $user->errors()->all();
+            $user->save(); 
+            // return $user->errors()->all();
             
 			$candidate->idcard = Input::get('idcard');
 			$candidate->passport_number = Input::get('passport_number');
