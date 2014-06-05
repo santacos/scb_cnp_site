@@ -68,7 +68,6 @@ thisIsTitle
         </div>
         {{ Form::button('Decline', array('name' => 'approve', 'value' => false, 'type' => 'submit')) }}
         {{ Form::button('Accept', array('name' => 'approve', 'value' => true, 'type' => 'submit')) }}
-    </center>
       {{ Form::close() }}
     </center>
 @stop

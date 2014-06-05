@@ -44,48 +44,7 @@ class HRBPManagerRequisitionController extends \BaseController {
 	{
 		return View::make('HRBPManager.approve.show')->with('requisition',Requisition::find($id));
 	}
-	public function getDatatable()
-    {    	
-    	return  Datatable::collection(Requisition::all())
-    ->addColumn('requisitsion_id',function($model)
-   		{
-   			return '<span class="badge bg-grey">'.$model->requisition_id.'</span>';
-   		})
-    ->showColumns('job_title')
-    ->addColumn('corporate_title_id',function($model)
-        {
-            return $model->corporateTitle()->first()->name;
-        })
-    ->addColumn('location_id',function($model)
-        {
-            return $model->location()->first()->name;
-        })
-    ->addColumn('requisition_current_status_id',function($model)
-        {
-            return '<span class="label label-success">'.$model->requisitionCurrentStatus()->first()->name.'</span>';
-        })
-    ->addColumn('total_number',function($model)
-        { return $model->total_number;
-        })
-    ->addColumn('SLA',function($model)
-        { return $model->total_number;
-        })
-    ->addColumn('Date Order',function($model)
-        { return $model->total_number;
-        })
-    ->addColumn('Deadline',function($model)
-        { return $model->total_number;
-        })
-    ->addColumn('Note',function($model)
-        { return '<i class="fa fa-fw fa-envelope-o"></i>';
-        })
-    ->addColumn('Progress',function($model)
-        { return $model->total_number;
-        })
-    
-    ->searchColumns('job_title')
-    ->make();
-    }
+	
 	/**
 	 * Show the form for editing the specified requisition.
 	 *
