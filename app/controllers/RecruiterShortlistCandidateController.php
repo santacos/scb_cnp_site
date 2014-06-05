@@ -9,9 +9,7 @@ class RecruiterRequisitionPostController extends \BaseController {
 	 */
 	public function index()
 	{
-		$application = Application::all();
-
-		return View::make('recruiter.requisition.shortlist.candidate.index', compact('application'));
+		return Response::json(array('success' => false));
 	}
 
 	/**
@@ -42,7 +40,9 @@ class RecruiterRequisitionPostController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return Response::json(array('success' => false));
+		$application = Application::all()/*->where*/;
+
+		return View::make('recruiter.requisition.shortlist.candidate.show', compact('application'));
 	}
 
 	/**
