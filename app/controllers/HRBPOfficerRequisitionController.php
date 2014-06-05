@@ -44,48 +44,7 @@ class HRBPOfficerRequisitionController extends \BaseController {
 	{
 		return View::make('HRBPOfficer.approve.show')->with('requisition',Requisition::find($id));
 	}
-	public function getDatatable()
-    {    	
-    	return  Datatable::collection(Requisition::all())
-    ->addColumn('requisitsion_id',function($model)
-   		{
-   			return '<span class="badge bg-grey">'.$model->requisition_id.'</span>';
-   		})
-    ->showColumns('job_title')
-    ->addColumn('corporate_title_id',function($model)
-        {
-            return $model->corporateTitle()->first()->name;
-        })
-    ->addColumn('location_id',function($model)
-        {
-            return $model->location()->first()->name;
-        })
-    ->addColumn('requisition_current_status_id',function($model)
-        {
-            return '<span class="label label-success">'.$model->requisitionCurrentStatus()->first()->name.'</span>';
-        })
-    ->addColumn('total_number',function($model)
-        { return $model->total_number;
-        })
-    ->addColumn('SLA',function($model)
-        { return $model->total_number;
-        })
-    ->addColumn('Date Order',function($model)
-        { return $model->total_number;
-        })
-    ->addColumn('Deadline',function($model)
-        { return $model->total_number;
-        })
-    ->addColumn('Note',function($model)
-        { return '<i class="fa fa-fw fa-envelope-o"></i>';
-        })
-    ->addColumn('Progress',function($model)
-        { return $model->total_number;
-        })
-    
-    ->searchColumns('job_title')
-    ->make();
-    }
+	
 	/**
 	 * Show the form for editing the specified requisition.
 	 *
@@ -124,6 +83,8 @@ class HRBPOfficerRequisitionController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}*/
 			$requisition = Requisition::findOrFail($id);
+
+			// Requisition Log
 			$prev_action = RequisitionLog::where('requisition_id','=',$id)->orderBy('action_datetime','desc');
 			if($prev_action->count() > 0){
 				$prev_action = $prev_action->first();
@@ -149,6 +110,8 @@ class HRBPOfficerRequisitionController extends \BaseController {
 							'result' => Input::get('approve'),
 							'note' => Input::get('note')
 			));
+			//END Requisition Log
+
 			//if(Input::get('approve')){
 			//$requisition->datetime_prev_status = Input::get('datetime_prev_status');// Unchanged Because of HRBP officer
 			$requisition->requisition_current_status_id = 3;// Unchanged Because of HRBP officer

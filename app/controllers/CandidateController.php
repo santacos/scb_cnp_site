@@ -140,16 +140,26 @@ class CandidateController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}*/
 			$candidate = Candidate::findOrFail($id);
+			$user=$candidate->user()->first();
+            $user->email = trim(strtolower(Input::get( 'email' )));
+            $user->first = trim(Input::get( 'first' ));
+            $user->last = trim(Input::get( 'last' ));
+            $user->contact_number = Input::get( 'contact_number' );
+            $user->save(); 
+            // return $user->errors()->all();
+            
 			$candidate->idcard = Input::get('idcard');
 			$candidate->passport_number = Input::get('passport_number');
 			$candidate->thai_saluation = Input::get('thai_saluation');
 			$candidate->thai_firstname = Input::get('thai_firstname');
 			$candidate->thai_lastname = Input::get('thai_lastname');
 			$candidate->eng_saluation = Input::get('eng_saluation');
+			$candidate->is_male = Input::get('is_male');
 			$candidate->birth_date = Input::get('birth_date');
 			$candidate->nationality = Input::get('nationality');
 			$candidate->country = Input::get('country');
 			$candidate->city = Input::get('city');
+			$candidate->zip_code = Input::get('zip_code');
 			$candidate->full_location = Input::get('full_location');
 			$candidate->current_living_location = Input::get('current_living_location');
 			$candidate->filepath_picture = Input::get('filepath_picture');

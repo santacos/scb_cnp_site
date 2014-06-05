@@ -1,6 +1,6 @@
 <?php
 
-class HMNLRequisitionController extends \BaseController {
+class RecruiterShortlistCandidateController extends \BaseController {
 
 	/**
 	 * Display a listing of requisitions
@@ -9,9 +9,7 @@ class HMNLRequisitionController extends \BaseController {
 	 */
 	public function index()
 	{
-		$requisitions = Requisition::all();
-
-		return View::make('requisition.index', compact('requisitions')); // Same as Hiring Manager
+		return Response::json(array('success' => false));
 	}
 
 	/**
@@ -42,9 +40,11 @@ class HMNLRequisitionController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return View::make('HM.approve.show')->with('requisition',Requisition::find($id));
+		$applications = Application::whereRequisitionID($id)->get();
+
+		return View::make('recruiter.requisition.shortlist.candidate.show', compact('applications'));
 	}
-	
+
 	/**
 	 * Show the form for editing the specified requisition.
 	 *
@@ -53,7 +53,7 @@ class HMNLRequisitionController extends \BaseController {
 	 */
 	public function edit($requisition_id)
 	{
-		return Response::json(array('success' => false));
+		return View::make('recruiter.requisition.shortlist.candidate.show', compact('applications'));
 	}
 
 	/**
@@ -83,6 +83,8 @@ class HMNLRequisitionController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}*/
 			$requisition = Requisition::findOrFail($id);
+
+			// Requisition Log
 			$prev_action = RequisitionLog::where('requisition_id','=',$id)->orderBy('action_datetime','desc');
 			if($prev_action->count() > 0){
 				$prev_action = $prev_action->first();
@@ -96,7 +98,7 @@ class HMNLRequisitionController extends \BaseController {
 				$prev_action_datetime = $prev_action->action_datetime;
 			}
 			DB::table('requisition_logs')->insert(array(
-							'action_type' => 2,
+							'action_type' => 4,
 							'requisition_id' => $id,
 							'send_number' => 1,
 							'employee_user_id' => 1,
@@ -105,13 +107,26 @@ class HMNLRequisitionController extends \BaseController {
 							*/
 							'action_datetime' => $timestamp,
 							'prev_action_datetime' => $prev_action_datetime,
-							'result' => Input::get('approve'),
+							'result' => true,
 							'note' => Input::get('note')
 			));
-			//if(Input::get('approve')){
-			//$requisition->datetime_prev_status = Input::get('datetime_prev_status');// Unchanged Because of HRBP officer
-			$requisition->requisition_current_status_id = Input::get('approve')?3:7;// Change!!
-			//Input::get('requisition_current_status_id');
+			//END Requisition Log
+
+			$requisition->job_title = Input::get('job_title');
+			$requisition->total_number = Input::get('total_number');
+			$requisition->location_id = Input::get('location_id');
+			$requisition->corporate_title_id = Input::get('corporate_title_id');
+			$requisition->position_id =  Input::get('position_id');
+			$dep= Input::get('group');
+			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
+			$requisition->dept_id =$a;
+			$requisition->requisition_current_status_id = 5;
+			$requisition->recruitment_type_id = Input::get('recruitment_type_id');
+			$requisition->recruitment_obj_template_id=Input::get('recruitment_obj_template_id');
+			$requisition->recruitment_objective = Input::get('recruitment_objective');
+			$requisition->year_of_experience = Input::get('year_of_experience');
+			$requisition->responsibility = Input::get('responsibility');
+			$requisition->qualification = Input::get('qualification');
 			$requisition->note = Input::get('note');
 			$requisition->save();
 
@@ -126,7 +141,9 @@ class HMNLRequisitionController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		return Response::json(array('success' => false));
+		Requisition::destroy($id);
+
+		return Response::json(array('success' => true));
 	}
 
 }
