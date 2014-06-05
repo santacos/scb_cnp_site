@@ -1,6 +1,6 @@
 <?php
 
-class RecruiterRequisitionPostController extends \BaseController {
+class RecruiterShortlistCandidateController extends \BaseController {
 
 	/**
 	 * Display a listing of requisitions
@@ -40,9 +40,9 @@ class RecruiterRequisitionPostController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$application = Application::all()/*->where*/;
+		$applications = Application::whereRequisitionID($id)->get();
 
-		return View::make('recruiter.requisition.shortlist.candidate.show', compact('application'));
+		return View::make('recruiter.requisition.shortlist.candidate.show', compact('applications'));
 	}
 
 	/**
@@ -53,7 +53,7 @@ class RecruiterRequisitionPostController extends \BaseController {
 	 */
 	public function edit($requisition_id)
 	{
-		return Response::json(array('success' => false));
+		return View::make('recruiter.requisition.shortlist.candidate.show', compact('applications'));
 	}
 
 	/**

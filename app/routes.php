@@ -196,6 +196,9 @@ Route::get('recruiter-shortlist-detail', 'HMRequisitionController@index');
 Route::resource('recruiter-shortlist-candidate', 'RecruiterShortlistCandidateController');
 Route::resource('recruiter-shortlist-basket', 'RecruiterShortlistBasketController');
 Route::resource('recruiter-shortlist-log', 'RecruiterShortlistLogController');
+Route::get('recruiter-shortlist-candidate-ckbox', function(){
+	return View::make('recruiter.requisition.shortlist.candidate.ckbox');
+});
 
 // Candidate
 Route::resource('candidate', 'CandidateController');
