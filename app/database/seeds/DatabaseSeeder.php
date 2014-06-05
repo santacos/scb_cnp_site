@@ -33,22 +33,11 @@ class AllTableSeeder extends Seeder {
 		DB::table('application_current_statuses')->delete();
 		DB::table('SLA_requisitions')->delete();
 		DB::table('SLA_candidates')->delete();
+		DB::table('requisitions')->delete();
 		DB::table('recruitment_objective_templates')->delete();
 		DB::table('recruitment_types')->delete();
 
 //USER	
-		User::create(array(	'user_id' => 4,
-							'username' => 'testMan',
-							'email' => 'test_man@hotmail.com',
-							'password' => Hash::make('test'),
-							'first' => 'Test',
-							'last' => 'Man',
-							'contact_number' => '012343210',
-							'confirmation_code' => 'X8d7SCk0dW4M13dS',
-							'confirmed' => true,
-							'status' => 0,
-							'facebook_uid' => '1234567890'));
-
 		User::create(array(	'user_id' => 1,
 							'username' => 'testMan2',
 							'email' => 'test_man2@hotmail.com',
@@ -82,17 +71,61 @@ class AllTableSeeder extends Seeder {
 							'confirmed' => true,
 							'status' => 2,
 							'facebook_uid' => '444444444444'));
+		User::create(array(	'user_id' => 4,
+							'username' => 'testMan',
+							'email' => 'test_man@hotmail.com',
+							'password' => Hash::make('test'),
+							'first' => 'Test',
+							'last' => 'Man',
+							'contact_number' => '012343210',
+							'confirmation_code' => 'X8d7SCk0dW4M13dS',
+							'confirmed' => true,
+							'status' => 0,
+							'facebook_uid' => '1234567890'));
+		User::create(array(	'user_id' => 5,
+							'username' => 'testCan1-5',
+							'email' => 'test_can@hotmail.com',
+							'password' => Hash::make('test'),
+							'first' => 'cTest',
+							'last' => 'cMan',
+							'contact_number' => '11111',
+							'confirmation_code' => 'X8d7SCk0dW4M13dS',
+							'confirmed' => true,
+							'status' => 5,
+							'facebook_uid' => '1234567890'));
+		User::create(array(	'user_id' => 6,
+							'username' => 'testCan2-6',
+							'email' => 'test_can2@hotmail.com',
+							'password' => Hash::make('test'),
+							'first' => 'c2Test',
+							'last' => 'c2Man',
+							'contact_number' => '22222',
+							'confirmation_code' => 'X8d7SCk0dW4M13dS',
+							'confirmed' => false,
+							'status' => 5,
+							'facebook_uid' => '1234567890'));
+		User::create(array(	'user_id' => 7,
+							'username' => 'testCan3-7',
+							'email' => 'test_can3hotmail.com',
+							'password' => Hash::make('test'),
+							'first' => 'c3Test',
+							'last' => 'c3Man',
+							'contact_number' => '33333',
+							'confirmation_code' => 'X8d7SCk0dW4M13dS',
+							'confirmed' => true,
+							'status' => 5,
+							'facebook_uid' => '1234567890'));
 		
 //CANDIDATE
-		Candidate::create(array('user_id' => 1
+		Candidate::create(array('user_id' => 5
 							));
-		Candidate::create(array('user_id' => 3
+		Candidate::create(array('user_id' => 6
 							));
-		Candidate::create(array('user_id' => 4
+		Candidate::create(array('user_id' => 7
 							));
 
 //POSITION
-					Position::create(array('position_id' => 1,
+			Position::create(array('position_id' => 1,
 			'group' => 'President',
 			'division' => 'No division',
 			'organization' => 'No organization',
@@ -18676,7 +18709,6 @@ class AllTableSeeder extends Seeder {
 			'recruiter_user_id' => 1
 			));
 
-
 //CORPORRATE TITLE GROUP
 		CorporateTitleGroup::create(array(	'corporate_title_group_id' => 1,
 							'name' => 'Officer',
@@ -18762,7 +18794,7 @@ class AllTableSeeder extends Seeder {
 							));
 
 //LOCATION
-					Location::create(array('location_id' => 1,
+			Location::create(array('location_id' => 1,
 			'name' => '333 แฟคทอรี่แลนด์ บางบัวทอง'
 			));
 			Location::create(array('location_id' => 2,
@@ -22408,13 +22440,7 @@ class AllTableSeeder extends Seeder {
 			'name' => 'ฮาร์เบอร์ มอลล์ (แหลมฉบัง)'
 			));
 
-
 //EMPLOYEE
-		Employee::create(array(	'user_id' => 4,
-							'position_id' => 1,
-							'dept_id' => 1,
-							'next_level_user_id' => null
-							));
 		Employee::create(array(	'user_id' => 1,
 							'position_id' => 2,
 							'dept_id' => 1,
@@ -22430,6 +22456,12 @@ class AllTableSeeder extends Seeder {
 							'dept_id' => 5,
 							'next_level_user_id' => 2
 							));
+		Employee::create(array(	'user_id' => 4,
+							'position_id' => 1,
+							'dept_id' => 1,
+							'next_level_user_id' => null
+							));
+
 //SKILL CATEGORY
 		SkillCategory::create(array(	'skill_category_id' => 1,
 							'name' => 'Programming Language'
@@ -22619,8 +22651,40 @@ class AllTableSeeder extends Seeder {
 							));
 
 //Requisition
-
-
+		DB::table('requisitions')->insert(array(
+							'requisition_id' => 1,
+							'total_number' => 3,
+							'get_number' => 0,
+							'employee_user_id' => 1,
+							'location_id' => 123,
+							'position_id' => 111,
+							'dept_id' => 1,
+							'requisition_current_status_id' => 2,
+							'recruitment_type_id' => 1,
+							'year_of_experience' => 0,
+							'recruitment_obj_template_id' => 1,
+							'recruitment_objective' => 'Mr.Resign',
+							'responsibility' => 'res1',
+							'qualification' => 'qua1',
+							'note' => 'number1'
+							));
+		DB::table('requisitions')->insert(array(
+							'requisition_id' => 2,
+							'total_number' => 4,
+							'get_number' => 0,
+							'employee_user_id' => 3,
+							'location_id' => 234,
+							'position_id' => 222,
+							'dept_id' => 2,
+							'requisition_current_status_id' => 2,
+							'recruitment_type_id' => 2,
+							'year_of_experience' => 8,
+							'recruitment_obj_template_id' => 2,
+							'recruitment_objective' => '',
+							'responsibility' => 'res2',
+							'qualification' => 'qua2',
+							'note' => 'number2'
+							));
 
 //SLA REQUISITION
 		DB::table('SLA_requisitions')->insert(array(

@@ -1,7 +1,7 @@
 @extends('admin.layouts.default')
 
 @section('title')
-HM-create-requisition
+recruiter-post-requisition
 @stop
 
 @section('libs')
@@ -26,12 +26,13 @@ HM-create-requisition
     <script src="<?php echo asset('vendor/ui-utils.min.js')?>"></script>
 @stop
 
+
 @section('content')
     <div ng-app="nameApp">
         <div class="container" ng-controller="NameCtrl">
 
             <div class="col-md-7 col-md-offset-1" style="margin-top:10px">
-                <h1>Create a requisition</h1>
+                <h1>Verify a requisition Before Posting</h1>
                 <hr/>
                 <div class="row">
                     <!--
@@ -42,50 +43,57 @@ HM-create-requisition
                     <progressbar class="progress-striped active" max="3" value="count" type="danger"><i>@{{count}} / 3</i></progressbar>
                     </div>
                 </div>
-                
 
-                @if (Session::has('message'))
+                 @if (Session::has('message'))
                 <div class="alert alert-info">{{ Session::get('message') }}</div>
                 @endif
 
                 <!-- if there are creation errors, they will show here -->
                 {{ HTML::ul($errors->all()) }}
 
+        <?/**
+        START add + edit code
+        */?>
 
-                {{ Form::open(array('url' => 'hm-requisition','files'=>true ))}}
+        {{ Form::model($requisition, array('route' => array('recruiter-requisition-post.update', $requisition->requisition_id), 'method' => 'PUT')) }}
+        
+        <div class="form-group">
+            {{ Form::label('job_title', 'Job Title :') }}
+            {{ Form::text('job_title', Input::old('job_title'), array('class' => 'form-control' ,'required')) }}
+        </div>
 
-            <!--    <div class="form-group">
-                  {{ Form::label('job_title_id', 'Job Title :') }}  
-                 {{ Form::text('job_title', Input::old('job_title'), array('class' => 'form-control','ng-model'=>'try1','ng-blur'=>'checkProgress()','placeholder'=>'Enter job title','required')) }}
-                  </div>-->
-                  <!--
-                <div class="form-group">
-                    {{ Former::select('group', 'Group :')->attributes(array('ng-model' => 'GGroup','ng-blur'=>'checkGroup()'))->class('form-control scrollable-menu')->addOption('Select Group')
-                            ->fromQuery(Position::All()->unique(), 'group', 'group') }}    
-                </div>
-            -->
+        <?/**
+        END add + edit code
+        */?>
 
-                <div class="form-group">
-                    <label for="group">Group :</label>
-                    <!--
-                    <select ng-model="group" ng-blur="checkGroup()" ng-blur="checkGroup()" class="form-control scrollable-menu ng-valid ng-dirty" id="group" name="group">
-                        <option value="">Select Group</option>
-                        <option ng-repeat="position in allPosition | unique:'group'" value="@{{position.group}}">@{{position.group}}</option>
+        {{ Former::populate($requisition) }}
+        {{ Former::populateField('group', $requisition->position()->first()->group) }}
+        {{ Former::populateField('division', $requisition->position()->first()->division) }}
+        {{ Former::populateField('organization', $requisition->position()->first()->organization) }}
+        {{ Former::populateField('jobTitle', $requisition->position()->first()->job_title) }}
+        {{ Former::populateField('position_id', $requisition->position_id) }}
+
+        {{$requisition->group}}
+
+
+        <div class="form-group">
+                    <label for="group">Group : </label>
+                    <select ng-model="group"  ng-blur="checkGroup()"  class="form-control scrollable-menu ng-valid ng-dirty " id="group" name="group">
+                        <option value="{{$requisition->group}}" selected="selected">{{$requisition->group}}</option>
+                        <option ng-repeat="position in allPosition | unique:'group'" value="@{{position.group}}" >@{{position.group}}</option>
                         
-                    </select>   
-                    -->
-                     <select ng-model="group"  ng-change="checkGroup()" 
-                        class="form-control scrollable-menu ng-valid ng-dirty " 
-                        id="group" name="group"
-                        ng-options="position.group as position.group for position in allPosition     | unique:'group'">
-                        <option value="">Select Group</option>
-                    </select> 
+                        <!-- <div ng-repeat="position in allPosition | unique:'group'">
+                            <div ng-if="$requisition->group==position.group"><option value="@{{position.group}}" selected>@{{position.group}}</option></div>
+                            <div ng-if="$requisition->group!=position.group"><option value="@{{position.group}}">@{{position.group}}</option></div>
+                        </div> -->
+                    
+                    </select>    
                 </div>
 
                 <div class="form-group" ng-show="showDivision">
                     <label for="division">Division :</label>
-                    <select ng-model="division" ng-change="checkDivision()" class="form-control scrollable-menu" id="division" name="division">
-                        <option value="">Select Division</option>
+                    <select ng-model="division" ng-blur="checkDivision()" class="form-control scrollable-menu" id="division" name="division">
+                        <option value="{{$requisition->division}}" >{{$requisition->division}}</option>
                         <option ng-repeat="position in allPosition | filter:{group:group} | unique:'division'" value="@{{position.division}}">@{{position.division}}</option>
                         
                     </select>
@@ -93,8 +101,8 @@ HM-create-requisition
 
                 <div class="form-group" ng-show="showOrganization">
                     <label for="organization">Organization :</label>
-                    <select ng-model="organization" ng-change="checkOrganization()" class="form-control scrollable-menu" id="organization" name="organization">
-                        <option value="">Select Organization</option>
+                    <select ng-model="organization" ng-blur="checkOrganization()" class="form-control scrollable-menu" id="organization" name="organization">
+                        <option value="{{$requisition->organization}}" >{{$requisition->organization}}</option>
                         <option ng-repeat="position in allPosition | filter:{group:group,division:division} | unique:'organization'" value="@{{position.organization}}">@{{position.organization}}</option>
                         
                     </select>
@@ -102,8 +110,8 @@ HM-create-requisition
 
                  <div class="form-group" ng-show="showJobTitle">
                     <label for="job_title">Job Title :</label>
-                    <select ng-model="job_title" class="form-control scrollable-menu" id="position_id" name="position_id">
-                        <option value="">Select Job Title</option>
+                    <select ng-model="position_id" ng-blur="" class="form-control scrollable-menu" id="position_id" name="position_id">
+                       <option value="{{$requisition->position_id}}" >{{$requisition->jobTitle}}</option>
                         <option ng-repeat="position in allPosition | filter:{group:group,division:division,organization:organization} | unique:'position_id'" value="@{{position.position_id}}">@{{position.job_title}}</option>
                         
                     </select>
@@ -150,18 +158,19 @@ HM-create-requisition
                     {{ Form::label('qualification', 'Qualifications :') }}
                     {{ Form::text('qualification', Input::old('qualification'), array('class' => 'form-control','required')) }}
                 </div>
+                <p><span style="font-weight:bold;">Note From HRBP : </span>{{ $requisition->note }}</p>
                 <div class="form-group">
                     {{ Form::label('note', 'Note :') }}
-                    {{ Form::textarea('note', Input::old('note'), array('class' => 'form-control','size' => '30x5')) }}
+                    {{ Form::textarea('note', '', array('class' => 'form-control','size' => '30x5')) }}
                 </div>
 
-            {{ Form::submit('Create', array('class' => 'btn btn-primary btn-lg btn-block')) }}
 
-            {{ Form::close() }}
+    {{ Form::submit('Post Job', array('class' => 'btn btn-primary btn-lg btn-block')) }}
+
+    {{ Form::close() }}
             </div>
         </div>
-    </div>
-              
+    </div>      
 @stop
 
 
@@ -171,3 +180,4 @@ HM-create-requisition
 @section('script')
     <script src="<?php echo asset('js/bootstrap-lightbox.js')?>"></script>
 @stop
+
