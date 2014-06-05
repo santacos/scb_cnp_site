@@ -36,7 +36,6 @@ thisIsTitle
       );
     ?>
     <center>
-
       <table>
         <?php $i=0; $col=2?>
         @foreach($display as $key => $value)
@@ -47,8 +46,8 @@ thisIsTitle
           <?php $i++; ?>
         @endforeach
       </table>
-
-      {{ Form::model($requisition, array('route' => array('hrbp-officer-requisition.update', $requisition->requisition_id), 'method' => 'PUT')) }}
+    
+      {{ Form::model($requisition, array('route' => array('hm-nl-requisition.update', $requisition->requisition_id), 'method' => 'PUT')) }}
         <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
           {{ Form::label('note', 'Note :') }}
           {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
@@ -57,5 +56,5 @@ thisIsTitle
         {{ Form::button('Accept', array('name' => 'approve', 'value' => true, 'type' => 'submit')) }}
     </center>
       {{ Form::close() }}
-    </center>
+    
 @stop

@@ -62,10 +62,13 @@ thisIsTitle
       </span></p>
 
       {{ Form::model($requisition, array('route' => array('hrbp-manager-requisition.update', $requisition->requisition_id), 'method' => 'PUT')) }}
-
+        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
+          {{ Form::label('note', 'Note :') }}
+          {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
+        </div>
         {{ Form::button('Decline', array('name' => 'approve', 'value' => false, 'type' => 'submit')) }}
         {{ Form::button('Accept', array('name' => 'approve', 'value' => true, 'type' => 'submit')) }}
-
+    </center>
       {{ Form::close() }}
     </center>
 @stop
