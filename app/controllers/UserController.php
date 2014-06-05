@@ -51,6 +51,9 @@ class UserController extends BaseController {
 
             if ( !$user->errors()->all())
             {
+                $candidate = new candidate;
+                $candidate->user_id = $user->user_id;
+                $candidate->save();
                 // Redirect with success message, You may replace "Lang::get(..." for your custom message.
                             return Redirect::action('UserController@login')
                                 ->with( 'notice', Lang::get('confide::confide.alerts.account_created') );
@@ -77,12 +80,11 @@ class UserController extends BaseController {
         {
             // If user is logged, redirect to internal 
             // page, change it to '/admin', '/dashboard' or something
-            return Redirect::to('/');
+            return Redirect::to('/home');
         }
         else
         {
-            return View::make(Config::get('confide::login_form'));
-            //return View::make('user.login');
+            return View::make('user.login');
         }
     }
 
@@ -109,8 +111,7 @@ class UserController extends BaseController {
             // caught by the authentication filter IE Redirect::guest('user/login').
             // Otherwise fallback to '/'
             // Fix pull #145
-           return Redirect::intended('/home'); // change it to '/admin', '/dashboard' or something
-           // return 'Yeah login leawww';
+            return Redirect::intended('/home'); // change it to '/admin', '/dashboard' or something
         }
         else
         {

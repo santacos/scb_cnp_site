@@ -30,13 +30,13 @@
                 <input class="form-control" placeholder="08xxxxxxxx" type="text" name="contact_number" id="contact_number" value="{{{ Input::old('contact_number') }}}">
             </div>
 
-        @if ( Session::get('error') )
-            <div class="alert alert-error alert-danger">
-                @if ( is_array(Session::get('error')) )
-                    {{ head(Session::get('error')) }}
+                @if (Session::has('message'))
+                <div class="alert alert-info">{{ Session::get('message') }}</div>
                 @endif
-            </div>
-        @endif
+
+                <!-- if there are creation errors, they will show here -->
+                {{ HTML::ul($errors->all()) }}
+
 
         @if ( Session::get('notice') )
             <div class="alert">{{ Session::get('notice') }}</div>
