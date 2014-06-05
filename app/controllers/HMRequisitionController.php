@@ -171,8 +171,10 @@ class HMRequisitionController extends \BaseController {
 			$requisition->position_id =  Input::get('position_id');
 
 			
-			//Input::get('position_id');
-			$dep= Input::get('group');
+			$pos_id=Input::get('position_id');
+			return $pos_id;
+			$dep= Position::find($pos_id);
+			return $dep;
 			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
 			$requisition->dept_id =$a;
 			$requisition->requisition_current_status_id = 2;

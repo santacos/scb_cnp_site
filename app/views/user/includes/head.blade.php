@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="<?php echo asset('css/responsive.css')?>">
   <link rel="stylesheet" href="<?php echo asset('css/customizer/pages.css')?>">
   <link rel="stylesheet" href="<?php echo asset('css/customizer/home-pages-customizer.css')?>">
+  <link rel="stylesheet" href="<?php echo asset('css/newSet.css')?>">
 
   <!--[if IE]>
     <link rel='stylesheet' href="<?php echo asset('css/ie/ie.css')?>">
