@@ -17,7 +17,7 @@ SCB Recruitment-Home
 
 @section('content')
 
-  
+  <div class="container">
     <div class="row">
      
 
@@ -87,12 +87,13 @@ SCB Recruitment-Home
       	</article><!-- .content -->
 
       	 <div class="content pull-left col-sm-2 col-md-2">
-    		<button type="button" class="btn btn-border btn-primary btn-lg" style="margin-top:20px;width:250px;height:60px;">
+    		<button type="button" class="btn btn-border btn-primary btn-lg" style="margin-top:20px;width:150 %;height:60px;">
     			<h5><i class="fa fa-fw fa-search pull-left"></i>&nbsp;Search Job</h5>
     		</button>	
     	</div>
 
     </div>
+   </div>
   <!-- .container -->
 
 @stop

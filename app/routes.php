@@ -30,7 +30,7 @@ Route::get('showReq',function(){
 	return View::make('HM.allRequisiton');
 });
 
-Route::controller('requisition/rest','RestController');
+Route::controller('rest','RestController');
 
 
 ///////////////////////candidate/////////////////////
