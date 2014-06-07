@@ -10,6 +10,9 @@ class DatabaseSeeder extends Seeder {
 	public function run()
 	{
 		Eloquent::unguard();
+		$this->call('UsersTableSeeder');
+        $this->call('RolesTableSeeder');
+        $this->call('PermissionsTableSeeder');
 		$this->call('AllTableSeeder');
 	}
 
@@ -18,7 +21,6 @@ class DatabaseSeeder extends Seeder {
 class AllTableSeeder extends Seeder {
 	public function run(){
 		DB::connection()->disableQueryLog();
-		DB::table('users')->delete();
 		DB::table('candidates')->delete();
 		DB::table('positions')->delete();
 		DB::table('depts')->delete();
@@ -37,92 +39,27 @@ class AllTableSeeder extends Seeder {
 		DB::table('recruitment_objective_templates')->delete();
 		DB::table('recruitment_types')->delete();
 
-//USER	
-		User::create(array(	'user_id' => 1,
-							'username' => 'testMan2',
-							'email' => 'test_man2@hotmail.com',
-							'password' => Hash::make('test'),
-							'first' => 'Test2',
-							'last' => 'Man2',
-							'contact_number' => '024686420',
-							'confirmation_code' => 'AABBCCDDeeffgghh',
-							'confirmed' => false,
-							'status' => 4,
-							'facebook_uid' => '1122334455'));
-		User::create(array(	'user_id' => 2,
-							'username' => 'testMan3',
-							'email' => 'test_man3@hotmail.com',
-							'password' => Hash::make('test'),
-							'first' => 'Test3',
-							'last' => 'Man3',
-							'contact_number' => '033333333',
-							'confirmation_code' => 'threethree',
-							'confirmed' => false,
-							'status' => 1,
-							'facebook_uid' => '3333333333333'));
-		User::create(array(	'user_id' => 3,
-							'username' => 'testMan4',
-							'email' => 'test_man4@hotmail.com',
-							'password' => Hash::make('test'),
-							'first' => 'Test4',
-							'last' => 'Man4',
-							'contact_number' => '044444444',
-							'confirmation_code' => 'fourfour',
-							'confirmed' => true,
-							'status' => 2,
-							'facebook_uid' => '444444444444'));
-		User::create(array(	'user_id' => 4,
-							'username' => 'testMan',
-							'email' => 'test_man@hotmail.com',
-							'password' => Hash::make('test'),
-							'first' => 'Test',
-							'last' => 'Man',
-							'contact_number' => '012343210',
-							'confirmation_code' => 'X8d7SCk0dW4M13dS',
-							'confirmed' => true,
-							'status' => 0,
-							'facebook_uid' => '1234567890'));
-		User::create(array(	'user_id' => 5,
-							'username' => 'testCan1-5',
-							'email' => 'test_can@hotmail.com',
-							'password' => Hash::make('test'),
-							'first' => 'cTest',
-							'last' => 'cMan',
-							'contact_number' => '11111',
-							'confirmation_code' => 'X8d7SCk0dW4M13dS',
-							'confirmed' => true,
-							'status' => 5,
-							'facebook_uid' => '1234567890'));
-		User::create(array(	'user_id' => 6,
-							'username' => 'testCan2-6',
-							'email' => 'test_can2@hotmail.com',
-							'password' => Hash::make('test'),
-							'first' => 'c2Test',
-							'last' => 'c2Man',
-							'contact_number' => '22222',
-							'confirmation_code' => 'X8d7SCk0dW4M13dS',
-							'confirmed' => false,
-							'status' => 5,
-							'facebook_uid' => '1234567890'));
-		User::create(array(	'user_id' => 7,
-							'username' => 'testCan3-7',
-							'email' => 'test_can3hotmail.com',
-							'password' => Hash::make('test'),
-							'first' => 'c3Test',
-							'last' => 'c3Man',
-							'contact_number' => '33333',
-							'confirmation_code' => 'X8d7SCk0dW4M13dS',
-							'confirmed' => true,
-							'status' => 5,
-							'facebook_uid' => '1234567890'));
-		
+
 //CANDIDATE
-		Candidate::create(array('user_id' => 5
-							));
-		Candidate::create(array('user_id' => 6
-							));
-		Candidate::create(array('user_id' => 7
-							));
+		$user = User::where('username','=','candidate1')->first();
+		$candidate = new candidate;
+        $candidate->user_id = $user->user_id;
+        $candidate->save();
+
+        $user = User::where('username','=','candidate2')->first();
+		$candidate = new candidate;
+        $candidate->user_id = $user->user_id;
+        $candidate->save();
+
+        $user = User::where('username','=','candidate3')->first();
+		$candidate = new candidate;
+        $candidate->user_id = $user->user_id;
+        $candidate->save();
+
+        $user = User::where('username','=','candidate4')->first();
+		$candidate = new candidate;
+        $candidate->user_id = $user->user_id;
+        $candidate->save();
 
 //POSITION
 			Position::create(array('position_id' => 1,
@@ -18628,85 +18565,94 @@ class AllTableSeeder extends Seeder {
 			));
 
 //DEPT
+
+		$user = User::where('username','=','hrbp1')->first();
+		$user1 = User::where('username','=','recruiter1')->first();
+		$user2 = User::where('username','=','recruiter2')->first();
+		$user3 = User::where('username','=','recruiter3')->first();
+		$user4 = User::where('username','=','recruiter4')->first();
 		Dept::create(array(	'dept_id' => 1,
 			'name' => 'President',
-			'hrbp_user_id' => 2,
-			'recruiter_user_id' => 1
+			'hrbp_user_id' => $user->user_id,
+			'recruiter_user_id' => $user1->user_id
 			));
 			Dept::create(array(	'dept_id' => 2,
 			'name' => 'Audit and Compliance Group',
-			'hrbp_user_id' => 4,
-			'recruiter_user_id' => 1
+			'hrbp_user_id' => $user->user_id,
+			'recruiter_user_id' => $user1->user_id
 			));
 			Dept::create(array(	'dept_id' => 3,
 			'name' => 'Business Banking Group',
-			'hrbp_user_id' => 3,
-			'recruiter_user_id' => 1
+			'hrbp_user_id' => $user->user_id,
+			'recruiter_user_id' => $user1->user_id
 			));
 			Dept::create(array(	'dept_id' => 4,
 			'name' => 'Change Program',
-			'hrbp_user_id' => 1,
-			'recruiter_user_id' => 1
+			'hrbp_user_id' => $user->user_id,
+			'recruiter_user_id' => $user1->user_id
 			));
+			$user = User::where('username','=','hrbp2')->first();
 			Dept::create(array(	'dept_id' => 5,
 			'name' => 'Corporate Communications Division',
-			'hrbp_user_id' => 2,
-			'recruiter_user_id' => 1
+			'hrbp_user_id' => $user->user_id,
+			'recruiter_user_id' => $user2->user_id
 			));
 			Dept::create(array(	'dept_id' => 6,
 			'name' => 'Finance Group',
-			'hrbp_user_id' => 1,
-			'recruiter_user_id' => 1
+			'hrbp_user_id' => $user->user_id,
+			'recruiter_user_id' => $user2->user_id
 			));
 			Dept::create(array(	'dept_id' => 7,
 			'name' => 'General Counsel Group',
-			'hrbp_user_id' => 3,
-			'recruiter_user_id' => 1
+			'hrbp_user_id' => $user->user_id,
+			'recruiter_user_id' => $user2->user_id
 			));
 			Dept::create(array(	'dept_id' => 8,
 			'name' => 'Group Treasury',
-			'hrbp_user_id' => 3,
-			'recruiter_user_id' => 1
+			'hrbp_user_id' => $user->user_id,
+			'recruiter_user_id' => $user2->user_id
 			));
+			$user = User::where('username','=','hrbp3')->first();
 			Dept::create(array(	'dept_id' => 9,
 			'name' => 'Human Resources Group',
-			'hrbp_user_id' => 3,
-			'recruiter_user_id' => 1
+			'hrbp_user_id' => $user->user_id,
+			'recruiter_user_id' => $user3->user_id
 			));
 			Dept::create(array(	'dept_id' => 10,
 			'name' => 'i-OFFICE',
-			'hrbp_user_id' => 1,
-			'recruiter_user_id' => 1
+			'hrbp_user_id' => $user->user_id,
+			'recruiter_user_id' => $user3->user_id
 			));
 			Dept::create(array(	'dept_id' => 11,
 			'name' => 'Retail Banking Group',
-			'hrbp_user_id' => 2,
-			'recruiter_user_id' => 1
+			'hrbp_user_id' => $user->user_id,
+			'recruiter_user_id' => $user3->user_id
 			));
 			Dept::create(array(	'dept_id' => 12,
 			'name' => 'Risk Management Group',
-			'hrbp_user_id' => 2,
-			'recruiter_user_id' => 1
+			'hrbp_user_id' => $user->user_id,
+			'recruiter_user_id' => $user3->user_id
 			));
+			$user = User::where('username','=','hrbp4')->first();
 			Dept::create(array(	'dept_id' => 13,
 			'name' => 'Special Business Group',
-			'hrbp_user_id' => 2,
-			'recruiter_user_id' => 1
+			'hrbp_user_id' => $user->user_id,
+			'recruiter_user_id' => $user4->user_id
 			));
 			Dept::create(array(	'dept_id' => 14,
 			'name' => 'Technology and Operations Group',
-			'hrbp_user_id' => 4,
-			'recruiter_user_id' => 1
+			'hrbp_user_id' => $user->user_id,
+			'recruiter_user_id' => $user4->user_id
 			));
 			Dept::create(array(	'dept_id' => 15,
 			'name' => 'Wholesale Banking Group',
-			'hrbp_user_id' => 2,
-			'recruiter_user_id' => 1
+			'hrbp_user_id' => $user->user_id,
+			'recruiter_user_id' => $user4->user_id
 			));
 			Dept::create(array(	'dept_id' => 16,
 			'name' => 'Wholesale Banking Group',
-			'hrbp_user_id' => 4,
-			'recruiter_user_id' => 1
+			'hrbp_user_id' => $user->user_id,
+			'recruiter_user_id' => $user4->user_id
 			));
 
 //CORPORRATE TITLE GROUP
@@ -22441,22 +22387,26 @@ class AllTableSeeder extends Seeder {
 			));
 
 //EMPLOYEE
-		Employee::create(array(	'user_id' => 1,
+		$user1 = User::where('username','=','hrbp1')->first();
+		$user2 = User::where('username','=','hrbp2')->first();
+		$user3 = User::where('username','=','hiringmanager')->first();
+		$user4 = User::where('username','=','nexthiringmanager')->first();
+		Employee::create(array(	'user_id' => $user3->user_id,
 							'position_id' => 2,
 							'dept_id' => 1,
-							'next_level_user_id' => 4
+							'next_level_user_id' => $user4->user_id
 							));
-		Employee::create(array(	'user_id' => 2,
+		Employee::create(array(	'user_id' => $user1->user_id,
 							'position_id' => 3,
 							'dept_id' => 3,
-							'next_level_user_id' => 4
+							'next_level_user_id' => $user2->user_id
 							));
-		Employee::create(array(	'user_id' => 3,
+		Employee::create(array(	'user_id' => $user2->user_id,
 							'position_id' => 4,
 							'dept_id' => 5,
-							'next_level_user_id' => 2
+							'next_level_user_id' => $user3->user_id
 							));
-		Employee::create(array(	'user_id' => 4,
+		Employee::create(array(	'user_id' => $user4->user_id,
 							'position_id' => 1,
 							'dept_id' => 1,
 							'next_level_user_id' => null
@@ -22562,8 +22512,9 @@ class AllTableSeeder extends Seeder {
 							));
 
 //EDUCATION
-		Education::create(array(	'education_id' => 1,
-							'candidate_user_id' => 1,
+		$user = User::where('username','=','candidate1')->first();
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
 							'school_name' => 'mini bear nursery school',
 							'year_start' => null,
 							'year_end' => null,
@@ -22572,8 +22523,8 @@ class AllTableSeeder extends Seeder {
 							'major' => null,
 							'GPA' => 3.98
 							));
-		Education::create(array(	'education_id' => 2,
-							'candidate_user_id' => 1,
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
 							'school_name' => 'kob monkey temple',
 							'year_start' => null,
 							'year_end' => null,
@@ -22582,8 +22533,8 @@ class AllTableSeeder extends Seeder {
 							'major' => null,
 							'GPA' => 4.00
 							));
-		Education::create(array(	'education_id' => 3,
-							'candidate_user_id' => 1,
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
 							'school_name' => 'noname',
 							'year_start' => null,
 							'year_end' => null,
@@ -22592,8 +22543,8 @@ class AllTableSeeder extends Seeder {
 							'major' => null,
 							'GPA' => 0.36
 							));
-		Education::create(array(	'education_id' => 4,
-							'candidate_user_id' => 3,
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
 							'school_name' => 'CU',
 							'level' => 'primary school',
 							'field_of_study' => 'engineering',
@@ -22649,16 +22600,37 @@ class AllTableSeeder extends Seeder {
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 8,
 							'name' => 'HHH'
 							));
+//RECRUITMENT OBJECTIVE TEMPLATE
+		DB::table('recruitment_objective_templates')->insert(array(
+							'recruitment_objective_template_id' => 1,
+							'message' => 'Replace Resignation of'
+							));
+		DB::table('recruitment_objective_templates')->insert(array(
+							'recruitment_objective_template_id' => 2,
+							'message' => 'New'
+							));
+
+//RECRUITMENT TYPE
+		DB::table('recruitment_types')->insert(array(
+							'recruitment_type_id' => 1,
+							'name' => 'Fulltime'
+							));
+		DB::table('recruitment_types')->insert(array(
+							'recruitment_type_id' => 2,
+							'name' => 'Parttime'
+							));
 
 //Requisition
+		 $user = User::where('username','=','recruiter1')->first();
 		DB::table('requisitions')->insert(array(
 							'requisition_id' => 1,
 							'total_number' => 3,
 							'get_number' => 0,
-							'employee_user_id' => 1,
+							'employee_user_id' =>$user->user_id,
 							'location_id' => 123,
 							'position_id' => 111,
 							'dept_id' => 1,
+							'corporate_title_id' => 1,
 							'requisition_current_status_id' => 2,
 							'recruitment_type_id' => 1,
 							'year_of_experience' => 0,
@@ -22668,14 +22640,16 @@ class AllTableSeeder extends Seeder {
 							'qualification' => 'qua1',
 							'note' => 'number1'
 							));
+		 $user = User::where('username','=','recruiter2')->first();
 		DB::table('requisitions')->insert(array(
 							'requisition_id' => 2,
 							'total_number' => 4,
 							'get_number' => 0,
-							'employee_user_id' => 3,
+							'employee_user_id' => $user->user_id,
 							'location_id' => 234,
 							'position_id' => 222,
 							'dept_id' => 2,
+							'corporate_title_id' => 2,
 							'requisition_current_status_id' => 2,
 							'recruitment_type_id' => 2,
 							'year_of_experience' => 8,
@@ -22822,25 +22796,6 @@ class AllTableSeeder extends Seeder {
 							'SLA' => 9
 							));
 
-//RECRUITMENT OBJECTIVE TEMPLATE
-		DB::table('recruitment_objective_templates')->insert(array(
-							'recruitment_objective_template_id' => 1,
-							'message' => 'Replace Resignation of'
-							));
-		DB::table('recruitment_objective_templates')->insert(array(
-							'recruitment_objective_template_id' => 2,
-							'message' => 'New'
-							));
-
-//RECRUITMENT TYPE
-		DB::table('recruitment_types')->insert(array(
-							'recruitment_type_id' => 1,
-							'name' => 'Fulltime'
-							));
-		DB::table('recruitment_types')->insert(array(
-							'recruitment_type_id' => 2,
-							'name' => 'Parttime'
-							));
 
 
 /*

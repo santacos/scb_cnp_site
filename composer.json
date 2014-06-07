@@ -5,8 +5,9 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.1.*",
-		"laravelbook/ardent": "2.4.*",
-		"zizaco/confide": "3.1.x",
+		"laravelbook/ardent": "dev-master",
+		"zizaco/confide": "~3.2",
+        "zizaco/entrust": "~1.2",
 		"artdarek/oauth-4-laravel": "dev-master",
 		"intervention/image": "dev-master",
 		"anahkiasen/former": "dev-master",

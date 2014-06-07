@@ -63,7 +63,6 @@ class ConfideSetupUsersTable extends Migration {
             $table->string('password');
             $table->string('first',45);
             $table->string('last',45);
-            $table->integer('status');
             $table->string('email');
             $table->string('contact_number',20);
             $table->string('facebook_uid',100)->nullable()->default(NULL);
