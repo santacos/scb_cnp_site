@@ -79,6 +79,8 @@ class HMRequisitionController extends \BaseController {
 	}
 	public function getDatatable()
     {    	
+
+    	
     	return  Datatable::collection(Requisition::all())
     ->addColumn('requisitsion_id',function($model)
    		{
@@ -118,8 +120,16 @@ class HMRequisitionController extends \BaseController {
     ->addColumn('Progress',function($model)
         { return $model->total_number;
         })
-    
-    ->searchColumns('job_title')
+    ->orderColumns('requisitsion_id')
+    ->searchColumns('requisitsion_id',
+    	'job_title',
+    	'corporate_title_id',
+    	'location_id',
+    	'requisition_current_status_id',
+    	'SLA','Date Order',
+    	'Deadline',
+    	'Note',
+    	'Progress')
     ->make();
     }
 	/**
