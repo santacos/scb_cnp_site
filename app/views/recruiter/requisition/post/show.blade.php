@@ -55,7 +55,7 @@ recruiter-post-requisition
         START add + edit code
         */?>
 
-        {{ Form::model($requisition, array('route' => array('recruiter-requisition-post.update', $requisition->requisition_id), 'method' => 'PUT')) }}
+        {{ Form::model($requisition, array('route' => array('recruiter.requisition.post.update', $requisition->requisition_id), 'method' => 'PUT')) }}
         
         <div class="form-group">
             {{ Form::label('job_title', 'Job Title :') }}

@@ -77,11 +77,11 @@ class HMRequisitionController extends \BaseController {
 	{
 		return Response::json(Requisition::find($id));
 	}
-	public function getDatatable($action='')
+	public function getDatatable($status_id='')
     {    	
     	 // return $action;
-    	if($action==''){  $req=Requisition::All();}
-    	else{  $req=Requisition::where('requisition_id','=',$action)->get();}
+    	if($status_id==''){  $req=Requisition::All();}
+    	else{  $req=Requisition::where('requisition_current_status_id','=',$status_id)->get();}
     	return  Datatable::collection($req)
     ->addColumn('requisitsion_id',function($model)
    		{
@@ -106,20 +106,54 @@ class HMRequisitionController extends \BaseController {
         {
             return '<span class="label label-success">'.$model->requisitionCurrentStatus()->first()->name.'</span>';
         })
-    ->addColumn('SLA',function($model)
+    ->addColumn('Require',function($model)
         { return $model->total_number;
         })
-    ->addColumn('Date Order',function($model)
+    // ->addColumn('Date Order',function($model)
+    //     { return Carbon::createFromTimestamp(strtotime($model->created_at))->format('j F Y');
+    //     })
+    ->addColumn('Deadline',function($model)
         { return Carbon::createFromTimestamp(strtotime($model->created_at))->format('j F Y');
         })
-    ->addColumn('Deadline',function($model)
-        { return $model->total_number;
+    ->addColumn('From',function($model)
+        { return $model->employee()->first()->first.' '.$model->employee()->first()->last;
         })
     ->addColumn('Note',function($model)
         { return '<i class="fa fa-fw fa-envelope-o"></i>';
         })
-    ->addColumn('Progress',function($model)
-        { return $model->total_number;
+    ->addColumn('Action',function($model)
+        { 
+        	if($model ->requisition_current_status_id < 2) //Creating Requisition
+        	 {
+        	 	return '<a href="' .URL::to('hm/requisition/' . $model->requisition_id.'/edit').'"><button class="btn btn-sm btn-warning">Edit</button></a>';
+
+        	}
+        	 // else	return '<a href="' .URL::to('hm/requisition/' . $model->requisition_id.'/edit').'"><button class="btn btn-sm btn-warning">Edit</button></a>';
+        	  
+        	else if($model ->requisition_current_status_id == 2) //
+        	{
+        		return '<a href="' .URL::to('hm/nl/requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+        	}
+        	else if($model ->requisition_current_status_id == 3)
+        	{
+        		return '<a href="' .URL::to('hrbp/officer/requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+        	}
+        	else if($model ->requisition_current_status_id == 4)
+        	{
+        		return '<a href="' .URL::to('recruiter/requisition/post/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+        	}
+        	else if($model ->requisition_current_status_id == 5)
+        	{
+        		return '<a href="' .URL::to('recruiter/shortlist/basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+        	}
+        	else if($model ->requisition_current_status_id == 6)
+        	{
+        		return '<a href="' .URL::to('hrbp/officer/requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+        	}
+        	else if($model ->requisition_current_status_id == 7)
+        	{
+        		return '<a href="' .URL::to('hrbp/officer/requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+        	}
         })
     ->orderColumns('requisitsion_id')
     ->searchColumns('requisitsion_id',
@@ -127,10 +161,11 @@ class HMRequisitionController extends \BaseController {
     	'corporate_title_id',
     	'location_id',
     	'requisition_current_status_id',
-    	'SLA','Date Order',
+    	'Require',
     	'Deadline',
+    	'From',
     	'Note',
-    	'Progress')
+    	'Action')
     ->make();
     }
 	/**

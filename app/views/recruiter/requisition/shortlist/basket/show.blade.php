@@ -61,9 +61,12 @@ thisIsTitle
                                                 }else{
                                                   echo '<center>'
                                                   .'<iframe src="../recruiter-shortlist-candidate-ckbox" width="30px" height="20px" scrolling="no" frameBorder="0" name="ckbox_f'.$application->application_id.'" id="ckbox_f'.$application->application_id.'">'
+
+                                                  //.'<iframe src="http://localhost/scb_cnp_site/public/recruiter-shortlist-candidate-ckbox" width="500px" height="500px" scrolling="no" frameBorder="0" name="ckbox_f'.$application->application_id.'" id="ckbox_f'.$application->application_id.'">'
+
                                                   .'</iframe>'
                                                   .'</center>'
-                                                  .'<form action="../recruiter-shortlist-candidate-ckbox" id="ckbox'.$application->application_id.'" target="ckbox_f'.$application->application_id.'" method="GET">'
+                                                  .'<form action="http://localhost/scb_cnp_site/public/recruiter-shortlist-candidate-ckbox" id="ckbox'.$application->application_id.'" target="ckbox_f'.$application->application_id.'" method="GET">'
                                                   .'<input type="hidden" name="id" value="'.$application->application_id.'"/>'
                                                   .'</form>'
                                                   .'<script>'
@@ -79,7 +82,7 @@ thisIsTitle
 
                                       </div>
                                     
-                                      {{ Form::open(array('route' => array('recruiter-shortlist-log.store'), 'method' => 'POST')) }}
+                                      {{ Form::open(array('route' => array('recruiter.shortlist.log.store'), 'method' => 'POST')) }}
                                         <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
                                           {{ Form::hidden('id', $requisition->requisition_id) }}
                                           {{ Form::label('note', 'Note :') }}
@@ -99,5 +102,4 @@ thisIsTitle
                         -->
                     </div>
                     <!--end TO DO REQUISITION-->
-
 @stop
