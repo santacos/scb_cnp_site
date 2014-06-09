@@ -175,28 +175,28 @@ Route::controller('userrest', 'UserRestController');
 
 // Hiring Manager
 Route::resource('hm/requisition', 'HMRequisitionController');
-Route::get('api/requisition/{action?}', array('as'=>'api.requisition', 'uses'=>'HMRequisitionController@getDatatable'));
+Route::get('api/requisition/{status_id?}', array('as'=>'api.requisition', 'uses'=>'HMRequisitionController@getDatatable'));
 Route::controller('requisitionrest', 'RequisitionRestController');
 
 // Next Level Hiring Manager
-Route::resource('hm-nl-requisition', 'HMNLRequisitionController');
+Route::resource('hm/nl/requisition', 'HMNLRequisitionController');
 
 // HRBP Officer
-Route::resource('hrbp-officer-requisition', 'HRBPOfficerRequisitionController');
+Route::resource('hrbp/officer/requisition', 'HRBPOfficerRequisitionController');
 
 // HRBP Manager
-Route::resource('hrbp-manager-requisition', 'HRBPManagerRequisitionController');
+Route::resource('hrbp/manager/requisition', 'HRBPManagerRequisitionController');
 
 // Application
 Route::resource('application', 'ApplicationController');
 
 // Recruiter
-Route::resource('recruiter-requisition-post', 'RecruiterRequisitionPostController');
-Route::get('recruiter-shortlist-detail', 'HMRequisitionController@index');
-Route::resource('recruiter-shortlist-candidate', 'RecruiterShortlistCandidateController');
+Route::resource('recruiter/requisition/post', 'RecruiterRequisitionPostController');
+Route::get('recruiter/shortlist/detail', 'HMRequisitionController@index');
+Route::resource('recruiter/shortlist/candidate', 'RecruiterShortlistCandidateController');
+Route::resource('recruiter/shortlist/basket', 'RecruiterShortlistBasketController');
+Route::resource('recruiter/shortlist/log', 'RecruiterShortlistLogController');
 Route::get('recruiter-shortlist-candidate-ckbox-ctrl/{id}', 'RecruiterShortlistCandidateController@toggle');
-Route::resource('recruiter-shortlist-basket', 'RecruiterShortlistBasketController');
-Route::resource('recruiter-shortlist-log', 'RecruiterShortlistLogController');
 Route::get('recruiter-shortlist-candidate-ckbox', function(){
 	return View::make('recruiter.requisition.shortlist.candidate.ckbox');
 });

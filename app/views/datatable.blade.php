@@ -29,7 +29,8 @@
                  width="10%"
             @elseif ($c == 'Note')
                  width="5%"
-                                       
+            @elseif ($c == 'Action')
+                 width="10%"                           
             @endif
         >
             @if ($c == 'checkbox' && $hasCheckboxes = true)
