@@ -51,10 +51,16 @@ thisIsTitle
                                                 if($key != "is_in_basket"){
                                                   echo $value;
                                                 }else{
-                                                  echo '<center><iframe src="../recruiter-shortlist-candidate-ckbox" width="300px" height="300px" scrolling="no" frameBorder="0" name="ckbox_f'.$application->application_id.'"></iframe></center>'
-                                                  .'<form id="ckbox'.$application->application_id.'" target="ckbox_f'.$application->application_id.'" method="POST"><input type="hidden" name="id" value="'.$application->application_id.'"/></form>'
-                                                  .'<script>document.getElementById("ckbox'.$application->application_id.'").action = document.windows["ckbox_f'.$application->application_id.'"].src;'
-                                                  .'document.forms["ckbox'.$application->application_id.'"].submit();</script>';
+                                                  echo '<center>'
+                                                  .'<iframe src="../recruiter-shortlist-candidate-ckbox" width="30px" height="30px" scrolling="no" frameBorder="0" name="ckbox_f'.$application->application_id.'" id="ckbox_f'.$application->application_id.'">'
+                                                  .'</iframe>'
+                                                  .'</center>'
+                                                  .'<form action="../recruiter-shortlist-candidate-ckbox" id="ckbox'.$application->application_id.'" target="ckbox_f'.$application->application_id.'" method="GET">'
+                                                  .'<input type="hidden" name="id" value="'.$application->application_id.'"/>'
+                                                  .'</form>'
+                                                  .'<script>'
+                                                  .'document.getElementById("ckbox'.$application->application_id.'").submit();'
+                                                  .'</script>';
                                                 }
                                                 ?>
                                                 </td>
