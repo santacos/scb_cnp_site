@@ -16,7 +16,7 @@ thisIsTitle
         <div class="box box-primary">
 
                     <div class="box-header">
-                        <h3 class="box-title"> Sent Shortlist..</h3>
+                        <h3 class="box-title"> Sent Shortlist Candidate..</h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-primary btn-xs" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -39,16 +39,16 @@ thisIsTitle
 
                                         <table border="1">
                                           <tr>
-                                            @if(count($shortlists) > 0)
-                                              @foreach($shortlists->first()->toArray() as $key => $value)
+                                            @if(count($applications) > 0)
+                                              @foreach($applications->first()->toArray() as $key => $value)
                                                 <th>{{ $key }}</th>
                                               @endforeach
                                             @endif
                                           </tr>
-                                          @if(count($shortlists) > 0)
-                                            @foreach($shortlists as $shortlist)
+                                          @if(count($applications) > 0)
+                                            @foreach($applications as $application)
                                               <tr>
-                                                @foreach($shortlist->toArray() as $key => $value)
+                                                @foreach($application->toArray() as $key => $value)
                                                   <td>
                                                     {{ $value }}
                                                   </td>

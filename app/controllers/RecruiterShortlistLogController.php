@@ -111,8 +111,12 @@ class RecruiterShortlistLogController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		
-		return "show";
+		$requisition = Requisition::find($id);
+		$shortlists = $requisition->requisitionLog()->whereActionType(5)->get();
+		foreach($shortlists as $shortlist) {
+			$shortlist['sent_number'] = $requisition->application()->whereSendNumber($shortlist->send_number)->count();
+		}
+		return View::make('recruiter.requisition.shortlist.log.show', compact('shortlists'));
 	}
 
 	/**
@@ -152,7 +156,8 @@ class RecruiterShortlistLogController extends \BaseController {
 
 	public function view($id,$id2)
 	{
-
-		return View::make('recruiter.requisition.shortlist.log.show');
+		$requisition = Requisition::find($id);
+		$applications = $requisition->application()->whereSendNumber($id2)->get();
+		return View::make('recruiter.requisition.shortlist.log.view', compact('applications'));
 	}
 }
