@@ -200,6 +200,7 @@ Route::resource('recruiter-shortlist-log', 'RecruiterShortlistLogController');
 Route::get('recruiter-shortlist-candidate-ckbox', function(){
 	return View::make('recruiter.requisition.shortlist.candidate.ckbox');
 });
+Route::get('recruiter-shortlist-log/{id}/{id2}', 'RecruiterShortlistLogController@view');
 
 // Candidate
 Route::resource('candidate', 'CandidateController');

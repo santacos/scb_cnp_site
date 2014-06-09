@@ -9,6 +9,7 @@ class RecruiterShortlistLogController extends \BaseController {
 	 */
 	public function index()
 	{
+
 		return Response::json(array('success' => false));
 	}
 
@@ -30,8 +31,9 @@ class RecruiterShortlistLogController extends \BaseController {
 	 */
 	public function store()
 	{
+		$id = Input::get('id');
 		// Requisition Log
-			$requisition = Requisition::findOrFail(Input::get('id'));
+			$requisition = Requisition::findOrFail($id);
 			$prev_action = RequisitionLog::where('requisition_id','=',$id)->orderBy('action_datetime','desc');
 			if($prev_action->count() > 0){
 				$prev_action = $prev_action->first();
@@ -62,9 +64,9 @@ class RecruiterShortlistLogController extends \BaseController {
 							'note' => Input::get('note')
 			));
 		// Application Log
-			$applications = $requisition->application()->whereIsInBasket(1)->get();
+			$applications = $requisition->application()->whereIsInBasket(1)->whereNull('send_number')->get();
 			foreach($applications as $application){
-				$prev_action = ApplicationLog::where('application_id','=',$application->$application_id)->orderBy('action_datetime','desc');
+				$prev_action = ApplicationLog::where('application_id','=',$application->application_id)->orderBy('action_datetime','desc');
 				if($prev_action->count() > 0){
 					$prev_action = $prev_action->first();
 				}else{
@@ -78,8 +80,8 @@ class RecruiterShortlistLogController extends \BaseController {
 				}
 				DB::table('application_logs')->insert(array(
 								'action_type' => 1,
-								'application_id' => $id,
-								'visit_number' => $send_number,
+								'application_id' => $application->application_id,
+								'visit_number' => 1,
 								'employee_user_id' => 2,
 								/**
 								change 'employee_user_id' to real employee id
@@ -92,11 +94,13 @@ class RecruiterShortlistLogController extends \BaseController {
 				//Outside Log
 					$application->send_number = $send_number;
 					$application->application_current_status_id = 2;
+					$application->note = Input::get('note');
 					$application->save();
 			}
-			
-
-		return '';
+			$requisition->requisition_current_status_id = 6;
+			$requisition->note = Input::get('note');
+			$requisition->save();
+		return Response::json(array('success' => true));
 	}
 
 	/**
@@ -152,4 +156,9 @@ class RecruiterShortlistLogController extends \BaseController {
 		return Response::json(array('success' => true));
 	}
 
+	public function view($id,$id2)
+	{
+
+		return View::make('recruiter.requisition.shortlist.');
+	}
 }
