@@ -174,7 +174,7 @@ Route::get('register', function()
 Route::controller('userrest', 'UserRestController');
 
 // Hiring Manager
-Route::resource('hm-requisition', 'HMRequisitionController');
+Route::resource('hm/requisition', 'HMRequisitionController');
 Route::get('api/requisition/{action?}', array('as'=>'api.requisition', 'uses'=>'HMRequisitionController@getDatatable'));
 Route::controller('requisitionrest', 'RequisitionRestController');
 

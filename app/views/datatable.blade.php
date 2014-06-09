@@ -16,21 +16,20 @@
             @elseif ($c == 'Job Title')
                  width="10%"   
             @elseif ($c == 'Corporate Title')
-                 width="5%"
+                 width="10%"
             @elseif ($c == 'Location')
                  width="10%"      
             @elseif ($c == 'Status')
                  width="5%"       
-            @elseif ($c == 'SLA')
-                 width="10%"
-            @elseif ($c == 'Date Order')
-                 width="10%"  
+            @elseif ($c == 'Require')
+                 width="5%"
             @elseif ($c == 'Deadline')
+                 width="10%"
+            @elseif ($c == 'From')
                  width="10%"
             @elseif ($c == 'Note')
                  width="5%"
-            @elseif ($c == 'Progress')
-                 width="10%"                               
+                                       
             @endif
         >
             @if ($c == 'checkbox' && $hasCheckboxes = true)

@@ -106,14 +106,17 @@ class HMRequisitionController extends \BaseController {
         {
             return '<span class="label label-success">'.$model->requisitionCurrentStatus()->first()->name.'</span>';
         })
-    ->addColumn('SLA',function($model)
+    ->addColumn('Require',function($model)
         { return $model->total_number;
         })
-    ->addColumn('Date Order',function($model)
+    // ->addColumn('Date Order',function($model)
+    //     { return Carbon::createFromTimestamp(strtotime($model->created_at))->format('j F Y');
+    //     })
+    ->addColumn('Deadline',function($model)
         { return Carbon::createFromTimestamp(strtotime($model->created_at))->format('j F Y');
         })
-    ->addColumn('Deadline',function($model)
-        { return $model->total_number;
+    ->addColumn('From',function($model)
+        { return $model->employee()->first()->first.' '.$model->employee()->first()->last;
         })
     ->addColumn('Note',function($model)
         { return '<i class="fa fa-fw fa-envelope-o"></i>';
@@ -127,8 +130,9 @@ class HMRequisitionController extends \BaseController {
     	'corporate_title_id',
     	'location_id',
     	'requisition_current_status_id',
-    	'SLA','Date Order',
+    	'Require',
     	'Deadline',
+    	'From',
     	'Note',
     	'Progress')
     ->make();

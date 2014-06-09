@@ -81,11 +81,10 @@ thisIsTitle
                 'Corporate Title',
                'Location',
                'Status',
-               'SLA',
-               'Date Order',
+               'Require',
                'Deadline',
-               'Note',
-               'Progress'
+               'From',
+               'Note'
                 )    
     ->setUrl(URL::to('api/requisition/'.$action))
     ->render('datatable') }}
