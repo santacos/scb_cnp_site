@@ -77,11 +77,12 @@ class HMRequisitionController extends \BaseController {
 	{
 		return Response::json(Requisition::find($id));
 	}
-	public function getDatatable()
+	public function getDatatable($action='')
     {    	
-
-    	
-    	return  Datatable::collection(Requisition::all())
+    	 // return $action;
+    	if($action==''){  $req=Requisition::All();}
+    	else{  $req=Requisition::where('requisition_id','=',$action)->get();}
+    	return  Datatable::collection($req)
     ->addColumn('requisitsion_id',function($model)
    		{
    			if($model->requisition_id==3){

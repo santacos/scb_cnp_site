@@ -74,8 +74,8 @@ thisIsTitle
                                     
                                     <!--table style "table-striped"-->
                                     <div class="box-body table-responsive no-padding">
-                                        
-                                       {{ Datatable::table()
+                                {{$action='';}}
+                                       {{  Datatable::table()
     ->addColumn( 'Requisition ID',
                 'Job Title',
                 'Corporate Title',
@@ -87,7 +87,7 @@ thisIsTitle
                'Note',
                'Progress'
                 )    
-    ->setUrl(route('api.requisition'))  
+    ->setUrl(URL::to('api/requisition/'.$action))
     ->render('datatable') }}
 
 
