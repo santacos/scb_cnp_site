@@ -111,14 +111,8 @@ class RecruiterShortlistLogController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		/*$applications = Application::whereRequisitionID($id)->whereIsInBasket(1);
-		$in_basket = count($applications);
-		$requisition = $applications->get()->first()->requisition;
-		$require = $requisition->total_number;
-		$num_get = $requisition->get_number;
-		$applications = $applications->get();
-		return View::make('recruiter.requisition.shortlist.basket.show', compact('applications'))->with('in_basket',$in_basket)->with('num_get',$num_get)->with('require',$require);*/
-		return Response::json(array('success' => false));
+		
+		return "show";
 	}
 
 	/**
@@ -159,6 +153,6 @@ class RecruiterShortlistLogController extends \BaseController {
 	public function view($id,$id2)
 	{
 
-		return View::make('recruiter.requisition.shortlist.');
+		return View::make('recruiter.requisition.shortlist.log.show');
 	}
 }
