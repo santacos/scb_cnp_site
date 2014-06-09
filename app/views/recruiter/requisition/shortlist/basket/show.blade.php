@@ -47,38 +47,51 @@ thisIsTitle
 
                                         <table border="1">
                                           <tr>
-                                            @foreach($applications->first()->toArray() as $key => $value)
-                                              <th>{{ $key }}</th>
-                                            @endforeach
-                                          </tr>
-                                          @foreach($applications as $application)
-                                            <tr>
-                                              @foreach($application->toArray() as $key => $value)
-                                                <td>
-                                                <?php
-                                                if($key != "is_in_basket"){
-                                                  echo $value;
-                                                }else{
-                                                  echo '<center>'
-                                                  .'<iframe src="http://localhost/scb_cnp_site/public/recruiter-shortlist-candidate-ckbox" width="500px" height="500px" scrolling="no" frameBorder="0" name="ckbox_f'.$application->application_id.'" id="ckbox_f'.$application->application_id.'">'
-                                                  .'</iframe>'
-                                                  .'</center>'
-                                                  .'<form action="http://localhost/scb_cnp_site/public/recruiter-shortlist-candidate-ckbox" id="ckbox'.$application->application_id.'" target="ckbox_f'.$application->application_id.'" method="GET">'
-                                                  .'<input type="hidden" name="id" value="'.$application->application_id.'"/>'
-                                                  .'</form>'
-                                                  .'<script>'
-                                                  .'document.getElementById("ckbox'.$application->application_id.'").submit();'
-                                                  .'</script>';
-                                                }
-                                                ?>
-                                                </td>
+                                            @if(count($applications->first()) > 0)
+                                              @foreach($applications->first()->toArray() as $key => $value)
+                                                <th>{{ $key }}</th>
                                               @endforeach
-                                            </tr>
-                                          @endforeach
+                                            @endif
+                                          </tr>
+                                          @if(count($applications->first()) > 0)
+                                            @foreach($applications as $application)
+                                              <tr>
+                                                @foreach($application->toArray() as $key => $value)
+                                                  <td>
+                                                  <?php
+                                                  if($key != "is_in_basket"){
+                                                    echo $value;
+                                                  }else{
+                                                    echo '<center>'
+                                                    .'<iframe width="30px" height="20px" scrolling="no" frameBorder="0" name="ckbox_f'.$application->application_id.'" id="ckbox_f'.$application->application_id.'">'
+                                                    .'</iframe>'
+                                                    .'</center>'
+                                                    .'<form action="../../../recruiter-shortlist-candidate-ckbox" id="ckbox'.$application->application_id.'" target="ckbox_f'.$application->application_id.'" method="GET">'
+                                                    .'<input type="hidden" name="id" value="'.$application->application_id.'"/>'
+                                                    .'</form>'
+                                                    .'<script>'
+                                                    .'document.getElementById("ckbox'.$application->application_id.'").submit();'
+                                                    .'</script>';
+                                                  }
+                                                  ?>
+                                                  </td>
+                                                @endforeach
+                                              </tr>
+                                            @endforeach
+                                          @endif
                                         </table>
 
                                       </div>
-    
+                                    
+                                      {{ Form::open(array('route' => array('recruiter.shortlist.log.store'), 'method' => 'POST')) }}
+                                        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
+                                          {{ Form::hidden('id', $requisition->requisition_id) }}
+                                          {{ Form::label('note', 'Note :') }}
+                                          {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
+                                        </div>
+                                        {{ Form::button('Send Shortlist', array('type' => 'submit')) }}
+                                      {{ Form::close() }}
+
                                     </div><!-- /.box-body -->
                         </div><!-- /.box -->
 
@@ -90,14 +103,4 @@ thisIsTitle
                         -->
                     </div>
                     <!--end TO DO REQUISITION-->
-
-                    {{ Form::open(array('route' => array('recruiter.shortlist.log.store'), 'method' => 'POST')) }}
-                      <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-                        {{ Form::hidden('id', $requisition->requisition_id) }}
-                        {{ Form::label('note', 'Note :') }}
-                        {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
-                      </div>
-                      {{ Form::button('Send Shortlist', array('type' => 'submit')) }}
-                    {{ Form::close() }}
-
 @stop
