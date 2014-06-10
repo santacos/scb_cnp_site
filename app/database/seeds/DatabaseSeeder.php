@@ -43,25 +43,25 @@ class AllTableSeeder extends Seeder {
 
 //CANDIDATE
 		$user = User::where('username','=','candidate1')->first();
-		$candidate = new candidate;
+		$candidate = new Candidate;
         $candidate->user_id = $user->user_id;
         $candidate->save();
 
         $user = User::where('username','=','candidate2')->first();
-		$candidate = new candidate;
+		$candidate = new Candidate;
         $candidate->user_id = $user->user_id;
         $candidate->save();
 
         $user = User::where('username','=','candidate3')->first();
-		$candidate = new candidate;
+		$candidate = new Candidate;
         $candidate->user_id = $user->user_id;
         $candidate->save();
 
         $user = User::where('username','=','candidate4')->first();
-		$candidate = new candidate;
+		$candidate = new Candidate;
         $candidate->user_id = $user->user_id;
         $candidate->save();
-
+$this->command->info('Table Candidate Seeded');
 //POSITION
 			Position::create(array('position_id' => 1,
 			'group' => 'President',
@@ -18564,7 +18564,7 @@ class AllTableSeeder extends Seeder {
 			'job_title' => 'Team Leader, Credit Portfolio Management',
 			'total' => 5
 			));
-
+$this->command->info('Table Position Seeded');
 //DEPT
 
 		$user = User::where('username','=','hrbp1')->first();
@@ -18655,7 +18655,7 @@ class AllTableSeeder extends Seeder {
 			'hrbp_user_id' => $user->user_id,
 			'recruiter_user_id' => $user4->user_id
 			));
-
+$this->command->info('Table Dept Seeded');
 //CORPORRATE TITLE GROUP
 		CorporateTitleGroup::create(array(	'corporate_title_group_id' => 1,
 							'name' => 'Officer',
@@ -18669,7 +18669,7 @@ class AllTableSeeder extends Seeder {
 							'name' => 'SVP up',
 							'total_SLA' => 60
 							));
-
+$this->command->info('Table CorporateTitleGroup Seeded');
 //CORPORRATE TITLE
 		CorporateTitle::create(array(	'corporate_title_id' => 1,
 							'name' => 'Staff 1',
@@ -18739,7 +18739,7 @@ class AllTableSeeder extends Seeder {
 							'name' => 'President',
 							'corporate_title_group_id' => 3
 							));
-
+$this->command->info('Table CorporateTitle Seeded');
 //LOCATION
 			Location::create(array('location_id' => 1,
 			'name' => '333 แฟคทอรี่แลนด์ บางบัวทอง'
@@ -22386,7 +22386,7 @@ class AllTableSeeder extends Seeder {
 			Location::create(array('location_id' => 1215,
 			'name' => 'ฮาร์เบอร์ มอลล์ (แหลมฉบัง)'
 			));
-
+$this->command->info('Table Location Seeded');
 //EMPLOYEE
 		$user1 = User::where('username','=','hrbp1')->first();
 		$user2 = User::where('username','=','hrbp2')->first();
@@ -22412,7 +22412,7 @@ class AllTableSeeder extends Seeder {
 							'dept_id' => 1,
 							'next_level_user_id' => null
 							));
-
+$this->command->info('Table Employee Seeded');
 //SKILL CATEGORY
 		SkillCategory::create(array(	'skill_category_id' => 1,
 							'name' => 'Programming Language'
@@ -22429,7 +22429,7 @@ class AllTableSeeder extends Seeder {
 		SkillCategory::create(array(	'skill_category_id' => 5,
 							'name' => 'Banking'
 							));
-
+$this->command->info('Table SkillCategory Seeded');
 //SKILL
 		Skill::create(array(	'skill_id' => 1,
 							'name' => 'JAVA',
@@ -22511,7 +22511,7 @@ class AllTableSeeder extends Seeder {
 							'skill_category_id' => 5,
 							'is_star' => true
 							));
-
+$this->command->info('Table Skill Seeded');
 //EDUCATION
 
 		$user = User::where('username','=','candidate1')->first();
@@ -22553,7 +22553,7 @@ class AllTableSeeder extends Seeder {
 							'major' => 'computer',
 							'GPA' => 1.23
 							));
-
+$this->command->info('Table Education Seeded');
 //REQUISITION CURRENT STATUS
 		RequisitionCurrentStatus::create(array(	'requisition_current_status_id' => 1,
 							'name' => 'Saved Requisition'
@@ -22576,7 +22576,7 @@ class AllTableSeeder extends Seeder {
 		RequisitionCurrentStatus::create(array(	'requisition_current_status_id' => 7,
 							'name' => 'END SLA'
 							));
-
+$this->command->info('Table RequisitionCurrentStatus Seeded');
 //APPLICATION CURRENT STATUS
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 1,
 							'name' => 'Waiting for Send Shortlist'
@@ -22605,7 +22605,7 @@ class AllTableSeeder extends Seeder {
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 9,
 							'name' => 'END SLA'
 							));
-
+$this->command->info('Table ApplicationCurrentStatus Seeded');
 //RECRUITMENT OBJECTIVE TEMPLATE
 		DB::table('recruitment_objective_templates')->insert(array(
 							'recruitment_objective_template_id' => 1,
@@ -22615,7 +22615,7 @@ class AllTableSeeder extends Seeder {
 							'recruitment_objective_template_id' => 2,
 							'message' => 'New'
 							));
-
+$this->command->info('Table RecruitmentObjectiveTemplate Seeded');
 //RECRUITMENT TYPE
 		DB::table('recruitment_types')->insert(array(
 							'recruitment_type_id' => 1,
@@ -22625,7 +22625,7 @@ class AllTableSeeder extends Seeder {
 							'recruitment_type_id' => 2,
 							'name' => 'Parttime'
 							));
-
+$this->command->info('Table RecruitmentType Seeded');
 //Requisition
 		for($i=0; $i<10;$i++)
 		{
@@ -22653,18 +22653,18 @@ class AllTableSeeder extends Seeder {
 			$requisition->note = str_random(40);
 			$requisition->save();
 		}
-
+$this->command->info('Table Requisiton Seeded');
 //Application
 		for($i=0; $i<20; $i++)
 		{
 			$application = new Application;
-			$application->requisition_id = Requisition::orderBy(rand())->first()->requisition_id;
+			$application->requisition_id = Requisition::orderBy(DB::raw('RAND()'))->first()->requisition_id;
 			$application->candidate_user_id = User::where('username','=','candidate'.rand(1,4))->first()->user_id;
 			$application->application_current_status_id = rand(1,9);
 			$application->is_in_basket = false;
 			$application->save();
 		}
-		
+$this->command->info('Table Application Seeded');
 //SLA REQUISITION
 		DB::table('SLA_requisitions')->insert(array(
 							'corporate_tg_id' => 1,
@@ -22726,7 +22726,7 @@ class AllTableSeeder extends Seeder {
 							'requisition_cs_id' => 4,
 							'SLA' => 6
 							));
-
+$this->command->info('Table SLARequisition Seeded');
 //SLA CANDIDATE
 		DB::table('SLA_candidates')->insert(array(
 							'corporate_tg_id' => 1,
@@ -22800,9 +22800,9 @@ class AllTableSeeder extends Seeder {
 							'visit_number' => 3,
 							'SLA' => 9
 							));
+$this->command->info('Table SLACandidate Seeded');
 
-
-
+$this->command->info('** All Table Seeded :) **');
 /*
 
 		::create(array(	'' => '',
