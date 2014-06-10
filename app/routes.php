@@ -174,7 +174,7 @@ Route::get('register', function()
 Route::controller('userrest', 'UserRestController');
 
 // Hiring Manager
-Route::resource('hm/requisition', 'HMRequisitionController');
+Route::resource('hm-requisition', 'HMRequisitionController');
 Route::get('api/requisition/{status_id?}', array('as'=>'api.requisition', 'uses'=>'RequisitionRestController@getRequisitionDatatable'));
 Route::controller('requisitionrest', 'RequisitionRestController');
 
@@ -191,16 +191,16 @@ Route::resource('hrbp/manager/requisition', 'HRBPManagerRequisitionController');
 Route::resource('application', 'ApplicationController');
 
 // Recruiter
-Route::resource('recruiter/requisition/post', 'RecruiterRequisitionPostController');
-Route::get('recruiter/shortlist/detail', 'HMRequisitionController@index');
-Route::resource('recruiter/shortlist/candidate', 'RecruiterShortlistCandidateController');
-Route::resource('recruiter/shortlist/basket', 'RecruiterShortlistBasketController');
-Route::resource('recruiter/shortlist/log', 'RecruiterShortlistLogController');
+Route::resource('recruiter-requisition-post', 'RecruiterRequisitionPostController');
+Route::get('recruiter-shortlist-detail', 'HMRequisitionController@index');
+Route::resource('recruiter-shortlist-candidate', 'RecruiterShortlistCandidateController');
+Route::resource('recruiter-shortlist-basket', 'RecruiterShortlistBasketController');
+Route::resource('recruiter-shortlist-log', 'RecruiterShortlistLogController');
 Route::get('recruiter-shortlist-candidate-ckbox-ctrl/{id}', 'RecruiterShortlistCandidateController@toggle');
 Route::get('recruiter-shortlist-candidate-ckbox', function(){
 	return View::make('recruiter.requisition.shortlist.candidate.ckbox');
 });
-Route::get('recruiter/shortlist/log/{id}/{id2}', 'RecruiterShortlistLogController@view');
+Route::get('recruiter-shortlist-log/{id}/{id2}', 'RecruiterShortlistLogController@view');
 
 // Candidate
 Route::resource('candidate', 'CandidateController');

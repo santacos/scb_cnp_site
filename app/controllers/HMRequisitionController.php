@@ -46,10 +46,7 @@ class HMRequisitionController extends \BaseController {
 			$requisition->location_id = Input::get('location_id');
 			$requisition->corporate_title_id = Input::get('corporate_title_id');
 			$requisition->position_id =  Input::get('position_id');
-
-			
-			//Input::get('position_id');
-			$dep= Input::get('group');
+			$dep= $requisition->position()->first()->group;
 			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
 			$requisition->dept_id =$a;
 			$requisition->requisition_current_status_id = 2;
@@ -128,12 +125,7 @@ class HMRequisitionController extends \BaseController {
 			$requisition->location_id = Input::get('location_id');
 			$requisition->corporate_title_id = Input::get('corporate_title_id');
 			$requisition->position_id =  Input::get('position_id');
-
-			
-			$pos_id=Input::get('position_id');
-			return $pos_id;
-			$dep= Position::find($pos_id);
-			return $dep;
+			$dep= $requisition->position()->first()->group;
 			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
 			$requisition->dept_id =$a;
 			$requisition->requisition_current_status_id = 2;

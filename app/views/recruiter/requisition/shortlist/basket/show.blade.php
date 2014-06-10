@@ -83,7 +83,7 @@ thisIsTitle
 
                                       </div>
                                     
-                                      {{ Form::open(array('route' => array('recruiter.shortlist.log.store'), 'method' => 'POST')) }}
+                                      {{ Form::open(array('route' => array('recruiter-shortlist-log.store'), 'method' => 'POST')) }}
                                         <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
                                           {{ Form::hidden('id', $requisition->requisition_id) }}
                                           {{ Form::label('note', 'Note :') }}
