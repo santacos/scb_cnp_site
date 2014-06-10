@@ -22627,7 +22627,7 @@ $this->command->info('Table RecruitmentObjectiveTemplate Seeded');
 							));
 $this->command->info('Table RecruitmentType Seeded');
 //Requisition
-		for($i=0; $i<10;$i++)
+		for($i=0; $i<100;$i++)
 		{
         	$user = User::where('username','=','candidate'.rand(1,4))->first();
        		$requisition = new Requisition;

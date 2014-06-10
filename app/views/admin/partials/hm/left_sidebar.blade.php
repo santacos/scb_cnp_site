@@ -36,16 +36,16 @@
 
 
 		<li class="treeview">
-			<a href="#"> <i class="fa fa-fw fa-inbox"></i> <span>Requisition  <small class="badge bg-blue">15</small></span> <i class="fa fa-angle-left pull-right"></i> </a>
+			<a href="{{ URL::to('hm-requisition') }}"> <i class="fa fa-fw fa-inbox"></i> <span>Requisition  <small class="badge bg-blue">15</small></span> <i class="fa fa-angle-left pull-right"></i> </a>
 			<ul class="treeview-menu">
 				<li>
-					<a href="{{ URL::to('morris') }}"><i class="fa fa-fw fa-edit"></i> Create position <small class="badge pull-right bg-yellow">5</small></a>
+					<a href="{{ URL::to('hm-requisition/create') }}"><i class="fa fa-fw fa-edit"></i> Create position <small class="badge pull-right bg-yellow">5</small></a>
 				</li>
 				<li>
-					<a href="{{ URL::to('flot') }}"><i class="fa fa-fw fa-check-square-o"></i> Approve <small class="badge pull-right bg-red">10</small></a>
+					<a href="{{ URL::to('hm-nl-requisition') }}"><i class="fa fa-fw fa-check-square-o"></i> Approve <small class="badge pull-right bg-red">10</small></a>
 				</li>
 				<li>
-					<a href="{{ URL::to('inline') }}"><i class="fa fa-fw fa-book"></i> Approved</a>
+					<a href="{{ URL::to('hm/approved') }}"><i class="fa fa-fw fa-book"></i> Approved</a>
 				</li>
 			</ul>
 		</li>
