@@ -9,9 +9,9 @@ class HMNLRequisitionController extends \BaseController {
 	 */
 	public function index()
 	{
-		$requisitions = Requisition::all();
-
-		return View::make('requisition.index', compact('requisitions')); // Same as Hiring Manager
+		//$requisitions = Requisition::all();
+		// $status = 1;
+		return View::make('HM.approve.index'); // Same as Hiring Manager
 	}
 
 	/**

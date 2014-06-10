@@ -16,7 +16,7 @@ thisIsTitle
         <div class="box box-primary">
 
                     <div class="box-header">
-                        <h3 class="box-title"> All Candidate..</h3>
+                        <h3 class="box-title"> Sent Shortlist Candidate..</h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-primary btn-xs" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -39,33 +39,18 @@ thisIsTitle
 
                                         <table border="1">
                                           <tr>
-                                            @if(count($applications->first()) > 0)
+                                            @if(count($applications) > 0)
                                               @foreach($applications->first()->toArray() as $key => $value)
                                                 <th>{{ $key }}</th>
                                               @endforeach
                                             @endif
                                           </tr>
-                                          @if(count($applications->first()) > 0)
+                                          @if(count($applications) > 0)
                                             @foreach($applications as $application)
                                               <tr>
                                                 @foreach($application->toArray() as $key => $value)
                                                   <td>
-                                                  <?php
-                                                  if($key != "is_in_basket"){
-                                                    echo $value;
-                                                  }else{
-                                                    echo '<center>'
-                                                    .'<iframe width="30px" height="20px" scrolling="no" frameBorder="0" name="ckbox_f'.$application->application_id.'" id="ckbox_f'.$application->application_id.'">'
-                                                    .'</iframe>'
-                                                    .'</center>'
-                                                    .'<form action="../recruiter-shortlist-candidate-ckbox" id="ckbox'.$application->application_id.'" target="ckbox_f'.$application->application_id.'" method="GET">'
-                                                    .'<input type="hidden" name="id" value="'.$application->application_id.'"/>'
-                                                    .'</form>'
-                                                    .'<script>'
-                                                    .'document.getElementById("ckbox'.$application->application_id.'").submit();'
-                                                    .'</script>';
-                                                  }
-                                                  ?>
+                                                    {{ $value }}
                                                   </td>
                                                 @endforeach
                                               </tr>

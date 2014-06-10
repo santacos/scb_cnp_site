@@ -16,21 +16,21 @@
             @elseif ($c == 'Job Title')
                  width="10%"   
             @elseif ($c == 'Corporate Title')
-                 width="5%"
+                 width="10%"
             @elseif ($c == 'Location')
                  width="10%"      
             @elseif ($c == 'Status')
                  width="5%"       
-            @elseif ($c == 'SLA')
-                 width="10%"
-            @elseif ($c == 'Date Order')
-                 width="10%"  
+            @elseif ($c == 'Require')
+                 width="5%"
             @elseif ($c == 'Deadline')
+                 width="10%"
+            @elseif ($c == 'From')
                  width="10%"
             @elseif ($c == 'Note')
                  width="5%"
-            @elseif ($c == 'Progress')
-                 width="10%"                               
+            @elseif ($c == 'Action')
+                 width="10%"                           
             @endif
         >
             @if ($c == 'checkbox' && $hasCheckboxes = true)
@@ -84,21 +84,21 @@
             "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
                   // Bold the grade for all 'A' grade browsers
 
-                  if ( aData[2].indexOf("Staff 1") == 0 )
-                  { 
-                    $( nRow).addClass('danger');
-                  }
+                  // if ( aData[2].indexOf("Staff 1") == 0 )
+                  // { 
+                  //   $( nRow).addClass('danger');
+                  // }
                 },
-
-            "bAutoWidth": false,            
-            @if (isset($hasCheckboxes) && $hasCheckboxes)
-            'aaSorting': [['1', 'asc']],
-            // Disable sorting on the first column
-            "aoColumnDefs": [ {
-                'bSortable': false,
-                'aTargets': [ 0, {{ count($columns) - 1 }} ]                
-            } ],
-            @endif
+            "order": [[ 0, "asc" ]],
+            // "bAutoWidth": false,            
+            // @if (isset($hasCheckboxes) && $hasCheckboxes)
+            // 'aaSorting': [['1', 'asc']],
+            // // Disable sorting on the first column
+            // "aoColumnDefs": [ {
+            //     'bSortable': false,
+            //     'aTargets': [ 0, {{ count($columns) - 1 }} ]                
+            // } ],
+            // @endif
             @foreach ($options as $k => $o)
             {{ json_encode($k) }}: {{ json_encode($o) }},
             @endforeach

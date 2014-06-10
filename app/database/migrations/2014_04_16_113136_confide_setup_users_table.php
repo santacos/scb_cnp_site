@@ -65,8 +65,8 @@ class ConfideSetupUsersTable extends Migration {
             $table->string('last',45);
             $table->string('email');
             $table->string('contact_number',20);
-            $table->string('facebook_uid',100)->nullable()->default(NULL);
-            $table->string('linkin_uid',100)->nullable()->default(NULL);
+            $table->string('hybridauth_provider_name')->nullable()->default(NULL);
+            $table->string('hybridauth_provider_uid')->nullable()->default(NULL);
             $table->string('confirmation_code');
             $table->boolean('confirmed')->default(false);
             $table->timestamps(); 

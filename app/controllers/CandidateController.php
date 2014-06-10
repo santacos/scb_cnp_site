@@ -56,51 +56,6 @@ class CandidateController extends \BaseController {
 	{
 		return Response::json(Candidate::find($id));
 	}
-	public function getDatatable()
-    {    	
-    	return  Datatable::collection(Candidate::all())
-    ->addColumn('requisitsion_id',function($model)
-   		{
-   			if($model->candidate_id==3){
-   				return $model->candidate_id;
-   				}
-   					return '<span class="badge bg-grey">'.$model->candidate_id.'</span>';
-   		})
-    ->addColumn('job_title',function($model)
-        {
-            return $model->position()->first()->job_title;
-        })
-    ->addColumn('corporate_title_id',function($model)
-        {
-            return $model->corporateTitle()->first()->name;
-        })
-    ->addColumn('location_id',function($model)
-        {
-            return $model->location()->first()->name;
-        })
-    ->addColumn('candidate_current_status_id',function($model)
-        {
-            return '<span class="label label-success">'.$model->candidateCurrentStatus()->first()->name.'</span>';
-        })
-    ->addColumn('SLA',function($model)
-        { return $model->total_number;
-        })
-    ->addColumn('Date Order',function($model)
-        { return Carbon::createFromTimestamp(strtotime($model->created_at))->format('j F Y');
-        })
-    ->addColumn('Deadline',function($model)
-        { return $model->total_number;
-        })
-    ->addColumn('Note',function($model)
-        { return '<i class="fa fa-fw fa-envelope-o"></i>';
-        })
-    ->addColumn('Progress',function($model)
-        { return $model->total_number;
-        })
-    
-    ->searchColumns('job_title')
-    ->make();
-    }
 	/**
 	 * Show the form for editing the specified candidate.
 	 *

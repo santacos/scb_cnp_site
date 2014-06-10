@@ -46,10 +46,7 @@ class HMRequisitionController extends \BaseController {
 			$requisition->location_id = Input::get('location_id');
 			$requisition->corporate_title_id = Input::get('corporate_title_id');
 			$requisition->position_id =  Input::get('position_id');
-
-			
-			//Input::get('position_id');
-			$dep= Input::get('group');
+			$dep= $requisition->position()->first()->group;
 			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
 			$requisition->dept_id =$a;
 			$requisition->requisition_current_status_id = 2;
@@ -77,61 +74,7 @@ class HMRequisitionController extends \BaseController {
 	{
 		return Response::json(Requisition::find($id));
 	}
-	public function getDatatable()
-    {    	
-
-    	
-    	return  Datatable::collection(Requisition::all())
-    ->addColumn('requisitsion_id',function($model)
-   		{
-   			if($model->requisition_id==3){
-   				return $model->requisition_id;
-   				}
-   					return '<span class="badge bg-grey">'.$model->requisition_id.'</span>';
-   		})
-    ->addColumn('job_title',function($model)
-        {
-            return $model->position()->first()->job_title;
-        })
-    ->addColumn('corporate_title_id',function($model)
-        {
-            return $model->corporateTitle()->first()->name;
-        })
-    ->addColumn('location_id',function($model)
-        {
-            return $model->location()->first()->name;
-        })
-    ->addColumn('requisition_current_status_id',function($model)
-        {
-            return '<span class="label label-success">'.$model->requisitionCurrentStatus()->first()->name.'</span>';
-        })
-    ->addColumn('SLA',function($model)
-        { return $model->total_number;
-        })
-    ->addColumn('Date Order',function($model)
-        { return Carbon::createFromTimestamp(strtotime($model->created_at))->format('j F Y');
-        })
-    ->addColumn('Deadline',function($model)
-        { return $model->total_number;
-        })
-    ->addColumn('Note',function($model)
-        { return '<i class="fa fa-fw fa-envelope-o"></i>';
-        })
-    ->addColumn('Progress',function($model)
-        { return $model->total_number;
-        })
-    ->orderColumns('requisitsion_id')
-    ->searchColumns('requisitsion_id',
-    	'job_title',
-    	'corporate_title_id',
-    	'location_id',
-    	'requisition_current_status_id',
-    	'SLA','Date Order',
-    	'Deadline',
-    	'Note',
-    	'Progress')
-    ->make();
-    }
+	
 	/**
 	 * Show the form for editing the specified requisition.
 	 *
@@ -182,12 +125,7 @@ class HMRequisitionController extends \BaseController {
 			$requisition->location_id = Input::get('location_id');
 			$requisition->corporate_title_id = Input::get('corporate_title_id');
 			$requisition->position_id =  Input::get('position_id');
-
-			
-			$pos_id=Input::get('position_id');
-			return $pos_id;
-			$dep= Position::find($pos_id);
-			return $dep;
+			$dep= $requisition->position()->first()->group;
 			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
 			$requisition->dept_id =$a;
 			$requisition->requisition_current_status_id = 2;

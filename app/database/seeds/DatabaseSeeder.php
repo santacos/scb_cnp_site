@@ -22512,6 +22512,7 @@ class AllTableSeeder extends Seeder {
 							));
 
 //EDUCATION
+
 		$user = User::where('username','=','candidate1')->first();
 		Education::create(array(	
 							'candidate_user_id' => $user->user_id,
@@ -22577,28 +22578,31 @@ class AllTableSeeder extends Seeder {
 
 //APPLICATION CURRENT STATUS
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 1,
-							'name' => 'AAA'
+							'name' => 'Waiting for Send Shortlist'
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 2,
-							'name' => 'BBB'
+							'name' => 'Waiting for Review candidate\'s resume'
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 3,
-							'name' => 'CCC'
+							'name' => 'Waiting for Schedule Interview & Confirm'
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 4,
-							'name' => 'DDD'
+							'name' => 'Waiting for Receive Interview Feedbacks'
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 5,
-							'name' => 'EEE'
+							'name' => 'Waiting for Prepare offer package'
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 6,
-							'name' => 'FFF'
+							'name' => 'Waiting for Confirm package with Head of HRBP'
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 7,
-							'name' => 'GGG'
+							'name' => 'Waiting for Make offre to candidate'
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 8,
-							'name' => 'HHH'
+							'name' => 'Waiting for Accept Job Offer'
+							));
+		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 9,
+							'name' => 'END SLA'
 							));
 //RECRUITMENT OBJECTIVE TEMPLATE
 		DB::table('recruitment_objective_templates')->insert(array(
@@ -22621,45 +22625,33 @@ class AllTableSeeder extends Seeder {
 							));
 
 //Requisition
-		 $user = User::where('username','=','recruiter1')->first();
-		DB::table('requisitions')->insert(array(
-							'requisition_id' => 1,
-							'total_number' => 3,
-							'get_number' => 0,
-							'employee_user_id' =>$user->user_id,
-							'location_id' => 123,
-							'position_id' => 111,
-							'dept_id' => 1,
-							'corporate_title_id' => 1,
-							'requisition_current_status_id' => 2,
-							'recruitment_type_id' => 1,
-							'year_of_experience' => 0,
-							'recruitment_obj_template_id' => 1,
-							'recruitment_objective' => 'Mr.Resign',
-							'responsibility' => 'res1',
-							'qualification' => 'qua1',
-							'note' => 'number1'
-							));
-		 $user = User::where('username','=','recruiter2')->first();
-		DB::table('requisitions')->insert(array(
-							'requisition_id' => 2,
-							'total_number' => 4,
-							'get_number' => 0,
-							'employee_user_id' => $user->user_id,
-							'location_id' => 234,
-							'position_id' => 222,
-							'dept_id' => 2,
-							'corporate_title_id' => 2,
-							'requisition_current_status_id' => 2,
-							'recruitment_type_id' => 2,
-							'year_of_experience' => 8,
-							'recruitment_obj_template_id' => 2,
-							'recruitment_objective' => '',
-							'responsibility' => 'res2',
-							'qualification' => 'qua2',
-							'note' => 'number2'
-							));
-
+		for($i=0; $i<10;$i++)
+		{
+        	$user = User::where('username','=','candidate'.rand(1,4))->first();
+       		$requisition = new Requisition;
+			$requisition->total_number=rand(1, 10);
+			$requisition->get_number=0;
+			$requisition->employee_user_id = $user->user_id;
+			$requisition->datetime_create = Carbon::now();
+			$requisition->location_id = rand(1,1215);;
+			$requisition->corporate_title_id = rand(1, 17);
+			$requisition->position_id =  rand(1, 2643);
+			$dep= $requisition->position()->first()->group;
+			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
+			$requisition->dept_id =$a;
+			$requisition->requisition_current_status_id =rand(1, 7);
+			//Input::get('requisition_current_status_id');
+			$requisition->recruitment_type_id = rand(1, 2);
+			$requisition->recruitment_obj_template_id=rand(1, 2);
+			$requisition->recruitment_objective = str_random(40);
+			$requisition->year_of_experience = rand(1, 5);
+			//$requisition->recruitment_objective = Input::get('recruitment_objective');
+			$requisition->responsibility = str_random(40);
+			$requisition->qualification = str_random(40);
+			$requisition->note = str_random(40);
+			$requisition->save();
+		}
+		
 //SLA REQUISITION
 		DB::table('SLA_requisitions')->insert(array(
 							'corporate_tg_id' => 1,
