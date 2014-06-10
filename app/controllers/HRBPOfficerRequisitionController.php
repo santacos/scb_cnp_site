@@ -101,7 +101,7 @@ class HRBPOfficerRequisitionController extends \BaseController {
 							'action_type' => 3,
 							'requisition_id' => $id,
 							'send_number' => 1,
-							'employee_user_id' => 1,
+							'employee_user_id' => $requisition->employee_user_id,
 							/**
 							change 'employee_user_id' to real employee id
 							*/

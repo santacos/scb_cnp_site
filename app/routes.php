@@ -198,6 +198,8 @@ Route::resource('hrbp-manager-requisition', 'HRBPManagerRequisitionController');
 Route::resource('application', 'ApplicationController');
 
 // Recruiter
+Route::resource('recruiter','RecruiterController');
+Route::controller('recruiter','RecruiterController');
 Route::resource('recruiter-requisition-post', 'RecruiterRequisitionPostController');
 Route::get('recruiter-shortlist-detail', 'HMRequisitionController@index');
 Route::resource('recruiter-shortlist-candidate', 'RecruiterShortlistCandidateController');

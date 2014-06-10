@@ -3,7 +3,7 @@
 
 		<div class="col-lg-3 col-xs-6">
 			<!-- small box -->
-			<a href="#" class="small-box bg-aqua">
+			<a href="{{URL::to('recruiter-requisition-post')}}" class="small-box bg-aqua">
 				<div class="inner">
 					<h3> Post Job <br><i class="fa fa-fw fa-edit" style="color:#48036F;"></i> </h3>
 				</div>
@@ -19,7 +19,7 @@
 
 		<div class="col-lg-3 col-xs-6">
 			<!-- small box -->
-			<a href="#" class="small-box bg-green">
+			<a href="{{URL::to('recruiter-shortlist-candidate')}}" class="small-box bg-green">
 				<div class="inner">
 					<h3> Send<br>Shortlist</h3>
 
@@ -35,7 +35,7 @@
 
 		<div class="col-lg-3 col-xs-6">
 			<!-- small box -->
-			<a href="#" class="small-box bg-yellow">
+			<a href="{{URL::to('recruiter-shortlist-candidate')}}" class="small-box bg-yellow">
 				<div class="inner">
 					<h3> Shortlist<br> sent </h3>
 			

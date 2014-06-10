@@ -118,7 +118,7 @@ class HMRequisitionController extends \BaseController {
 			/**
 			change 'employee_user_id' to real employee id
 			*/
-			$requisition->employee_user_id = 1;
+			$requisition->employee_user_id = $requisition->employee_user_id;
 			//Input::get('employee_user_id');
 			// $requisition->datetime_create = Carbon::now();
 			//$requisition->datetime_prev_status = Input::get('datetime_prev_status');

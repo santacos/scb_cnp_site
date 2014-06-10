@@ -22652,18 +22652,29 @@ $this->command->info('Table RecruitmentType Seeded');
 			$requisition->qualification = str_random(40);
 			$requisition->note = str_random(40);
 			$requisition->save();
+			for($j=0; $j<20; $j++)
+			{
+				$application = new Application;
+				$application->requisition_id = $requisition->requisition_id;
+				$application->candidate_user_id = User::where('username','=','candidate'.rand(1,4))->first()->user_id;
+				$application->application_current_status_id = rand(1,9);
+				if($application->application_current_status_id >=2)
+					{$application->send_number = rand(1,4);}
+				$application->is_in_basket = false;
+				$application->save();
+			}
 		}
 $this->command->info('Table Requisiton Seeded');
 //Application
-		for($i=0; $i<20; $i++)
-		{
-			$application = new Application;
-			$application->requisition_id = Requisition::orderBy(DB::raw('RAND()'))->first()->requisition_id;
-			$application->candidate_user_id = User::where('username','=','candidate'.rand(1,4))->first()->user_id;
-			$application->application_current_status_id = rand(1,9);
-			$application->is_in_basket = false;
-			$application->save();
-		}
+		// for($i=0; $i<20; $i++)
+		// {
+		// 	$application = new Application;
+		// 	$application->requisition_id = Requisition::orderBy(DB::raw('RAND()'))->first()->requisition_id;
+		// 	$application->candidate_user_id = User::where('username','=','candidate'.rand(1,4))->first()->user_id;
+		// 	$application->application_current_status_id = rand(1,9);
+		// 	$application->is_in_basket = false;
+		// 	$application->save();
+		// }
 $this->command->info('Table Application Seeded');
 //SLA REQUISITION
 		DB::table('SLA_requisitions')->insert(array(
