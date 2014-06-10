@@ -66,7 +66,7 @@ thisIsTitle
                                                     .'<iframe width="30px" height="20px" scrolling="no" frameBorder="0" name="ckbox_f'.$application->application_id.'" id="ckbox_f'.$application->application_id.'">'
                                                     .'</iframe>'
                                                     .'</center>'
-                                                    .'<form action="../../../recruiter-shortlist-candidate-ckbox" id="ckbox'.$application->application_id.'" target="ckbox_f'.$application->application_id.'" method="GET">'
+                                                    .'<form action="../recruiter-shortlist-candidate-ckbox" id="ckbox'.$application->application_id.'" target="ckbox_f'.$application->application_id.'" method="GET">'
                                                     .'<input type="hidden" name="id" value="'.$application->application_id.'"/>'
                                                     .'</form>'
                                                     .'<script>'
