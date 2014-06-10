@@ -40,7 +40,7 @@ class RecruiterShortlistCandidateController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$applications = Application::whereRequisitionID($id)->get();
+		$applications = Application::whereRequisitionID($id)->whereNull('send_number')->get();
 
 		return View::make('recruiter.requisition.shortlist.candidate.show', compact('applications'));
 	}

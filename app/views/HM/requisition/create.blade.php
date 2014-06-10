@@ -31,18 +31,21 @@ HM-create-requisition
         <div class="container" ng-controller="NameCtrl">
 
             <div class="col-md-7 col-md-offset-1" style="margin-top:10px">
-                <h1>Create a requisition</h1>
-                <hr/>
-                <div class="row">
-                    <!--
-                    <div class="col-sm-6">
-                    <progressbar max="3" value="count"></progressbar>
-                    </div>-->
-                    <div class="col-sm-12">
-                    <progressbar class="progress-striped active" max="3" value="count" type="danger"><i>@{{count}} / 3</i></progressbar>
+               
+               <div style="postion:fixed;">
+                   <h1>Create a requisition</h1>
+                         <hr/>
+                    <div class="row">
+                        <!--
+                        <div class="col-sm-6">
+                        <progressbar max="3" value="count"></progressbar>
+                        </div>-->
+                         
+                        <div class="col-sm-12">
+                        <progressbar class="progress-striped active" max="12" value="count" type="danger"><i>@{{count}} / 12</i></progressbar>
+                        </div>
                     </div>
                 </div>
-                
 
                 @if (Session::has('message'))
                 <div class="alert alert-info">{{ Session::get('message') }}</div>
@@ -65,6 +68,7 @@ HM-create-requisition
                 </div>
             -->
 
+                <h1>count:</h1> @{{group}}
                 <div class="form-group">
                     <label for="group">Group :</label>
                     <!--
@@ -102,7 +106,7 @@ HM-create-requisition
 
                  <div class="form-group" ng-show="showJobTitle">
                     <label for="job_title">Job Title :</label>
-                    <select ng-model="job_title" class="form-control scrollable-menu" id="position_id" name="position_id">
+                    <select ng-model="job_title" ng-change="checkProgress()" class="form-control scrollable-menu" id="position_id" name="position_id">
                         <option value="">Select Job Title</option>
                         <option ng-repeat="position in allPosition | filter:{group:group,division:division,organization:organization} | unique:'position_id'" value="@{{position.position_id}}">@{{position.job_title}}</option>
                         
@@ -110,45 +114,46 @@ HM-create-requisition
                 </div>
 
             <div class="form-group">
-                {{ Former::select('corporate_title_id', 'Corporate Title :')->attributes(array('class' => 'form-control scrollable-menu','style'=>'         width:250px;
+                {{ Former::select('corporate_title_id', 'Corporate Title :')->attributes(array('class' => 'form-control scrollable-menu','ng-change'=>'checkProgress()','style'=>'         width:250px;
                 height: auto;
                 max-height: 100px;
-                overflow-x: hidden;'))->addOption('Select Corporate Title')
+                overflow-x: hidden;','ng-model'=>'corporate_title_id'))->addOption('Select Corporate Title')
                         ->fromQuery(CorporateTitle::All(), 'name', 'corporate_title_id') }}    
             </div>
 
             <div class="form-group">
                     {{ Form::label('total_number', 'No. of Vacancy :') }}
-                    {{ Form::input('number','total_number', Input::old('qualification'), array('min'=>'0','max'=>'1000','placeholder'=>'0','class' => 'form-control', 'required')) }}
-                </div>
+                    {{ Form::input('number','total_number', Input::old('qualification'), array('min'=>'0','max'=>'1000','placeholder'=>'0','ng-model'=>'totalNumber','ng-change'=>'checkProgress()','class' => 'form-control', 'required')) }}
+            </div>
+            
             <div class="form-group">
-                {{ Former::select('recruitment_obj_template_id','Recruitment Objective :')->class('form-control scrollable-menu')->addOption('Select Recruitment Objective')
-                        ->fromQuery(RecruitmentObjectiveTemplate::All(), 'message', 'recruitment_objective_template_id') }}  
+                {{ Former::select('recruitment_obj_template_id','Recruitment Objective :')->addOption('Select Recruitment Objective')
+                        ->fromQuery(RecruitmentObjectiveTemplate::All(), 'message', 'recruitment_objective_template_id')->attributes(array('ng-model'=>'recruitment_obj','ng-change'=>'checkProgress()','class'=>'form-control scrollable-menu')) }}  
                  <br>
                  {{ Form::text('recruitment_objective', Input::old('recruitment_objective'), array('class' => 'form-control','placeholder'=>'Recruitment Objective Note')) }}   
             </div>
 
             <div class="form-group">
-                {{ Former::select('recruitment_type_id','Recruitment type :')->class('form-control scrollable-menu')->addOption('Select Recruitment Type')
-                        ->fromQuery(RecruitmentType::All(), 'name', 'recruitment_type_id') }}  
+                {{ Former::select('recruitment_type_id','Recruitment type :')->addOption('Select Recruitment Type')
+                        ->fromQuery(RecruitmentType::All(), 'name', 'recruitment_type_id')->attributes(array('ng-model'=>'recruitment_type','ng-change'=>'checkProgress()','class'=>'form-control scrollable-menu')) }}  
             </div>
              <div class="form-group">
-                 {{ Former::select('location_id', 'Location :')->class('form-control scrollable-menu')->addOption('Select Location')
-                        ->fromQuery(Location::All(), 'name', 'location_id') }}  
+                 {{ Former::select('location_id', 'Location :')->addOption('Select Location')
+                        ->fromQuery(Location::All(), 'name', 'location_id')->attributes(array('ng-model'=>'location_id','ng-change'=>'checkProgress()','class'=>'form-control scrollable-menu')) }}  
             </div>
                     
                         <div class="form-group">
                     {{ Form::label('year_of_experience', 'Years of experience :') }}
-                    {{ Form::input('number','year_of_experience', Input::old('qualification'), array('min'=>'0','max'=>'100','placeholder'=>'0','class' => 'form-control', 'required')) }}
+                    {{ Form::input('number','year_of_experience', Input::old('qualification'), array('min'=>'0','max'=>'100','placeholder'=>'0','class' => 'form-control','ng-change'=>'checkProgress()','ng-model'=>'year_of_experience', 'required')) }}
                 </div>
                  
                 <div class="form-group">
                     {{ Form::label('responsibility', 'Responsibilities :') }}
-                    {{ Form::text('responsibility', Input::old('responsibility'), array('class' => 'form-control', 'required')) }}
+                    {{ Form::text('responsibility', Input::old('responsibility'), array('class' => 'form-control','ng-change'=>'checkProgress()','ng-model'=>'responsibility', 'required')) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('qualification', 'Qualifications :') }}
-                    {{ Form::text('qualification', Input::old('qualification'), array('class' => 'form-control','required')) }}
+                    {{ Form::text('qualification', Input::old('qualification'), array('class' => 'form-control','ng-change'=>'checkProgress()','ng-model'=>'qualification','required')) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('note', 'Note :') }}

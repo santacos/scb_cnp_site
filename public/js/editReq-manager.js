@@ -3,11 +3,13 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils']);
     	nameApp.controller('NameCtrl',['$scope', '$http',
 	  		function ($scope, $http) {
 	  		//for process
+	
+
 	  		$scope.count = 0;
 	  		$scope.isShowSkill=false;
-
+			
 	  		
-			$http.get('http://localhost/scb_cnp_site/public/rest/edit-requisition/1').success(function(data) {
+			$http.get('http://localhost/scb_cnp_site/public/rest/edit-requisition/'+ xxx).success(function(data) {
 	     		 $scope.requisition = data;
 	     		 
 	    	}).error(function(data, status, headers, config) {
@@ -64,13 +66,16 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils']);
 
 			 $scope.checkProgress = function(){
 			 	$scope.temp=0;
-			 	if($scope.try1){
+			 	if($scope.requisition.group){
 			 		$scope.temp = $scope.temp+1;
 			 	}
-			 	if($scope.try2){
+			 	if($scope.requisition.division){
 			 		$scope.temp = $scope.temp+1;
 			 	}
-			 	if($scope.try3){
+			 	if($scope.organization){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.position_id){
 			 		$scope.temp = $scope.temp+1;
 			 	}
 			 	
@@ -91,3 +96,5 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils']);
 
   	
   		]);//end controller
+
+	

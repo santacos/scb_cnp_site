@@ -3,6 +3,7 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils']);
     	nameApp.controller('NameCtrl',['$scope', '$http',
 	  		function ($scope, $http) {
 	  		//for process
+	  		$scope.temp=0;
 	  		$scope.count = 0;
 	  		$scope.isShowSkill=false;
 
@@ -38,6 +39,24 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils']);
 			 	}else{
 			 		$scope.showDivision = true;
 			 	}
+
+   				///
+   				$scope.temp=0;
+			 	if($scope.group!=""){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.division){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.organization){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.job_title){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	
+
+			 	$scope.count = $scope.temp;
    				console.log('checkGroup');
    	
 	    	}
@@ -48,6 +67,23 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils']);
 			 	}else{
 			 		$scope.showOrganization = true;
 			 	}
+
+			 	$scope.temp=0;
+			 	if($scope.group){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.division){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.organization){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.job_title){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	
+
+			 	$scope.count = $scope.temp;
    				console.log('checkGroup');
    	
 	    	}
@@ -58,6 +94,23 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils']);
 			 	}else{
 			 		$scope.showJobTitle = true;
 			 	}
+
+			 	$scope.temp=0;
+			 	if($scope.group){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.division){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.organization){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.job_title){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	
+
+			 	$scope.count = $scope.temp;
    				console.log('checkGroup');
    	
 	    	}
@@ -73,86 +126,48 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils']);
 			      console.log('error_corperate_title');
    			});
 
-   			$scope.addLocation = function(){
-
-   				console.log('add location');
-   				
-
-		    	$http.post('setlocation',{ 'name' :$scope.chooseLocation }).success(function(){
-		    		console.log('post_location_success');
-		    	});
-
-	    	}
-
-
-
-			/////////////////
-			$scope.status = {
-			    isopenIndustry: false,
-			    isopenCorp: false,
-			    isopenRecOb: false,
-			    isopenRecType: false,
-			    isopenLocation : false
-			  };
-
-			/////////////////
-			$scope.toggled = function(open) {
-			    console.log('Dropdown is now: ', open);
-			  };
-
-			$scope.toggleDropdown = function($event) {
-			    $event.preventDefault();
-			    $event.stopPropagation();
-			    $scope.status.isopen = !$scope.status.isopen;
-			  };
-
-			$scope.whenClickIndustry = function(item){
-			  	$scope.chooseIndustry = item;
-			  	$scope.status.isopenIndustry = !$scope.status.isopenIndustry;
-
-			  };
-
-			 $scope.whenClickCorp = function(temp){
-			  	$scope.chooseCorp = temp.name;
-			  	$scope.status.isopenCorp = !$scope.status.isopenCorp;
-			  	$scope.sentCorp =temp;
-
-			  };
-
-			  $scope.whenClickRecOb = function(Objective){
-			  	$scope.chooseRecOb = Objective;
-			  	$scope.status.isopenRecOb = !$scope.status.isopenRecOb;
-
-			  };
-
-			  $scope.whenClickRecType = function(type){
-			  	$scope.chooseRecType = type;
-			  	$scope.status.isopenRecType = !$scope.status.isopenRecType;
-
-			  };
-
-			  $scope.whenClickLocation = function(location){
-			  	$scope.chooseLocation = location.name;
-			  	$scope.status.isopenLocation = !$scope.status.isopenLocation;
-			  	$scope.sentLocation=location;
-
-			  };
-
-
+   		
 			 ////////////////////////////////////////////
 
 			 $scope.checkProgress = function(){
 			 	$scope.temp=0;
-			 	if($scope.try1){
+			 	if($scope.group){
 			 		$scope.temp = $scope.temp+1;
 			 	}
-			 	if($scope.try2){
+			 	if($scope.division){
 			 		$scope.temp = $scope.temp+1;
 			 	}
-			 	if($scope.try3){
+			 	if($scope.organization){
 			 		$scope.temp = $scope.temp+1;
 			 	}
-			 	
+			 	if($scope.job_title){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.corporate_title_id){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.totalNumber>0){
+			 		$scope.temp = $scope.temp+1;
+			 		console.log($scope.totalNumber);
+			 	}
+			 	if($scope.recruitment_obj){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.recruitment_type){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.location_id){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.year_of_experience){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.responsibility){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.qualification){
+			 		$scope.temp = $scope.temp+1;
+			 	}
 
 			 	$scope.count = $scope.temp;
 

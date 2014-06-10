@@ -66,14 +66,18 @@
 			</div>
 			
 			<h2 class="tp-caption lft skewtotop title span6" data-x="722" data-y="101" data-speed="1000" data-start="1700" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power1.easeIn">
-			  <strong>DIY</strong>
+			  <strong>SCB recruitment system</strong>
 			</h2>
 			
 			<div class="tp-caption lfr skewtoright description col-sm-6 col-md-6" data-x="722" data-y="189" data-speed="1000" data-start="1500" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power1.easeIn">
-			  <p>We added <strong>more than 80 items</strong> to the standard page design.<br>
+			  <!-- <p>We added <strong>more than 80 items</strong> to the standard page design.<br>
 			  You can form the page yourself by placing any information<br>
 			  you want – graphs, tables, buttons, slides, animated<br>
-			  content, maps and so on.</p>
+			  content, maps and so on.</p> -->
+			  <p>ธนาคารไทยพาณิชย์เป็น ธนาคารที่ให้บริการทางด้านการเงินครบวงจร<br>
+			  	แก่ลูกค้าทุกประเภท ด้วยการให้ประโยชน์อย่างสูงสุด <br>
+			  	และมีความรับผิดชอบต่อสังคมอย่างเต็มที่ <br>
+			  	</p>
 			</div>
 
 			<a href="#" class="btn cherry tp-caption lfb btn-default" data-x="722" data-y="332" data-speed="1000" data-start="1700" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power1.easeIn">
@@ -86,30 +90,36 @@
 		
 		<li data-delay="7000" data-transition="fade" data-slotamount="7" data-masterspeed="2000">
 		  <div class="elements">
-			<div class="tp-caption lfb skewtobottom" data-x="145" data-y="66" data-speed="1000" data-start="500" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power1.easeIn" style="z-index: 3">
-			  <img src="img/content/slider/rs-slider1-phone.png" alt="">
+
+
+		  	<div class="tp-caption lfb skewtobottom" data-x="145" data-y="66" data-speed="1000" data-start="500" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power1.easeIn" style="z-index: 3">
+			  <img src="img/content/slider/person.png" alt="">
 			</div>
+
+			<!-- <div class="tp-caption lfb skewtobottom" data-x="145" data-y="66" data-speed="1000" data-start="500" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power1.easeIn" style="z-index: 3">
+			  <img src="img/content/slider/rs-slider1-phone.png" alt="">
+			</div> -->
 			
 			<div class="tp-caption lfb skewtobottom" data-x="307" data-y="105" data-speed="1000" data-start="500" data-easing="Power4.easeOut" data-endspeed="400" data-endeasing="Power1.easeIn" style="z-index: 1">
 			  <img src="img/content/slider/rs-slider1-phone-bg.png" alt="">
 			</div>
 			
 			<h2 class="tp-caption sft skewtotop title span6" data-x="590" data-y="101" data-speed="1000" data-start="500" data-easing="Power4.easeOut" data-endspeed="400" data-endeasing="Power1.easeIn">
-			  Clean &amp; Valid code
+			  Apply job &amp; with SCB
 			</h2>
 			
 			<div class="tp-caption lfr skewtoright description col-sm-6 col-md-6" data-x="590" data-y="189" data-speed="1000" data-start="1000" data-easing="Power4.easeOut" data-endspeed="400" data-endeasing="Power1.easeIn">
-			  <p>Perfect HTML5 &amp; CSS3. Valid code, latest technologies, always<br>
-			  up-to-date. Compatible with the latest desktop and mobile<br>
-			  browsers down to IE8. Works perfectly wherever you need<br>
-			  and wherever you want.</p>
+			  <p>
+				<h6>เรากำลังมองหาบุคลากรที่มีศักยภาพ มีความสามารถ รับผิดชอบ และกระตือรือร้น<br> </h6>
+				<h3><strong>มาร่วมเป็นส่วนหนึ่งกับเรา</strong></h3>
+				</p>
 			</div>
 
 			<a href="#" class="btn tp-caption customin cherry btn-default" data-x="590" data-y="332" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="1200" data-start="1400" data-easing="Power3.easeInOut" data-endspeed="300" style="z-index: 5">
 			  Read more
 			</a>
 
-			<div class="tp-caption customin customout" data-x="337" data-y="148" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="1200" data-start="800" data-easing="Power3.easeInOut" data-endspeed="300" style="z-index: 5">
+			<!-- <div class="tp-caption customin customout" data-x="337" data-y="148" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="1200" data-start="800" data-easing="Power3.easeInOut" data-endspeed="300" style="z-index: 5">
 			  <img src="img/content/slider/rs-slider1-html5-1.png" alt="">
 			</div>
 			
@@ -127,7 +137,7 @@
 			
 			<div class="tp-caption lfb skewtobottom customin customout phone-text" data-x="365" data-y="325" data-customin="x:0;y:55;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-customout="x:0;y:55;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="1000" data-start="3600" data-easing="Power0.easeOut" data-endspeed="400" data-endeasing="Power0.easeIn" data-captionhidden="on" style="z-index: 2">
 			  CSS3
-			</div>
+			</div> -->
 		  </div>
 		  
 		  <img src="img/content/slider/rs-slider1-bg.jpg" alt="" data-bgfit="cover" data-bgposition="center top" data-bgrepeat="no-repeat">
