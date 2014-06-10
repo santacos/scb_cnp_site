@@ -22655,7 +22655,7 @@ $this->command->info('Table RecruitmentType Seeded');
 		}
 $this->command->info('Table Requisiton Seeded');
 //Application
-		for($i=0; $i<20; $i++)
+		for($i=0; $i<30; $i++)
 		{
 			$application = new Application;
 			$application->requisition_id = Requisition::orderBy(DB::raw('RAND()'))->first()->requisition_id;
@@ -22803,6 +22803,7 @@ $this->command->info('Table SLARequisition Seeded');
 $this->command->info('Table SLACandidate Seeded');
 
 $this->command->info('** All Table Seeded :) **');
+
 /*
 
 		::create(array(	'' => '',
