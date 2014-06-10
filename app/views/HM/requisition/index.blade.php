@@ -11,8 +11,8 @@ thisIsTitle
 @stop
 
 @section('content')
-         <!--row two for TO DO REQUISITION-->
-         <!-- <table cellpadding="3" cellspacing="0" border="0" style="width: 67%; margin: 0 auto 2em auto;">
+       <!--   row two for TO DO REQUISITION
+         <table cellpadding="3" cellspacing="0" border="0" style="width: 67%; margin: 0 auto 2em auto;">
         <thead>
             <tr>
                 <th>Target</th>
@@ -74,7 +74,7 @@ thisIsTitle
                                     
                                     <!--table style "table-striped"-->
                                     <div class="box-body table-responsive no-padding">
-                                {{$action='';}}
+                               
                                        {{  Datatable::table()
     ->addColumn( 'Requisition ID',
                 'Job Title',
@@ -88,7 +88,7 @@ thisIsTitle
                'Note',
                'Action'
                 )    
-    ->setUrl(URL::to('api/requisition/0/2'))
+    ->setUrl(URL::to('api/requisition/'.'0/'.''))
     ->render('datatable') }}
 
 

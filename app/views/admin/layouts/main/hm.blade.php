@@ -8,6 +8,7 @@ thisIsTitle
 @section('libs')
       <link rel="stylesheet" href="<?php echo asset('assets/css/AdminLTE.css')?>">
       <link rel="stylesheet" href="<?php echo asset('css/bootstrap-lightbox.css')?>">
+      
 @stop
 
 @section('left_sidebar')

@@ -1,4 +1,4 @@
-@extends('admin.layouts.default')
+@extends('admin.layouts.main.hm')
 @section('title')
 thisIsTitle
 @stop
@@ -11,7 +11,7 @@ thisIsTitle
 @stop
 
 @section('content')
-         <!--row two for TO DO REQUISITION-->
+       <!--   row two for TO DO REQUISITION
          <table cellpadding="3" cellspacing="0" border="0" style="width: 67%; margin: 0 auto 2em auto;">
         <thead>
             <tr>
@@ -52,7 +52,7 @@ thisIsTitle
                 <td align="center"><input type="text" class="column_filter" id="col5_filter"></td>
             </tr>
         </tbody>
-    </table>
+    </table> -->
         <div class="box box-primary">
 
                     <div class="box-header">
@@ -82,12 +82,13 @@ thisIsTitle
                'Location',
                'Status',
                'Require',
+               'SLA',
                'Deadline',
                'From',
                'Note',
                'Action'
                 )    
-    ->setUrl(URL::to('api/requisition'))
+    ->setUrl(URL::to('api/requisition/'.'1/'.'3'))
     ->render('datatable') }}
 
 
