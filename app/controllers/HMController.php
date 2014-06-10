@@ -19,6 +19,10 @@ class HMController extends \BaseController {
 
 		return View::make('HM.approved', compact('requisitions'));
 	}
+	public function getSaved()
+	{
+		return View::make('HM.requisition.saved');
+	}
 	
 
 }

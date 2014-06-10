@@ -160,7 +160,7 @@ HM-create-requisition
                     {{ Form::textarea('note', Input::old('note'), array('class' => 'form-control','size' => '30x5')) }}
                 </div>
                 {{ Form::button('Save', array('name' => 'save', 'value' => true, 'type' => 'submit','class' => 'btn btn-primary btn-lg btn-block')) }}
-                {{ Form::button('Send to approve', array('name' => 'save', 'value' => true, 'type' => 'submit','class' => 'btn btn-primary btn-warning btn-block')) }}
+                {{ Form::button('Send to approve', array('name' => 'save', 'value' => false, 'type' => 'submit','class' => 'btn btn-primary btn-warning btn-block')) }}
 
             {{ Form::close() }}
             </div>

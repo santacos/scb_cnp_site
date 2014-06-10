@@ -42,6 +42,9 @@
 					<a href="{{ URL::to('hm-requisition/create') }}"><i class="fa fa-fw fa-edit"></i> Create position <small class="badge pull-right bg-yellow">5</small></a>
 				</li>
 				<li>
+					<a href="{{ URL::to('hm/saved') }}"><i class="fa fa-fw fa-edit"></i> Saved position <small class="badge pull-right bg-yellow">5</small></a>
+				</li>
+				<li>
 					<a href="{{ URL::to('hm-nl-requisition') }}"><i class="fa fa-fw fa-check-square-o"></i> Approve <small class="badge pull-right bg-red">10</small></a>
 				</li>
 				<li>

@@ -176,6 +176,7 @@ Route::controller('userrest', 'UserRestController');
 // Hiring Manager
 Route::controller('hm','HMController');
 Route::resource('hm','HMController');
+
 Route::resource('hm-requisition', 'HMRequisitionController');
 Route::get('api/requisition/{user_id?}/{status_id1?}/{status_id2?}/{status_id3?}/{status_id4?}/{status_id5?}/{status_id6?}/{status_id7?}', array('as'=>'api.requisition', 'uses'=>'RequisitionRestController@getRequisitionDatatable'));
 Route::controller('requisitionrest', 'RequisitionRestController');
