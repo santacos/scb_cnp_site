@@ -54,7 +54,7 @@ class RecruiterShortlistLogController extends \BaseController {
 							'action_type' => 5,
 							'requisition_id' => $id,
 							'send_number' => $send_number,
-							'employee_user_id' => 2,
+							'employee_user_id' => $requisition->employee_user_id,
 							/**
 							change 'employee_user_id' to real employee id
 							*/
@@ -82,7 +82,7 @@ class RecruiterShortlistLogController extends \BaseController {
 								'action_type' => 1,
 								'application_id' => $application->application_id,
 								'visit_number' => 1,
-								'employee_user_id' => 2,
+								'employee_user_id' => $requisition->employee_user_id,
 								/**
 								change 'employee_user_id' to real employee id
 								*/

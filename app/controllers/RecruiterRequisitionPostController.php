@@ -11,7 +11,7 @@ class RecruiterRequisitionPostController extends \BaseController {
 	{
 		$requisitions = Requisition::all();
 
-		return View::make('requisition.index', compact('requisitions'));
+		return View::make('recruiter.requisition.post.index', compact('requisitions'));
 	}
 
 	/**
@@ -102,7 +102,7 @@ class RecruiterRequisitionPostController extends \BaseController {
 							'action_type' => 4,
 							'requisition_id' => $id,
 							'send_number' => 1,
-							'employee_user_id' => 1,
+							'employee_user_id' => $requisition->employee_user_id,
 							/**
 							change 'employee_user_id' to real employee id
 							*/
@@ -118,7 +118,7 @@ class RecruiterRequisitionPostController extends \BaseController {
 			$requisition->location_id = Input::get('location_id');
 			$requisition->corporate_title_id = Input::get('corporate_title_id');
 			$requisition->position_id =  Input::get('position_id');
-			$dep= Input::get('group');
+			$dep= $requisition->position()->first()->group;
 			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
 			$requisition->dept_id =$a;
 			$requisition->requisition_current_status_id = 5;
@@ -131,7 +131,9 @@ class RecruiterRequisitionPostController extends \BaseController {
 			$requisition->note = Input::get('note');
 			$requisition->save();
 
-		return Response::json(array('success' => true));
+		return Redirect::action('RecruiterRequisitionPostController@index')
+                            ->with( 'notice', 'Post Job Success' );	
+
 	}
 
 	/**

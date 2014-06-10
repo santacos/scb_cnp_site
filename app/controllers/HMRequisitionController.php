@@ -11,7 +11,7 @@ class HMRequisitionController extends \BaseController {
 	{
 		$requisitions = Requisition::all();
 
-		return View::make('requisition.index', compact('requisitions'));
+		return View::make('HM.requisition.index', compact('requisitions'));
 	}
 
 	/**
@@ -21,7 +21,7 @@ class HMRequisitionController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('requisition.create');
+		return View::make('HM.requisition.create');
 	}
 
 	/**
@@ -84,7 +84,7 @@ class HMRequisitionController extends \BaseController {
 	public function edit($requisition_id)
 	{
 		$requisition = Requisition::find($requisition_id);
-		return View::make('requisition.edit', array( 'requisition'=> $requisition));
+		return View::make('HM.requisition.edit', array( 'requisition'=> $requisition));
 	}
 
 	/**
@@ -118,7 +118,7 @@ class HMRequisitionController extends \BaseController {
 			/**
 			change 'employee_user_id' to real employee id
 			*/
-			$requisition->employee_user_id = 1;
+			$requisition->employee_user_id = $requisition->employee_user_id;
 			//Input::get('employee_user_id');
 			// $requisition->datetime_create = Carbon::now();
 			//$requisition->datetime_prev_status = Input::get('datetime_prev_status');

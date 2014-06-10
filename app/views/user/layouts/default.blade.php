@@ -25,7 +25,7 @@
 		<header class= @yield('header-class')>
 			@include('user.includes.header')
 		</header>
-
+			@include('user.includes.modalLogin')
 	
 			@yield('content')
 		

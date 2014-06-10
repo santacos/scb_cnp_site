@@ -174,8 +174,10 @@ Route::get('register', function()
 Route::controller('userrest', 'UserRestController');
 
 // Hiring Manager
+Route::controller('hm','HMController');
+Route::resource('hm','HMController');
 Route::resource('hm-requisition', 'HMRequisitionController');
-Route::get('api/requisition/{status_id?}', array('as'=>'api.requisition', 'uses'=>'RequisitionRestController@getRequisitionDatatable'));
+Route::get('api/requisition/{user_id?}/{status_id1?}/{status_id2?}/{status_id3?}/{status_id4?}/{status_id5?}/{status_id6?}/{status_id7?}', array('as'=>'api.requisition', 'uses'=>'RequisitionRestController@getRequisitionDatatable'));
 Route::controller('requisitionrest', 'RequisitionRestController');
 Route::resource('hm-application-review', 'HMApplicationReviewController');
 
@@ -183,15 +185,21 @@ Route::resource('hm-application-review', 'HMApplicationReviewController');
 Route::resource('hm-nl-requisition', 'HMNLRequisitionController');
 
 // HRBP Officer
+Route::controller('hrbp-officer','HRBPOfficerController');
+Route::resource('hrbp-officer','HRBPOfficerController');
 Route::resource('hrbp-officer-requisition', 'HRBPOfficerRequisitionController');
 
 // HRBP Manager
+Route::controller('hrbp-manager','HRBPManagerController');
+Route::resource('hrbp-manager','HRBPManagerController');
 Route::resource('hrbp-manager-requisition', 'HRBPManagerRequisitionController');
 
 // Application
 Route::resource('application', 'ApplicationController');
 
 // Recruiter
+Route::resource('recruiter','RecruiterController');
+Route::controller('recruiter','RecruiterController');
 Route::resource('recruiter-requisition-post', 'RecruiterRequisitionPostController');
 Route::get('recruiter-shortlist-detail', 'HMRequisitionController@index');
 Route::resource('recruiter-shortlist-candidate', 'RecruiterShortlistCandidateController');

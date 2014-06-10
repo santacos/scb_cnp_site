@@ -16,6 +16,7 @@ SCB Recruiter-Home
 
 
 @section('content')
+	
 	@include('user.includes.home.slider')
 
 

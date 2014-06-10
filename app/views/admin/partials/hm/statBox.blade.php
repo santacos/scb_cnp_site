@@ -3,7 +3,7 @@
 
 		<div class="col-lg-3 col-xs-6">
 			<!-- small box -->
-			<a href="{{URL::to('requisition/create')}}" class="small-box bg-aqua">
+			<a href="{{URL::to('hm-requisition/create')}}"  class="small-box bg-aqua">
 				<div class="inner">
 					<h3> Create Position <br><i class="fa fa-fw fa-edit" style="color:#48036F;"></i> </h3>
 				</div>
@@ -19,7 +19,7 @@
 
 		<div class="col-lg-3 col-xs-6">
 			<!-- small box -->
-			<a href="#" class="small-box bg-green">
+			<a href="{{URL::to('hm-nl-requisition')}}" class="small-box bg-green">
 				<div class="inner">
 					<h3> Approve<br>.</h3>
 

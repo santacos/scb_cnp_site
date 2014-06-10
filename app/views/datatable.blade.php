@@ -23,6 +23,8 @@
                  width="5%"       
             @elseif ($c == 'Require')
                  width="5%"
+            @elseif ($c == 'SLA')
+                 width="10%"
             @elseif ($c == 'Deadline')
                  width="10%"
             @elseif ($c == 'From')
@@ -30,7 +32,7 @@
             @elseif ($c == 'Note')
                  width="5%"
             @elseif ($c == 'Action')
-                 width="10%"                           
+                 width="15%"                           
             @endif
         >
             @if ($c == 'checkbox' && $hasCheckboxes = true)
@@ -89,7 +91,7 @@
                   //   $( nRow).addClass('danger');
                   // }
                 },
-            "order": [[ 0, "asc" ]],
+            "order": [[ 4, "asc" ]],
             // "bAutoWidth": false,            
             // @if (isset($hasCheckboxes) && $hasCheckboxes)
             // 'aaSorting': [['1', 'asc']],

@@ -10,7 +10,7 @@ HM-create-requisition
       <link rel="stylesheet" href="<?php echo asset('css/bootstrap.css')?>">
       <style>
         .scrollable-menu {
-            width:250px;
+           width:500px;
         height: auto;
         max-height: 200px;
         overflow-x: hidden;
@@ -21,8 +21,12 @@ HM-create-requisition
     
     <script src="<?php echo asset('vendor/angular.min.js')?>"></script> 
     <script src="<?php echo asset('vendor/ui-bootstrap-tpls-0.11.0.min.js')?>"></script>
-
+    <script src="https://code.angularjs.org/1.2.17/angular-route.js"></script>
     <!--angular file-->
+    <script>var xxx = {{$requisition->requisition_id}};
+        console.log(xxx);
+
+    </script>
     <script src="<?php echo asset('js/editReq-manager.js')?>"></script>
     <!-- end anugular-->
 
@@ -38,13 +42,14 @@ HM-create-requisition
             <div class="col-md-7 col-md-offset-1" style="margin-top:10px">
                 <h1>Edit a requisition</h1>
                 <hr/>
+
                 <div class="row">
                     <!--
                     <div class="col-sm-6">
                     <progressbar max="3" value="count"></progressbar>
                     </div>-->
                     <div class="col-sm-12">
-                    <progressbar class="progress-striped active" max="3" value="count" type="danger"><i>@{{count}} / 3</i></progressbar>
+                    <progressbar class="progress-striped active" max="5" value="count" type="danger"><i>@{{count}} / 5</i></progressbar>
                     </div>
                 </div>
 
@@ -64,9 +69,9 @@ HM-create-requisition
         {{ Former::populateField('jobTitle', $requisition->position()->first()->job_title) }}
         {{ Former::populateField('position_id', $requisition->position_id) }}
 
-        {{$requisition->group}}
+       <!--  {{$requisition->group}} -->
 
-        aaa @{{group}}
+       
         <div class="form-group">
                     <label for="group">Group : </label>
 
@@ -81,7 +86,7 @@ HM-create-requisition
                     
                     </select>   -->  
 
-                    HEY groupgroup : @{{requisition}}<br>
+                   <!--  HEY groupgroup : @{{requisition}}<br> -->
                     <select ng-model="requisition.group"  ng-change="checkGroup()"  
                         class="form-control scrollable-menu ng-valid ng-dirty " 
                         id="group" name="group"
