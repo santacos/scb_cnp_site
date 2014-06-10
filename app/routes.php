@@ -177,6 +177,7 @@ Route::controller('userrest', 'UserRestController');
 Route::resource('hm-requisition', 'HMRequisitionController');
 Route::get('api/requisition/{status_id?}', array('as'=>'api.requisition', 'uses'=>'RequisitionRestController@getRequisitionDatatable'));
 Route::controller('requisitionrest', 'RequisitionRestController');
+Route::resource('hm-application-review', 'HMApplicationReviewController');
 
 // Next Level Hiring Manager
 Route::resource('hm-nl-requisition', 'HMNLRequisitionController');

@@ -40,7 +40,7 @@ class RecruiterShortlistBasketController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$applications = Application::whereRequisitionID($id)->whereIsInBasket(1);
+		$applications = Application::whereRequisitionID($id)->whereIsInBasket(1)->whereNull('send_number');
 		$in_basket = count($applications);
 		$requisition = Requisition::find($id);
 		$require = $requisition->total_number;
