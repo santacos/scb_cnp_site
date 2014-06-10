@@ -36,6 +36,7 @@ class AllTableSeeder extends Seeder {
 		DB::table('SLA_requisitions')->delete();
 		DB::table('SLA_candidates')->delete();
 		DB::table('requisitions')->delete();
+		DB::table('applications')->delete();
 		DB::table('recruitment_objective_templates')->delete();
 		DB::table('recruitment_types')->delete();
 
@@ -22604,6 +22605,7 @@ class AllTableSeeder extends Seeder {
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 9,
 							'name' => 'END SLA'
 							));
+
 //RECRUITMENT OBJECTIVE TEMPLATE
 		DB::table('recruitment_objective_templates')->insert(array(
 							'recruitment_objective_template_id' => 1,
@@ -22650,6 +22652,17 @@ class AllTableSeeder extends Seeder {
 			$requisition->qualification = str_random(40);
 			$requisition->note = str_random(40);
 			$requisition->save();
+		}
+
+//Application
+		for($i=0; $i<20; $i++)
+		{
+			$application = new Application;
+			$application->requisition_id = Requisition::orderBy(rand())->first()->requisition_id;
+			$application->candidate_user_id = User::where('username','=','candidate'.rand(1,4))->first()->user_id;
+			$application->application_current_status_id = rand(1,9);
+			$application->is_in_basket = false;
+			$application->save();
 		}
 		
 //SLA REQUISITION
