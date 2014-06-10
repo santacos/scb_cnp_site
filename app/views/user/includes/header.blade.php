@@ -39,10 +39,12 @@
 
 			<!-- add button -->
 			
-			  <a href="#">
-			  	
+
+
+			  
+			<a href="#myModal" data-toggle="modal">
 				<button type="button" class="btn btn-xs btn-danger" style="margin-top:10%">log in</button>
-			  </a>
+			</a>
 			
 
 		  </div><!-- .header-icons -->
