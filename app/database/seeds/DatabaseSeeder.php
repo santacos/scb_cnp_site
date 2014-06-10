@@ -22625,7 +22625,7 @@ class AllTableSeeder extends Seeder {
 							));
 
 //Requisition
-		for($i=0; $i<100;$i++)
+		for($i=0; $i<10;$i++)
 		{
         	$user = User::where('username','=','candidate'.rand(1,4))->first();
        		$requisition = new Requisition;

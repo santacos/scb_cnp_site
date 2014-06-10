@@ -179,13 +179,13 @@ Route::get('api/requisition/{status_id?}', array('as'=>'api.requisition', 'uses'
 Route::controller('requisitionrest', 'RequisitionRestController');
 
 // Next Level Hiring Manager
-Route::resource('hm/nl/requisition', 'HMNLRequisitionController');
+Route::resource('hm-nl-requisition', 'HMNLRequisitionController');
 
 // HRBP Officer
-Route::resource('hrbp/officer/requisition', 'HRBPOfficerRequisitionController');
+Route::resource('hrbp-officer-requisition', 'HRBPOfficerRequisitionController');
 
 // HRBP Manager
-Route::resource('hrbp/manager/requisition', 'HRBPManagerRequisitionController');
+Route::resource('hrbp-manager-requisition', 'HRBPManagerRequisitionController');
 
 // Application
 Route::resource('application', 'ApplicationController');

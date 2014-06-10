@@ -105,7 +105,7 @@ class RequisitionRestController extends \BaseController {
         		// return '<a href="' .URL::to('hrbp/officer/requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
         	}
         })
-    ->orderColumns('requisitsion_id')
+    // ->orderColumns('requisitsion_id')
     ->searchColumns('requisitsion_id',
     	'job_title',
     	'corporate_title_id',

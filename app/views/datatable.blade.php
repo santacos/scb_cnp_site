@@ -84,21 +84,21 @@
             "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
                   // Bold the grade for all 'A' grade browsers
 
-                  if ( aData[2].indexOf("Staff 1") == 0 )
-                  { 
-                    $( nRow).addClass('danger');
-                  }
+                  // if ( aData[2].indexOf("Staff 1") == 0 )
+                  // { 
+                  //   $( nRow).addClass('danger');
+                  // }
                 },
-
-            "bAutoWidth": false,            
-            @if (isset($hasCheckboxes) && $hasCheckboxes)
-            'aaSorting': [['1', 'asc']],
-            // Disable sorting on the first column
-            "aoColumnDefs": [ {
-                'bSortable': false,
-                'aTargets': [ 0, {{ count($columns) - 1 }} ]                
-            } ],
-            @endif
+            "order": [[ 0, "asc" ]],
+            // "bAutoWidth": false,            
+            // @if (isset($hasCheckboxes) && $hasCheckboxes)
+            // 'aaSorting': [['1', 'asc']],
+            // // Disable sorting on the first column
+            // "aoColumnDefs": [ {
+            //     'bSortable': false,
+            //     'aTargets': [ 0, {{ count($columns) - 1 }} ]                
+            // } ],
+            // @endif
             @foreach ($options as $k => $o)
             {{ json_encode($k) }}: {{ json_encode($o) }},
             @endforeach
