@@ -42,7 +42,7 @@ class HMNLRequisitionController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return View::make('HM.approve.show')->with('requisition',Requisition::find($id));
+		return View::make('HM.approve.show2')->with('requisition',Requisition::find($id));
 	}
 	
 	/**
