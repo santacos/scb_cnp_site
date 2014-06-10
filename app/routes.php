@@ -213,7 +213,7 @@ Route::get('recruiter-shortlist-log/{id}/{id2}', 'RecruiterShortlistLogControlle
 
 // Candidate
 Route::resource('candidate', 'CandidateController');
-
+Route::controller('candidate', 'CandidateController');
 /*App::missing(function($exception)
 {
    return View::make('user.home');

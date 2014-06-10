@@ -53,7 +53,7 @@ class HMRequisitionController extends \BaseController {
 			$dep= $requisition->position()->first()->group;
 			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
 			$requisition->dept_id =$a;
-			$requisition->requisition_current_status_id = 2;
+			$requisition->requisition_current_status_id = Input::get('save')?1:2;
 			//Input::get('requisition_current_status_id');
 			$requisition->recruitment_type_id = Input::get('recruitment_type_id');
 			$requisition->recruitment_obj_template_id=Input::get('recruitment_obj_template_id');
@@ -65,7 +65,7 @@ class HMRequisitionController extends \BaseController {
 			$requisition->note = Input::get('note');
 			$requisition->save();
 
-		return Response::json(array('success' => true));
+		return View::make('HM.home2', compact('requisitions'));
 	}
 
 	/**
@@ -132,7 +132,7 @@ class HMRequisitionController extends \BaseController {
 			$dep= $requisition->position()->first()->group;
 			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
 			$requisition->dept_id =$a;
-			$requisition->requisition_current_status_id = 2;
+			$requisition->requisition_current_status_id = Input::get('save')?1:2;
 			//Input::get('requisition_current_status_id');
 			$requisition->recruitment_type_id = Input::get('recruitment_type_id');
 			$requisition->recruitment_obj_template_id=Input::get('recruitment_obj_template_id');
@@ -144,7 +144,7 @@ class HMRequisitionController extends \BaseController {
 			$requisition->note = Input::get('note');
 			$requisition->save();
 
-		return Response::json(array('success' => true));
+		return View::make('HM.home2', compact('requisitions'));
 	}
 
 	/**

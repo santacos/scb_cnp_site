@@ -149,18 +149,18 @@ HM-create-requisition
                  
                 <div class="form-group">
                     {{ Form::label('responsibility', 'Responsibilities :') }}
-                    {{ Form::text('responsibility', Input::old('responsibility'), array('class' => 'form-control','ng-change'=>'checkProgress()','ng-model'=>'responsibility', 'required')) }}
+                    {{ Form::textarea('responsibility', Input::old('responsibility'), array('class' => 'form-control','ng-change'=>'checkProgress()','ng-model'=>'responsibility', 'required','size' => '30x5')) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('qualification', 'Qualifications :') }}
-                    {{ Form::text('qualification', Input::old('qualification'), array('class' => 'form-control','ng-change'=>'checkProgress()','ng-model'=>'qualification','required')) }}
+                    {{ Form::textarea('qualification', Input::old('qualification'), array('class' => 'form-control','ng-change'=>'checkProgress()','ng-model'=>'qualification','required','size' => '30x5')) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('note', 'Note :') }}
                     {{ Form::textarea('note', Input::old('note'), array('class' => 'form-control','size' => '30x5')) }}
                 </div>
-
-            {{ Form::submit('Create', array('class' => 'btn btn-primary btn-lg btn-block')) }}
+                {{ Form::button('Save', array('name' => 'save', 'value' => true, 'type' => 'submit','class' => 'btn btn-primary btn-lg btn-block')) }}
+                {{ Form::button('Send to approve', array('name' => 'save', 'value' => true, 'type' => 'submit','class' => 'btn btn-primary btn-warning btn-block')) }}
 
             {{ Form::close() }}
             </div>
