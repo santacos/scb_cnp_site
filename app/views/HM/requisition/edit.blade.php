@@ -173,7 +173,9 @@ HM-create-requisition
                 </div>
 
 
-    {{ Form::submit('Create', array('class' => 'btn btn-primary btn-lg btn-block')) }}
+   {{ Form::button('Save', array('name' => 'save', 'value' => true, 'type' => 'submit','class' => 'btn btn-primary btn-lg btn-block')) }}
+                {{ Form::button('Send to approve', array('name' => 'save', 'value' => false, 'type' => 'submit','class' => 'btn btn-primary btn-warning btn-block')) }}
+
 
     {{ Form::close() }}
             </div>

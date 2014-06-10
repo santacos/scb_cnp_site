@@ -99,7 +99,7 @@ class HMNLRequisitionController extends \BaseController {
 							'action_type' => 2,
 							'requisition_id' => $id,
 							'send_number' => 1,
-							'employee_user_id' => $requisition->employee_user_id,
+							'employee_user_id' => Employee::first()->user_id,
 							/**
 							change 'employee_user_id' to real employee id
 							*/

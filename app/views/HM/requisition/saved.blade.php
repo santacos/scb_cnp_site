@@ -1,4 +1,4 @@
-@extends('admin.layouts.main.recruiter')
+@extends('admin.layouts.main.hm')
 @section('title')
 thisIsTitle
 @stop
@@ -56,7 +56,7 @@ thisIsTitle
         <div class="box box-primary">
 
                     <div class="box-header">
-                        <h3 class="box-title"> All Requisiton..</h3>
+                        <h3 class="box-title"> Save Requisiton..</h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-primary btn-xs" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -88,7 +88,7 @@ thisIsTitle
                'Note',
                'Action'
                 )    
-    ->setUrl(URL::to('api/requisition/'.'3/'.'4'))
+    ->setUrl(URL::to('api/requisition/'.'1/'.'1'))
     ->render('datatable') }}
 
 

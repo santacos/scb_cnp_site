@@ -26,7 +26,7 @@
 	<!-- sidebar menu: : style can be found in sidebar.less -->
 	<ul class="sidebar-menu">
 		<li class="active">
-			<a href="{{ URL::to('/') }}"> <i class="fa fa-dashboard"></i> <span>Home</span> </a>
+			<a href="{{ URL::to('hm') }}"> <i class="fa fa-dashboard"></i> <span>Home</span> </a>
 		</li>
 
 
@@ -40,6 +40,9 @@
 			<ul class="treeview-menu">
 				<li>
 					<a href="{{ URL::to('hm-requisition/create') }}"><i class="fa fa-fw fa-edit"></i> Create position <small class="badge pull-right bg-yellow">5</small></a>
+				</li>
+				<li>
+					<a href="{{ URL::to('hm/saved') }}"><i class="fa fa-fw fa-edit"></i> Saved position <small class="badge pull-right bg-yellow">5</small></a>
 				</li>
 				<li>
 					<a href="{{ URL::to('hm-nl-requisition') }}"><i class="fa fa-fw fa-check-square-o"></i> Approve <small class="badge pull-right bg-red">10</small></a>
