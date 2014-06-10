@@ -9,7 +9,8 @@ class RecruiterShortlistCandidateController extends \BaseController {
 	 */
 	public function index()
 	{
-		return Response::json(array('success' => false));
+		$requisitions = Requisition::all();
+		return View::make('recruiter.requisition.shortlist.index', compact('requisitions'));
 	}
 
 	/**

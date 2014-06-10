@@ -180,7 +180,11 @@ class RequisitionRestController extends \BaseController {
                         }
                         else if($model ->requisition_current_status_id == 5)
                         {
-                            return '<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Basket</button></a>';
+                            return  '<a href="' .URL::to('recruiter-shortlist-candidate/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Application</button></a>'
+
+                            .'  '.'<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Basket</button></a>'
+                                    
+                            ;
                         }
                         else if($model ->requisition_current_status_id == 6)
                         {
