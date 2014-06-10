@@ -21,7 +21,7 @@ class HMRequisitionController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('requisition.create');
+		return View::make('HM.requisition.create');
 	}
 
 	/**

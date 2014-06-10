@@ -68,7 +68,7 @@ HM-create-requisition
                 </div>
             -->
 
-                <h1>count:</h1> @{{group}}
+                
                 <div class="form-group">
                     <label for="group">Group :</label>
                     <!--
