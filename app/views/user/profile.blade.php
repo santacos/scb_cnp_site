@@ -201,12 +201,16 @@ SCB Recruitment-Home
 								  <td>25&nbsp;&nbsp;years</td>
 								</tr>
 								<tr>
-								  <td>Item #4</td>
-								  <td>Description</td>
+								  <td><strong>Date of Birth :</strong></td>
+								  <td>12 July 1988</td>
+								  <td><strong>Nationality : </strong></td>
+								  <td>Thai</td>
 								</tr>
 								<tr>
-								  <td><strong>All Items</strong></td>
-								  <td><strong>Description</strong></td>
+								  <td><strong>Passport NO:</strong></td>
+								  <td>1100932419323</td>
+								  <td><strong>ID Number :</strong></td>
+								  <td>1100932419323</td>
 								</tr>
 							  </tbody>
 							</table>
@@ -236,7 +240,7 @@ SCB Recruitment-Home
 				  		<div class="col col-md-6">
 				  			<div class="panel panel-default frame frame-shadow-curved">
 							  <div class="panel-heading"  >
-								<h3 class="panel-title">Panel title</h3>
+								<h3 class="panel-title">Experience</h3>
 							  </div>
 							  <div class="panel-body">
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus reprehenderit ad atque cum est. Commodi consequatur soluta officiis veniam nobis corrupti tenetur dolorem reprehenderit sunt vitae iure suscipit adipisci explicabo qui facere! Ea dolore quas maxime facere tenetur illum quibusdam sapiente dolorem nesciunt laudantium necessitatibus accusamus ab libero vel odio.</p>
@@ -249,7 +253,7 @@ SCB Recruitment-Home
 				  		<div class="col col-md-6">
 				  			<div class="panel panel-default frame frame-shadow-curved">
 							  <div class="panel-heading"  >
-								<h3 class="panel-title">Panel title</h3>
+								<h3 class="panel-title">Skill</h3>
 							  </div>
 							  <div class="panel-body">
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus reprehenderit ad atque cum est. Commodi consequatur soluta officiis veniam nobis corrupti tenetur dolorem reprehenderit sunt vitae iure suscipit adipisci explicabo qui facere! Ea dolore quas maxime facere tenetur illum quibusdam sapiente dolorem nesciunt laudantium necessitatibus accusamus ab libero vel odio.</p>
@@ -262,7 +266,7 @@ SCB Recruitment-Home
 				  		<div class="col col-md-6">
 				  			<div class="panel panel-default " >
 							  <div class="panel-heading"  >
-								<h3 class="panel-title">Panel title</h3>
+								<h3 class="panel-title">Education</h3>
 							  </div>
 							  <div class="panel-body">
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus reprehenderit ad atque cum est. Commodi consequatur soluta officiis veniam nobis corrupti tenetur dolorem reprehenderit sunt vitae iure suscipit adipisci explicabo qui facere! Ea dolore quas maxime facere tenetur illum quibusdam sapiente dolorem nesciunt laudantium necessitatibus accusamus ab libero vel odio.</p>
@@ -275,7 +279,7 @@ SCB Recruitment-Home
 				  		<div class="col col-md-6">
 				  			<div class="panel panel-default ">
 							  <div class="panel-heading"  >
-								<h3 class="panel-title">Panel title</h3>
+								<h3 class="panel-title">Award and Honors</h3>
 							  </div>
 							  <div class="panel-body">
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus reprehenderit ad atque cum est. Commodi consequatur soluta officiis veniam nobis corrupti tenetur dolorem reprehenderit sunt vitae iure suscipit adipisci explicabo qui facere! Ea dolore quas maxime facere tenetur illum quibusdam sapiente dolorem nesciunt laudantium necessitatibus accusamus ab libero vel odio.</p>
@@ -288,7 +292,7 @@ SCB Recruitment-Home
 				  		<div class="col col-md-12">
 				  			<div class="panel panel-default frame frame-shadow-curved" >
 							  <div class="panel-heading"  >
-								<h3 class="panel-title">Panel title</h3>
+								<h3 class="panel-title">Professional certificate</h3>
 							  </div>
 							  <div class="panel-body">
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus reprehenderit ad atque cum est. Commodi consequatur soluta officiis veniam nobis corrupti tenetur dolorem reprehenderit sunt vitae iure suscipit adipisci explicabo qui facere! Ea dolore quas maxime facere tenetur illum quibusdam sapiente dolorem nesciunt laudantium necessitatibus accusamus ab libero vel odio.</p>
