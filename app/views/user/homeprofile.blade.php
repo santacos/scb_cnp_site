@@ -113,11 +113,30 @@ SCB Recruitment-Home
 	  <!-- .end sidebar -->
 
 	  	<!-- center content -->
-	    <article class="content pull-left col-sm-9 col-md-9">
+	    <article class="content pull-left col-sm-8 col-md-8">
 
       		<br>
-      		
-	<!-- profile-->
+      		<!--recommend box-->
+	      	<div class="row">
+				<div class="alert alert-error fade in alert-warning alert-dismissable">
+					<i class="fa fa-cloud-download alert-icon"></i>
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					<h5>Recommend box</h5>
+					<h7>Where did you graduate from?</h7>
+					<br>
+
+					<!-- <button type="button" class="close" data-dismiss="alert">×</button>
+					 --><div class="round-button close pull-left" data-dismiss="alert">
+						<div class="round-button-circle">
+							<a href="#" class="round-button"></a>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<!--end recommend box-->
+
+			<!-- profile-->
 			<div class="row">
 
 				  <div class="content-block bottom-padding frame">
@@ -135,9 +154,8 @@ SCB Recruitment-Home
 						<h1>
 							Profile
 							<!--button to link to full profile-->
-							<a href="{{ URL::to('/cd/edit-profile')}}">
+							<button class="btn btn-border btn-warning btn-sm">View profile</button>
 							<button class="btn btn-border btn-warning btn-sm " style="margin-left:0px;">Edit profile</button>
-							</a>
 							<!-- end button-->
 						</h1>
 						<hr style="margin-top:5px;margin-bottom:5px;">
@@ -199,26 +217,7 @@ SCB Recruitment-Home
 							
 					  	</div>
 					  	<div class="col col-md-5">
-					  <!-- 		<div class="container">
-						  		<div class="row">
-						  			<div class="col col-md-8">
-						  			</div>
-						  			<div class="col col-md-4">
-						  				<div class="row">
-								  			<div class="col col-md-4">
-								  				<button type="button" class="btn btn-default" style="width:80%;">View resume</button>
-								  			</div>
-								  			<div class="col col-md-4">
-								  				<button type="button" class="btn btn-default" style="width:80%;">Export to pdf</button>
-								  			</div>
-								  			<div class="col col-md-4">
-								  				<button class="btn btn-default pull-left" style="width:8em;" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
-			                    			</div>
-								  		</div>
-						  			</div>
-						  		</div>
-					  		</div> -->
-					  		
+
 					  	</div>
 				  	</div>
 				  	
@@ -238,8 +237,8 @@ SCB Recruitment-Home
 				  		
 
 				  		<!--experience box-->
-				  		<div class="col col-md-12">
-				  			<div class="panel panel-primary frame frame-shadow-curved">
+				  		<div class="col col-md-6">
+				  			<div class="panel panel-default frame frame-shadow-curved">
 							  <div class="panel-heading"  >
 								<h3 class="panel-title">Work Experience</h3>
 							  </div>
@@ -298,8 +297,8 @@ SCB Recruitment-Home
 				  		</div>
 
 				  		<!--skill-->
-				  		<div class="col col-md-12">
-				  			<div class="panel panel-info frame frame-shadow-curved">
+				  		<div class="col col-md-6">
+				  			<div class="panel panel-default frame frame-shadow-curved">
 							  <div class="panel-heading"  >
 								<h3 class="panel-title">Skill</h3>
 							  </div>
@@ -338,8 +337,8 @@ SCB Recruitment-Home
 				  		</div>
 
 				  		<!--education-->
-				  		<div class="col col-md-12">
-				  			<div class="panel panel-success " >
+				  		<div class="col col-md-6">
+				  			<div class="panel panel-default " >
 							  <div class="panel-heading"  >
 								<h3 class="panel-title">Education</h3>
 							  </div>
@@ -373,8 +372,8 @@ SCB Recruitment-Home
 				  		</div>
 
 				  		<!--award-->
-				  		<div class="col col-md-12">
-				  			<div class="panel panel-warning ">
+				  		<div class="col col-md-6">
+				  			<div class="panel panel-default ">
 							  <div class="panel-heading"  >
 								<h3 class="panel-title">Award and Honors</h3>
 							  </div>
@@ -408,7 +407,7 @@ SCB Recruitment-Home
 
 				  		<!--Professional certificate-->
 				  		<div class="col col-md-12">
-				  			<div class="panel panel-danger frame frame-shadow-curved" >
+				  			<div class="panel panel-default frame frame-shadow-curved" >
 							  <div class="panel-heading"  >
 								<h3 class="panel-title">Professional certificate</h3>
 							  </div>
@@ -465,11 +464,42 @@ SCB Recruitment-Home
 			</div>
 			<!-- end profile-->
 
-			
+			<div class="row">
+
+				  <div class="content-block bottom-padding frame">
+				  	
+				  	
+					 <div class="progress-circular progress-striped pull-right" style="padding-left:10px;">
+						<input type="text" class="knob" value="0" rel="75" data-linecap="round" data-width="80" data-bgColor="#f2f2f2" data-fgColor="#c10841" data-thickness=.30 data-readOnly=true disabled>
+					 </div>
+					<h1>
+						Profile
+						<button class="btn btn-border btn-primary btn-sm">View profile</button>
+					<button class="btn btn-border btn-primary btn-sm " style="margin-left:0px;">Edit profile</button>
+					</h1>
+					
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus reprehenderit ad atque cum est. Commodi consequatur soluta officiis veniam nobis corrupti tenetur dolorem reprehenderit sunt vitae iure suscipit adipisci explicabo qui facere! Ea dolore quas maxime facere tenetur illum quibusdam sapiente dolorem nesciunt laudantium necessitatibus accusamus ab libero vel odio.</p>
+				  </div>
+				
+			</div>
       	</article><!-- .content -->
       	<!--end center content-->
 
-      
+      	<!-- right side bar-->
+      	<div class="content pull-left col-sm-1 col-md-1">
+      	 	
+    		<button type="button" class="btn btn-border btn-warning " style="margin-top:20px;width:100 px;height:100px;">
+    			<h5><i class="fa fa-fw fa-search "></i>&nbsp;Search&nbsp;Job</h5>
+    		</button>	
+
+    		<button type="button" class="btn btn-border btn-warning " style="margin-top:20px;width:100 px;height:100px;">
+    			<h5>
+    				<i class="fa fa-warning "></i>&nbsp;Notification
+    			</h5>
+    		</button>
+    		
+    	</div>
+    	<!--end right side bar-->
 
     </div><!--row-->
    

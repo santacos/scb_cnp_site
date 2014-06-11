@@ -19,7 +19,7 @@ Route::get('testtest',function(){
 
 //////////////////// test area/////////////////////////////
 Route::get('cd',function(){
-    return View::make('user.profile');
+    return View::make('user.homeprofile');
 });
 
 Route::get('cd/profile',function(){

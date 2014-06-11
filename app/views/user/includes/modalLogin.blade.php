@@ -51,6 +51,9 @@
 									<div class="form-group">
 										<button tabindex="3" type="submit" class="btn btn-primary btn-lg btn-block">{{{ Lang::get('confide::confide.login.submit') }}}</button>
 									</div>
+									<hr>
+									<div class="sbtnf sbtnf-rounded sbtnf-icon-white sbtnf-icon-bg-black color icon-facebook"></div>
+										
 								</fieldset>
 							</form>
 							<div>
