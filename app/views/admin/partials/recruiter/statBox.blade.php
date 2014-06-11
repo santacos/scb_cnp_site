@@ -12,7 +12,7 @@
 					<i class="ion ion" style="color:white;font-size:80%;">23</i>		
 				</div>
 				<div class="small-box-footer">
-					total job  <span class="label label-info" style="border-radius:50%;"> 23</span> 
+					total job  <span class="label label-info" style="border-radius:50%;font-size:1.1em;"> 23</span> 
 				</div>
 			</a>
 		</div><!-- ./col -->
@@ -28,7 +28,7 @@
 					<i class="ion ion-person-add"></i>
 				</div>
 				<div class="small-box-footer">
-					total job  <span class="label label-success" style="border-radius:50%;"> 50</span> 
+					total job  <span class="label label-success" style="border-radius:50%;font-size:1.1em;"> 50</span> 
 				</div>
 			</a>
 		</div><!-- ./col -->
@@ -43,7 +43,10 @@
 				<div class="icon">
 					<i class="fa fa-fw fa-check-square-o"></i>
 				</div>
-				<div class="small-box-footer"> More info <i class="fa fa-arrow-circle-right"></i> </div>
+				<div class="small-box-footer"> 
+					total job  <span class="label label-warning" style="border-radius:50%;font-size:1.1em;"> 3</span> 
+				
+				</div>
 			</a>
 		</div><!-- ./col -->
 
@@ -56,7 +59,10 @@
 				<div class="icon">
 					<i class="fa fa-fw fa-group"></i>
 				</div>
-				<div class="small-box-footer"> More info <i class="fa fa-arrow-circle-right"></i> </div>
+				<div class="small-box-footer"> 
+					total job  <span class="label label-danger" style="border-radius:50%;font-size:1.1em;"> 15</span> 
+				
+				</div>
 			</a>
 		</div><!-- ./col -->
 
@@ -71,7 +77,10 @@
 				<div class="icon">
 					<i class="fa fa-fw fa-comments-o"></i>
 				</div>
-				<div class="small-box-footer"> More info <i class="fa fa-arrow-circle-right"></i> </div>
+				<div class="small-box-footer"> 
+					total job  <span class="label bg-blue" style="border-radius:50%;font-size:1.1em;"> 21</span> 
+				 
+				</div>
 			</a>
 		</div><!-- ./col -->
 
@@ -85,7 +94,10 @@
 				<div class="icon">
 					<i class="fa fa-fw fa-archive"></i>
 				</div>
-				<div class="small-box-footer"> More info <i class="fa fa-arrow-circle-right"></i> </div>
+				<div class="small-box-footer"> 
+					total job  <span class="label bg-purple" style="border-radius:50%;font-size:1.1em;"> 17</span> 
+				 
+				</div>
 			</a>
 		</div><!-- ./col -->
 
@@ -98,7 +110,10 @@
 				<div class="icon">
 					<i class="ion ion-stats-bars"></i>
 				</div>
-				<div class="small-box-footer"> More info <i class="fa fa-arrow-circle-right"></i> </div>
+				<div class="small-box-footer"> 
+					total job  <span class="label bg-teal" style="border-radius:50%;font-size:1.1em;"> 10</span> 
+				
+				</div>
 			</a>
 		</div><!-- ./col -->
 

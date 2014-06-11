@@ -4,15 +4,17 @@
 		<div class="col-lg-3 col-xs-6">
 			<!-- small box -->
 			<a href="{{URL::to('hm-requisition/create')}}"  class="small-box bg-aqua">
-				<div class="inner">
-					<h3> Create Position <br><i class="fa fa-fw fa-edit" style="color:#48036F;"></i> </h3>
+					<div class="inner">
+					<h3> Create <br>Position <br> </h3>
 				</div>
 
 				<div class="icon">
-					<i class="ion ion" style="color:white;font-size:80%;">23</i>		
+					<i class="ion ion">
+						<i class="fa fa-fw fa-edit"></i>
+					</i>		
 				</div>
 				<div class="small-box-footer">
-					total job  <span class="label label-info" style="border-radius:50%;"> 23</span> 
+					total job  <span class="label label-info" style="border-radius:50%;font-size:1.1em;"> 23</span> 
 				</div>
 			</a>
 		</div><!-- ./col -->
@@ -28,7 +30,7 @@
 					<i class="ion ion-person-add"></i>
 				</div>
 				<div class="small-box-footer">
-					total job  <span class="label label-success" style="border-radius:50%;"> 50</span> 
+					total job  <span class="label label-success" style="border-radius:50%;font-size:1.1em;"> 50</span> 
 				</div>
 			</a>
 		</div><!-- ./col -->
@@ -45,7 +47,7 @@
 				</div>
 				
 				<div class="small-box-footer">
-					total job  <span class="label label-warnign" style="border-radius:50%;"> 50</span> 
+					total job  <span class="label label-warnign" style="border-radius:50%;font-size:1.1em;"> 13</span> 
 				</div>
 			</a>
 		</div><!-- ./col -->
@@ -60,7 +62,7 @@
 					<i class="fa fa-fw fa-group"></i>
 				</div>
 				<div class="small-box-footer">
-					total job  <span class="label label-danger" style="border-radius:50%;"> 50</span> 
+					total job  <span class="label label-danger" style="border-radius:50%;font-size:1.1em;"> 45</span> 
 				</div>	
 			</a>
 		</div><!-- ./col -->

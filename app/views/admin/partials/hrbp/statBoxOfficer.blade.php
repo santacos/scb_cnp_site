@@ -11,10 +11,10 @@
 				</div>
 
 				<div class="icon">
-					<i class="ion ion" style="color:white;font-size:80%;">23</i>		
+					<i class="ion ion" style="color:white;font-size:80%;">4</i>		
 				</div>
 				<div class="small-box-footer">
-					total job  <span class="label label-info" style="border-radius:50%;"> 24</span> 
+					total job  <span class="label label-info" style="border-radius:50%;font-size:1.1em;"> 4</span> 
 				</div>
 			</a>
 		</div><!-- ./col -->
@@ -27,10 +27,10 @@
 				</div>
 
 				<div class="icon">
-					<i class="ion ion" style="color:white;font-size:80%;">23</i>		
+					<i class="ion ion" style="color:white;font-size:80%;">13</i>		
 				</div>
 				<div class="small-box-footer">
-					total job  <span class="label label-success" style="border-radius:50%;"> 12</span> 
+					total job  <span class="label label-success" style="border-radius:50%;font-size:1.1em;"> 13</span> 
 				</div>
 			</a>
 		</div><!-- ./col -->
