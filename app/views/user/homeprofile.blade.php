@@ -466,20 +466,10 @@ SCB Recruitment-Home
 
 			<div class="row">
 
-				  <div class="content-block bottom-padding frame">
+					<div class="content-block bottom-padding frame">
+				  		@include('user.includes.checkStatus')
 				  	
-				  	
-					 <div class="progress-circular progress-striped pull-right" style="padding-left:10px;">
-						<input type="text" class="knob" value="0" rel="75" data-linecap="round" data-width="80" data-bgColor="#f2f2f2" data-fgColor="#c10841" data-thickness=.30 data-readOnly=true disabled>
-					 </div>
-					<h1>
-						Profile
-						<button class="btn btn-border btn-primary btn-sm">View profile</button>
-					<button class="btn btn-border btn-primary btn-sm " style="margin-left:0px;">Edit profile</button>
-					</h1>
-					
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus reprehenderit ad atque cum est. Commodi consequatur soluta officiis veniam nobis corrupti tenetur dolorem reprehenderit sunt vitae iure suscipit adipisci explicabo qui facere! Ea dolore quas maxime facere tenetur illum quibusdam sapiente dolorem nesciunt laudantium necessitatibus accusamus ab libero vel odio.</p>
-				  </div>
+					</div>
 				
 			</div>
       	</article><!-- .content -->
