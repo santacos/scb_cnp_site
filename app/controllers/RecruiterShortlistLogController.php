@@ -100,7 +100,9 @@ class RecruiterShortlistLogController extends \BaseController {
 			$requisition->requisition_current_status_id = 6;
 			$requisition->note = Input::get('note');
 			$requisition->save();
-		return Response::json(array('success' => true));
+			
+			$requisitions = Requisition::all();
+		return View::make('recruiter.requisition.shortlist.index', compact('requisitions'));
 	}
 
 	/**

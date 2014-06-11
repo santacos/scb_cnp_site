@@ -1,4 +1,4 @@
-@extends('admin.layouts.default')
+@extends('admin.layouts.main.recruiter')
 
 @section('title')
 HM-create-requisition
