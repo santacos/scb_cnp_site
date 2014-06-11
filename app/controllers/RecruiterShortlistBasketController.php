@@ -52,7 +52,7 @@ class RecruiterShortlistBasketController extends \BaseController {
 		$require = $requisition->total_number;
 		$num_get = $requisition->get_number;
 		$applications = $applications->get();
-		return View::make('recruiter.requisition.shortlist.basket.show', compact('applications'))->with('in_basket',$in_basket)->with('num_get',$num_get)->with('require',$require)->with('requisition',$requisition);
+		return View::make('recruiter.requisition.shortlist.basket.show', compact('applications'))->with('in_basket',$in_basket)->with('num_get',$num_get)->with('require',$require)->with('requisition',$requisition)->with('requisition_id',$id);
 	}
 
 	/**

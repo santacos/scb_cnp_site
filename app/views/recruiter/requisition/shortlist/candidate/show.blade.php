@@ -1,4 +1,4 @@
-@extends('admin.layouts.default')
+@extends('admin.layouts.main.recruiter')
 @section('title')
 thisIsTitle
 @stop
@@ -36,8 +36,24 @@ thisIsTitle
                                     <div class="box-body table-responsive no-padding">
                                         
                                       <div style="overflow: auto;">
-
-                                        <table border="1">
+                                            {{  Datatable::table()
+                                        ->addColumn( 
+                                'application_id', 
+                                'Name',
+                                '%Related',
+                                'Point',
+                                'application_current_status_id',
+                                'Education',
+                                'Previous Job',
+                                'SLA',
+                                'Deadline',
+                                'Saved',
+                                'Choose',
+                                'Note'
+                                          )    
+                              ->setUrl(URL::to('api/application/'.$requisition_id ))
+                              ->render('datatable') }}
+                                       <!--  <table border="1">
                                           <tr>
                                             @if(count($applications->first()) > 0)
                                               @foreach($applications->first()->toArray() as $key => $value)
@@ -51,27 +67,27 @@ thisIsTitle
                                                 @foreach($application->toArray() as $key => $value)
                                                   <td>
                                                   <?php
-                                                  if($key != "is_in_basket"){
-                                                    echo $value;
-                                                  }else{
-                                                    echo '<center>'
-                                                    .'<iframe width="30px" height="20px" scrolling="no" frameBorder="0" name="ckbox_f'.$application->application_id.'" id="ckbox_f'.$application->application_id.'">'
-                                                    .'</iframe>'
-                                                    .'</center>'
-                                                    .'<form action="../recruiter-shortlist-candidate-ckbox" id="ckbox'.$application->application_id.'" target="ckbox_f'.$application->application_id.'" method="GET">'
-                                                    .'<input type="hidden" name="id" value="'.$application->application_id.'"/>'
-                                                    .'</form>'
-                                                    .'<script>'
-                                                    .'document.getElementById("ckbox'.$application->application_id.'").submit();'
-                                                    .'</script>';
-                                                  }
+                                                  // if($key != "is_in_basket"){
+                                                  //   echo $value;
+                                                  // }else{
+                                                  //   echo '<center>'
+                                                  //   .'<iframe width="30px" height="20px" scrolling="no" frameBorder="0" name="ckbox_f'.$application->application_id.'" id="ckbox_f'.$application->application_id.'">'
+                                                  //   .'</iframe>'
+                                                  //   .'</center>'
+                                                  //   .'<form action="../recruiter-shortlist-candidate-ckbox" id="ckbox'.$application->application_id.'" target="ckbox_f'.$application->application_id.'" method="GET">'
+                                                  //   .'<input type="hidden" name="id" value="'.$application->application_id.'"/>'
+                                                  //   .'</form>'
+                                                  //   .'<script>'
+                                                  //   .'document.getElementById("ckbox'.$application->application_id.'").submit();'
+                                                  //   .'</script>';
+                                                  //}
                                                   ?>
                                                   </td>
                                                 @endforeach
                                               </tr>
                                             @endforeach
                                           @endif
-                                        </table>
+                                        </table> -->
 
                                       </div>
     

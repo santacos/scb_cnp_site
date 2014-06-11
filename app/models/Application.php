@@ -31,7 +31,7 @@
 		}
 
 		public function candidate(){
-			return $this->belongsTo('Candidate');
+			return $this->belongsTo('Candidate','candidate_user_id','user_id');
 		}
 
 		public function question(){
