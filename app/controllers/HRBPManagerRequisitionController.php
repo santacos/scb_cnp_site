@@ -117,7 +117,7 @@ class HRBPManagerRequisitionController extends \BaseController {
 
 		$requisitions = Requisition::all();
 
-		return View::make('HRBPManager.requisition.index', compact('requisitions')); // Same as Hiring Manager
+		return View::make('HRBPManager.home', compact('requisitions'));
 	}
 
 	/**
