@@ -36,7 +36,7 @@ SCB Recruitment-Home
 	                      
 	                      	<div class="col col-md-7 col-sm-7">
 	                      		<br><br>
-	                        	<h1 class="title">Hi! Somsri
+	                        	<h1 class="title">Hi! <!--edit-->Somsri
 	                        		<i class="livicon" data-s="24" data-op="0" data-hc="0"data-n="sun" data-c="#fda425" data-hc="0"></i>
 	                        	</h1>
 
@@ -49,7 +49,7 @@ SCB Recruitment-Home
 					<nav style="margin-left:10px;padding-right:0px;">
 							<ul>
 							  <li class="parent active">
-							  	<a href="#">
+							  	<a href="{{ URL::to('/cd')}}">
 							  		<i class="livicon" data-s="16" data-n="home" data-c="#fff" data-hc="0"></i>
 							  		
 							  		<!--  <i class="fa fa-fw fa-home"></i> -->
@@ -65,39 +65,39 @@ SCB Recruitment-Home
 									<i class="fa fa-user open-sub item-icon"></i>Profile
 								</a>
 								<ul class="sub">
-								  	<li><a href="#"><span class="open-sub"></span>Edit profile</a></li>
-						  			<li><a href="#"><span class="open-sub"></span>View profile</a></li>
+								  	<li><a href="{{ URL::to('/cd/edit-profile')}}"><span class="open-sub"></span>Edit profile</a></li>
+						  			<li><a href="{{ URL::to('/cd/profile')}}"><span class="open-sub"></span>View profile</a></li>
 								</ul>
 							  </li>
 							  <li>
-							  	<a href="#">
+							  	<a href="{{ URL::to('/cd/jobstatus')}}">
 							  		<i class="livicon" data-s="16" data-n="globe" data-c="#2e5481" data-hc="0"></i> 
 							  		Job status
 							  		<small class="badge bg-blue pull-right" style="margin-top:0.2em;">2</small>
 							  	</a>
 							  </li>
 							<li>
-							  	<a href="#">
+							  	<a href="{{ URL::to('/cd/jobfollow')}}">
 							  		<i class="livicon" data-s="16" data-n="notebook" data-c="#2e5481" data-hc="0"></i>
 							  		 Following Job<small class="badge bg-blue pull-right" style="margin-top:0.2em;">7</small>
 							  	</a>
 							</li>
 							<li>
-							  	<a href="#">
+							  	<a href="{{ URL::to('/cd/jobrecommend')}}">
 							  		<i class="livicon" data-s="16" data-n="gift" data-c="#2e5481" data-hc="0"></i>
 							  		 Recommend Job<small class="badge bg-blue pull-right" style="margin-top:0.2em;">4</small>
 							  	</a>
 							</li>
 
 							<li>
-							  	<a href="#">
+							  	<a href="{{ URL::to('/cd/jobcart')}}">
 							  		<i class="livicon" data-s="16" data-n="shopping-cart" data-c="#2e5481" data-hc="0"></i>
 							  		 Job cart
 							  	</a>
 							</li>
 
 							<li>
-							  	<a href="#">
+							  	<a href="{{ URL::to('/cd/searchjob')}}">
 							  		<i class="livicon" data-s="16" data-n="search" data-c="#2e5481" data-hc="0"></i>
 							  		 Search Job</a>
 							</li>
@@ -240,7 +240,7 @@ SCB Recruitment-Home
 				  		<div class="col col-md-6">
 				  			<div class="panel panel-default frame frame-shadow-curved">
 							  <div class="panel-heading"  >
-								<h3 class="panel-title">Experience</h3>
+								<h3 class="panel-title">Work Experience</h3>
 							  </div>
 							  <div class="panel-body">
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus reprehenderit ad atque cum est. Commodi consequatur soluta officiis veniam nobis corrupti tenetur dolorem reprehenderit sunt vitae iure suscipit adipisci explicabo qui facere! Ea dolore quas maxime facere tenetur illum quibusdam sapiente dolorem nesciunt laudantium necessitatibus accusamus ab libero vel odio.</p>
@@ -256,8 +256,35 @@ SCB Recruitment-Home
 								<h3 class="panel-title">Skill</h3>
 							  </div>
 							  <div class="panel-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus reprehenderit ad atque cum est. Commodi consequatur soluta officiis veniam nobis corrupti tenetur dolorem reprehenderit sunt vitae iure suscipit adipisci explicabo qui facere! Ea dolore quas maxime facere tenetur illum quibusdam sapiente dolorem nesciunt laudantium necessitatibus accusamus ab libero vel odio.</p>
-				  	
+							  		<div class="row">
+							  			<div class="col col-md-6">
+											<div class="content-block frame border-radius" style="padding:5px;">
+												<p><strong>Skill name : </strong><!--edit-->JAVA 
+												<br><strong>Skill branch : </strong><!--edit-->Programming language </p>
+											</div>
+										</div>
+										<div class="col col-md-6">
+											<div class="content-block frame border-radius" style="padding:5px;">
+												<p><strong>Skill name : </strong><!--edit-->JAVA 
+												<br><strong>Skill branch : </strong><!--edit-->Programming language </p>
+											</div>
+										</div>
+									</div><!--end first row for skill-->
+									<br>
+									<div class="row">
+							  			<div class="col col-md-6">
+											<div class="content-block frame border-radius" style="padding:5px;padding-top:10px;">
+												<p><strong>Skill name : </strong><!--edit-->JAVA 
+												<br><strong>Skill branch : </strong><!--edit-->Programming language </p>
+											</div>
+										</div>
+										<div class="col col-md-6">
+											<div class="content-block frame border-radius" style="padding:5px;">
+												<p><strong>Skill name : </strong><!--edit-->JAVA 
+												<br><strong>Skill branch : </strong><!--edit-->Programming language </p>
+											</div>
+										</div>
+									</div><!--end second row for skill-->
 							  </div>
 							</div>
 				  		</div>

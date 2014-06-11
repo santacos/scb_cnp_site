@@ -83,7 +83,7 @@ home-hiringManager
                'Note',
                'Action'
                 )    
-    ->setUrl(URL::to('api/requisition/'.'0/'.''))
+    ->setUrl(URL::to('api/requisition/'.'1/'.'1/2/6'))
     ->render('datatable') }}
 
 

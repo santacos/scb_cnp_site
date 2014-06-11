@@ -91,7 +91,7 @@ class HMApplicationReviewController extends \BaseController {
 							'action_type' => 2,
 							'application_id' => $application->application_id,
 							'visit_number' => 1,
-							'employee_user_id' => 2,
+							'employee_user_id' => Employee::first()->user_id,
 							/**
 							change 'employee_user_id' to real employee id
 							*/

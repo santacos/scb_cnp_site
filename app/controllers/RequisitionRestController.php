@@ -29,10 +29,7 @@ class RequisitionRestController extends \BaseController {
     {       
          // return $action;
         // return $user_id.'----'.$status_id;
-
-                    if($user_id=='' || $user_id==0||$user_id==1){  $req=Requisition::where('employee_user_id','!=',0);}
-                    else{  $req=Requisition::where('employee_user_id','=',$user_id);
-                        }
+                    $req=Requisition::where('employee_user_id','!=',0);
                     if($status_id1!='' && $status_id1!=0)
                     {
                         $req=$req->where('requisition_current_status_id','=',$status_id1);
@@ -72,7 +69,7 @@ class RequisitionRestController extends \BaseController {
                     $return = Datatable::collection($req)
                     ->addColumn('requisitsion_id',function($model)
                         {
-                            $bin = sprintf( "%020d",  $model->corporate_title_id );
+                            $bin = sprintf( "%020d",  $model->requisition_id);
                                 return '<input type="hidden" name="Language" value="'.$bin.'"><span class="badge bg-grey">'.$model->requisition_id.'</span>';
                                 // }
                                     // return '<span class="badge bg-grey">'.$model->requisition_id.'</span>';
@@ -108,107 +105,135 @@ class RequisitionRestController extends \BaseController {
                     ->addColumn('Note',function($model)
                         { return '<i class="fa fa-fw fa-envelope-o"></i>';
                         });
-            if($user_id==1)
-            {           $return=$return->addColumn('Action',function($model) { 
-                        if($model ->requisition_current_status_id < 2) //Creating Requisition
-                         {
-                            return '<a href="' .URL::to('hm-requisition/' . $model->requisition_id.'/edit').'"><button class="btn btn-sm btn-warning">Edit</button></a>';
+                        if($user_id == 0)
+                         {           $return=$return->addColumn('Action',function($model) { 
+                                    if($model ->requisition_current_status_id < 2) //Creating Requisition
+                                     {
+                                        return '<a href="' .URL::to('hm-requisition/' . $model->requisition_id.'/edit').'"><button class="btn btn-sm btn-warning">Edit</button></a>';
 
-                        }
-                         // else    return '<a href="' .URL::to('hm/requisition/' . $model->requisition_id.'/edit').'"><button class="btn btn-sm btn-warning">Edit</button></a>';
-                          
-                        else if($model ->requisition_current_status_id == 2) //
-                        {
-                            return '<a href="' .URL::to('hm-nl-requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
-                        }
-            
-                         else if($model ->requisition_current_status_id == 3 )
-                        {
-                            return '<a href="' .URL::to('hrbp-manager-requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
-                        }
-                        else if($model ->requisition_current_status_id == 4)
-                        {
-                            return '<a href="' .URL::to('recruiter-requisition-post/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Post Job</button></a>';
-                        }
-                        else if($model ->requisition_current_status_id == 5)
-                        {
-                            return '<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Basket</button></a>';
-                        }
-                        else if($model ->requisition_current_status_id == 6)
-                        {
-                            return '<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">See infomation (ยังไม่ได้ทำ)</button></a>';
-                        }
-                        else if($model ->requisition_current_status_id == 7)
-                        {
-                          return '';
-                        }
-                    })
-                    ->searchColumns('requisitsion_id',
-                        'job_title',
-                        'corporate_title_id',
-                        'location_id',
-                        'requisition_current_status_id',
-                        'Require',
-                        'Deadline',
-                        'From',
-                        'Note',
-                        'Action')
-                    ->make();
-                }
-                else{
-
-                         $return=$return->addColumn('Action',function($model) { 
-                        if($model ->requisition_current_status_id < 2) //Creating Requisition
-                         {
-                            return '<a href="' .URL::to('hm-requisition/' . $model->requisition_id.'/edit').'"><button class="btn btn-sm btn-warning">Edit</button></a>';
-
-                        }
-                         // else    return '<a href="' .URL::to('hm/requisition/' . $model->requisition_id.'/edit').'"><button class="btn btn-sm btn-warning">Edit</button></a>';
-                          
-                        else if($model ->requisition_current_status_id == 2) //
-                        {
-                            return '<a href="' .URL::to('hm-nl-requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
-                        }
-                        else if($model ->requisition_current_status_id == 3)
-                        {
-                            return '<a href="' .URL::to('hrbp-officer-requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
-                        }
-                      
-                        else if($model ->requisition_current_status_id == 4)
-                        {
-                            return '<a href="' .URL::to('recruiter-requisition-post/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Post Job</button></a>';
-                        }
-                        else if($model ->requisition_current_status_id == 5)
-                        {
-                            return  '<a href="' .URL::to('recruiter-shortlist-candidate/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Application</button></a>'
-
-                            .'  '.'<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Basket</button></a>'
+                                    }
+                                     // else    return '<a href="' .URL::to('hm/requisition/' . $model->requisition_id.'/edit').'"><button class="btn btn-sm btn-warning">Edit</button></a>';
                                     
-                            ;
-                        }
-                        else if($model ->requisition_current_status_id == 6)
-                        {
-                            return '<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">See infomation (ยังไม่ได้ทำ)</button></a>';
-                        }
-                        else if($model ->requisition_current_status_id == 7)
-                        {
-                          return '';
-                        }
-                    })
-                    ->searchColumns('requisitsion_id',
-                        'job_title',
-                        'corporate_title_id',
-                        'location_id',
-                        'requisition_current_status_id',
-                        'Require',
-                        'Deadline',
-                        'From',
-                        'Note',
-                        'Action')
-                    ->make();
+                                    else if($model ->requisition_current_status_id == 2) //
+                                    {
+                                        return '<a href="' .URL::to('hm-nl-requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+                                    }
+                                    else  if($model ->requisition_current_status_id == 3 )
+                                    {
+                                        return '<a href="' .URL::to('hrbp-officer-requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+                                    }  
+                                    else if($model ->requisition_current_status_id == 4)
+                                    {
+                                        return '<a href="' .URL::to('recruiter-requisition-post/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Post Job</button></a>';
+                                    }
+                                    else if($model ->requisition_current_status_id == 5)
+                                    {
+                                        return  '<a href="' .URL::to('recruiter-shortlist-candidate/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Application</button></a>'
 
-                }
-                 return $return;
+                                        .'  '.'<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Basket</button></a>'
+                                                
+                                        ;
+                                    }
+                                    else if($model ->requisition_current_status_id == 6)
+                                    {
+                                        return '<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">See infomation (ยังไม่ได้ทำ)</button></a>';
+                                    }
+                                    else 
+                                    {
+                                      return '';
+                                    }
+                                });
+                        }
+                        else if($user_id==1)
+                        {           $return=$return->addColumn('Action',function($model) { 
+                                    if($model ->requisition_current_status_id < 2) //Creating Requisition
+                                     {
+                                        return '<a href="' .URL::to('hm-requisition/' . $model->requisition_id.'/edit').'"><button class="btn btn-sm btn-warning">Edit</button></a>';
+
+                                    }
+                                     // else    return '<a href="' .URL::to('hm/requisition/' . $model->requisition_id.'/edit').'"><button class="btn btn-sm btn-warning">Edit</button></a>';
+                                      
+                                    else if($model ->requisition_current_status_id == 2) //
+                                    {
+                                        return '<a href="' .URL::to('hm-nl-requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+                                    }
+                                    else if($model ->requisition_current_status_id == 6)
+                                    {
+                                        return '<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">See infomation (ยังไม่ได้ทำ)</button></a>';
+                                    }
+                                    else 
+                                    {
+                                      return '';
+                                    }
+                                });
+                        }
+                        else if($user_id==21)
+                        {
+                                $return=$return->addColumn('Action',function($model) { 
+                                    if($model ->requisition_current_status_id == 3 )
+                                    {
+                                        return '<a href="' .URL::to('hrbp-officer-requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+                                    }
+                        
+                                    else 
+                                    {
+                                      return '';
+                                    }
+                                });
+
+                        }
+                         else if($user_id==22)
+                        {
+                                $return=$return->addColumn('Action',function($model) { 
+                                    if($model ->requisition_current_status_id == 3 )
+                                    {
+                                        return '<a href="' .URL::to('hrbp-manager-requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+                                    }
+                        
+                                    else 
+                                    {
+                                      return '';
+                                    }
+                                });
+
+                        }
+                         else if($user_id==3)
+                        {
+                                $return=$return->addColumn('Action',function($model) { 
+                                   if($model ->requisition_current_status_id == 4)
+                                    {
+                                        return '<a href="' .URL::to('recruiter-requisition-post/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Post Job</button></a>';
+                                    }
+                                    else if($model ->requisition_current_status_id == 5)
+                                    {
+                                        return  '<a href="' .URL::to('recruiter-shortlist-candidate/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Application</button></a>'
+
+                                        .'  '.'<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Basket</button></a>'
+                                                
+                                        ;
+                                    }
+                                    else 
+                                    {
+                                      return '';
+                                    }
+                                });
+
+                        }
+                        else {$return=$return->addColumn('Action',function($model) {return ''; });}
+                            $return=$return->searchColumns('requisitsion_id',
+                                'job_title',
+                                'corporate_title_id',
+                                'location_id',
+                                'requisition_current_status_id',
+                                'Require',
+                                'Deadline',
+                                'From',
+                                'Note',
+                                'Action')
+                            ->make();
+
+                        return $return;
+            
         }
 	   
 	}

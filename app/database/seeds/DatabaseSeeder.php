@@ -22627,7 +22627,57 @@ $this->command->info('Table RecruitmentObjectiveTemplate Seeded');
 							));
 $this->command->info('Table RecruitmentType Seeded');
 //Requisition
-		for($i=0; $i<100;$i++)
+		$user3 = User::where('username','=','hiringmanager')->first();
+       		$requisition = new Requisition;
+			$requisition->total_number=2;
+			$requisition->get_number=0;
+			$requisition->employee_user_id = $user3->user_id;
+			$requisition->datetime_create = Carbon::now();
+			$requisition->location_id = 976; //รัชโยธิน
+			$requisition->corporate_title_id = 10; //AVP
+			$requisition->position_id =  1808;
+			$dep= $requisition->position()->first()->group;
+			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
+			$requisition->dept_id =$a;
+			$requisition->requisition_current_status_id =2;
+			//Input::get('requisition_current_status_id');
+			$requisition->recruitment_type_id = 1;
+			$requisition->recruitment_obj_template_id=1;
+			$requisition->recruitment_objective = 'Mr.JJ KK';
+			$requisition->year_of_experience = 5;
+			//$requisition->recruitment_objective = Input::get('recruitment_objective');
+			$requisition->responsibility = '<p>Establish IT security policies, standards and guidelines in compliance with Payment Card Industry Data Security Standard (PCI DSS) and ISO27001.<br />
+Provide consultation to IT Development, IT Operations and business units to enhance their business processes, applications and infrastructure components in compliance with PCI DSS, ISO27001 and the Bank&rsquo;s IT security policies, standards and guidelines.<br />
+Develop business continuity and disaster recovery plan for security incidents.<br />
+Perform information security risk assessment based on ISO27005:2011 and developed control measures to mitigate security risks.<br />
+Monitor and work with IT Development, IT Operations and business units to resolve PCI DSS and ISO27001 non-compliance issues.<br />
+Manage PCI DSS and PCI PIN Security compliance program.<br />
+Provide IT security awareness trainings for SCB employees and service providers.<br />
+Develop control measures and security self-assessment requirements for service providers, including monitoring service providers\' security protection program.<br />Investigate and response to security incidents in a timely manner.</p>';
+			$requisition->qualification = '<p>Qualifications:-</p>
+<p>Minimum of 3 years&rsquo; experience in marketing, communications and/ or public relations with demonstrated success, preferably in banking business<br />
+Master degree in Marketing or Communication<br />
+Excellent communication skills both in English and Thai<br />
+Proficiently in Computer Literacy<br />
+Demonstrated skills, knowledge and experience in the design and execution of marketing, Communications and public relations activities.<br />
+Demonstrated successful experience writing press releases, making presentations and negotiating with media.<br />
+Experience overseeing the design and production of print materials and publications.<br />
+Commitment to working with shared leadership and in cross-functional teams.<br />
+Strong leadership, high maturity, excellent service minded, interpersonal skills, creative, strategic, analytical<br />
+Ability to manage multiple projects at a time</p>';
+			$requisition->note = 'Urgent';
+			$requisition->save();
+			for($j=1; $j<5; $j++)
+			{
+				$application = new Application;
+				$application->requisition_id = $requisition->requisition_id;
+				$application->candidate_user_id = User::where('username','=','candidate'.$j)->first()->user_id;
+				$application->application_current_status_id = 1;
+				$application->is_in_basket = false;
+				$application->save();
+			}
+
+		for($i=0; $i<40;$i++)
 		{
         	$user = User::where('username','=','candidate'.rand(1,4))->first();
        		$requisition = new Requisition;
@@ -22635,7 +22685,7 @@ $this->command->info('Table RecruitmentType Seeded');
 			$requisition->get_number=0;
 			$requisition->employee_user_id = $user->user_id;
 			$requisition->datetime_create = Carbon::now();
-			$requisition->location_id = rand(1,1215);;
+			$requisition->location_id = 976;
 			$requisition->corporate_title_id = rand(1, 17);
 			$requisition->position_id =  rand(1, 2643);
 			$dep= $requisition->position()->first()->group;
@@ -22652,7 +22702,7 @@ $this->command->info('Table RecruitmentType Seeded');
 			$requisition->qualification = str_random(40);
 			$requisition->note = str_random(40);
 			$requisition->save();
-			for($j=0; $j<20; $j++)
+			for($j=0; $j<10; $j++)
 			{
 				$application = new Application;
 				$application->requisition_id = $requisition->requisition_id;
@@ -22664,6 +22714,7 @@ $this->command->info('Table RecruitmentType Seeded');
 				$application->save();
 			}
 		}
+			
 $this->command->info('Table Requisiton Seeded');
 //Application
 		// for($i=0; $i<20; $i++)
