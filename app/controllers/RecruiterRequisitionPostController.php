@@ -51,10 +51,9 @@ class RecruiterRequisitionPostController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($requisition_id)
+	public function edit($id)
 	{
-		$requisition = Requisition::find($requisition_id);
-		return View::make('requisition.edit', array( 'requisition'=> $requisition));
+		return View::make('recruiter.requisition.post.edit')->with('requisition',Requisition::find($id));
 	}
 
 	/**
@@ -83,6 +82,36 @@ class RecruiterRequisitionPostController extends \BaseController {
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}*/
+		if(Input::get('view'))
+		{	$requisition = Requisition::findOrFail($id);
+
+			// Requisition Log
+
+			$requisition->job_title = Input::get('job_title');
+			$requisition->total_number = Input::get('total_number');
+			$requisition->location_id = Input::get('location_id');
+			$requisition->corporate_title_id = Input::get('corporate_title_id');
+			
+			if(Input::get('position_id')!=0)
+			{$requisition->position_id =  Input::get('position_id');
+			
+			$dep= $requisition->position()->first()->group;
+			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
+			$requisition->dept_id =$a;
+			}
+			$requisition->requisition_current_status_id = 4;
+			$requisition->recruitment_type_id = Input::get('recruitment_type_id');
+			$requisition->recruitment_obj_template_id=Input::get('recruitment_obj_template_id');
+			$requisition->recruitment_objective = Input::get('recruitment_objective');
+			$requisition->year_of_experience = Input::get('year_of_experience');
+			$requisition->responsibility = Input::get('responsibility');
+			$requisition->qualification = Input::get('qualification');
+			$requisition->note = Input::get('note');
+			$requisition->save();
+
+			return View::make('recruiter.requisition.post.show')->with('requisition',Requisition::find($id));
+		}
+		else if (!Input::get('edit')) {
 			$requisition = Requisition::findOrFail($id);
 
 			// Requisition Log
@@ -113,26 +142,20 @@ class RecruiterRequisitionPostController extends \BaseController {
 			));
 			//END Requisition Log
 
-			$requisition->job_title = Input::get('job_title');
-			$requisition->total_number = Input::get('total_number');
-			$requisition->location_id = Input::get('location_id');
-			$requisition->corporate_title_id = Input::get('corporate_title_id');
-			$requisition->position_id =  Input::get('position_id');
-			$dep= $requisition->position()->first()->group;
-			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
-			$requisition->dept_id =$a;
 			$requisition->requisition_current_status_id = 5;
-			$requisition->recruitment_type_id = Input::get('recruitment_type_id');
-			$requisition->recruitment_obj_template_id=Input::get('recruitment_obj_template_id');
-			$requisition->recruitment_objective = Input::get('recruitment_objective');
-			$requisition->year_of_experience = Input::get('year_of_experience');
-			$requisition->responsibility = Input::get('responsibility');
-			$requisition->qualification = Input::get('qualification');
 			$requisition->note = Input::get('note');
 			$requisition->save();
 
-		return Redirect::action('RecruiterRequisitionPostController@index')
-                            ->with( 'notice', 'Post Job Success' );	
+		
+		$requisitions = Requisition::all();
+
+		return View::make('recruiter.requisition.post.index', compact('requisitions'));
+
+		}
+		else
+		{
+			return View::make('recruiter.requisition.post.edit')->with('requisition',Requisition::find($id));	
+		}
 
 	}
 

@@ -22603,7 +22603,13 @@ $this->command->info('Table RequisitionCurrentStatus Seeded');
 							'name' => 'Waiting for Accept Job Offer'
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 9,
-							'name' => 'END SLA'
+							'name' => 'END SLA' //Fail
+							));
+		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 10,
+							'name' => 'END SLA' //Pass
+							));
+		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 11,
+							'name' => 'Pending' //Pending
 							));
 $this->command->info('Table ApplicationCurrentStatus Seeded');
 //RECRUITMENT OBJECTIVE TEMPLATE
@@ -22646,25 +22652,31 @@ $this->command->info('Table RecruitmentType Seeded');
 			$requisition->recruitment_objective = 'Mr.JJ KK';
 			$requisition->year_of_experience = 5;
 			//$requisition->recruitment_objective = Input::get('recruitment_objective');
-			$requisition->responsibility = '<p>Establish IT security policies, standards and guidelines in compliance with Payment Card Industry Data Security Standard (PCI DSS) and ISO27001.<br />
-Provide consultation to IT Development, IT Operations and business units to enhance their business processes, applications and infrastructure components in compliance with PCI DSS, ISO27001 and the Bank&rsquo;s IT security policies, standards and guidelines.<br />
-Develop business continuity and disaster recovery plan for security incidents.<br />
-Perform information security risk assessment based on ISO27005:2011 and developed control measures to mitigate security risks.<br />
-Monitor and work with IT Development, IT Operations and business units to resolve PCI DSS and ISO27001 non-compliance issues.<br />
-Manage PCI DSS and PCI PIN Security compliance program.<br />
-Provide IT security awareness trainings for SCB employees and service providers.<br />
-Develop control measures and security self-assessment requirements for service providers, including monitoring service providers\' security protection program.<br />Investigate and response to security incidents in a timely manner.</p>';
-			$requisition->qualification = '<p>Qualifications:-</p>
-<p>Minimum of 3 years&rsquo; experience in marketing, communications and/ or public relations with demonstrated success, preferably in banking business<br />
-Master degree in Marketing or Communication<br />
-Excellent communication skills both in English and Thai<br />
-Proficiently in Computer Literacy<br />
-Demonstrated skills, knowledge and experience in the design and execution of marketing, Communications and public relations activities.<br />
-Demonstrated successful experience writing press releases, making presentations and negotiating with media.<br />
-Experience overseeing the design and production of print materials and publications.<br />
-Commitment to working with shared leadership and in cross-functional teams.<br />
-Strong leadership, high maturity, excellent service minded, interpersonal skills, creative, strategic, analytical<br />
-Ability to manage multiple projects at a time</p>';
+			$requisition->responsibility = '<p>&bull; Establish IT security policies, standards and guidelines in compliance with Payment Card Industry Data Security Standard (PCI DSS) and ISO27001.<br>
+&bull; Provide consultation to IT Development, IT Operations and business units to enhance their business processes, applications and infrastructure components in compliance with PCI DSS, ISO27001 and the Bank&rsquo;s IT security policies, standards and guidelines.<br>
+&bull; Develop business continuity and disaster recovery plan for security incidents.<br>
+&bull; Perform information security risk assessment based on ISO27005:2011 and developed control measures to mitigate security risks.<br>
+&bull; Monitor and work with IT Development, IT Operations and business units to resolve PCI DSS and ISO27001 non-compliance issues.<br>
+&bull; Manage PCI DSS and PCI PIN Security compliance program.<br>
+&bull; Provide IT security awareness trainings for SCB employees and service providers.<br>
+&bull; Develop control measures and security self-assessment requirements for service providers, including monitoring service providers\' security protection program.<br>
+&bull; Investigate and response to security incidents in a timely manner.<br>
+</p>';
+			$requisition->qualification = '<p>&bull; Bachelor\'s degree or Master\'s degree in Computer Engineering, Computer Science, MIS, Information Security or IT related field<br>
+&bull; 3 to 5 years of professional experience in such areas as IT security policy, IT audit, IT security design and implementation and/or IT security review<br>
+&bull; Prior experience in PCI DSS, ISO27001, information security risk assessment or business continuity will be a plus.<br>
+&bull; Industry Certifications (CISSP, CISM, CRISC, CISA, GIAC, CEH or Security+)<br>
+&bull; Must be familiar with standard security concepts, practices and procedures<br>
+&bull; Experience with information security best practices including creating and updating security policies, procedures and compliance auditing<br>
+&bull; Experience in conducting internal and external risk ssessments<br>
+&bull; Understanding of application and operating system hardening, vulnerability assessments, security audits, endpoint protection, intrusion detection systems, firewalls, etc.<br>
+&bull; Mature, positive working attitude and willing to adapt self for team success.<br>
+&bull; Capable to handle multiple tasks and assignments and pressure.<br>
+&bull; Highly proficient in both English and Thai with good written and oral communication and analytical skills.<br>
+&bull; Strong interpersonal skills and able to work both independently within given guidelines or as part of a team.<br>
+&bull; Good personality and presentation skills.<br>
+&bull; Reliable, energetic, proactive, self-motivated and pragmatic in approach.<br>
+</p>';
 			$requisition->note = 'Urgent';
 			$requisition->save();
 			for($j=1; $j<5; $j++)

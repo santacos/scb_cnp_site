@@ -13,12 +13,12 @@ thisIsTitle
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Approve Requisition
+                        Detail
                         <small># {{$requisition->requisition_id}}</small>
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="{{ URL::to('/hrbp-officer')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li><a href="{{ URL::to('/hrbp-officer-requisition')}}">Approve</a></li>
+                        <li><a href="{{ URL::to('/recruiter')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="{{ URL::to('/recruiter-shortlist')}}">Send shortlist</a></li>
                         <li class="active">Requisition# {{$requisition->requisition_id}}</li>
                     </ol>
                 </section>
@@ -205,7 +205,6 @@ thisIsTitle
                         </div><!-- /.col -->
                         <div class="col-xs-6">
                             <p class="lead">Note :</p>
-     {{ Form::model($requisition, array('route' => array('recruiter-requisition-post.update', $requisition->requisition_id), 'method' => 'PUT')) }}
                   <div class="form-group">
                       <!-- {{ Form::textarea('note', '', array()) }} -->
                       <textarea class="form-control" id="note" name="note" rows="5" style="font-size:1.2em;"></textarea>
@@ -240,10 +239,7 @@ thisIsTitle
                         <button class="btn btn-default pull-left" style="width:8em;" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
                       </div>
                         <div class="col-xs-6">
-                           {{ Form::button('Edit', array('name' => 'edit', 'value' => true, 'type' => 'submit', 'class' => 'btn btn-danger btn-lg pull-right','style'=>'width:45%;' )) }}
-                 {{ Form::button('Post Job', array('name' => 'edit', 'value' => false, 'type' => 'submit', 'class' => 'btn btn-success btn-lg pull-left','style'=>'width:45%;')) }}
-
-                {{ Form::close() }}
+                           
                             
                          <!--   <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>  
                             <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>

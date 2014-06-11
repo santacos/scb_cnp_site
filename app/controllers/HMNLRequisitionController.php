@@ -115,7 +115,7 @@ class HMNLRequisitionController extends \BaseController {
 			$requisition->note = Input::get('note');
 			$requisition->save();
 
-		return View::make('HM.approve.show')->with('requisition',Requisition::find($id));
+		return View::make('HM.home2');
 	}
 
 	/**

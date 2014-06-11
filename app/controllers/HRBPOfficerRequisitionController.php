@@ -11,7 +11,7 @@ class HRBPOfficerRequisitionController extends \BaseController {
 	{
 		$requisitions = Requisition::all();
 
-		return View::make('HRBPManager.requisition.index', compact('requisitions')); // Same as Hiring Manager
+		return View::make('HRBPOfficer.requisition.index', compact('requisitions')); // Same as Hiring Manager
 	}
 
 	/**
@@ -119,7 +119,9 @@ class HRBPOfficerRequisitionController extends \BaseController {
 			$requisition->note = Input::get('note');
 			$requisition->save();
 
-		return Response::json(array('success' => true));
+		$requisitions = Requisition::all();
+
+		return View::make('HRBPOfficer.requisition.index', compact('requisitions')); // Same as Hiring Manager
 	}
 
 	/**

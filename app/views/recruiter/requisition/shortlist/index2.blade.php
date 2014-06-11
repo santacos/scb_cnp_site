@@ -1,4 +1,4 @@
-@extends('admin.layouts.main.hrbp')
+@extends('admin.layouts.main.recruiter')
 @section('title')
 thisIsTitle
 @stop
@@ -88,7 +88,7 @@ thisIsTitle
                'Note',
                'Action'
                 )    
-    ->setUrl(URL::to('api/requisition/'.'22/'.'3'))
+    ->setUrl(URL::to('api/requisition/'.'0/'.'5'))
     ->render('datatable') }}
 
 

@@ -106,14 +106,22 @@ thisIsTitle
                                         <td>{{$requisition->employee->first}} &nbsp;&nbsp; {{$requisition->employee->last}}</td>
                                      
                                     </tr>
-                                    <tr>
-                                        <td><strong>Organization :</strong></td>
-                                        <td><!--organization--></td>
-                                    </tr>
                                     <tr> 
-                                        <td><strong>Department :</strong></td>
+                                        <td><strong>Group :</strong></td>
                                         <td>{{$requisition->dept->name}}</td>
                                        
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Organization :</strong></td>
+                                        <td>{{$requisition->position()->first()->organization}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Division :</strong></td>
+                                        <td>{{$requisition->position()->first()->division}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Years of experience :</strong></td>
+                                        <td>{{$requisition->year_of_experience}}</td>
                                     </tr>
                                     <tr> 
                                         <td><strong>Recruitment Type :</strong></td>
@@ -136,7 +144,7 @@ thisIsTitle
                                     </tr>
                                     <tr> 
                                         <td><strong>Recruitment Objective Template :</strong></td>
-                                        <td>{{$requisition->objective->message}}</td>
+                                        <td>{{$requisition->objective->message.' '.$requisition->recruitment_objective}}</td>
                                     </tr>
                                     
                                     <tr> 

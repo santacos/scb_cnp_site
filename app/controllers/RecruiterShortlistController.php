@@ -1,6 +1,6 @@
 <?php
 
-class RecruiterShortlistCandidateController extends \BaseController {
+class RecruiterShortlistController extends \BaseController {
 
 	/**
 	 * Display a listing of requisitions
@@ -11,12 +11,6 @@ class RecruiterShortlistCandidateController extends \BaseController {
 	{
 		$requisitions = Requisition::all();
 		return View::make('recruiter.requisition.shortlist.index', compact('requisitions'));
-	}
-
-	public function index2()
-	{
-		$requisitions = Requisition::all();
-		return View::make('recruiter.requisition.shortlist.index2', compact('requisitions'));
 	}
 
 	/**
@@ -47,9 +41,7 @@ class RecruiterShortlistCandidateController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$applications = Application::whereRequisitionID($id)->whereNull('send_number')->get();
-
-		return View::make('recruiter.requisition.shortlist.candidate.show', compact('applications'));
+		return View::make('recruiter.requisition.shortlist.detail')->with('requisition',Requisition::find($id));
 	}
 
 	/**
@@ -87,12 +79,5 @@ class RecruiterShortlistCandidateController extends \BaseController {
 		return Response::json(array('success' => true));
 	}
 
-	public function toggle($id)
-	{
-		$application = Application::find($id);
-		$application->is_in_basket = !$application->is_in_basket;
-		$application->save();
-		return Redirect::to('recruiter-shortlist-candidate-ckbox?id='.$id);
-	}
 
 }
