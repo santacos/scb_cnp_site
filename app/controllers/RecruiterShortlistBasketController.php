@@ -41,6 +41,12 @@ class RecruiterShortlistBasketController extends \BaseController {
 	public function show($id)
 	{
 		$applications = Application::whereRequisitionID($id)->whereIsInBasket(1)->whereNull('send_number');
+		// $reviews = Application::whereRequisitionID($id)->where('application_current_status_id','=','2');
+		// $reviews = Application::whereRequisitionID($id)->where('application_current_status_id','=','3');
+		// $reviews = Application::whereRequisitionID($id)->where('application_current_status_id','=','4');
+		// $reviews = Application::whereRequisitionID($id)->where('application_current_status_id','=','5');
+		// $reviews = Application::whereRequisitionID($id)->where('application_current_status_id','=','6');
+		// $reviews = Application::whereRequisitionID($id)->where('application_current_status_id','=','7');
 		$in_basket = count($applications);
 		$requisition = Requisition::find($id);
 		$require = $requisition->total_number;

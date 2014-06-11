@@ -32,12 +32,12 @@ thisIsTitle
                            <div class="box box-solid box-primary">
                                 <!-- /.box-header -->
                                     
-                                    <p><span>In Basket : </span><span>{{ $in_basket }}</span></p>
-                                    <p><span>Progress : </span><span>{{ $num_get . " / " . $require }}</span></p>
+                                    <p><span>In Cart : </span><span>{{ $in_basket }}</span></p>
+                                    <p><span>Required : </span><span>{{   $require-$num_get }}</span></p  
                                     <p><span>Sent : </span><span>{{ 'X' }}</span></p>
                                     <p><span>Interviewed : </span><span>{{ 'X' }}</span></p>
                                     <p><span>Pending : </span><span>{{ 'X' }}</span></p>
-                                    <p><span>Passed : </span><span>{{ 'X' }}</span></p>
+                                    <p><span>Passed : </span><span>{{ $num_get  }}</span></p>
                                     <p><span>Failed : </span><span>{{ 'X' }}</span></p>
 
                                     <!--table style "table-striped"-->
