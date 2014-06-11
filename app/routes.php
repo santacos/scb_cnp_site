@@ -18,8 +18,12 @@ Route::get('testtest',function(){
 });
 
 //////////////////// test area/////////////////////////////
+
 Route::get('cd',function(){
     return View::make('user.homeprofile');
+});
+Route::get('cd/home',function(){
+    return View::make('user.home');
 });
 
 Route::get('cd/profile',function(){
@@ -106,7 +110,7 @@ Route::get('/default', function()
 
 Route::get('/', function()
 {
-	return View::make('admin.layouts.dashboard');
+	return View::make('all');
 	//return View::make('admin.layouts.home2');
 });
 Route::get('empty', function()

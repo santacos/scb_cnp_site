@@ -49,17 +49,22 @@
 
 									<hr>
 									<div class="form-group">
-										<button tabindex="3" type="submit" class="btn btn-primary btn-lg btn-block">{{{ Lang::get('confide::confide.login.submit') }}}</button>
+										<!-- <button tabindex="3" type="submit" class="btn btn-primary btn-lg btn-block">{{{ Lang::get('confide::confide.login.submit') }}}</button>
+									 -->
+									 	<a type="submit" href="{{ URL::to('/cd')}}"class="btn btn-primary btn-lg btn-block">Sign in</a>
+                
 									</div>
 									<hr>
-									<div class="sbtnf sbtnf-rounded sbtnf-icon-white sbtnf-icon-bg-black color icon-facebook"></div>
-										
+									<div class="text-center">
+										<small>Sign in using social networks</small>
+										<div class="sbtnf sbtnf-rounded sbtnf-icon-white sbtnf-icon-bg-black color icon-facebook"></div>
+									</div>
 								</fieldset>
 							</form>
 							<div>
 								Don't have an account? <a href="{{{ URL::to('user/create')}}}">Register now.</a>
 							</div>
-
+							
                         </div>
                         <div class="modal-footer">
                             <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
