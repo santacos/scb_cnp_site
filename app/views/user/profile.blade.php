@@ -339,7 +339,7 @@ SCB Recruitment-Home
 
 				  		<!--education-->
 				  		<div class="col col-md-12">
-				  			<div class="panel panel-success " >
+				  			<div class="panel panel-success  frame frame-shadow-curved " >
 							  <div class="panel-heading"  >
 								<h3 class="panel-title">Education</h3>
 							  </div>
@@ -374,7 +374,7 @@ SCB Recruitment-Home
 
 				  		<!--award-->
 				  		<div class="col col-md-12">
-				  			<div class="panel panel-warning ">
+				  			<div class="panel panel-warning  frame frame-shadow-curved">
 							  <div class="panel-heading"  >
 								<h3 class="panel-title">Award and Honors</h3>
 							  </div>
