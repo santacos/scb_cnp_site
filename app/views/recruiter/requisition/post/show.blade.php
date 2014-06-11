@@ -13,7 +13,7 @@ thisIsTitle
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Approve Requisition
+                        Preview Requisition
                         <small># {{$requisition->requisition_id}}</small>
                     </h1>
                     <ol class="breadcrumb">

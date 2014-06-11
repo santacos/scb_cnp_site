@@ -149,7 +149,7 @@ class RecruiterRequisitionPostController extends \BaseController {
 		
 		$requisitions = Requisition::all();
 
-		return View::make('recruiter.requisition.post.index', compact('requisitions'));
+		return View::make('recruiter.home', compact('requisitions'));
 
 		}
 		else

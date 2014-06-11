@@ -102,7 +102,8 @@ class RecruiterShortlistLogController extends \BaseController {
 			$requisition->save();
 			
 			$requisitions = Requisition::all();
-		return View::make('recruiter.requisition.shortlist.index', compact('requisitions'));
+
+		return View::make('recruiter.home', compact('requisitions'));
 	}
 
 	/**

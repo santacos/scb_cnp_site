@@ -105,7 +105,9 @@ thisIsTitle
                                           {{ Form::label('note', 'Note :') }}
                                           {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
                                         </div>
-                                        {{ Form::button('Send Shortlist', array('type' => 'submit')) }}
+                                        {{ Form::button('Send Shortlist', array('type' => 'submit', 'class' => 'btn btn-success btn-lg pull-left','style'=>'width:45%;')) }}
+
+                                  
                                       {{ Form::close() }}
 
                                     </div><!-- /.box-body -->
