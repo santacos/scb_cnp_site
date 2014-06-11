@@ -18,8 +18,39 @@ Route::get('testtest',function(){
 });
 
 //////////////////// test area/////////////////////////////
+Route::get('cd',function(){
+    return View::make('user.profile');
+});
+
+Route::get('cd/profile',function(){
+    return View::make('user.profile');
+});
+
+Route::get('cd/edit-profile',function(){
+    return View::make('user.editProfile');
+});
+
+Route::get('cd/jobstatus',function(){
+    return View::make('user.jobStatus');
+});
+
+Route::get('cd/jobfollow',function(){
+    return View::make('user.jobFollow');
+});
+
+Route::get('cd/jobrecommend',function(){
+    return View::make('user.jobRecommend');
+});
+Route::get('cd/jobcart',function(){
+    return View::make('user.jobCart');
+});
+Route::get('cd/searchjob',function(){
+    return View::make('user.searchJob');
+});
+
+///////////////////////////////////////////////////////////
 Route::get('tryView',function(){
-	return View::make('HM.approve.show2');
+	return View::make('user.profile');
 });
 
 Route::get('tryAngular',function(){
@@ -206,6 +237,7 @@ Route::controller('recruiter','RecruiterController');
 Route::resource('recruiter-requisition-post', 'RecruiterRequisitionPostController');
 Route::resource('recruiter-shortlist', 'RecruiterShortlistController');
 Route::resource('recruiter-shortlist-candidate', 'RecruiterShortlistCandidateController');
+Route::get('recruiter-shortlist-candidate-sent', 'RecruiterShortlistCandidateController@index2');
 Route::resource('recruiter-shortlist-basket', 'RecruiterShortlistBasketController');
 Route::resource('recruiter-shortlist-log', 'RecruiterShortlistLogController');
 Route::get('recruiter-shortlist-candidate-ckbox-ctrl/{id}', 'RecruiterShortlistCandidateController@toggle');

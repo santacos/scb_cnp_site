@@ -10,7 +10,7 @@
 	<title>
 		@yield('title')
 	</title>
-	
+	@yield('libs')
 </head>
 <body class= @yield('body-class')>
 
