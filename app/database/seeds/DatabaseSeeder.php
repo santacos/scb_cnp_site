@@ -46,21 +46,234 @@ class AllTableSeeder extends Seeder {
 		$candidate = new Candidate;
         $candidate->user_id = $user->user_id;
         $candidate->save();
+        $work= new WorkExperience;
+        $work->candidate_user_id=$user->user_id;
+        $work->company_name = 'IBM';
+        $work->position = 'IT Security';
+        $work->location = 'Silom';
+        $work->monthly_salary = 40000;
+        $work->time_period_start = Carbon::now();
+        $work->time_period_end =Carbon::now();
+        $work->reason_leave = 'Want more money';
+        $work->job_achieve = 'Experience';
+        $work->is_present = 1;
+        $work->save();
 
         $user = User::where('username','=','candidate2')->first();
 		$candidate = new Candidate;
         $candidate->user_id = $user->user_id;
         $candidate->save();
+        $work= new WorkExperience;
+        $work->candidate_user_id=$user->user_id;
+        $work->company_name = 'Microsoft';
+        $work->position = 'IT Security';
+        $work->location = 'Siam';
+        $work->monthly_salary = 40000;
+        $work->time_period_start = Carbon::now();
+        $work->time_period_end =Carbon::now();
+        $work->reason_leave = 'Not happy';
+        $work->job_achieve = 'Management skill';
+        $work->is_present = 1;
+        $work->save();
 
         $user = User::where('username','=','candidate3')->first();
 		$candidate = new Candidate;
         $candidate->user_id = $user->user_id;
         $candidate->save();
+        $work= new WorkExperience;
+        $work->candidate_user_id=$user->user_id;
+        $work->company_name = 'Google';
+        $work->position = 'IT Security';
+        $work->location = 'Pathumwan';
+        $work->monthly_salary = 40000;
+        $work->time_period_start = Carbon::now();
+        $work->time_period_end =Carbon::now();
+        $work->reason_leave = 'location far from my house';
+        $work->job_achieve = 'Leader skill';
+        $work->is_present = 1;
+        $work->save();
 
         $user = User::where('username','=','candidate4')->first();
 		$candidate = new Candidate;
         $candidate->user_id = $user->user_id;
         $candidate->save();
+        $work= new WorkExperience;
+        $work->candidate_user_id=$user->user_id;
+        $work->company_name = 'Yahoo';
+        $work->position = 'IT Security';
+        $work->location = 'Bangrak';
+        $work->monthly_salary = 40000;
+        $work->time_period_start = Carbon::now();
+        $work->time_period_end =Carbon::now();
+        $work->reason_leave = 'My Boss';
+        $work->job_achieve = 'Nothing';
+        $work->is_present = 1;
+        $work->save();
+
+//EDUCATION
+
+		$user = User::where('username','=','candidate1')->first();
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'CU',
+							'level' => 'primary school',
+							'field_of_study' => 'engineering',
+							'major' => 'computer',
+							'GPA' => 3.23
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'mini bear nursery school',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'nursery school',
+							'field_of_study' => null,
+							'major' => null,
+							'GPA' => 3.98
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'kob monkey temple',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'primary school',
+							'field_of_study' => null,
+							'major' => null,
+							'GPA' => 4.00
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'noname',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'high school',
+							'field_of_study' => 'math-science',
+							'major' => null,
+							'GPA' => 3.36
+							));
+		
+		$user = User::where('username','=','candidate2')->first();
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'CU',
+							'level' => 'primary school',
+							'field_of_study' => 'engineering',
+							'major' => 'computer',
+							'GPA' => 2.73
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'mini bear nursery school',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'nursery school',
+							'field_of_study' => null,
+							'major' => null,
+							'GPA' => 3.98
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'kob monkey temple',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'primary school',
+							'field_of_study' => null,
+							'major' => null,
+							'GPA' => 4.00
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'noname',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'high school',
+							'field_of_study' => 'math-science',
+							'major' => null,
+							'GPA' => 3.36
+							));
+		
+		$user = User::where('username','=','candidate3')->first();
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'CU',
+							'level' => 'primary school',
+							'field_of_study' => 'engineering',
+							'major' => 'computer',
+							'GPA' => 4.00
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'mini bear nursery school',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'nursery school',
+							'field_of_study' => null,
+							'major' => null,
+							'GPA' => 3.98
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'kob monkey temple',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'primary school',
+							'field_of_study' => null,
+							'major' => null,
+							'GPA' => 4.00
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'noname',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'high school',
+							'field_of_study' => 'math-science',
+							'major' => null,
+							'GPA' => 0.36
+							));
+		
+		$user = User::where('username','=','candidate4')->first();
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'CU',
+							'level' => 'primary school',
+							'field_of_study' => 'engineering',
+							'major' => 'computer',
+							'GPA' => 3.83
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'mini bear nursery school',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'nursery school',
+							'field_of_study' => null,
+							'major' => null,
+							'GPA' => 3.98
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'kob monkey temple',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'primary school',
+							'field_of_study' => null,
+							'major' => null,
+							'GPA' => 4.00
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'noname',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'high school',
+							'field_of_study' => 'math-science',
+							'major' => null,
+							'GPA' => 2.36
+							));
+		
+$this->command->info('Table Education Seeded');
+
 $this->command->info('Table Candidate Seeded');
 //POSITION
 			Position::create(array('position_id' => 1,
@@ -22512,48 +22725,7 @@ $this->command->info('Table SkillCategory Seeded');
 							'is_star' => true
 							));
 $this->command->info('Table Skill Seeded');
-//EDUCATION
 
-		$user = User::where('username','=','candidate1')->first();
-		Education::create(array(	
-							'candidate_user_id' => $user->user_id,
-							'school_name' => 'mini bear nursery school',
-							'year_start' => null,
-							'year_end' => null,
-							'level' => 'nursery school',
-							'field_of_study' => null,
-							'major' => null,
-							'GPA' => 3.98
-							));
-		Education::create(array(	
-							'candidate_user_id' => $user->user_id,
-							'school_name' => 'kob monkey temple',
-							'year_start' => null,
-							'year_end' => null,
-							'level' => 'primary school',
-							'field_of_study' => null,
-							'major' => null,
-							'GPA' => 4.00
-							));
-		Education::create(array(	
-							'candidate_user_id' => $user->user_id,
-							'school_name' => 'noname',
-							'year_start' => null,
-							'year_end' => null,
-							'level' => 'high school',
-							'field_of_study' => 'math-science',
-							'major' => null,
-							'GPA' => 0.36
-							));
-		Education::create(array(	
-							'candidate_user_id' => $user->user_id,
-							'school_name' => 'CU',
-							'level' => 'primary school',
-							'field_of_study' => 'engineering',
-							'major' => 'computer',
-							'GPA' => 1.23
-							));
-$this->command->info('Table Education Seeded');
 //REQUISITION CURRENT STATUS
 		RequisitionCurrentStatus::create(array(	'requisition_current_status_id' => 1,
 							'name' => 'Saved Requisition'
@@ -22645,7 +22817,7 @@ $this->command->info('Table RecruitmentType Seeded');
 			$dep= $requisition->position()->first()->group;
 			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
 			$requisition->dept_id =$a;
-			$requisition->requisition_current_status_id =2;
+			$requisition->requisition_current_status_id =1;
 			//Input::get('requisition_current_status_id');
 			$requisition->recruitment_type_id = 1;
 			$requisition->recruitment_obj_template_id=1;

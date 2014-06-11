@@ -91,7 +91,7 @@
                   //   $( nRow).addClass('danger');
                   // }
                 },
-            "order": [[ 4, "asc" ]],
+            "order": [[ 0, "asc" ]],
             // "bAutoWidth": false,            
             // @if (isset($hasCheckboxes) && $hasCheckboxes)
             // 'aaSorting': [['1', 'asc']],
