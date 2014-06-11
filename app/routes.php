@@ -203,6 +203,7 @@ Route::controller('recruiter','RecruiterController');
 Route::resource('recruiter-requisition-post', 'RecruiterRequisitionPostController');
 Route::get('recruiter-shortlist-detail', 'HMRequisitionController@index');
 Route::resource('recruiter-shortlist-candidate', 'RecruiterShortlistCandidateController');
+Route::get('recruiter-shortlist-candidate-sent', 'RecruiterShortlistCandidateController@index2');
 Route::resource('recruiter-shortlist-basket', 'RecruiterShortlistBasketController');
 Route::resource('recruiter-shortlist-log', 'RecruiterShortlistLogController');
 Route::get('recruiter-shortlist-candidate-ckbox-ctrl/{id}', 'RecruiterShortlistCandidateController@toggle');
