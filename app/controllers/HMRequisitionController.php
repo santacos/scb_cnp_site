@@ -39,7 +39,9 @@ class HMRequisitionController extends \BaseController {
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}*/
+
 			$requisition = new Requisition;
+
 			$requisition->total_number = Input::get('total_number');
 			/**
 				change 'employee_user_id' to real employee id
@@ -66,6 +68,36 @@ class HMRequisitionController extends \BaseController {
 			$requisition->qualification = Input::get('qualification');
 			$requisition->note = Input::get('note');
 			$requisition->save();
+
+			if(Input::get('save') == false){
+				// Requisition Log
+				$prev_action = RequisitionLog::where('requisition_id','=',$requisition->requisition_id)->orderBy('action_datetime','desc');
+				if($prev_action->count() > 0){
+					$prev_action = $prev_action->first();
+				}else{
+					$prev_action = NULL;
+				}
+				$timestamp = Carbon::now();
+				if(is_null($prev_action)){
+					$prev_action_datetime = 0;
+				}else{
+					$prev_action_datetime = $prev_action->action_datetime;
+				}
+				DB::table('requisition_logs')->insert(array(
+								'action_type' => 1,
+								'requisition_id' => $requisition->requisition_id,
+								'send_number' => 1,
+								'employee_user_id' => Employee::first()->user_id,
+								/**
+								change 'employee_user_id' to real employee id
+								*/
+								'action_datetime' => $timestamp,
+								'prev_action_datetime' => $prev_action_datetime,
+								'result' => true,
+								'note' => Input::get('note')
+				));
+				//END Requisition Log
+			}
 
 		return View::make('HM.home2');
 	}
@@ -119,6 +151,37 @@ class HMRequisitionController extends \BaseController {
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}*/
+
+			if(Input::get('save') == false){
+				// Requisition Log
+				$prev_action = RequisitionLog::where('requisition_id','=',$id)->orderBy('action_datetime','desc');
+				if($prev_action->count() > 0){
+					$prev_action = $prev_action->first();
+				}else{
+					$prev_action = NULL;
+				}
+				$timestamp = Carbon::now();
+				if(is_null($prev_action)){
+					$prev_action_datetime = 0;
+				}else{
+					$prev_action_datetime = $prev_action->action_datetime;
+				}
+				DB::table('requisition_logs')->insert(array(
+								'action_type' => 1,
+								'requisition_id' => $id,
+								'send_number' => 1,
+								'employee_user_id' => Employee::first()->user_id,
+								/**
+								change 'employee_user_id' to real employee id
+								*/
+								'action_datetime' => $timestamp,
+								'prev_action_datetime' => $prev_action_datetime,
+								'result' => true,
+								'note' => Input::get('note')
+				));
+				//END Requisition Log
+			}
+
 			$requisition = Requisition::findOrFail($id);
 			$requisition->total_number = Input::get('total_number');
 			/**

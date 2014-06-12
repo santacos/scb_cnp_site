@@ -6,6 +6,7 @@ home-HRBP
 
 
 @section('content')
+
 <!--welcome box-->
         <div class="alert alert-info alert-bold-border fade in alert-dismissable" style="margin-left:0px;">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -79,9 +80,9 @@ home-HRBP
     ->setUrl(URL::to('api/requisition/'.'21/'.'3'))
     ->render('datatable') }}
                        @include('admin.partials.recruiter.CanTable')
-
-
-
+<?/**
+REMOVE : " ->setUrl(URL::to('api/requisition/'.'21/1/2/3/4/5/6/7')) "
+*/?>
                     </div><!-- /.box-body -->
                         <!--
                         <div class="box-footer">
