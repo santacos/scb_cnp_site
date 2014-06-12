@@ -39,6 +39,7 @@ class AllTableSeeder extends Seeder {
 		DB::table('applications')->delete();
 		DB::table('recruitment_objective_templates')->delete();
 		DB::table('recruitment_types')->delete();
+		DB::table('public_holidays')->delete();
 
 
 //CANDIDATE
@@ -22728,66 +22729,22 @@ $this->command->info('Table Requisiton Seeded');
 		// }
 $this->command->info('Table Application Seeded');
 //SLA REQUISITION
-		DB::table('SLA_requisitions')->insert(array(
+		$groups = CorporateTitleGroup::all();
+		$req_stats = RequisitionCurrentStatus::all();
+		foreach($groups as $group){
+			foreach($req_stats as $req_stat){
+				DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => $group->corporate_title_group_id,
+							'requisition_cs_id' => $req_stat->requisition_current_status_id,
+							'SLA' => rand(2,20)
+							));
+			}
+		}
+		/*DB::table('SLA_requisitions')->insert(array(
 							'corporate_tg_id' => 1,
 							'requisition_cs_id' => 1,
 							'SLA' => 6
-							));
-		DB::table('SLA_requisitions')->insert(array(
-							'corporate_tg_id' => 1,
-							'requisition_cs_id' => 2,
-							'SLA' => 4
-							));
-		DB::table('SLA_requisitions')->insert(array(
-							'corporate_tg_id' => 1,
-							'requisition_cs_id' => 3,
-							'SLA' => 7
-							));
-		DB::table('SLA_requisitions')->insert(array(
-							'corporate_tg_id' => 1,
-							'requisition_cs_id' => 4,
-							'SLA' => 4
-							));
-		DB::table('SLA_requisitions')->insert(array(
-							'corporate_tg_id' => 2,
-							'requisition_cs_id' => 1,
-							'SLA' => 7
-							));
-		DB::table('SLA_requisitions')->insert(array(
-							'corporate_tg_id' => 2,
-							'requisition_cs_id' => 2,
-							'SLA' => 5
-							));
-		DB::table('SLA_requisitions')->insert(array(
-							'corporate_tg_id' => 2,
-							'requisition_cs_id' => 3,
-							'SLA' => 9
-							));
-		DB::table('SLA_requisitions')->insert(array(
-							'corporate_tg_id' => 2,
-							'requisition_cs_id' => 4,
-							'SLA' => 5
-							));
-		DB::table('SLA_requisitions')->insert(array(
-							'corporate_tg_id' => 3,
-							'requisition_cs_id' => 1,
-							'SLA' => 8
-							));
-		DB::table('SLA_requisitions')->insert(array(
-							'corporate_tg_id' => 3,
-							'requisition_cs_id' => 2,
-							'SLA' => 7
-							));
-		DB::table('SLA_requisitions')->insert(array(
-							'corporate_tg_id' => 3,
-							'requisition_cs_id' => 3,
-							'SLA' => 12
-							));
-		DB::table('SLA_requisitions')->insert(array(
-							'corporate_tg_id' => 3,
-							'requisition_cs_id' => 4,
-							'SLA' => 6
-							));
+							));*/
 $this->command->info('Table SLARequisition Seeded');
 //SLA CANDIDATE
 		DB::table('SLA_candidates')->insert(array(
@@ -22863,6 +22820,80 @@ $this->command->info('Table SLARequisition Seeded');
 							'SLA' => 9
 							));
 $this->command->info('Table SLACandidate Seeded');
+// PUBLIC HOLIDAY
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("1 Jan 2014"),
+		'name' => "New Year's Day"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("14 Feb 2014"),
+		'name' => "Makha Bucha"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("6 Apr 2014"),
+		'name' => "Chakri Day"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("7 Apr 2014"),
+		'name' => "Chakri Day observed"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("13 Apr 2014"),
+		'name' => "Songkran"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("14 Apr 2014"),
+		'name' => "Songkran"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("15 Apr 2014"),
+		'name' => "Songkran"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("16 Apr 2014"),
+		'name' => "Songkran observed"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("1 May 2014"),
+		'name' => "Labor Day"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("5 May 2014"),
+		'name' => "Coronation Day"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("9 May 2014"),
+		'name' => "Royal Ploughing Ceremony Day"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("13 May 2014"),
+		'name' => "Visakha Bucha"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("11 Jul 2014"),
+		'name' => "Asalha Bucha"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("12 Aug 2014"),
+		'name' => "Mother's Day"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("23 Oct 2014"),
+		'name' => "Chulalongkorn Day"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("5 Dec 2014"),
+		'name' => "Father's Day"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("10 Dec 2014"),
+		'name' => "Constitution Day"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("31 Dec 2014"),
+		'name' => "New Year's Eve"
+		));
+$this->command->info('Table PublicHoliday Seeded');
 
 $this->command->info('** All Table Seeded :) **');
 
