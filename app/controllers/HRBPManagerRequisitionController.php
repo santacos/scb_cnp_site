@@ -115,7 +115,9 @@ class HRBPManagerRequisitionController extends \BaseController {
 			$requisition->note = Input::get('note');
 			$requisition->save();
 
-		return Response::json(array('success' => true));
+		$requisitions = Requisition::all();
+
+		return View::make('HRBPManager.home', compact('requisitions'));
 	}
 
 	/**

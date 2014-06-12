@@ -1,68 +1,67 @@
 <?php
 
-class RequisitionRestController extends \BaseController {
+class CandidateRestController extends \BaseController {
 
 	
 
-		public function getCoporateTitle()
-		{
-			$corporate_titles = CorporateTitle::All()->toJson();
-			return $corporate_titles;
-		}
-
-		public function getDept()
-		{
-			$depts = Dept::All()->toJson();
-			return $depts;
-		}
-		public function getRecruitmentType()
-		{
-			$recruitment_types = RecruitmentType::All()->toJson();
-			return $recruitment_types;
-		}
-		public function getLocation()
-		{
-			$locations = Location::All()->toJson();
-			return $locations;
-		}
-        public function getRequisitionDatatable($user_id='',$status_id1='',$status_id2='',$status_id3='',$status_id4='',$status_id5='',$status_id6='',$status_id7='')
+        public function getCandiadateDatatable($requsition_id='',$status_id1='',$status_id2='',$status_id3='',$status_id4='',$status_id5='',$status_id6='',$status_id7='',$status_id8='',$status_id9='',$status_id10='')
     {       
          // return $action;
         // return $user_id.'----'.$status_id;
-                    $req=Requisition::where('employee_user_id','!=',0);
+                    if($requsition_id!='' && $requsition_id!=0)
+                    {$app=Application::where('requsition_id','!=',0);}
+                    else 
+                    {
+                        $app=Application::where('requsition_id','=',$requsition_id);
+                    }
                     if($status_id1!='' && $status_id1!=0)
                     {
-                        $req=$req->where('requisition_current_status_id','=',$status_id1);
+                        $app=$app->where('application_current_status_id','=',$status_id1);
                          
                     }
                     if($status_id2!='' && $status_id2!=0)
                     {
-                        $req=$req->OrWhere('requisition_current_status_id','=',$status_id2);
+                        $app=$app->OrWhere('application_current_status_id','=',$status_id2);
                          
                     }
                     if($status_id3!='' && $status_id3!=0)
                     {
-                        $req=$req->OrWhere('requisition_current_status_id','=',$status_id3);
+                        $req=$req->OrWhere('application_current_status_id','=',$status_id3);
                          
                     }
                     if($status_id4!='' && $status_id4!=0)
                     {
-                        $req=$req->OrWhere('requisition_current_status_id','=',$status_id4);
+                        $req=$req->OrWhere('application_current_status_id','=',$status_id4);
                          
                     }
                     if($status_id5!='' && $status_id5!=0)
                     {
-                        $req=$req->OrWhere('requisition_current_status_id','=',$status_id5);
+                        $req=$req->OrWhere('application_current_status_id','=',$status_id5);
                          
                     }
                     if($status_id6!='' && $status_id6!=0)
                     {
-                        $req=$req->OrWhere('requisition_current_status_id','=',$status_id6);
+                        $req=$req->OrWhere('application_current_status_id','=',$status_id6);
                          
                     }
                     if($status_id7!='' && $status_id7!=0)
                     {
-                        $req=$req->OrWhere('requisition_current_status_id','=',$status_id7);
+                        $req=$req->OrWhere('application_current_status_id','=',$status_id7);
+                         
+                    }
+                    if($status_id8!='' && $status_id8!=0)
+                    {
+                        $req=$req->OrWhere('application_current_status_id','=',$status_id8);
+                         
+                    }
+                    if($status_id9!='' && $status_id9!=0)
+                    {
+                        $req=$req->OrWhere('application_current_status_id','=',$status_id9);
+                         
+                    }
+                    if($status_id10!='' && $status_id10!=0)
+                    {
+                        $req=$req->OrWhere('application_current_status_id','=',$status_id10);
                          
                     }
                    $req=$req->get();
@@ -94,76 +93,10 @@ class RequisitionRestController extends \BaseController {
                         { return $model->total_number;
                         })
                     ->addColumn('SLA',function($model)
-                        { 
-                            $req_cur_stat_id = $model->requisitionCurrentStatus->requisition_current_status_id;
-                            $SLA = $model->corporateTitle->group->SLARequisition()->whereRequisitionCsId($req_cur_stat_id)->first()->SLA;
-                            $start_timestamp = $model->requisitionLog()->orderBy('action_datetime','desc');
-                            if($req_cur_stat_id == 4){
-                                $start_timestamp = $start_timestamp->whereSendNumber(2);
-                            }else if($req_cur_stat_id == 6){
-                                $start_timestamp = $start_timestamp->whereSendNumber(1);//orderBy('send_number','desc');
-                            }
-                            $start_timestamp = $start_timestamp->first();
-                            if(is_null($start_timestamp)){
-                                $start_timestamp = Carbon::createFromTimeStamp(0);
-                            }else{
-                                $start_timestamp = Carbon::createFromFormat('Y-m-d H:i:s',$start_timestamp->action_datetime);
-                            }
-                            $end_timestamp = $start_timestamp->copy();
-                            $holidays = PublicHoliday::all();
-                            for($i=0; $model->requisition_current_status_id > 1 && $end_timestamp->diffInSeconds(Carbon::now(),false) >= 0; $i++){
-                                if($end_timestamp->toDateString() == Carbon::now()->toDateString()){
-                                    return '<input type="hidden" name="sla" value="'.sprintf("%06d",($SLA-$i)).'">'
-                                    . $i . " / " . $SLA;
-                                }
-                                $end_timestamp->addDays(1);
-                                if($end_timestamp->isWeekend()){
-                                   $i--; 
-                                }else{
-                                    foreach($holidays as $holiday){
-                                        if($end_timestamp->toDateString() == $holiday->date){
-                                            $i--;
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                            return ('<input type="hidden" name="sla" value="'."999999".'">')
-                                    . "SLA = " . $SLA;
+                        { return Carbon::createFromTimestamp(strtotime($model->created_at))->format('j F Y');
                         })
                     ->addColumn('Deadline',function($model)
-                        { 
-                            $req_cur_stat_id = $model->requisitionCurrentStatus->requisition_current_status_id;
-                            $SLA = $model->corporateTitle->group->SLARequisition()->whereRequisitionCsId($req_cur_stat_id)->first()->SLA;
-                            $start_timestamp = $model->requisitionLog()->orderBy('action_datetime','desc');
-                            if($req_cur_stat_id == 4){
-                                $start_timestamp = $start_timestamp->whereSendNumber(2);
-                            }else if($req_cur_stat_id == 6){
-                                $start_timestamp = $start_timestamp->whereSendNumber(1);//orderBy('send_number','desc');
-                            }
-                            $start_timestamp = $start_timestamp->first();
-                            if(is_null($start_timestamp)){
-                                $start_timestamp = Carbon::createFromTimeStamp(0);
-                            }else{
-                                $start_timestamp = Carbon::createFromFormat('Y-m-d H:i:s',$start_timestamp->action_datetime);
-                            }
-                            $end_timestamp = $start_timestamp->copy();
-                            $holidays = PublicHoliday::all();
-                            for($i=0; $i<$SLA; $i++){
-                                $end_timestamp->addDays(1);
-                                if($end_timestamp->isWeekend()){
-                                   $i--; 
-                                }else{
-                                    foreach($holidays as $holiday){
-                                        if($end_timestamp->toDateString() == $holiday->date){
-                                            $i--;
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                            return ('<input type="hidden" name="deadline" value="'.sprintf("%014d",$end_timestamp->getTimestamp()).'">')
-                                    . $end_timestamp->toDayDateTimeString();
+                        { return '<input type="hidden" name="Language" value="'.$model->created_at.'">'.Carbon::createFromTimestamp(strtotime($model->created_at))->format('j F Y');
                         })
                     ->addColumn('From',function($model)
                         { return $model->employee()->first()->first.' '.$model->employee()->first()->last;

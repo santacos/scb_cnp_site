@@ -41,12 +41,18 @@ class RecruiterShortlistBasketController extends \BaseController {
 	public function show($id)
 	{
 		$applications = Application::whereRequisitionID($id)->whereIsInBasket(1)->whereNull('send_number');
+		// $reviews = Application::whereRequisitionID($id)->where('application_current_status_id','=','2');
+		// $reviews = Application::whereRequisitionID($id)->where('application_current_status_id','=','3');
+		// $reviews = Application::whereRequisitionID($id)->where('application_current_status_id','=','4');
+		// $reviews = Application::whereRequisitionID($id)->where('application_current_status_id','=','5');
+		// $reviews = Application::whereRequisitionID($id)->where('application_current_status_id','=','6');
+		// $reviews = Application::whereRequisitionID($id)->where('application_current_status_id','=','7');
 		$in_basket = count($applications);
 		$requisition = Requisition::find($id);
 		$require = $requisition->total_number;
 		$num_get = $requisition->get_number;
 		$applications = $applications->get();
-		return View::make('recruiter.requisition.shortlist.basket.show', compact('applications'))->with('in_basket',$in_basket)->with('num_get',$num_get)->with('require',$require)->with('requisition',$requisition);
+		return View::make('recruiter.requisition.shortlist.basket.show', compact('applications'))->with('in_basket',$in_basket)->with('num_get',$num_get)->with('require',$require)->with('requisition',$requisition)->with('requisition_id',$id);
 	}
 
 	/**

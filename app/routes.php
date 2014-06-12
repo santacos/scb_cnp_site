@@ -18,8 +18,12 @@ Route::get('testtest',function(){
 });
 
 //////////////////// test area/////////////////////////////
+
 Route::get('cd',function(){
-    return View::make('user.profile');
+    return View::make('user.homeprofile');
+});
+Route::get('cd/home',function(){
+    return View::make('user.home');
 });
 
 Route::get('cd/profile',function(){
@@ -106,7 +110,7 @@ Route::get('/default', function()
 
 Route::get('/', function()
 {
-	return View::make('admin.layouts.dashboard');
+	return View::make('all');
 	//return View::make('admin.layouts.home2');
 });
 Route::get('empty', function()
@@ -210,6 +214,8 @@ Route::resource('hm','HMController');
 
 Route::resource('hm-requisition', 'HMRequisitionController');
 Route::get('api/requisition/{user_id?}/{status_id1?}/{status_id2?}/{status_id3?}/{status_id4?}/{status_id5?}/{status_id6?}/{status_id7?}', array('as'=>'api.requisition', 'uses'=>'RequisitionRestController@getRequisitionDatatable'));
+Route::get('api/application/{requisition_id?}/{status_id1?}/{status_id2?}/{status_id3?}/{status_id4?}/{status_id5?}/{status_id6?}/{status_id7?}/{status_id8?}/{status_id9?}/{status_id10?}', array('as'=>'api.application', 'uses'=>'ApplicationRestController@getApplicationDatatable'));
+Route::get('api/basket/{requisition_id?}/{status_id1?}/{status_id2?}/{status_id3?}/{status_id4?}/{status_id5?}/{status_id6?}/{status_id7?}/{status_id8?}/{status_id9?}/{status_id10?}', array('as'=>'api.basket', 'uses'=>'ApplicationRestController@getBasketDatatable'));
 Route::controller('requisitionrest', 'RequisitionRestController');
 Route::resource('hm-application-review', 'HMApplicationReviewController');
 
@@ -233,7 +239,7 @@ Route::resource('application', 'ApplicationController');
 Route::resource('recruiter','RecruiterController');
 Route::controller('recruiter','RecruiterController');
 Route::resource('recruiter-requisition-post', 'RecruiterRequisitionPostController');
-Route::get('recruiter-shortlist-detail', 'HMRequisitionController@index');
+Route::resource('recruiter-shortlist', 'RecruiterShortlistController');
 Route::resource('recruiter-shortlist-candidate', 'RecruiterShortlistCandidateController');
 Route::get('recruiter-shortlist-candidate-sent', 'RecruiterShortlistCandidateController@index2');
 Route::resource('recruiter-shortlist-basket', 'RecruiterShortlistBasketController');

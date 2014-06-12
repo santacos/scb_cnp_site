@@ -47,21 +47,234 @@ class AllTableSeeder extends Seeder {
 		$candidate = new Candidate;
         $candidate->user_id = $user->user_id;
         $candidate->save();
+        $work= new WorkExperience;
+        $work->candidate_user_id=$user->user_id;
+        $work->company_name = 'IBM';
+        $work->position = 'IT Security';
+        $work->location = 'Silom';
+        $work->monthly_salary = 40000;
+        $work->time_period_start = Carbon::now();
+        $work->time_period_end =Carbon::now();
+        $work->reason_leave = 'Want more money';
+        $work->job_achieve = 'Experience';
+        $work->is_present = 1;
+        $work->save();
 
         $user = User::where('username','=','candidate2')->first();
 		$candidate = new Candidate;
         $candidate->user_id = $user->user_id;
         $candidate->save();
+        $work= new WorkExperience;
+        $work->candidate_user_id=$user->user_id;
+        $work->company_name = 'Microsoft';
+        $work->position = 'IT Security';
+        $work->location = 'Siam';
+        $work->monthly_salary = 40000;
+        $work->time_period_start = Carbon::now();
+        $work->time_period_end =Carbon::now();
+        $work->reason_leave = 'Not happy';
+        $work->job_achieve = 'Management skill';
+        $work->is_present = 1;
+        $work->save();
 
         $user = User::where('username','=','candidate3')->first();
 		$candidate = new Candidate;
         $candidate->user_id = $user->user_id;
         $candidate->save();
+        $work= new WorkExperience;
+        $work->candidate_user_id=$user->user_id;
+        $work->company_name = 'Google';
+        $work->position = 'IT Security';
+        $work->location = 'Pathumwan';
+        $work->monthly_salary = 40000;
+        $work->time_period_start = Carbon::now();
+        $work->time_period_end =Carbon::now();
+        $work->reason_leave = 'location far from my house';
+        $work->job_achieve = 'Leader skill';
+        $work->is_present = 1;
+        $work->save();
 
         $user = User::where('username','=','candidate4')->first();
 		$candidate = new Candidate;
         $candidate->user_id = $user->user_id;
         $candidate->save();
+        $work= new WorkExperience;
+        $work->candidate_user_id=$user->user_id;
+        $work->company_name = 'Yahoo';
+        $work->position = 'IT Security';
+        $work->location = 'Bangrak';
+        $work->monthly_salary = 40000;
+        $work->time_period_start = Carbon::now();
+        $work->time_period_end =Carbon::now();
+        $work->reason_leave = 'My Boss';
+        $work->job_achieve = 'Nothing';
+        $work->is_present = 1;
+        $work->save();
+
+//EDUCATION
+
+		$user = User::where('username','=','candidate1')->first();
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'CU',
+							'level' => 'primary school',
+							'field_of_study' => 'engineering',
+							'major' => 'computer',
+							'GPA' => 3.23
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'mini bear nursery school',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'nursery school',
+							'field_of_study' => null,
+							'major' => null,
+							'GPA' => 3.98
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'kob monkey temple',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'primary school',
+							'field_of_study' => null,
+							'major' => null,
+							'GPA' => 4.00
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'noname',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'high school',
+							'field_of_study' => 'math-science',
+							'major' => null,
+							'GPA' => 3.36
+							));
+		
+		$user = User::where('username','=','candidate2')->first();
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'CU',
+							'level' => 'primary school',
+							'field_of_study' => 'engineering',
+							'major' => 'computer',
+							'GPA' => 2.73
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'mini bear nursery school',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'nursery school',
+							'field_of_study' => null,
+							'major' => null,
+							'GPA' => 3.98
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'kob monkey temple',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'primary school',
+							'field_of_study' => null,
+							'major' => null,
+							'GPA' => 4.00
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'noname',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'high school',
+							'field_of_study' => 'math-science',
+							'major' => null,
+							'GPA' => 3.36
+							));
+		
+		$user = User::where('username','=','candidate3')->first();
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'CU',
+							'level' => 'primary school',
+							'field_of_study' => 'engineering',
+							'major' => 'computer',
+							'GPA' => 4.00
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'mini bear nursery school',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'nursery school',
+							'field_of_study' => null,
+							'major' => null,
+							'GPA' => 3.98
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'kob monkey temple',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'primary school',
+							'field_of_study' => null,
+							'major' => null,
+							'GPA' => 4.00
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'noname',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'high school',
+							'field_of_study' => 'math-science',
+							'major' => null,
+							'GPA' => 0.36
+							));
+		
+		$user = User::where('username','=','candidate4')->first();
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'CU',
+							'level' => 'primary school',
+							'field_of_study' => 'engineering',
+							'major' => 'computer',
+							'GPA' => 3.83
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'mini bear nursery school',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'nursery school',
+							'field_of_study' => null,
+							'major' => null,
+							'GPA' => 3.98
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'kob monkey temple',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'primary school',
+							'field_of_study' => null,
+							'major' => null,
+							'GPA' => 4.00
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'noname',
+							'year_start' => null,
+							'year_end' => null,
+							'level' => 'high school',
+							'field_of_study' => 'math-science',
+							'major' => null,
+							'GPA' => 2.36
+							));
+		
+$this->command->info('Table Education Seeded');
+
 $this->command->info('Table Candidate Seeded');
 //POSITION
 			Position::create(array('position_id' => 1,
@@ -18660,15 +18873,15 @@ $this->command->info('Table Dept Seeded');
 //CORPORRATE TITLE GROUP
 		CorporateTitleGroup::create(array(	'corporate_title_group_id' => 1,
 							'name' => 'Officer',
-							'total_SLA' => 30
+							'total_SLA' => 45
 							));
 		CorporateTitleGroup::create(array(	'corporate_title_group_id' => 2,
 							'name' => 'AVP/VP',
-							'total_SLA' => 45
+							'total_SLA' => 60
 							));
 		CorporateTitleGroup::create(array(	'corporate_title_group_id' => 3,
 							'name' => 'SVP up',
-							'total_SLA' => 60
+							'total_SLA' => 75
 							));
 $this->command->info('Table CorporateTitleGroup Seeded');
 //CORPORRATE TITLE
@@ -22513,48 +22726,7 @@ $this->command->info('Table SkillCategory Seeded');
 							'is_star' => true
 							));
 $this->command->info('Table Skill Seeded');
-//EDUCATION
 
-		$user = User::where('username','=','candidate1')->first();
-		Education::create(array(	
-							'candidate_user_id' => $user->user_id,
-							'school_name' => 'mini bear nursery school',
-							'year_start' => null,
-							'year_end' => null,
-							'level' => 'nursery school',
-							'field_of_study' => null,
-							'major' => null,
-							'GPA' => 3.98
-							));
-		Education::create(array(	
-							'candidate_user_id' => $user->user_id,
-							'school_name' => 'kob monkey temple',
-							'year_start' => null,
-							'year_end' => null,
-							'level' => 'primary school',
-							'field_of_study' => null,
-							'major' => null,
-							'GPA' => 4.00
-							));
-		Education::create(array(	
-							'candidate_user_id' => $user->user_id,
-							'school_name' => 'noname',
-							'year_start' => null,
-							'year_end' => null,
-							'level' => 'high school',
-							'field_of_study' => 'math-science',
-							'major' => null,
-							'GPA' => 0.36
-							));
-		Education::create(array(	
-							'candidate_user_id' => $user->user_id,
-							'school_name' => 'CU',
-							'level' => 'primary school',
-							'field_of_study' => 'engineering',
-							'major' => 'computer',
-							'GPA' => 1.23
-							));
-$this->command->info('Table Education Seeded');
 //REQUISITION CURRENT STATUS
 		RequisitionCurrentStatus::create(array(	'requisition_current_status_id' => 1,
 							'name' => 'Saved Requisition'
@@ -22598,13 +22770,19 @@ $this->command->info('Table RequisitionCurrentStatus Seeded');
 							'name' => 'Waiting for Confirm package with Head of HRBP'
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 7,
-							'name' => 'Waiting for Make offre to candidate'
+							'name' => 'Waiting for Make offer to candidate'
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 8,
 							'name' => 'Waiting for Accept Job Offer'
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 9,
-							'name' => 'END SLA'
+							'name' => 'Fail' //Fail
+							));
+		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 10,
+							'name' => 'Pass' //Pass
+							));
+		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 11,
+							'name' => 'Pending' //Pending
 							));
 $this->command->info('Table ApplicationCurrentStatus Seeded');
 //RECRUITMENT OBJECTIVE TEMPLATE
@@ -22640,32 +22818,38 @@ $this->command->info('Table RecruitmentType Seeded');
 			$dep= $requisition->position()->first()->group;
 			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
 			$requisition->dept_id =$a;
-			$requisition->requisition_current_status_id =2;
+			$requisition->requisition_current_status_id =1;
 			//Input::get('requisition_current_status_id');
 			$requisition->recruitment_type_id = 1;
 			$requisition->recruitment_obj_template_id=1;
 			$requisition->recruitment_objective = 'Mr.JJ KK';
 			$requisition->year_of_experience = 5;
 			//$requisition->recruitment_objective = Input::get('recruitment_objective');
-			$requisition->responsibility = '<p>Establish IT security policies, standards and guidelines in compliance with Payment Card Industry Data Security Standard (PCI DSS) and ISO27001.<br />
-Provide consultation to IT Development, IT Operations and business units to enhance their business processes, applications and infrastructure components in compliance with PCI DSS, ISO27001 and the Bank&rsquo;s IT security policies, standards and guidelines.<br />
-Develop business continuity and disaster recovery plan for security incidents.<br />
-Perform information security risk assessment based on ISO27005:2011 and developed control measures to mitigate security risks.<br />
-Monitor and work with IT Development, IT Operations and business units to resolve PCI DSS and ISO27001 non-compliance issues.<br />
-Manage PCI DSS and PCI PIN Security compliance program.<br />
-Provide IT security awareness trainings for SCB employees and service providers.<br />
-Develop control measures and security self-assessment requirements for service providers, including monitoring service providers\' security protection program.<br />Investigate and response to security incidents in a timely manner.</p>';
-			$requisition->qualification = '<p>Qualifications:-</p>
-<p>Minimum of 3 years&rsquo; experience in marketing, communications and/ or public relations with demonstrated success, preferably in banking business<br />
-Master degree in Marketing or Communication<br />
-Excellent communication skills both in English and Thai<br />
-Proficiently in Computer Literacy<br />
-Demonstrated skills, knowledge and experience in the design and execution of marketing, Communications and public relations activities.<br />
-Demonstrated successful experience writing press releases, making presentations and negotiating with media.<br />
-Experience overseeing the design and production of print materials and publications.<br />
-Commitment to working with shared leadership and in cross-functional teams.<br />
-Strong leadership, high maturity, excellent service minded, interpersonal skills, creative, strategic, analytical<br />
-Ability to manage multiple projects at a time</p>';
+			$requisition->responsibility = '<p>&bull; Establish IT security policies, standards and guidelines in compliance with Payment Card Industry Data Security Standard (PCI DSS) and ISO27001.<br>
+&bull; Provide consultation to IT Development, IT Operations and business units to enhance their business processes, applications and infrastructure components in compliance with PCI DSS, ISO27001 and the Bank&rsquo;s IT security policies, standards and guidelines.<br>
+&bull; Develop business continuity and disaster recovery plan for security incidents.<br>
+&bull; Perform information security risk assessment based on ISO27005:2011 and developed control measures to mitigate security risks.<br>
+&bull; Monitor and work with IT Development, IT Operations and business units to resolve PCI DSS and ISO27001 non-compliance issues.<br>
+&bull; Manage PCI DSS and PCI PIN Security compliance program.<br>
+&bull; Provide IT security awareness trainings for SCB employees and service providers.<br>
+&bull; Develop control measures and security self-assessment requirements for service providers, including monitoring service providers\' security protection program.<br>
+&bull; Investigate and response to security incidents in a timely manner.<br>
+</p>';
+			$requisition->qualification = '<p>&bull; Bachelor\'s degree or Master\'s degree in Computer Engineering, Computer Science, MIS, Information Security or IT related field<br>
+&bull; 3 to 5 years of professional experience in such areas as IT security policy, IT audit, IT security design and implementation and/or IT security review<br>
+&bull; Prior experience in PCI DSS, ISO27001, information security risk assessment or business continuity will be a plus.<br>
+&bull; Industry Certifications (CISSP, CISM, CRISC, CISA, GIAC, CEH or Security+)<br>
+&bull; Must be familiar with standard security concepts, practices and procedures<br>
+&bull; Experience with information security best practices including creating and updating security policies, procedures and compliance auditing<br>
+&bull; Experience in conducting internal and external risk ssessments<br>
+&bull; Understanding of application and operating system hardening, vulnerability assessments, security audits, endpoint protection, intrusion detection systems, firewalls, etc.<br>
+&bull; Mature, positive working attitude and willing to adapt self for team success.<br>
+&bull; Capable to handle multiple tasks and assignments and pressure.<br>
+&bull; Highly proficient in both English and Thai with good written and oral communication and analytical skills.<br>
+&bull; Strong interpersonal skills and able to work both independently within given guidelines or as part of a team.<br>
+&bull; Good personality and presentation skills.<br>
+&bull; Reliable, energetic, proactive, self-motivated and pragmatic in approach.<br>
+</p>';
 			$requisition->note = 'Urgent';
 			$requisition->save();
 			for($j=1; $j<5; $j++)
@@ -22729,35 +22913,130 @@ $this->command->info('Table Requisiton Seeded');
 		// }
 $this->command->info('Table Application Seeded');
 //SLA REQUISITION
-		$groups = CorporateTitleGroup::all();
-		$req_stats = RequisitionCurrentStatus::all();
-		foreach($groups as $group){
-			foreach($req_stats as $req_stat){
-				DB::table('SLA_requisitions')->insert(array(
-							'corporate_tg_id' => $group->corporate_title_group_id,
-							'requisition_cs_id' => $req_stat->requisition_current_status_id,
-							'SLA' => rand(2,20)
-							));
-			}
-		}
-		/*DB::table('SLA_requisitions')->insert(array(
+		DB::table('SLA_requisitions')->insert(array(
 							'corporate_tg_id' => 1,
 							'requisition_cs_id' => 1,
-							'SLA' => 6
-							));*/
+							'SLA' => 0
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 2,
+							'requisition_cs_id' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 3,
+							'requisition_cs_id' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 1,
+							'requisition_cs_id' => 2,
+							'SLA' => 2
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 2,
+							'requisition_cs_id' => 2,
+							'SLA' => 2
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 3,
+							'requisition_cs_id' => 2,
+							'SLA' => 2
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 1,
+							'requisition_cs_id' => 3,
+							'SLA' => 2
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 2,
+							'requisition_cs_id' => 3,
+							'SLA' => 2
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 3,
+							'requisition_cs_id' => 3,
+							'SLA' => 2
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 1,
+							'requisition_cs_id' => 4,
+							'SLA' => 0
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 2,
+							'requisition_cs_id' => 4,
+							'SLA' => 0
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 3,
+							'requisition_cs_id' => 4,
+							'SLA' => 0
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 1,
+							'requisition_cs_id' => 5,
+							'SLA' => 12
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 2,
+							'requisition_cs_id' => 5,
+							'SLA' => 12
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 3,
+							'requisition_cs_id' => 5,
+							'SLA' => 14
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 1,
+							'requisition_cs_id' => 6,
+							'SLA' => 33
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 2,
+							'requisition_cs_id' => 6,
+							'SLA' => 48
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 3,
+							'requisition_cs_id' => 6,
+							'SLA' => 61
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 1,
+							'requisition_cs_id' => 7,
+							'SLA' => 0
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 2,
+							'requisition_cs_id' => 7,
+							'SLA' => 0
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 3,
+							'requisition_cs_id' => 7,
+							'SLA' => 0
+							));
 $this->command->info('Table SLARequisition Seeded');
 //SLA CANDIDATE
 		DB::table('SLA_candidates')->insert(array(
 							'corporate_tg_id' => 1,
 							'app_cs_id' => 1,
 							'visit_number' => 1,
-							'SLA' => 6
+							'SLA' => 0
 							));
 		DB::table('SLA_candidates')->insert(array(
-							'corporate_tg_id' => 1,
+							'corporate_tg_id' => 2,
 							'app_cs_id' => 1,
-							'visit_number' => 2,
-							'SLA' => 8
+							'visit_number' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 3,
+							'app_cs_id' => 1,
+							'visit_number' => 1,
+							'SLA' => 0
 							));
 		DB::table('SLA_candidates')->insert(array(
 							'corporate_tg_id' => 1,
@@ -22766,24 +23045,6 @@ $this->command->info('Table SLARequisition Seeded');
 							'SLA' => 4
 							));
 		DB::table('SLA_candidates')->insert(array(
-							'corporate_tg_id' => 1,
-							'app_cs_id' => 2,
-							'visit_number' => 2,
-							'SLA' => 5
-							));
-		DB::table('SLA_candidates')->insert(array(
-							'corporate_tg_id' => 1,
-							'app_cs_id' => 3,
-							'visit_number' => 1,
-							'SLA' => 2
-							));
-		DB::table('SLA_candidates')->insert(array(
-							'corporate_tg_id' => 2,
-							'app_cs_id' => 1,
-							'visit_number' => 1,
-							'SLA' => 7
-							));
-		DB::table('SLA_candidates')->insert(array(
 							'corporate_tg_id' => 2,
 							'app_cs_id' => 2,
 							'visit_number' => 1,
@@ -22791,33 +23052,207 @@ $this->command->info('Table SLARequisition Seeded');
 							));
 		DB::table('SLA_candidates')->insert(array(
 							'corporate_tg_id' => 3,
-							'app_cs_id' => 1,
+							'app_cs_id' => 2,
 							'visit_number' => 1,
-							'SLA' => 8
+							'SLA' => 6
 							));
 		DB::table('SLA_candidates')->insert(array(
-							'corporate_tg_id' => 3,
-							'app_cs_id' => 2,
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 3,
 							'visit_number' => 1,
 							'SLA' => 7
 							));
 		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 3,
+							'visit_number' => 1,
+							'SLA' => 9
+							));
+		DB::table('SLA_candidates')->insert(array(
 							'corporate_tg_id' => 3,
 							'app_cs_id' => 3,
+							'visit_number' => 1,
+							'SLA' => 9
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 4,
+							'visit_number' => 1,
+							'SLA' => 4
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 4,
 							'visit_number' => 1,
 							'SLA' => 5
 							));
 		DB::table('SLA_candidates')->insert(array(
 							'corporate_tg_id' => 3,
-							'app_cs_id' => 3,
+							'app_cs_id' => 4,
+							'visit_number' => 1,
+							'SLA' => 6
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 4,
 							'visit_number' => 2,
-							'SLA' => 7
+							'SLA' => 4
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 4,
+							'visit_number' => 2,
+							'SLA' => 5
 							));
 		DB::table('SLA_candidates')->insert(array(
 							'corporate_tg_id' => 3,
-							'app_cs_id' => 3,
+							'app_cs_id' => 4,
+							'visit_number' => 2,
+							'SLA' => 6
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 4,
 							'visit_number' => 3,
-							'SLA' => 9
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 4,
+							'visit_number' => 3,
+							'SLA' => 5
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 3,
+							'app_cs_id' => 4,
+							'visit_number' => 3,
+							'SLA' => 8
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 5,
+							'visit_number' => 1,
+							'SLA' => 2
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 5,
+							'visit_number' => 1,
+							'SLA' => 4
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 3,
+							'app_cs_id' => 5,
+							'visit_number' => 1,
+							'SLA' => 5
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 6,
+							'visit_number' => 1,
+							'SLA' => 4
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 6,
+							'visit_number' => 1,
+							'SLA' => 6
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 3,
+							'app_cs_id' => 6,
+							'visit_number' => 1,
+							'SLA' => 7
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 7,
+							'visit_number' => 1,
+							'SLA' => 4
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 7,
+							'visit_number' => 1,
+							'SLA' => 4
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 3,
+							'app_cs_id' => 7,
+							'visit_number' => 1,
+							'SLA' => 8
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 8,
+							'visit_number' => 1,
+							'SLA' => 4
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 8,
+							'visit_number' => 1,
+							'SLA' => 4
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 3,
+							'app_cs_id' => 8,
+							'visit_number' => 1,
+							'SLA' => 6
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 9,
+							'visit_number' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 9,
+							'visit_number' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 3,
+							'app_cs_id' => 9,
+							'visit_number' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 10,
+							'visit_number' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 10,
+							'visit_number' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 3,
+							'app_cs_id' => 10,
+							'visit_number' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 11,
+							'visit_number' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 11,
+							'visit_number' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 3,
+							'app_cs_id' => 11,
+							'visit_number' => 1,
+							'SLA' => 0
 							));
 $this->command->info('Table SLACandidate Seeded');
 // PUBLIC HOLIDAY
@@ -22895,7 +23330,19 @@ $this->command->info('Table SLACandidate Seeded');
 		));
 $this->command->info('Table PublicHoliday Seeded');
 
-$this->command->info('** All Table Seeded :) **');
+//$this->command->info('** All Table Seeded :) **');
+$this->command->info('===============================================');
+$this->command->info('  ·▄▄▄▄   ▄▄▄· ▄▄▄▄▄ ▄▄▄· ▄▄▄▄·  ▄▄▄· .▄▄ · ▄▄▄ .');
+$this->command->info('  ██▪ ██ ▐█ ▀█ •██  ▐█ ▀█ ▐█ ▀█▪▐█ ▀█ ▐█ ▀. ▀▄.▀·');
+$this->command->info('  ▐█· ▐█▌▄█▀▀█  ▐█.▪▄█▀▀█ ▐█▀▀█▄▄█▀▀█ ▄▀▀▀█▄▐▀▀▪▄');
+$this->command->info('  ██. ██ ▐█ ▪▐▌ ▐█▌·▐█ ▪▐▌██▄▪▐█▐█ ▪▐▌▐█▄▪▐█▐█▄▄▌');
+$this->command->info('  ▀▀▀▀▀•  ▀  ▀  ▀▀▀  ▀  ▀ ·▀▀▀▀  ▀  ▀  ▀▀▀▀  ▀▀▀ ');
+$this->command->info('      .▄▄ · ▄▄▄ .▄▄▄ .·▄▄▄▄  ▄▄▄ .·▄▄▄▄  ▄▄      ');
+$this->command->info('      ▐█ ▀. ▀▄.▀·▀▄.▀·██▪ ██ ▀▄.▀·██▪ ██ ██▌     ');
+$this->command->info('      ▄▀▀▀█▄▐▀▀▪▄▐▀▀▪▄▐█· ▐█▌▐▀▀▪▄▐█· ▐█▌▐█·     ');
+$this->command->info('      ▐█▄▪▐█▐█▄▄▌▐█▄▄▌██. ██ ▐█▄▄▌██. ██ .▀      ');
+$this->command->info('       ▀▀▀▀  ▀▀▀  ▀▀▀ ▀▀▀▀▀•  ▀▀▀ ▀▀▀▀▀•  ▀      ');
+$this->command->info('===============================================');
 
 /*
 

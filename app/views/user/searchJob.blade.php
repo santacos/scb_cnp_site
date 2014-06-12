@@ -176,27 +176,38 @@ SCB Recruitment-Home
 					</div>
 					
 					<div class="tab-pane fade in" id="advancedsearch">
-					  <div class="text-small features-block">
-						<div class="header-box">
-						  <a href="#" class="icon-box">
-							<i class="fa fa-desktop"></i>
-						  </a>
-						  <h6><a href="#">Responsive Design</a></h6>
+						 <div class="row">
+								<div class="col col-md-1">
+								</div>
+								<div class="col col-md-4">
+									<strong>Department :</strong>
+									<select class="form-control" style="font-size:1.1em;">
+										<option value="" class="">Select Department</option>
+										<option value="0">President</option>
+									</select>
+								</div>
+								<div class="col col-md-4">
+									<strong>Job title :</strong>
+									<select class="form-control" style="font-size:1.1em;">
+										<option value="" class="">Select Job title</option>
+										<option value="0">President</option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col col-md-1">
+								</div>
+								<div class="col col-md-8">
+									<form class="form" role="form">
+										<div class="form-group">
+										  	<label class="" for="exampleInputEmail2">Search keyword :</label>
+										  	<input type="email" style="font-size:1.1em;" class="form-control" id="exampleInputEmail2" placeholder="Enter keyword">
+										</div>
+									</form>
+								</div>
+							</div>
 						</div>
-						<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus quo esse fugit quasi doloremque sequi impedit. Doloremque esse rem saepe sit libero facere exercitationem reprehenderit mollitia incidunt quas culpa at illo veniam error odit expedita dignissimos quia nostrum perferendis officia molestias totam distinctio nesciunt eum accusamus quo animi assumenda eveniet aperiam fugiat accusantium harum ullam.</div>
-					  </div>
-					  <hr>
-					  <div class="text-small features-block">
-						<div class="header-box">
-						  <a href="#" class="icon-box">
-							<i class="fa fa-edit"></i>
-						  </a>
-						  <h6><a href="#">Color Customization</a></h6>
-						</div>
-						<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt rem excepturi odio veritatis modi non possimus sapiente aspernatur officia eligendi recusandae consequatur enim aut! Amet consequuntur dolorem repudiandae modi adipisci quaerat beatae perspiciatis debitis earum vitae! Blanditiis sequi non aut culpa explicabo dolor natus deserunt perferendis sint deleniti molestiae modi ut accusantium unde dignissimos!</div>
-					  </div>
-					</div>
-				  </div>
+				  </div><!--end tab content-->
 				</div>
 			</div>
 

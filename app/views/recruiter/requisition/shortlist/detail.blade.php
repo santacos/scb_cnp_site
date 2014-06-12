@@ -1,4 +1,4 @@
-@extends('admin.layouts.main.hm')
+@extends('admin.layouts.main.hrbp')
 @section('title')
 thisIsTitle
 @stop
@@ -9,17 +9,16 @@ thisIsTitle
 @stop
 
 @section('content')
-	   <div class="container pull-left">                
+     <div class="container pull-left">                
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Approve Requisition
+                        Detail
                         <small># {{$requisition->requisition_id}}</small>
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="{{ URL::to('/hm')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li><a href="{{ URL::to('/hm-requisition')}}">Requisition</a></li>
-                        <li><a href="{{ URL::to('/hm-nl-requisition')}}">Approve</a></li>
+                        <li><a href="{{ URL::to('/recruiter')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="{{ URL::to('/recruiter-shortlist')}}">Send shortlist</a></li>
                         <li class="active">Requisition# {{$requisition->requisition_id}}</li>
                     </ol>
                 </section>
@@ -37,7 +36,7 @@ thisIsTitle
                     <div class="row">
                         <div class="col-xs-12">
                             <h1 class="page-header">
-                                <i class="fa fa-globe" style="color:blue;"></i><b> Job title : </b> {{$requisition->position->job_title}}
+                                <i class="fa fa-globe" style="color:blue;"></i><b> Job title : </b> {{$requisition->job_title}}
                                 <small class="pull-right"> Requisition# {{$requisition->requisition_id}}</small>
                             </h1>                            
                         </div><!-- /.col -->
@@ -79,7 +78,7 @@ thisIsTitle
                     <!-- Table row -->
                     <div class="row">
                         <div class="col-xs-12 table-responsive">
-                        	<h6 class="page-header">
+                          <h6 class="page-header">
                                 <b>Requisition detail : </b> 
                                 
                             </h6> 
@@ -161,7 +160,7 @@ thisIsTitle
                     <!-- Table row -->
                     <div class="row">
                         <div class="col-xs-12 table-responsive">
-                        	<h6 class="page-header">
+                          <h6 class="page-header">
                                 <b>Detail : </b> 
                                 
                             </h6> 
@@ -179,9 +178,9 @@ thisIsTitle
                                         <td><strong>Qualification :</strong></td>
                                         <td>{{$requisition->qualification}}</td>
                                         <!-- <td>amber, microbrewery abbey hydrometer, brewpub ale lauter tun saccharification oxidized barrel. berliner weisse wort chiller adjunct hydrometer alcohol aau! sour/acidic sour/acidic chocolate malt ipa ipa hydrometer.
-                                        	amber, microbrewery abbey hydrometer, brewpub ale lauter tun saccharification oxidized barrel. berliner weisse wort chiller adjunct hydrometer alcohol aau! sour/acidic sour/acidic chocolate malt ipa ipa hydrometer.
-                                        	amber, microbrewery abbey hydrometer, brewpub ale lauter tun saccharification oxidized barrel. berliner weisse wort chiller adjunct hydrometer alcohol aau! sour/acidic sour/acidic chocolate malt ipa ipa hydrometer.
-                                        	amber, microbrewery abbey hydrometer, brewpub ale lauter tun saccharification oxidized barrel. berliner weisse wort chiller adjunct hydrometer alcohol aau! sour/acidic sour/acidic chocolate malt ipa ipa hydrometer.
+                                          amber, microbrewery abbey hydrometer, brewpub ale lauter tun saccharification oxidized barrel. berliner weisse wort chiller adjunct hydrometer alcohol aau! sour/acidic sour/acidic chocolate malt ipa ipa hydrometer.
+                                          amber, microbrewery abbey hydrometer, brewpub ale lauter tun saccharification oxidized barrel. berliner weisse wort chiller adjunct hydrometer alcohol aau! sour/acidic sour/acidic chocolate malt ipa ipa hydrometer.
+                                          amber, microbrewery abbey hydrometer, brewpub ale lauter tun saccharification oxidized barrel. berliner weisse wort chiller adjunct hydrometer alcohol aau! sour/acidic sour/acidic chocolate malt ipa ipa hydrometer.
                                         </td> -->
                                     </tr>
                                     <tr> 
@@ -200,18 +199,17 @@ thisIsTitle
                         <!-- accepted payments column -->
                         <div class="col-xs-6">
                             <p class="lead">Note from Employee (Hiring Manager):</p>
-                           	<p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                            <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
                                 {{$requisition->note}}
-                           	</p>
+                            </p>
                         </div><!-- /.col -->
                         <div class="col-xs-6">
                             <p class="lead">Note :</p>
-                            {{ Form::model($requisition, array('route' => array('hm-nl-requisition.update', $requisition->requisition_id), 'method' => 'PUT')) }}
-						        <div class="form-group">
-						        	<!-- {{ Form::textarea('note', '', array()) }} -->
-						        	<textarea class="form-control" id="note" name="note" rows="5" style="font-size:1.2em;"></textarea>
-						        </div>
-						       
+                  <div class="form-group">
+                      <!-- {{ Form::textarea('note', '', array()) }} -->
+                      <textarea class="form-control" id="note" name="note" rows="5" style="font-size:1.2em;"></textarea>
+                    </div>
+                   
                            <!--  <div class="table-responsive">
                                 <table class="table">
                                     <tr>
@@ -237,14 +235,11 @@ thisIsTitle
 
                     <!-- this row will not appear when printing -->
                     <div class="row no-print">
-                    	<div class="col-xs-6">
-                    		<button class="btn btn-default pull-left" style="width:8em;" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
-                    	</div>
+                      <div class="col-xs-6">
+                        <button class="btn btn-default pull-left" style="width:8em;" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+                      </div>
                         <div class="col-xs-6">
-                        	 {{ Form::button('Decline', array('name' => 'approve', 'value' => false, 'type' => 'submit', 'class' => 'btn btn-danger btn-lg pull-right','style'=>'width:45%;' )) }}
-						     {{ Form::button('Accept', array('name' => 'approve', 'value' => true, 'type' => 'submit', 'class' => 'btn btn-success btn-lg pull-left','style'=>'width:45%;')) }}
-
-						    {{ Form::close() }}
+                           
                             
                          <!--   <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>  
                             <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
