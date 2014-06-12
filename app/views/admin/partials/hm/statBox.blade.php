@@ -31,7 +31,7 @@
 					<i class="ion ion-person-add"></i>
 				</div>
 				<div class="small-box-footer">
-					total job  <span class="label label-success" style="border-radius:50%;font-size:1.1em;"> {{$to_approve}}</span> 
+					total job  <span class="label label-success" style="border-radius:50%;font-size:1.1em;"> {{Requisition::where('requisition_current_status_id', '=', 2)->count()}}</span> 
 				</div>
 			</a>
 		</div><!-- ./col -->
@@ -48,7 +48,7 @@
 				</div>
 				
 				<div class="small-box-footer">
-					total job  <span class="label label-warnign" style="border-radius:50%;font-size:1.1em;">  {{$to_review}}</span> 
+					total job  <span class="label label-warnign" style="border-radius:50%;font-size:1.1em;">  {{Requisition::where('requisition_current_status_id', '=', 6)->count()}}</span> 
 				</div>
 			</a>
 		</div><!-- ./col -->
@@ -63,7 +63,7 @@
 					<i class="fa fa-fw fa-group"></i>
 				</div>
 				<div class="small-box-footer">
-					total job  <span class="label label-danger" style="border-radius:50%;font-size:1.1em;"> {{$to_interview}}</span> 
+					total job  <span class="label label-danger" style="border-radius:50%;font-size:1.1em;"> {{Application::where('application_current_status_id', '=', 4)->count()}}</span> 
 				</div>	
 			</a>
 		</div><!-- ./col -->
