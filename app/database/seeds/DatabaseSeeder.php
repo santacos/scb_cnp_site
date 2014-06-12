@@ -23330,19 +23330,7 @@ $this->command->info('Table SLACandidate Seeded');
 		));
 $this->command->info('Table PublicHoliday Seeded');
 
-//$this->command->info('** All Table Seeded :) **');
-$this->command->info('===============================================');
-$this->command->info('  ·▄▄▄▄   ▄▄▄· ▄▄▄▄▄ ▄▄▄· ▄▄▄▄·  ▄▄▄· .▄▄ · ▄▄▄ .');
-$this->command->info('  ██▪ ██ ▐█ ▀█ •██  ▐█ ▀█ ▐█ ▀█▪▐█ ▀█ ▐█ ▀. ▀▄.▀·');
-$this->command->info('  ▐█· ▐█▌▄█▀▀█  ▐█.▪▄█▀▀█ ▐█▀▀█▄▄█▀▀█ ▄▀▀▀█▄▐▀▀▪▄');
-$this->command->info('  ██. ██ ▐█ ▪▐▌ ▐█▌·▐█ ▪▐▌██▄▪▐█▐█ ▪▐▌▐█▄▪▐█▐█▄▄▌');
-$this->command->info('  ▀▀▀▀▀•  ▀  ▀  ▀▀▀  ▀  ▀ ·▀▀▀▀  ▀  ▀  ▀▀▀▀  ▀▀▀ ');
-$this->command->info('      .▄▄ · ▄▄▄ .▄▄▄ .·▄▄▄▄  ▄▄▄ .·▄▄▄▄  ▄▄      ');
-$this->command->info('      ▐█ ▀. ▀▄.▀·▀▄.▀·██▪ ██ ▀▄.▀·██▪ ██ ██▌     ');
-$this->command->info('      ▄▀▀▀█▄▐▀▀▪▄▐▀▀▪▄▐█· ▐█▌▐▀▀▪▄▐█· ▐█▌▐█·     ');
-$this->command->info('      ▐█▄▪▐█▐█▄▄▌▐█▄▄▌██. ██ ▐█▄▄▌██. ██ .▀      ');
-$this->command->info('       ▀▀▀▀  ▀▀▀  ▀▀▀ ▀▀▀▀▀•  ▀▀▀ ▀▀▀▀▀•  ▀      ');
-$this->command->info('===============================================');
+$this->command->info('** All Table Seeded :) **');
 
 /*
 
