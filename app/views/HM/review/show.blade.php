@@ -37,7 +37,7 @@ thisIsTitle
                                         
                                       <div style="overflow: auto;">
 
-                                        <!-- <table border="1">
+                                        <table border="1">
                                           <tr>
                                             @if(count($applications) > 0)
                                               @foreach($applications->first()->toArray() as $key => $value)
@@ -60,8 +60,25 @@ thisIsTitle
                                               </tr>
                                             @endforeach
                                           @endif
-                                        </table> -->
-
+                                        </table>
+                                         {{  Datatable::table()
+                                        ->addColumn( 
+                                            'application_id', 
+                                            'Name',
+                                            '%Related',
+                                            'Point',
+                                            'Application Status',
+                                            'Education',
+                                            'Previous Job',
+                                            'SLA',
+                                            'Deadline',
+                                            'Saved',
+                                            'Choose',
+                                            'Note',
+                                            'Action'
+                                                      )    
+                                          ->setUrl(URL::to('api/application/'.$requisition_id .'/2'))
+                                          ->render('datatable') }}
                                       </div>
     
                                     </div><!-- /.box-body -->

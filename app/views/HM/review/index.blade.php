@@ -36,7 +36,7 @@ thisIsTitle
                                     <div class="box-body table-responsive no-padding">
                                         
                                       <div style="overflow: auto;">
-
+<!-- 
                                         <table border="1">
                                           <tr>
                                             @if(count($requisitions) > 0)
@@ -56,8 +56,22 @@ thisIsTitle
                                               </tr>
                                             @endforeach
                                           @endif
-                                        </table>
-
+                                        </table> -->
+                        {{  Datatable::table()
+                            ->addColumn( 'Requisition ID',
+                                        'Job Title',
+                                        'Corporate Title',
+                                       'Location',
+                                       'Requisition Status',
+                                       'Require',
+                                       'SLA',
+                                       'Deadline',
+                                       'From',
+                                       'Note',
+                                       'Action'
+                                        )    
+                            ->setUrl(URL::to('api/requisition/'.'1/'.'6'))
+                            ->render('datatable') }}
                                       </div>
     
                                     </div><!-- /.box-body -->

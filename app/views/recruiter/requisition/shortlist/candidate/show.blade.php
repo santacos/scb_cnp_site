@@ -51,7 +51,7 @@ thisIsTitle
                                 'Choose',
                                 'Note'
                                           )    
-                              ->setUrl(URL::to('api/application/'.$requisition_id ))
+                              ->setUrl(URL::to('api/application/'.$requisition_id .'/1'))
                               ->render('datatable') }}
                                        <!--  <table border="1">
                                           <tr>

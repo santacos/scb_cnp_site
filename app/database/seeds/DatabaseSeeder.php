@@ -22776,10 +22776,10 @@ $this->command->info('Table RequisitionCurrentStatus Seeded');
 							'name' => 'Waiting for Accept Job Offer'
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 9,
-							'name' => 'Fail' //Fail
+							'name' => 'Pass' //Fail
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 10,
-							'name' => 'Pass' //Pass
+							'name' => 'Fail' //Pass
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 11,
 							'name' => 'Pending' //Pending
@@ -22892,7 +22892,7 @@ $this->command->info('Table RecruitmentType Seeded');
 				$application = new Application;
 				$application->requisition_id = $requisition->requisition_id;
 				$application->candidate_user_id = User::where('username','=','candidate'.rand(1,4))->first()->user_id;
-				$application->application_current_status_id = rand(1,9);
+				$application->application_current_status_id = rand(1,11);
 				if($application->application_current_status_id >=2)
 					{$application->send_number = rand(1,4);}
 				$application->is_in_basket = false;

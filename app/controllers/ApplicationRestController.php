@@ -133,6 +133,9 @@ class ApplicationRestController extends \BaseController {
                         })
                     ->addColumn('Note',function($model)
                         { return '<i class="fa fa-fw fa-envelope-o"></i>';
+                        })
+                    ->addColumn('Acition',function($model)
+                        { return '';
                         });
                     //     if($user_id == 0)
                     //      {           $return=$return->addColumn('Choose',function($model) { 
@@ -262,7 +265,8 @@ class ApplicationRestController extends \BaseController {
                                 'Deadline',
                                 'Saved',
                                 'Choose',
-                                'Note'
+                                'Note',
+                                'Acition'
                                 )
                             ->make();
 

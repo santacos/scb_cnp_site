@@ -36,16 +36,16 @@
 
 
 		<li class="treeview">
-			<a href="{{ URL::to('hm-requisition') }}"> <i class="fa fa-fw fa-inbox"></i> <span>Requisition  <small class="badge bg-blue">15</small></span> <i class="fa fa-angle-left pull-right"></i> </a>
+			<a href="{{ URL::to('hm-requisition') }}"> <i class="fa fa-fw fa-inbox"></i> <span>Requisition  <small class="badge bg-blue">{{Requisition::where('requisition_current_status_id', '=', 1)->count()+Requisition::where('requisition_current_status_id', '=', 2)->count()}}</small></span> <i class="fa fa-angle-left pull-right"></i> </a>
 			<ul class="treeview-menu">
 				<li>
-					<a href="{{ URL::to('hm-requisition/create') }}"><i class="fa fa-fw fa-edit"></i> Create position <small class="badge pull-right bg-yellow">5</small></a>
+					<a href="{{ URL::to('hm-requisition/create') }}"><i class="fa fa-fw fa-edit"></i> Create position <small class="badge pull-right bg-yellow"></small></a>
 				</li>
 				<li>
-					<a href="{{ URL::to('hm/saved') }}"><i class="fa fa-fw fa-edit"></i> Saved position <small class="badge pull-right bg-yellow">5</small></a>
+					<a href="{{ URL::to('hm/saved') }}"><i class="fa fa-fw fa-edit"></i> Saved position <small class="badge pull-right bg-yellow">{{Requisition::where('requisition_current_status_id', '=', 1)->count()}}</small></a>
 				</li>
 				<li>
-					<a href="{{ URL::to('hm-nl-requisition') }}"><i class="fa fa-fw fa-check-square-o"></i> Approve <small class="badge pull-right bg-red">10</small></a>
+					<a href="{{ URL::to('hm-nl-requisition') }}"><i class="fa fa-fw fa-check-square-o"></i> Approve <small class="badge pull-right bg-red">{{Requisition::where('requisition_current_status_id', '=', 2)->count()}}</small></a>
 				</li>
 				<li>
 					<a href="{{ URL::to('hm/approved') }}"><i class="fa fa-fw fa-book"></i> Approved</a>
@@ -53,10 +53,10 @@
 			</ul>
 		</li>
 		<li class="treeview">
-			<a href="#"> <i class="fa fa-fw fa-user"></i> <span>Candidate  <small class="badge bg-aqua">30</small></span> <i class="fa fa-angle-left pull-right"></i> </a>
+			<a href="#"> <i class="fa fa-fw fa-user"></i> <span>Candidate  <small class="badge bg-aqua">{{Application::where('application_current_status_id', '=', 4)->count()}}</small></span> <i class="fa fa-angle-left pull-right"></i> </a>
 			<ul class="treeview-menu">
 				<li>
-					<a href="{{ URL::to('general') }}"><i class="fa fa-fw fa-clipboard"></i> Review resume</a>
+					<a href="{{ URL::to('general') }}"><i class="fa fa-fw fa-clipboard"></i> Review resume <small class="badge bg-blue">{{Application::where('application_current_status_id', '=', 4)->count()}}</small></a>
 				</li>
 				<li>
 					<a href="{{ URL::to('icons') }}"><i class="fa fa-fw fa-comments-o"></i> interview</a>

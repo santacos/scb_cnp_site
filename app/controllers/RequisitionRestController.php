@@ -30,6 +30,7 @@ class RequisitionRestController extends \BaseController {
          // return $action;
         // return $user_id.'----'.$status_id;
                     $req=Requisition::where('employee_user_id','!=',0);
+                    
                     if($status_id1!='' && $status_id1!=0)
                     {
                         $req=$req->where('requisition_current_status_id','=',$status_id1);
@@ -64,6 +65,14 @@ class RequisitionRestController extends \BaseController {
                     {
                         $req=$req->OrWhere('requisition_current_status_id','=',$status_id7);
                          
+                    }
+                    if($user_id ==21)
+                    { 
+                        $ddd = Requisition::whereHas('requisitionLog', function($q){
+                            $q->whereActionType(3)->whereSendNumber(1);
+                        })->lists('requisition_id');
+                        if(!is_null($ddd))
+                        {$req=$req->whereNotIn('requisition_id',$ddd);}
                     }
                    $req=$req->get();
                     $return = Datatable::collection($req)
