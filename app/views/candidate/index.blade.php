@@ -40,7 +40,7 @@ thisIsTitle
                 'Job Title',
                 'Corporate Title',
                'Location',
-               'Status',
+               'Requisition Status',
                'SLA',
                'Date Order',
                'Deadline',

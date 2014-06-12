@@ -93,7 +93,7 @@ class ApplicationRestController extends \BaseController {
                         {   return '10'.'/'.'20';
                             return $model->location()->first()->name;
                         })
-                    ->addColumn('application_current_status_id',function($model)
+                    ->addColumn('Application Status',function($model)
                         {   
                             $bin = sprintf( "%020d",  $model->application_current_status_id );
                             return '<input type="hidden" name="Language" value="'.$bin.'"><span class="label label-success">'.$model->applicationCurrentStatus()->first()->name.'</span>';

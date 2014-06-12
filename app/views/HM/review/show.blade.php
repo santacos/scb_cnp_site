@@ -37,7 +37,7 @@ thisIsTitle
                                         
                                       <div style="overflow: auto;">
 
-                                        <table border="1">
+                                        <!-- <table border="1">
                                           <tr>
                                             @if(count($applications) > 0)
                                               @foreach($applications->first()->toArray() as $key => $value)
@@ -60,7 +60,7 @@ thisIsTitle
                                               </tr>
                                             @endforeach
                                           @endif
-                                        </table>
+                                        </table> -->
 
                                       </div>
     

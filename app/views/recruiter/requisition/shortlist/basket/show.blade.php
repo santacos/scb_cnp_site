@@ -86,7 +86,7 @@ thisIsTitle
                                 'Name',
                                 '%Related',
                                 'Point',
-                                'application_current_status_id',
+                                'Application Status',
                                 'Education',
                                 'Previous Job',
                                 'SLA',
