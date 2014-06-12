@@ -30,6 +30,7 @@ class RequisitionRestController extends \BaseController {
          // return $action;
         // return $user_id.'----'.$status_id;
                     $req=Requisition::where('employee_user_id','!=',0);
+                    
                     if($status_id1!='' && $status_id1!=0)
                     {
                         $req=$req->where('requisition_current_status_id','=',$status_id1);
@@ -65,6 +66,14 @@ class RequisitionRestController extends \BaseController {
                         $req=$req->OrWhere('requisition_current_status_id','=',$status_id7);
                          
                     }
+                    if($user_id ==21)
+                    { 
+                        $ddd = Requisition::whereHas('requisitionLog', function($q){
+                            $q->whereActionType(3)->whereSendNumber(1);
+                        })->lists('requisition_id');
+                        if(!is_null($ddd))
+                        {$req=$req->whereNotIn('requisition_id',$ddd);}
+                    }
                    $req=$req->get();
                     $return = Datatable::collection($req)
                     ->addColumn('requisitsion_id',function($model)
@@ -94,10 +103,78 @@ class RequisitionRestController extends \BaseController {
                         { return $model->total_number;
                         })
                     ->addColumn('SLA',function($model)
-                        { return Carbon::createFromTimestamp(strtotime($model->created_at))->format('j F Y');
+                        { 
+                            $req_cur_stat_id = $model->requisitionCurrentStatus->requisition_current_status_id;
+                            $SLA = $model->corporateTitle->group->SLARequisition()->whereRequisitionCsId($req_cur_stat_id)->first()->SLA;
+                            $start_timestamp = $model->requisitionLog()->orderBy('action_datetime','desc');
+                            if($req_cur_stat_id == 4){
+                                $start_timestamp = $start_timestamp->whereSendNumber(2);
+                            }else if($req_cur_stat_id == 6){
+                                $start_timestamp = $start_timestamp->whereSendNumber(1);//orderBy('send_number','desc');
+                            }
+                            $start_timestamp = $start_timestamp->first();
+                            $skip = false;
+                            if(is_null($start_timestamp)){
+                                $start_timestamp = Carbon::createFromTimeStamp(0);
+                                $skip = true;
+                            }else{
+                                $start_timestamp = Carbon::createFromFormat('Y-m-d H:i:s',$start_timestamp->action_datetime);
+                            }
+                            $end_timestamp = $start_timestamp->copy();
+                            $holidays = PublicHoliday::all();
+                            for($i=0; !$skip && $end_timestamp->diffInSeconds(Carbon::now(),false) >= 0; $i++){
+                                if($end_timestamp->toDateString() == Carbon::now()->toDateString()){
+                                    return '<input type="hidden" name="sla" value="'.sprintf("%06d",($SLA-$i)).'">'
+                                    . $i . " / " . $SLA;
+                                }
+                                $end_timestamp->addDays(1);
+                                if($end_timestamp->isWeekend()){
+                                   $i--; 
+                                }else{
+                                    foreach($holidays as $holiday){
+                                        if($end_timestamp->toDateString() == $holiday->date){
+                                            $i--;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            return ('<input type="hidden" name="sla" value="'."999999".'">')
+                                    . "SLA = " . $SLA;
                         })
                     ->addColumn('Deadline',function($model)
-                        { return '<input type="hidden" name="Language" value="'.$model->created_at.'">'.Carbon::createFromTimestamp(strtotime($model->created_at))->format('j F Y');
+                        { 
+                            $req_cur_stat_id = $model->requisitionCurrentStatus->requisition_current_status_id;
+                            $SLA = $model->corporateTitle->group->SLARequisition()->whereRequisitionCsId($req_cur_stat_id)->first()->SLA;
+                            $start_timestamp = $model->requisitionLog()->orderBy('action_datetime','desc');
+                            if($req_cur_stat_id == 4){
+                                $start_timestamp = $start_timestamp->whereSendNumber(2);
+                            }else if($req_cur_stat_id == 6){
+                                $start_timestamp = $start_timestamp->whereSendNumber(1);//orderBy('send_number','desc');
+                            }
+                            $start_timestamp = $start_timestamp->first();
+                            if(is_null($start_timestamp)){
+                                $start_timestamp = Carbon::createFromTimeStamp(0);
+                            }else{
+                                $start_timestamp = Carbon::createFromFormat('Y-m-d H:i:s',$start_timestamp->action_datetime);
+                            }
+                            $end_timestamp = $start_timestamp->copy();
+                            $holidays = PublicHoliday::all();
+                            for($i=0; $i<$SLA; $i++){
+                                $end_timestamp->addDays(1);
+                                if($end_timestamp->isWeekend()){
+                                   $i--; 
+                                }else{
+                                    foreach($holidays as $holiday){
+                                        if($end_timestamp->toDateString() == $holiday->date){
+                                            $i--;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            return ('<input type="hidden" name="deadline" value="'.sprintf("%014d",$end_timestamp->getTimestamp()).'">')
+                                    . $end_timestamp->toDayDateTimeString();
                         })
                     ->addColumn('From',function($model)
                         { return $model->employee()->first()->first.' '.$model->employee()->first()->last;

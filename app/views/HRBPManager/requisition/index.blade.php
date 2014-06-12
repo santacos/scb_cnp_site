@@ -80,7 +80,7 @@ thisIsTitle
                 'Job Title',
                 'Corporate Title',
                'Location',
-               'Status',
+               'Requisition Status',
                'Require',
                'SLA',
                'Deadline',

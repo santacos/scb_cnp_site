@@ -10,7 +10,6 @@ class HMController extends \BaseController {
 	public function index()
 	{
 		$requisitions = Requisition::all();
-
 		return View::make('HM.home2', compact('requisitions'));
 	}
 	public function getApproved()

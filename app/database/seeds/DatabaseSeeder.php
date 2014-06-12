@@ -39,6 +39,7 @@ class AllTableSeeder extends Seeder {
 		DB::table('applications')->delete();
 		DB::table('recruitment_objective_templates')->delete();
 		DB::table('recruitment_types')->delete();
+		DB::table('public_holidays')->delete();
 
 
 //CANDIDATE
@@ -18872,15 +18873,15 @@ $this->command->info('Table Dept Seeded');
 //CORPORRATE TITLE GROUP
 		CorporateTitleGroup::create(array(	'corporate_title_group_id' => 1,
 							'name' => 'Officer',
-							'total_SLA' => 30
+							'total_SLA' => 45
 							));
 		CorporateTitleGroup::create(array(	'corporate_title_group_id' => 2,
 							'name' => 'AVP/VP',
-							'total_SLA' => 45
+							'total_SLA' => 60
 							));
 		CorporateTitleGroup::create(array(	'corporate_title_group_id' => 3,
 							'name' => 'SVP up',
-							'total_SLA' => 60
+							'total_SLA' => 75
 							));
 $this->command->info('Table CorporateTitleGroup Seeded');
 //CORPORRATE TITLE
@@ -22769,16 +22770,16 @@ $this->command->info('Table RequisitionCurrentStatus Seeded');
 							'name' => 'Waiting for Confirm package with Head of HRBP'
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 7,
-							'name' => 'Waiting for Make offre to candidate'
+							'name' => 'Waiting for Make offer to candidate'
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 8,
 							'name' => 'Waiting for Accept Job Offer'
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 9,
-							'name' => 'END SLA' //Fail
+							'name' => 'Pass' //Fail
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 10,
-							'name' => 'END SLA' //Pass
+							'name' => 'Fail' //Pass
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 11,
 							'name' => 'Pending' //Pending
@@ -22891,7 +22892,7 @@ $this->command->info('Table RecruitmentType Seeded');
 				$application = new Application;
 				$application->requisition_id = $requisition->requisition_id;
 				$application->candidate_user_id = User::where('username','=','candidate'.rand(1,4))->first()->user_id;
-				$application->application_current_status_id = rand(1,9);
+				$application->application_current_status_id = rand(1,11);
 				if($application->application_current_status_id >=2)
 					{$application->send_number = rand(1,4);}
 				$application->is_in_basket = false;
@@ -22915,62 +22916,107 @@ $this->command->info('Table Application Seeded');
 		DB::table('SLA_requisitions')->insert(array(
 							'corporate_tg_id' => 1,
 							'requisition_cs_id' => 1,
-							'SLA' => 6
-							));
-		DB::table('SLA_requisitions')->insert(array(
-							'corporate_tg_id' => 1,
-							'requisition_cs_id' => 2,
-							'SLA' => 4
-							));
-		DB::table('SLA_requisitions')->insert(array(
-							'corporate_tg_id' => 1,
-							'requisition_cs_id' => 3,
-							'SLA' => 7
-							));
-		DB::table('SLA_requisitions')->insert(array(
-							'corporate_tg_id' => 1,
-							'requisition_cs_id' => 4,
-							'SLA' => 4
+							'SLA' => 0
 							));
 		DB::table('SLA_requisitions')->insert(array(
 							'corporate_tg_id' => 2,
 							'requisition_cs_id' => 1,
-							'SLA' => 7
-							));
-		DB::table('SLA_requisitions')->insert(array(
-							'corporate_tg_id' => 2,
-							'requisition_cs_id' => 2,
-							'SLA' => 5
-							));
-		DB::table('SLA_requisitions')->insert(array(
-							'corporate_tg_id' => 2,
-							'requisition_cs_id' => 3,
-							'SLA' => 9
-							));
-		DB::table('SLA_requisitions')->insert(array(
-							'corporate_tg_id' => 2,
-							'requisition_cs_id' => 4,
-							'SLA' => 5
+							'SLA' => 0
 							));
 		DB::table('SLA_requisitions')->insert(array(
 							'corporate_tg_id' => 3,
 							'requisition_cs_id' => 1,
-							'SLA' => 8
+							'SLA' => 0
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 1,
+							'requisition_cs_id' => 2,
+							'SLA' => 2
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 2,
+							'requisition_cs_id' => 2,
+							'SLA' => 2
 							));
 		DB::table('SLA_requisitions')->insert(array(
 							'corporate_tg_id' => 3,
 							'requisition_cs_id' => 2,
-							'SLA' => 7
+							'SLA' => 2
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 1,
+							'requisition_cs_id' => 3,
+							'SLA' => 2
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 2,
+							'requisition_cs_id' => 3,
+							'SLA' => 2
 							));
 		DB::table('SLA_requisitions')->insert(array(
 							'corporate_tg_id' => 3,
 							'requisition_cs_id' => 3,
+							'SLA' => 2
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 1,
+							'requisition_cs_id' => 4,
+							'SLA' => 0
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 2,
+							'requisition_cs_id' => 4,
+							'SLA' => 0
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 3,
+							'requisition_cs_id' => 4,
+							'SLA' => 0
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 1,
+							'requisition_cs_id' => 5,
+							'SLA' => 12
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 2,
+							'requisition_cs_id' => 5,
 							'SLA' => 12
 							));
 		DB::table('SLA_requisitions')->insert(array(
 							'corporate_tg_id' => 3,
-							'requisition_cs_id' => 4,
-							'SLA' => 6
+							'requisition_cs_id' => 5,
+							'SLA' => 14
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 1,
+							'requisition_cs_id' => 6,
+							'SLA' => 33
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 2,
+							'requisition_cs_id' => 6,
+							'SLA' => 48
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 3,
+							'requisition_cs_id' => 6,
+							'SLA' => 61
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 1,
+							'requisition_cs_id' => 7,
+							'SLA' => 0
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 2,
+							'requisition_cs_id' => 7,
+							'SLA' => 0
+							));
+		DB::table('SLA_requisitions')->insert(array(
+							'corporate_tg_id' => 3,
+							'requisition_cs_id' => 7,
+							'SLA' => 0
 							));
 $this->command->info('Table SLARequisition Seeded');
 //SLA CANDIDATE
@@ -22978,13 +23024,19 @@ $this->command->info('Table SLARequisition Seeded');
 							'corporate_tg_id' => 1,
 							'app_cs_id' => 1,
 							'visit_number' => 1,
-							'SLA' => 6
+							'SLA' => 0
 							));
 		DB::table('SLA_candidates')->insert(array(
-							'corporate_tg_id' => 1,
+							'corporate_tg_id' => 2,
 							'app_cs_id' => 1,
-							'visit_number' => 2,
-							'SLA' => 8
+							'visit_number' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 3,
+							'app_cs_id' => 1,
+							'visit_number' => 1,
+							'SLA' => 0
 							));
 		DB::table('SLA_candidates')->insert(array(
 							'corporate_tg_id' => 1,
@@ -22993,24 +23045,6 @@ $this->command->info('Table SLARequisition Seeded');
 							'SLA' => 4
 							));
 		DB::table('SLA_candidates')->insert(array(
-							'corporate_tg_id' => 1,
-							'app_cs_id' => 2,
-							'visit_number' => 2,
-							'SLA' => 5
-							));
-		DB::table('SLA_candidates')->insert(array(
-							'corporate_tg_id' => 1,
-							'app_cs_id' => 3,
-							'visit_number' => 1,
-							'SLA' => 2
-							));
-		DB::table('SLA_candidates')->insert(array(
-							'corporate_tg_id' => 2,
-							'app_cs_id' => 1,
-							'visit_number' => 1,
-							'SLA' => 7
-							));
-		DB::table('SLA_candidates')->insert(array(
 							'corporate_tg_id' => 2,
 							'app_cs_id' => 2,
 							'visit_number' => 1,
@@ -23018,35 +23052,283 @@ $this->command->info('Table SLARequisition Seeded');
 							));
 		DB::table('SLA_candidates')->insert(array(
 							'corporate_tg_id' => 3,
-							'app_cs_id' => 1,
+							'app_cs_id' => 2,
 							'visit_number' => 1,
-							'SLA' => 8
+							'SLA' => 6
 							));
 		DB::table('SLA_candidates')->insert(array(
-							'corporate_tg_id' => 3,
-							'app_cs_id' => 2,
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 3,
 							'visit_number' => 1,
 							'SLA' => 7
 							));
 		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 3,
+							'visit_number' => 1,
+							'SLA' => 9
+							));
+		DB::table('SLA_candidates')->insert(array(
 							'corporate_tg_id' => 3,
 							'app_cs_id' => 3,
+							'visit_number' => 1,
+							'SLA' => 9
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 4,
+							'visit_number' => 1,
+							'SLA' => 4
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 4,
 							'visit_number' => 1,
 							'SLA' => 5
 							));
 		DB::table('SLA_candidates')->insert(array(
 							'corporate_tg_id' => 3,
-							'app_cs_id' => 3,
+							'app_cs_id' => 4,
+							'visit_number' => 1,
+							'SLA' => 6
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 4,
 							'visit_number' => 2,
-							'SLA' => 7
+							'SLA' => 4
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 4,
+							'visit_number' => 2,
+							'SLA' => 5
 							));
 		DB::table('SLA_candidates')->insert(array(
 							'corporate_tg_id' => 3,
-							'app_cs_id' => 3,
+							'app_cs_id' => 4,
+							'visit_number' => 2,
+							'SLA' => 6
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 4,
 							'visit_number' => 3,
-							'SLA' => 9
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 4,
+							'visit_number' => 3,
+							'SLA' => 5
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 3,
+							'app_cs_id' => 4,
+							'visit_number' => 3,
+							'SLA' => 8
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 5,
+							'visit_number' => 1,
+							'SLA' => 2
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 5,
+							'visit_number' => 1,
+							'SLA' => 4
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 3,
+							'app_cs_id' => 5,
+							'visit_number' => 1,
+							'SLA' => 5
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 6,
+							'visit_number' => 1,
+							'SLA' => 4
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 6,
+							'visit_number' => 1,
+							'SLA' => 6
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 3,
+							'app_cs_id' => 6,
+							'visit_number' => 1,
+							'SLA' => 7
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 7,
+							'visit_number' => 1,
+							'SLA' => 4
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 7,
+							'visit_number' => 1,
+							'SLA' => 4
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 3,
+							'app_cs_id' => 7,
+							'visit_number' => 1,
+							'SLA' => 8
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 8,
+							'visit_number' => 1,
+							'SLA' => 4
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 8,
+							'visit_number' => 1,
+							'SLA' => 4
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 3,
+							'app_cs_id' => 8,
+							'visit_number' => 1,
+							'SLA' => 6
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 9,
+							'visit_number' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 9,
+							'visit_number' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 3,
+							'app_cs_id' => 9,
+							'visit_number' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 10,
+							'visit_number' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 10,
+							'visit_number' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 3,
+							'app_cs_id' => 10,
+							'visit_number' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 1,
+							'app_cs_id' => 11,
+							'visit_number' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 2,
+							'app_cs_id' => 11,
+							'visit_number' => 1,
+							'SLA' => 0
+							));
+		DB::table('SLA_candidates')->insert(array(
+							'corporate_tg_id' => 3,
+							'app_cs_id' => 11,
+							'visit_number' => 1,
+							'SLA' => 0
 							));
 $this->command->info('Table SLACandidate Seeded');
+// PUBLIC HOLIDAY
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("1 Jan 2014"),
+		'name' => "New Year's Day"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("14 Feb 2014"),
+		'name' => "Makha Bucha"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("6 Apr 2014"),
+		'name' => "Chakri Day"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("7 Apr 2014"),
+		'name' => "Chakri Day observed"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("13 Apr 2014"),
+		'name' => "Songkran"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("14 Apr 2014"),
+		'name' => "Songkran"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("15 Apr 2014"),
+		'name' => "Songkran"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("16 Apr 2014"),
+		'name' => "Songkran observed"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("1 May 2014"),
+		'name' => "Labor Day"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("5 May 2014"),
+		'name' => "Coronation Day"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("9 May 2014"),
+		'name' => "Royal Ploughing Ceremony Day"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("13 May 2014"),
+		'name' => "Visakha Bucha"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("11 Jul 2014"),
+		'name' => "Asalha Bucha"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("12 Aug 2014"),
+		'name' => "Mother's Day"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("23 Oct 2014"),
+		'name' => "Chulalongkorn Day"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("5 Dec 2014"),
+		'name' => "Father's Day"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("10 Dec 2014"),
+		'name' => "Constitution Day"
+		));
+		DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("31 Dec 2014"),
+		'name' => "New Year's Eve"
+		));
+$this->command->info('Table PublicHoliday Seeded');
 
 $this->command->info('** All Table Seeded :) **');
 

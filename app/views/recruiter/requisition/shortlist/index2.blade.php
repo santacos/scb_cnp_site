@@ -80,7 +80,7 @@ thisIsTitle
                 'Job Title',
                 'Corporate Title',
                'Location',
-               'Status',
+               'Requisition Status',
                'Require',
                'SLA',
                'Deadline',
@@ -88,7 +88,7 @@ thisIsTitle
                'Note',
                'Action'
                 )    
-    ->setUrl(URL::to('api/requisition/'.'0/'.'5'))
+    ->setUrl(URL::to('api/requisition/'.'0/'.'6'))
     ->render('datatable') }}
 
 

@@ -49,7 +49,7 @@ class HMApplicationReviewController extends \BaseController {
 	public function show($id)
 	{
 		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(2)->get();
-		return View::make('HM.review.show', compact('applications'));
+		return View::make('HM.review.show', compact('applications'))->with('requisition_id',$id);
 	}
 
 	/**

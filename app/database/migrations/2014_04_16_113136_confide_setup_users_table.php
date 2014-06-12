@@ -531,10 +531,9 @@ class ConfideSetupUsersTable extends Migration {
         }); 
                 Schema::create('public_holidays', function($table)
         {
-            $table->integer('fisYear');
-            $table->date('public_holiday');
-            $table->string('descripiton',100);
-            $table->primary(array('fisYear','public_holiday'));
+            $table->date('date');
+            $table->string('name',100);
+            $table->primary('date');
             $table->timestamps();
         }); 
     }
