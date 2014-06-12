@@ -25,7 +25,11 @@
 		<header class= @yield('header-class')>
 			@include('user.includes.header')
 		</header>
+
+			<!--modal zone-->
 			@include('user.includes.modalLogin')
+			@include('user.includes.modalJobcart')
+			<!--end modal zone-->
 	
 			@yield('content')
 		
@@ -36,7 +40,7 @@
 
 		@include('user.includes.footer')
 
-
+	
 	@include('user.includes.libs')
 </body>
 </html>

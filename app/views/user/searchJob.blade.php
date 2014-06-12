@@ -5,7 +5,23 @@ SCB Recruitment-Home
 @stop
 
 @section('libs')
-	
+	<script src="<?php echo asset('vendor/angular.min.js')?>"></script> 
+	<script>
+		var nameApp = angular.module('nameApp',[]);
+		nameApp.controller('NameCtrl',['$scope', '$http',
+	  		function ($scope, $http) {
+	  			//$scope.cos=10;
+
+  			}//before end controller
+
+  	
+  		]);//end controller
+
+	</script>
+	<script src="<?php echo asset('vendor/ui-bootstrap-tpls-0.11.0.min.js')?>"></script>
+    <script src="<?php echo asset('js/createReq-manager.js')?>"></script>
+    <script src="<?php echo asset('vendor/ui-utils.js')?>"></script> 
+    <script src="<?php echo asset('vendor/ui-utils.min.js')?>"></script>
 @stop
 
 @section('body-class')
@@ -22,11 +38,11 @@ SCB Recruitment-Home
 @section('content')
 
   
-    <div class="row">
+    <div class="row" ng-app="nameApp" ng-controller="NameCtrl">
      
 
 	  <!--sidebar-->
-	   	<div class="col-sm-3 col-md-3" style="positon:fixed;width:270px;">
+	   	<div class="col-sm-3 col-md-3" style="positon:fixed;width:270px;" ng-init="cos=9">
 	      	<div id="sidebar" class="sidebar pull-left hide-for-small-only " style ="positon:fixed;" >
 
 		      	<aside class="widget menu">
@@ -283,15 +299,18 @@ SCB Recruitment-Home
 						<!-- <div class="icon pull-right" title="apple-logo">
 						  <div class="livicon" data-n="shopping-cart"></div>
 						</div> --> 	
+						
 						<div class="big-icon bg bg-warning pull-right">
-						  <div class="livicon" data-n="shopping-cart" data-c="#fff" data-s="64" data-hc="0" data-d="800"></div>
+							<a href="#modalJobcart" data-toggle="modal">
+						  	<div class="livicon" data-n="shopping-cart" data-c="#fff" data-s="64" data-hc="0" data-d="800"></div>
+							</a>
 						</div>
 					</h3>
 
 				</div>
 				<!--end title for table-->
-
-				<div class="table-box">
+				<h1>show::</h1> @{{show}}
+				<div class="table-box" ng-init="show=false">
 					<table class="table table-bordered table-striped table-hover text-center" style="font-size:1.2em;">
 					  <thead>
 						<tr>
@@ -305,7 +324,7 @@ SCB Recruitment-Home
 						</tr>
 					  </thead>
 					  <tbody>
-						<tr>
+						<tr ng-mouseover="show=true;" >
 						  	<td>
 							  	<div class="checkbox">
 								  
@@ -319,6 +338,45 @@ SCB Recruitment-Home
 						  	<td>Subtotal:</td>
 						  	<td>$1.00</td>
 						  	<td>Subtotal:</td>
+						</tr>
+						<tr ng-show="show" ng-mouseover="show=true;" >
+							<td colspan=7>
+								<div class="row">
+									<div class="col col-md-3">
+										<h3 class="title"  style="margin-bottom:2px;">Programmer</h3>
+										<img src="<?php echo asset('img/content/hero.jpg')?>" class="img-rounded" 
+											width="150" height="100" alt="" style="padding-top:2px;padding-bottom:10px;">
+										<br>
+										<button class="btn btn-sm btn-default" style="width:60%">View detail</button>
+									</div>
+									<div class="col col-md-6 text-left" style="font-size:0.9em;">
+										<br>
+										<strong>Job summary :</strong>
+										<p>
+											Sublime Text is a sophisticated text editor for code, markup and prose. You'll love the slick user interface, extraordinary features and amazing performance.
+										</p>
+										
+										<strong>Job location:</strong>
+										<p>SCB Head office</p>
+									</div>
+									<div class="col col-md-3">
+										<div class="list-group text-left">
+											<a href="#" class="list-group-item active">
+												<i class="fa fa-fw fa-check-square-o"></i> Apply
+											</a>
+											<a href="#" class="list-group-item ">
+											  	<i class="livicon shadowed" data-n="shopping-cart-in" data-s="16" data-c="#7996b7" data-hc="#2a6496"></i>
+												Add to job cart
+											</a>
+											<a href="#" class="list-group-item">
+												<i class="livicon shadowed" data-n="save" data-s="16" data-c="#7996b7" data-hc="#2a6496"></i>
+												Follow this position
+											</a>
+											
+										</div>
+									</div>
+								</div>
+							</td>
 						</tr>
 						<tr>
 						  	<td>

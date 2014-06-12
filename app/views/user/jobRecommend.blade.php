@@ -143,8 +143,11 @@ SCB Recruitment-Home
 						<!-- <div class="icon pull-right" title="apple-logo">
 						  <div class="livicon" data-n="shopping-cart"></div>
 						</div> --> 	
+						
 						<div class="big-icon bg bg-warning pull-right">
-						  <div class="livicon" data-n="shopping-cart" data-c="#fff" data-s="64" data-hc="0" data-d="800"></div>
+							<a href="#modalJobcart" data-toggle="modal">
+						  	<div class="livicon" data-n="shopping-cart" data-c="#fff" data-s="64" data-hc="0" data-d="800"></div>
+							</a>
 						</div>
 					</h3>
 
