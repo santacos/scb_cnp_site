@@ -104,14 +104,16 @@ class RequisitionRestController extends \BaseController {
                                 $start_timestamp = $start_timestamp->whereSendNumber(1);//orderBy('send_number','desc');
                             }
                             $start_timestamp = $start_timestamp->first();
+                            $skip = false;
                             if(is_null($start_timestamp)){
                                 $start_timestamp = Carbon::createFromTimeStamp(0);
+                                $skip = true;
                             }else{
                                 $start_timestamp = Carbon::createFromFormat('Y-m-d H:i:s',$start_timestamp->action_datetime);
                             }
                             $end_timestamp = $start_timestamp->copy();
                             $holidays = PublicHoliday::all();
-                            for($i=0; $model->requisition_current_status_id > 1 && $end_timestamp->diffInSeconds(Carbon::now(),false) >= 0; $i++){
+                            for($i=0; !$skip && $end_timestamp->diffInSeconds(Carbon::now(),false) >= 0; $i++){
                                 if($end_timestamp->toDateString() == Carbon::now()->toDateString()){
                                     return '<input type="hidden" name="sla" value="'.sprintf("%06d",($SLA-$i)).'">'
                                     . $i . " / " . $SLA;
