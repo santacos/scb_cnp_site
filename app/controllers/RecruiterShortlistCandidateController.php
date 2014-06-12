@@ -13,6 +13,11 @@ class RecruiterShortlistCandidateController extends \BaseController {
 		return View::make('recruiter.requisition.shortlist.index', compact('requisitions'));
 	}
 
+    public function index2()
+    {
+        $requisitions = Requisition::all();
+        return View::make('recruiter.requisition.shortlist.index2', compact('requisitions'));
+    }
 
 	/**
 	 * Show the form for creating a new requisition
