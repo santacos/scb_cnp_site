@@ -339,7 +339,7 @@ SCB Recruitment-Home
 						  	<td>$1.00</td>
 						  	<td>Subtotal:</td>
 						</tr>
-						<tr ng-show="show" ng-mouseover="show=true;" >
+						<tr ng-show="show" ng-mouseover="show=true;">
 							<td colspan=7>
 								<div class="row">
 									<div class="col col-md-3">
@@ -347,7 +347,7 @@ SCB Recruitment-Home
 										<img src="<?php echo asset('img/content/hero.jpg')?>" class="img-rounded" 
 											width="150" height="100" alt="" style="padding-top:2px;padding-bottom:10px;">
 										<br>
-										<button class="btn btn-sm btn-default" style="width:60%">View detail</button>
+										<a href="{{URL::to('/cd/jobdetail')}}" target="_blank" class="btn btn-sm btn-default" style="width:60%">View detail</a>
 									</div>
 									<div class="col col-md-6 text-left" style="font-size:0.9em;">
 										<br>
@@ -361,7 +361,7 @@ SCB Recruitment-Home
 									</div>
 									<div class="col col-md-3">
 										<div class="list-group text-left">
-											<a href="#" class="list-group-item active">
+											<a href="#" class="list-group-item ">
 												<i class="fa fa-fw fa-check-square-o"></i> Apply
 											</a>
 											<a href="#" class="list-group-item ">

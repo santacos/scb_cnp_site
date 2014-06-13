@@ -117,7 +117,7 @@ SCB Recruitment-Home
 
       		<br>
       		
-	<!-- profile-->
+			<!-- profile-->
 			<div class="row">
 
 				  <div class="content-block bottom-padding frame">
