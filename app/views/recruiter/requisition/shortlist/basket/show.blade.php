@@ -93,7 +93,8 @@ thisIsTitle
                                 'Deadline',
                                 'Saved',
                                 'Choose',
-                                'Note'
+                                'Note',
+                                'Action'
                                           )    
                               ->setUrl(URL::to('api/basket/'.$requisition_id ))
                               ->render('datatable') }}

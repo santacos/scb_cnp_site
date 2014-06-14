@@ -19,6 +19,7 @@ HM-create-requisition
 
     </style>
     
+    <!--for angular-->
     <script src="<?php echo asset('vendor/angular.min.js')?>"></script> 
     <script src="<?php echo asset('vendor/ui-bootstrap-tpls-0.11.0.min.js')?>"></script>
     <script src="<?php echo asset('js/createReq-manager.js')?>"></script>

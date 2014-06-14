@@ -4,6 +4,15 @@
 SCB Recruitment-Home
 @stop
 
+@section('libs')
+	<link rel="stylesheet" href="<?php echo asset('css/onoffswitch2.css')?>">
+	<!-- jQuery 2.0.2 -->
+	{{ HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js') }}
+	<!-- jQuery UI 1.10.3 -->
+	{{ HTML::script('assets/js/jquery-ui-1.10.3.min.js') }}
+	
+@stop
+
 @section('body-class')
 "fixed-header "
 @stop
@@ -126,14 +135,9 @@ SCB Recruitment-Home
 			  	</header>
 
 			  	<!--filter box-->
-			  	<!-- <div class="content-block  text-center bg" style="margin-bottom:20px;">
-					<p class="lead">Welcome to our site. There are many variations alteration in some form, by injected humour, or randomised words which don't look even slightly believable. Donec pharetra, lectus nec dignissim pharetra quis libero. </p>
-					<button class="btn btn-default">Read More</button>
-					<button class="btn btn-default">Join Now</button>
-				</div> -->
-				<div class="content-block bottom-padding frame frame-shadow-curved" style="margin-bottom: 10px;">
+				<div class="content-block bottom-padding frame frame-shadow-curved" style="margin-bottom:5%;">
 					
-						<h5><i class="fa fa-fw fa-plus-circle"></i>Add new following job</h5>
+					<h5><i class="fa fa-fw fa-plus-circle"></i>Add new following job</h5>
 					
 					<div class="row">
 						<div class="col col-md-1">
@@ -195,17 +199,20 @@ SCB Recruitment-Home
 				</div>
 				<!--end filter box-->
 
+				<!--start alert following job box-->
 				<!--title for table-->
 				<div class="title-box">
 					<!-- <h2 class="title">edit79 Results</h2> -->
-					<h3>7 Results
+					<h3>Alert following job <small>7 Results</small>
 						
-						<!-- <div class="icon pull-right" title="apple-logo">
-						  <div class="livicon" data-n="shopping-cart"></div>
-						</div> --> 	
+							
 						<div class="big-icon bg bg-warning pull-right">
-						  <div class="livicon" data-n="shopping-cart" data-c="#fff" data-s="64" data-hc="0" data-d="800"></div>
+							<a href="#modalJobcart" data-toggle="modal">
+						  	<div class="livicon" data-n="shopping-cart" data-c="#fff" data-s="64" data-hc="0" data-d="800"></div>
+							</a>
 						</div>
+						
+
 					</h3>
 
 				</div>
@@ -213,61 +220,258 @@ SCB Recruitment-Home
 
 				<div class="table-box">
 					<table class="table table-bordered table-striped table-hover text-center" style="font-size:1.2em;">
-					  <thead>
-						<tr>
-						  <th style="width:5%;"></th>
-						  <th style="width:15%;">Date post</th>
-						  <th style="width:20%;">Job ID</th>
-						  <th style="width:20%;">Job Title</th>
-						  <th style="width:10%;">Department</th>
-						  <th style="width:10%;">Job Location</th>
-						  <th style="width:20%;">Action</th>
-						</tr>
-					  </thead>
-					  <tbody>
-						<tr>
-						  	<td>
-							  	<div class="checkbox">
-								  
-									<input type="checkbox" value="">
-								  
-								</div>
-							</td>
-						  	<td>Description</td>
-						  	<td>Subtotal:</td>
-						  	<td>$1.00</td>
-						  	<td>Subtotal:</td>
-						  	<td>$1.00</td>
-						  	<td>Subtotal:</td>
-						</tr>
-						<tr>
-						  	<td>
-							  	<div class="checkbox">
-								  
-									<input type="checkbox" value="">
-								  
-								</div>
-							</td>
-						  	<td>Description</td>
-						  	<td>Subtotal:</td>
-						  	<td>$1.00</td>
-						  	<td>Subtotal:</td>
-						  	<td>$1.00</td>
-						  	<td>Subtotal:</td>
-						</tr>
-					
-					  </tbody>
+					  	<thead>
+							<tr>
+								<th style="width:5%;"></th>
+								<th style="width:10%;">Date post</th>
+							  	<th style="width:5%;">Job ID</th>
+							  	<th style="width:20%;">Job Title</th>
+							  	<th style="width:20%;">Department</th>
+							  	<th style="width:20%;">Job Location</th>
+							  	<th style="width:25%;">Action</th>
+							
+							</tr>
+					  	</thead>
+					  	<tbody>
+					  		
+							<!--yellow-->
+							<!-- <tr>
+							  	<td>
+								  	<div class="checkbox">
+									  
+										<input type="checkbox" value="">
+									  
+									</div>
+								</td>
+							  	<td>12-3-2557</td>
+							  	<td>2341</td>
+							  	<td>Programmer</td>
+							  	<td>IT</td>
+							  	<td>Bangkok</td>
+							  	<td>
+							  		
+							  		<div class="btn-group">
+										<button class="btn btn btn-border btn-warning btn-sm"><i class="livicon" data-n="eye-open" data-s="16" data-c="#fda425" data-hc="#fff"></i> View</button>
+										<button class="btn btn btn-border btn-warning btn-sm">Add to cart <i class="livicon" data-n="shopping-cart-in" data-s="16" data-c="#fda425" data-hc="#fff"></i></button>
+									</div>
+							  		
+							  	</td>
+							</tr>
+							<tr>
+							  	<td>
+								  	<div class="checkbox">
+									  
+										<input type="checkbox" value="">
+									  
+									</div>
+								</td>
+							  	<td>12-3-2557</td>
+							  	<td>2341</td>
+							  	<td>Programmer</td>
+							  	<td>IT</td>
+							  	<td>Bangkok</td>
+							  	<td>
+							  		<div class="btn-group">
+										<button class="btn btn btn-border btn-warning btn-sm"><i class="livicon" data-n="eye-open" data-s="16" data-c="#fda425" data-hc="#fff"></i> View</button>
+										<button class="btn btn btn-border btn-warning btn-sm">Add to cart <i class="livicon" data-n="shopping-cart-in" data-s="16" data-c="#fda425" data-hc="#fff"></i></button>
+									</div>
+							  	</td>
+							</tr> -->
+							<!--blue-->
+							<tr>
+							  	<td>
+								  	<div class="checkbox">
+									  
+										<input type="checkbox" value="">
+									  
+									</div>
+								</td>
+							  	<td>12-3-2557</td>
+							  	<td>2341</td>
+							  	<td>Programmer</td>
+							  	<td>IT</td>
+							  	<td>Bangkok</td>
+							  	<td>
+							  		<!--action-->
+							  		<div class="btn-group">
+										<button class="btn btn-info btn-sm"><i class="livicon" data-n="eye-open" data-s="16" data-c="#fff" data-hc="0"></i> View</button>
+										<button class="btn btn-info btn-sm">Add to cart <i class="livicon" data-n="shopping-cart-in" data-s="16" data-c="#fff" data-hc="0"></i></button>
+									</div>
+							  		<!-- <div class="icon" title="shopping-cart-in">
+									  <div class="livicon" data-n="shopping-cart-in"></div>
+									</div> -->
+							  	</td>
+							</tr>
+							<tr>
+							  	<td>
+								  	<div class="checkbox">
+									  
+										<input type="checkbox" value="">
+									  
+									</div>
+								</td>
+							  	<td>12-3-2557</td>
+							  	<td>2341</td>
+							  	<td>Programmer</td>
+							  	<td>IT</td>
+							  	<td>Bangkok</td>
+							  	<td>
+							  		<!--action-->
+							  		<div class="btn-group">
+										<button class="btn btn-info btn-sm"><i class="livicon" data-n="eye-open" data-s="16" data-c="#fff" data-hc="0"></i> View</button>
+										<button class="btn btn-info btn-sm">Add to cart <i class="livicon" data-n="shopping-cart-in" data-s="16" data-c="#fff" data-hc="0"></i></button>
+									</div>
+							  		<!-- <div class="icon" title="shopping-cart-in">
+									  <div class="livicon" data-n="shopping-cart-in"></div>
+									</div> -->
+							  	</td>
+							</tr>
+					  	</tbody>
 					</table>
 			  	</div><!--end table-->
-			  	<div class="row">
+			  	<div class="row"  style="margin-bottom:2%;">
 			  		<div class="col col-sm-2 col-md-5">
 			  		</div>
-			  		<div class="col col-sm-10 col-md-7 pull-right">
-			  			<button class="btn btn-danger " style="width:30%;">Add to job basket</button>
-						<button class="btn btn-warning " style="width:30%;">Follow</button>
-						<button class="btn btn-success " style="width:30%;">Apply</button>
+			  		<div class="col col-sm-10 col-md-7 pull-left">
+			  			<button class="btn btn-danger pull-right" style="width:30%;">Add to job basket</button>
+						<button class="btn btn-warning pull-right" style="width:30%;margin-left:10px;margin-right:10px;">Follow</button>
+						<button class="btn btn-success pull-right" style="width:30%;">Apply</button>
 			  		</div>
 			  	</div>
+			  	<!--end alert following job box-->
+
+
+			  	<!--start List of following job box-->
+				<!--title for table-->
+				<div class="title-box">
+					<!-- <h2 class="title">edit79 Results</h2> -->
+					<h3>List of following job 
+						<small>10 Results</small>
+					</h3>
+
+				</div>
+				<!--end title for table-->
+
+				<div class="table-box">
+					<table class="table table-bordered table-striped table-hover text-center" style="font-size:1.2em;">
+					  	<thead>
+							<tr>
+								<th style="width:15%;">Job title</th>
+							  	<th style="width:15%;">Department</th>
+							  	<th style="width:10%;">Tag</th>
+							  	<th style="width:10%;">Detail</th>
+							  	<th style="width:10%;">Created date</th>
+							  	<th style="width:10%;">Last updated</th>
+							  	<th style="width:10%;">Active</th>
+							  	<th style="width:20%;">Action</th>
+							
+							</tr>
+					  	</thead>
+					  	<tbody>
+					  		
+							<!--info-->
+							<tr>
+								<td>Programmer</td>
+								<td>IT</td>
+							  	<td>
+								  	-
+								</td>
+							  	<td>
+							  		<button class="btn btn-info btn-sm"><i class="livicon" data-n="eye-open" data-s="16" data-c="#fff" data-hc="0"></i> View</button>
+							  	</td>
+							  	<td>12-4-2557</td>
+							  	<td>12-5-2557</td>
+							  	<td>-</td>
+							  	<td>
+							  		<!--action-->
+							  		<div class="btn-group">
+										<button class="btn btn-info btn-sm">
+											<i class="livicon" data-n="edit" data-s="16" data-c="#fff" data-hc="0"></i> Edit
+										</button>
+										<button class="btn btn-info btn-sm">
+											Delete <i class="livicon" data-n="trash" data-s="16" data-c="#fff" data-hc="0"></i>
+										</button>
+									</div>
+							  	</td>
+							</tr>
+
+							<tr>
+								<td>Programmer</td>
+								<td>IT</td>
+							  	<td>
+								  	-
+								</td>
+							  	<td>
+							  		<button class="btn btn-info btn-sm"><i class="livicon" data-n="eye-open" data-s="16" data-c="#fff" data-hc="0"></i> View</button>
+							  	</td>
+							  	<td>12-4-2557</td>
+							  	<td>12-5-2557</td>
+							  	<td>-</td>
+							  	<td>
+							  		<!--action-->
+							  		<div class="btn-group">
+										<button class="btn btn-info btn-sm">
+											<i class="livicon" data-n="edit" data-s="16" data-c="#fff" data-hc="0"></i> Edit
+										</button>
+										<button class="btn btn-info btn-sm">
+											Delete <i class="livicon" data-n="trash" data-s="16" data-c="#fff" data-hc="0"></i>
+										</button>
+									</div>
+							  	</td>
+							</tr>
+							<tr>
+								<td>Programmer</td>
+								<td>IT</td>
+							  	<td>
+								  	-
+								</td>
+							  	<td>
+							  		<button class="btn btn-info btn-sm"><i class="livicon" data-n="eye-open" data-s="16" data-c="#fff" data-hc="0"></i> View</button>
+							  	</td>
+							  	<td>12-4-2557</td>
+							  	<td>12-5-2557</td>
+							  	<td>-</td>
+							  	<td>
+							  		<!--action-->
+							  		<div class="btn-group">
+										<button class="btn btn-info btn-sm">
+											<i class="livicon" data-n="edit" data-s="16" data-c="#fff" data-hc="0"></i> Edit
+										</button>
+										<button class="btn btn-info btn-sm">
+											Delete <i class="livicon" data-n="trash" data-s="16" data-c="#fff" data-hc="0"></i>
+										</button>
+									</div>
+							  	</td>
+							</tr>
+							
+					  	</tbody>
+					</table>
+			  	</div><!--end table-->
+			  	<!--end List of following job box-->
+
+			  	<!--setting box-->
+			  	<div class="content-block bottom-padding bg frame">
+			  		<div class="row">
+				  		<h5><i class="fa fa-fw fa-gear"></i> Settings</h5>
+						<div class="col col-md-2 pull-left">
+							<h5><strong>All notifications: </strong> </h5>
+						</div>
+						<div class="col col-md-2 pull-left">
+							
+							<select class="form-control" style="font-size:1.1em;">
+										<option value="" class="">ON</option>
+										<option value="0">OFF</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+			  	<!--end setting box-->
+
+
+
+
+			  	
 			</section>
       	
       	</article><!-- .content -->

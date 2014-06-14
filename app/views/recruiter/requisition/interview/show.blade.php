@@ -61,7 +61,6 @@ thisIsTitle
                                             @endforeach
                                           @endif
                                         </table>
-
                                       </div>
     
                                     </div><!-- /.box-body -->

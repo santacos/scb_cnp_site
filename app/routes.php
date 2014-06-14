@@ -12,7 +12,9 @@
 */
 
 // Test
-
+Route::get('ptry',function(){
+    return View::make('angular.ptry');
+});
 Route::get('testtest',function(){
 	return View::make('testtest');
 });
@@ -51,10 +53,13 @@ Route::get('cd/jobcart',function(){
 Route::get('cd/searchjob',function(){
     return View::make('user.searchJob');
 });
+Route::get('cd/jobdetail',function(){
+    return View::make('user.jobDetail');
+});
 
 ///////////////////////////////////////////////////////////
 Route::get('tryView',function(){
-	return View::make('user.profile');
+	return View::make('admin.candidateDetail');
 });
 
 Route::get('tryAngular',function(){

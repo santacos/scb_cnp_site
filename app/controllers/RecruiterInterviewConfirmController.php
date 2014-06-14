@@ -81,9 +81,14 @@ class RecruiterInterviewConfirmController extends \BaseController {
 			}
 			$timestamp = Carbon::now();
 			/**
-
+			
 			*/
-			$visit_number = 1;
+			$visit_number = $application->interviewLog()->orderBy('visit_number','desc')->first();
+			if(is_null($visit_number)){
+				$visit_number = 1;
+			}else{
+				$visit_number = $visit_number->visit_number+1;
+			}
 			if(is_null($prev_action)){
 				$prev_action_datetime = 0;
 			}else{
@@ -102,7 +107,7 @@ class RecruiterInterviewConfirmController extends \BaseController {
 							'result' => Input::get('approve'),
 							'note' => Input::get('note')
 			));
-		$application->application_current_status_id = Input::get('approve')?3:9;
+		$application->application_current_status_id = Input::get('approve')?4:9;
 		if(Input::get('approve') == false){
 			$application->result = false;
 		}
@@ -114,6 +119,10 @@ class RecruiterInterviewConfirmController extends \BaseController {
 		// 	}else{
 		// 		$int_visit_number = 1;
 		// 	}
+		/**
+			>> Have or don't have confirmed????
+			>> Interviewers Input::get('interviewer_ids');
+		*/
 		DB::table('int_off_schedules')->insert(array(
 						'app_cs_id' => 4,
 						'visit_number' => $visit_number,

@@ -30,6 +30,7 @@ class RequisitionRestController extends \BaseController {
          // return $action;
         // return $user_id.'----'.$status_id;
                     $req=Requisition::where('employee_user_id','!=',0);
+                    
                     if($status_id1!='' && $status_id1!=0)
                     {
                         $req=$req->where('requisition_current_status_id','=',$status_id1);
@@ -64,6 +65,14 @@ class RequisitionRestController extends \BaseController {
                     {
                         $req=$req->OrWhere('requisition_current_status_id','=',$status_id7);
                          
+                    }
+                    if($user_id ==21)
+                    { 
+                        $ddd = Requisition::whereHas('requisitionLog', function($q){
+                            $q->whereActionType(3)->whereSendNumber(1);
+                        })->lists('requisition_id');
+                        if(!is_null($ddd))
+                        {$req=$req->whereNotIn('requisition_id',$ddd);}
                     }
                    $req=$req->get();
                     $return = Datatable::collection($req)
@@ -204,7 +213,7 @@ class RequisitionRestController extends \BaseController {
                                     }
                                     else if($model ->requisition_current_status_id == 6)
                                     {
-                                        return '<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">See infomation (ยังไม่ได้ทำ)</button></a>';
+                                        return '<a href="' .URL::to('hm-application-review/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">See infomation (ยังไม่ได้ทำ)</button></a>';
                                     }
                                     else 
                                     {
@@ -227,7 +236,7 @@ class RequisitionRestController extends \BaseController {
                                     }
                                     else if($model ->requisition_current_status_id == 6)
                                     {
-                                        return '<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">See infomation (ยังไม่ได้ทำ)</button></a>';
+                                        return '<a href="' .URL::to('hm-application-review/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">See infomation (ยังไม่ได้ทำ)</button></a>';
                                     }
                                     else 
                                     {

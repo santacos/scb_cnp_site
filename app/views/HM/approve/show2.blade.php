@@ -24,7 +24,7 @@ thisIsTitle
                     </ol>
                 </section>
 
-            <!--     <div class="pad margin no-print">
+                <!--     <div class="pad margin no-print">
                     <div class="alert alert-info" style="margin-bottom: 0!important;">
                         <i class="fa fa-info"></i>
                         <b>Requisition id:</b> {{$requisition->requisition_id}}

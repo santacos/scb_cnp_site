@@ -29,3 +29,5 @@
 <script src="<?php echo asset('js/pixastic.custom.js')?>"></script>
 <script src="<?php echo asset('js/livicons-1.3.min.js')?>"></script>
 <script src="<?php echo asset('js/main.js')?>"></script>
+
+
