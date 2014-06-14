@@ -54,9 +54,9 @@ class CandidateController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$candidate = Candidate::find(Auth::user()->user_id);
+		$candidate = Candidate::find($id);
 		$user=$candidate->user()->first();
-		return View::make('candidate.edit', array( 'candidate'=> $candidate,'user'=>$user));
+		return View::make('candidate.show', array( 'candidate'=> $candidate,'user'=>$user));
 	}
 	/**
 	 * Show the form for editing the specified candidate.
@@ -67,7 +67,8 @@ class CandidateController extends \BaseController {
 	public function edit($candidate_id)
 	{	
 		$candidate = Candidate::find(Auth::user()->user_id);
-		return View::make('candidate.edit', array( 'candidate'=> $candidate));
+		$user=$candidate->user()->first();
+		return View::make('candidate.edit', array( 'candidate'=> $candidate,'user'=>$user));
 	}
 
 	/**

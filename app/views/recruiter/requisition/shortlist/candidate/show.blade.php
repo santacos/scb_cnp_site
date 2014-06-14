@@ -49,7 +49,8 @@ thisIsTitle
                                 'Deadline',
                                 'Saved',
                                 'Choose',
-                                'Note'
+                                'Note',
+                                'Action'
                                           )    
                               ->setUrl(URL::to('api/application/'.$requisition_id .'/1'))
                               ->render('datatable') }}

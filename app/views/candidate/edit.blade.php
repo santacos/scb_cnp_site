@@ -113,16 +113,16 @@ HM-create-requisition
                     {{ Form::text('full_location', Input::old('full_location'), array('class' => 'form-control', 'id' => 'form')) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('country', 'Country :') }}
-                    {{ Form::text('country', Input::old('country'), array('class' => 'form-control', 'id' => 'form')) }}
-                </div>
-                <div class="form-group">
                     {{ Form::label('city', 'City :') }}
                     {{ Form::text('city', Input::old('city'), array('class' => 'form-control', 'id' => 'form')) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('zip_coder', 'Zip/Postal Code :') }}
                     {{ Form::text('zip_code', Input::old('zip_code'), array('class' => 'form-control', 'id' => 'form')) }}
+                </div>
+                 <div class="form-group">
+                    {{ Form::label('country', 'Country :') }}
+                    {{ Form::text('country', Input::old('country'), array('class' => 'form-control', 'id' => 'form')) }}
                 </div>
     {{ Form::submit('Save', array('class' => 'btn btn-primary btn-lg btn-block')) }}
 
