@@ -59,7 +59,7 @@ Route::get('cd/jobdetail',function(){
 
 ///////////////////////////////////////////////////////////
 Route::get('tryView',function(){
-	return View::make('user.profile');
+	return View::make('admin.candidateDetail');
 });
 
 Route::get('tryAngular',function(){

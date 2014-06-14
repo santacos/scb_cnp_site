@@ -258,7 +258,9 @@ SCB Recruitment-Home
 								<strong>Apply</strong>
 							</button>
 						</div>
-						<div class="col col-md-4 col-sm-4"></div>
+						<div class="col col-md-4 col-sm-4">
+
+						</div>
 					</div>
 					
 				</div>
@@ -280,26 +282,28 @@ SCB Recruitment-Home
     				<i class="fa fa-warning "></i>&nbsp;Notification
     			</h5>
     		</button> -->
-    		<div class="list-group text-left">
-				<a href="#" class="list-group-item active">
-					<i class="fa fa-fw fa-check-square-o"></i> Apply
+    		<div class="list-group  text-center" style="width:50%;font-size:1.2em;">
+				<a href="#" class="list-group-item ">
+					<i class="fa fa-fw fa-check-square-o"></i> 
+					<br>
+					Apply
 				</a>
 				<a href="#" class="list-group-item ">
-				  	<i class="livicon shadowed" data-n="shopping-cart-in" data-s="16" data-c="#7996b7" data-hc="#2a6496"></i>
-					Add to job cart
+				  	<i class="livicon shadowed" data-n="shopping-cart-in" data-s="24" data-c="#7996b7" data-hc="#2a6496"></i>
+					<br>Add to job cart
 				</a>
 				<a href="#" class="list-group-item">
-					<i class="livicon shadowed" data-n="save" data-s="16" data-c="#7996b7" data-hc="#2a6496"></i>
-					Follow this position
+					<i class="livicon shadowed" data-n="save" data-s="24" data-c="#7996b7" data-hc="#2a6496"></i>
+					<br>Follow this job
 				</a>
 				
 				<a href="#" class="list-group-item">
-					<i class="livicon shadowed" data-n="message-out" data-s="16" data-c="#7996b7" data-hc="#2a6496"></i>
-					Email a friend
+					<i class="livicon shadowed" data-n="message-out" data-s="24" data-c="#7996b7" data-hc="#2a6496"></i>
+					<br>Email a friend
 				</a>
 				<a href="#" class="list-group-item">
-					<i class="livicon shadowed" data-n="facebook-alt" data-s="16" data-c="#7996b7" data-hc="#2a6496"></i>
-					FB Share
+					<i class="livicon shadowed" data-n="facebook-alt" data-s="24" data-c="#7996b7" data-hc="#2a6496"></i>
+					<br>FB Share
 				</a>
 			</div>
     		

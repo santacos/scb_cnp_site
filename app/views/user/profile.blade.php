@@ -117,7 +117,7 @@ SCB Recruitment-Home
 
       		<br>
       		
-	<!-- profile-->
+			<!-- profile-->
 			<div class="row">
 
 				  <div class="content-block bottom-padding frame">
@@ -144,23 +144,8 @@ SCB Recruitment-Home
 					
 					<!--personal detail-->
 					<div class="row">
-						<!-- <div class="text-left col col-md-6">
-							
-							<strong>Firstname:&nbsp;</strong>Peepeepee&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						  	<strong>Lastname:&nbsp;</strong>northnorthnorth
-						  	<br>
-						  	<strong>ชื่อ:&nbsp;</strong>พีพีพี&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						  	<strong>นามสกุล:&nbsp;</strong>นอร์ทนอร์ท
-						  	
-					  	</div> -->
 					  	<div class="col col-md-7">
 					  		<table class="table text-left" style="font-size:1.1em;">
-							  <!-- <thead>
-								<tr>
-								  <th>Column 1</th>
-								  <th>Column 2</th>
-								</tr>
-							  </thead> -->
 							  <tbody>
 								<tr>
 								  <td><strong>Firstname:</strong>
@@ -198,28 +183,55 @@ SCB Recruitment-Home
 							</table>
 							
 					  	</div>
-					  	<div class="col col-md-5">
-					  <!-- 		<div class="container">
-						  		<div class="row">
-						  			<div class="col col-md-8">
-						  			</div>
-						  			<div class="col col-md-4">
-						  				<div class="row">
-								  			<div class="col col-md-4">
-								  				<button type="button" class="btn btn-default" style="width:80%;">View resume</button>
-								  			</div>
-								  			<div class="col col-md-4">
-								  				<button type="button" class="btn btn-default" style="width:80%;">Export to pdf</button>
-								  			</div>
-								  			<div class="col col-md-4">
-								  				<button class="btn btn-default pull-left" style="width:8em;" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
-			                    			</div>
-								  		</div>
-						  			</div>
-						  		</div>
-					  		</div> -->
-					  		
+					  	<div class="col col-md-3 pull-left" style="padding-left:0px;">
+							<div class="col-md-12">
+								<div class="bs-docs-example-images">
+									<a class="img-thumbnail img-rounded lightbox" rel="fancybox" href="{{asset('assets/img/avatar3.png')}}" >
+										<img src="{{asset('assets/img/avatar3.png')}}" alt="" title="">
+										<span class="bg-images">
+											<i class="fa fa-search"></i>
+										</span>
+									</a>
+								</div>
+							</div>
 					  	</div>
+					  	<div class="col col-md-2 pull-left" style="padding-left:0px;padding-right:0px;">
+					  		<button class="btn push-top push-bottom btn-border btn-info" 
+					  		style="width:90%;"data-toggle="modal" data-target="#videoModal">
+								Video resume
+							</button><br>
+							<button class="btn push-top push-bottom btn-border btn-success" 
+							style="width:90%;" data-toggle="modal" data-target="#myModal">
+								View resume
+							</button><br>
+							<button class="btn push-top push-bottom btn-border btn-warning" 
+							style="width:90%;" data-toggle="modal" data-target="#myModal">
+								Export to pdf
+							</button>
+					  	</div>
+					  	<!--modal zone-->
+					  	<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+							  <div class="modal-content">
+								<div class="modal-header">
+								  <a href="#" class="close" data-dismiss="modal" aria-hidden="true"><span>close</span>×</a>
+								  <div class="title-box">
+									<h4 class="title">Modal title</h4>
+								  </div>
+								</div>
+								<div class="modal-body">
+								  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos adipisci blanditiis veniam vitae magnam eligendi unde! Voluptate mollitia sint tempora.</p>
+								  <p>Lorem ipsum dolor sit amet, <strong>consectetur adipisicing elit</strong>. Laboriosam tempore vero cumque ut neque laborum accusamus expedita ipsam autem saepe dolorum ab praesentium quasi maxime natus voluptas ex doloremque suscipit!</p>
+								</div>
+								<div class="modal-footer">
+								  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								  <button type="button" class="btn btn-primary">Save changes</button>
+								</div>
+							  </div>
+							</div>
+						</div>
+
+					  	<!--end modal zone-->
 				  	</div>
 				  	
 				  	<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus reprehenderit ad atque cum est. Commodi consequatur soluta officiis veniam nobis corrupti tenetur dolorem reprehenderit sunt vitae iure suscipit adipisci explicabo qui facere! Ea dolore quas maxime facere tenetur illum quibusdam sapiente dolorem nesciunt laudantium necessitatibus accusamus ab libero vel odio.</p>
