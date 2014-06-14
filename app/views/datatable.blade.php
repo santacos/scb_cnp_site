@@ -61,6 +61,7 @@
         <td >{{ $dd }}</td>
         @endforeach
     </tr>
+
     @endforeach
     
    

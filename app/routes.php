@@ -12,7 +12,9 @@
 */
 
 // Test
-
+Route::get('ptry',function(){
+    return View::make('angular.ptry');
+});
 Route::get('testtest',function(){
 	return View::make('testtest');
 });
