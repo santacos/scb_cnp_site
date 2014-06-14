@@ -88,6 +88,7 @@ class RecruiterRequisitionPostController extends \BaseController {
 			// Requisition Log
 
 			$requisition->job_title = Input::get('job_title');
+			$requisition->job_description = Input::get('job_description');
 			$requisition->total_number = Input::get('total_number');
 			$requisition->location_id = Input::get('location_id');
 			$requisition->corporate_title_id = Input::get('corporate_title_id');

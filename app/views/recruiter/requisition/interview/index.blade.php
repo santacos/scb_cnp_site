@@ -1,4 +1,4 @@
-@extends('admin.layouts.default')
+@extends('admin.layouts.main.recruiter')
 @section('title')
 thisIsTitle
 @stop
@@ -11,12 +11,52 @@ thisIsTitle
 @stop
 
 @section('content')
-         <!--row two for TO DO REQUISITION-->
-         
+       <!--   row two for TO DO REQUISITION
+         <table cellpadding="3" cellspacing="0" border="0" style="width: 67%; margin: 0 auto 2em auto;">
+        <thead>
+            <tr>
+                <th>Target</th>
+                <th>Filter text</th>
+                <th>Treat as regex</th>
+                <th>Use smart filter</th>
+            </tr>
+        </thead>
+ 
+        <tbody>
+            <tr id="filter_global">
+                <td>Global filtering</td>
+                <td align="center"><input type="text" class="global_filter" id="global_filter"></td>
+            </tr>
+            <tr id="filter_col1" data-column="0">
+                <td>Requisition ID</td>
+                <td align="center"><input type="text" class="column_filter" id="col0_filter"></td>
+            </tr>
+            <tr id="filter_col2" data-column="1">
+                <td>Job Title</td>
+                <td align="center"><input type="text" class="column_filter" id="col1_filter"></td>
+            </tr>
+            <tr id="filter_col3" data-column="2">
+                <td>Corporate Title</td>
+                <td align="center"><input type="text" class="column_filter" id="col2_filter"></td>
+            </tr>
+            <tr id="filter_col4" data-column="3">
+                <td>Location</td>
+                <td align="center"><input type="text" class="column_filter" id="col3_filter"></td>
+            </tr>
+            <tr id="filter_col5" data-column="4">
+                <td>Status</td>
+                <td align="center"><input type="text" class="column_filter" id="col4_filter"></td>
+            </tr>
+            <tr id="filter_col6" data-column="5">
+                <td>Date Order</td>
+                <td align="center"><input type="text" class="column_filter" id="col5_filter"></td>
+            </tr>
+        </tbody>
+    </table> -->
         <div class="box box-primary">
 
                     <div class="box-header">
-                        <h3 class="box-title"> Sent Shortlist Candidate..</h3>
+                        <h3 class="box-title"> All Requisiton..</h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-primary btn-xs" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -34,28 +74,28 @@ thisIsTitle
                                     
                                     <!--table style "table-striped"-->
                                     <div class="box-body table-responsive no-padding">
-                                        
-                                      <div style="overflow: auto;">
+                               
+                                       <div style="overflow: auto;">
 
                                         <table border="1">
                                           <tr>
-                                            @if(count($applications) > 0)
-                                              @foreach($applications->first()->toArray() as $key => $value)
+                                            @if(count($requisitions) > 0)
+                                              @foreach($requisitions->first()->toArray() as $key => $value)
                                                 <th>{{ $key }}</th>
                                               @endforeach
                                               <th>Action</th>
                                             @endif
                                           </tr>
-                                          @if(count($applications) > 0)
-                                            @foreach($applications as $application)
+                                          @if(count($requisitions) > 0)
+                                            @foreach($requisitions as $requisition)
                                               <tr>
-                                                @foreach($application->toArray() as $key => $value)
+                                                @foreach($requisition->toArray() as $key => $value)
                                                   <td>
                                                     {{ $value }}
                                                   </td>
                                                 @endforeach
                                                 <td>
-                                                <a href={{ $application->application_id . "/edit" }}>View(popup)</a>
+                                                <a href={{"recruiter-interview-confirm/" . $requisition->requisition_id}}>View(popup)</a>
                                                 </td>
                                               </tr>
                                             @endforeach
@@ -63,6 +103,8 @@ thisIsTitle
                                         </table>
 
                                       </div>
+
+
     
                                     </div><!-- /.box-body -->
                         </div><!-- /.box -->
@@ -76,4 +118,9 @@ thisIsTitle
                     </div>
                     <!--end TO DO REQUISITION-->
 
+
+                  
+
 @stop
+
+

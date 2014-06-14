@@ -1,6 +1,6 @@
 <?php
 
-class HMApplicationReviewController extends \BaseController {
+class RecruiterInterviewConfirmController extends \BaseController {
 
 	/**
 	 * Display a listing of requisitions
@@ -10,13 +10,12 @@ class HMApplicationReviewController extends \BaseController {
 	public function index()
 	{
 		$requisitions = Requisition::whereHas('application', function($q) {
-			$q->whereApplicationCurrentStatusId(2);
+			$q->whereApplicationCurrentStatusId(3);
 		})->get();
 		foreach($requisitions as $requisition) {
-			$requisition['waiting_for_review'] = $requisition->application()->whereApplicationCurrentStatusId(2)->count();
-			$requisition['reviewed'] = $requisition->application()->where('application_current_status_id', '>', 2)->count();
+			$requisition['waiting_for_confirm'] = $requisition->application()->whereApplicationCurrentStatusId(3)->count();
 		}
-		return View::make('HM.review.index', compact('requisitions'));
+		return View::make('recruiter.requisition.interview.index', compact('requisitions'));
 	}
 
 	/**
@@ -48,8 +47,8 @@ class HMApplicationReviewController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(2)->get();
-		return View::make('HM.review.show', compact('applications'));
+		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(3)->get();
+		return View::make('recruiter.requisition.interview.show', compact('applications'));
 	}
 
 	/**
@@ -61,7 +60,7 @@ class HMApplicationReviewController extends \BaseController {
 	public function edit($id)
 	{
 		$application = Application::find($id);
-		return View::make('HM.review.edit', compact('application'));
+		return View::make('recruiter.requisition.interview.edit', compact('application'));
 	}
 
 	/**
@@ -81,15 +80,19 @@ class HMApplicationReviewController extends \BaseController {
 				$prev_action = NULL;
 			}
 			$timestamp = Carbon::now();
+			/**
+
+			*/
+			$visit_number = 1;
 			if(is_null($prev_action)){
 				$prev_action_datetime = 0;
 			}else{
 				$prev_action_datetime = $prev_action->action_datetime;
 			}
 			DB::table('application_logs')->insert(array(
-							'action_type' => 2,
+							'action_type' => 3,
 							'application_id' => $application->application_id,
-							'visit_number' => 1,
+							'visit_number' => $visit_number,
 							'employee_user_id' => Employee::first()->user_id,
 							/**
 							change 'employee_user_id' to real employee id
@@ -113,7 +116,7 @@ class HMApplicationReviewController extends \BaseController {
 		// 	}
 		DB::table('int_off_schedules')->insert(array(
 						'app_cs_id' => 4,
-						'visit_number' => 1,
+						'visit_number' => $visit_number,
 						'application_id' => $application->application_id,
 						'datetime' => Input::get('date_time')
 		));

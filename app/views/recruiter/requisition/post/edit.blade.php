@@ -71,6 +71,11 @@ HM-create-requisition
             {{ Form::text('job_title', Input::old('job_title'), array('class' => 'form-control' ,'required')) }}
         </div>
 
+        <div class="form-group">
+            {{ Form::label('job_description', 'Job Summary :') }}
+            {{ Form::text('job_description', Input::old('job_description'), array('class' => 'form-control' ,'required')) }}
+        </div>
+
         <?/**
         END add + edit code
         */?>

@@ -38,7 +38,8 @@ thisIsTitle
                             <h1 class="page-header">
                                 <i class="fa fa-globe" style="color:blue;"></i><b> Job title : </b> {{$requisition->job_title}}
                                 <small class="pull-right"> Requisition# {{$requisition->requisition_id}}</small>
-                            </h1>                            
+                                <small> Job Summary : {{$requisition->job_description}}</small>
+                            </h1>
                         </div><!-- /.col -->
                     </div>
                     <!-- info row -->

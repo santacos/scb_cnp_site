@@ -45,16 +45,28 @@ thisIsTitle
       </table>
 
       {{ Form::model($application, array('route' => array('hm-application-review.update', $application->application_id), 'method' => 'PUT')) }}
+        <?php
+            $default_date = $application->intOffSchedule()->whereAppCsId(4)->orderBy('visit_number','desc')->first();
+            if(is_null($default_date)){
+              $default_date = NULL;
+            }else{
+              $default_date = $default_date->datetime;
+            }
+        ?>
         <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('date_time', 'Preferred Interview Date/Time :') }}
+          {{ Form::label('note', 'Preferred Interview Date/Time :') }}
+          <span style="color:orange">{{ $default_date }}</span>
+        </div>
+        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
+          {{ Form::label('date_time', 'Interview Date/Time :') }}
           {{ Form::input('datetime-local', 'date_time') }}
         </div>
         <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
           {{ Form::label('note', 'Note :') }}
           {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
         </div>
-        {{ Form::button('Decline', array('name' => 'approve', 'value' => false, 'type' => 'submit')) }}
-        {{ Form::button('Accept', array('name' => 'approve', 'value' => true, 'type' => 'submit')) }}
+        {{ Form::button('Reject Candidate', array('name' => 'approve', 'value' => false, 'type' => 'submit')) }}
+        {{ Form::button('Confirm', array('name' => 'approve', 'value' => true, 'type' => 'submit')) }}
       {{ Form::close() }}
     </center>
 @stop

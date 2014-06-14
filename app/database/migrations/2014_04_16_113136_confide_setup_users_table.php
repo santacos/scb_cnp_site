@@ -229,7 +229,8 @@ class ConfideSetupUsersTable extends Migration {
             $table->foreign('location_id')->references('location_id')->on('locations')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('corporate_title_id');
             $table->foreign('corporate_title_id')->references('corporate_title_id')->on('corporate_titles')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('job_title',100);
+            $table->string('job_title',100)->nullable()->default(NULL);
+            $table->string('job_description',500)->nullable()->default(NULL);
             $table->unsignedInteger('position_id');
             $table->foreign('position_id')->references('position_id')->on('positions')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('dept_id');
@@ -249,10 +250,10 @@ class ConfideSetupUsersTable extends Migration {
         });
          Schema::create('tags', function($table)
         {
+            $table->increments('tag_id');
             $table->unsignedInteger('requisition_id');
             $table->foreign('requisition_id')->references('requisition_id')->on('requisitions')->onDelete('cascade')->onUpdate('cascade');
             $table->string('tag',100);
-            $table->primary('requisition_id');
         });
          Schema::create('requisition_skills', function($table)
         {
