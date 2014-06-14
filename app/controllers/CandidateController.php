@@ -40,7 +40,7 @@ class CandidateController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}*/
 			$candidate = new candidate;
-			$candidate->user_id = 1;
+			$candidate->user_id = Auth::user()->user_id;
 			$candidate->save();
 
 		return Response::json(array('success' => true));
@@ -54,7 +54,9 @@ class CandidateController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return Response::json(Candidate::find($id));
+		$candidate = Candidate::find(Auth::user()->user_id);
+		$user=$candidate->user()->first();
+		return View::make('candidate.edit', array( 'candidate'=> $candidate,'user'=>$user));
 	}
 	/**
 	 * Show the form for editing the specified candidate.
@@ -63,8 +65,8 @@ class CandidateController extends \BaseController {
 	 * @return Response
 	 */
 	public function edit($candidate_id)
-	{
-		$candidate = Candidate::find($candidate_id);
+	{	
+		$candidate = Candidate::find(Auth::user()->user_id);
 		return View::make('candidate.edit', array( 'candidate'=> $candidate));
 	}
 
@@ -94,7 +96,7 @@ class CandidateController extends \BaseController {
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}*/
-			$candidate = Candidate::findOrFail($id);
+			$candidate = Candidate::findOrFail(Auth::user()->user_id);
 			$user=$candidate->user()->first();
             $user->email = trim(strtolower(Input::get( 'email' )));
             $user->first = trim(Input::get( 'first' ));
