@@ -350,6 +350,7 @@ class ConfideSetupUsersTable extends Migration {
              $table->unsignedInteger('application_id');
              $table->foreign('application_id')->references('application_id')->on('applications')->onDelete('cascade')->onUpdate('cascade');
              $table->timestamp('datetime');
+             $table->string('location',150);
              $table->primary(array('app_cs_id', 'application_id', 'visit_number'));
              $table->timestamps();
         });

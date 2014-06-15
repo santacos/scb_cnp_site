@@ -44,7 +44,7 @@ thisIsTitle
         @endforeach
       </table>
 
-      {{ Form::model($application, array('route' => array('hm-application-review.update', $application->application_id), 'method' => 'PUT')) }}
+      {{ Form::model($application, array('route' => array('recruiter-interview-confirm.update', $application->application_id), 'method' => 'PUT')) }}
         <?php
             $default_date = $application->intOffSchedule()->whereAppCsId(4)->orderBy('visit_number','desc')->first();
             if(is_null($default_date)){
@@ -149,8 +149,8 @@ thisIsTitle
                 </table>
               </td>
               <tr>
-                <td style="display:none;">
-                  Add interviewer not in the list (by name) : <span>  </span> <input value="hello" /> <span>  </span> <input type='button' value='Add'>
+                <td>
+                  <iframe src="../../recruiter-interview-confirm-addInterviewer" frameBorder="0" width='540px' height='40px' scrolling='no'></iframe>
                 </td>
               </tr>
           </tr>
@@ -182,6 +182,23 @@ thisIsTitle
               selectInterviewer(this);
             }
             newButton.value = 'Select';
+            updateInterviewers();
+          }
+          function addInterviewer(v1,v2,v3,v4,v5){ // ID name dept position phone deselect
+            var tableSelect = document.getElementById('selected');
+            var newRow = tableSelect.insertRow(tableSelect.rows.length);
+            newRow.insertCell(0).innerHTML = v1;
+            newRow.insertCell(1).innerHTML = v2;
+            newRow.insertCell(2).innerHTML = v3;
+            newRow.insertCell(3).innerHTML = v4;
+            newRow.insertCell(4).innerHTML = v5;
+            var btn = document.createElement("input");
+            btn.value = 'Deselect';
+            btn.type = 'button';
+            btn.onclick = function(){
+              deselectInterviewer(this);
+            }
+            newRow.insertCell(5).appendChild(btn);
             updateInterviewers();
           }
           function updateInterviewers(){

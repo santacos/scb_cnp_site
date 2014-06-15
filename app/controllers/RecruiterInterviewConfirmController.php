@@ -80,9 +80,6 @@ class RecruiterInterviewConfirmController extends \BaseController {
 				$prev_action = NULL;
 			}
 			$timestamp = Carbon::now();
-			/**
-			
-			*/
 			$visit_number = $application->interviewLog()->orderBy('visit_number','desc')->first();
 			if(is_null($visit_number)){
 				$visit_number = 1;
@@ -119,16 +116,22 @@ class RecruiterInterviewConfirmController extends \BaseController {
 		// 	}else{
 		// 		$int_visit_number = 1;
 		// 	}
-		/**
-			>> Have or don't have confirmed????
-			>> Interviewers Input::get('interviewer_ids');
-		*/
+		$application->intOffSchedule()->whereAppCsId(4)->whereVisitNumber($visit_number)->delete();
 		DB::table('int_off_schedules')->insert(array(
 						'app_cs_id' => 4,
 						'visit_number' => $visit_number,
 						'application_id' => $application->application_id,
-						'datetime' => Input::get('date_time')
+						'datetime' => Input::get('date_time'),
+						'location' => Input::get('location')
 		));
+		$interviewers = Employee::whereIn('user_id', explode(',',Input::get('interviewer_ids')))->get();
+		foreach($interviewers as $interviewer){
+			DB::table('interview_evaluations')->insert(array(
+					'application_id' => $application->application_id,
+					'employee_user_id' => $interviewer->user_id,
+					'visit_number' => $visit_number
+			));
+		}
 		return Response::json(array('success' => true));
 	}
 

@@ -255,6 +255,9 @@ Route::get('recruiter-shortlist-candidate-ckbox', function(){
 });
 Route::get('recruiter-shortlist-log/{id}/{id2}', 'RecruiterShortlistLogController@view');
 Route::resource('recruiter-interview-confirm', 'RecruiterInterviewConfirmController');
+Route::get('recruiter-interview-confirm-addInterviewer', function(){
+    return View::make('recruiter.requisition.interview.addInterviewer');
+});
 
 // Candidate
 Route::resource('candidate', 'CandidateController');
