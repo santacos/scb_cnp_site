@@ -71,7 +71,7 @@ class RequisitionRestController extends \BaseController {
                         $ddd = Requisition::whereHas('requisitionLog', function($q){
                             $q->whereActionType(3)->whereSendNumber(1);
                         })->lists('requisition_id');
-                        if(!is_null($ddd))
+                        if(count($ddd) > 0)
                         {$req=$req->whereNotIn('requisition_id',$ddd);}
                     }
                    $req=$req->get();
