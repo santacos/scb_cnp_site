@@ -371,15 +371,15 @@ class ConfideSetupUsersTable extends Migration {
         });
           Schema::create('interview_evaluations', function($table)
         {
-            $table->unsignedInteger('application_id');
-            $table->foreign('application_id')->references('application_id')->on('applications')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedInteger('employee_user_id');
-            $table->foreign('employee_user_id')->references('user_id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedInteger('app_id');
+            $table->foreign('app_id')->references('application_id')->on('applications')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('visit_number');
             $table->float('score')->nullable()->default(NULL);
             $table->string('note',100)->nullable()->default(NULL);
             $table->string('filepath_interview',100)->nullable()->default(NULL);
-            $table->primary(array('application_id','employee_user_id','visit_number'));
+            $table->primary(array('app_id','user_id','visit_number'));
             $table->timestamps();
         });
           

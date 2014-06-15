@@ -11,10 +11,10 @@
 		protected $primaryKey = array('visit_number','application_id','employee_user_id');
 
 		public function applications(){
-			return $this->belongsTo('Application');
+			return $this->belongsTo('Application','app_id');
 		}
 
 		public function employee(){
-			return $this->belongsTo('User','employee_user_id','user_id');
+			return $this->belongsTo('User','user_id','user_id');
 		}
 	}

@@ -127,8 +127,8 @@ class RecruiterInterviewConfirmController extends \BaseController {
 		$interviewers = Employee::whereIn('user_id', explode(',',Input::get('interviewer_ids')))->get();
 		foreach($interviewers as $interviewer){
 			DB::table('interview_evaluations')->insert(array(
-					'application_id' => $application->application_id,
-					'employee_user_id' => $interviewer->user_id,
+					'app_id' => $application->application_id,
+					'user_id' => $interviewer->user_id,
 					'visit_number' => $visit_number
 			));
 		}
