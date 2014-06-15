@@ -138,5 +138,6 @@ HM-create-requisition
 
 @section('script')
     <script src="<?php echo asset('js/bootstrap-lightbox.js')?>"></script>
+    
 @stop
 

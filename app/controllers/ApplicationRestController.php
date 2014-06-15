@@ -137,7 +137,9 @@ class ApplicationRestController extends \BaseController {
                     ->addColumn('Action',function($model)
                         { 
                             if($model->application_current_status_id == 2){
-                                return '<a href="' .URL::to('hm-application-review/' . $model->application_id . '/edit').'"><button class="btn btn-sm btn-warning">Review Resume</button></a>';
+
+                                return'<a href="' .URL::to('candidate/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
+                                                '<a href="' .URL::to('hm-application-review/' . $model->application_id . '/edit').'"><button class="btn btn-sm btn-success">Select</button></a>';
                             }else{
                                 return '<a href="' .URL::to('candidate/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>';
                             }
