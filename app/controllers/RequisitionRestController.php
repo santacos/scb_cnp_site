@@ -236,7 +236,8 @@ class RequisitionRestController extends \BaseController {
                                     }
                                     else if($model ->requisition_current_status_id == 6)
                                     {
-                                        return '<a href="' .URL::to('hm-application-review/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Select Candidate</button></a>';
+                                        return  '<a href="' .URL::to('recruiter-shortlist/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Detail</button></a>'.'  '.
+                                        '<a href="' .URL::to('hm-application-review/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Select Candidate</button></a>';
                                     }
                                     else 
                                     {
