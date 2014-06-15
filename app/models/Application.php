@@ -27,7 +27,7 @@
 		}
 
 		public function interviewEvaluation(){
-			return $this->hasMany('InterviewEvaluation');
+			return $this->hasMany('InterviewEvaluation','app_id','application_id');
 		}
 
 		public function candidate(){

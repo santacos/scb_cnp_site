@@ -12,6 +12,7 @@ thisIsTitle
 
     <?php
       $display = array(
+'VISIT NUMBER' => $visit_number,
 'Application ID' => $application->application_id ,
 'Requisition ID' => $application->requisition_id ,
 'Candidate User ID' => $application->candidate_user_id ,
@@ -44,39 +45,23 @@ thisIsTitle
         @endforeach
       </table>
 
-      {{ Form::model($application, array('route' => array('recruiter-interview-confirm.update', $application->application_id), 'method' => 'PUT')) }}
-        <?php
-            $default_date = $application->intOffSchedule()->whereAppCsId(4)->orderBy('visit_number','desc')->first();
-            if(is_null($default_date)){
-              $default_date = NULL;
-            }else{
-              $default_date = $default_date->datetime;
-            }
-        ?>
-        @if(!is_null($default_date))
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('note', 'Preferred Interview Date/Time :') }}
-          <span style="color:orange">{{ $default_date }}</span>
-        </div>
-        @endif
+      {{ Form::model($application, array('route' => array('recruiter-interview-feedback.update', $application->application_id), 'method' => 'PUT', 'files' => true, 'onsubmit' => 'updateInterviewers()')) }}
         <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
           {{ Form::label('date_time', 'Interview Date/Time :') }}
-          {{ Form::input('datetime-local', 'date_time') }}
+          <?php
+            $ts_val = Carbon::createFromFormat('Y-m-d H:i:s', $application->intOffSchedule()->whereAppCsId(4)->orderBy('visit_number','desc')->first()->datetime);
+          ?>
+          {{ Form::input('datetime-local', 'date_time', ($ts_val->format('Y-m-d') .'T'. $ts_val->format('H:i')) ) }}
         </div>
         <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
           {{ Form::label('location', 'Location :') }}
-          {{ Form::input('text', 'location', '', array('placeholder' => 'Interview 4 Room, 17th Floor, SCB Park', 'style' => 'width:350px'))}}
+          {{ Form::input('text', 'location', $location, array('placeholder' => 'Interview 4 Room, 17th Floor, SCB Park', 'style' => 'width:350px'))}}
         </div>
         <table border="1">
           <tr>
             <th>
               <span class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
                 Selected Interviewer(s)
-              </span>
-            </th>
-            <th>
-              <span class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-                Suggested Interviewer(s)
               </span>
             </th>
           </tr>
@@ -89,30 +74,18 @@ thisIsTitle
                       <th>Department</th>
                       <th>Position</th>
                       <th>Phone Number</th>
-                      <th>Deselect</th>
-                  </tr>
-                  <col width="30">
-                  <col width="150">
-                  <col width="100">
-                  <col width="150">
-                  <col width="80">
-                  <col width="60">
-                </table>
-              </td>
-              <td>
-                <table id='suggested' border="1" style="margin:10px;">
-                  <tr>
-                      <th>ID</th>
-                      <th>Name</th>
-                      <th>Department</th>
-                      <th>Position</th>
-                      <th>Phone Number</th>
-                      <th>Select</th>
+                      <th>Upload Interview Evaluation Form</th>
+                      <th>Score</th>
+                      <th>Remove</th>
                   </tr>
                   <?php
-                    $suggest = Employee::find($application->requisition->employee_user_id);
+                    $user_ids = $application->interviewEvaluation()->whereVisitNumber($visit_number)->lists('user_id');
+                    if(count($user_ids) > 0)
+                      $suggests = Employee::whereIn('user_id', $user_ids)->get();
+                    else
+                      $suggests = array();
                   ?>
-                  @while($suggest != NULL)
+                  @foreach($suggests as $suggest)
                     <tr>
                       <td>
                         {{ $suggest->user_id }}
@@ -130,58 +103,38 @@ thisIsTitle
                         {{ $suggest->user->contact_number }}
                       </td>
                       <td>
-                        <input value='Select' type='button' onclick='selectInterviewer(this)'/>
+                        <input name={{ 'file'.$suggest->user_id }} type='file'/>
+                      </td>
+                      <td>
+                        <input name={{ 'score'.$suggest->user_id }} type='number' min='0' max='10' step='0.01'/>
+                      </td>
+                      <td>
+                        <input value='Remove' type='button' onclick='removeInterviewer(this)'/>
                       </td>
                     </tr>
-                    <?php
-                      $suggest = $suggest->nextLevel;
-                      if(!is_null($suggest)){
-                        $suggest = $suggest->employee;
-                      }
-                    ?>
-                  @endwhile
+                  @endforeach
                   <col width="30">
                   <col width="150">
                   <col width="100">
                   <col width="150">
                   <col width="80">
+                  <col width="220">
+                  <col width="60">
                   <col width="60">
                 </table>
               </td>
               <tr>
                 <td>
-                  <iframe src="../../recruiter-interview-confirm-addInterviewer" frameBorder="0" width='540px' height='40px' scrolling='no'></iframe>
+                  <iframe src="../../recruiter-interview-confirm-addInterviewer" frameBorder="0" width='600px' height='40px' scrolling='no'></iframe>
                 </td>
               </tr>
           </tr>
         </table>
         <script>
-          function selectInterviewer(x){
-            var tableSuggest = document.getElementById('suggested');
-            var row = tableSuggest.rows[x.parentNode.parentNode.rowIndex];
-            var tableSelect = document.getElementById('selected');
-            var newRow = row.cloneNode(true);
-            row.remove();
-            tableSelect.children[0].appendChild(newRow);
-            var newButton = newRow.cells[newRow.cells.length-1].children[0];
-            newButton.onclick = function(){
-              deselectInterviewer(this);
-            }
-            newButton.value = 'Deselect';
-            updateInterviewers();
-          }
-          function deselectInterviewer(x){
+          function removeInterviewer(x){
             var tableSelect = document.getElementById('selected');
             var row = tableSelect.rows[x.parentNode.parentNode.rowIndex];
-            var tableSuggest = document.getElementById('suggested');
-            var newRow = row.cloneNode(true);
             row.remove();
-            tableSuggest.children[0].appendChild(newRow);
-            var newButton = newRow.cells[newRow.cells.length-1].children[0];
-            newButton.onclick = function(){
-              selectInterviewer(this);
-            }
-            newButton.value = 'Select';
             updateInterviewers();
           }
           function addInterviewer(v1,v2,v3,v4,v5){ // ID name dept position phone deselect
@@ -193,12 +146,23 @@ thisIsTitle
             newRow.insertCell(3).innerHTML = v4;
             newRow.insertCell(4).innerHTML = v5;
             var btn = document.createElement("input");
-            btn.value = 'Deselect';
-            btn.type = 'button';
-            btn.onclick = function(){
-              deselectInterviewer(this);
-            }
+            btn.name = 'file'+v1;
+            btn.type = 'file';
             newRow.insertCell(5).appendChild(btn);
+            var btn2 = document.createElement("input");
+            btn2.type = 'number';
+            btn2.min = '0';
+            btn2.max = '10';
+            btn2.step = '0.01';
+            btn2.name = 'score'+v1;
+            newRow.insertCell(6).appendChild(btn2);
+            var btn3 = document.createElement("input");
+            btn3.value = 'Remove';
+            btn3.type = 'button';
+            btn3.onclick = function(){
+              removeInterviewer(this);
+            }
+            newRow.insertCell(7).appendChild(btn3);
             updateInterviewers();
           }
           function updateInterviewers(){
@@ -216,9 +180,15 @@ thisIsTitle
           {{ Form::label('note', 'Note :') }}
           {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
         </div>
+        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
+          {{ Form::label('result_title', '----- Result -----') }} <br>
+          {{ Form::radio('result', '1') }} Pass and Hold a next interview {{ Form::checkbox('redirect1') }} Confirm the next interview now<br> 
+          {{ Form::radio('result', '2') }} Accept {{ Form::checkbox('redirect2') }} Prepare package now<br>
+          {{ Form::radio('result', '3') }} Pending <br>
+          {{ Form::radio('result', '4') }} Reject
+        </div>
         <input id='interviewer_ids' name='interviewer_ids' type="hidden"/>
-        {{ Form::button('Reject Candidate', array('name' => 'approve', 'value' => false, 'type' => 'submit')) }}
-        {{ Form::button('Confirm', array('name' => 'approve', 'value' => true, 'type' => 'submit')) }}
+        {{ Form::button('Confirm', array('type' => 'submit')) }}
       {{ Form::close() }}
     </center>
 @stop

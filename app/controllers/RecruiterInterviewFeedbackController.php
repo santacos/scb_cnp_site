@@ -1,6 +1,6 @@
 <?php
 
-class RecruiterInterviewConfirmController extends \BaseController {
+class RecruiterInterviewFeedbackController extends \BaseController {
 
 	/**
 	 * Display a listing of requisitions
@@ -10,12 +10,12 @@ class RecruiterInterviewConfirmController extends \BaseController {
 	public function index()
 	{
 		$requisitions = Requisition::whereHas('application', function($q) {
-			$q->whereApplicationCurrentStatusId(3);
+			$q->whereApplicationCurrentStatusId(4);
 		})->get();
 		foreach($requisitions as $requisition) {
-			$requisition['waiting_for_confirm'] = $requisition->application()->whereApplicationCurrentStatusId(3)->count();
+			$requisition['waiting_for_feedback'] = $requisition->application()->whereApplicationCurrentStatusId(4)->count();
 		}
-		return View::make('recruiter.interview.confirm.index', compact('requisitions'));
+		return View::make('recruiter.interview.feedback.index', compact('requisitions'));
 	}
 
 	/**
@@ -47,8 +47,8 @@ class RecruiterInterviewConfirmController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(3)->get();
-		return View::make('recruiter.interview.confirm.show', compact('applications'));
+		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(4)->get();
+		return View::make('recruiter.interview.feedback.show', compact('applications'));
 	}
 
 	/**
@@ -66,7 +66,13 @@ class RecruiterInterviewConfirmController extends \BaseController {
 		}else{
 			$visit_number = $visit_number->visit_number+1;
 		}
-		return View::make('recruiter.interview.confirm.edit', compact('application'))->with('visit_number',$visit_number);
+		$location = $application->intOffSchedule()->whereAppCsId(4)->whereVisitNumber($visit_number)->first();
+		if(is_null($location)){
+			$location = "";
+		}else{
+			$location = $location->location;
+		}
+		return View::make('recruiter.interview.feedback.edit', compact('application'))->with('visit_number',$visit_number)->with('location',$location);
 	}
 
 	/**
@@ -98,7 +104,7 @@ class RecruiterInterviewConfirmController extends \BaseController {
 				$prev_action_datetime = $prev_action->action_datetime;
 			}
 			DB::table('application_logs')->insert(array(
-							'action_type' => 3,
+							'action_type' => 4,
 							'application_id' => $application->application_id,
 							'visit_number' => $visit_number,
 							'employee_user_id' => Employee::first()->user_id,
@@ -107,21 +113,22 @@ class RecruiterInterviewConfirmController extends \BaseController {
 							*/
 							'action_datetime' => $timestamp,
 							'prev_action_datetime' => $prev_action_datetime,
-							'result' => Input::get('approve'),
+							'result' => (Input::get('result') != 4),
 							'note' => Input::get('note')
 			));
-		$application->application_current_status_id = Input::get('approve')?4:9;
-		if(Input::get('approve') == false){
+		if(Input::get('result') == 1){
+			$application->application_current_status_id = 3;
+		}else if(Input::get('result') == 2){
+			$application->application_current_status_id = 5;
+		}else if(Input::get('result') == 3){
+			$application->application_current_status_id = 11;
+		}else if(Input::get('result') == 4){
+			$application->application_current_status_id = 9;
 			$application->result = false;
 		}
 		$application->note = Input::get('note');
 		$application->save();
-		// $int_visit_number = $application->applicationLog()->whereActionType(4)->orderBy('visit_number','desc');
-		// 	if($int_visit_number->count() > 0){
-		// 		$int_visit_number = $prev_int_visit_number->first()->send_number+1;
-		// 	}else{
-		// 		$int_visit_number = 1;
-		// 	}
+
 		$application->intOffSchedule()->whereAppCsId(4)->whereVisitNumber($visit_number)->delete();
 		DB::table('int_off_schedules')->insert(array(
 						'app_cs_id' => 4,
@@ -130,14 +137,27 @@ class RecruiterInterviewConfirmController extends \BaseController {
 						'datetime' => Input::get('date_time'),
 						'location' => Input::get('location')
 		));
+		$application->interviewEvaluation()->whereVisitNumber($visit_number)->delete();
 		$interviewers = Employee::whereIn('user_id', explode(',',Input::get('interviewer_ids')))->get();
 		foreach($interviewers as $interviewer){
 			DB::table('interview_evaluations')->insert(array(
 					'app_id' => $application->application_id,
 					'user_id' => $interviewer->user_id,
-					'visit_number' => $visit_number
+					'visit_number' => $visit_number,
+					'filepath_interview' => Input::hasFile('file'.$interviewer->user_id)?Input::file('file'.$interviewer->user_id)->getRealPath():NULL,
+					'score' => Input::get('score'.$interviewer->user_id)
 			));
 		}
+		DB::table('interview_logs')->insert(array(
+						'visit_number' => $visit_number,
+						'application_id' => $application->application_id,
+						'interview_datetime' => Input::get('date_time'),
+						'result' => Input::get('result'),
+						'note' => Input::get('note')
+		));
+		/**
+			Input::get('redirect1') AND Input::get('redirect2')
+		*/
 		return Response::json(array('success' => true));
 	}
 

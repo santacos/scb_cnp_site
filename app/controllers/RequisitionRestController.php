@@ -71,7 +71,7 @@ class RequisitionRestController extends \BaseController {
                         $ddd = Requisition::whereHas('requisitionLog', function($q){
                             $q->whereActionType(3)->whereSendNumber(1);
                         })->lists('requisition_id');
-                        if(!is_null($ddd))
+                        if(count($ddd) > 0)
                         {$req=$req->whereNotIn('requisition_id',$ddd);}
                     }
                    $req=$req->get();
@@ -108,7 +108,9 @@ class RequisitionRestController extends \BaseController {
                             $req_cur_stat_id = $model->requisitionCurrentStatus->requisition_current_status_id;
                             $SLA = $model->corporateTitle->group->SLARequisition()->whereRequisitionCsId($req_cur_stat_id)->first()->SLA;
                             $start_timestamp = $model->requisitionLog()->orderBy('action_datetime','desc');
-                            if($req_cur_stat_id == 4){
+                            if($req_cur_stat_id == 3){
+                                $start_timestamp = $start_timestamp->where('action_type','<>',3);
+                            }else if($req_cur_stat_id == 4){
                                 $start_timestamp = $start_timestamp->whereSendNumber(2);
                             }else if($req_cur_stat_id == 6){
                                 $start_timestamp = $start_timestamp->whereSendNumber(1);//orderBy('send_number','desc');
@@ -181,7 +183,10 @@ class RequisitionRestController extends \BaseController {
                         { return $model->employee()->first()->first.' '.$model->employee()->first()->last;
                         })
                     ->addColumn('Note',function($model)
-                        { return '<i class="fa fa-fw fa-envelope-o"></i>';
+                        {
+                            if(is_null($model->note) || strlen($model->note) == 0)
+                                return '';
+                            return '<i class="fa fa-fw fa-envelope-o"></i>';
                         });
                         if($user_id == 0)
                          {           $return=$return->addColumn('Action',function($model) { 
