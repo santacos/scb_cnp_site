@@ -82,7 +82,7 @@ thisIsTitle
                                         </table> -->
                                         {{  Datatable::table()
                                         ->addColumn( 
-                                'application_id', 
+                                'Application ID', 
                                 'Name',
                                 '%Related',
                                 'Point',

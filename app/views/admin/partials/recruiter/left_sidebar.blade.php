@@ -36,20 +36,20 @@
 
 
 		<li class="treeview">
-			<a href="#"> <i class="fa fa-fw fa-inbox"></i> <span>Requisition      <small class="badge bg-blue">15</small></span> <i class="fa fa-angle-left pull-right"></i> </a>
+			<a href="#"> <i class="fa fa-fw fa-inbox"></i> <span>Requisition      <small class="badge bg-blue">{{ Requisition::where('requisition_current_status_id', '=', 4)->count()+Requisition::where('requisition_current_status_id', '=', 5)->count()}}</small></span> <i class="fa fa-angle-left pull-right"></i> </a>
 			<ul class="treeview-menu">
 				<li>
 					<a href="{{ URL::to('morris') }}">
 						<i class="fa fa-fw fa-edit"></i> 
 						Post Job 
 						<!--number of post job-->
-						<small class="badge pull-right bg-yellow">5</small>
+						<small class="badge pull-right bg-yellow">{{ $a[0]=Requisition::where('requisition_current_status_id', '=', 4)->count()}}</small>
 					</a>
 				</li>
 				<li>
 					<a href="{{ URL::to('flot') }}">
 						<i class="ion ion-person-add"></i> Send Shortlist 
-						<small class="badge pull-right bg-red">10</small>
+						<small class="badge pull-right bg-red"> {{$a[1]=Requisition::where('requisition_current_status_id', '=', 5)->count()}}</small>
 					</a>
 				</li>
 				<li>
