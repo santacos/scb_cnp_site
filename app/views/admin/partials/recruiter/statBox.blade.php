@@ -52,7 +52,7 @@
 
 		<div class="col-lg-3 col-xs-6">
 			<!-- small box -->
-			<a href="#" class="small-box bg-red">
+			<a href="{{URL::to('recruiter-interview-confirm')}}" class="small-box bg-red">
 				<div class="inner">
 					<h3> Confirm <br>Interview </h3>
 				</div>

@@ -117,7 +117,7 @@ class HMApplicationReviewController extends \BaseController {
 						'application_id' => $application->application_id,
 						'datetime' => Input::get('date_time')
 		));
-		return Response::json(array('success' => true));
+		return View::make('HM.review.show')->with('requisition_id',$application->requisition_id);
 	}
 
 	/**
