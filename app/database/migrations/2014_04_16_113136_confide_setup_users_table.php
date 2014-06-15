@@ -379,7 +379,7 @@ class ConfideSetupUsersTable extends Migration {
             $table->float('score')->nullable()->default(NULL);
             $table->string('note',100)->nullable()->default(NULL);
             $table->string('filepath_interview',100)->nullable()->default(NULL);
-            $table->primary('application_id','employee_user_id','visit_number');
+            $table->primary(array('application_id','employee_user_id','visit_number'));
             $table->timestamps();
         });
           
