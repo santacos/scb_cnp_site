@@ -148,6 +148,9 @@ class RecruiterInterviewFeedbackController extends \BaseController {
 					'score' => Input::get('score'.$interviewer->user_id)
 			));
 		}
+		/**
+			Move File to some location before adding to database
+		*/
 		DB::table('interview_logs')->insert(array(
 						'visit_number' => $visit_number,
 						'application_id' => $application->application_id,
