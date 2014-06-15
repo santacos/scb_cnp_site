@@ -159,13 +159,13 @@ HM-create-requisition
                     {{ Form::input('number','year_of_experience', Input::old('qualification'), array('min'=>'0','max'=>'100','placeholder'=>'0','class' => 'form-control', 'id' => 'form', 'required')) }}
                 </div>
                  
-                <div class="form-group">
+                 <div class="form-group">
                     {{ Form::label('responsibility', 'Responsibilities :') }}
-                    {{ Form::text('responsibility', Input::old('responsibility'), array('class' => 'form-control', 'id' => 'form', 'required')) }}
+                    {{ Form::textarea('responsibility', Input::old('responsibility'), array('class' => 'ckeditor form-control', 'required')) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('qualification', 'Qualifications :') }}
-                    {{ Form::text('qualification', Input::old('qualification'), array('class' => 'form-control', 'id' => 'form','required')) }}
+                    {{ Form::textarea('qualification', Input::old('qualification'), array('class' => 'ckeditor form-control','required')) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('note', 'Note :') }}
@@ -189,5 +189,17 @@ HM-create-requisition
 
 @section('script')
     <script src="<?php echo asset('js/bootstrap-lightbox.js')?>"></script>
+        <script src="<?php echo asset('js/bootstrap-lightbox.js')?>"></script>
+    <script src="<?php echo asset('vendor/ckeditor/adapters/jquery.min.js')?>"></script>
+<script src="<?php echo asset('vendor/ckeditor/ckeditor.js')?>"></script>
+<script src="<?php echo asset('vendor/ckeditor/adapters/jquery_ckeditor.js')?>"></script>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+
+    $( '.ckeditor' ).ckeditor();
+
+  });
+  </script>
 @stop
 

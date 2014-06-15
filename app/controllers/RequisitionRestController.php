@@ -213,7 +213,7 @@ class RequisitionRestController extends \BaseController {
                                     }
                                     else if($model ->requisition_current_status_id == 6)
                                     {
-                                        return '<a href="' .URL::to('hm-application-review/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">See infomation (ยังไม่ได้ทำ)</button></a>';
+                                        return '<a href="' .URL::to('hm-application-review/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Select Candidate</button></a>';
                                     }
                                     else 
                                     {
@@ -236,7 +236,7 @@ class RequisitionRestController extends \BaseController {
                                     }
                                     else if($model ->requisition_current_status_id == 6)
                                     {
-                                        return '<a href="' .URL::to('hm-application-review/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">See infomation (ยังไม่ได้ทำ)</button></a>';
+                                        return '<a href="' .URL::to('hm-application-review/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Select Candidate</button></a>';
                                     }
                                     else 
                                     {
