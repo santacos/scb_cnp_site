@@ -22868,7 +22868,7 @@ $this->command->info('Table RecruitmentType Seeded');
        		$requisition = new Requisition;
 			$requisition->total_number=rand(1, 10);
 			$requisition->get_number=0;
-			$requisition->employee_user_id = User::where('username','=',(rand(1,2)==1)?('hiringmanager'.rand(1,4)):('hrbp'.rand(1,2)))->first()->user_id;
+			$requisition->employee_user_id = User::where('username','=',(rand(1,2)==1)?('hiringmanager'):('hrbp'.rand(1,2)))->first()->user_id;
 			$requisition->datetime_create = Carbon::now();
 			$requisition->location_id = 976;
 			$requisition->corporate_title_id = rand(1, 17);
