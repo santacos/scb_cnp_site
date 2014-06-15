@@ -77,31 +77,22 @@ thisIsTitle
                                
                                        <div style="overflow: auto;">
 
-                                        <table border="1">
-                                          <tr>
-                                            @if(count($requisitions) > 0)
-                                              @foreach($requisitions->first()->toArray() as $key => $value)
-                                                <th>{{ $key }}</th>
-                                              @endforeach
-                                              <th>Action</th>
-                                            @endif
-                                          </tr>
-                                          @if(count($requisitions) > 0)
-                                            @foreach($requisitions as $requisition)
-                                              <tr>
-                                                @foreach($requisition->toArray() as $key => $value)
-                                                  <td>
-                                                    {{ $value }}
-                                                  </td>
-                                                @endforeach
-                                                <td>
-                                                <a href={{"recruiter-interview-confirm/" . $requisition->requisition_id}}>View(popup)</a>
-                                                </td>
-                                              </tr>
-                                            @endforeach
-                                          @endif
-                                        </table>
-
+                                        
+                                          {{  Datatable::table()
+                                            ->addColumn( 'Requisition ID',
+                                                        'Job Title',
+                                                        'Corporate Title',
+                                                       'Location',
+                                                       'Requisition Status',
+                                                       'Waiting for confirm',
+                                                       'SLA',
+                                                       'Deadline',
+                                                       'From',
+                                                       'Note',
+                                                       'Action'
+                                                        )    
+                                            ->setUrl(URL::to('api/requisition/'.'3/'.'6'))
+                                            ->render('datatable') }}
                                       </div>
 
 

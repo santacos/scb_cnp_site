@@ -100,7 +100,8 @@ class RequisitionRestController extends \BaseController {
                             return '<input type="hidden" name="Language" value="'.$bin.'"><span class="label label-success">'.$model->requisitionCurrentStatus()->first()->name.'</span>';
                         })
                     ->addColumn('Require',function($model)
-                        { return $model->total_number;
+                        { 
+                            return $model->total_number;
                         })
                     ->addColumn('SLA',function($model)
                         { 
@@ -289,6 +290,16 @@ class RequisitionRestController extends \BaseController {
                                         '<a href="' .URL::to('recruiter-shortlist-candidate/' . $model->requisition_id).'"><button class="btn btn-danger btn-info">Application</button></a>'.'<br>'.
                                         '<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Basket</button></a>'.'  '.
                                         '<a href="' .URL::to('recruiter-shortlist-log/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Shortlist Sent</button></a>'
+                                                
+                                        ;
+                                    }
+                                    else if($model ->requisition_current_status_id == 6)
+                                    {
+                                        return
+                                        '<a href="' .URL::to('recruiter-interview-confirm/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Interview Confirm</button></a>'.'  '.  
+                                        '<a href="' .URL::to('recruiter-interview-feedback/' . $model->requisition_id).'"><button class="btn btn-danger btn-info">Interview Feedback(ยังไม่มี)</button></a>'.'<br>'.
+                                        '<a href="' .URL::to('recruiter-prepare-package/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Prepare Package(ยังไม่มี)</button></a>'.'  '.
+                                        '<a href="' .URL::to('recruiter-offer/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Offer(ยังไม่มี)</button></a>'
                                                 
                                         ;
                                     }
