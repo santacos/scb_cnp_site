@@ -290,19 +290,25 @@ class RequisitionRestController extends \BaseController {
                                     }
                                     else if($model ->requisition_current_status_id == 5)
                                     {
+                                         $app = Application::where('application_current_status_id', '=', 1)->where('is_in_basket','=','0')->where('requisition_id','=',$model->requisition_id)->count();
+                                        $basket = Application::where('application_current_status_id', '=', 1)->where('is_in_basket','=','1')->where('requisition_id','=',$model->requisition_id)->count();
+                                        $sent =  Application::where('application_current_status_id', '=', 2)->where('requisition_id','=',$model->requisition_id)->count();
                                         return
                                         '<a href="' .URL::to('recruiter-shortlist/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Detail</button></a>'.'  '.  
-                                        '<a href="' .URL::to('recruiter-shortlist-candidate/' . $model->requisition_id).'"><button class="btn btn-danger btn-info">Application</button></a>'.'<br>'.
-                                        '<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Basket</button></a>'.'  '.
-                                        '<a href="' .URL::to('recruiter-shortlist-log/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Shortlist Sent</button></a>'
+                                        '<a href="' .URL::to('recruiter-shortlist-candidate/' . $model->requisition_id).'"><button class="btn btn-danger btn-info">Application ('.$app.')</button></a>'.'<br>'.
+                                        '<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Basket ('.$basket.')</button></a>'.'  '.
+                                        '<a href="' .URL::to('recruiter-shortlist-log/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Shortlist Sent ('.$sent.')</button></a>'
                                                 
                                         ;
                                     }
                                     else if($model ->requisition_current_status_id == 6)
                                     {
+                                        $confirm = Application::where('application_current_status_id', '=', 3)->where('requisition_id','=',$model->requisition_id)->count();
+                                        $feed = Application::where('application_current_status_id', '=', 4)->where('requisition_id','=',$model->requisition_id)->count();
+                                       
                                         return
-                                        '<a href="' .URL::to('recruiter-interview-confirm/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Interview Confirm</button></a>'.'  '.  
-                                        '<a href="' .URL::to('recruiter-interview-feedback/' . $model->requisition_id).'"><button class="btn btn-danger btn-info">Interview Feedback(ยังไม่มี)</button></a>'.'<br>'.
+                                        '<a href="' .URL::to('recruiter-interview-confirm/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Interview Confirm ('.$confirm.')</button></a>'.'  '.  
+                                        '<a href="' .URL::to('recruiter-interview-feedback/' . $model->requisition_id).'"><button class="btn btn-danger btn-info">Interview Feedback ('.$feed.')</button></a>'.'<br>'.
                                         '<a href="' .URL::to('recruiter-prepare-package/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Prepare Package(ยังไม่มี)</button></a>'.'  '.
                                         '<a href="' .URL::to('recruiter-offer/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Offer(ยังไม่มี)</button></a>'
                                                 

@@ -138,7 +138,8 @@ class RecruiterInterviewConfirmController extends \BaseController {
 					'visit_number' => $visit_number
 			));
 		}
-		return Response::json(array('success' => true));
+		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(3)->get();
+		return View::make('recruiter.interview.confirm.show', compact('applications'));
 	}
 
 	/**

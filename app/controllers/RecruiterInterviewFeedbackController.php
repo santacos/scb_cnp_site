@@ -158,7 +158,8 @@ class RecruiterInterviewFeedbackController extends \BaseController {
 		/**
 			Input::get('redirect1') AND Input::get('redirect2')
 		*/
-		return Response::json(array('success' => true));
+		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(4)->get();
+		return View::make('recruiter.interview.feedback.show', compact('applications'));
 	}
 
 	/**
