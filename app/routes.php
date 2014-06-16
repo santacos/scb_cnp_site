@@ -231,7 +231,6 @@ Route::resource('hm-nl-requisition', 'HMNLRequisitionController');
 Route::controller('hrbp-officer','HRBPOfficerController');
 Route::resource('hrbp-officer','HRBPOfficerController');
 Route::resource('hrbp-officer-requisition', 'HRBPOfficerRequisitionController');
-Route::resource('hrbp-officer-confirm-package', 'HRBPOfficerPackageController');
 
 // HRBP Manager
 Route::controller('hrbp-manager','HRBPManagerController');

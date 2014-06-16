@@ -13,7 +13,7 @@ thisIsTitle
     <?php
       $display = array(
 'Requisition ID' => $requisition->requisition_id ,
-'Job Title' => '- to be edited by recruiter -' ,
+'Job Title' => $requisition->job_title ,
 'Total Number' => $requisition->total_number ,
 'Get Number' => $requisition->get_number ,
 'Employee (Hiring Manager)' => $requisition->employee->first . ' ' . $requisition->employee->last . ' (#'.$requisition->employee_user_id.')' ,
