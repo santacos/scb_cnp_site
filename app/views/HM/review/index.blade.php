@@ -35,7 +35,7 @@ thisIsTitle
                                     <!--table style "table-striped"-->
                                     <div class="box-body table-responsive no-padding">
                                         
-                                      <div style="overflow: auto;">
+                                      <div style="overflow: scroll;overflow-y:hidden;">
 <!-- 
                                         <table border="1">
                                           <tr>
