@@ -16,7 +16,7 @@ thisIsTitle
         <div class="box box-primary">
 
                     <div class="box-header">
-                        <h3 class="box-title"> Sent Shortlist Candidate..</h3>
+                        <h3 class="box-title"> HRBP Officer Confirm Package..</h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-primary btn-xs" data-widget="collapse">
                                 <i class="fa fa-minus"></i>

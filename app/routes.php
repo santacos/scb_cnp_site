@@ -231,11 +231,13 @@ Route::resource('hm-nl-requisition', 'HMNLRequisitionController');
 Route::controller('hrbp-officer','HRBPOfficerController');
 Route::resource('hrbp-officer','HRBPOfficerController');
 Route::resource('hrbp-officer-requisition', 'HRBPOfficerRequisitionController');
+Route::resource('hrbp-officer-confirm-package', 'HRBPOfficerPackageController');
 
 // HRBP Manager
 Route::controller('hrbp-manager','HRBPManagerController');
 Route::resource('hrbp-manager','HRBPManagerController');
 Route::resource('hrbp-manager-requisition', 'HRBPManagerRequisitionController');
+Route::resource('hrbp-manager-confirm-package', 'HRBPManagerPackageController');
 
 // Application
 Route::resource('application', 'ApplicationController');
@@ -259,7 +261,7 @@ Route::get('recruiter-interview-confirm-addInterviewer', function(){
     return View::make('recruiter.interview.confirm.addInterviewer');
 });
 Route::resource('recruiter-interview-feedback', 'RecruiterInterviewFeedbackController');
-Route::resource('recruiter-preapare-package', 'RecruiterPackageController');
+Route::resource('recruiter-prepare-package', 'RecruiterPackageController');
 
 // Candidate
 Route::resource('candidate', 'CandidateController');

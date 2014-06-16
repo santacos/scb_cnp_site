@@ -112,7 +112,7 @@ thisIsTitle
 
       <hr>
 
-      {{ Form::model($application, array('route' => array('recruiter-offering-package.update', $application->application_id), 'method' => 'PUT')) }}
+      {{ Form::model($application, array('route' => array('recruiter-prepare-package.update', $application->application_id), 'method' => 'PUT')) }}
         <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
           {{ Form::label('current_salary', 'Current Salary :') }}
           {{ Form::input('text', 'current_salary', Input::old('current_salary')) }}
