@@ -340,5 +340,9 @@ class RequisitionRestController extends \BaseController {
                         return $return;
             
         }
-	   
+	       public function getSendShortlist()
+        {
+                 $req=Requisition::where('employee_user_id','!=',0);
+
+        }   
 	}
