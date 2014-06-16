@@ -95,7 +95,7 @@ thisIsTitle
                                                   </td>
                                                 @endforeach
                                                 <td>
-                                                <a href={{"recruiter-offering-package/" . $requisition->requisition_id}}>View(popup)</a>
+                                                <a href={{"recruiter-prepare-package/" . $requisition->requisition_id}}>View(popup)</a>
                                                 </td>
                                               </tr>
                                             @endforeach

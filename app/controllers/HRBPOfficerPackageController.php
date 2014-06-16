@@ -1,6 +1,6 @@
 <?php
 
-class RecruiterOfferingPackageController extends \BaseController {
+class HRBPOfficerPackageController extends \BaseController {
 
 	/**
 	 * Display a listing of requisitions
@@ -13,9 +13,9 @@ class RecruiterOfferingPackageController extends \BaseController {
 			$q->whereApplicationCurrentStatusId(5);
 		})->get();
 		foreach($requisitions as $requisition) {
-			$requisition['waiting_for_preparing_package'] = $requisition->application()->whereApplicationCurrentStatusId(5)->count();
+			$requisition['waiting_for_comfirmation'] = $requisition->application()->whereApplicationCurrentStatusId(5)->count();
 		}
-		return View::make('recruiter.offering.package.index', compact('requisitions'));
+		return View::make('HRBPOfficer.package.index', compact('requisitions'));
 	}
 
 	/**
@@ -48,7 +48,7 @@ class RecruiterOfferingPackageController extends \BaseController {
 	public function show($id)
 	{
 		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(5)->get();
-		return View::make('recruiter.offering.package.show', compact('applications'));
+		return View::make('HRBPOfficer.package.show', compact('applications'));
 	}
 
 	/**
@@ -62,7 +62,7 @@ class RecruiterOfferingPackageController extends \BaseController {
 		$application = Application::find($id);
 		$requisition = $application->requisition;
 		$evaluations = $application->interviewLog()->orderBy('visit_number')->get();
-		return View::make('recruiter.offering.package.edit', compact('application'))->with('requisition',$requisition)->with('evaluations',$evaluations);
+		return View::make('HRBPOfficer.package.edit', compact('application'))->with('requisition',$requisition)->with('evaluations',$evaluations);
 	}
 
 	/**
