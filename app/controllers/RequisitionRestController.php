@@ -130,8 +130,12 @@ class RequisitionRestController extends \BaseController {
                             $holidays = PublicHoliday::all();
                             for($i=0; !$skip && $end_timestamp->diffInSeconds(Carbon::now(),false) >= 0; $i++){
                                 if($end_timestamp->toDateString() == Carbon::now()->toDateString()){
-                                    return '<input type="hidden" name="sla" value="'.sprintf("%06d",($SLA-$i)).'">'
-                                    . $i . " / " . $SLA;
+                                    return '<input id="table_row'.$model->requisition_id.'" type="hidden" name="sla" value="'.sprintf("%06d",($SLA-$i)).'">'
+                                    . $i . " / " . $SLA
+                                    .'<script>'
+                                    .'var row = document.getElementById("table_row'.$model->requisition_id.'").parentNode.parentNode;'
+                                    .'row.className = row.className+" danger";'
+                                    .'</script>';
                                 }
                                 $end_timestamp->addDays(1);
                                 if($end_timestamp->isWeekend()){

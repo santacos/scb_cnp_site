@@ -198,6 +198,22 @@ thisIsTitle
                     <div class="row">
                         <!-- accepted payments column -->
                         <div class="col-xs-6">
+                            <p class="lead">Result from HRBP Officer:</p>
+                            <p id="prevApprove" class="text-muted well well-sm no-shadow">
+                                <?php
+                                    $query = $requisition->requisitionLog()->whereActionType(3)->whereSendNumber(1)->first();
+                                    if(is_null($query)){
+                                        echo 'Not Approve Yet'
+                                        .'<script>document.getElementById("prevApprove").style.color = "blue";</script>';
+                                    }else if($query->result){
+                                        echo 'Accepted'
+                                        .'<script>document.getElementById("prevApprove").style.color = "green";</script>';
+                                    }else{
+                                        echo 'Decline'
+                                        .'<script>document.getElementById("prevApprove").style.color = "blue";</script>';
+                                    }
+                                ?>
+                            </p>
                             <p class="lead">Note from Employee (Hiring Manager):</p>
                             <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
                                 {{$requisition->note}}
