@@ -13,7 +13,7 @@ thisIsTitle
     <?php
       $display = array(
 'Requisition ID' => $requisition->requisition_id ,
-'Job Title' => '- to be edited by recruiter -' ,
+'Job Title' => $requisition->job_title ,
 'Total Number' => $requisition->total_number ,
 'Get Number' => $requisition->get_number ,
 'Employee (Hiring Manager)' => $requisition->employee->first . ' ' . $requisition->employee->last . ' (#'.$requisition->employee_user_id.')' ,
@@ -112,22 +112,22 @@ thisIsTitle
 
       <hr>
 
-      {{ Form::model($application, array('route' => array('recruiter-prepare-package.update', $application->application_id), 'method' => 'PUT')) }}
+      {{ Form::model($application, array('route' => array('hrbp-manager-confirm-package.update', $application->application_id), 'method' => 'PUT')) }}
         <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
           {{ Form::label('current_salary', 'Current Salary :') }}
-          {{ Form::input('text', 'current_salary', Input::old('current_salary')) }}
+          <span style="color:orange; font-size:20px;">{{ $application->current_salary }}</span>
         </div>
         <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
           {{ Form::label('expected_salary', 'Expected Salary :') }}
-          {{ Form::input('text', 'expected_salary', Input::old('expected_salary')) }}
+          <span style="color:orange; font-size:20px;">{{ $application->expected_salary }}</span>
         </div>
         <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
           {{ Form::label('position_salary', 'Position Salary :') }}
-          {{ Form::input('text', 'position_salary', Input::old('position_salary')) }}
+          <span style="color:orange; font-size:20px;">{{ $application->position_salary }}</span>
         </div>
         <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
           {{ Form::label('cola', 'Cost of Living Allowance (change to something??) :') }}
-          {{ Form::input('text', 'cola', Input::old('cola')) }}
+          <span style="color:orange; font-size:20px;">{{ $application->cola }}</span>
         </div>
         <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
           {{ Form::label('final_salary', 'Final Salary :') }}
@@ -137,6 +137,7 @@ thisIsTitle
           {{ Form::label('note', 'Note :') }}
           {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
         </div>
+        {{ Form::button('Decline', array('name' => 'approve', 'value' => false, 'type' => 'submit')) }}
         {{ Form::button('Accept', array('name' => 'approve', 'value' => true, 'type' => 'submit')) }}
       {{ Form::close() }}
     </center>

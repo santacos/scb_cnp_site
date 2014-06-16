@@ -48,7 +48,7 @@
 				</div>
 				
 				<div class="small-box-footer">
-					total job  <span class="label label-warnign" style="border-radius:50%;font-size:1.1em;">  {{Requisition::where('requisition_current_status_id', '=', 6)->count()}}</span> 
+					total job  <span class="label label-warning" style="border-radius:50%;font-size:1.1em;">  {{Requisition::where('requisition_current_status_id', '=', 6)->count()}}</span> 
 				</div>
 			</a>
 		</div><!-- ./col -->

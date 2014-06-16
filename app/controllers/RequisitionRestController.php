@@ -97,7 +97,17 @@ class RequisitionRestController extends \BaseController {
                     ->addColumn('requisition_current_status_id',function($model)
                         {   $bin = sprintf( "%020d",  $model->requisition_current_status_id );
                             $color = 'info';
-                            $usecolor = '';
+                            $usecolor='';
+                            if($model->requisition_current_status_id==2)//shortlist sent
+                            {   $color = 'success';
+                                $usecolor='';
+                            }
+                            if($model->requisition_current_status_id==3)//shortlist sent
+                            {   $color = '';
+                                $usecolor='aqua';
+                            }
+                           
+                            //recruiter
                             if($model->requisition_current_status_id==4)//post job
                             {   $color = '';
                                 $usecolor='aqua';
@@ -110,6 +120,11 @@ class RequisitionRestController extends \BaseController {
                             {   $color = 'warning';
                                 $usecolor='';
                             }
+                            if($model->requisition_current_status_id==7)//shortlist sent
+                            {   $color = 'default';
+                                $usecolor='';
+                            }
+
 
 
                             return '<input type="hidden" name="Language" value="'.$bin.'"><span class="label label-'.$color.' bg-'.$usecolor.'">'.$model->requisitionCurrentStatus()->first()->name.'</span>';
@@ -142,8 +157,12 @@ class RequisitionRestController extends \BaseController {
                             $holidays = PublicHoliday::all();
                             for($i=0; !$skip && $end_timestamp->diffInSeconds(Carbon::now(),false) >= 0; $i++){
                                 if($end_timestamp->toDateString() == Carbon::now()->toDateString()){
-                                    return '<input type="hidden" name="sla" value="'.sprintf("%06d",($SLA-$i)).'">'
-                                    . $i . " / " . $SLA;
+                                    return '<input id="table_row'.$model->requisition_id.'" type="hidden" name="sla" value="'.sprintf("%06d",($SLA-$i)).'">'
+                                    . $i . " / " . $SLA
+                                    .'<script>'
+                                    .'var row = document.getElementById("table_row'.$model->requisition_id.'").parentNode.parentNode;'
+                                    .'row.className = row.className+" danger";'
+                                    .'</script>';
                                 }
                                 $end_timestamp->addDays(1);
                                 if($end_timestamp->isWeekend()){
