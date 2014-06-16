@@ -14,7 +14,7 @@
             @elseif ($c == 'Requisition ID')
                  width="5%"       
             @elseif ($c == 'Job Title')
-                 width="10%"   
+                 width="15%"   
             @elseif ($c == 'Corporate Title')
                  width="10%"
             @elseif ($c == 'Location')
@@ -24,15 +24,15 @@
             @elseif ($c == 'Require')
                  width="5%"
             @elseif ($c == 'SLA')
-                 width="10%"
+                 width="8%"
             @elseif ($c == 'Deadline')
-                 width="10%"
+                 width="12%"
             @elseif ($c == 'From')
                  width="10%"
             @elseif ($c == 'Note')
                  width="5%"
             @elseif ($c == 'Action')
-                 width="15%"                           
+                 width="10%"                           
             @endif
         >
             @if ($c == 'checkbox' && $hasCheckboxes = true)

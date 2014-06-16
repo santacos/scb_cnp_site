@@ -276,10 +276,18 @@ class RequisitionRestController extends \BaseController {
                                     }
                                     else if($model ->requisition_current_status_id == 6)
                                     {
-                                        return  '<a href="' .URL::to('recruiter-shortlist/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Detail</button></a>'.'  '.
-                                        '<a href="' .URL::to('hm-application-review/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Select Candidate</button></a>';
+                                        // return  '<a href="' .URL::to('recruiter-shortlist/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Detail</button></a>'.'  '.
+                                        // '<a href="' .URL::to('hm-application-review/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Select Candidate</button></a>';
+                                        return  '<div class="btn-group-vertical">
+                                                    <a href="' .URL::to('hm-application-review/' . $model->requisition_id). '" type="button" class="btn btn-sm btn-default">
+                                                        Select Candidate
+                                                    </a>
+                                                    <a href="' .URL::to('recruiter-shortlist/' . $model->requisition_id).'" type="button" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-fw fa-info-circle"></i>Detail
+                                                    </a>
+                                                </div>';
                                     }
-                                    else 
+                                    else        
                                     {
                                       return '';
                                     }
