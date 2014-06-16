@@ -261,6 +261,8 @@ Route::get('recruiter-interview-confirm-addInterviewer', function(){
 });
 Route::resource('recruiter-interview-feedback', 'RecruiterInterviewFeedbackController');
 Route::resource('recruiter-prepare-package', 'RecruiterPackageController');
+Route::resource('recruiter-offer-package', 'RecruiterOfferPackageController');
+Route::resource('recruiter-sign', 'RecruiterSignController');
 
 // Candidate
 Route::resource('candidate', 'CandidateController');
