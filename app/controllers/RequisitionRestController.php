@@ -100,7 +100,23 @@ class RequisitionRestController extends \BaseController {
                         })
                     ->addColumn('requisition_current_status_id',function($model)
                         {   $bin = sprintf( "%020d",  $model->requisition_current_status_id );
-                            return '<input type="hidden" name="Language" value="'.$bin.'"><span class="label label-success">'.$model->requisitionCurrentStatus()->first()->name.'</span>';
+                            $color = 'info';
+
+                            if($model->requisition_current_status_id==4)//post job
+                            {   $color = '';
+                                $usecolor='aqua';
+                            }
+                            if($model->requisition_current_status_id==5)//send shortlist
+                            {   $color = 'success';
+                                $usecolor='';
+                            }
+                            if($model->requisition_current_status_id==6)//shortlist sent
+                            {   $color = 'warning';
+                                $usecolor='';
+                            }
+
+
+                            return '<input type="hidden" name="Language" value="'.$bin.'"><span class="label label-'.$color.' bg-'.$usecolor.'">'.$model->requisitionCurrentStatus()->first()->name.'</span>';
                         })
                     ->addColumn('Require',function($model)
                         { 
