@@ -34,7 +34,10 @@ class RequisitionRestController extends \BaseController {
                     if($status_id1!='' && $status_id1!=0)
                     {
                         $req=$req->where('requisition_current_status_id','=',$status_id1);
-                         
+                         if($status_id1==5)
+                            {$req=$req->whereHas('application', function($q) {
+                                      $q->whereApplicationCurrentStatusId(1);
+                         });}
                     }
                     if($status_id2!='' && $status_id2!=0)
                     {
@@ -278,7 +281,7 @@ class RequisitionRestController extends \BaseController {
                                     {
                                       return '';
                                     }
-                                });
+                                }); 
 
                         }
                          else if($user_id==3)
@@ -305,11 +308,11 @@ class RequisitionRestController extends \BaseController {
                                     {
                                         $confirm = Application::where('application_current_status_id', '=', 3)->where('requisition_id','=',$model->requisition_id)->count();
                                         $feed = Application::where('application_current_status_id', '=', 4)->where('requisition_id','=',$model->requisition_id)->count();
-                                       
+                                       $prepare = Application::where('application_current_status_id', '=', 5)->where('requisition_id','=',$model->requisition_id)->count();
                                         return
                                         '<a href="' .URL::to('recruiter-interview-confirm/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Interview Confirm ('.$confirm.')</button></a>'.'  '.  
                                         '<a href="' .URL::to('recruiter-interview-feedback/' . $model->requisition_id).'"><button class="btn btn-danger btn-info">Interview Feedback ('.$feed.')</button></a>'.'<br>'.
-                                        '<a href="' .URL::to('recruiter-prepare-package/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Prepare Package(ยังไม่มี)</button></a>'.'  '.
+                                        '<a href="' .URL::to('recruiter-prepare-package/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Prepare Package ('.$prepare.')</button></a>'.'  '.
                                         '<a href="' .URL::to('recruiter-offer/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Offer(ยังไม่มี)</button></a>'
                                                 
                                         ;
