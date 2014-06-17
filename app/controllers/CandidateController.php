@@ -12,7 +12,7 @@ class CandidateController extends \BaseController {
 		$candidate = Candidate::find(Auth::user()->user_id);
 		return View::make('user.homeprofile', array( 'candidate'=> $candidate));
 	}
-	public function getJobDetail($id)
+	public function getJobdetail($id)
 	{
 		return View::make('user.jobDetail')->with('requisition',Requisition::find($id));
 	}

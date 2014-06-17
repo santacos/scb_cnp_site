@@ -259,7 +259,7 @@ SCB Recruitment-Home
 												<div class="row">
 													<div class="col col-md-6">
 														<p><strong>Job title :</strong><!--edit-->Programmer
-														<br><strong>Time period</strong><!--edit-->2009 - 2011
+														<br><strong>Time period :</strong><!--edit-->2009 - 2011
 														</p>
 													</div>
 													<div class="col col-md-6">
@@ -356,21 +356,27 @@ SCB Recruitment-Home
 								<div class="row">
 						  			<div class="col col-md-12">
 										<div class="content-block frame border-radius" style="padding:5px;">
+											@foreach($candidate->Education()->orderBy('education_degree_id', 'DESC')->get() as $education)
 											<div class="row">
 												<div class="col col-md-3">
-													<p><strong>2000 - 2004 </strong><!--edit-->
+													<p><strong>
+														@if($education->year_start!='')
+														{{$education->year_start}} - {{$education->year_end}}
+														@endif
+
+													</strong><!--edit-->
 													
 													</p>
 												</div>
 												<div class="col col-md-9">
-													<strong>Chulalongkorn university</strong><!--edit-->
-													<br><!--edit-->Degree : Bachelor
-													<br><!--edit-->Field of study : Faculty of Science and Technology
-													<br><!--edit-->Major : Information Technology
-													<br><!--edit-->GPA : 4.00
+													<strong>{{$education->school_name}}</strong><!--edit-->
+													<br><!--edit-->Degree : {{$education->educationDegree()->first()->name}}
+													<br><!--edit-->Field of study : {{$education->field_of_study}}
+													<br><!--edit-->Major : {{$education->major}}
+													<br><!--edit-->GPA : {{$education->GPA}}
 												</div>
 											</div>
-											
+											@endforeach
 											
 										</div>
 									</div>

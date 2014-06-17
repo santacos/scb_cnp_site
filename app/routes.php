@@ -21,13 +21,16 @@ Route::get('testtest',function(){
 
 //////////////////// test area/////////////////////////////
 
-Route::get('cd',function(){
-    return View::make('user.homeprofile');
-});
-Route::get('cd/home',function(){
-    return View::make('user.home');
-});
+// Route::get('cd',function(){
+//     return View::make('user.homeprofile');
+// });
+// Route::get('cd/home',function(){
+//     return View::make('user.home');
+// });
 
+// Candidate
+Route::resource('cd', 'CandidateController');
+Route::controller('cd', 'CandidateController');
 Route::get('cd/profile',function(){
     return View::make('user.profile');
 });
@@ -264,9 +267,6 @@ Route::resource('recruiter-prepare-package', 'RecruiterPackageController');
 Route::resource('recruiter-offer-package', 'RecruiterOfferPackageController');
 Route::resource('recruiter-sign', 'RecruiterSignController');
 
-// Candidate
-Route::resource('candidate', 'CandidateController');
-Route::controller('candidate', 'CandidateController');
 /*App::missing(function($exception)
 {
    return View::make('user.home');
