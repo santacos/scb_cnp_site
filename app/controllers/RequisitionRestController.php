@@ -157,11 +157,12 @@ class RequisitionRestController extends \BaseController {
                             $holidays = PublicHoliday::all();
                             for($i=0; !$skip && $end_timestamp->diffInSeconds(Carbon::now(),false) >= 0; $i++){
                                 if($end_timestamp->toDateString() == Carbon::now()->toDateString()){
-                                    return '<input id="table_row'.$model->requisition_id.'" type="hidden" name="sla" value="'.sprintf("%06d",($SLA-$i)).'">'
+                                    $day_left = $SLA-$i;
+                                    return '<input id="table_row'.$model->requisition_id.'" type="hidden" name="sla" value="'.sprintf("%06d",$day_left).'">'
                                     . $i . " / " . $SLA
                                     .'<script>'
                                     .'var row = document.getElementById("table_row'.$model->requisition_id.'").parentNode.parentNode;'
-                                    .'row.className = row.className+" danger";'
+                                    .'row.className = row.className+" ' . ($day_left > 3?'':$day_left > 0?'warning':'danger') . '";'
                                     .'</script>';
                                 }
                                 $end_timestamp->addDays(1);
@@ -276,10 +277,18 @@ class RequisitionRestController extends \BaseController {
                                     }
                                     else if($model ->requisition_current_status_id == 6)
                                     {
-                                        return  '<a href="' .URL::to('recruiter-shortlist/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Detail</button></a>'.'  '.
-                                        '<a href="' .URL::to('hm-application-review/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Select Candidate</button></a>';
+                                        // return  '<a href="' .URL::to('recruiter-shortlist/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Detail</button></a>'.'  '.
+                                        // '<a href="' .URL::to('hm-application-review/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Select Candidate</button></a>';
+                                        return  '<div class="btn-group-vertical">
+                                                    <a href="' .URL::to('hm-application-review/' . $model->requisition_id). '" type="button" class="btn btn-sm btn-default">
+                                                        Select Candidate
+                                                    </a>
+                                                    <a href="' .URL::to('recruiter-shortlist/' . $model->requisition_id).'" type="button" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-fw fa-info-circle"></i>Detail
+                                                    </a>
+                                                </div>';
                                     }
-                                    else 
+                                    else        
                                     {
                                       return '';
                                     }

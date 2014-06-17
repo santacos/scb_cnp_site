@@ -1,6 +1,6 @@
 <?php
 
-class HRBPManagerPackageController extends \BaseController {
+class RecruiterOfferPackageController extends \BaseController {
 
 	/**
 	 * Display a listing of requisitions
@@ -10,12 +10,12 @@ class HRBPManagerPackageController extends \BaseController {
 	public function index()
 	{
 		$requisitions = Requisition::whereHas('application', function($q) {
-			$q->whereApplicationCurrentStatusId(6);
+			$q->whereApplicationCurrentStatusId(7);
 		})->get();
 		foreach($requisitions as $requisition) {
-			$requisition['waiting_for_comfirmation'] = $requisition->application()->whereApplicationCurrentStatusId(6)->count();
+			$requisition['waiting_for_offering'] = $requisition->application()->whereApplicationCurrentStatusId(7)->count();
 		}
-		return View::make('HRBPManager.package.index', compact('requisitions'));
+		return View::make('recruiter.offering.offer.index', compact('requisitions'));
 	}
 
 	/**
@@ -47,8 +47,8 @@ class HRBPManagerPackageController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(6)->get();
-		return View::make('HRBPManager.package.show', compact('applications'));
+		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(7)->get();
+		return View::make('recruiter.offering.offer.show', compact('applications'));
 	}
 
 	/**
@@ -61,8 +61,7 @@ class HRBPManagerPackageController extends \BaseController {
 	{
 		$application = Application::find($id);
 		$requisition = $application->requisition;
-		$evaluations = $application->interviewLog()->orderBy('visit_number')->get();
-		return View::make('HRBPManager.package.edit', compact('application'))->with('requisition',$requisition)->with('evaluations',$evaluations);
+		return View::make('recruiter.offering.offer.edit', compact('application'))->with('requisition',$requisition);
 	}
 
 	/**
@@ -89,7 +88,7 @@ class HRBPManagerPackageController extends \BaseController {
 				$prev_action_datetime = $prev_action->action_datetime;
 			}
 			DB::table('application_logs')->insert(array(
-							'action_type' => 6,
+							'action_type' => 7,
 							'application_id' => $application->application_id,
 							'visit_number' => $visit_number,
 							'employee_user_id' => Employee::first()->user_id,
@@ -102,7 +101,7 @@ class HRBPManagerPackageController extends \BaseController {
 							'note' => Input::get('note')
 			));
 		$application->final_salary = Input::get('final_salary');
-		$application->application_current_status_id = Input::get('approve')?7:9;
+		$application->application_current_status_id = Input::get('approve')?8:9;
 		$application->note = Input::get('note');
 		$application->save();
 		

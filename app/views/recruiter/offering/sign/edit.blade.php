@@ -85,58 +85,12 @@ thisIsTitle
 
       <hr>
 
-      <table border="1">
-        <tr>
-          @if(count($evaluations) > 0)
-            @foreach($evaluations->first()->toArray() as $key => $value)
-              <th>{{ $key }}</th>
-            @endforeach
-            <th>Action</th>
-          @endif
-        </tr>
-        @if(count($evaluations) > 0)
-          @foreach($evaluations as $evaluation)
-            <tr>
-              @foreach($evaluation->toArray() as $key => $value)
-                <td>
-                  {{ $value }}
-                </td>
-              @endforeach
-              <td>
-              <a href={{"recruiter-interview-confirm/" . $requisition->requisition_id}}>View(Not Finished Yet)</a>
-              </td>
-            </tr>
-          @endforeach
-        @endif
-      </table>
-
-      <hr>
-
-      {{ Form::model($application, array('route' => array('recruiter-prepare-package.update', $application->application_id), 'method' => 'PUT')) }}
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('current_salary', 'Current Salary :') }}
-          {{ Form::input('text', 'current_salary', Input::old('current_salary')) }}
-        </div>
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('expected_salary', 'Expected Salary :') }}
-          {{ Form::input('text', 'expected_salary', Input::old('expected_salary')) }}
-        </div>
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('position_salary', 'Position Salary :') }}
-          {{ Form::input('text', 'position_salary', Input::old('position_salary')) }}
-        </div>
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('cola', 'Cost of Living Allowance (change to something??) :') }}
-          {{ Form::input('text', 'cola', Input::old('cola')) }}
-        </div>
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('final_salary', 'Max Final Salary :') }}
-          {{ Form::input('text', 'final_salary', Input::old('final_salary')) }}
-        </div>
+      {{ Form::model($application, array('route' => array('recruiter-offer-package.update', $application->application_id), 'method' => 'PUT')) }}
         <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
           {{ Form::label('note', 'Note :') }}
           {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
         </div>
+        {{ Form::button('Decline', array('name' => 'approve', 'value' => false, 'type' => 'submit')) }}
         {{ Form::button('Accept', array('name' => 'approve', 'value' => true, 'type' => 'submit')) }}
       {{ Form::close() }}
     </center>

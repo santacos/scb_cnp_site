@@ -1,4 +1,4 @@
-@extends('admin.layouts.main.hm')
+@extends('admin.layouts.default')
 @section('title')
 thisIsTitle
 @stop
@@ -16,7 +16,7 @@ thisIsTitle
         <div class="box box-primary">
 
                     <div class="box-header">
-                        <h3 class="box-title"> Review Candidate..</h3>
+                        <h3 class="box-title"> Offer..</h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-primary btn-xs" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -35,43 +35,32 @@ thisIsTitle
                                     <!--table style "table-striped"-->
                                     <div class="box-body table-responsive no-padding">
                                         
-                                      <div style="overflow: scroll;overflow-y:hidden;">
-<!-- 
+                                      <div style="overflow: auto;">
+
                                         <table border="1">
                                           <tr>
-                                            @if(count($requisitions) > 0)
-                                              @foreach($requisitions->first()->toArray() as $key => $value)
+                                            @if(count($applications) > 0)
+                                              @foreach($applications->first()->toArray() as $key => $value)
                                                 <th>{{ $key }}</th>
                                               @endforeach
+                                              <th>Action</th>
                                             @endif
                                           </tr>
-                                          @if(count($requisitions) > 0)
-                                            @foreach($requisitions as $requisition)
+                                          @if(count($applications) > 0)
+                                            @foreach($applications as $application)
                                               <tr>
-                                                @foreach($requisition->toArray() as $key => $value)
+                                                @foreach($application->toArray() as $key => $value)
                                                   <td>
                                                     {{ $value }}
                                                   </td>
                                                 @endforeach
+                                                <td>
+                                                <a href={{ $application->application_id . "/edit" }}>View(popup)</a>
+                                                </td>
                                               </tr>
                                             @endforeach
                                           @endif
-                                        </table> -->
-                        {{  Datatable::table()
-                            ->addColumn( 'Requisition ID',
-                                        'Job Title',
-                                        'Corporate Title',
-                                       'Location',
-                                       'Requisition Status',
-                                       'Require',
-                                       'SLA',
-                                       'Deadline',
-                                       'From',
-                                       'Note',
-                                       'Action'
-                                        )    
-                            ->setUrl(URL::to('api/requisition/'.'1/'.'6'))
-                            ->render('datatable') }}
+                                        </table>
                                       </div>
     
                                     </div><!-- /.box-body -->
