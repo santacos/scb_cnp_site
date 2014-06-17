@@ -136,6 +136,8 @@ SCB Recruitment-Home
 			</div>
 			<!--end recommend box-->
 
+		
+
 			<!-- profile-->
 			<div class="row">
 
@@ -249,8 +251,7 @@ SCB Recruitment-Home
 								<h3 class="panel-title">Work Experience</h3>
 							  </div>
 							  <div class="panel-body">
-							  				@foreach($candidate->workExperience()->orderBy('time_period_start', 'ASC')->get() as $work_experience)
-
+							  		@foreach($candidate->workExperience()->orderBy('time_period_start', 'ASC')->get() as $work_experience)
 									<div class="row">
 							  			<div class="col col-md-12">
 											<div class="content-block frame border-radius" style="padding:5px;">
@@ -288,6 +289,136 @@ SCB Recruitment-Home
 									</div><!--end first row for Work Experience-->
 									<br>
 									@endforeach
+
+									<!-- <div class="row">
+										<div class="col col-md-12"> -->
+											<div class="carousel-box bottom-padding bottom-padding-mini load">
+											  	<div class="clearfix"></div>
+											  
+											  	<div class="row">
+													<div class="carousel">
+													  <div class="col-sm-6 col-md-6">
+														<!-- <div class="default"> -->
+														  	<!--data here-->
+															<div class="content-block frame border-radius" style="padding:5px;">
+																<div class="row">
+																	<div class="col col-md-6">
+																		<p><strong>Job title : </strong><!--edit-->work_experience->position
+																		<br><strong>Time period : </strong><!--edit-->
+																				ertryrtrey
+																		</p>
+																	</div>
+																	<div class="col col-md-6">
+																		<strong>Company name : </strong><!--edit-->dsfdsg
+																		<br><strong>Location : </strong><!--edit-->gfdgfgfhgfhgf
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="col col-md-12">
+																		<strong>Job Achievement(s) : </strong> 
+																		fsgfghgfjhgjg
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="col col-md-12">
+																		<strong>Reasons for Leaving a Job : </strong> 
+																		gfdhgtjy
+																	</div>
+																</div>
+																
+															<!-- </div> -->
+															<!--end edit data-->
+															</div>
+														
+													  </div><!-- .employee-->
+													   <div class="col-sm-6 col-md-6">
+														<!-- <div class="default"> -->
+														  	<!--data here-->
+															<div class="content-block frame border-radius" style="padding:5px;">
+																<div class="row">
+																	<div class="col col-md-6">
+																		<p><strong>Job title : </strong><!--edit-->work_experience->position
+																		<br><strong>Time period : </strong><!--edit-->
+																				ertryrtrey
+																		</p>
+																	</div>
+																	<div class="col col-md-6">
+																		<strong>Company name : </strong><!--edit-->dsfdsg
+																		<br><strong>Location : </strong><!--edit-->gfdgfgfhgfhgf
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="col col-md-12">
+																		<strong>Job Achievement(s) : </strong> 
+																		fsgfghgfjhgjg
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="col col-md-12">
+																		<strong>Reasons for Leaving a Job : </strong> 
+																		gfdhgtjy
+																	</div>
+																</div>
+																
+															<!-- </div> -->
+															<!--end edit data-->
+															</div>
+														
+													  </div><!-- .employee-->
+													   <div class="col-sm-6 col-md-6">
+														<!-- <div class="default"> -->
+														  	<!--data here-->
+															<div class="content-block frame border-radius" style="padding:5px;">
+																<div class="row">
+																	<div class="col col-md-6">
+																		<p><strong>Job title : </strong><!--edit-->work_experience->position
+																		<br><strong>Time period : </strong><!--edit-->
+																				ertryrtrey
+																		</p>
+																	</div>
+																	<div class="col col-md-6">
+																		<strong>Company name : </strong><!--edit-->dsfdsg
+																		<br><strong>Location : </strong><!--edit-->gfdgfgfhgfhgf
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="col col-md-12">
+																		<strong>Job Achievement(s) : </strong> 
+																		fsgfghgfjhgjg
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="col col-md-12">
+																		<strong>Reasons for Leaving a Job : </strong> 
+																		gfdhgtjy
+																	</div>
+																</div>
+																
+															<!-- </div> -->
+															<!--end edit data-->
+															</div>
+														
+													  	</div><!-- .employee-->
+													  
+													</div><!--slider-->
+											  	</div>
+											  	<!--insert pagination-->
+											  	<div class="title-box no-margin">
+													<a class="next" href="#">
+													  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="9px" height="16px" viewBox="0 0 9 16" enable-background="new 0 0 9 16" xml:space="preserve">
+														<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#fcfcfc" points="1,0.001 0,1.001 7,8 0,14.999 1,15.999 9,8 "></polygon>
+													  </svg>
+													</a>
+													<a class="prev" href="#">
+													  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="9px" height="16px" viewBox="0 0 9 16" enable-background="new 0 0 9 16" xml:space="preserve">
+														<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#fcfcfc" points="8,15.999 9,14.999 2,8 9,1.001 8,0.001 0,8 "></polygon>
+													  </svg>
+													</a>
+											  	</div>
+											  	<!--end-->
+											</div>
+										<!-- </div>
+									</div> -->
 							  </div>
 							</div>
 				  		</div>
