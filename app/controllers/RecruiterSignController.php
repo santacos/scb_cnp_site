@@ -125,24 +125,23 @@ class RecruiterSignController extends \BaseController {
 		}else{
 			$prev_action_datetime = $prev_action->action_datetime;
 		}
-		DB::table('requisition_logs')->insert(array(
-						'action_type' => 6,
-						'requisition_id' => $requisition->requisition_id,
-						'send_number' => 1,
-						'employee_user_id' => Employee::first()->user_id,
-						/**
-						change 'employee_user_id' to real employee id
-						*/
-						'action_datetime' => $timestamp,
-						'prev_action_datetime' => $prev_action_datetime,
-						'result' => Input::get('approve'),
-						'note' => Input::get('note')
-		));
-
 		if($current >= $require){
+			DB::table('requisition_logs')->insert(array(
+							'action_type' => 6,
+							'requisition_id' => $requisition->requisition_id,
+							'send_number' => 1,
+							'employee_user_id' => Employee::first()->user_id,
+							/**
+							change 'employee_user_id' to real employee id
+							*/
+							'action_datetime' => $timestamp,
+							'prev_action_datetime' => $prev_action_datetime,
+							'result' => Input::get('approve'),
+							'note' => Input::get('note')
+			));
 			$application->requisition->requisition_current_status_id = 7;
-			$starttime = Carbon::createFromFormat('Y-m-d H:i:s',$application->requisition->requisitionLog()->whereRequisitionCurrentStatus(3)->whereSendNumber(2)->first()->action_datetime);
-			$endtime = Carbon::createFromFormat('Y-m-d H:i:s',$application->requisition->requisitionLog()->whereRequisitionCurrentStatus(6)->whereSendNumber(1)->first()->action_datetime);
+			$starttime = Carbon::createFromFormat('Y-m-d H:i:s',$application->requisition->requisitionLog()->whereActionType(3)->whereSendNumber(2)->first()->action_datetime);
+			$endtime = Carbon::createFromFormat('Y-m-d H:i:s',$application->requisition->requisitionLog()->whereActionType(6)->whereSendNumber(1)->first()->action_datetime);
 			/**
 				Subtract Holidays And Weekends
 			*/
