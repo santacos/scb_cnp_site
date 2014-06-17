@@ -87,7 +87,7 @@ class RecruiterShortlistLogController extends \BaseController {
 								change 'employee_user_id' to real employee id
 								*/
 								'action_datetime' => $timestamp,
-								'prev_action_datetime' => $prev_action_datetime,
+								'prev_action_datetime' => $application->requisition->requisitionLog()->whereActionType(3)->whereSendNumber(2)->first()->action_datetime,
 								'result' => true,
 								'note' => Input::get('note')
 				));

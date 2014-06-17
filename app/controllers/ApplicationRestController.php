@@ -144,7 +144,7 @@ class ApplicationRestController extends \BaseController {
                                     . $i . " / " . $SLA
                                     .'<script>'
                                     .'var row = document.getElementById("table_row'.$model->application_id.'").parentNode.parentNode;'
-                                    .'row.className = row.className+" ' . ($day_left > 3?'':$day_left > 0?'warning':'danger') . '";'
+                                    .'row.className = row.className+" ' . ($day_left > 3?'':($day_left > 0?'warning':'danger')) . '";'
                                     .'</script>';
                                 }
                                 $end_timestamp->addDays(1);
