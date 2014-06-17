@@ -8,7 +8,7 @@
 		);
 		protected $primaryKey = 'education_degree_id';
 
-		public function requisition(){
-			return $this->hasMany('Education','education_degree_id','education_degree_id');
+		public function education(){
+			return $this->hasMany('Education','education_id','education_id');
 		}
 	}
