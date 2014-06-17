@@ -11,7 +11,7 @@ class RecruiterInterviewFeedbackController extends \BaseController {
 	{
 		$requisitions = Requisition::whereHas('application', function($q) {
 			$q->whereApplicationCurrentStatusId(4);
-		})->get();
+		})->where('requisition_current_status_id','=',6)->get();
 		foreach($requisitions as $requisition) {
 			$requisition['waiting_for_feedback'] = $requisition->application()->whereApplicationCurrentStatusId(4)->count();
 		}
@@ -48,7 +48,7 @@ class RecruiterInterviewFeedbackController extends \BaseController {
 	public function show($id)
 	{
 		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(4)->get();
-		return View::make('recruiter.interview.feedback.show', compact('applications'));
+		return View::make('recruiter.interview.feedback.show', compact('applications'))->with('requisition_id',$id);
 	}
 
 	/**
@@ -161,8 +161,8 @@ class RecruiterInterviewFeedbackController extends \BaseController {
 		/**
 			Input::get('redirect1') AND Input::get('redirect2')
 		*/
-		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(4)->get();
-		return View::make('recruiter.interview.feedback.show', compact('applications'));
+		$applications = Requisition::find($application->requisition_id)->application()->whereApplicationCurrentStatusId(4)->get();
+		return View::make('recruiter.interview.feedback.show', compact('applications'))->with('requisition_id',$application->requisition_id);
 	}
 
 	/**

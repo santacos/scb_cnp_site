@@ -11,7 +11,7 @@ class RecruiterOfferPackageController extends \BaseController {
 	{
 		$requisitions = Requisition::whereHas('application', function($q) {
 			$q->whereApplicationCurrentStatusId(7);
-		})->get();
+		})->where('requisition_current_status_id','=',6)->get();
 		foreach($requisitions as $requisition) {
 			$requisition['waiting_for_offering'] = $requisition->application()->whereApplicationCurrentStatusId(7)->count();
 		}
@@ -48,7 +48,7 @@ class RecruiterOfferPackageController extends \BaseController {
 	public function show($id)
 	{
 		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(7)->get();
-		return View::make('recruiter.offering.offer.show', compact('applications'));
+		return View::make('recruiter.offering.offer.show', compact('applications'))->with('requisition_id',$id);
 	}
 
 	/**
@@ -105,7 +105,8 @@ class RecruiterOfferPackageController extends \BaseController {
 		$application->note = Input::get('note');
 		$application->save();
 		
-		return Response::json(array('success' => true));
+		$applications = Requisition::find($application->requisition_id)->application()->whereApplicationCurrentStatusId(4)->get();
+		return View::make('recruiter.offering.offer.show', compact('applications'))->with('requisition_id',$application->requisition_id);
 	}
 
 	/**

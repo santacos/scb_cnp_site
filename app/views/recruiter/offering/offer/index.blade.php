@@ -101,7 +101,21 @@ thisIsTitle
                                             @endforeach
                                           @endif
                                         </table>
-
+                                         {{  Datatable::table()
+                                            ->addColumn( 'Requisition ID',
+                                                        'Job Title',
+                                                        'Corporate Title',
+                                                       'Location',
+                                                       'Requisition Status',
+                                                       'Require',
+                                                       'SLA',
+                                                       'Deadline',
+                                                       'From',
+                                                       'Note',
+                                                       'Action'
+                                                        )    
+                                            ->setUrl(URL::to('api/requisition/'.'3/7/'.'6'))
+                                            ->render('datatable') }}
                                       </div>
 
 

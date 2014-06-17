@@ -11,7 +11,7 @@ class HMApplicationReviewController extends \BaseController {
 	{
 		$requisitions = Requisition::whereHas('application', function($q) {
 			$q->whereApplicationCurrentStatusId(2);
-		})->get();
+		})->where('requisition_current_status_id','=',6)->get();
 		foreach($requisitions as $requisition) {
 			$requisition['waiting_for_review'] = $requisition->application()->whereApplicationCurrentStatusId(2)->count();
 			$requisition['reviewed'] = $requisition->application()->where('application_current_status_id', '>', 2)->count();

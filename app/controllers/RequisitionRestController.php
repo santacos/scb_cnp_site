@@ -25,12 +25,12 @@ class RequisitionRestController extends \BaseController {
 			$locations = Location::All()->toJson();
 			return $locations;
 		}
-        public function getRequisitionDatatable($user_id='',$status_id1='',$status_id2='',$status_id3='',$status_id4='',$status_id5='',$status_id6='',$status_id7='')
+        public function getRequisitionDatatable($user_id='',$app_status='',$status_id1='',$status_id2='',$status_id3='',$status_id4='',$status_id5='',$status_id6='',$status_id7='')
     {       
          // return $action;
         // return $user_id.'----'.$status_id;
                     $req=Requisition::where('employee_user_id','!=',0);
-                    
+                   
                     if($status_id1!='' && $status_id1!=0)
                     {
                         $req=$req->where('requisition_current_status_id','=',$status_id1);
@@ -64,6 +64,57 @@ class RequisitionRestController extends \BaseController {
                     {
                         $req=$req->OrWhere('requisition_current_status_id','=',$status_id7);
                          
+                    }
+                     if($app_status!=''&&$app_status!=0)
+                    {
+                        if($app_status==1)
+                        {
+                        $req=$req->whereHas('application', function($q) {
+                           $q->whereApplicationCurrentStatusId(1);
+                         });
+                        }
+                        else if($app_status==2)
+                        {
+                        $req=$req->whereHas('application', function($q) {
+                           $q->whereApplicationCurrentStatusId(2);
+                         });
+                        }
+                        else if($app_status==3)
+                        {
+                        $req=$req->whereHas('application', function($q) {
+                           $q->whereApplicationCurrentStatusId(3);
+                         });
+                        }
+                        else if($app_status==4)
+                        {
+                        $req=$req->whereHas('application', function($q) {
+                           $q->whereApplicationCurrentStatusId(4);
+                         });
+                        }
+                        else if($app_status==5)
+                        {
+                        $req=$req->whereHas('application', function($q) {
+                           $q->whereApplicationCurrentStatusId(5);
+                         });
+                        }
+                        else if($app_status==6)
+                        {
+                        $req=$req->whereHas('application', function($q) {
+                           $q->whereApplicationCurrentStatusId(6);
+                         });
+                        }
+                        else if($app_status==7)
+                        {
+                        $req=$req->whereHas('application', function($q) {
+                           $q->whereApplicationCurrentStatusId(7);
+                         });
+                        }
+                        else if($app_status==8)
+                        {
+                        $req=$req->whereHas('application', function($q) {
+                           $q->whereApplicationCurrentStatusId(8);
+                         });
+                        }
                     }
                     if($user_id ==21)
                     { 
@@ -326,6 +377,7 @@ class RequisitionRestController extends \BaseController {
                         }
                          else if($user_id==3)
                         {
+                                if($app_status==0){
                                 $return=$return->addColumn('Action',function($model) { 
                                    if($model ->requisition_current_status_id == 4)
                                     {
@@ -349,11 +401,13 @@ class RequisitionRestController extends \BaseController {
                                         $confirm = Application::where('application_current_status_id', '=', 3)->where('requisition_id','=',$model->requisition_id)->count();
                                         $feed = Application::where('application_current_status_id', '=', 4)->where('requisition_id','=',$model->requisition_id)->count();
                                        $prepare = Application::where('application_current_status_id', '=', 5)->where('requisition_id','=',$model->requisition_id)->count();
+                                        $offer = Application::where('application_current_status_id', '=', 6)->where('requisition_id','=',$model->requisition_id)->count();
+                                       
                                         return
                                         '<a href="' .URL::to('recruiter-interview-confirm/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Interview Confirm ('.$confirm.')</button></a>'.'  '.  
-                                        '<a href="' .URL::to('recruiter-interview-feedback/' . $model->requisition_id).'"><button class="btn btn-danger btn-info">Interview Feedback ('.$feed.')</button></a>'.'<br>'.
+                                        '<a href="' .URL::to('recruiter-interview-feedback/' . $model->requisition_id).'"><button class="btn btn-danger btn-info">Interview Feedback ('.$feed.')</button></a>'.' '.
                                         '<a href="' .URL::to('recruiter-prepare-package/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Prepare Package ('.$prepare.')</button></a>'.'  '.
-                                        '<a href="' .URL::to('recruiter-offer/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Offer(ยังไม่มี)</button></a>'
+                                        '<a href="' .URL::to('recruiter-offer-package/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Offer ('.$offer.')</button></a>'
                                                 
                                         ;
                                     }
@@ -361,7 +415,39 @@ class RequisitionRestController extends \BaseController {
                                     {
                                       return '';
                                     }
-                                });
+                                  });
+                                }
+                                else if($app_status==3)
+                                {
+                                    $return=$return->addColumn('Action',function($model) { 
+                                          $confirm = Application::where('application_current_status_id', '=', 3)->where('requisition_id','=',$model->requisition_id)->count();
+                                             return  '<a href="' .URL::to('recruiter-interview-confirm/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Interview Confirm ('.$confirm.')</button></a>'; 
+                                        }); 
+                                }
+                                else if($app_status==4)
+                                {
+                                    $return=$return->addColumn('Action',function($model) { 
+                                          $feed = Application::where('application_current_status_id', '=', 4)->where('requisition_id','=',$model->requisition_id)->count();
+                                         return  '<a href="' .URL::to('recruiter-interview-feedback/' . $model->requisition_id).'"><button class="btn btn-danger btn-info">Interview Feedback ('.$feed.')</button></a>'; 
+                                        }); 
+                                }
+                                else if($app_status==5)
+                                {
+                                    $return=$return->addColumn('Action',function($model) { 
+                                          $prepare = Application::where('application_current_status_id', '=', 5)->where('requisition_id','=',$model->requisition_id)->count();
+                                         return  '<a href="' .URL::to('recruiter-prepare-package/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Prepare Package ('.$prepare.')</button></a>'; 
+                                        }); 
+                                }
+                                else if($app_status==7)
+                                {
+                                    $return=$return->addColumn('Action',function($model) { 
+                                           $offer = Application::where('application_current_status_id', '=', 7)->where('requisition_id','=',$model->requisition_id)->count();
+                                         return   '<a href="' .URL::to('recruiter-offer-package/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Offer ('.$offer.')</button></a>'; 
+                                        }); 
+                                }
+                                else { $return=$return->addColumn('Action',function($model) { 
+                                        return ''; });
+                                }
 
                         }
                         else {$return=$return->addColumn('Action',function($model) {return ''; });}
