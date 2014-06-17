@@ -11,7 +11,7 @@
 		protected $primaryKey = 'skill_id';
 
 		public function category(){
-			return $this->belongsTo('SkillCategory');
+			return $this->belongsTo('SkillCategory','skill_category_id','skill_category_id');
 		}
 
 		public function requisition(){

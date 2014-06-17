@@ -29,8 +29,7 @@ Route::get('testtest',function(){
 // });
 
 // Candidate
-Route::resource('cd', 'CandidateController');
-Route::controller('cd', 'CandidateController');
+
 Route::get('cd/profile',function(){
     return View::make('user.profile');
 });
@@ -59,7 +58,8 @@ Route::get('cd/searchjob',function(){
 Route::get('cd/jobdetail',function(){
     return View::make('user.jobDetail');
 });
-
+Route::resource('cd', 'CandidateController');
+Route::controller('cd', 'CandidateController');
 ///////////////////////////////////////////////////////////
 Route::get('tryView',function(){
 	return View::make('admin.candidateDetail');
