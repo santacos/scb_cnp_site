@@ -25,6 +25,11 @@ HM-create-requisition
     <script src="<?php echo asset('js/createReq-manager.js')?>"></script>
     <script src="<?php echo asset('vendor/ui-utils.js')?>"></script> 
     <script src="<?php echo asset('vendor/ui-utils.min.js')?>"></script>
+
+    <script src="<?php echo asset('js/jquery.js')?>"></script> 
+    
+    
+      
 @stop
 
 @section('content')
@@ -34,8 +39,20 @@ HM-create-requisition
             <div class="col-md-7 col-md-offset-1" style="margin-top:10px">
                
                <div style="postion:fixed;">
-                   <h1>Create a requisition</h1>
-                         <hr/>
+                    <h1>Create a requisition</h1>
+                    <hr/>
+
+                    <form name="myForm">
+                      <input type="radio" ng-model="color" value="red">  Red <br/>
+                      <input type="radio" ng-model="color" ng-value="specialValue"> Green <br/>
+                      <input type="radio" ng-model="color" value="blue"> Blue <br/>
+                      <tt>color = @{{color | json}}</tt><br/>
+                     </form>
+                     Note that `ng-value="specialValue"` sets radio item's value to be the value of `$scope.specialValue`.
+
+
+
+                    <hr/>
                     <div class="row">
                         <!--
                         <div class="col-sm-6">
