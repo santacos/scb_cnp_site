@@ -111,10 +111,43 @@ class RecruiterSignController extends \BaseController {
 		$current = $application->requisition->application()->whereApplicationCurrentStatusId(10)->count();
 		$application->requisition->get_number = $current;
 		$application->push();
+
+		$requisition = $application->requisition;
+		$prev_action = RequisitionLog::where('requisition_id','=',$id)->orderBy('action_datetime','desc');
+		if($prev_action->count() > 0){
+			$prev_action = $prev_action->first();
+		}else{
+			$prev_action = NULL;
+		}
+		$timestamp = Carbon::now();
+		if(is_null($prev_action)){
+			$prev_action_datetime = 0;
+		}else{
+			$prev_action_datetime = $prev_action->action_datetime;
+		}
+		DB::table('requisition_logs')->insert(array(
+						'action_type' => 6,
+						'requisition_id' => $requisition->requisition_id,
+						'send_number' => 1,
+						'employee_user_id' => Employee::first()->user_id,
+						/**
+						change 'employee_user_id' to real employee id
+						*/
+						'action_datetime' => $timestamp,
+						'prev_action_datetime' => $prev_action_datetime,
+						'result' => Input::get('approve'),
+						'note' => Input::get('note')
+		));
+
 		if($current >= $require){
 			$application->requisition->requisition_current_status_id = 7;
+			$starttime = Carbon::createFromFormat('Y-m-d H:i:s',$application->requisition->requisitionLog()->whereRequisitionCurrentStatus(3)->whereSendNumber(2)->first()->action_datetime);
+			$endtime = Carbon::createFromFormat('Y-m-d H:i:s',$application->requisition->requisitionLog()->whereRequisitionCurrentStatus(6)->whereSendNumber(1)->first()->action_datetime);
+			/**
+				Subtract Holidays And Weekends
+			*/
 			$application->push();
-			return "Finish : End SLA";
+			return "Finish : End SLA ... ".$starttime." - ".$endtime."  >>  ".$endtime->diffInHours($starttime);
 		}
 		/**
 			Redirect Requisition Summary Page(s)
