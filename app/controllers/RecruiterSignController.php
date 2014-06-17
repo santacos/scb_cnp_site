@@ -100,6 +100,7 @@ class RecruiterSignController extends \BaseController {
 							'result' => Input::get('approve'),
 							'note' => Input::get('note')
 			));
+		$application->result = Input::get('approve');
 		$application->application_current_status_id = Input::get('approve')?10:9;
 		$application->note = Input::get('note');
 		$application->save();

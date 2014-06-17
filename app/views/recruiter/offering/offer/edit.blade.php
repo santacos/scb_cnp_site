@@ -98,7 +98,6 @@ thisIsTitle
           {{ Form::label('note', 'Note :') }}
           {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
         </div>
-        {{ Form::button('Decline', array('name' => 'approve', 'value' => false, 'type' => 'submit')) }}
         {{ Form::button('Accept', array('name' => 'approve', 'value' => true, 'type' => 'submit')) }}
       {{ Form::close() }}
     </center>
