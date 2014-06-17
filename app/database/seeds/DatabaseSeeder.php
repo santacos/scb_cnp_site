@@ -112,12 +112,39 @@ class AllTableSeeder extends Seeder {
         $work->save();
 
 //EDUCATION
-
+        $education_degree=new EducationDegree;
+        $education_degree->name='None';
+        $education_degree->save();
+        $education_degree=new EducationDegree;
+        $education_degree->name='Primary education';
+        $education_degree->save();
+        $education_degree=new EducationDegree;
+        $education_degree->name='Lower secondary education';
+        $education_degree->save();
+        $education_degree=new EducationDegree;
+        $education_degree->name='Upper secondary education';
+        $education_degree->save();
+        $education_degree=new EducationDegree;
+        $education_degree->name='Secondary education';
+        $education_degree->save();
+        $education_degree=new EducationDegree;
+        $education_degree->name='Bachelor\'s degree';
+        $education_degree->save();
+        $education_degree=new EducationDegree;
+        $education_degree->name='Master\'s degree';
+        $education_degree->save();
+        $education_degree=new EducationDegree;
+        $education_degree->name='Doctoral\'s degree';
+        $education_degree->save();
 		$user = User::where('username','=','candidate1')->first();
+		$education_degree1 = EducationDegree::where('name','=','Bachelor\'s degree')->first();
+		$education_degree2 = EducationDegree::where('name','=','Secondary education')->first();
+		$education_degree3 = EducationDegree::where('name','=','Primary education')->first();
+		$education_degree4 = EducationDegree::where('name','=','None')->first();
 		Education::create(array(	
 							'candidate_user_id' => $user->user_id,
 							'school_name' => 'CU',
-							'level' => 'primary school',
+							'education_degree_id' => $education_degree1->education_degree_id,
 							'field_of_study' => 'engineering',
 							'major' => 'computer',
 							'GPA' => 3.23
@@ -127,7 +154,7 @@ class AllTableSeeder extends Seeder {
 							'school_name' => 'mini bear nursery school',
 							'year_start' => null,
 							'year_end' => null,
-							'level' => 'nursery school',
+							'education_degree_id' => $education_degree4->education_degree_id,
 							'field_of_study' => null,
 							'major' => null,
 							'GPA' => 3.98
@@ -137,7 +164,7 @@ class AllTableSeeder extends Seeder {
 							'school_name' => 'kob monkey temple',
 							'year_start' => null,
 							'year_end' => null,
-							'level' => 'primary school',
+							'education_degree_id' => $education_degree3->education_degree_id,
 							'field_of_study' => null,
 							'major' => null,
 							'GPA' => 4.00
@@ -147,17 +174,18 @@ class AllTableSeeder extends Seeder {
 							'school_name' => 'noname',
 							'year_start' => null,
 							'year_end' => null,
-							'level' => 'high school',
+							'education_degree_id' => $education_degree2->education_degree_id,
 							'field_of_study' => 'math-science',
 							'major' => null,
 							'GPA' => 3.36
 							));
 		
 		$user = User::where('username','=','candidate2')->first();
+		$education_degree = EducationDegree::where('name','=','Bachelor\'s degree')->first();
 		Education::create(array(	
 							'candidate_user_id' => $user->user_id,
 							'school_name' => 'CU',
-							'level' => 'primary school',
+							'education_degree_id' => $education_degree1->education_degree_id,
 							'field_of_study' => 'engineering',
 							'major' => 'computer',
 							'GPA' => 2.73
@@ -167,7 +195,7 @@ class AllTableSeeder extends Seeder {
 							'school_name' => 'mini bear nursery school',
 							'year_start' => null,
 							'year_end' => null,
-							'level' => 'nursery school',
+							'education_degree_id' => $education_degree4->education_degree_id,
 							'field_of_study' => null,
 							'major' => null,
 							'GPA' => 3.98
@@ -177,7 +205,7 @@ class AllTableSeeder extends Seeder {
 							'school_name' => 'kob monkey temple',
 							'year_start' => null,
 							'year_end' => null,
-							'level' => 'primary school',
+							'education_degree_id' => $education_degree3->education_degree_id,
 							'field_of_study' => null,
 							'major' => null,
 							'GPA' => 4.00
@@ -187,17 +215,18 @@ class AllTableSeeder extends Seeder {
 							'school_name' => 'noname',
 							'year_start' => null,
 							'year_end' => null,
-							'level' => 'high school',
+							'education_degree_id' => $education_degree2->education_degree_id,
 							'field_of_study' => 'math-science',
 							'major' => null,
 							'GPA' => 3.36
 							));
 		
 		$user = User::where('username','=','candidate3')->first();
+		$education_degree = EducationDegree::where('name','=','Bachelor\'s degree')->first();
 		Education::create(array(	
 							'candidate_user_id' => $user->user_id,
 							'school_name' => 'CU',
-							'level' => 'primary school',
+							'education_degree_id' => $education_degree1->education_degree_id,
 							'field_of_study' => 'engineering',
 							'major' => 'computer',
 							'GPA' => 4.00
@@ -207,7 +236,7 @@ class AllTableSeeder extends Seeder {
 							'school_name' => 'mini bear nursery school',
 							'year_start' => null,
 							'year_end' => null,
-							'level' => 'nursery school',
+							'education_degree_id' => $education_degree4->education_degree_id,
 							'field_of_study' => null,
 							'major' => null,
 							'GPA' => 3.98
@@ -217,7 +246,7 @@ class AllTableSeeder extends Seeder {
 							'school_name' => 'kob monkey temple',
 							'year_start' => null,
 							'year_end' => null,
-							'level' => 'primary school',
+							'education_degree_id' => $education_degree3->education_degree_id,
 							'field_of_study' => null,
 							'major' => null,
 							'GPA' => 4.00
@@ -227,17 +256,18 @@ class AllTableSeeder extends Seeder {
 							'school_name' => 'noname',
 							'year_start' => null,
 							'year_end' => null,
-							'level' => 'high school',
+							'education_degree_id' => $education_degree2->education_degree_id,
 							'field_of_study' => 'math-science',
 							'major' => null,
 							'GPA' => 0.36
 							));
 		
 		$user = User::where('username','=','candidate4')->first();
+		$education_degree = EducationDegree::where('name','=','Bachelor\'s degree')->first();
 		Education::create(array(	
 							'candidate_user_id' => $user->user_id,
 							'school_name' => 'CU',
-							'level' => 'primary school',
+							'education_degree_id' => $education_degree1->education_degree_id,
 							'field_of_study' => 'engineering',
 							'major' => 'computer',
 							'GPA' => 3.83
@@ -247,7 +277,7 @@ class AllTableSeeder extends Seeder {
 							'school_name' => 'mini bear nursery school',
 							'year_start' => null,
 							'year_end' => null,
-							'level' => 'nursery school',
+							'education_degree_id' => $education_degree4->education_degree_id,
 							'field_of_study' => null,
 							'major' => null,
 							'GPA' => 3.98
@@ -257,7 +287,7 @@ class AllTableSeeder extends Seeder {
 							'school_name' => 'kob monkey temple',
 							'year_start' => null,
 							'year_end' => null,
-							'level' => 'primary school',
+							'education_degree_id' => $education_degree3->education_degree_id,
 							'field_of_study' => null,
 							'major' => null,
 							'GPA' => 4.00
@@ -267,7 +297,7 @@ class AllTableSeeder extends Seeder {
 							'school_name' => 'noname',
 							'year_start' => null,
 							'year_end' => null,
-							'level' => 'high school',
+							'education_degree_id' => $education_degree2->education_degree_id,
 							'field_of_study' => 'math-science',
 							'major' => null,
 							'GPA' => 2.36

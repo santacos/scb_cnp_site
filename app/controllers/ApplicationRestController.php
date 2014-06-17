@@ -99,7 +99,8 @@ class ApplicationRestController extends \BaseController {
                             return '<input type="hidden" name="Language" value="'.$bin.'"><span class="label label-success">'.$model->applicationCurrentStatus()->first()->name.'</span>';
                         })
                     ->addColumn('Education',function($model)
-                        { return $model->candidate()->first()->Education()->first()->level.' '.$model->candidate()->first()->Education()->first()->major.' '.$model->candidate()->first()->Education()->first()->field_of_study;
+                        {  
+                            return $model->candidate()->first()->Education()->first()->educationDegree()->first()->name.' '.$model->candidate()->first()->Education()->first()->major.' '.$model->candidate()->first()->Education()->first()->field_of_study;
                         })
                     ->addColumn('Previous Job',function($model)
                         { 
