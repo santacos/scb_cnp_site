@@ -22,6 +22,8 @@ SCB Recruitment-Home
     <script src="<?php echo asset('js/createReq-manager.js')?>"></script>
     <script src="<?php echo asset('vendor/ui-utils.js')?>"></script> 
     <script src="<?php echo asset('vendor/ui-utils.min.js')?>"></script>
+
+   
 @stop
 
 @section('body-class')
@@ -307,6 +309,7 @@ SCB Recruitment-Home
 					<!-- <h2 class="title">edit79 Results</h2> -->
 					<h3>7 Results
 						
+						
 						<!-- <div class="icon pull-right" title="apple-logo">
 						  <div class="livicon" data-n="shopping-cart"></div>
 						</div> --> 	
@@ -320,21 +323,43 @@ SCB Recruitment-Home
 
 				</div>
 				<!--end title for table-->
-				<h1>show::</h1> @{{show}}
-				<div class="table-box" ng-init="show=false">
+				<!-- <h1>show::</h1> @{{show}}
+				
+				<div class="form-group">
+				  	<label class="" for="search">Search keyword :</label>
+				  	<input type="text" ng-model="q" style="font-size:1.1em;" class="form-control" id="search" placeholder="Enter keyword">
+				</div> -->
+
+				<!--try toggle button-->
+				<div>
+					<span class="title"><h7>Views:</h7>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					<div class="btn-group" style="padding-bottom:1.5em;"data-toggle="buttons" ng-init="isList=false">
+			            <button class="btn btn-border  btn-danger" ng-class="{active:!isList}" ng-click="isList=false">
+			                <i class="livicon" data-s="18" data-n="table" data-c="#c10841" data-hc="#fff"></i>
+			                Table
+			            </button>
+			            <button class="btn btn-border  btn-danger" ng-class="{active:isList}" ng-click="isList=true">
+			                <i class="livicon" data-s="18" data-n="list" data-c="#c10841" data-hc="#fff"></i>
+							List
+			            </button>
+			        </div>
+		    	</div>	
+
+				<!--table-->
+				<div ng-show="!isList" class="table-box" ng-init="show=false">
 					<table class="table table-bordered table-striped table-hover text-center" style="font-size:1.2em;">
 					  <thead>
 						<tr>
 						  <th style="width:5%;"></th>
-						  <th style="width:15%;">Date post</th>
-						  <th style="width:20%;">Job ID</th>
+						  <th style="width:10%;">Date post</th>
+						  <th style="width:10%;">Job ID</th>
 						  <th style="width:20%;">Job Title</th>
-						  <th style="width:10%;">Department</th>
-						  <th style="width:10%;">Job Location</th>
+						  <th style="width:20%;">Department</th>
+						  <th style="width:15%;">Job Location</th>
 						  <th style="width:20%;">Action</th>
 						</tr>
 					  </thead>
-					  <tbody  ng-repeat="friend in friends ">
+					  <tbody  ng-repeat="friend in friends |filter:q ">
 					  	
 							<tr ng-mouseover="show=true;" ng-mouseleave="show=false;" >
 							  	<td>
@@ -409,28 +434,72 @@ SCB Recruitment-Home
 					
 					  </tbody>
 					</table>
-			  	</div><!--end table-->
+			  	</div>
+			  	<!--end table-->
+
+			  	<!--list-->
+			  	<div ng-show="isList" class="table-box">
+					<table class="table table-bordered table-striped table-hover text-center" style="font-size:1.2em;">
+					  <!-- <thead>
+						<tr>
+						  <th style="width:5%;"></th>
+						  <th style="width:10%;">Date post</th>
+						  <th style="width:10%;">Job ID</th>
+						  <th style="width:20%;">Job Title</th>
+						  <th style="width:20%;">Department</th>
+						  <th style="width:15%;">Job Location</th>
+						  <th style="width:20%;">Action</th>
+						</tr>
+					  </thead> -->
+					  <tbody >
+					  		<tr ng-repeat="friend in friends |filter:q ">
+								<td colspan=7>
+									<div class="row" style="padding-bottom:1.5em;">
+										<div class="col col-md-3">
+											<h3 class="title"  style="margin-bottom:2px;">Programmer</h3>
+											<img src="<?php echo asset('img/content/hero.jpg')?>" class="img-rounded" 
+												width="150" height="100" alt="" style="padding-top:2px;padding-bottom:10px;">
+											<br>
+											<a href="{{URL::to('/cd/jobdetail')}}" target="_blank" class="btn btn-sm btn-default" style="width:60%">View detail</a>
+										</div>
+										<div class="col col-md-6 text-left" style="font-size:0.9em;">
+											<br>
+											<strong>Job summary :</strong>
+											<p>
+												Sublime Text is a sophisticated text editor for code, markup and prose. You'll love the slick user interface, extraordinary features and amazing performance.
+											</p>
+											
+											<strong>Job location:</strong>
+											<p>SCB Head office</p>
+										</div>
+										<div class="col col-md-3">
+											<div class="list-group text-left">
+												<a href="#" class="list-group-item ">
+													<i class="fa fa-fw fa-check-square-o"></i> Apply
+												</a>
+												<a href="#" class="list-group-item ">
+												  	<i class="livicon shadowed" data-n="shopping-cart-in" data-s="16" data-c="#7996b7" data-hc="#2a6496"></i>
+													Add to job cart
+												</a>
+												<a href="#" class="list-group-item">
+													<i class="livicon shadowed" data-n="save" data-s="16" data-c="#7996b7" data-hc="#2a6496"></i>
+													Follow this position
+												</a>
+												
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+					  </tbody>
+					</table>
+			  	</div>
+			  	<!--end list-->
+
+
 			  	<div class="row">
 			  		<div class="col col-sm-2 col-md-5">
-			  			<!-- @{{friends}}
-						<table class="table table-bordered table-striped table-hover text-center">
-			  			<thead>
-			  						<th>name</th>
-			  						<th>Name</th>
-			  			</thead>
-			  			<tbody ng-repeat="friend in friends ">
-				  			
-				  						<tr >
-
-				  							<td>cos1</td>
-				  							<td>cos2</td>
-				  						</tr>
-				  						<tr>
-				  							<td colspan=2>HI</td>
-				  						</tr>
-				  			
-			  			</tbody>
-			  			</table> -->
+			  		
 			  		</div>
 			  		<div class="col col-sm-10 col-md-7 pull-right">
 			  			<button class="btn btn-danger " style="width:30%;">Add to job basket</button>

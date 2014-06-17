@@ -63,7 +63,7 @@ Route::get('tryView',function(){
 });
 
 Route::get('tryAngular',function(){
-	return View::make('angular.try7');
+	return View::make('angular.try8');
 });
 
 Route::get('showReq',function(){
