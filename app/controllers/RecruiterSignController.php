@@ -107,7 +107,19 @@ class RecruiterSignController extends \BaseController {
 		/**
 			Check candidate isLast()? and Keep stat for canditate?
 		*/
-		return Response::json(array('success' => true));
+		$require = $application->requisition->total_number;
+		$current = $application->requisition->application()->whereApplicationCurrentStatusId(10)->count();
+		$application->requisition->get_number = $current;
+		$application->push();
+		if($current >= $require){
+			$application->requisition->requisition_current_status_id = 7;
+			$application->push();
+			return "Finish : End SLA";
+		}
+		/**
+			Redirect Requisition Summary Page(s)
+		*/
+		return Response::json(array('success' => true));//->with('require',$require)->with('current',$current);
 	}
 
 	/**
