@@ -85,7 +85,7 @@ thisIsTitle
 
       <hr>
 
-      {{ Form::model($application, array('route' => array('recruiter-offer-package.update', $application->application_id), 'method' => 'PUT')) }}
+      {{ Form::model($application, array('route' => array('recruiter-sign.update', $application->application_id), 'method' => 'PUT')) }}
         <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
           {{ Form::label('note', 'Note :') }}
           {{ Form::textarea('note', '', array( 'size' => '30x5')) }}

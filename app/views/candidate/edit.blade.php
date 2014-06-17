@@ -20,17 +20,17 @@ HM-create-requisition
     </style>
     
     <script src="<?php echo asset('vendor/angular.min.js')?>"></script> 
-<script src="<?php echo asset('vendor/angular-strap.min.js')?>"></script>   
-<script src="<?php echo asset('vendor/angular-strap.tpl.min.js')?>"></script>   
     <script src="<?php echo asset('vendor/ui-bootstrap-tpls-0.11.0.min.js')?>"></script>
-    <script src="<?php echo asset('js/createReq-manager.js')?>"></script>
+    
     <script src="<?php echo asset('vendor/ui-utils.js')?>"></script> 
     <script src="<?php echo asset('vendor/ui-utils.min.js')?>"></script>
+
+    <script src="<?php echo asset('js/jquery.js')?>"></script> 
     <script>
         var editApp = angular.module('editApp',[]);
         editApp.controller('editCtrl',['$scope', '$http',
             function ($scope, $http) {
-
+              $scope.cos='default';
          $scope.img_selc='aaaa';
             $scope.color = 'blue';
             $scope.specialValue = {
@@ -38,6 +38,13 @@ HM-create-requisition
               "value": "green"
             };
           
+          $scope.selected = "";
+          
+          $scope.selectItem = function(item){
+            $scope.selected = item;
+          };
+
+
           }//before end controller
 
     
@@ -49,7 +56,7 @@ HM-create-requisition
 @section('content')
         <div class="container" ng-app="editApp">
 
-            <div class="col-md-7 col-md-offset-1" style="margin-top:10px">
+            <div class="col-md-7 col-md-offset-1" style="margin-top:10px" ng-controller="editCtrl">
                 <h1>Edit a Candidate</h1>
                 <hr/>
                 <div class="row">
@@ -83,15 +90,15 @@ HM-create-requisition
            {{ Form::label('product_pic', 'Image :') }} 
            <!-- {{ Form::file('product_pic' , Input::old('product_pic'), array('class' => 'form-control'))}} -->
            <pre>
-               <!-- <input type="radio" name="img_selc" ng-model="img_selc" ng-value="text" checked="checked"/>  URL &nbsp&nbsp -->
-               <input type="radio" name="img_selc" ng-model="img_selc" ng-value="file"> Upload <br/>
-               <!-- <input name="filepath_picture" type="text" class="form-control" value="{{$candidate->filepath_picture}}"> -->
-               <input  name="filepath_picture" type="file" class="form-control" value="{{Input::old('filepath_picture')}}">
+                <input type="radio" name="img_selc" ng-model="img_selc" value="text" checked="checked"/>  URL &nbsp&nbsp
+                <input type="radio" name="img_selc" ng-model="img_selc" value="file"> Upload <br/>
+                <input ng-show="img_selc=='text'"name="filepath_picture" type="text" class="form-control" value="{{$candidate->filepath_picture}}">
+                <input ng-show="img_selc=='file'" name="filepath_picture" type="file" class="form-control" value="{{Input::old('filepath_picture')}}">
            </pre>
        </div>
         
         {{ Form::label('Personal Details :') }}
-        <div class="form-group">
+                <div class="form-group">
                     
                     {{ Form::text('thai_saluation', Input::old('thai_saluation'), array('class' => 'form-control','placeholder'=>'คำนำหน้าชื่อ' )) }}
                     {{ Form::text('thai_firstname', Input::old('thai_firstname'), array('class' => 'form-control','placeholder'=>'ชื่อ' )) }}
@@ -157,7 +164,7 @@ HM-create-requisition
     {{ Form::close() }}
             </div>
         </div>
-    </div>      
+       
 @stop
 
 

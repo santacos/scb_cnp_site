@@ -2,7 +2,14 @@
 	<meta charset="UTF-8">
 	<link href="<?php echo asset('img/favicon_1.ico')?>" rel="shortcut icon">
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-	<script src="<?php echo asset('vendor/angular.min.js')?>"></script> 
+	    <!--for angular-->
+    <script src="<?php echo asset('vendor/angular.min.js')?>"></script> 
+    <script src="<?php echo asset('vendor/ui-bootstrap-tpls-0.11.0.min.js')?>"></script>
+    <script src="<?php echo asset('js/createReq-manager.js')?>"></script>
+    <script src="<?php echo asset('vendor/ui-utils.js')?>"></script> 
+    <script src="<?php echo asset('vendor/ui-utils.min.js')?>"></script>
+
+    <script src="<?php echo asset('js/jquery.js')?>"></script> 
     
 	<!-- jQuery 2.0.2 -->
 	{{ HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js') }}
