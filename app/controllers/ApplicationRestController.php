@@ -107,7 +107,59 @@ class ApplicationRestController extends \BaseController {
                             return '<input type="hidden" name="Language" value="'.$model->created_at.'">'.Carbon::createFromTimestamp(strtotime($model->created_at))->format('j F Y');
                         })
                     ->addColumn('SLA',function($model)
-                        { return Carbon::createFromTimestamp(strtotime($model->created_at))->format('j F Y');
+                        { 
+                            $app_cur_stat_id = $model->applicationCurrentStatus->application_current_status_id;
+                            if($app_cur_stat_id == 3 || $app_cur_stat_id == 4){
+                                $visit_number = $application->interviewLog()->orderBy('visit_number','desc')->first();
+                                if(is_null($visit_number)){
+                                    $visit_number = 1;
+                                }else{
+                                    $visit_number = $visit_number->visit_number+1;
+                                }
+                            }else{
+                                $visit_number = 1;
+                            }
+                            $SLA = $model->requisition->corporateTitle->group->SLACandidate()->whereAppCsId($app_cur_stat_id)->whereVisitNumber($visit_number);
+                            if($SLA->count() == 0){
+                                $SLA = $SLA->orWhere('visit_number','>=',1)->orderBy('visit_number','desc')->first()->SLA;
+                            }else{
+                                $SLA = $SLA->first()->SLA;
+                            }
+                            $start_timestamp = $model->applicationLog()->orderBy('action_datetime','desc');
+                            $start_timestamp = $start_timestamp->first();
+                            $skip = false;
+                            if(is_null($start_timestamp)){
+                                $start_timestamp = Carbon::createFromTimeStamp(0);
+                                $skip = true;
+                            }else{
+                                $start_timestamp = Carbon::createFromFormat('Y-m-d H:i:s',$start_timestamp->action_datetime);
+                            }
+                            $end_timestamp = $start_timestamp->copy();
+                            $holidays = PublicHoliday::all();
+                            for($i=0; !$skip && $end_timestamp->diffInSeconds(Carbon::now(),false) >= 0; $i++){
+                                if($end_timestamp->toDateString() == Carbon::now()->toDateString()){
+                                    $day_left = $SLA-$i;
+                                    return '<input id="table_row'.$model->application_id.'" type="hidden" name="sla" value="'.sprintf("%06d",$day_left).'">'
+                                    . $i . " / " . $SLA
+                                    .'<script>'
+                                    .'var row = document.getElementById("table_row'.$model->application_id.'").parentNode.parentNode;'
+                                    .'row.className = row.className+" ' . ($day_left > 3?'':$day_left > 0?'warning':'danger') . '";'
+                                    .'</script>';
+                                }
+                                $end_timestamp->addDays(1);
+                                if($end_timestamp->isWeekend()){
+                                   $i--; 
+                                }else{
+                                    foreach($holidays as $holiday){
+                                        if($end_timestamp->toDateString() == $holiday->date){
+                                            $i--;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            return ('<input type="hidden" name="sla" value="'."999999".'">')
+                                    . "SLA = " . $SLA;
                         })
                      ->addColumn('Deadline',function($model)
                         { return '<input type="hidden" name="Language" value="'.$model->created_at.'">'.Carbon::createFromTimestamp(strtotime($model->created_at))->format('j F Y');
