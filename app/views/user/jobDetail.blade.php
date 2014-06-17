@@ -197,7 +197,7 @@ SCB Recruitment-Home
 						</div>
 						<!--Job summary-->
 						<div class="col col-md-10 col-sm-10">
-							<div class="panel panel-default border-radius ">
+							<div class="panel panel-primary border-radius ">
 								<div class="panel-heading">
 									<h3 class="panel-title">Job summary</h3>
 								</div>
@@ -208,7 +208,7 @@ SCB Recruitment-Home
 						</div>
 						<!-- Job responsibilities -->
 						<div class="col col-md-10 col-sm-10">
-							<div class="panel border-radius panel-default">
+							<div class="panel border-radius panel-info">
 								<div class="panel-heading">
 									<h3 class="panel-title">Job responsibilities</h3>
 								</div>
@@ -219,7 +219,7 @@ SCB Recruitment-Home
 						</div>
 						<!-- Qualifications -->
 						<div class="col col-md-10 col-sm-10">
-							<div class="panel border-radius panel-default">
+							<div class="panel border-radius panel-success">
 								<div class="panel-heading">
 									<h3 class="panel-title">Qualifications</h3>
 								</div>
@@ -230,7 +230,7 @@ SCB Recruitment-Home
 						</div>
 						<!-- tag -->
 						<div class="col col-md-10 col-sm-10">
-							<div class="panel border-radius panel-default">
+							<div class="panel border-radius panel-danger">
 								<div class="panel-heading">
 									<h3 class="panel-title">Tag</h3>
 								</div>
