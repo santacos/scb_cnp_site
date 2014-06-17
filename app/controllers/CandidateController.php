@@ -9,11 +9,13 @@ class CandidateController extends \BaseController {
 	 */
 	public function index()
 	{
-		$candidates = Candidate::all();
-
-		return View::make('candidate.index', compact('candidates'));
+		$candidate = Candidate::find(Auth::user()->user_id);
+		return View::make('user.homeprofile', array( 'candidate'=> $candidate));
 	}
-
+	public function getJobDetail($id)
+	{
+		return View::make('user.jobDetail')->with('requisition',Requisition::find($id));
+	}
 	/**
 	 * Show the form for creating a new candidate
 	 *
@@ -64,7 +66,7 @@ class CandidateController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($candidate_id)
+	public function edit($id)
 	{	
 		$candidate = Candidate::find(Auth::user()->user_id);
 		$user=$candidate->user()->first();
@@ -77,6 +79,7 @@ class CandidateController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
+	
 	public function update()
 	{
 		/*$candidate = Candidate::findOrFail($id);
@@ -98,14 +101,15 @@ class CandidateController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}*/
 			$candidate = Candidate::findOrFail(Auth::user()->user_id);
-			$user=$candidate->user()->first();
+			$user=User::find($candidate->user_id);
             $user->email = trim(strtolower(Input::get( 'email' )));
             $user->first = trim(Input::get( 'first' ));
             $user->last = trim(Input::get( 'last' ));
             $user->contact_number = Input::get( 'contact_number' );
-            
-            $user->push();
-             return $user->errors()->all();
+             DB::table('users')->where('user_id',$candidate->user_id)->update($user->toArray());
+             // $user=User::find($candidate->user_id);
+             // return $user;
+             // return $user->errors()->all();
             if(Input::hasFile('filepath_picture')){
 				$image = Input::file('filepath_picture');
 				$filename = date('Y-m-d-H-i-s')."-".$image->getClientOriginalName();
@@ -133,7 +137,7 @@ class CandidateController extends \BaseController {
 			$candidate->filepath_video = Input::get('filepath_video');
 			$candidate->filepath_cv = Input::get('filepath_cv');
 
-			$candidate->save();
+			$candidate->push();
 		return Response::json(array('success' => true));
 	}
 

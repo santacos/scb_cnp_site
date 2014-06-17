@@ -12,4 +12,7 @@
 		function candidate(){
 			return $this->belongsTo('Candidate','candidate_user_id','user_id');
 		}
+		public function educationDegree() {
+			return $this->belongsTo('EducationDegree','education_degree_id','education_degree_id');
+		}
 	}

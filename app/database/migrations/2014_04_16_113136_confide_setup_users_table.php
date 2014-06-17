@@ -484,6 +484,12 @@ class ConfideSetupUsersTable extends Migration {
             $table->string('reason_leave',100)->nullable()->default(NULL);
             $table->timestamps();
         });
+                  Schema::create('education_degrees', function($table)
+        {
+            $table->increments('education_degree_id');
+             $table->string('name',100);
+            $table->timestamps();
+        });
                Schema::create('educations', function($table)
         {
             $table->increments('education_id');
@@ -492,7 +498,8 @@ class ConfideSetupUsersTable extends Migration {
             $table->string('school_name',100);
             $table->date('year_start')->nullable()->default(NULL);
             $table->date('year_end')->nullable()->default(NULL);
-            $table->string('level',50)->nullable()->default(NULL);
+            $table->unsignedInteger('education_degree_id');
+            $table->foreign('education_degree_id')->references('education_degree_id')->on('education_degrees')->onDelete('cascade')->onUpdate('cascade');
             $table->string('field_of_study',100)->nullable()->default(NULL);
             $table->string('major',100)->nullable()->default(NULL);
             $table->decimal('GPA',3,2)->nullable()->default(NULL);

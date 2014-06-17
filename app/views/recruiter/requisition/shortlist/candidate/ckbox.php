@@ -11,8 +11,19 @@
 </body>
 
 <script>
+	function changeColor(x){
+		var arrFrames = parent.document.getElementsByTagName("IFRAME");
+		for (var i = 0; i < arrFrames.length; i++) {
+			  if (arrFrames[i].contentWindow === window) {
+				var frame = arrFrames[i];
+				frame.parentNode.parentNode.parentNode.style.color = x;
+			  	break;
+			  }
+		}
+	}
 	function toggleCandidate(x){
 		document.getElementById('f').style.backgroundColor = 'yellow';
 		document.getElementById('f').submit();
 	}
+	changeColor("<?php echo is_null($application->send_number)?($application->is_in_basket?'black':'#AAAAAA'):'#55CC55';?>");
 </script>
