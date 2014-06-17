@@ -93,15 +93,15 @@ HM-create-requisition
         {{ Form::label('Personal Details :') }}
         <div class="form-group">
                     
-                    {{ Form::text('thai_saluation', Input::old('thai_saluation'), array('class' => 'form-control','placeholder'=>'คำนำหน้าชื่อ', 'id' => 'form')) }}
-                    {{ Form::text('thai_firstname', Input::old('thai_firstname'), array('class' => 'form-control','placeholder'=>'ชื่อ', 'id' => 'form')) }}
-                    {{ Form::text('thai_lastname', Input::old('thai_lastname'), array('class' => 'form-control','placeholder'=>'นามสกุล', 'id' => 'form')) }}
+                    {{ Form::text('thai_saluation', Input::old('thai_saluation'), array('class' => 'form-control','placeholder'=>'คำนำหน้าชื่อ' )) }}
+                    {{ Form::text('thai_firstname', Input::old('thai_firstname'), array('class' => 'form-control','placeholder'=>'ชื่อ' )) }}
+                    {{ Form::text('thai_lastname', Input::old('thai_lastname'), array('class' => 'form-control','placeholder'=>'นามสกุล' )) }}
                 </div>
               	<div class="form-group">
                     
-                    {{ Form::text('eng_saluation', Input::old('end_saluation'), array('class' => 'form-control','placeholder'=>'Saluation', 'id' => 'form', 'required')) }}
-                    {{ Form::text('first', Input::old('first'), array('class' => 'form-control','placeholder'=>'First Name', 'id' => 'form', 'required')) }}
-                    {{ Form::text('last', Input::old('last'), array('class' => 'form-control','placeholder'=>'Last name', 'id' => 'form', 'required')) }}
+                    {{ Form::text('eng_saluation', Input::old('end_saluation'), array('class' => 'form-control','placeholder'=>'Saluation' , 'required')) }}
+                    {{ Form::text('first', Input::old('first'), array('class' => 'form-control','placeholder'=>'First Name' , 'required')) }}
+                    {{ Form::text('last', Input::old('last'), array('class' => 'form-control','placeholder'=>'Last name' , 'required')) }}
                 </div>
 
         <div class="form-group">
@@ -116,41 +116,41 @@ HM-create-requisition
                          
                      	<div class="form-group">
                     {{ Form::label('passport_number', 'Passport Number :') }}
-                    {{ Form::text('passport_number', Input::old('passport_number'), array('class' => 'form-control', 'id' => 'form')) }}
+                    {{ Form::text('passport_number', Input::old('passport_number'), array('class' => 'form-control' )) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('idcard', 'National ID Number :') }}
-                    {{ Form::text('idcard', Input::old('idcard'), array('class' => 'form-control', 'id' => 'form')) }}
+                    {{ Form::text('idcard', Input::old('idcard'), array('class' => 'form-control' )) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('nationality', 'Nationality :') }}
-                    {{ Form::text('nationality', Input::old('nationality'), array('class' => 'form-control', 'id' => 'form')) }}
+                    {{ Form::text('nationality', Input::old('nationality'), array('class' => 'form-control' )) }}
                 </div>
 
                 {{ Form::label( 'Contact information :') }}
                 <div class="form-group">
                     {{ Form::label('email', 'Email :') }}
-                    {{ Form::text('email', Input::old('email'), array('class' => 'form-control', 'id' => 'form')) }}
+                    {{ Form::text('email', Input::old('email'), array('class' => 'form-control' )) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('contact_number', 'Contact Number :') }}
-                    {{ Form::text('contact_number', Input::old('contact_number'), array('class' => 'form-control', 'id' => 'form')) }}
+                    {{ Form::text('contact_number', Input::old('contact_number'), array('class' => 'form-control' )) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('full_location', 'Current Living Location :') }}
-                    {{ Form::text('full_location', Input::old('full_location'), array('class' => 'form-control', 'id' => 'form')) }}
+                    {{ Form::text('full_location', Input::old('full_location'), array('class' => 'form-control' )) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('city', 'City :') }}
-                    {{ Form::text('city', Input::old('city'), array('class' => 'form-control', 'id' => 'form')) }}
+                    {{ Form::text('city', Input::old('city'), array('class' => 'form-control' )) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('zip_coder', 'Zip/Postal Code :') }}
-                    {{ Form::text('zip_code', Input::old('zip_code'), array('class' => 'form-control', 'id' => 'form')) }}
+                    {{ Form::text('zip_code', Input::old('zip_code'), array('class' => 'form-control' )) }}
                 </div>
                  <div class="form-group">
                     {{ Form::label('country', 'Country :') }}
-                    {{ Form::text('country', Input::old('country'), array('class' => 'form-control', 'id' => 'form')) }}
+                    {{ Form::text('country', Input::old('country'), array('class' => 'form-control' )) }}
                 </div>
     {{ Form::submit('Save', array('class' => 'btn btn-primary btn-lg btn-block')) }}
 
