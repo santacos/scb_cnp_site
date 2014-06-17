@@ -61,7 +61,7 @@
 		<li data-delay="7000" data-transition="fade" data-slotamount="7" data-masterspeed="2000">
 		  <div class="elements">
 			<div class="tp-caption lfl" data-x="211" data-y="203" data-speed="1000" data-start="1500" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power1.easeIn" style="z-index: 2">
-			  <img src="img/content/slider/rs-slider4-img1.png" alt="">
+			  <img src="img/content/slider/building.png" alt="">
 			</div>
 			
 			<div class="tp-caption lft" data-x="97" data-y="271" data-speed="1000" data-start="1000" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power1.easeIn">
@@ -85,7 +85,7 @@
 			</div>
 			
 			<div class="tp-caption lft" data-x="487" data-y="69" data-speed="1000" data-start="1500" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power1.easeIn" style="z-index: 1">
-			  <img src="img/content/slider/rs-slider4-img6.png" alt="">
+			  <img src="img/content/slider/person2.png" alt="">
 			</div>
 			
 			<div class="tp-caption lfl" data-x="539" data-y="177" data-speed="1000" data-start="1000" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power1.easeIn" style="z-index: 3">
@@ -100,9 +100,9 @@
 			  <img src="img/content/slider/rs-slider4-img9.png" alt="">
 			</div>
 			
-			<div class="tp-caption lfb" data-x="141" data-y="297" data-speed="1000" data-start="1800" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power1.easeIn" style="z-index: 4">
+			<!-- <div class="tp-caption lfb" data-x="141" data-y="297" data-speed="1000" data-start="1800" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power1.easeIn" style="z-index: 4">
 			  <img src="img/content/slider/rs-slider4-img10.png" alt="">
-			</div>
+			</div> -->
 			
 			<div class="tp-caption lfl" data-x="428" data-y="356" data-speed="500" data-start="2000" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power1.easeIn" style="z-index: 3">
 			  <img src="img/content/slider/rs-slider4-img11.png" alt="">
@@ -116,9 +116,7 @@
 			  <img src="img/content/slider/rs-slider4-img13.png" alt="">
 			</div>
 			
-			<div class="tp-caption lfb" data-x="395" data-y="335" data-speed="1000" data-start="2040" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power1.easeIn" style="z-index: 4">
-			  <img src="img/content/slider/rs-slider4-img14.png" alt="">
-			</div>
+			
 			
 			<h2 class="tp-caption lft skewtotop title span6" data-x="722" data-y="101" data-speed="1000" data-start="1700" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power1.easeIn">
 			  <strong>SCB recruitment system</strong>
