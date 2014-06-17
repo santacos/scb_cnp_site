@@ -36,7 +36,7 @@ SCB Recruitment-Home
 	                      
 	                      	<div class="col col-md-7 col-sm-7">
 	                      		<br><br>
-	                        	<h1 class="title">Hi! <!--edit-->Somsri
+	                        	<h1 class="title">Hi! <!--edit-->{{$candidate->user()->first()->first.' '.$candidate->user()->first()->last}}
 	                        		<i class="livicon" data-s="24" data-op="0" data-hc="0"data-n="sun" data-c="#fda425" data-hc="0"></i>
 	                        	</h1>
 
@@ -182,35 +182,45 @@ SCB Recruitment-Home
 							  <tbody>
 								<tr>
 								  <td><strong>Firstname:</strong>
-								  <td>Peepeepee</td>
+								  <td>{{$candidate->user()->first()->first}}</td>
 								  <td><strong>Lastname:</strong>
-								  <td>northnorthnorth</td>
+								  <td>{{$candidate->user()->first()->last}}</td>
 								
 								</tr>
 								<tr>
 								  <td><strong>ชื่อ: </strong>
-								  <td>พีพีพี</td>
+								  <td>{{$candidate->thai_firstname}}</td>
 								  <td><strong>นามสกุล: </strong></td>
-								  <td>นอร์ทนอร์ท</td>
+								  <td>{{$candidate->thai_lastname}}</td>
 								  
 								</tr>
 								<tr>
 								  <td><strong>Gender: </strong></td>
 								  <td>Male</td>
 								  <td><strong>Age: </strong></td>
-								  <td>25&nbsp;&nbsp;years</td>
+								  <td>	@if($candidate->birth_date!='' && $candidate->birth_date!=0)
+								  			{{Carbon::createFromFormat('Y-m-d',$candidate->birth_date)->diffInYears()}}
+								  		@else
+								  			You not fill a birth date
+								  		@endif
+								  		</td>
 								</tr>
 								<tr>
 								  <td><strong>Date of Birth :</strong></td>
-								  <td>12 July 1988</td>
+								  <td>@if($candidate->birth_date!='' && $candidate->birth_date!=0)
+								  			{{Carbon::createFromFormat('Y-m-d',$candidate->birth_date)->format('j F Y');}}
+								  		@else
+								  			You not fill a birth date
+								  		@endif
+								  	</td>
 								  <td><strong>Nationality : </strong></td>
-								  <td>Thai</td>
+								  <td>{{$candidate->nationality}}</td>
 								</tr>
 								<tr>
 								  <td><strong>Passport NO:</strong></td>
-								  <td>1100932419323</td>
+								  <td>{{$candidate->passport_number}}</td>
 								  <td><strong>ID Number :</strong></td>
-								  <td>1100932419323</td>
+								  <td>{{$candidate->idcard}}</td>
 								</tr>
 							  </tbody>
 							</table>

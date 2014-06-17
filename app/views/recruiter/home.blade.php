@@ -4,6 +4,8 @@
 home-recruiter
 @stop
 
+@section('libs')
+@stop
 
 @section('content')
 <!--welcome box-->
@@ -13,7 +15,7 @@ home-recruiter
             <p class="text-muted"></p>
         </div>
 
-        
+       
           
             <!-- Modal HTML -->
             <div id="myModal" class="modal fade">

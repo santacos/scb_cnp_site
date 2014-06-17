@@ -127,7 +127,7 @@ SCB Recruitment-Home
 
 			  	<div class="content-block bottom-padding frame border-radius">
 					<h3><!--edit-->
-						IT Technical Analyst (SCB Head office)
+						{{$requisition->job_title}}
 
 						<div class="big-icon bg bg-warning pull-right">
 							<a href="#modalJobcart" data-toggle="modal">
@@ -151,7 +151,7 @@ SCB Recruitment-Home
 													<strong>Location :</strong>
 												</div>
 												<div class="col col-md-6 col-sm">
-													<!--edit-->SCB Head office
+													<!--edit-->{{$requisition->location->name}}
 												</div>
 											</div>
 											<div class="row">
@@ -159,7 +159,7 @@ SCB Recruitment-Home
 													<strong>Year of Experience :</strong>
 												</div>
 												<div class="col col-md-6 col-sm">
-													<!--edit-->3
+													<!--edit-->{{$requisition->year_of_experience}}
 												</div>
 											</div>
 											<div class="row">
@@ -167,7 +167,7 @@ SCB Recruitment-Home
 													<strong>Employment Type :</strong>
 												</div>
 												<div class="col col-md-6 col-sm">
-													<!--edit-->Full-time
+													<!--edit-->{{$requisition->recruitmentType->name}}
 												</div>
 											</div>
 											<div class="row">
@@ -175,7 +175,7 @@ SCB Recruitment-Home
 													<strong>Department (group) :</strong>
 												</div>
 												<div class="col col-md-6 col-sm">
-													<!--edit-->IT
+													<!--edit-->{{$requisition->dept->name}}
 												</div>
 											</div>
 										</div>
@@ -202,7 +202,7 @@ SCB Recruitment-Home
 									<h3 class="panel-title">Job summary</h3>
 								</div>
 								<div class="panel-body">
-									Panel content
+									{{$requisition->job_description}}
 								</div>
 							</div>
 						</div>
@@ -213,7 +213,7 @@ SCB Recruitment-Home
 									<h3 class="panel-title">Job responsibilities</h3>
 								</div>
 								<div class="panel-body">
-									Panel content
+									{{$requisition->responsibility}}
 								</div>
 							</div>
 						</div>
@@ -224,7 +224,7 @@ SCB Recruitment-Home
 									<h3 class="panel-title">Qualifications</h3>
 								</div>
 								<div class="panel-body">
-									Panel content
+									{{$requisition->qualification}}
 								</div>
 							</div>
 						</div>
