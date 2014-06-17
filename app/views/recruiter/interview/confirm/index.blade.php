@@ -84,7 +84,7 @@ thisIsTitle
                                                         'Corporate Title',
                                                        'Location',
                                                        'Requisition Status',
-                                                       'Waiting for confirm',
+                                                       'Require',
                                                        'SLA',
                                                        'Deadline',
                                                        'From',

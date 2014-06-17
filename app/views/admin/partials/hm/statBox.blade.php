@@ -55,7 +55,7 @@
 
 		<div class="col-lg-3 col-xs-6">
 			<!-- small box -->
-			<a href="#" class="small-box bg-red">
+			<a href="{{URL::to('recruiter-interview-feedback')}}" class="small-box bg-red">
 				<div class="inner">
 					<h3> Interview<br>. </h3>
 				</div>

@@ -49,7 +49,7 @@ class UserController extends BaseController {
             // before saving. This field will be used in Ardent's
             // auto validation.
             $user->password_confirmation = Input::get( 'password_confirmation' );
-
+            
             // Save if valid. Password field will be hashed before save
             $user->save();
 
