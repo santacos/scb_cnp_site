@@ -186,7 +186,7 @@ SCB Recruitment-Home
 					  	<div class="col col-md-3 pull-left" style="padding-left:0px;">
 							<div class="col-md-12">
 								<div class="bs-docs-example-images">
-									<a class="img-thumbnail img-rounded lightbox" rel="fancybox" href="{{asset('assets/img/avatar3.png')}}" >
+									<a class="img-thumbnail img-rounded lightbox" style="padding-bottom:1.3em;" rel="fancybox" href="{{asset('assets/img/avatar3.png')}}" >
 										<img src="{{asset('assets/img/avatar3.png')}}" alt="" title="">
 										<span class="bg-images">
 											<i class="fa fa-search"></i>
@@ -214,18 +214,23 @@ SCB Recruitment-Home
 							<div class="modal-dialog">
 							  <div class="modal-content">
 								<div class="modal-header">
-								  <a href="#" class="close" data-dismiss="modal" aria-hidden="true"><span>close</span>×</a>
+								  <a href="#" class="close" data-dismiss="modal" aria-hidden="true">×</a>
 								  <div class="title-box">
-									<h4 class="title">Modal title</h4>
+									<h4 class="title">Video resume</h4>
 								  </div>
 								</div>
 								<div class="modal-body">
-								  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos adipisci blanditiis veniam vitae magnam eligendi unde! Voluptate mollitia sint tempora.</p>
-								  <p>Lorem ipsum dolor sit amet, <strong>consectetur adipisicing elit</strong>. Laboriosam tempore vero cumque ut neque laborum accusamus expedita ipsam autem saepe dolorum ab praesentium quasi maxime natus voluptas ex doloremque suscipit!</p>
+									<div class="video-box youtube">
+										<!-- <iframe frameborder="0" allowfullscreen="" src="//www.youtube.com/embed/oNBBijn4JuY?showinfo=0&amp;wmode=opaque"></iframe>
+										 -->
+										 <iframe frameborder="0" allowfullscreen="" src="//www.youtube.com/embed/0oHhD3Bk9Uc"></iframe>
+									
+									</div>
+									
 								</div>
 								<div class="modal-footer">
 								  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								  <button type="button" class="btn btn-primary">Save changes</button>
+								  
 								</div>
 							  </div>
 							</div>

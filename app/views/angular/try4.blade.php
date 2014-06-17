@@ -26,6 +26,17 @@
     <pre>Model: @{{selected | json}}</pre>
     <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control">
 
+     
+        text:<input type="text" ng-model="text">
+        <br>show: @{{text}}
+
+        <br>radio:
+        <input type="radio" ng-model="lunch" value="chicken" name="lunch">
+        <input type="radio" ng-model="lunch" value="beef" name="lunch">
+        <input type="radio" ng-model="lunch" value="fish" name="lunch">  
+        @{{lunch}}
+        <br>
+        
 
 
    </div>

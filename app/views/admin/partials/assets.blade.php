@@ -2,7 +2,8 @@
 	<meta charset="UTF-8">
 	<link href="<?php echo asset('img/favicon_1.ico')?>" rel="shortcut icon">
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-	
+	<script src="<?php echo asset('vendor/angular.min.js')?>"></script> 
+    
 	<!-- jQuery 2.0.2 -->
 	{{ HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js') }}
 	<!-- jQuery UI 1.10.3 -->

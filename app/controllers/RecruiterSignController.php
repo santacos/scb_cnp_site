@@ -11,7 +11,7 @@ class RecruiterSignController extends \BaseController {
 	{
 		$requisitions = Requisition::whereHas('application', function($q) {
 			$q->whereApplicationCurrentStatusId(8);
-		})->get();
+		})->where('requisition_current_status_id','=',6)->get();
 		foreach($requisitions as $requisition) {
 			$requisition['waiting_for_sign'] = $requisition->application()->whereApplicationCurrentStatusId(8)->count();
 		}

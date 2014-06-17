@@ -11,7 +11,7 @@ class HRBPManagerPackageController extends \BaseController {
 	{
 		$requisitions = Requisition::whereHas('application', function($q) {
 			$q->whereApplicationCurrentStatusId(6);
-		})->get();
+		})->where('requisition_current_status_id','=',6)->get();
 		foreach($requisitions as $requisition) {
 			$requisition['waiting_for_comfirmation'] = $requisition->application()->whereApplicationCurrentStatusId(6)->count();
 		}
@@ -48,7 +48,7 @@ class HRBPManagerPackageController extends \BaseController {
 	public function show($id)
 	{
 		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(6)->get();
-		return View::make('HRBPManager.package.show', compact('applications'));
+		return View::make('HRBPManager.package.show', compact('applications'))->with('requisition_id',$id);
 	}
 
 	/**

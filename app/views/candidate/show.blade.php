@@ -35,7 +35,10 @@ thisIsTitle
                                     </tr>                                    
                                 </thead>
                                 <tbody>
-                                    
+                                    <tr>
+                                         <td><strong>Profile Picture :</strong></td>
+                                          <td><img style="max-height: 200px; max-width: 200px;" ng-src="@{{candidate.profile_pic}}"/></td> <!--pic-->
+                                    </tr>
                                     <tr> 
                                         <td><strong>ชื่อ-นามสกุล :</strong></td>
                                         <td>{{$candidate->thai_saluation.' '.$candidate->thai_firstname.' '.$candidate->thai_lastname}}</td>

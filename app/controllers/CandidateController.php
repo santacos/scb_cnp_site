@@ -77,7 +77,7 @@ class CandidateController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update()
 	{
 		/*$candidate = Candidate::findOrFail($id);
 
@@ -103,9 +103,18 @@ class CandidateController extends \BaseController {
             $user->first = trim(Input::get( 'first' ));
             $user->last = trim(Input::get( 'last' ));
             $user->contact_number = Input::get( 'contact_number' );
-            $user->save(); 
-            // return $user->errors()->all();
             
+            $user->push();
+             return $user->errors()->all();
+            if(Input::hasFile('filepath_picture')){
+				$image = Input::file('filepath_picture');
+				$filename = date('Y-m-d-H-i-s')."-".$image->getClientOriginalName();
+				Image::make($image->getRealPath())->save(public_path().'/img/candidatepics/'.$filename);
+				$candidate->filepath_picture = 'img/candidatepics/'.$filename;
+
+			}else if (Input::has('filepath_picture')) {
+				$candidate->filepath_picture = Input::get('filepath_picture');
+			}
 			$candidate->idcard = Input::get('idcard');
 			$candidate->passport_number = Input::get('passport_number');
 			$candidate->thai_saluation = Input::get('thai_saluation');
@@ -120,13 +129,11 @@ class CandidateController extends \BaseController {
 			$candidate->zip_code = Input::get('zip_code');
 			$candidate->full_location = Input::get('full_location');
 			$candidate->current_living_location = Input::get('current_living_location');
-			$candidate->filepath_picture = Input::get('filepath_picture');
 			$candidate->filepath_profile_picture = Input::get('filepath_profile_picture');
 			$candidate->filepath_video = Input::get('filepath_video');
 			$candidate->filepath_cv = Input::get('filepath_cv');
 
 			$candidate->save();
-
 		return Response::json(array('success' => true));
 	}
 
