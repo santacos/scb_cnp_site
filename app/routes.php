@@ -63,7 +63,7 @@ Route::get('tryView',function(){
 });
 
 Route::get('tryAngular',function(){
-	return View::make('angular.try4');
+	return View::make('angular.try7');
 });
 
 Route::get('showReq',function(){
@@ -218,7 +218,7 @@ Route::controller('hm','HMController');
 Route::resource('hm','HMController');
 
 Route::resource('hm-requisition', 'HMRequisitionController');
-Route::get('api/requisition/{user_id?}/{status_id1?}/{status_id2?}/{status_id3?}/{status_id4?}/{status_id5?}/{status_id6?}/{status_id7?}', array('as'=>'api.requisition', 'uses'=>'RequisitionRestController@getRequisitionDatatable'));
+Route::get('api/requisition/{user_id?}/{app_status?}/{status_id1?}/{status_id2?}/{status_id3?}/{status_id4?}/{status_id5?}/{status_id6?}/{status_id7?}', array('as'=>'api.requisition', 'uses'=>'RequisitionRestController@getRequisitionDatatable'));
 Route::get('api/application/{requisition_id?}/{status_id1?}/{status_id2?}/{status_id3?}/{status_id4?}/{status_id5?}/{status_id6?}/{status_id7?}/{status_id8?}/{status_id9?}/{status_id10?}', array('as'=>'api.application', 'uses'=>'ApplicationRestController@getApplicationDatatable'));
 Route::get('api/basket/{requisition_id?}/{status_id1?}/{status_id2?}/{status_id3?}/{status_id4?}/{status_id5?}/{status_id6?}/{status_id7?}/{status_id8?}/{status_id9?}/{status_id10?}', array('as'=>'api.basket', 'uses'=>'ApplicationRestController@getBasketDatatable'));
 Route::controller('requisitionrest', 'RequisitionRestController');
@@ -261,6 +261,8 @@ Route::get('recruiter-interview-confirm-addInterviewer', function(){
 });
 Route::resource('recruiter-interview-feedback', 'RecruiterInterviewFeedbackController');
 Route::resource('recruiter-prepare-package', 'RecruiterPackageController');
+Route::resource('recruiter-offer-package', 'RecruiterOfferPackageController');
+Route::resource('recruiter-sign', 'RecruiterSignController');
 
 // Candidate
 Route::resource('candidate', 'CandidateController');

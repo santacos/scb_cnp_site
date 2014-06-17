@@ -20,16 +20,34 @@ HM-create-requisition
     </style>
     
     <script src="<?php echo asset('vendor/angular.min.js')?>"></script> 
+<script src="<?php echo asset('vendor/angular-strap.min.js')?>"></script>   
+<script src="<?php echo asset('vendor/angular-strap.tpl.min.js')?>"></script>   
     <script src="<?php echo asset('vendor/ui-bootstrap-tpls-0.11.0.min.js')?>"></script>
     <script src="<?php echo asset('js/createReq-manager.js')?>"></script>
     <script src="<?php echo asset('vendor/ui-utils.js')?>"></script> 
     <script src="<?php echo asset('vendor/ui-utils.min.js')?>"></script>
+    <script>
+        var editApp = angular.module('editApp',[]);
+        editApp.controller('editCtrl',['$scope', '$http',
+            function ($scope, $http) {
+
+         $scope.img_selc='aaaa';
+            $scope.color = 'blue';
+            $scope.specialValue = {
+              "id": "12345",
+              "value": "green"
+            };
+          
+          }//before end controller
+
+    
+        ]);//end controller
+    </script>
 @stop
 
 
 @section('content')
-    <div ng-app="nameApp">
-        <div class="container" ng-controller="NameCtrl">
+        <div class="container" ng-app="editApp">
 
             <div class="col-md-7 col-md-offset-1" style="margin-top:10px">
                 <h1>Edit a Candidate</h1>
@@ -52,16 +70,26 @@ HM-create-requisition
                 {{ HTML::ul($errors->all()) }}
 
 
-        {{ Form::model($candidate, array('route' => array('candidate.update', $candidate->user_id), 'method' => 'PUT')) }}
+        {{ Form::model($candidate, array('route' => array('candidate.update', $candidate->user_id), 'method' => 'PUT','files'=>true)) }}
         {{ Former::populate($candidate) }}
         {{ Former::populateField('first', $candidate->user()->first()->first) }}
         {{ Former::populateField('last', $candidate->user()->first()->last) }}
         {{ Former::populateField('email',  $candidate->user()->first()->email) }}
         {{ Former::populateField('contact_number',  $candidate->user()->first()->contact_number) }}
-        {{ Former::populateField('position_id',  $candidate->user()->first()->first) }}
 
 
-
+        <div class="form-group">
+            @{{img_selc}}
+           {{ Form::label('product_pic', 'Image :') }} 
+           <!-- {{ Form::file('product_pic' , Input::old('product_pic'), array('class' => 'form-control'))}} -->
+           <pre>
+               <!-- <input type="radio" name="img_selc" ng-model="img_selc" ng-value="text" checked="checked"/>  URL &nbsp&nbsp -->
+               <input type="radio" name="img_selc" ng-model="img_selc" ng-value="file"> Upload <br/>
+               <!-- <input name="filepath_picture" type="text" class="form-control" value="{{$candidate->filepath_picture}}"> -->
+               <input  name="filepath_picture" type="file" class="form-control" value="{{Input::old('filepath_picture')}}">
+           </pre>
+       </div>
+        
         {{ Form::label('Personal Details :') }}
         <div class="form-group">
                     

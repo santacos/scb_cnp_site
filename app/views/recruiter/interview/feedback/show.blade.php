@@ -61,6 +61,24 @@ thisIsTitle
                                             @endforeach
                                           @endif
                                         </table>
+                                        {{  Datatable::table()
+                                        ->addColumn( 
+                                            'Application ID', 
+                                            'Name',
+                                            '%Related',
+                                            'Point',
+                                            'Application Status',
+                                            'Education',
+                                            'Previous Job',
+                                            'SLA',
+                                            'Deadline',
+                                            'Saved',
+                                            'Choose',
+                                            'Note',
+                                            'Action'
+                                                      )    
+                                          ->setUrl(URL::to('api/application/'.$requisition_id .'/4'))
+                                          ->render('datatable') }}
                                       </div>
     
                                     </div><!-- /.box-body -->

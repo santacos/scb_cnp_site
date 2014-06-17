@@ -11,7 +11,7 @@ class RecruiterInterviewConfirmController extends \BaseController {
 	{
 		$requisitions = Requisition::whereHas('application', function($q) {
 			$q->whereApplicationCurrentStatusId(3);
-		})->get();
+		})->where('requisition_current_status_id','=',6)->get();
 		foreach($requisitions as $requisition) {
 			$requisition['waiting_for_confirm'] = $requisition->application()->whereApplicationCurrentStatusId(3)->count();
 		}
@@ -48,7 +48,7 @@ class RecruiterInterviewConfirmController extends \BaseController {
 	public function show($id)
 	{
 		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(3)->get();
-		return View::make('recruiter.interview.confirm.show', compact('applications'));
+		return View::make('recruiter.interview.confirm.show', compact('applications'))->with('requisition_id',$id);
 	}
 
 	/**
@@ -138,8 +138,8 @@ class RecruiterInterviewConfirmController extends \BaseController {
 					'visit_number' => $visit_number
 			));
 		}
-		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(3)->get();
-		return View::make('recruiter.interview.confirm.show', compact('applications'));
+		$applications = Requisition::find($application->requisition_id)->application()->whereApplicationCurrentStatusId(3)->get();
+		return View::make('recruiter.interview.confirm.show', compact('applications'))->with('requisition_id',$application->requisition_id);
 	}
 
 	/**

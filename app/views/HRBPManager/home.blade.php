@@ -76,7 +76,7 @@ home-HRBP
                'Note',
                'Action'
                 )    
-    ->setUrl(URL::to('api/requisition/'.'22/'.'3'))
+    ->setUrl(URL::to('api/requisition/'.'22/'.'0/3'))
     ->render('datatable') }}
                        @include('admin.partials.recruiter.CanTable')
 

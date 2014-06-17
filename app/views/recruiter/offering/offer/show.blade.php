@@ -16,7 +16,7 @@ thisIsTitle
         <div class="box box-primary">
 
                     <div class="box-header">
-                        <h3 class="box-title"> Sent Shortlist Candidate..</h3>
+                        <h3 class="box-title"> Offer..</h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-primary btn-xs" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -61,7 +61,7 @@ thisIsTitle
                                             @endforeach
                                           @endif
                                         </table>
-                                           {{  Datatable::table()
+                                        {{  Datatable::table()
                                         ->addColumn( 
                                             'Application ID', 
                                             'Name',
@@ -77,7 +77,7 @@ thisIsTitle
                                             'Note',
                                             'Action'
                                                       )    
-                                          ->setUrl(URL::to('api/application/'.$requisition_id .'/3'))
+                                          ->setUrl(URL::to('api/application/'.$requisition_id .'/7'))
                                           ->render('datatable') }}
                                       </div>
     

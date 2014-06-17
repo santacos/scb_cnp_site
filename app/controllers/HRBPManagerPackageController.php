@@ -10,10 +10,10 @@ class HRBPManagerPackageController extends \BaseController {
 	public function index()
 	{
 		$requisitions = Requisition::whereHas('application', function($q) {
-			$q->whereApplicationCurrentStatusId(5);
-		})->get();
+			$q->whereApplicationCurrentStatusId(6);
+		})->where('requisition_current_status_id','=',6)->get();
 		foreach($requisitions as $requisition) {
-			$requisition['waiting_for_comfirmation'] = $requisition->application()->whereApplicationCurrentStatusId(5)->count();
+			$requisition['waiting_for_comfirmation'] = $requisition->application()->whereApplicationCurrentStatusId(6)->count();
 		}
 		return View::make('HRBPManager.package.index', compact('requisitions'));
 	}
@@ -47,8 +47,8 @@ class HRBPManagerPackageController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(5)->get();
-		return View::make('HRBPManager.package.show', compact('applications'));
+		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(6)->get();
+		return View::make('HRBPManager.package.show', compact('applications'))->with('requisition_id',$id);
 	}
 
 	/**
@@ -89,7 +89,7 @@ class HRBPManagerPackageController extends \BaseController {
 				$prev_action_datetime = $prev_action->action_datetime;
 			}
 			DB::table('application_logs')->insert(array(
-							'action_type' => 5,
+							'action_type' => 6,
 							'application_id' => $application->application_id,
 							'visit_number' => $visit_number,
 							'employee_user_id' => Employee::first()->user_id,
@@ -101,24 +101,11 @@ class HRBPManagerPackageController extends \BaseController {
 							'result' => Input::get('approve'),
 							'note' => Input::get('note')
 			));
-		$application->current_salary = Input::get('current_salary');
-		$application->expected_salary = Input::get('expected_salary');
-		$application->position_salary = Input::get('position_salary');
 		$application->final_salary = Input::get('final_salary');
-		$application->cola = Input::get('cola');
-		$application->application_current_status_id = Input::get('approve')?6:9;
+		$application->application_current_status_id = Input::get('approve')?7:9;
 		$application->note = Input::get('note');
 		$application->save();
-
-		/*$application->intOffSchedule()->whereAppCsId(4)->whereVisitNumber($visit_number)->delete();
-		DB::table('int_off_schedules')->insert(array(
-						'app_cs_id' => 4,
-						'visit_number' => $visit_number,
-						'application_id' => $application->application_id,
-						'datetime' => Input::get('date_time'),
-						'location' => Input::get('location')
-		));*/
-
+		
 		return Response::json(array('success' => true));
 	}
 

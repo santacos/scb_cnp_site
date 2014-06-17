@@ -130,7 +130,7 @@ thisIsTitle
           <span style="color:orange; font-size:20px;">{{ $application->cola }}</span>
         </div>
         <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('final_salary', 'Final Salary :') }}
+          {{ Form::label('final_salary', 'Max Final Salary :') }}
           {{ Form::input('text', 'final_salary', Input::old('final_salary')) }}
         </div>
         <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
