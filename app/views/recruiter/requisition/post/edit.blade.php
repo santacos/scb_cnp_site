@@ -115,10 +115,16 @@ HM-create-requisition
 
                 <div class="form-group">
                     <label for="division">Division :</label>
-                    <select ng-model="requisition.division" ng-change="checkDivision()" class="form-control scrollable-menu" id="division" name="division">
+                    <!-- <select ng-model="requisition.division" ng-change="checkDivision()" class="form-control scrollable-menu" id="division" name="division">
                          <option ng-repeat="position in allPosition | filter:{group:requisition.group} | unique:'division'" value="@{{position.division}}">@{{position.division}}</option>
                         
-                    </select>
+                    </select> -->
+                    <select ng-model="requisition.division"  ng-change="checkDivision()"  
+                        class="form-control scrollable-menu ng-valid ng-dirty " 
+                        id="division" name="division"
+                        ng-options="position.division as position.division for position in allPosition  | filter:{group:requisition.group}    | unique:'division'">
+                        
+                    </select> 
                 </div>
 
                 <div class="form-group">
