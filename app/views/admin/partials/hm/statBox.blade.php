@@ -48,7 +48,9 @@
 				</div>
 				
 				<div class="small-box-footer">
-					total job  <span class="label label-warning" style="border-radius:50%;font-size:1.1em;">  {{Requisition::where('requisition_current_status_id', '=', 6)->count()}}</span> 
+					total job  <span class="label label-warning" style="border-radius:50%;font-size:1.1em;"> {{Requisition::whereHas('application', function($q) {
+																													$q->whereApplicationCurrentStatusId(2);
+																												})->where('requisition_current_status_id','=',6)->count()}}</span> 
 				</div>
 			</a>
 		</div><!-- ./col -->
@@ -63,7 +65,9 @@
 					<i class="fa fa-fw fa-group"></i>
 				</div>
 				<div class="small-box-footer">
-					total job  <span class="label label-danger" style="border-radius:50%;font-size:1.1em;"> {{Application::where('application_current_status_id', '=', 4)->count()}}</span> 
+					total job  <span class="label label-danger" style="border-radius:50%;font-size:1.1em;"> {{Requisition::whereHas('application', function($q) {
+																													$q->whereApplicationCurrentStatusId(4);
+																												})->where('requisition_current_status_id','=',6)->count()}}</span> 
 				</div>	
 			</a>
 		</div><!-- ./col -->
