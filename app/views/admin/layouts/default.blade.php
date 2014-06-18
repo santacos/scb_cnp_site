@@ -6,7 +6,7 @@
 		@yield('title')
 	</title>
 	 	{{ HTML::style('assets/css/bootstrap.css') }}
-        {{ HTML::script('js/jquery.dataTables.js')}}
+        @include('includes.datatable')
 	@yield('libs')
 
 	</head>
