@@ -53,13 +53,23 @@
 			</ul>
 		</li>
 		<li class="treeview">
-			<a href="#"> <i class="fa fa-fw fa-user"></i> <span>Candidate  <small class="badge bg-aqua">{{Application::where('application_current_status_id', '=', 4)->count()+Requisition::where('requisition_current_status_id', '=', 6)->count()}}</small></span> <i class="fa fa-angle-left pull-right"></i> </a>
+			<a href="#"> <i class="fa fa-fw fa-user"></i> <span>Candidate  <small class="badge bg-aqua">{{Requisition::whereHas('application', function($q) {
+																													$q->whereApplicationCurrentStatusId(2);
+																												})->where('requisition_current_status_id','=',6)->count()
+																												+
+																												Requisition::whereHas('application', function($q) {
+																													$q->whereApplicationCurrentStatusId(4);
+																												})->where('requisition_current_status_id','=',6)->count()}}</small></span> <i class="fa fa-angle-left pull-right"></i> </a>
 			<ul class="treeview-menu">
 				<li>
-					<a href="{{ URL::to('hm-application-review') }}"><i class="fa fa-fw fa-clipboard"></i> Review resume <small class="badge bg-blue">{{Requisition::where('requisition_current_status_id', '=', 6)->count()}}</small></a>
+					<a href="{{ URL::to('hm-application-review') }}"><i class="fa fa-fw fa-clipboard"></i> Review resume <small class="badge bg-blue">{{Requisition::whereHas('application', function($q) {
+																													$q->whereApplicationCurrentStatusId(2);
+																												})->where('requisition_current_status_id','=',6)->count()}}</small></a>
 				</li>
 				<li>
-					<a href="{{ URL::to('icons') }}"><i class="fa fa-fw fa-comments-o"></i> interview<small class="badge bg-green">{{Application::where('application_current_status_id', '=', 4)->count()}}</small></a>
+					<a href="{{ URL::to('icons') }}"><i class="fa fa-fw fa-comments-o"></i> interview<small class="badge bg-green">{{Requisition::whereHas('application', function($q) {
+																													$q->whereApplicationCurrentStatusId(4);
+																												})->where('requisition_current_status_id','=',6)->count()}}</small></a>
 				</li>
 				
 			</ul>

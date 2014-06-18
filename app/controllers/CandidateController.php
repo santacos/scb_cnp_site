@@ -114,9 +114,11 @@ class CandidateController extends \BaseController {
 				$image = Input::file('filepath_picture');
 				$filename = date('Y-m-d-H-i-s')."-".$image->getClientOriginalName();
 				Image::make($image->getRealPath())->save(public_path().'/img/candidatepics/'.$filename);
-				$candidate->filepath_picture = 'img/candidatepics/'.$filename;
+				File::delete(public_path().$candidate->filepath_picture);
+				$candidate->filepath_picture = '/img/candidatepics/'.$filename;
 
 			}else if (Input::has('filepath_picture')) {
+				File::delete(public_path().$candidate->filepath_picture);
 				$candidate->filepath_picture = Input::get('filepath_picture');
 			}
 			$candidate->idcard = Input::get('idcard');

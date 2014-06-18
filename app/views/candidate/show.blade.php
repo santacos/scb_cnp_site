@@ -100,6 +100,7 @@ thisIsTitle
                                         <td><strong>Datetime Create :</strong></td>
                                         <td>{{$candidate->created_at}}</td>
                                     </tr>
+                                    <FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
                                 </tbody>
                             </table>
                         </div><!-- /.col -->
