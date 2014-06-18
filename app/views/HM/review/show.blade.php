@@ -54,10 +54,20 @@ thisIsTitle
                                             'Note',
                                             'Action'
                                                       )    
-                                          ->setUrl(URL::to('api/application/'.$requisition_id .'/2' .'/2'))
+                                          ->setUrl(URL::to('api/application/'.$requisition->requisition_id .'/2' .'/2'))
                                           ->render('datatable') }}
                                       </div>
-    
+                                      
+                                      {{ Form::model($requisition, array('route' => array('hm-application-review.update', $requisition->requisition_id), 'method' => 'PUT')) }}
+                                        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
+                                          {{ Form::label('note', 'Note :') }}
+                                          {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
+                                        </div>
+                                        {{ Form::hidden('sel_application_ids','',array('id' => 'sel_application_ids')) }}
+                                        {{ Form::hidden('unsel_application_ids','',array('id' => 'unsel_application_ids')) }}
+                                        {{ Form::button('Accept', array('name' => 'approve', 'value' => true, 'type' => 'submit')) }}
+                                      {{ Form::close() }}
+
                                     </div><!-- /.box-body -->
                         </div><!-- /.box -->
 
@@ -69,5 +79,46 @@ thisIsTitle
                         -->
                     </div>
                     <!--end TO DO REQUISITION-->
-
+<script>
+  var vals = [];
+  function toggleCandidate(x){
+    var row = x.parentNode.parentNode.parentNode;
+    var id = row.children[0].children[1].innerHTML;
+    if(vals[id] === undefined){
+      vals[id] = x.checked;
+    }else{
+      x.checked = vals[id];
+    }
+    if(x.checked){
+      row.style.color = 'black';
+    }else{
+      row.style.color = '#AAAAAA';
+    }
+    updateAll(document.getElementById('DataTables_Table_0').children[3]);
+  }
+  function toggleCandidate2(x){
+    var row = x.parentNode.parentNode.parentNode;
+    var id = row.children[0].children[1].innerHTML;
+    vals[id] = x.checked;
+    if(x.checked){
+      row.style.color = 'black';
+    }else{
+      row.style.color = '#AAAAAA';
+    }
+    updateAll(document.getElementById('DataTables_Table_0').children[3]);
+  }
+  function updateAll(x){
+    document.getElementById('sel_application_ids').value = '';
+    document.getElementById('unsel_application_ids').value = '';
+    var rows = x.children;
+    for(var i=0;i<rows.length;i++){
+      var id = rows[i].children[0].children[1].innerHTML;
+      if(rows[i].children[10].firstChild.firstChild.checked){
+        document.getElementById('sel_application_ids').value += (document.getElementById('sel_application_ids').value==''?'':',') + id;
+      }else{
+        document.getElementById('unsel_application_ids').value += (document.getElementById('unsel_application_ids').value==''?'':',') + id;
+      }
+    }
+  }
+</script>
 @stop
