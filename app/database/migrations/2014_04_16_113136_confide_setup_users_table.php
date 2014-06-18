@@ -183,11 +183,11 @@ class ConfideSetupUsersTable extends Migration {
             $table->string('city',45)->nullable()->default(NULL);
             $table->string('zip_code',45)->nullable()->default(NULL);
             $table->string('full_location',500)->nullable()->default(NULL);
-            $table->string('current_living_location',200)->nullable()->default(NULL);
-            $table->string('filepath_picture',100)->nullable()->default(NULL);
-            $table->string('filepath_profile_picture',100)->nullable()->default(NULL);
-            $table->string('filepath_video',100)->nullable()->default(NULL);
-            $table->string('filepath_cv',100)->nullable()->default(NULL);
+            $table->string('current_living_location',500)->nullable()->default(NULL);
+            $table->string('filepath_picture',500)->nullable()->default(NULL);
+            $table->string('filepath_profile_picture',500)->nullable()->default(NULL);
+            $table->string('filepath_video',500)->nullable()->default(NULL);
+            $table->string('filepath_cv',500)->nullable()->default(NULL);
             $table->primary('user_id');
             $table->timestamps();
         });

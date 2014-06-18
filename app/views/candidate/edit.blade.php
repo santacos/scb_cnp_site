@@ -77,7 +77,7 @@ HM-create-requisition
                 {{ HTML::ul($errors->all()) }}
 
 
-        {{ Form::model($candidate, array('route' => array('candidate.update', $candidate->user_id), 'method' => 'PUT','files'=>true)) }}
+        {{ Form::model($candidate, array('route' => array('cd.update', $candidate->user_id), 'method' => 'PUT','files'=>true)) }}
         {{ Former::populate($candidate) }}
         {{ Former::populateField('first', $candidate->user()->first()->first) }}
         {{ Former::populateField('last', $candidate->user()->first()->last) }}
@@ -86,10 +86,9 @@ HM-create-requisition
 
 
         <div class="form-group">
-            @{{img_selc}}
-           {{ Form::label('product_pic', 'Image :') }} 
-           <!-- {{ Form::file('product_pic' , Input::old('product_pic'), array('class' => 'form-control'))}} -->
+           {{ Form::label('filepath_picture', 'Image :') }} 
            <pre>
+               <img src="{{asset($candidate->filepath_picture)}}" style="height: 100px; width: 100px;"> <br><br>
                 <input type="radio" name="img_selc" ng-model="img_selc" value="text" checked="checked"/>  URL &nbsp&nbsp
                 <input type="radio" name="img_selc" ng-model="img_selc" value="file"> Upload <br/>
                 <input ng-show="img_selc=='text'"name="filepath_picture" type="text" class="form-control" value="{{$candidate->filepath_picture}}">

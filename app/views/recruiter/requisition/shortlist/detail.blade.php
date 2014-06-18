@@ -195,43 +195,7 @@ thisIsTitle
                     </div><!-- /.row -->
                    
 
-                    <div class="row">
-                        <!-- accepted payments column -->
-                        <div class="col-xs-6">
-                            <p class="lead">Note from Employee (Hiring Manager):</p>
-                            <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                                {{$requisition->note}}
-                            </p>
-                        </div><!-- /.col -->
-                        <div class="col-xs-6">
-                            <p class="lead">Note :</p>
-                  <div class="form-group">
-                      <!-- {{ Form::textarea('note', '', array()) }} -->
-                      <textarea class="form-control" id="note" name="note" rows="5" style="font-size:1.2em;"></textarea>
-                    </div>
-                   
-                           <!--  <div class="table-responsive">
-                                <table class="table">
-                                    <tr>
-                                        <th style="width:50%">Subtotal:</th>
-                                        <td>$250.30</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Tax (9.3%)</th>
-                                        <td>$10.34</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Shipping:</th>
-                                        <td>$5.80</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Total:</th>
-                                        <td>$265.24</td>
-                                    </tr>
-                                </table>
-                            </div> -->
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
+                    
 
                     <!-- this row will not appear when printing -->
                     <div class="row no-print">

@@ -39,7 +39,7 @@
 			<a href="#"> <i class="fa fa-fw fa-inbox"></i> <span>Requisition      <small class="badge bg-blue">{{ Requisition::where('requisition_current_status_id', '=', 4)->count()+Requisition::where('requisition_current_status_id', '=', 5)->count()}}</small></span> <i class="fa fa-angle-left pull-right"></i> </a>
 			<ul class="treeview-menu">
 				<li>
-					<a href="{{ URL::to('morris') }}">
+					<a href="{{URL::to('recruiter-requisition-post')}}">
 						<i class="fa fa-fw fa-edit"></i> 
 						Post Job 
 						<!--number of post job-->
@@ -47,13 +47,13 @@
 					</a>
 				</li>
 				<li>
-					<a href="{{ URL::to('flot') }}">
+					<a href="{{URL::to('recruiter-shortlist-candidate')}}">
 						<i class="ion ion-person-add"></i> Send Shortlist 
 						<small class="badge pull-right bg-red"> {{$a[1]=Requisition::where('requisition_current_status_id', '=', 5)->count()}}</small>
 					</a>
 				</li>
 				<li>
-					<a href="{{ URL::to('inline') }}"><i class="fa fa-fw fa-check-square-o"></i> Shortlist sent</a>
+					<a href="{{URL::to('recruiter-shortlist-candidate-sent')}}"><i class="fa fa-fw fa-check-square-o"></i> Shortlist sent</a>
 				</li>
 				<li>
 					<a href="{{ URL::to('inline') }}"><i class="fa fa-fw fa-book"></i> Closed Job</a>
@@ -64,19 +64,19 @@
 			<a href="#"> <i class="fa fa-fw fa-user"></i> <span>Candidate       <small class="badge bg-aqua">5</small></span> <i class="fa fa-angle-left pull-right"></i> </a>
 			<ul class="treeview-menu">
 				<li>
-					<a href="{{ URL::to('general') }}"><i class="fa fa-fw fa-phone"></i> Interview Confirm</a>
+					<a href="{{URL::to('recruiter-interview-confirm')}}"><i class="fa fa-fw fa-phone"></i> Interview Confirm</a>
 				</li>
 
 				<li>
-					<a href="{{ URL::to('icons') }}"><i class="fa fa-fw fa-comments-o"></i> Interview Feedback</a>
+					<a href="{{URL::to('recruiter-interview-feedback')}}"><i class="fa fa-fw fa-comments-o"></i> Interview Feedback</a>
 				</li>
 
 				<li>
-					<a href="{{ URL::to('icons') }}"><i class="fa fa-fw fa-inbox"></i> Prepare Package</a>
+					<a href="{{URL::to('recruiter-prepare-package')}}"><i class="fa fa-fw fa-inbox"></i> Prepare Package</a>
 				</li>
 
 				<li>
-					<a href="{{ URL::to('icons') }}"><i class="fa fa-fw fa-dollar"></i> Verbal Offer</a>
+					<a href="{{URL::to('recruiter-offer-package')}}"><i class="fa fa-fw fa-dollar"></i> Offer</a>
 				</li>
 
 				<li>

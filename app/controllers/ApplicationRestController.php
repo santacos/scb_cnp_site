@@ -191,36 +191,36 @@ class ApplicationRestController extends \BaseController {
                         { 
                             if($model->application_current_status_id == 2){
 
-                                return'<a href="' .URL::to('candidate/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
+                                return'<a href="' .URL::to('cd/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
                                                 '<a href="' .URL::to('hm-application-review/' . $model->application_id . '/edit').'"><button class="btn btn-sm btn-success">Select</button></a>';
                             }
                             else  if($model->application_current_status_id == 3){
 
-                                return'<a href="' .URL::to('candidate/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
+                                return'<a href="' .URL::to('cd/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
                                                 '<a href="' .URL::to('recruiter-interview-confirm/' . $model->application_id . '/edit').'"><button class="btn btn-sm btn-success">Confirm</button></a>';
                             }
                             else  if($model->application_current_status_id == 4){
 
-                                return'<a href="' .URL::to('candidate/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
+                                return'<a href="' .URL::to('cd/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
                                                 '<a href="' .URL::to('recruiter-interview-feedback/' . $model->application_id . '/edit').'"><button class="btn btn-sm btn-success">Feedback</button></a>';
                             }
                             else  if($model->application_current_status_id == 5){
 
-                                return'<a href="' .URL::to('candidate/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
+                                return'<a href="' .URL::to('cd/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
                                                 '<a href="' .URL::to('recruiter-prepare-package/' . $model->application_id . '/edit').'"><button class="btn btn-sm btn-success">Prepare</button></a>';
                             }
                             else  if($model->application_current_status_id == 6){
 
-                                return'<a href="' .URL::to('candidate/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
+                                return'<a href="' .URL::to('cd/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
                                                 '<a href="' .URL::to('hm-application-review/' . $model->application_id . '/edit').'"><button class="btn btn-sm btn-success">Select</button></a>';
                             }
                             else  if($model->application_current_status_id == 7){
 
-                                return'<a href="' .URL::to('candidate/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
+                                return'<a href="' .URL::to('cd/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
                                                 '<a href="' .URL::to('recruiter-offer-package/' . $model->application_id . '/edit').'"><button class="btn btn-sm btn-success">Offer</button></a>';
                             }
                             else{
-                                return '<a href="' .URL::to('candidate/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>';
+                                return '<a href="' .URL::to('cd/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>';
                             }
                         });
                        $return=$return->searchColumns('application_id',
@@ -375,7 +375,7 @@ class ApplicationRestController extends \BaseController {
                         { return '<i class="fa fa-fw fa-envelope-o"></i>';
                         })
                     ->addColumn('Action',function($model)
-                        {  return '<a href="' .URL::to('candidate/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>';
+                        {  return '<a href="' .URL::to('cd/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>';
                             
                         });
                             $return=$return->searchColumns('application_id',
