@@ -52,7 +52,7 @@ thisIsTitle
                                 'Note',
                                 'Action'
                                           )    
-                              ->setUrl(URL::to('api/application/'.$requisition_id .'/1'))
+                                          ->setUrl(URL::to('api/application/'.$requisition_id .'/1' .'/1'))
                               ->render('datatable') }}
                                        <!--  <table border="1">
                                           <tr>

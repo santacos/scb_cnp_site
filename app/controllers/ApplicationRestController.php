@@ -4,7 +4,7 @@ class ApplicationRestController extends \BaseController {
 
 	
 
-        public function getApplicationDatatable($requsition_id='',$status_id1='',$status_id2='',$status_id3='',$status_id4='',$status_id5='',$status_id6='',$status_id7='',$status_id8='',$status_id9='',$status_id10='')
+        public function getApplicationDatatable($requsition_id='',$special_status='',$status_id1='',$status_id2='',$status_id3='',$status_id4='',$status_id5='',$status_id6='',$status_id7='',$status_id8='',$status_id9='',$status_id10='')
     {       
          // return $action;
         // return $user_id.'----'.$status_id;
@@ -67,6 +67,9 @@ class ApplicationRestController extends \BaseController {
                         $app=$app->OrWhere('application_current_status_id','=',$status_id10);
                          
                     }
+                   if($special_status == '1a'){
+                        $app=$app->where('is_in_basket','=',1);
+                   }
                    $app=$app->get();
                     $return = Datatable::collection($app)
                     ->addColumn('application_id',function($model)
@@ -111,7 +114,7 @@ class ApplicationRestController extends \BaseController {
                         { 
                             $app_cur_stat_id = $model->applicationCurrentStatus->application_current_status_id;
                             if($app_cur_stat_id == 3 || $app_cur_stat_id == 4){
-                                $visit_number = $application->interviewLog()->orderBy('visit_number','desc')->first();
+                                $visit_number = $model->interviewLog()->orderBy('visit_number','desc')->first();
                                 if(is_null($visit_number)){
                                     $visit_number = 1;
                                 }else{
@@ -169,30 +172,38 @@ class ApplicationRestController extends \BaseController {
                         { 
                             return ' ';
                             return $model->employee()->first()->first.' '.$model->employee()->first()->last;
-                        })
-                    ->addColumn('Choose',function($model)
-                        { 
-                            return '<center>'
-                                                    .'<iframe width="30px" height="20px" scrolling="no" frameBorder="0" name="ckbox_f'.$model->application_id.'" id="ckbox_f'.$model->application_id.'">'
-                                                    .'</iframe>'
-                                                    .'</center>'
-                                                    .'<form action="../recruiter-shortlist-candidate-ckbox" id="ckbox'.$model->application_id.'" target="ckbox_f'.$model->application_id.'" method="GET">'
-                                                    .'<input type="hidden" name="id" value="'.$model->application_id.'"/>'
-                                                    .'</form>'
-                                                    .'<script>'
-                                                    .'document.getElementById("ckbox'.$model->application_id.'").submit();'
-                                                    .'</script>';
-                            return $model->employee()->first()->first.' '.$model->employee()->first()->last;
-                        })
-                    ->addColumn('Note',function($model)
+                        });
+                    if($special_status == 1 || $special_status == '1a' || $special_status == 2){
+                        $GLOBALS['special_status'] = $special_status;
+                        $return->addColumn('Choose',function($model)
+                            { 
+                                if($GLOBALS['special_status'] == 1 || $GLOBALS['special_status'] == '1a'){
+                                    return '<center>'
+                                                        .'<iframe width="30px" height="20px" scrolling="no" frameBorder="0" name="ckbox_f'.$model->application_id.'" id="ckbox_f'.$model->application_id.'">'
+                                                        .'</iframe>'
+                                                        .'</center>'
+                                                        .'<form action="../recruiter-shortlist-candidate-ckbox" id="ckbox'.$model->application_id.'" target="ckbox_f'.$model->application_id.'" method="GET">'
+                                                        .'<input type="hidden" name="id" value="'.$model->application_id.'"/>'
+                                                        .'</form>'
+                                                        .'<script>'
+                                                        .'document.getElementById("ckbox'.$model->application_id.'").submit();'
+                                                        .'</script>';
+                                }else if($GLOBALS['special_status'] == 2){
+                                    return '<center>'
+                                            .'<input type="checkbox" onchange="toggleCandidate(this)"/>'
+                                            .'</center>';
+                                }
+                            });
+                    }
+                    $return->addColumn('Note',function($model)
                         { return '<i class="fa fa-fw fa-envelope-o"></i>';
                         })
                     ->addColumn('Action',function($model)
                         { 
                             if($model->application_current_status_id == 2){
 
-                                return'<a href="' .URL::to('cd/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
-                                                '<a href="' .URL::to('hm-application-review/' . $model->application_id . '/edit').'"><button class="btn btn-sm btn-success">Select</button></a>';
+                                return'<a href="' .URL::to('cd/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '/*.
+                                                '<a href="' .URL::to('hm-application-review/' . $model->application_id . '/edit').'"><button class="btn btn-sm btn-success">Select</button></a>'*/;
                             }
                             else  if($model->application_current_status_id == 3){
 

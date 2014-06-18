@@ -96,7 +96,7 @@ thisIsTitle
                                 'Note',
                                 'Action'
                                           )    
-                              ->setUrl(URL::to('api/basket/'.$requisition_id ))
+                              ->setUrl(URL::to('api/application/'.$requisition_id .'/1a' .'/1' ))
                               ->render('datatable') }}
                                       </div>
                                     

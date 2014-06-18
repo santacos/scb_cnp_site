@@ -168,8 +168,8 @@ class RequisitionRestController extends \BaseController {
                                 $usecolor='';
                             }
                             if($model->requisition_current_status_id==6)//shortlist sent
-                            {   $color = 'warning';
-                                $usecolor='';
+                            {   $color = '';
+                                $usecolor='red';
                             }
                             if($model->requisition_current_status_id==7)//shortlist sent
                             {   $color = 'default';
@@ -278,34 +278,60 @@ class RequisitionRestController extends \BaseController {
                          {           $return=$return->addColumn('Action',function($model) { 
                                     if($model ->requisition_current_status_id < 2) //Creating Requisition
                                      {
-                                        return '<a href="' .URL::to('hm-requisition/' . $model->requisition_id.'/edit').'"><button class="btn btn-sm btn-warning">Edit</button></a>';
+                                        return '<div class="btn-group-vertical">
+                                                    <a href="' .URL::to('hm-requisition/' . $model->requisition_id.'/edit').'" class="btn btn-sm btn-warning">
+                                                        Edit
+                                                    </a>
+                                                </div>';
 
                                     }
                                      // else    return '<a href="' .URL::to('hm/requisition/' . $model->requisition_id.'/edit').'"><button class="btn btn-sm btn-warning">Edit</button></a>';
                                     
                                     else if($model ->requisition_current_status_id == 2) //
                                     {
-                                        return '<a href="' .URL::to('hm-nl-requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+                                        return '<div class="btn-group-vertical">
+                                                <a href="' .URL::to('hm-nl-requisition/' . $model->requisition_id).'" style="width:8.5em;" class="btn btn-sm btn-warning">
+                                                    Approve
+                                                </a>
+                                                </div>';
                                     }
                                     else  if($model ->requisition_current_status_id == 3 )
                                     {
-                                        return '<a href="' .URL::to('hrbp-officer-requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+                                        return '<div class="btn-group-vertical">
+                                                <a href="' .URL::to('hrbp-officer-requisition/' . $model->requisition_id).'" style="width:8.5em;" class="btn btn-sm btn-warning">
+                                                    Approve
+                                                </a>
+                                                </div>';
                                     }  
                                     else if($model ->requisition_current_status_id == 4)
                                     {
-                                        return '<a href="' .URL::to('recruiter-requisition-post/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Post Job</button></a>';
+                                        return '<div class="btn-group-vertical" >
+                                                    <a href="' .URL::to('recruiter-requisition-post/' . $model->requisition_id).'" style="width:8.5em;" class="btn btn-sm btn-info">
+                                                        Post Job
+                                                    </a>
+                                                </div>';
                                     }
                                     else if($model ->requisition_current_status_id == 5)
                                     {
-                                        return  '<a href="' .URL::to('recruiter-shortlist-candidate/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Application</button></a>'
+                                        // return  '<a href="' .URL::to('recruiter-shortlist-candidate/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Application</button></a>'
 
-                                        .'  '.'<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Basket</button></a>'
+                                        // .'  '.'<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Basket</button></a>'
                                                 
-                                        ;
+                                        // ;
+
+                                        return '<div class="btn-group-vertical">
+                                                    <a href="' .URL::to('recruiter-shortlist-candidate/' . $model->requisition_id).'" class="btn btn-sm btn-info">Application</a>
+                                                    <a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'" class="btn btn-sm btn-success">Basket</a>
+                                                </div>
+                                        ';
                                     }
                                     else if($model ->requisition_current_status_id == 6)
                                     {
-                                        return '<a href="' .URL::to('hm-application-review/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Select Candidate</button></a>';
+                                        //return '<a href="' .URL::to('hm-application-review/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Select Candidate</button></a>';
+                                        return '<div class="btn-group-vertical">
+                                                    <a href="' .URL::to('hm-application-review/' . $model->requisition_id).'" class="btn btn-sm btn-warning">Select Candidate</a>
+                                                </div>
+                                        ';
                                     }
                                     else 
                                     {
@@ -317,14 +343,25 @@ class RequisitionRestController extends \BaseController {
                         {           $return=$return->addColumn('Action',function($model) { 
                                     if($model ->requisition_current_status_id < 2) //Creating Requisition
                                      {
-                                        return '<a href="' .URL::to('hm-requisition/' . $model->requisition_id.'/edit').'"><button class="btn btn-sm btn-warning">Edit</button></a>';
-
+                                        //return '<a href="' .URL::to('hm-requisition/' . $model->requisition_id.'/edit').'"><button class="btn btn-sm btn-warning">Edit</button></a>';
+                                        return '<div class="btn-group-vertical">
+                                                    <a href="' .URL::to('hm-requisition/' . $model->requisition_id.'/edit').'" class="btn btn-sm btn-info" type="button" 
+                                                    style="width:8.5em;"
+                                                    >
+                                                    Edit
+                                                    </a>
+                                                </div>
+                                        ';
                                     }
                                      // else    return '<a href="' .URL::to('hm/requisition/' . $model->requisition_id.'/edit').'"><button class="btn btn-sm btn-warning">Edit</button></a>';
                                       
                                     else if($model ->requisition_current_status_id == 2) //
                                     {
-                                        return '<a href="' .URL::to('hm-nl-requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+                                        //return '<a href="' .URL::to('hm-nl-requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+                                        return '<div class="btn-group-vertical">
+                                                    <a href="' .URL::to('hm-nl-requisition/' . $model->requisition_id).'" style="width:8.5em;" class="btn btn-sm btn-success">Approve</a>
+                                                </div>
+                                        ';
                                     }
                                     else if($model ->requisition_current_status_id == 6)
                                     {
@@ -350,7 +387,11 @@ class RequisitionRestController extends \BaseController {
                                 $return=$return->addColumn('Action',function($model) { 
                                     if($model ->requisition_current_status_id == 3 )
                                     {
-                                        return '<a href="' .URL::to('hrbp-officer-requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+                                        //return '<a href="' .URL::to('hrbp-officer-requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+                                        return '<div class="btn-group-vertical">
+                                                    <a href="' .URL::to('hrbp-officer-requisition/' . $model->requisition_id).'" style="width:8.5em;" class="btn btn-sm btn-danger">Approve</a>
+                                                </div>
+                                        ';
                                     }
                         
                                     else 
@@ -365,7 +406,13 @@ class RequisitionRestController extends \BaseController {
                                 $return=$return->addColumn('Action',function($model) { 
                                     if($model ->requisition_current_status_id == 3 )
                                     {
-                                        return '<a href="' .URL::to('hrbp-manager-requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+                                        //return '<a href="' .URL::to('hrbp-manager-requisition/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Approve</button></a>';
+                                        return '<div class="btn-group-vertical">
+                                                    <a href="' .URL::to('hrbp-manager-requisition/' . $model->requisition_id).'" class="btn btn-sm btn-warning" type="button" style="width:8.5em;">
+                                                        Approve
+                                                    </a>
+                                                </div>
+                                        ';
                                     }
                         
                                     else 
@@ -381,20 +428,33 @@ class RequisitionRestController extends \BaseController {
                                 $return=$return->addColumn('Action',function($model) { 
                                    if($model ->requisition_current_status_id == 4)
                                     {
-                                        return '<a href="' .URL::to('recruiter-requisition-post/' . $model->requisition_id.'/edit').'"><button class="btn btn-sm btn-warning">Post Job</button></a>';
+                                        //return '<a href="' .URL::to('recruiter-requisition-post/' . $model->requisition_id.'/edit').'"><button class="btn btn-sm btn-info">Post Job</button></a>';
+                                        return  '<div class="btn-group-vertical">
+                                                    <a href="' .URL::to('recruiter-requisition-post/' . $model->requisition_id.'/edit').'" type="button" class="btn btn-primary" style="width:12em;">
+                                                        Post Job
+                                                    </a>
+                                                </div>';
                                     }
                                     else if($model ->requisition_current_status_id == 5)
                                     {
                                          $app = Application::where('application_current_status_id', '=', 1)->where('is_in_basket','=','0')->where('requisition_id','=',$model->requisition_id)->count();
                                         $basket = Application::where('application_current_status_id', '=', 1)->where('is_in_basket','=','1')->where('requisition_id','=',$model->requisition_id)->count();
                                         $sent =  Application::where('application_current_status_id', '=', 2)->where('requisition_id','=',$model->requisition_id)->count();
-                                        return
-                                        '<a href="' .URL::to('recruiter-shortlist/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Detail</button></a>'.'  '.  
-                                        '<a href="' .URL::to('recruiter-shortlist-candidate/' . $model->requisition_id).'"><button class="btn btn-danger btn-info">Application ('.$app.')</button></a>'.'<br>'.
-                                        '<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Basket ('.$basket.')</button></a>'.'  '.
-                                        '<a href="' .URL::to('recruiter-shortlist-log/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Shortlist Sent ('.$sent.')</button></a>'
+                                        // return
+                                        // '<a href="' .URL::to('recruiter-shortlist/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Detail</button></a>'.'  '.  
+                                        // '<a href="' .URL::to('recruiter-shortlist-candidate/' . $model->requisition_id).'"><button class="btn btn-danger btn-info">Application ('.$app.')</button></a>'.'<br>'.
+                                        // '<a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Basket ('.$basket.')</button></a>'.'  '.
+                                        // '<a href="' .URL::to('recruiter-shortlist-log/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Shortlist Sent ('.$sent.')</button></a>'
                                                 
-                                        ;
+                                        // ;
+
+                                        return '<div class="btn-group-vertical">
+                                                    <a href="' .URL::to('recruiter-shortlist/' . $model->requisition_id).'" class="btn btn-sm btn-default" style="width:12em;">Detail</a>
+                                                    <a href="' .URL::to('recruiter-shortlist-candidate/' . $model->requisition_id).'" class="btn btn-sm btn-default" style="width:12em;">Application ('.$app.')</a>
+                                                    <a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'" class="btn btn-sm btn-default" style="width:12em;">Basket ('.$basket.')</a>
+                                                    <a href="' .URL::to('recruiter-shortlist-log/' . $model->requisition_id).'" class="btn btn-sm btn-default" style="width:12em;">Shortlist Sent ('.$sent.')</a>
+                                                </div>
+                                        ';
                                     }
                                     else if($model ->requisition_current_status_id == 6)
                                     {
@@ -403,13 +463,21 @@ class RequisitionRestController extends \BaseController {
                                        $prepare = Application::where('application_current_status_id', '=', 5)->where('requisition_id','=',$model->requisition_id)->count();
                                         $offer = Application::where('application_current_status_id', '=', 6)->where('requisition_id','=',$model->requisition_id)->count();
                                        
-                                        return
-                                        '<a href="' .URL::to('recruiter-interview-confirm/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Interview Confirm ('.$confirm.')</button></a>'.'  '.  
-                                        '<a href="' .URL::to('recruiter-interview-feedback/' . $model->requisition_id).'"><button class="btn btn-danger btn-info">Interview Feedback ('.$feed.')</button></a>'.' '.
-                                        '<a href="' .URL::to('recruiter-prepare-package/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Prepare Package ('.$prepare.')</button></a>'.'  '.
-                                        '<a href="' .URL::to('recruiter-offer-package/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Offer ('.$offer.')</button></a>'
+                                        // return
+                                        // '<a href="' .URL::to('recruiter-interview-confirm/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Interview Confirm ('.$confirm.')</button></a>'.'  '.  
+                                        // '<a href="' .URL::to('recruiter-interview-feedback/' . $model->requisition_id).'"><button class="btn btn-danger btn-info">Interview Feedback ('.$feed.')</button></a>'.' '.
+                                        // '<a href="' .URL::to('recruiter-prepare-package/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Prepare Package ('.$prepare.')</button></a>'.'  '.
+                                        // '<a href="' .URL::to('recruiter-offer-package/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Offer ('.$offer.')</button></a>'
                                                 
-                                        ;
+                                        // ;
+
+                                        return' <div class="btn-group-vertical">
+                                                    <a href="' .URL::to('recruiter-interview-confirm/' . $model->requisition_id).'" class="btn btn-sm btn-default">Interview Confirm ('.$confirm.')</a>
+                                                    <a href="' .URL::to('recruiter-interview-feedback/' . $model->requisition_id).'" class="btn btn-sm btn-default">Interview Feedback ('.$feed.')</a>
+                                                    <a href="' .URL::to('recruiter-prepare-package/' . $model->requisition_id).'" class="btn btn-sm btn-default">Prepare Package ('.$prepare.')</a>
+                                                    <a href="' .URL::to('recruiter-offer-package/' . $model->requisition_id).'" class="btn btn-sm btn-default">Offer ('.$offer.')</a>
+                                                </div>
+                                        ';
                                     }
                                     else 
                                     {
@@ -421,28 +489,47 @@ class RequisitionRestController extends \BaseController {
                                 {
                                     $return=$return->addColumn('Action',function($model) { 
                                           $confirm = Application::where('application_current_status_id', '=', 3)->where('requisition_id','=',$model->requisition_id)->count();
-                                             return  '<a href="' .URL::to('recruiter-interview-confirm/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Interview Confirm ('.$confirm.')</button></a>'; 
+                                             return  '<div class="btn-group-vertical">
+                                             <a href="' .URL::to('recruiter-interview-confirm/' . $model->requisition_id).'" 
+                                             class="btn  btn-warning" >Interview Confirm ('.$confirm.')
+                                             </a>
+                                             </div>'; 
                                         }); 
                                 }
                                 else if($app_status==4)
                                 {
                                     $return=$return->addColumn('Action',function($model) { 
                                           $feed = Application::where('application_current_status_id', '=', 4)->where('requisition_id','=',$model->requisition_id)->count();
-                                         return  '<a href="' .URL::to('recruiter-interview-feedback/' . $model->requisition_id).'"><button class="btn btn-danger btn-info">Interview Feedback ('.$feed.')</button></a>'; 
+                                         return  '<div class="btn-group-vertical">
+                                         <a href="' .URL::to('recruiter-interview-feedback/' . $model->requisition_id).'" 
+                                         class="btn btn-info" style="width:12em;">Interview Feedback ('.$feed.')
+                                         </a>
+                                         </div>'; 
                                         }); 
                                 }
                                 else if($app_status==5)
                                 {
                                     $return=$return->addColumn('Action',function($model) { 
                                           $prepare = Application::where('application_current_status_id', '=', 5)->where('requisition_id','=',$model->requisition_id)->count();
-                                         return  '<a href="' .URL::to('recruiter-prepare-package/' . $model->requisition_id).'"><button class="btn btn-sm btn-success">Prepare Package ('.$prepare.')</button></a>'; 
+                                         return  '<div class="btn-group-vertical">
+                                         <a href="' .URL::to('recruiter-prepare-package/' . $model->requisition_id).'"
+                                          class="btn btn-success" >
+                                          Prepare Package ('.$prepare.')
+                                         </a>
+                                         </div>'; 
                                         }); 
                                 }
                                 else if($app_status==7)
                                 {
                                     $return=$return->addColumn('Action',function($model) { 
                                            $offer = Application::where('application_current_status_id', '=', 7)->where('requisition_id','=',$model->requisition_id)->count();
-                                         return   '<a href="' .URL::to('recruiter-offer-package/' . $model->requisition_id).'"><button class="btn btn-sm btn-warning">Offer ('.$offer.')</button></a>'; 
+                                         return   '<div class="btn-group-vertical">
+                                         <a href="' .URL::to('recruiter-offer-package/' . $model->requisition_id).'"
+                                         class="btn btn-warning" style="width:8.5em;">
+                                         Offer ('.$offer.')
+
+                                         </a>
+                                         </div>'; 
                                         }); 
                                 }
                                 else { $return=$return->addColumn('Action',function($model) { 
