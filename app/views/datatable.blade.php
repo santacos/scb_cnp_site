@@ -72,6 +72,37 @@
 </div>
 <script type="text/javascript">
         
+    /* Chosen (select box - chosen) */
+    function chosen(){
+        if($('.chosen-select').length > 0){
+            $('.chosen-select').each(function(){
+                var $el = $(this);
+                var search = ($el.attr("data-nosearch") === "true") ? true : false,
+                opt = {};
+                if(search) opt.disable_search_threshold = 9999999;
+                $el.chosen(opt);
+            });
+        }
+    }
+    function bindDateTimePicker(){
+        /* date picker */
+        if($('.datepick').length > 0){
+            $('.datepick').datepicker();
+        }
+        /* date range picker */
+        if($('.daterangepick').length > 0){
+            $('.daterangepick').daterangepicker();
+        }
+        /* time picker */
+        if($('.timepick').length > 0){
+            $('.timepick').timepicker({
+                defaultTime: 'current',
+                minuteStep: 1,
+                disableFocus: true,
+                template: 'dropdown'
+            });
+        }
+    }
     function filterGlobal () {
     jQuery('.{{ $class }}').DataTable().search(
         $('#global_filter').val()
@@ -117,7 +148,6 @@
             }
         });
         
-        
         $('input.global_filter').on( 'keyup click', function () {
             filterGlobal();
         } );
@@ -154,6 +184,8 @@
             }
         } );
     // custom values are available via $values array
+            chosen();
+          bindDateTimePicker();
     });
 </script>
 
