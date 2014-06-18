@@ -10,7 +10,6 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
 // Test
 Route::get('ptry',function(){
     return View::make('angular.ptry');
@@ -283,6 +282,11 @@ Route::post('user/forgot_password',        'UserController@do_forgot_password');
 Route::get( 'user/reset_password/{token}', 'UserController@reset_password');
 Route::post('user/reset_password',         'UserController@do_reset_password');
 Route::get( 'user/logout',                 'UserController@logout');
+
+Route::get('facebook/login/{action?}','FacebookController@login');
+Route::get('facebook/logout', 'FacebookController@logout');
+Route::get('linkedin/login/{action?}','LinkedinController@login');
+Route::get('linkedin/logout', 'LinkedinController@logout');
 
 Route::get('social/{action?}', array("as" => "hybridauth", function($action = "")
 {
