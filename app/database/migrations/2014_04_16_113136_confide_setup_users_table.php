@@ -246,6 +246,7 @@ class ConfideSetupUsersTable extends Migration {
             $table->string('responsibility',1000);
             $table->string('qualification',1000); 
             $table->string('note',100)->nullable()->default(NULL);
+            $table->integer('sla_in_hours')->nullable()->default(NULL);
             $table->timestamps();
         });
          Schema::create('tags', function($table)
@@ -318,6 +319,8 @@ class ConfideSetupUsersTable extends Migration {
             $table->integer('position_salary')->nullable()->default(NULL);
             $table->integer('cola')->nullable()->default(NULL);
             $table->integer('final_salary')->nullable()->default(NULL);
+            $table->integer('sla_in_hours')->nullable()->default(NULL);
+            $table->integer('target_sla_in_days')->nullable()->default(NULL);
             $table->timestamps();
         });
         Schema::create('application_question_answers', function($table)
