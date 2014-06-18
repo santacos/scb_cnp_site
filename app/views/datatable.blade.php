@@ -1,4 +1,5 @@
-<table  class="table table-hover table-bordered text-center {{ $class = str_random(8) }}" >
+<div style="overflow:scroll;overflow-y:hidden;">
+<table  class="table table-hover table-bordered text-center {{ $class = str_random(8) }}">
     <colgroup>
         @for ($i = 0; $i < count($columns); $i++)
         <col class="con{{ $i }}" />
@@ -12,27 +13,27 @@
             @if ($c == 'checkbox')
                 style="width:20px"
             @elseif ($c == 'Requisition ID')
-                 width="5%"       
+                 width="3%"       
             @elseif ($c == 'Job Title')
                  width="15%"   
             @elseif ($c == 'Corporate Title')
-                 width="10%"
+                 width="8%"
             @elseif ($c == 'Location')
                  width="10%"      
             @elseif ($c == 'Status')
                  width="5%"       
             @elseif ($c == 'Require')
-                 width="5%"
+                 width="3%"
             @elseif ($c == 'SLA')
                  width="8%"
             @elseif ($c == 'Deadline')
                  width="12%"
             @elseif ($c == 'From')
-                 width="10%"
+                 width="14%"
             @elseif ($c == 'Note')
                  width="5%"
             @elseif ($c == 'Action')
-                 width="10%"                           
+                 width="12%"                           
             @endif
         >
             @if ($c == 'checkbox' && $hasCheckboxes = true)
@@ -68,6 +69,7 @@
 
     </tbody>
 </table>
+</div>
 <script type="text/javascript">
         
     function filterGlobal () {
