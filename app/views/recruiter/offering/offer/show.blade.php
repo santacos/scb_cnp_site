@@ -73,11 +73,10 @@ thisIsTitle
                                             'SLA',
                                             'Deadline',
                                             'Saved',
-                                            'Choose',
                                             'Note',
                                             'Action'
                                                       )    
-                                          ->setUrl(URL::to('api/application/'.$requisition_id .'/7'))
+                                          ->setUrl(URL::to('api/application/'.$requisition_id .'/0' .'/7'))
                                           ->render('datatable') }}
                                       </div>
     

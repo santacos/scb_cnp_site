@@ -54,7 +54,7 @@ thisIsTitle
                                             'Note',
                                             'Action'
                                                       )    
-                                          ->setUrl(URL::to('api/application/'.$requisition_id .'/2'))
+                                          ->setUrl(URL::to('api/application/'.$requisition_id .'/2' .'/2'))
                                           ->render('datatable') }}
                                       </div>
     
