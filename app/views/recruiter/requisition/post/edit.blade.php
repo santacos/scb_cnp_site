@@ -24,8 +24,6 @@ HM-create-requisition
     <script src="https://code.angularjs.org/1.2.17/angular-route.js"></script>
     <!--angular file-->
     <script>var xxx = {{$requisition->requisition_id}};
-        console.log(xxx);
-
     </script>
     <script src="<?php echo asset('js/editReq-manager.js')?>"></script>
     <!-- end anugular-->
@@ -137,7 +135,6 @@ HM-create-requisition
                         
                     </select>
                 </div>
-                
                 <div class="form-group">
                     <label for="job_title">Job Title :</label>
                     <select ng-model="requisition.position_id"  
@@ -145,6 +142,7 @@ HM-create-requisition
                     ng-options="position.position_id as position.job_title 
                     for position in allPosition 
                     | filter:{group:requisition.group,division:requisition.division,organization:requisition.organization} | unique:'position_id'"
+                    ng-change="changeJobTitle(@{{ requisition.position_id }});"
                     >
                        
                     </select>
@@ -192,12 +190,34 @@ HM-create-requisition
                     {{ Form::textarea('qualification', Input::old('qualification'), array('class' => 'ckeditor','required')) }}
                 </div>
                 <div class="form-group">
+                    {{ Form::label('questions', 'Screening Question :') }}<br>
+                    <iframe id="question" width="800px" height="100px" overflow="hidden" frameBorder="0"></iframe>
+                    <input id="ng-question_id" type='hidden' value="@{{ requisition.position_id }}"/>
+                    <script>
+                        function changeJobTitle(x){
+                            document.getElementById('question').src = "../question-table/"+document.getElementById('ng-question_id').value;
+                        }
+                    </script>
+                    <!-- 
+                        {{ json_decode('[{"name":"a","value":1},{"name":"b"}]')[0]->name }}
+                     -->
+                    <script>
+                        /*var x = [];
+                        x[0] = {};
+                        x[0].name = "north";
+                        x[0].value = 123;
+                        x[1] = {};
+                        x[1].name = 'cos';
+                        alert(JSON.stringify(x));*/
+                    </script>
+                </div>
+                <div class="form-group">
                     {{ Form::label('note', 'Note :') }}
                     {{ Form::textarea('note', Input::old('note'), array('class' => 'form-control', 'id' => 'form','size' => '30x5')) }}
                 </div>
 
 
-    {{ Form::button('View', array('name' => 'view', 'value' => true, 'type' => 'submit','class' => 'btn btn-primary btn-warning btn-block')) }}
+    {{ Form::button('Save & View', array('name' => 'view', 'value' => true, 'type' => 'submit','class' => 'btn btn-primary btn-warning btn-block')) }}
                
 
     {{ Form::close() }}

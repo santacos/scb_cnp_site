@@ -69,10 +69,15 @@ SCB Recruiter-Home
 
 
 							<div class="form-group">
-								<label for="remember" class="checkbox">{{{ Lang::get('confide::confide.login.remember') }}}
-									
-									<input tabindex="4" type="checkbox" name="remember" id="remember" value="1"><input type="hidden" name="remember" value="0">
-								</label>
+								<div class="row"><!-- 
+									{{{ Lang::get('confide::confide.login.remember') }}} -->
+
+									<label for="remember" class="checkbox" style="margin-left:20px;">
+										
+										<input tabindex="4" type="checkbox" name="remember" id="remember" value="1"><input type="hidden" name="remember" value="0">
+											remember me
+									</label>
+								</div>
 							</div>
 
 
@@ -108,7 +113,7 @@ SCB Recruiter-Home
 						</fieldset>
 					</form>
 					<div>
-						Don't have an account? <a href="{{{ URL::to('user/create')}}}">Resgister now.</a>
+						Don't have an account? <a href="{{{ URL::to('user/create')}}}">Register now.</a>
 					</div>
 				  </div>
 			</div>

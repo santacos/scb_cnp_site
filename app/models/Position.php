@@ -17,7 +17,7 @@
 		}
 
 		function question(){
-			return $this->belongsToMany('Question')->withPivot('is_checked');
+			return $this->belongsToMany('Question','position_questions')->withPivot('is_checked');
 		}
 
 		function employee(){
