@@ -14,7 +14,10 @@ class UserController extends BaseController {
      * User Model
      * @var User
      */
-
+    public function __construct(Hybrid_Auth $hybridAuth)
+    {
+        $this->hybridAuth = $hybridAuth;
+    }
     /**
      * Displays the form for account creation
      *
@@ -96,6 +99,28 @@ class UserController extends BaseController {
      * Attempt to do login
      *
      */
+    public function socialLogin($action)
+    {
+        if ( $action == "auth" ) {
+              try {
+                 Hybrid_Endpoint::process();
+              }
+              catch ( Exception $e ) {
+                 echo "Error at Hybrid_Endpoint process (UserController@socialLogin): $e";
+              }
+              return;
+        }
+        // Authenticate with Steam (using the details from our IoC Container).
+         $socialAuth = new Hybrid_Auth(app_path() . '/config/hybridauth.php');
+        // authenticate with Linkedin
+        $provider = $socialAuth->authenticate($action);
+        // fetch user profile
+        $userProfile = $provider->getUserProfile();
+        
+        echo "Connected with: <b>{$provider->id}</b><br />";
+        echo "As: <b>{$userProfile->displayName}</b><br />";
+        echo "<pre>" . print_r( $userProfile, true ) . "</pre><br />";
+    }
     public function do_login()
     {
         $input = array(
@@ -237,7 +262,7 @@ class UserController extends BaseController {
     public function logout()
     {
         Confide::logout();
-        
+        $this->hybridAuth->logoutAllProviders();
         return Redirect::to('/');
     }
 
