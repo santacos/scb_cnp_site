@@ -1,3 +1,4 @@
+<div style="overflow:scroll;overflow-y:hidden;">
 <table  class="table table-hover table-bordered text-center {{ $class = str_random(8) }}" >
     <colgroup>
         @for ($i = 0; $i < count($columns); $i++)
@@ -60,6 +61,7 @@
 
     </tbody>
 </table>
+</div>
 <script type="text/javascript">
     
     jQuery(document).ready(function(){
