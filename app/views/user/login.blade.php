@@ -69,10 +69,15 @@ SCB Recruiter-Home
 
 
 							<div class="form-group">
-								<label for="remember" class="checkbox">{{{ Lang::get('confide::confide.login.remember') }}}
-									<input type="hidden" name="remember" value="0">
-									<input tabindex="4" type="checkbox" name="remember" id="remember" value="1">
-								</label>
+								<div class="row"><!-- 
+									{{{ Lang::get('confide::confide.login.remember') }}} -->
+
+									<label for="remember" class="checkbox" style="margin-left:20px;">
+										
+										<input tabindex="4" type="checkbox" name="remember" id="remember" value="1"><input type="hidden" name="remember" value="0">
+											remember me
+									</label>
+								</div>
 							</div>
 
 
@@ -81,10 +86,26 @@ SCB Recruiter-Home
 							<div class="form-group">
 								<button tabindex="3" type="submit" class="btn btn-primary btn-lg btn-block">{{{ Lang::get('confide::confide.login.submit') }}}</button>
 							</div>
+							<div class="text-center">
+								<h5>Or sign in using social networks</h5>
+								<div class="row">
+									<div class="col col-md-5"></div>
+									<div class="col col-md-3">
+										<div class="pull-left">
+											<div class="livicon" data-n="facebook-alt" data-hc="#000" data-s="50"></div>
+										</div>
+										<div class="pull-right">
+											<div class="livicon" data-n="linkedin-alt" data-hc="#000" data-s="50"></div>
+										</div>
+									</div>
+								</div>
+								
+																	
+							</div>
 						</fieldset>
 					</form>
 					<div>
-						Don't have an account? <a href="{{{ URL::to('user/create')}}}">Resgister now.</a>
+						Don't have an account? <a href="{{{ URL::to('user/create')}}}">Register now.</a>
 					</div>
 				  </div>
 			</div>

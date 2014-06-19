@@ -6,7 +6,7 @@
 		@yield('title')
 	</title>
 	 	{{ HTML::style('assets/css/bootstrap.css') }}
-        {{ HTML::script('js/jquery.dataTables.js')}}
+        @include('includes.datatable')
 	@yield('libs')
 
 	</head>
@@ -15,7 +15,7 @@
 	@include('admin.partials.header')
 		<div class="wrapper row-offcanvas row-offcanvas-left">
 			<!-- Left side column. contains the logo and sidebar -->
-			<aside class="left-side sidebar-offcanvas">
+			<aside class="left-side sidebar-offcanvas" style="position:fixed;">
 				<!-- sidebar: style can be found in sidebar.less -->
 				@yield('left_sidebar')
 				

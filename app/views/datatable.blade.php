@@ -1,5 +1,4 @@
-<div style="overflow:scroll;overflow-y:hidden;">
-<table  class="table table-hover table-bordered text-center {{ $class = str_random(8) }}">
+<table  class="table table-hover table-bordered text-center {{ $class = str_random(8) }}" >
     <colgroup>
         @for ($i = 0; $i < count($columns); $i++)
         <col class="con{{ $i }}" />
@@ -13,27 +12,27 @@
             @if ($c == 'checkbox')
                 style="width:20px"
             @elseif ($c == 'Requisition ID')
-                 width="3%"       
+                 width="5%"       
             @elseif ($c == 'Job Title')
                  width="15%"   
             @elseif ($c == 'Corporate Title')
-                 width="8%"
+                 width="10%"
             @elseif ($c == 'Location')
                  width="10%"      
             @elseif ($c == 'Status')
                  width="5%"       
             @elseif ($c == 'Require')
-                 width="3%"
+                 width="5%"
             @elseif ($c == 'SLA')
                  width="8%"
             @elseif ($c == 'Deadline')
                  width="12%"
             @elseif ($c == 'From')
-                 width="14%"
+                 width="10%"
             @elseif ($c == 'Note')
                  width="5%"
             @elseif ($c == 'Action')
-                 width="12%"                           
+                 width="10%"                           
             @endif
         >
             @if ($c == 'checkbox' && $hasCheckboxes = true)
@@ -45,15 +44,7 @@
         @endforeach
     </tr>
     </thead>
-    <tfoot>
-        <tr>
-            @foreach($columns as $i => $c)
-            <th align="center" valign="middle" class="head{{ $i }}">
-                <input type="text" name="{{$c}}" placeholder="{{$c}}" class="search_init" style="width:100%"  >
-            </th>
-            @endforeach
-        </tr>
-    </tfoot>
+    
 
     <tbody>
     @foreach($data as $d)
@@ -69,54 +60,26 @@
 
     </tbody>
 </table>
-</div>
 <script type="text/javascript">
-        
-    /* Chosen (select box - chosen) */
-    function chosen(){
-        if($('.chosen-select').length > 0){
-            $('.chosen-select').each(function(){
-                var $el = $(this);
-                var search = ($el.attr("data-nosearch") === "true") ? true : false,
-                opt = {};
-                if(search) opt.disable_search_threshold = 9999999;
-                $el.chosen(opt);
-            });
-        }
-    }
-    function bindDateTimePicker(){
-        /* date picker */
-        if($('.datepick').length > 0){
-            $('.datepick').datepicker();
-        }
-        /* date range picker */
-        if($('.daterangepick').length > 0){
-            $('.daterangepick').daterangepicker();
-        }
-        /* time picker */
-        if($('.timepick').length > 0){
-            $('.timepick').timepicker({
-                defaultTime: 'current',
-                minuteStep: 1,
-                disableFocus: true,
-                template: 'dropdown'
-            });
-        }
-    }
-    function filterGlobal () {
-    jQuery('.{{ $class }}').DataTable().search(
-        $('#global_filter').val()
-    ).draw();
-    }
-     
-    function filterColumn ( i ) {
-        jQuery('.{{ $class }}').DataTable().column( i ).search(
-            $('#col'+i+'_filter').val()
-        ).draw();
-    }
+    
     jQuery(document).ready(function(){
         // dynamic table
+        function getFilterValue(column_number){
+            alert(oTable.fnSettings().aoPreSearchCols[column_number].sSearch)
+            }
         var oTable = jQuery('.{{ $class }}').dataTable({
+             "dom": 'TC<"clear">lfrtip',
+            tableTools: {
+                "sSwfPath": "http://localhost/scb_cnp_site/public/swf/copy_csv_xls_pdf.swf",
+                 "aButtons": [ "copy","xls", "pdf" ]
+            }, 
+            // columnDefs: [
+            //     { visible: false, targets: 2 }
+            // ],
+            // colVis: {
+            //     restore: "Restore",
+            //     showAll: "Show all"
+            // },
             "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
                   // Bold the grade for all 'A' grade browsers
 
@@ -146,16 +109,18 @@
                     window.onDatatableReady();
                 }
             }
-        });
-        
-        $('input.global_filter').on( 'keyup click', function () {
-            filterGlobal();
+        }).yadcf([
+   {column_number: 1,
+filter_type: "multi_select",
+filter_container_id: "filter1",}]);
+ 
+    
+         $('#reset').click( function (e) {
+            e.preventDefault();
+             
+            oTable.colReorder.reset();
         } );
-     
-        $('input.column_filter').on( 'keyup click', function () {
-            filterColumn( $(this).parents('tr').attr('data-column') );
-        } );
-         $("tfoot input").keyup( function () {
+        $("tfoot input").keyup( function () {
             /* Filter on the column (the index) of this element */
             oTable.fnFilter( this.value, $("tfoot input").index(this) );
         } );
@@ -164,28 +129,7 @@
          * Support functions to provide a little bit of 'user friendlyness' to the textboxes in
          * the footer
          */
-        $("tfoot input").each( function (i) {
-            asInitVals[i] = this.value;
-        } );
-
-        $("tfoot input").focus( function () {
-            if ( this.className == "search_init" )
-            {
-                this.className = "";
-                this.value = "";
-            }
-        } );
-
-        $("tfoot input").blur( function (i) {
-            if ( this.value == "" )
-            {
-                this.className = "search_init";
-                this.value = asInitVals[$("tfoot input").index(this)];
-            }
-        } );
     // custom values are available via $values array
-            chosen();
-          bindDateTimePicker();
-    });
+    } );
 </script>
 

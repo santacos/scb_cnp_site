@@ -902,7 +902,7 @@
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
 		<!-- DATA TABES SCRIPT -->
-		{{ HTML::script('assets/js/plugins/datatables/jquery.dataTables.js') }}
+		@include('includes.datatable')
 		{{ HTML::script('assets/js/plugins/datatables/dataTables.bootstrap.js') }}
 
 		@include('admin.partials.footer')

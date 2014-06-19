@@ -22892,7 +22892,7 @@ $this->command->info('Table RecruitmentType Seeded');
 				$application->save();
 			}
 
-		for($i=0; $i<40;$i++)
+		for($i=0; $i<100;$i++)
 		{
         	$user = User::where('username','=','candidate'.rand(1,4))->first();
        		$requisition = new Requisition;
@@ -22917,16 +22917,19 @@ $this->command->info('Table RecruitmentType Seeded');
 			$requisition->qualification = str_random(40);
 			$requisition->note = str_random(40);
 			$requisition->save();
-			for($j=0; $j<10; $j++)
+			if($requisition->requisition_current_status_id>=5)
 			{
-				$application = new Application;
-				$application->requisition_id = $requisition->requisition_id;
-				$application->candidate_user_id = User::where('username','=','candidate'.rand(1,4))->first()->user_id;
-				$application->application_current_status_id = rand(1,11);
-				if($application->application_current_status_id >=2)
-					{$application->send_number = rand(1,4);}
-				$application->is_in_basket = false;
-				$application->save();
+				for($j=0; $j<20; $j++)
+				{
+					$application = new Application;
+					$application->requisition_id = $requisition->requisition_id;
+					$application->candidate_user_id = User::where('username','=','candidate'.rand(1,4))->first()->user_id;
+					$application->application_current_status_id = rand(1,11);
+					if($application->application_current_status_id >=2)
+						{$application->send_number = rand(1,4);}
+					$application->is_in_basket = false;
+					$application->save();
+				}
 			}
 		}
 			

@@ -38,16 +38,17 @@
 
 
 									<div class="form-group">
-										<label for="remember" class="checkbox">{{{ Lang::get('confide::confide.login.remember') }}}
-											
-											<input tabindex="4" type="checkbox" name="remember" id="remember" value="1">
-											<input type="hidden" name="remember" value="0">
-										</label>
+										<div class="row"><!-- 
+											{{{ Lang::get('confide::confide.login.remember') }}} -->
+
+											<label for="remember" class="checkbox" style="margin-left:20px;">
+												
+												<input tabindex="4" type="checkbox" name="remember" id="remember" value="1"><input type="hidden" name="remember" value="0">
+													remember me
+											</label>
+										</div>
 									</div>
 
-
-
-									<hr>
 									<div class="form-group">
 										<!-- <button tabindex="3" type="submit" class="btn btn-primary btn-lg btn-block">{{{ Lang::get('confide::confide.login.submit') }}}</button>
 									 -->
@@ -56,19 +57,32 @@
 									</div>
 									<hr>
 									<div class="text-center">
-										<small>Sign in using social networks</small>
-										<div class="sbtnf sbtnf-rounded sbtnf-icon-white sbtnf-icon-bg-black color icon-facebook"></div>
+										<h7>Or sign in using social networks</h7>
+										<div class="row">
+											<div class="col col-md-4"></div>
+											<div class="col col-md-4">
+												<div class="pull-left">
+													<div class="livicon" data-n="facebook-alt" data-hc="#000" data-s="30"></div>
+												</div>
+												<div class="pull-right">
+													<div class="livicon" data-n="linkedin-alt" data-hc="#000" data-s="30"></div>
+												</div>
+											</div>
+										</div>
+										
+																			
 									</div>
 								</fieldset>
 							</form>
-							<div>
-								Don't have an account? <a href="{{{ URL::to('user/create')}}}">Register now.</a>
-							</div>
+							
 							
                         </div>
                         <div class="modal-footer">
                             <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary">Save changes</button> -->
+                        	<div>
+								Don't have an account? <a href="{{{ URL::to('user/create')}}}">Register now.</a>
+							</div>
                         </div>
                     </div>
                 </div>
