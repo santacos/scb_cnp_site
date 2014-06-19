@@ -1,3 +1,6 @@
+<?php/**
+                 ----- unused file -----
+*/?>
 @extends('admin.layouts.default')
 @section('title')
 thisIsTitle

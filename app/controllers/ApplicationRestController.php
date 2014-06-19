@@ -190,7 +190,8 @@ class ApplicationRestController extends \BaseController {
                                                         .'</script>';
                                 }else if($GLOBALS['special_status'] == 2){
                                     return '<center>'
-                                            .'<input type="checkbox" onchange="toggleCandidate(this)"/>'
+                                            .'<input type="checkbox" onchange="toggleCandidate2(this)"/>'
+                                            .'<style onload="toggleCandidate(this.parentNode.firstChild)"></style>'
                                             .'</center>';
                                 }
                             });
@@ -254,7 +255,7 @@ class ApplicationRestController extends \BaseController {
             
         }
 
-        public function getBasketDatatable($requsition_id='',$status_id1='',$status_id2='',$status_id3='',$status_id4='',$status_id5='',$status_id6='',$status_id7='',$status_id8='',$status_id9='',$status_id10='')
+       /* public function getBasketDatatable($requsition_id='',$status_id1='',$status_id2='',$status_id3='',$status_id4='',$status_id5='',$status_id6='',$status_id7='',$status_id8='',$status_id9='',$status_id10='')
     {       
          // return $action;
         // return $user_id.'----'.$status_id;
@@ -407,6 +408,6 @@ class ApplicationRestController extends \BaseController {
 
                         return $return;
             
-        }
+        }*/
 	   
 	}

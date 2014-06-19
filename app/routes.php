@@ -10,7 +10,6 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
 // Test
 Route::get('ptry',function(){
     return View::make('angular.ptry');
@@ -223,7 +222,7 @@ Route::resource('hm','HMController');
 Route::resource('hm-requisition', 'HMRequisitionController');
 Route::get('api/requisition/{user_id?}/{app_status?}/{status_id1?}/{status_id2?}/{status_id3?}/{status_id4?}/{status_id5?}/{status_id6?}/{status_id7?}', array('as'=>'api.requisition', 'uses'=>'RequisitionRestController@getRequisitionDatatable'));
 Route::get('api/application/{requisition_id?}/{special_status?}/{status_id1?}/{status_id2?}/{status_id3?}/{status_id4?}/{status_id5?}/{status_id6?}/{status_id7?}/{status_id8?}/{status_id9?}/{status_id10?}', array('as'=>'api.application', 'uses'=>'ApplicationRestController@getApplicationDatatable'));
-Route::get('api/basket/{requisition_id?}/{status_id1?}/{status_id2?}/{status_id3?}/{status_id4?}/{status_id5?}/{status_id6?}/{status_id7?}/{status_id8?}/{status_id9?}/{status_id10?}', array('as'=>'api.basket', 'uses'=>'ApplicationRestController@getBasketDatatable'));
+//Route::get('api/basket/{requisition_id?}/{status_id1?}/{status_id2?}/{status_id3?}/{status_id4?}/{status_id5?}/{status_id6?}/{status_id7?}/{status_id8?}/{status_id9?}/{status_id10?}', array('as'=>'api.basket', 'uses'=>'ApplicationRestController@getBasketDatatable'));
 Route::controller('requisitionrest', 'RequisitionRestController');
 Route::resource('hm-application-review', 'HMApplicationReviewController');
 
@@ -283,6 +282,11 @@ Route::post('user/forgot_password',        'UserController@do_forgot_password');
 Route::get( 'user/reset_password/{token}', 'UserController@reset_password');
 Route::post('user/reset_password',         'UserController@do_reset_password');
 Route::get( 'user/logout',                 'UserController@logout');
+
+Route::get('facebook/login/{action?}','FacebookController@login');
+Route::get('facebook/logout', 'FacebookController@logout');
+Route::get('linkedin/login/{action?}','LinkedinController@login');
+Route::get('linkedin/logout', 'LinkedinController@logout');
 
 Route::get('social/{action?}', array("as" => "hybridauth", function($action = "")
 {

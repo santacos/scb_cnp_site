@@ -7,7 +7,7 @@ thisIsTitle
       <link rel="stylesheet" href="<?php echo asset('assets/css/AdminLTE.css')?>">
       <link rel="stylesheet" href="<?php echo asset('css/bootstrap-lightbox.css')?>">
       {{ HTML::style('assets/css/bootstrap.css') }}
-        {{ HTML::script('js/jquery.dataTables.js')}}
+         @include('includes.datatable')
 @stop
 
 @section('content')

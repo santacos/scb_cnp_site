@@ -7,7 +7,7 @@ thisIsTitle
       <link rel="stylesheet" href="<?php echo asset('assets/css/AdminLTE.css')?>">
       <link rel="stylesheet" href="<?php echo asset('css/bootstrap-lightbox.css')?>">
       {{ HTML::style('assets/css/bootstrap.css') }}
-        {{ HTML::script('js/jquery.dataTables.js')}}
+       @include('includes.datatable')
 @stop
 
 @section('content')
@@ -35,7 +35,7 @@ thisIsTitle
                                     <!--table style "table-striped"-->
                                     <div class="box-body table-responsive no-padding">
                                         
-                                      <div style="overflow: scroll;overflow-y:hidden;">
+                                      <div>
 <!-- 
                                         <table border="1">
                                           <tr>
