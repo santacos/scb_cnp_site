@@ -173,4 +173,9 @@ class RecruiterRequisitionPostController extends \BaseController {
 		return Response::json(array('success' => true));
 	}
 
+	public function getQuestionTable($id){
+		$questions = Position::find($id)->question()->get();
+		return View::make('recruiter.requisition.post.question',compact('questions'));
+	}
+
 }

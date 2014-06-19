@@ -20,7 +20,7 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils']);
 
 			$http.get('http://localhost/scb_cnp_site/public/rest/position').success(function(dataa) {
 	     		 $scope.allPosition = dataa;
-	     		 
+	     		 changeJobTitle("");
 	    	}).error(function(data, status, headers, config) {
 			      // called asynchronously if an error occurs
 			      // or server returns response with an error status.
@@ -84,6 +84,10 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils']);
 
 			 };
 
+			 $scope.changeJobTitle = function(x){
+			 	changeJobTitle(x);
+			 }
+
 			 $scope.addSkill = function(){
 			 	$scope.skills.push({category:$scope.tempBranch,name:$scope.tempName});
 			 	$scope.tempBranch='';
@@ -91,7 +95,7 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils']);
 			 }
 
 
-    	
+    		
   			}//before end controller
 
   	
