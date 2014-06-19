@@ -247,6 +247,7 @@ Route::resource('application', 'ApplicationController');
 Route::resource('recruiter','RecruiterController');
 Route::controller('recruiter','RecruiterController');
 Route::resource('recruiter-requisition-post', 'RecruiterRequisitionPostController');
+Route::controller('recruiter-requisition-post', 'RecruiterRequisitionPostController');
 Route::resource('recruiter-shortlist', 'RecruiterShortlistController');
 Route::resource('recruiter-shortlist-candidate', 'RecruiterShortlistCandidateController');
 Route::get('recruiter-shortlist-candidate-sent', 'RecruiterShortlistCandidateController@index2');

@@ -197,7 +197,10 @@ class ApplicationRestController extends \BaseController {
                             });
                     }
                     $return->addColumn('Note',function($model)
-                        { return '<i class="fa fa-fw fa-envelope-o"></i>';
+                        { 
+                            if(is_null($model->note) || strlen($model->note) == 0)
+                                return '';
+                            return '<i class="fa fa-fw fa-envelope-o"></i>';
                         })
                     ->addColumn('Action',function($model)
                         { 
@@ -247,7 +250,7 @@ class ApplicationRestController extends \BaseController {
                                 'Saved',
                                 'Choose',
                                 'Note',
-                                'Acition'
+                                'Action'
                                 )
                             ->make();
 
