@@ -62,7 +62,7 @@ Route::resource('cd', 'CandidateController');
 Route::controller('cd', 'CandidateController');
 ///////////////////////////////////////////////////////////
 Route::get('tryView',function(){
-	return View::make('admin.candidateDetail');
+	return View::make('HM.requisition.newcreate');
 });
 
 Route::get('tryAngular',function(){
