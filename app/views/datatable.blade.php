@@ -111,8 +111,7 @@
             }
         }).yadcf([
    {column_number: 1,
-filter_type: "multi_select",
-filter_container_id: "filter1",}]);
+filter_type: "multi_select"}]);
  
     
          $('#reset').click( function (e) {
