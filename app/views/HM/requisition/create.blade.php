@@ -28,10 +28,7 @@ HM-create-requisition
     <script src="<?php echo asset('vendor/ui-utils.min.js')?>"></script>
 
     <script src="<?php echo asset('js/jquery.js')?>"></script> 
-    <script>var xxx = @{{showtext}};
-        console.log(xxx);
 
-    </script>
     
     
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular-sanitize.js"></script>
@@ -247,7 +244,7 @@ HM-create-requisition
                                                     <p ng-bind-html="showtext"></p>
                                                 </div>
                                                 <hr/>
-                                                <a type="button" class="btn btn-danger btn-lg pull-right " ng-click="text=showtext">Select</a>
+                                                <a type="button" class="btn btn-success btn-lg pull-right " ng-click="responsibility=showtext">Select</a>
                                             </div>
                                         </div>
                                     </div>
@@ -274,13 +271,13 @@ HM-create-requisition
                                 
                                 <div class="form-group">
                                     {{ Form::label('responsibility', 'Responsibilities :') }}
-                                    <textarea class="ck-editor" ng-model="text"></textarea>
-
+                                    <textarea class="ck-editor" value="{{Input::old('responsibility')}}" ng-model="responsibility" ng-change= "checkProgress()" name="responsibility" id="responsibility"></textarea>
+                                     
                                 </div>
                                 <div class="row">
                                     <div class="col col-md-5 pull-right">
                                         <a class="btn btn-primary pull-left" ng-click="showtemp=true">Show template</a>
-                                        <a class="btn btn-success pull-right " ng-click="text=''"style="width:120px;" type="button">
+                                        <a class="btn btn-danger pull-right " ng-click="responsibility=''"style="width:120px;" type="button">
                                             <i class="fa fa-fw fa-trash-o"></i>Reset
                                         </a>
                                     </div>
@@ -292,16 +289,86 @@ HM-create-requisition
                 <!--end 3 panel :responsibility-->
 
 
+                <!--hide template for qualification-->
+                <div class="row" ng-show="showtempqual">
+                    <div class="col col-md-11 col-md-offset-1">
+                        <div class="well well-lg">
+                            <div class="row">
+                                <h2 class="panel-title  badge bg-blue">
+                                    <strong>Template qualification</strong>
+                                </h2>
+                                <a class="btn btn-default pull-right" ng-click="showtempqual=false">
+                                                <i class="fa fa-fw fa-eye-slash "></i>hide template
+                                            </a>
+                                <hr/>
+                            </div>
+                            <div class="row">
+                                <div class="col col-md-2" style="margin-left:20px;padding-left:0em;">
+                                    <div style="border:1px solid #ccc;width:100%;height:150px; overflow-y: scroll;">
+                                        <div class="list-group">
+                                          <a ng-click="setShowqual(qual.text)"ng-repeat="qual in templateQual" class="list-group-item">@{{qual.name}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-md-9"  style="padding-left:0em;">
+                                    <div>
+                                        <div class="panel panel-default" >
+                                            <div class="panel-body" style="">
+                                                <div style="width:100%;max-height:300px; overflow-y: scroll;">
+                                                    <p ng-bind-html="showqualtext"></p>
+                                                </div>
+                                                <hr/>
+                                                <a type="button" class="btn btn-success btn-lg pull-right " ng-click="qualification=showqualtext">Select</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end hide template-->
+                <!--qualification-->
+                <div class="row">
+                    <div class="col-md-7 col-md-offset-1" style="margin-top:10px;"> 
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Qualifications</h3>
+                            </div>
+                            <div class="panel-body">
+                                    
+                                    <!-- <div class="form-group">
+                                        {{ Form::label('qualification', 'Qualifications :') }}
+                                        {{ Form::textarea('qualification', Input::old('qualification'), array('class' => 'ckeditor form-control','ng-change'=>'checkProgress()','ng-model'=>'qualification','required')) }}
+                                    </div> -->
+                                <div class="form-group">
+                                    {{ Form::label('qualification', 'Qualifications :') }}
+                                    <textarea class="ck-editor" value="{{Input::old('qualification')}}" ng-change= "checkProgress()" ng-model="qualification" name="qualification" id="qualification"></textarea>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-5 pull-right">
+                                        <a class="btn btn-primary pull-left" ng-click="showtempqual=true">Show template</a>
+                                        <a class="btn btn-danger pull-right " ng-click="resetqual()"style="width:120px;" type="button">
+                                            <i class="fa fa-fw fa-trash-o"></i>Reset
+                                        </a>
+                                    </div>
+                                </div>
+                            </div><!--end panel body-->
+                        </div><!--end panel-->     
+                    </div><!--end col-->
+                </div>
+                <!--end qualification-->
             
 
-            <div class="row">
+           <!--  <div class="row">
                 <div class="col-md-7 col-md-offset-1" style="margin-top:10px;"> 
                     <div class="form-group">
                         {{ Form::label('qualification', 'Qualifications :') }}
                         {{ Form::textarea('qualification', Input::old('qualification'), array('class' => 'ckeditor form-control','ng-change'=>'checkProgress()','ng-model'=>'qualification','required')) }}
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!--note-->
             <div class="row">

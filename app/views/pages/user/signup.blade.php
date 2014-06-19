@@ -7,7 +7,7 @@
         </div>
         <div class="form-group">
             <label for="email">{{{ Lang::get('confide::confide.e_mail') }}} <small>{{ Lang::get('confide::confide.signup.confirmation_required') }}</small></label>
-            <input class="form-control" placeholder="{{{ Lang::get('confide::confide.e_mail') }}}" type="text" name="email" id="email" value="{{{ Input::old('email') }}}">
+            <input class="form-control" placeholder="{{{ Lang::get('confide::confide.e_mail') }}}" type="text" name="email" id="email" value="{{{ isset($email)?$email:Input::old('email') }}}">
         </div>
         <div class="form-group">
             <label for="password">{{{ Lang::get('confide::confide.password') }}}</label>
@@ -19,15 +19,15 @@
         </div>
          <div class="form-group">
                 <label for="first">Firstname</label>
-                <input class="form-control" placeholder="Firstname" type="text" name="first" id="first" value="{{{ Input::old('first') }}}">
+                <input class="form-control" placeholder="Firstname" type="text" name="first" id="first" value="{{{ isset($first)?$first:Input::old('first')}}}">
             </div>
             <div class="form-group">
                 <label for="last">Lastname</label>
-                <input class="form-control" placeholder="Lastname" type="text" name="last" id="last" value="{{{ Input::old('last') }}}">
+                <input class="form-control" placeholder="Lastname" type="text" name="last" id="last" value="{{{ isset($last)?$last:Input::old('last')}}}">
             </div>
             <div class="form-group">
                 <label for="contact_number">Mobilephone</label>
-                <input class="form-control" placeholder="08xxxxxxxx" type="text" name="contact_number" id="contact_number" value="{{{ Input::old('contact_number') }}}">
+                <input class="form-control" placeholder="08xxxxxxxx" type="text" name="contact_number" id="contact_number" value="{{{ isset($contact_number)?$contact_number:Input::old('contact_number') }}}">
             </div>
 
                 @if (Session::has('message'))

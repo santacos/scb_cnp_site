@@ -92,10 +92,18 @@ SCB Recruiter-Home
 									<div class="col col-md-5"></div>
 									<div class="col col-md-3">
 										<div class="pull-left">
-											<div class="livicon" data-n="facebook-alt" data-hc="#000" data-s="50"></div>
+											<a href="{{{ URL::to('social/facebook')}}}">
+											<div class="livicon" data-n="facebook-alt" data-hc="#000" data-s="50">
+												
+											</div>
+											 </a>
 										</div>
 										<div class="pull-right">
-											<div class="livicon" data-n="linkedin-alt" data-hc="#000" data-s="50"></div>
+											<a href="{{{ URL::to('social/linkedin')}}}">
+											<div class="livicon" data-n="linkedin-alt" data-hc="#000" data-s="50">
+												
+											</div>
+											 </a>
 										</div>
 									</div>
 								</div>
