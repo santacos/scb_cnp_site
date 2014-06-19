@@ -44,15 +44,7 @@
         @endforeach
     </tr>
     </thead>
-    <tfoot>
-        <tr>
-            @foreach($columns as $i => $c)
-            <th align="center" valign="middle" class="head{{ $i }}">
-                <input type="text" name="{{$c}}" placeholder="{{$c}}" class="search_init" style="width:100%"  >
-            </th>
-            @endforeach
-        </tr>
-    </tfoot>
+    
 
     <tbody>
     @foreach($data as $d)
@@ -69,16 +61,25 @@
     </tbody>
 </table>
 <script type="text/javascript">
+    
     jQuery(document).ready(function(){
         // dynamic table
+        function getFilterValue(column_number){
+            alert(oTable.fnSettings().aoPreSearchCols[column_number].sSearch)
+            }
         var oTable = jQuery('.{{ $class }}').dataTable({
-             "dom": 'T<"clear">lfrtip',
+             "dom": 'TC<"clear">lfrtip',
             tableTools: {
-                "sSwfPath": "../swf/copy_csv_xls_pdf.swf",
+                "sSwfPath": "http://localhost/scb_cnp_site/public/swf/copy_csv_xls_pdf.swf",
                  "aButtons": [ "copy","xls", "pdf" ]
-            },
-            "sPaginationType": "full_numbers",
-            "bProcessing": false,
+            }, 
+            // columnDefs: [
+            //     { visible: false, targets: 2 }
+            // ],
+            // colVis: {
+            //     restore: "Restore",
+            //     showAll: "Show all"
+            // },
             "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
                   // Bold the grade for all 'A' grade browsers
 
@@ -108,7 +109,12 @@
                     window.onDatatableReady();
                 }
             }
-        });
+        }).yadcf([
+   {column_number: 1,
+filter_type: "multi_select",
+filter_container_id: "filter1",}]);
+ 
+    
          $('#reset').click( function (e) {
             e.preventDefault();
              
