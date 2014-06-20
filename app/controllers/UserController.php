@@ -116,24 +116,25 @@ class UserController extends BaseController {
         $provider = $socialAuth->authenticate($action);
         // fetch user profile
         $userProfile = $provider->getUserProfile();
-        $user = DB::table('users')->where('email', $userProfile->email)->first();
-        if(is_null($user))
+        // $user = DB::table('users')->where('email', $userProfile->email)->first();
+        // if(is_null($user))
+        // {
+        //    return View::make('pages.user.signup')
+        //     ->with('email',$userProfile->email)
+        //     ->with('first',$userProfile->firstName)
+        //     ->with('last',$userProfile->lastName)
+        //     ->with('contact_number',$userProfile->phone);
+        // }
+        // else
         {
-           return View::make('pages.user.signup')
-            ->with('email',$userProfile->email)
-            ->with('first',$userProfile->firstName)
-            ->with('last',$userProfile->lastName)
-            ->with('contact_number',$userProfile->phone);
-        }
-        else
-        {
-            Auth::loginUsingId($user->user_id);
-            return Redirect::intended('/home');
+            // Auth::loginUsingId($user->user_id);
+            // return Redirect::intended('/home');
         }
         echo "Connected with: <b>{$provider->id}</b><br />";
     echo "As: <b>{$userProfile->identifier}</b><br />";
     echo "<pre>" . print_r( $userProfile, true ) . "</pre><br />";
     echo "<img src=". $userProfile->photoURL . ">";
+    $this->hybridAuth->logoutAllProviders();
          
 
 }
@@ -276,9 +277,10 @@ class UserController extends BaseController {
      *
      */
     public function logout()
-    {
+    {   
+
         Confide::logout();
-        $this->hybridAuth->logoutAllProviders();
+        
         return Redirect::to('/');
     }
 
