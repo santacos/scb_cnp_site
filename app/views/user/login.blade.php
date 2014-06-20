@@ -50,9 +50,9 @@ SCB Recruiter-Home
 					<form method="POST" action="{{{ Confide::checkAction('UserController@do_login') ?: URL::to('/user/login') }}}" accept-charset="UTF-8">
 						<input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
 						<fieldset>
-							<div class="form-group">
+							<div class="form-group" >
 								<label for="email">{{{ Lang::get('confide::confide.username_e_mail') }}}</label>
-								<input class="form-control" tabindex="1" placeholder="{{{ Lang::get('confide::confide.username_e_mail') }}}" type="text" name="email" id="email" value="{{{ Input::old('email') }}}">
+								<input style="font-size:1.0em;" class="form-control" tabindex="1" placeholder="{{{ Lang::get('confide::confide.username_e_mail') }}}" type="text" name="email" id="email" value="{{{ Input::old('email') }}}">
 							</div>
 							<div class="form-group">
 								<label for="password">
@@ -64,7 +64,7 @@ SCB Recruiter-Home
 
 								
 
-								<input class="form-control" tabindex="2" placeholder="{{{ Lang::get('confide::confide.password') }}}" type="password" name="password" id="password">
+								<input style="font-size:1.0em;" class="form-control" tabindex="2" placeholder="{{{ Lang::get('confide::confide.password') }}}" type="password" name="password" id="password">
 							</div>
 
 
