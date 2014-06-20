@@ -191,7 +191,7 @@ HM-create-requisition
                 </div>
                 <div class="form-group">
                     {{ Form::label('questions', 'Screening Question :') }}<br>
-                    <iframe id="question" width="800px" height="100px" overflow="hidden" frameBorder="0"></iframe>
+                    <iframe id="question" width="800px" height="100px" scrolling="no" frameBorder="0"></iframe>
                     <input id="ng-question_id" type='hidden' value="@{{ requisition.position_id }}"/>
                     <script>
                         function changeJobTitle(x){
