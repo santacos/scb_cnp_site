@@ -26,7 +26,7 @@
 	<!-- sidebar menu: : style can be found in sidebar.less -->
 	<ul class="sidebar-menu">
 		<li class="active">
-			<a href="{{ URL::to('/') }}"> <i class="fa fa-fw fa-home"></i> <span>Home</span> </a>
+			<a href="{{ URL::to('hrbp-manager') }}"> <i class="fa fa-fw fa-home"></i> <span>Home</span> </a>
 		</li>
 
 
@@ -36,14 +36,14 @@
 
 
 		<li class="treeview">
-			<a href="#"> <i class="fa fa-fw fa-inbox"></i> <span>Requisition      <small class="badge bg-blue">15</small></span> <i class="fa fa-angle-left pull-right"></i> </a>
+			<a href="#"> <i class="fa fa-fw fa-inbox"></i> <span>Requisition      <small class="badge bg-blue">{{$a[1]=Requisition::where('requisition_current_status_id', '=', 3)->count()}}</small></span> <i class="fa fa-angle-left pull-right"></i> </a>
 			<ul class="treeview-menu">
 				<li>
-					<a href="{{ URL::to('morris') }}">
+					<a href="{{ URL::to('hrbp-manager-requisition') }}">
 						<i class="fa fa-fw fa-check-square-o"></i> 
 						Approve 
 						<!--number of post job-->
-						<small class="badge pull-right bg-yellow">5</small>
+						<small class="badge pull-right bg-yellow">{{$a[1]}}</small>
 					</a>
 				</li>
 				<li>
@@ -51,20 +51,26 @@
 						<i class="fa fa-fw fa-book"></i> 
 						Approved
 						<!--number of post job-->
-						<small class="badge pull-right bg-red">10</small>
+						<small class="badge pull-right bg-red">{{Requisition::where('requisition_current_status_id', '>', 3)->where('requisition_current_status_id', '<',7 )->count()}}</small>
 					</a>
 				</li>
 	
 			</ul>
 		</li>
-		
+		<?php
+			$a[6]=Requisition::whereHas('application', function($q) 
+				{$q->whereApplicationCurrentStatusId(6);})
+			->where('requisition_current_status_id','=',6)->count();
+			?>
 		<!--if HRBP Manager -->
 		@if(true)
 		<li class="treeview">
-			<a href="#"> <i class="fa fa-fw fa-user"></i> <span>Offering      <small class="badge bg-aqua">5</small></span> <i class="fa fa-angle-left pull-right"></i> </a>
+			<a href="#"> <i class="fa fa-fw fa-user"></i> <span>Offering      <small class="badge bg-aqua">{{$a[6]}}</small></span> <i class="fa fa-angle-left pull-right"></i> </a>
 			<ul class="treeview-menu">
 				<li>
-					<a href="{{ URL::to('general') }}"><i class="fa fa-fw fa-thumbs-up"></i> Confirm salary offer</a>
+					<a href="{{ URL::to('hrbp-manager-confirm-package') }}"><i class="fa fa-fw fa-thumbs-up"></i> Confirm salary offer
+						 <small class="badge bg-aqua">{{$a[6]}}</small>
+					</a>
 				</li>
 
 				<li>

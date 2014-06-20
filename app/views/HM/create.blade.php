@@ -1,3 +1,4 @@
+@extends('admin.layouts.main.hm')
 <!DOCTYPE html>
 <html ng-app="nameApp">
   <head>

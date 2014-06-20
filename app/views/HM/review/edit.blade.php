@@ -1,7 +1,7 @@
 <?php/**
                  ----- unused file -----
 */?>
-@extends('admin.layouts.default')
+@extends('admin.layouts.main.hm')
 @section('title')
 thisIsTitle
 @stop

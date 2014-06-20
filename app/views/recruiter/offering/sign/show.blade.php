@@ -1,4 +1,4 @@
-@extends('admin.layouts.default')
+@extends('admin.layouts.main.recruiter')
 @section('title')
 thisIsTitle
 @stop
@@ -61,6 +61,23 @@ thisIsTitle
                                             @endforeach
                                           @endif
                                         </table>
+                                        {{  Datatable::table()
+                                        ->addColumn( 
+                                            'Application ID', 
+                                            'Name',
+                                            '%Related',
+                                            'Point',
+                                            'Application Status',
+                                            'Education',
+                                            'Previous Job',
+                                            'SLA',
+                                            'Deadline',
+                                            'Saved',
+                                            'Note',
+                                            'Action'
+                                                      )    
+                                          ->setUrl(URL::to('api/application/'.$requisition_id .'/0' .'/8'))
+                                          ->render('datatable') }}
                                       </div>
     
                                     </div><!-- /.box-body -->

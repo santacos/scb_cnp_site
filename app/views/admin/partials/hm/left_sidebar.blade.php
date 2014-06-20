@@ -67,7 +67,7 @@
 																												})->where('requisition_current_status_id','=',6)->count()}}</small></a>
 				</li>
 				<li>
-					<a href="{{ URL::to('icons') }}"><i class="fa fa-fw fa-comments-o"></i> interview<small class="badge bg-green">{{Requisition::whereHas('application', function($q) {
+					<a href="{{URL::to('recruiter-interview-feedback')}}"><i class="fa fa-fw fa-comments-o"></i> interview<small class="badge bg-green">{{Requisition::whereHas('application', function($q) {
 																													$q->whereApplicationCurrentStatusId(4);
 																												})->where('requisition_current_status_id','=',6)->count()}}</small></a>
 				</li>

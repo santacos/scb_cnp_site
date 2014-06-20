@@ -135,7 +135,12 @@
 				<div class="icon">
 					<i class="ion ion-stats-bars"></i>
 				</div>
-				<div class="small-box-footer"> More info <i class="fa fa-arrow-circle-right"></i> </div>
+				<div class="small-box-footer"> 
+					total job  <span class="label bg-teal" style="border-radius:50%;font-size:1.1em;"> {{$a[7]=Requisition::whereHas('application', function($q) {
+																													$q->whereApplicationCurrentStatusId(8);
+																												})->where('requisition_current_status_id','=',6)->count()}}</span> 
+				
+				</div>
 			</a>
 		</div><!-- ./col -->
 
