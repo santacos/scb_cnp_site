@@ -41,10 +41,18 @@
 			
 
 
-			  
-			<a href="#myModal" data-toggle="modal">
-				<button type="button" class="btn btn-xs btn-danger" style="margin-top:10%">log in</button>
+			@if(Auth::check())
+			<a href="{{URL::to('user/logout')}}">
+				<button type="button" class="btn btn-xs btn-inverse" style="margin-top:10%;font-size:1.2em;">log out</button>
+			</a> 
+			@endif
+			@if(!Auth::check())
+			<!-- <a href="#myModal" data-toggle="modal"> -->
+			<a href="{{URL::to('user/login')}}" data-toggle="modal">
+				<button type="button" class="btn btn-xs btn-danger" style="margin-top:10%;font-size:1.2em;">log in</button>
 			</a>
+			@endif
+
 			
 
 		  </div><!-- .header-icons -->
@@ -61,16 +69,16 @@
 			  <nav class="collapse collapsing navbar-collapse">
 				<ul class="nav navbar-nav navbar-center">
 				  <li>
-					<a href="index.html">Home</a>
+					<a href="{{URL::to('home')}}">Home</a>
 				  </li>
 				  <li>
-					<a href="index.html">Search job</a>
+					<a href="{{URL::to('cd/searchjob')}}">Search job</a>
 				  </li>
 				  <li>
-					<a href="index.html">My account</a>
+					<a href="{{URL::to('cd')}}">My account</a>
 				  </li>
 				  <li>
-					<a href="index.html">Contact us</a>
+					<a href="#">Contact us</a>
 				  </li>
 				  	<!-- <li class="parent">
 						<a href="#">Portfolio</a>

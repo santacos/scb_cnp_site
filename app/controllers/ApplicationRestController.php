@@ -227,12 +227,17 @@ class ApplicationRestController extends \BaseController {
                             else  if($model->application_current_status_id == 6){
 
                                 return'<a href="' .URL::to('cd/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
-                                                '<a href="' .URL::to('hm-application-review/' . $model->application_id . '/edit').'"><button class="btn btn-sm btn-success">Select</button></a>';
+                                                '<a href="' .URL::to('hrbp-manager-confirm-package/' . $model->application_id . '/edit').'"><button class="btn btn-sm btn-success">Confirm</button></a>';
                             }
                             else  if($model->application_current_status_id == 7){
 
                                 return'<a href="' .URL::to('cd/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
                                                 '<a href="' .URL::to('recruiter-offer-package/' . $model->application_id . '/edit').'"><button class="btn btn-sm btn-success">Offer</button></a>';
+                            }
+                                else  if($model->application_current_status_id == 8){
+
+                                return'<a href="' .URL::to('cd/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
+                                                '<a href="' .URL::to('recruiter-sign/' . $model->application_id . '/edit').'"><button class="btn btn-sm btn-success">Sign</button></a>';
                             }
                             else{
                                 return '<a href="' .URL::to('cd/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>';

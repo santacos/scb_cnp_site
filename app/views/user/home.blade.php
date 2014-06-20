@@ -19,9 +19,8 @@ SCB Recruiter-Home
 	
 	@include('user.includes.home.slider')
 
-
-	<div class="col-sm-12 col-md-12 bottom-padding overflow">
-		  <div class="manufactures carousel-box load overflow bottom-padding" data-carousel-autoplay="true">
+	<!-- <div class="col-sm-12 col-md-12 bottom-padding overflow">
+	  	<div class="manufactures carousel-box load overflow bottom-padding" data-carousel-autoplay="true">
 			<div class="title-box">
 			  <a class="next" href="#">
 				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="9px" height="16px" viewBox="0 0 9 16" enable-background="new 0 0 9 16" xml:space="preserve">
@@ -35,9 +34,9 @@ SCB Recruiter-Home
 			  </a>
 			  <h2 class="title">Autoscroll</h2>
 			</div>
-			
+		
 			<div class="clearfix"></div>
-			
+		
 			<div class="row">
 			  <div class="carousel">
 				<div class="make-wrapper">
@@ -71,9 +70,11 @@ SCB Recruiter-Home
 				</div>
 			  </div>
 			</div>
-		  </div><!-- .manufactures -->
-		  
-		  <div class="manufactures carousel-box load overflow" data-carousel-pagination="true">
+		</div>
+
+
+	  
+	 	<div class="manufactures carousel-box load overflow" data-carousel-pagination="true">
 			<div class="title-box">
 			  <a class="next" href="#">
 				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="9px" height="16px" viewBox="0 0 9 16" enable-background="new 0 0 9 16" xml:space="preserve">
@@ -87,9 +88,9 @@ SCB Recruiter-Home
 			  </a>
 			  <h2 class="title">Navigation & Pagination</h2>
 			</div>
-			
+		
 			<div class="clearfix"></div>
-			
+		
 			<div class="row">
 			  <div class="carousel">
 				<div class="make-wrapper">
@@ -124,7 +125,12 @@ SCB Recruiter-Home
 			  </div>
 			</div>
 			<div class="pagination switches"></div>
-		  </div><!-- .manufactures -->
-		</div>
+	  	</div>
+	</div> -->
+	
+
+
+	
+
 @stop
 

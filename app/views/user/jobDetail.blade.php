@@ -13,10 +13,16 @@ SCB Recruitment-Home
 "header header-two"
 @stop
 
+@section('libs')
+	<script src="<?php echo asset('js/apply-manager.js')?>"></script>
+@stop
 
 
 @section('content')
-
+	
+	@include('user.includes.apply.modalQuestion')
+	@include('user.includes.apply.modalApplySuccess')
+	@include('user.includes.apply.modalIncomplete')
   
     <div class="row">
      
@@ -127,7 +133,7 @@ SCB Recruitment-Home
 
 			  	<div class="content-block bottom-padding frame border-radius">
 					<h3><!--edit-->
-						{{$requisition->job_title}}
+						Job title : {{$requisition->job_title}}
 
 						<div class="big-icon bg bg-warning pull-right">
 							<a href="#modalJobcart" data-toggle="modal">
@@ -253,10 +259,19 @@ SCB Recruitment-Home
 					<div class="row">
 						<div class="col col-md-3 col-sm-3"></div>
 						<div class="col col-md-3 col-sm-3">
+							
 							<!--edit link button-->
-							<button class="btn  btn-danger" style="margin-left:60px;width:100%">
+							<a href="#modalQuestion" data-toggle="modal" class="btn  btn-danger" style="margin-left:60px;width:100%">
 								<strong>Apply</strong>
-							</button>
+							</a>
+
+							<a href="#modalIncomplete" data-toggle="modal" class="btn  btn-inverse" style="margin-left:60px;width:100%">
+								<strong>In complete Apply</strong>
+							</a>
+
+							<!-- <a href="#modalQuestion" data-toggle="modal">
+								<button type="button" class="btn btn-danger">Apply</button>
+							</a> -->
 						</div>
 						<div class="col col-md-4 col-sm-4">
 

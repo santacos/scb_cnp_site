@@ -48,7 +48,7 @@ class RecruiterSignController extends \BaseController {
 	public function show($id)
 	{
 		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(8)->get();
-		return View::make('recruiter.offering.sign.show', compact('applications'));
+		return View::make('recruiter.offering.sign.show', compact('applications'))->with('requisition_id',$id);
 	}
 
 	/**
