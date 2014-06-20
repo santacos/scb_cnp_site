@@ -17,7 +17,7 @@
 		}
 
 		public function answer(){
-			return $this->belongsToMany('Answer');// no pivot
+			return $this->belongsToMany('Answer','question_answers');// no pivot
 		}
 
 		public function application(){
