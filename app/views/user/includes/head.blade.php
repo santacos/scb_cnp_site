@@ -38,3 +38,10 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <link rel='stylesheet' href="<?php echo asset('css/ie/ie8.css')?>">
   <![endif]-->
+
+  <!--for angular-->
+  <script src="<?php echo asset('vendor/angular.min.js')?>"></script> 
+  <script src="<?php echo asset('js/jquery.js')?>"></script>
+  <script src="<?php echo asset('vendor/ui-utils.js')?>"></script> 
+  <script src="<?php echo asset('vendor/ui-utils.min.js')?>"></script>
+  <script src="<?php echo asset('vendor/ui-bootstrap-tpls-0.11.0.min.js')?>"></script>

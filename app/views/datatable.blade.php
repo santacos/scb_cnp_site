@@ -111,9 +111,7 @@
                     window.onDatatableReady();
                 }
             }
-        }).yadcf([
-   {column_number: 1,
-filter_type: "multi_select"}]);
+        });
  
     
          $('#reset').click( function (e) {

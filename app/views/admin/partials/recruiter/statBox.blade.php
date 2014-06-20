@@ -21,7 +21,7 @@
 			<!-- small box -->
 			<a href="{{URL::to('recruiter-shortlist-candidate')}}" class="small-box bg-green">
 				<div class="inner">
-					<h3> Send<br>Shortlist</h3>
+					<h3> Select<br>Candidate</h3>
 
 				</div>
 				<div class="icon">
@@ -54,7 +54,7 @@
 			<!-- small box -->
 			<a href="{{URL::to('recruiter-interview-confirm')}}" class="small-box bg-red">
 				<div class="inner">
-					<h3> Confirm <br>Interview </h3>
+					<h3> Interview<br>appointment </h3>
 				</div>
 				<div class="icon">
 					<i class="fa fa-fw fa-group"></i>
@@ -127,9 +127,10 @@
 
 		<div class="col-lg-3 col-xs-6">
 			<!-- small box -->
-			<a href="#" class="small-box bg-maroon">
+			<a href="{{URL::to('recruiter-sign')}}" class="small-box bg-maroon">
 				<div class="inner">
-					<h3> Total<br>{{$a[0]+$a[1]+$a[2]+$a[3]+$a[4]+$a[5]+$a[6]}}</h3>
+					<!-- <h3> Total<br>{{$a[0]+$a[1]+$a[2]+$a[3]+$a[4]+$a[5]+$a[6]}}</h3> -->
+					<h3>Sign <br> candidate</h3>
 				</div>
 				<div class="icon">
 					<i class="ion ion-stats-bars"></i>
