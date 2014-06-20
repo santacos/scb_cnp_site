@@ -1,9 +1,9 @@
 <table class="QuestionTable" id="t" border="1" style="top:0px;left:0px;">
 	<tr>
-		<th>Select</th>
-		<th>Question</th>
-		<th>Answer</th>
-		<th>Action</th>
+		<td>Select</td>
+		<td>Question</td>
+		<td>Answer | Point</td>
+		<td>Action</td>
 	</tr>
 	<col width="50">
 	<col width="300">
@@ -112,21 +112,27 @@
         var row = table.insertRow(table.rows.length);
         row.insertCell(0).innerHTML = '<input type="hidden" value="'+v1+'"/><center><input type="checkbox"'+(v2==true?'checked':'')+'/></center>';
         row.insertCell(1).innerHTML = '<input type="text" value="'+v3+'" style="width:100%;border:1px;padding:5px;margin:0px;background-color:transparent;"/>';
-        
-        row.insertCell(2).innerHTML = v1;
+        var answer = document.createElement("table");
+        answer.border = "1";
+        answer.className = "";
+        answer.innerHTML = '<tbody><tr><td>Answer</td><td>Point</td></tr></tbody>';
+        row.insertCell(2).appendChild(answer);
         var btn = document.createElement("input");
         btn.value = 'Remove';
         btn.type = 'button';
         btn.onclick = function(){
           this.parentNode.parentNode.remove();
+          changeHeight();
         };
-        var cell3 = row.insertCell(3);
-        cell3.appendChild(btn);
-        cell3.innerHTML = '<center>'+cell3.innerHTML+'</center>';
-        parent.document.getElementById("question").height = (table.offsetHeight+20)+"px";
+        row.insertCell(3).appendChild(document.createElement("center").appendChild(btn));
+        changeHeight();
 	}
 	function addAnswer(v){
 
+		changeHeight();
+	}
+	function changeHeight(){
+        parent.document.getElementById("question").height = (document.getElementById('t').offsetHeight+40)+"px";
 	}
 </script>
 @foreach($questions as $question)

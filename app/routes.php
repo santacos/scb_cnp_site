@@ -54,14 +54,13 @@ Route::get('cd/jobcart',function(){
 Route::get('cd/searchjob',function(){
     return View::make('user.searchJob');
 });
-Route::get('cd/jobdetail',function(){
-    return View::make('user.jobDetail');
-});
+
 Route::resource('cd', 'CandidateController');
 Route::controller('cd', 'CandidateController');
 ///////////////////////////////////////////////////////////
 Route::get('tryView',function(){
-	return View::make('HM.requisition.newcreate');
+	//return View::make('HM.requisition.newcreate');
+	return View::make('admin.candidateDetail');
 });
 
 Route::get('tryAngular',function(){
