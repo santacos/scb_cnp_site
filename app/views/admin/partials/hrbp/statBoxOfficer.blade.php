@@ -19,21 +19,6 @@
 			</a>
 		</div><!-- ./col -->
 
-		<div class="col-lg-6 col-xs-6">
-			<!-- small box -->
-			<a href="#" class="small-box bg-green">
-				<div class="inner">
-					<h3> Confirm Salary Offer  <br><i class="fa fa-fw fa-thumbs-up" style="color: #056B33;"></i> </h3>
-				</div>
-
-				<div class="icon">
-					<i class="ion ion" style="color:white;font-size:80%;">13</i>		
-				</div>
-				<div class="small-box-footer">
-					total job  <span class="label label-success" style="border-radius:50%;font-size:1.1em;"> 13</span> 
-				</div>
-			</a>
-		</div><!-- ./col -->
 
 	</div><!-- /.row -->
 		

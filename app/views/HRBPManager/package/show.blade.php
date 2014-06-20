@@ -1,4 +1,4 @@
-@extends('admin.layouts.default')
+@extends('admin.layouts.main.hrbp')
 @section('title')
 thisIsTitle
 @stop
@@ -36,7 +36,7 @@ thisIsTitle
                                     <div class="box-body table-responsive no-padding">
                                         
                                       <div style="overflow: auto;">
-
+<!-- 
                                         <table border="1">
                                           <tr>
                                             @if(count($applications) > 0)
@@ -60,7 +60,24 @@ thisIsTitle
                                               </tr>
                                             @endforeach
                                           @endif
-                                        </table>
+                                        </table> -->
+                                        {{  Datatable::table()
+                                        ->addColumn( 
+                                            'Application ID', 
+                                            'Name',
+                                            '%Related',
+                                            'Point',
+                                            'Application Status',
+                                            'Education',
+                                            'Previous Job',
+                                            'SLA',
+                                            'Deadline',
+                                            'Saved',
+                                            'Note',
+                                            'Action'
+                                                      )    
+                                          ->setUrl(URL::to('api/application/'.$requisition_id .'/0' .'/6'))
+                                          ->render('datatable') }}
                                       </div>
     
                                     </div><!-- /.box-body -->

@@ -403,6 +403,20 @@ class RequisitionRestController extends \BaseController {
                         }
                          else if($user_id==22)
                         {
+                            if($app_status==6)
+                                {
+                                 $return=$return->addColumn('Action',function($model) { 
+                                           $confirm = Application::where('application_current_status_id', '=', 6)->where('requisition_id','=',$model->requisition_id)->count();
+                                         return   '<div class="btn-group-vertical">
+                                         <a href="' .URL::to('hrbp-manager-confirm-package/' . $model->requisition_id).'"
+                                         class="btn btn-warning" style="width:8.5em;">
+                                         Confirm ('.$confirm.')
+
+                                         </a>
+                                         </div>'; 
+                                        }); 
+                             }
+                             else{
                                 $return=$return->addColumn('Action',function($model) { 
                                     if($model ->requisition_current_status_id == 3 )
                                     {
@@ -421,6 +435,7 @@ class RequisitionRestController extends \BaseController {
                                     }
                                 }); 
 
+                                }
                         }
                          else if($user_id==3)
                         {
@@ -527,6 +542,19 @@ class RequisitionRestController extends \BaseController {
                                          <a href="' .URL::to('recruiter-offer-package/' . $model->requisition_id).'"
                                          class="btn btn-warning" style="width:8.5em;">
                                          Offer ('.$offer.')
+
+                                         </a>
+                                         </div>'; 
+                                        }); 
+                                }
+                                 else if($app_status==8)
+                                {
+                                    $return=$return->addColumn('Action',function($model) { 
+                                           $sign = Application::where('application_current_status_id', '=', 8)->where('requisition_id','=',$model->requisition_id)->count();
+                                         return   '<div class="btn-group-vertical">
+                                         <a href="' .URL::to('recruiter-sign/' . $model->requisition_id).'"
+                                         class="btn btn-warning" style="width:8.5em;">
+                                         Offer ('.$sign.')
 
                                          </a>
                                          </div>'; 

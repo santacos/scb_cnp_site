@@ -1,4 +1,4 @@
-@extends('admin.layouts.main.recruiter')
+@extends('admin.layouts.main.hrbp')
 @section('title')
 thisIsTitle
 @stop
@@ -77,7 +77,7 @@ thisIsTitle
                                
                                        <div style="overflow: auto;">
 
-                                        <table border="1">
+                                        <!-- <table border="1">
                                           <tr>
                                             @if(count($requisitions) > 0)
                                               @foreach($requisitions->first()->toArray() as $key => $value)
@@ -100,8 +100,22 @@ thisIsTitle
                                               </tr>
                                             @endforeach
                                           @endif
-                                        </table>
-
+                                        </table> -->
+                                        {{  Datatable::table()
+                                            ->addColumn( 'Requisition ID',
+                                                        'Job Title',
+                                                        'Corporate Title',
+                                                       'Location',
+                                                       'Requisition Status',
+                                                       'Require',
+                                                       'SLA',
+                                                       'Deadline',
+                                                       'From',
+                                                       'Note',
+                                                       'Action'
+                                                        )    
+                                            ->setUrl(URL::to('api/requisition/'.'22/6/'.'6'))
+                                            ->render('datatable') }}
                                       </div>
 
 
