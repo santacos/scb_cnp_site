@@ -251,7 +251,7 @@ SCB Recruitment-Home
 			  	</header>
 
 			  	<!--filter box-->
-			  	{{Form::open(array('url' => 'cd/jobstatus/'.Auth::user()->user_id, 'method' => 'get'))}}
+			  	{{Form::open(array('url' => 'cd/jobstatus/'.Auth::user()->user_id, 'method' => 'post'))}}
 			  	<div class="content-block bottom-padding frame frame-shadow-curved" style="margin-bottom:20px;">
 					<div class="row">
 						<div class="col col-md-1">
