@@ -244,7 +244,7 @@
 </script>
 @foreach($questions as $question)
 	<script>
-		var answerTable = addRow( "{{ $question->question_id }}", "{{ $question->pivot->is_checked }}", "{{ $question->question }}" );
+		var answerTable = addRow( "{{ $question->question_id }}", "{{ $checkOn=='true' && $question->pivot->is_checked }}", "{{ $question->question }}" );
 		@foreach($question->answer()->get() as $answer)
 			addAnswer( answerTable, "{{ $answer->answer_id }}", "{{ $answer->name }}", "{{ $answer->point }}" );
 		@endforeach

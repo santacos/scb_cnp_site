@@ -14,7 +14,8 @@ class CandidateController extends \BaseController {
 	}
 	public function getJobdetail($id)
 	{
-		return View::make('user.jobDetail')->with('requisition',Requisition::find($id));
+		$questions = Requisition::find($id)->question()->get();
+		return View::make('user.jobDetail',compact('questions'))->with('requisition',Requisition::find($id));
 	}
 	/**
 	 * Show the form for creating a new candidate
