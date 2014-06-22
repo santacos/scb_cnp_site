@@ -17,6 +17,60 @@ class CandidateController extends \BaseController {
 		$questions = Requisition::find($id)->question()->get();
 		return View::make('user.jobDetail',compact('questions'))->with('requisition',Requisition::find($id));
 	}
+	public function getJobstatus($id)
+	{	
+		$search = trim(Input::get( 'search' ));
+        $status = trim(Input::get( 'status' ));
+		$apps=Application::where('candidate_user_id','=',$id);
+		if($status!=''&&$status!=0)
+		{	
+			$apps=$apps->where('application_current_status_id','=',$status);
+		}
+		
+		if($search!='')
+		{		
+			$searchTerms = explode(' ', $search);
+			 foreach($searchTerms as $term)
+			    {
+			    	 $GLOBALS['term'] = $term;
+			        $apps->whereHas('requisition', function($q) {
+				   		$q->where('job_title', 'LIKE', '%'.  $GLOBALS['term'] .'%');
+				     
+				     });
+			    }
+
+		}
+		$applications=$apps->paginate(10);
+	
+		return View::make('user.jobStatus', compact('applications'))->with(array('search'=>$search,'status'=>$status));	
+	}
+	public function postJobstatus($id)
+	{
+		$search = trim(Input::get( 'search' ));
+        $status = trim(Input::get( 'status' ));
+		$apps=Application::where('candidate_user_id','=',$id);
+		if($status!=''&&$status!=0)
+		{	
+			$apps=$apps->where('application_current_status_id','=',$status);
+		}
+		
+		if($search!='')
+		{		
+			$searchTerms = explode(' ', $search);
+			 foreach($searchTerms as $term)
+			    {
+			    	 $GLOBALS['term'] = $term;
+			        $apps->whereHas('requisition', function($q) {
+				   		$q->where('job_title', 'LIKE', '%'.  $GLOBALS['term'] .'%');
+				     
+				     });
+			    }
+
+		}
+		$applications=$apps->paginate(10);
+	
+		return View::make('user.jobStatus', compact('applications'))->with(array('search'=>$search,'status'=>$status));
+	}
 	/**
 	 * Show the form for creating a new candidate
 	 *

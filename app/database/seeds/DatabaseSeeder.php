@@ -23363,6 +23363,14 @@ $this->command->info('Table SLACandidate Seeded');
 		));
 $this->command->info('Table PublicHoliday Seeded');
 
+// QUESTION
+		/*DB::table('public_holidays')->insert(array(
+		'date' => new DateTime("1 Jan 2014"),
+		'name' => "New Year's Day"
+		));*/
+
+// $this->command->info('Table Question Seeded');
+
 $this->command->info('** All Table Seeded :) **');
 
 /*
