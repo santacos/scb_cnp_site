@@ -73,6 +73,12 @@ class CandidateController extends \BaseController {
 	
 		return View::make('user.jobStatus', compact('applications'))->with(array('search'=>$search,'status'=>$status));
 	}
+	public function getJobfollow()
+	{
+		$questions = Requisition::find($id)->question()->get();
+		return View::make('user.jobFollow');
+		return View::make('user.jobDetail',compact('questions'))->with('requisition',Requisition::find($id));
+	}
 	/**
 	 * Show the form for creating a new candidate
 	 *
