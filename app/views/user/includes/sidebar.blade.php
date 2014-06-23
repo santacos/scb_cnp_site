@@ -53,8 +53,8 @@
 							  		<small class="badge bg-blue pull-right" style="margin-top:0.2em;">2</small>
 							  	</a>
 							  </li>
-							<li class="active">
-							  	<a href="{{ URL::to('/cd/jobfollow')}}">
+							<li class="active" >
+								<a href="{{ URL::to('/cd/jobfollow')}}">
 							  		<i class="livicon" data-s="16" data-n="notebook" data-c="#fff" data-hc="0"></i>
 							  		 Following Job<small class="badge bg-blue pull-right" style="margin-top:0.2em;">7</small>
 							  	</a>
