@@ -87,41 +87,41 @@ HM-create-requisition
 
         <div class="form-group">
            {{ Form::label('filepath_picture', 'Image :') }} 
-           <pre>
+           <br>
             @if(file_exists($candidate->filepath_picture))
-                 <img src="{{asset($candidate->filepath_picture)}}" style="height: 100px; width: 100px;"> 
+                 <img src="{{asset($candidate->filepath_picture)}}" style="height: 300px; width: 300px;"> 
             @elseif(isset($candidate->filepath_picture))
-                  <img src="{{asset($candidate->filepath_picture)}}" style="height: 100px; width: 100px;"> 
+                  <img src="{{asset($candidate->filepath_picture)}}" style="height: 300px; width: 300px;"> 
             @endif    
             <br><br>
                 <input type="radio" name="img_selc" ng-model="img_selc" value="text" checked="checked"/>  URL &nbsp&nbsp
                 <input type="radio" name="img_selc" ng-model="img_selc" value="file"> Upload <br/>
                 <input ng-show="img_selc=='text'"name="filepath_picture" type="text" class="form-control" value="{{$candidate->filepath_picture}}">
                 <input ng-show="img_selc=='file'" name="filepath_picture" type="file" class="form-control" value="{{Input::old('filepath_picture')}}">
-           </pre>
+          
        </div>
         <div class="form-group">
            {{ Form::label('filepath_cv', 'CV :') }} 
-           <pre>
-            @if(file_exists($candidate->filepath_cv))
-           <embed src="{{asset($candidate->filepath_cv)}}" width="500" height="500"> 
+           <br>
+            @if(file_exists(public_path().$candidate->filepath_cv))
+           <embed src="{{asset($candidate->filepath_cv)}}" width="800" height="500"> 
             @endif
              <br><br>
                 <!-- <input type="radio" name="cv_selc" ng-model="cv_selc" value="text" checked="checked"/>  URL &nbsp&nbsp -->
                 <!-- <input type="radio" name="cv_selc" ng-model="cv_selc" value="file"> Upload <br/> -->
                 <!-- <input ng-show="cv_selc=='text'"name="filepath_cv" type="text" class="form-control" value="{{$candidate->filepath_cv}}"> -->
                 <input  name="filepath_cv" type="file" class="form-control" value="{{Input::old('filepath_cv')}}">
-           </pre>
+          
        </div>
         <div class="form-group">
            {{ Form::label('filepath_video', 'Video :') }} 
-           <pre>
+           <br>
             @if(isset($candidate->filepath_video))
              <embed src="{{asset($candidate->filepath_video)}}" allowfullscreen="true" width="500" height="500"> 
             @endif
               <br><br>
                <input name="filepath_video" type="text" class="form-control" value="{{$candidate->filepath_video}}">
-           </pre>
+           
        </div>
         
         {{ Form::label('Personal Details :') }}

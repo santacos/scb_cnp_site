@@ -8,12 +8,12 @@
 					  	<div class="row">
 					  		<br>
 	                      	<div class="col col-md-5 col-sm-5">
-								<img class="image img-circle appear-animation bounceIn appear-animation-visible" src="{{asset('assets/img/avatar3.png')}}" alt="" title="" width="84" height="84" data-appear-animation="bounceIn">     
+								<img class="image img-circle appear-animation bounceIn appear-animation-visible" src="{{asset(Auth::user()->candidate->filepath_picture)}}" alt="" title="" width="84" height="84" data-appear-animation="bounceIn">     
 							</div>
 	                      
 	                      	<div class="col col-md-7 col-sm-7">
 	                      		<br><br>
-	                        	<h1 class="title">Hi! <!--edit-->Somsri
+	                        	<h1 class="title">Hi! <!--edit-->{{Auth::user()->first}}
 	                        		<i class="livicon" data-s="24" data-op="0" data-hc="0"data-n="sun" data-c="#fda425" data-hc="0"></i>
 	                        	</h1>
 
