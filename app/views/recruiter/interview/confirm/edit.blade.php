@@ -32,18 +32,87 @@ thisIsTitle
 'Updated At' => $application->updated_at
       );
     ?>
-    <center>
+    
+    <div class="box box-primary">
+      <div class="box-header">
+        <div class="box-title" style="font-size:2.5em;">Interview appointment<br></div>
 
-      <table>
-        <?php $i=0; $col=2?>
-        @foreach($display as $key => $value)
-          <?php echo (($i%$col==0)?'<tr>':'');?>
-          <td><span style="color:brown; font-size:20px; font-weight:bold; padding:15px;">{{ $key }} : </span>
-          <span style="color:orange; font-size:20px;">{{ $value }}</span></td>
-          <?php echo (($i%$col==$col-1)?'</tr>':'');?>
-          <?php $i++; ?>
-        @endforeach
-      </table>
+        <hr>
+
+        <hr>
+      </div>
+     
+      <div class="box-body">
+
+        <!-- the events -->
+        <!-- <div id="external-events">
+          <div class="external-event bg-green ui-draggable" style="position: relative;">
+            Lunch
+          </div>
+          <div class="external-event bg-red ui-draggable" style="position: relative;">
+            Go home
+          </div>
+          <div class="external-event bg-aqua ui-draggable" style="position: relative;">
+            Do homework
+          </div>
+          <div class="external-event bg-yellow ui-draggable" style="position: relative;">
+            Work on UI design
+          </div>
+          <div class="external-event bg-navy ui-draggable" style="position: relative;">
+            Sleep tight
+          </div>
+        </div> -->
+
+
+        <div class="row">
+          
+          <div class="col col-md-12">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title"><strong>Candidate detail</strong></h3>
+              </div>
+              <div class="panel-body" style="font-size:1.2em;">
+                <center>
+                 <table class="table table-hover">
+                     
+                    <tbody>
+                    <?php $i=0; $col=2?>
+                    @foreach($display as $key => $value)
+                      <?php echo (($i%$col==0)?'<tr>':'');?>
+
+                      <td width="30%">
+                        <strong>{{ $key }} : </strong>
+                      </td>
+                      <td width="20%">
+                        <span>{{ $value }}</span>
+                      </td>
+
+                      <?php echo (($i%$col==$col-1)?'</tr>':'');?>
+                      <?php $i++; ?>
+                    @endforeach
+                    </tbody>
+                </table>
+                </center>
+              </div>
+            </div>
+          </div>
+          <div class="col col-md-2">
+          </div>
+          <div class="col col-md-2">
+          </div>
+        </div>
+
+      </div><!-- /.box-body -->
+    </div><!-- /.box-->
+   
+
+
+
+
+
+      
+
+    <center>
 
       {{ Form::model($application, array('route' => array('recruiter-interview-confirm.update', $application->application_id), 'method' => 'PUT')) }}
         <?php

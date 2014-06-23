@@ -58,15 +58,25 @@ thisIsTitle
                                           ->render('datatable') }}
                                       </div>
                                       
-                                      {{ Form::model($requisition, array('route' => array('hm-application-review.update', $requisition->requisition_id), 'method' => 'PUT')) }}
-                                        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-                                          {{ Form::label('note', 'Note :') }}
-                                          {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
-                                        </div>
-                                        {{ Form::hidden('sel_application_ids','',array('id' => 'sel_application_ids')) }}
-                                        {{ Form::hidden('unsel_application_ids','',array('id' => 'unsel_application_ids')) }}
-                                        {{ Form::button('Accept', array('name' => 'approve', 'value' => true, 'type' => 'submit')) }}
-                                      {{ Form::close() }}
+
+                                      <div class="well" style="">
+                                        {{ Form::model($requisition, array('route' => array('hm-application-review.update', $requisition->requisition_id), 'method' => 'PUT')) }}
+                                          <div class="form-group" style="font-size:1.2em;font-weight:bold; padding:15px;">
+                                            {{ Form::label('note', 'Note (preferred time for interviewing) :') }}
+                                            {{ Form::textarea('note', '', array( 'size' => '60x5','style'=>'margin-left:10px;')) }}
+                                          </div>
+                                          {{ Form::hidden('sel_application_ids','',array('id' => 'sel_application_ids')) }}
+                                          {{ Form::hidden('unsel_application_ids','',array('id' => 'unsel_application_ids')) }}
+                                        
+                                        <div class="row">
+                                          <div class="col col-md-3"></div>
+                                          <div class="col col-md-4" style="margin-left:25px;">
+                                            {{ Form::button('Accept', array('name' => 'approve','style'=>'width:115%;' ,'value' => true, 'type' => 'submit','class'=>'btn btn-lg btn-success')) }}
+                                        {{ Form::close() }}
+
+                                          </div>
+
+                                      </div>
 
                                     </div><!-- /.box-body -->
                         </div><!-- /.box -->
