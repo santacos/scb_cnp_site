@@ -148,7 +148,7 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils','ngSanitize'])
 
    				///
    				$scope.temp=0;
-			 	if($scope.group!=""){
+			 	if($scope.group){
 			 		$scope.temp = $scope.temp+1;
 			 	}
 			 	if($scope.division){
@@ -160,7 +160,31 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils','ngSanitize'])
 			 	if($scope.job_title){
 			 		$scope.temp = $scope.temp+1;
 			 	}
-			 	
+			 	if($scope.corporate_title_id){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.totalNumber>0){
+			 		$scope.temp = $scope.temp+1;
+			 		console.log($scope.totalNumber);
+			 	}
+			 	if($scope.recruitment_obj){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.recruitment_type){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.location_id){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.year_of_experience){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.responsibility){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.qualification){
+			 		$scope.temp = $scope.temp+1;
+			 	}
 
 			 	$scope.count = $scope.temp;
    				console.log('checkGroup');
@@ -174,6 +198,7 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils','ngSanitize'])
 			 		$scope.showOrganization = true;
 			 	}
 
+			 	//
 			 	$scope.temp=0;
 			 	if($scope.group){
 			 		$scope.temp = $scope.temp+1;
@@ -187,7 +212,31 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils','ngSanitize'])
 			 	if($scope.job_title){
 			 		$scope.temp = $scope.temp+1;
 			 	}
-			 	
+			 	if($scope.corporate_title_id){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.totalNumber>0){
+			 		$scope.temp = $scope.temp+1;
+			 		console.log($scope.totalNumber);
+			 	}
+			 	if($scope.recruitment_obj){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.recruitment_type){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.location_id){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.year_of_experience){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.responsibility){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.qualification){
+			 		$scope.temp = $scope.temp+1;
+			 	}
 
 			 	$scope.count = $scope.temp;
    				console.log('checkGroup');
@@ -201,6 +250,7 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils','ngSanitize'])
 			 		$scope.showJobTitle = true;
 			 	}
 
+			 	//
 			 	$scope.temp=0;
 			 	if($scope.group){
 			 		$scope.temp = $scope.temp+1;
@@ -214,7 +264,31 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils','ngSanitize'])
 			 	if($scope.job_title){
 			 		$scope.temp = $scope.temp+1;
 			 	}
-			 	
+			 	if($scope.corporate_title_id){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.totalNumber>0){
+			 		$scope.temp = $scope.temp+1;
+			 		console.log($scope.totalNumber);
+			 	}
+			 	if($scope.recruitment_obj){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.recruitment_type){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.location_id){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.year_of_experience){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.responsibility){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.qualification){
+			 		$scope.temp = $scope.temp+1;
+			 	}
 
 			 	$scope.count = $scope.temp;
    				console.log('checkGroup');
@@ -333,7 +407,97 @@ var nameApp = angular.module('nameApp',['ui.bootstrap','ui.utils','ngSanitize'])
 			 }
 
 
-    	
+    		//set responsibility and qualification
+    		$scope.setRespon = function(){
+    			$scope.responsibility = $scope.showtext;
+
+    			$scope.temp=0;
+			 	if($scope.group){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.division){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.organization){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.job_title){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.corporate_title_id){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.totalNumber>0){
+			 		$scope.temp = $scope.temp+1;
+			 		console.log($scope.totalNumber);
+			 	}
+			 	if($scope.recruitment_obj){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.recruitment_type){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.location_id){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.year_of_experience){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.responsibility){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.qualification){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+
+			 	$scope.count = $scope.temp;
+    		}
+
+    		$scope.setQual = function(){
+    			
+    			$scope.qualification = $scope.showqualtext
+    			$scope.temp=0;
+			 	if($scope.group){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.division){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.organization){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.job_title){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.corporate_title_id){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.totalNumber>0){
+			 		$scope.temp = $scope.temp+1;
+			 		console.log($scope.totalNumber);
+			 	}
+			 	if($scope.recruitment_obj){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.recruitment_type){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.location_id){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.year_of_experience){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.responsibility){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+			 	if($scope.qualification){
+			 		$scope.temp = $scope.temp+1;
+			 	}
+
+			 	$scope.count = $scope.temp;
+    		}
+
   			}//before end controller
 
   	

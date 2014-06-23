@@ -244,7 +244,7 @@ HM-create-requisition
                                                     <p ng-bind-html="showtext"></p>
                                                 </div>
                                                 <hr/>
-                                                <a type="button" class="btn btn-success btn-lg pull-right " ng-click="responsibility=showtext">Select</a>
+                                                <a type="button" class="btn btn-success btn-lg pull-right " ng-click="setRespon()">Select</a>
                                             </div>
                                         </div>
                                     </div>
@@ -318,7 +318,7 @@ HM-create-requisition
                                                     <p ng-bind-html="showqualtext"></p>
                                                 </div>
                                                 <hr/>
-                                                <a type="button" class="btn btn-success btn-lg pull-right " ng-click="qualification=showqualtext">Select</a>
+                                                <a type="button" class="btn btn-success btn-lg pull-right " ng-click="setQual()">Select</a>
                                             </div>
                                         </div>
                                     </div>
