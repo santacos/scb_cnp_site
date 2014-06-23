@@ -62,7 +62,7 @@ HM-create-requisition
         START add + edit code
         */?>
 
-        {{ Form::model($requisition, array('route' => array('recruiter-requisition-post.update', $requisition->requisition_id), 'method' => 'PUT')) }}
+        {{ Form::model($requisition, array('route' => array('recruiter-requisition-post.update', $requisition->requisition_id), 'method' => 'PUT', 'onsubmit' => 'questionToJson();')) }}
         
         <div class="form-group">
             {{ Form::label('job_title', 'Job Title :') }}
@@ -138,13 +138,13 @@ HM-create-requisition
                 <div class="form-group">
                     <label for="job_title">Job Title :</label>
                     <select ng-model="requisition.position_id"  
-                    class="form-control scrollable-menu" id="position_id" name="position_id"
+                    class="form-control scrollable-menu" id="position_idx" name="position_idx"
                     ng-options="position.position_id as position.job_title 
                     for position in allPosition 
                     | filter:{group:requisition.group,division:requisition.division,organization:requisition.organization} | unique:'position_id'"
                     ng-change="changeJobTitle(@{{ requisition.position_id }});"
                     >
-                       
+                    <input type="hidden" name="position_id" value="@{{requisition.position_id}}"/>
                     </select>
                 </div>
 
@@ -191,11 +191,31 @@ HM-create-requisition
                 </div>
                 <div class="form-group">
                     {{ Form::label('questions', 'Screening Question :') }}<br>
+                    <input type="hidden" id="question_json" name="question_json"/>
                     <iframe id="question" width="800px" height="100px" scrolling="no" frameBorder="0"></iframe>
                     <input id="ng-question_id" type='hidden' value="@{{ requisition.position_id }}"/>
                     <script>
                         function changeJobTitle(x){
-                            document.getElementById('question').src = "../question-table/"+document.getElementById('ng-question_id').value;
+                            document.getElementById('question').src = "../question-table/"+document.getElementById('ng-question_id').value+"/"+"{{ count($requisition->question()->get()) > 0 ? 'false' : 'true' }}";
+                        }
+                        function questionToJson(){
+                            var jsonObj = [];
+                            var table = document.getElementById('question').contentWindow.document.getElementById('t');
+                            for(var i=1;i<table.rows.length;i++){
+                                jsonObj[i-1] = {};
+                                jsonObj[i-1].question_id = table.rows[i].children[0].children[0].value;
+                                jsonObj[i-1].is_checked = table.rows[i].children[0].children[1].children[0].checked?true:false;
+                                jsonObj[i-1].question = table.rows[i].children[1].children[0].value;
+                                jsonObj[i-1].answers = [];
+                                var table2 = table.rows[i].children[2].children[0];
+                                for(var j=0;j<table2.rows.length;j++){
+                                    jsonObj[i-1].answers[j] = {};
+                                    jsonObj[i-1].answers[j].answer_id = table2.rows[j].children[0].children[0].value;
+                                    jsonObj[i-1].answers[j].name = table2.rows[j].children[0].children[1].value;
+                                    jsonObj[i-1].answers[j].point = table2.rows[j].children[1].children[0].value;
+                                }
+                            }
+                            document.getElementById('question_json').value = JSON.stringify(jsonObj);
                         }
                     </script>
                     <!-- 

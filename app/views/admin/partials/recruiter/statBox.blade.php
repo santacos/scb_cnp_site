@@ -5,7 +5,7 @@
 			<!-- small box -->
 			<a href="{{URL::to('recruiter-requisition-post')}}" class="small-box bg-aqua">
 				<div class="inner">
-					<h3> Post Job <br><i class="fa fa-fw fa-edit" style="color:#48036F;"></i> </h3>
+					<h3> Post job <br><i class="fa fa-fw fa-edit" style="color:#48036F;"></i> </h3>
 				</div>
 
 				<div class="icon">
@@ -21,7 +21,7 @@
 			<!-- small box -->
 			<a href="{{URL::to('recruiter-shortlist-candidate')}}" class="small-box bg-green">
 				<div class="inner">
-					<h3> Select<br>Candidate</h3>
+					<h3> Select<br>candidate</h3>
 
 				</div>
 				<div class="icon">
@@ -136,7 +136,7 @@
 					<i class="ion ion-stats-bars"></i>
 				</div>
 				<div class="small-box-footer"> 
-					total job  <span class="label bg-teal" style="border-radius:50%;font-size:1.1em;"> {{$a[7]=Requisition::whereHas('application', function($q) {
+					total job  <span class="label bg-maroon" style="border-radius:50%;font-size:1.1em;"> {{$a[7]=Requisition::whereHas('application', function($q) {
 																													$q->whereApplicationCurrentStatusId(8);
 																												})->where('requisition_current_status_id','=',6)->count()}}</span> 
 				

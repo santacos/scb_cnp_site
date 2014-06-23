@@ -13,7 +13,7 @@
 		}
 
 		public function position(){
-			return $this->belongsToMany('Position')->withPivot('is_checked');
+			return $this->belongsToMany('Position','position_questions')->withPivot('is_checked');
 		}
 
 		public function answer(){

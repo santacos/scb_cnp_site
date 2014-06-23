@@ -15,32 +15,7 @@ home-recruiter
             <p class="text-muted"></p>
         </div>
 
-       
-          
-            <!-- Modal HTML -->
-            <div id="myModal" class="modal fade">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h4 class="modal-title">Confirmation</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p>Do you want to save changes you made to document before closing?</p>
-                            <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--end Modal HTML-->
-
-
-
-        <!--recruiter tool-->
+         <!--recruiter tool-->
         @include('admin.partials.recruiter.statBox')
 
 
@@ -52,32 +27,24 @@ home-recruiter
 
         <div class="box box-primary">
 
-                    <div class="box-header">
-                        <h3 class="box-title">  To do..</h3>
-                        <div class="box-tools pull-right">
-                            <button class="btn btn-primary btn-xs" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                            <button class="btn btn-primary btn-xs" data-widget="remove">
-                                <i class="fa fa-times"></i>
-                            </button>
-                        </div>
-                    </div>
+            <div class="box-header">
+                <h3 class="box-title">  To do..</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-primary btn-xs" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button class="btn btn-primary btn-xs" data-widget="remove">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
 
-                   <div class="box-body">
-                       @include('admin.partials.recruiter.ReqTable')
-                       @include('admin.partials.recruiter.CanTable')
-
-
-
-                    </div><!-- /.box-body -->
-                        <!--
-                        <div class="box-footer">
-                            <br>
-                        </div>
-                        -->
-                    </div>
-                    <!--end TO DO REQUISITION-->
+            <div class="box-body">
+                @include('admin.partials.recruiter.ReqTable')
+                @include('admin.partials.recruiter.CanTable')
+             </div>
+        </div>
+        <!--end TO DO REQUISITION-->
 
 
                     <!-- row for calendar and event-->
