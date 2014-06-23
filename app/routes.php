@@ -37,9 +37,9 @@ Route::get('cd/edit-profile',function(){
     return View::make('user.editProfile');
 });
 
-Route::get('cd/jobstatus',function(){
-    return View::make('user.jobStatus');
-});
+// Route::get('cd/jobstatus',function(){
+//     return View::make('user.jobStatus');
+// });
 
 Route::get('cd/jobfollow',function(){
     return View::make('user.jobFollow');

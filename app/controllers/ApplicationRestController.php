@@ -107,7 +107,7 @@ class ApplicationRestController extends \BaseController {
                         })
                     ->addColumn('Previous Job',function($model)
                         { 
-                            return $model->candidate()->first()->workExperience()->first()->postion.' '.$model->candidate()->first()->workExperience()->first()->company_name;
+                            return $model->candidate()->first()->workExperience()->first()->position.' '.$model->candidate()->first()->workExperience()->first()->company_name;
                             return '<input type="hidden" name="Language" value="'.$model->created_at.'">'.Carbon::createFromTimestamp(strtotime($model->created_at))->format('j F Y');
                         })
                     ->addColumn('SLA',function($model)

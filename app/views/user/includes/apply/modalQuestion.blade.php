@@ -33,123 +33,30 @@
 
 	                   	</div>
                    	</div>
-                   	<div class="container" style="width:100%;height:300px; overflow-y: scroll; font-size:1.2em;">
-	                   	<div class="row">
-	                   		<div class="col col-md-12 ">
-		                   		<div class="form-group">
-		                   			<span><strong>1) Do you have JAVA skill?</strong></span>
-		                   			<div class="col-md-offset-1">
-										<div class="radio">
-											<label>
-												<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
-												Yes&mdash;be sure to include why it's great </label>
-										</div>
-										<div class="radio">
-											<label>
-												<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-												No</label>
-										</div>
-									</div>
-								</div>
-							</div>
-	                   	</div>
-                   	 	<div class="row">
-	                   		<div class="col col-md-12">
-		                   		<div class="form-group">
-		                   			<span><strong>2) Do you have JAVA skill?</strong></span>
-		                   			<div class="col-md-offset-1">
-										<div class="radio">
-											<label>
-												<input type="radio" name="optionsRadio2" id="optionsRadios1" value="option1" >
-												Yes&mdash;be sure to include why it's great </label>
-										</div>
-										<div class="radio">
-											<label>
-												<input type="radio" name="optionsRadio2" id="optionsRadios2" value="option2">
-												No</label>
-										</div>
-									</div>
-								</div>
-							</div>
-	                   	</div>
-                   	 	<div class="row">
-	                   		<div class="col col-md-12">
-		                   		<div class="form-group">
-		                   			<span><strong>3) Do you have JAVA skill?</strong></span>
-		                   			<div class="col-md-offset-1">
-										<div class="radio">
-											<label>
-												<input type="radio" name="optionsRadio3" id="optionsRadios1" value="option1" >
-												Yes&mdash;be sure to include why it's great </label>
-										</div>
-										<div class="radio">
-											<label>
-												<input type="radio" name="optionsRadio3" id="optionsRadios2" value="option2">
-												No</label>
-										</div>
-									</div>
-								</div>
-							</div>
-	                   	</div>
-	                   	<div class="row">
-	                   		<div class="col col-md-12">
-		                   		<div class="form-group">
-		                   			<span><strong>4) Do you have JAVA skill?</strong></span>
-		                   			<div class="col-md-offset-1">
-										<div class="radio">
-											<label>
-												<input type="radio" name="optionsRadio4" id="optionsRadios1" value="option1" >
-												Yes&mdash;be sure to include why it's great </label>
-										</div>
-										<div class="radio">
-											<label>
-												<input type="radio" name="optionsRadio4" id="optionsRadios2" value="option2">
-												No</label>
-										</div>
-									</div>
-									
-								</div>
-							</div>
-	                   	</div>
-                   	 	<div class="row">
-	                   		<div class="col col-md-12">
-		                   		<div class="form-group">
-		                   			<span><strong>5) Do you have JAVA skill?</strong></span>
-		                   			<div class="col-md-offset-1">
-										<div class="radio">
-											<label>
-												<input type="radio" name="optionsRadio5" id="optionsRadios1" value="option1" >
-												Yes&mdash;be sure to include why it's great </label>
-										</div>
-										<div class="radio">
-											<label>
-												<input type="radio" name="optionsRadio5" id="optionsRadios2" value="option2">
-												No</label>
-										</div>
-									</div>
-								</div>
-							</div>
-	                   	</div>
-                   	 	<div class="row">
-	                   		<div class="col col-md-12">
-		                   		<div class="form-group">
-		                   			<span><strong>6) Do you have JAVA skill?</strong></span>
-		                   			<div class="col-md-offset-1">
-										<div class="radio">
-											<label>
-												<input type="radio" name="optionsRadio6" id="optionsRadios1" value="option1" >
-												Yes&mdash;be sure to include why it's great </label>
-										</div>
-										<div class="radio">
-											<label>
-												<input type="radio" name="optionsRadio6" id="optionsRadios2" value="option2">
-												No</label>
-										</div>
-									</div>
-								</div>
-							</div>
-	                   	</div>
 
+                   	<div class="container" style="width:100%;height:300px; overflow-y: scroll; font-size:1.2em;">
+                   		<?php $i=0; ?>
+                   		@foreach($questions as $question)
+	                   		<?php $i++; ?>
+		                   	<div class="row">
+		                   		<div class="col col-md-12 ">
+			                   		<div class="form-group">
+			                   			<span><strong>{{ $i }}) {{ $question->question }}</strong></span>
+			                   			<div class="col-md-offset-1">
+			                   				<?php $j=0; ?>
+			                   				@foreach($question->answer()->get() as $answer)
+			                   					<?php $j++; ?>
+												<div class="radio">
+													<label>
+														<input type="radio" name="question_{{ $i }}" value="{{ $j }}">
+														{{ $answer->name }} </label> ({{ $answer->point }})
+												</div>
+											@endforeach
+										</div>
+									</div>
+								</div>
+		                   	</div>
+	                   	@endforeach
 
                    	</div><!--end container-->
 					

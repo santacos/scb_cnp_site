@@ -251,6 +251,7 @@ SCB Recruitment-Home
 			  	</header>
 
 			  	<!--filter box-->
+			  	{{Form::open(array('url' => 'cd/jobstatus/'.Auth::user()->user_id, 'method' => 'post'))}}
 			  	<div class="content-block bottom-padding frame frame-shadow-curved" style="margin-bottom:20px;">
 					<div class="row">
 						<div class="col col-md-1">
@@ -259,18 +260,24 @@ SCB Recruitment-Home
 							<form class="form" role="form">
 								<div class="form-group">
 								  	<label class="" for="exampleInputEmail2">Job title :</label>
-								  	<input type="email" style="font-size:1.1em;" class="form-control" id="exampleInputEmail2" placeholder="search job title">
+								  	<!-- <input type="email" style="font-size:1.1em;" class="form-control" id="exampleInputEmail2" placeholder="search job title"> -->
+								  	 
+                                     {{ Form::text('search', Input::old('search'), array('class' => 'form-control','placeholder'=>'search job title','style'=>'font-size:1.1em;')) }}   
+                                      
 								</div>
 							</form>
 						</div>
 						<div class="col col-md-4">
 							<strong>Status :</strong>
-							<select class="form-control" style="font-size:1.1em;">
+							<!-- <select class="form-control" style="font-size:1.1em;">
 								<option value="" class="">Select Job status</option>
 								<option value="0">waiting for interview</option>
 								<option value="1">waiting for result</option>
 								<option value="2">pending</option>
-							</select>
+							</select> -->
+							   {{ Former::select('status','')->addOption('Select Job Status')
+                           ->fromQuery(RecruitmentType::All(), 'name', 'recruitment_type_id')->attributes(array('class'=>'form-control scrollable-menu')) }}  
+                                       
 						</div>
 						
 					</div><!--end first row-->
@@ -281,11 +288,12 @@ SCB Recruitment-Home
 						<div class="col col-md-4">
 						</div>
 						<div class="col col-md-4">
-							<button class="btn btn-default " style="width:100%;">Submit</button>
+							<button class="btn btn-default " style="width:100%;" type="submit">Submit</button>
 						</div>
 					</div><!--end second row-->
 
 				</div>
+				{{Form::close()}}
 				<!--end filter box-->
 
 				<div class="table-box">
@@ -330,9 +338,27 @@ SCB Recruitment-Home
 						  	<td>20-4-2557</td>
 						  	<td>16-4-2557</td>
 						</tr>
-					
+						
+							@foreach($applications as $application)
+							 <tr>
+							  <td>{{$application->application_id}}</td>
+							  	<td>{{$application->requisition->job_title}}</td>
+							  	<td>
+							  		{{$application->applicationCurrentStatus()->first()->name}}
+
+							  	</td>
+							  	<td>
+							  		-
+							  	</td>
+							  	<td>20-4-2557</td>
+							  	<td>{{Carbon::createFromTimestamp(strtotime($application->created_at))->format('j F Y')}}</td>
+
+							 </tr>
+							@endforeach
+						
 					  </tbody>
 					</table>
+					{{ $applications->appends(array('search' => isset($search)?$search:'','status'=>isset($status)?$status:''))->links() }}
 			  	</div><!--end table-->
 			  	
 			</section>
