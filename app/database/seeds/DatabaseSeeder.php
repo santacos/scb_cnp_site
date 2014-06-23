@@ -22857,7 +22857,7 @@ $this->command->info('Table RecruitmentType Seeded');
 			$requisition->recruitment_type_id = 1;
 			$requisition->recruitment_obj_template_id=1;
 			$requisition->recruitment_objective = 'Mr.JJ KK';
-			$requisition->year_of_experience = 5;
+			$requisition->year_of_experience = 3;
 			//$requisition->recruitment_objective = Input::get('recruitment_objective');
 			$requisition->responsibility = '<p>&bull; Establish IT security policies, standards and guidelines in compliance with Payment Card Industry Data Security Standard (PCI DSS) and ISO27001.<br>
 &bull; Provide consultation to IT Development, IT Operations and business units to enhance their business processes, applications and infrastructure components in compliance with PCI DSS, ISO27001 and the Bank&rsquo;s IT security policies, standards and guidelines.<br>
@@ -22895,6 +22895,67 @@ $this->command->info('Table RecruitmentType Seeded');
 				$application->is_in_basket = false;
 				$application->save();
 			}
+
+	$user3 = User::where('username','=','hiringmanager')->first();
+       		$requisition = new Requisition;
+			$requisition->total_number=1;
+			$requisition->get_number=0;
+			$requisition->employee_user_id = $user3->user_id;
+			$requisition->datetime_create = Carbon::now();
+			$requisition->location_id = 976; //รัชโยธิน
+			$requisition->corporate_title_id = 11; //AVP
+			$requisition->position_id =  165;
+			$dep= $requisition->position()->first()->group;
+			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
+			$requisition->dept_id =$a;
+			$requisition->requisition_current_status_id =1;
+			//Input::get('requisition_current_status_id');
+			$requisition->recruitment_type_id = 1;
+			$requisition->recruitment_obj_template_id=1;
+			$requisition->recruitment_objective = 'Mr.AA BB';
+			$requisition->year_of_experience = 8;
+			//$requisition->recruitment_objective = Input::get('recruitment_objective');
+			$requisition->responsibility = '<p>- Responsible for procurement plan and manage contracts for IT services <br>
+- Build and maintain IT vendor relationship <br>
+- Develop strategy and maintain outsourcing arrangements with IT service providers<br>
+- Lead the IT procurement team</p>';
+			$requisition->qualification = '<p>- Bachelor's degree or Master's Degree in Business Management , MIS, Business Computer, IT or related field <br>
+- Preferred more than 8 years of experience in IT procurement specialize in software implementation process and manage the big contract (50M up)<br>
+- Good communication and negotiation skills <br>
+- PC Skills e.g. Work, Excel, PowerPoint</p>';
+			$requisition->note = 'Urgent';
+			$requisition->save();
+
+			
+			$user3 = User::where('username','=','hiringmanager')->first();
+       		$requisition = new Requisition;
+			$requisition->total_number=1;
+			$requisition->get_number=0;
+			$requisition->employee_user_id = $user3->user_id;
+			$requisition->datetime_create = Carbon::now();
+			$requisition->location_id = 976; //รัชโยธิน
+			$requisition->corporate_title_id = 11; //AVP
+			$requisition->position_id =  165;
+			$dep= $requisition->position()->first()->group;
+			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
+			$requisition->dept_id =$a;
+			$requisition->requisition_current_status_id =1;
+			//Input::get('requisition_current_status_id');
+			$requisition->recruitment_type_id = 1;
+			$requisition->recruitment_obj_template_id=1;
+			$requisition->recruitment_objective = 'Mr.AA BB';
+			$requisition->year_of_experience = 8;
+			//$requisition->recruitment_objective = Input::get('recruitment_objective');
+			$requisition->responsibility = '<p>- Responsible for procurement plan and manage contracts for IT services <br>
+- Build and maintain IT vendor relationship <br>
+- Develop strategy and maintain outsourcing arrangements with IT service providers<br>
+- Lead the IT procurement team</p>';
+			$requisition->qualification = '<p>- Bachelor's degree or Master's Degree in Business Management , MIS, Business Computer, IT or related field <br>
+- Preferred more than 8 years of experience in IT procurement specialize in software implementation process and manage the big contract (50M up)<br>
+- Good communication and negotiation skills <br>
+- PC Skills e.g. Work, Excel, PowerPoint</p>';
+			$requisition->note = 'Urgent';
+			$requisition->save();
 
 		for($i=0; $i<100;$i++)
 		{

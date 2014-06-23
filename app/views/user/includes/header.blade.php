@@ -48,7 +48,7 @@
 			@endif
 			@if(!Auth::check())
 			<!-- <a href="#myModal" data-toggle="modal"> -->
-			<a href="{{URL::to('user/login')}}" data-toggle="modal">
+			<a href="{{URL::to('user/login')}}" >
 				<button type="button" class="btn btn-xs btn-danger" style="margin-top:10%;font-size:1.2em;">log in</button>
 			</a>
 			@endif

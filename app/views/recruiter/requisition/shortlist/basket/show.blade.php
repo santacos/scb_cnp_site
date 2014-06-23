@@ -33,7 +33,7 @@ thisIsTitle
                                 <!-- /.box-header -->
                                     
                                     <p><span>In Cart : </span><span>{{ $in_basket }}</span></p>
-                                    <p><span>Required : </span><span>{{   $require-$num_get }}</span></p  
+                                    <p><span>Required : </span><span>{{   $require-$num_get }}</span></p>  
                                     <p><span>Sent : </span><span>{{ 'X' }}</span></p>
                                     <p><span>Interviewed : </span><span>{{ 'X' }}</span></p>
                                     <p><span>Pending : </span><span>{{ 'X' }}</span></p>

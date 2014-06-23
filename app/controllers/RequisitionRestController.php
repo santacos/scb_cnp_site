@@ -31,6 +31,18 @@ class RequisitionRestController extends \BaseController {
         // return $user_id.'----'.$status_id;
                     $req=Requisition::where('employee_user_id','!=',0);
                    
+                   // if($user_id==1)
+                   // {
+                   //  $req=$req->where('employee_user_id','=',Auth::user()->user_id);
+                   // }
+                   // else if($user_id==2)
+                   // {
+                   //  $req=$req->where('employee_user_id','=',Auth::user()->user_id);
+                   // }
+                   // else if($user_id==3)
+                   // {
+                   //  $req=$req->where('employee_user_id','=',Auth::user()->user_id);
+                   // }
                     if($status_id1!='' && $status_id1!=0)
                     {
                         $req=$req->where('requisition_current_status_id','=',$status_id1);

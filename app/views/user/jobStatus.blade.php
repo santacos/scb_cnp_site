@@ -251,7 +251,7 @@ SCB Recruitment-Home
 			  	</header>
 
 			  	<!--filter box-->
-			  	{{Form::open(array('url' => 'cd/jobstatus/'.Auth::user()->user_id, 'method' => 'post'))}}
+			  	{{Form::open(array('url' => 'cd/jobstatus/'.Auth::user()->user_id, 'method' => 'get'))}}
 			  	<div class="content-block bottom-padding frame frame-shadow-curved" style="margin-bottom:20px;">
 					<div class="row">
 						<div class="col col-md-1">
@@ -276,7 +276,7 @@ SCB Recruitment-Home
 								<option value="2">pending</option>
 							</select> -->
 							   {{ Former::select('status','')->addOption('Select Job Status')
-                           ->fromQuery(RecruitmentType::All(), 'name', 'recruitment_type_id')->attributes(array('class'=>'form-control scrollable-menu')) }}  
+                           ->fromQuery(ApplicationCurrentStatus::All(), 'name', 'recruitment_type_id')->attributes(array('class'=>'form-control scrollable-menu')) }}  
                                        
 						</div>
 						

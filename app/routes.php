@@ -55,7 +55,7 @@ Route::get('cd/searchjob',function(){
     return View::make('user.searchJob');
 });
 
-Route::resource('cd', 'CandidateController');
+Route::resource('cd', 'CandidateController', ['except' => ['show']]);
 Route::controller('cd', 'CandidateController');
 ///////////////////////////////////////////////////////////
 Route::get('tryView',function(){
