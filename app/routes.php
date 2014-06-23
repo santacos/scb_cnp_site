@@ -55,7 +55,7 @@ Route::get('cd/searchjob',function(){
     return View::make('user.searchJob');
 });
 
-Route::resource('cd', 'CandidateController');
+Route::resource('cd', 'CandidateController', ['except' => ['show']]);
 Route::controller('cd', 'CandidateController');
 ///////////////////////////////////////////////////////////
 Route::get('tryView',function(){
@@ -265,6 +265,7 @@ Route::resource('recruiter-interview-feedback', 'RecruiterInterviewFeedbackContr
 Route::resource('recruiter-prepare-package', 'RecruiterPackageController');
 Route::resource('recruiter-offer-package', 'RecruiterOfferPackageController');
 Route::resource('recruiter-sign', 'RecruiterSignController');
+Route::resource('recruiter-closed-requisition', 'RecruiterClosedRequisitionController');
 
 /*App::missing(function($exception)
 {

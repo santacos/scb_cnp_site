@@ -87,7 +87,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="{{ URL::to('inline') }}"><i class="fa fa-fw fa-book"></i> Closed Job</a>
+					<a href="{{ URL::to('recruiter-closed-requisition') }}"><i class="fa fa-fw fa-book"></i> Closed Job</a>
 				</li>
 			</ul>
 		</li>

@@ -31,6 +31,18 @@ class RequisitionRestController extends \BaseController {
         // return $user_id.'----'.$status_id;
                     $req=Requisition::where('employee_user_id','!=',0);
                    
+                   // if($user_id==1)
+                   // {
+                   //  $req=$req->where('employee_user_id','=',Auth::user()->user_id);
+                   // }
+                   // else if($user_id==2)
+                   // {
+                   //  $req=$req->where('employee_user_id','=',Auth::user()->user_id);
+                   // }
+                   // else if($user_id==3)
+                   // {
+                   //  $req=$req->where('employee_user_id','=',Auth::user()->user_id);
+                   // }
                     if($status_id1!='' && $status_id1!=0)
                     {
                         $req=$req->where('requisition_current_status_id','=',$status_id1);
@@ -187,6 +199,10 @@ class RequisitionRestController extends \BaseController {
                     ->addColumn('SLA',function($model)
                         { 
                             $req_cur_stat_id = $model->requisitionCurrentStatus->requisition_current_status_id;
+                            if($req_cur_stat_id == 7){
+                                $preSLA = intval($model->sla_in_hours / 24);
+                                return ($preSLA==0?1:$preSLA).' Days (' . $model->sla_in_hours . 'hours)';
+                            }
                             $SLA = $model->corporateTitle->group->SLARequisition()->whereRequisitionCsId($req_cur_stat_id)->first()->SLA;
                             $start_timestamp = $model->requisitionLog()->orderBy('action_datetime','desc');
                             if($req_cur_stat_id == 3){

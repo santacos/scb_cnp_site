@@ -125,7 +125,7 @@ class ApplicationRestController extends \BaseController {
                             }
                             $SLA = $model->requisition->corporateTitle->group->SLACandidate()->whereAppCsId($app_cur_stat_id)->whereVisitNumber($visit_number);
                             if($SLA->count() == 0){
-                                $SLA = $SLA->orWhere('visit_number','>=',1)->orderBy('visit_number','desc')->first()->SLA;
+                                $SLA = $SLA->orWhere('visit_number','>=',1)->whereAppCsId($app_cur_stat_id)->orderBy('visit_number','desc')->first()->SLA;
                             }else{
                                 $SLA = $SLA->first()->SLA;
                             }

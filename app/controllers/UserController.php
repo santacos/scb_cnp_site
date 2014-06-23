@@ -52,7 +52,7 @@ class UserController extends BaseController {
             // before saving. This field will be used in Ardent's
             // auto validation.
             $user->password_confirmation = Input::get( 'password_confirmation' );
-            
+            $user->ability( 'Candidate'); 
             // Save if valid. Password field will be hashed before save
             $user->save();
 
@@ -116,14 +116,35 @@ class UserController extends BaseController {
         $provider = $socialAuth->authenticate($action);
         // fetch user profile
         $userProfile = $provider->getUserProfile();
+        $this->hybridAuth->logoutAllProviders();
         $user = DB::table('users')->where('email', $userProfile->email)->first();
         if(is_null($user))
         {
+           //  $birth_date='';
+           //  $is_male='';
+           //  if($userProfile->birthYear!=''&&$userProfile->birthMonth&&$userProfile->birthDay)
+           // { 
+           //      $birth_date=$userProfile->birthYear.'-'.$userProfile->birthMonth.'-'.$userProfile->birthDay;
+           // }
+           // if($userProfile->gender!='')
+           // {
+           //      if($userProfile->gender=='male')
+           //          {$is_male=1;}
+           //      else{$is_male=0;}
+           // }
            return View::make('pages.user.signup')
             ->with('email',$userProfile->email)
             ->with('first',$userProfile->firstName)
             ->with('last',$userProfile->lastName)
-            ->with('contact_number',$userProfile->phone);
+            ->with('contact_number',$userProfile->phone)
+           // ->with('filepath_profile_picture',$userProfile->photoURL)
+           //  ->with('birth_date',$birth_date)
+           //  ->with('address',$userProfile->address)
+           //  ->with('country',$userProfile->country)
+           //  ->with('city',$userProfile->city)
+           //  ->with('zip',$userProfile->zip)
+           //  ->with('is_male',$is_male)
+            ;
         }
         else
         {

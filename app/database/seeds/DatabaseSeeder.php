@@ -40,6 +40,10 @@ class AllTableSeeder extends Seeder {
 		DB::table('recruitment_objective_templates')->delete();
 		DB::table('recruitment_types')->delete();
 		DB::table('public_holidays')->delete();
+		DB::table('questions')->delete();
+		DB::table('answers')->delete();
+		DB::table('position_questions')->delete();
+		DB::table('question_answers')->delete();
 
 
 //CANDIDATE
@@ -22853,7 +22857,7 @@ $this->command->info('Table RecruitmentType Seeded');
 			$requisition->recruitment_type_id = 1;
 			$requisition->recruitment_obj_template_id=1;
 			$requisition->recruitment_objective = 'Mr.JJ KK';
-			$requisition->year_of_experience = 5;
+			$requisition->year_of_experience = 3;
 			//$requisition->recruitment_objective = Input::get('recruitment_objective');
 			$requisition->responsibility = '<p>&bull; Establish IT security policies, standards and guidelines in compliance with Payment Card Industry Data Security Standard (PCI DSS) and ISO27001.<br>
 &bull; Provide consultation to IT Development, IT Operations and business units to enhance their business processes, applications and infrastructure components in compliance with PCI DSS, ISO27001 and the Bank&rsquo;s IT security policies, standards and guidelines.<br>
@@ -22891,6 +22895,67 @@ $this->command->info('Table RecruitmentType Seeded');
 				$application->is_in_basket = false;
 				$application->save();
 			}
+
+	$user3 = User::where('username','=','hiringmanager')->first();
+       		$requisition = new Requisition;
+			$requisition->total_number=1;
+			$requisition->get_number=0;
+			$requisition->employee_user_id = $user3->user_id;
+			$requisition->datetime_create = Carbon::now();
+			$requisition->location_id = 976; //รัชโยธิน
+			$requisition->corporate_title_id = 11; //AVP
+			$requisition->position_id =  165;
+			$dep= $requisition->position()->first()->group;
+			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
+			$requisition->dept_id =$a;
+			$requisition->requisition_current_status_id =1;
+			//Input::get('requisition_current_status_id');
+			$requisition->recruitment_type_id = 1;
+			$requisition->recruitment_obj_template_id=1;
+			$requisition->recruitment_objective = 'Mr.AA BB';
+			$requisition->year_of_experience = 8;
+			//$requisition->recruitment_objective = Input::get('recruitment_objective');
+			$requisition->responsibility = '<p>- Responsible for procurement plan and manage contracts for IT services <br>
+- Build and maintain IT vendor relationship <br>
+- Develop strategy and maintain outsourcing arrangements with IT service providers<br>
+- Lead the IT procurement team</p>';
+			$requisition->qualification = '<p>- Bachelor's degree or Master's Degree in Business Management , MIS, Business Computer, IT or related field <br>
+- Preferred more than 8 years of experience in IT procurement specialize in software implementation process and manage the big contract (50M up)<br>
+- Good communication and negotiation skills <br>
+- PC Skills e.g. Work, Excel, PowerPoint</p>';
+			$requisition->note = 'Urgent';
+			$requisition->save();
+
+			
+			$user3 = User::where('username','=','hiringmanager')->first();
+       		$requisition = new Requisition;
+			$requisition->total_number=1;
+			$requisition->get_number=0;
+			$requisition->employee_user_id = $user3->user_id;
+			$requisition->datetime_create = Carbon::now();
+			$requisition->location_id = 976; //รัชโยธิน
+			$requisition->corporate_title_id = 11; //AVP
+			$requisition->position_id =  165;
+			$dep= $requisition->position()->first()->group;
+			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
+			$requisition->dept_id =$a;
+			$requisition->requisition_current_status_id =1;
+			//Input::get('requisition_current_status_id');
+			$requisition->recruitment_type_id = 1;
+			$requisition->recruitment_obj_template_id=1;
+			$requisition->recruitment_objective = 'Mr.AA BB';
+			$requisition->year_of_experience = 8;
+			//$requisition->recruitment_objective = Input::get('recruitment_objective');
+			$requisition->responsibility = '<p>- Responsible for procurement plan and manage contracts for IT services <br>
+- Build and maintain IT vendor relationship <br>
+- Develop strategy and maintain outsourcing arrangements with IT service providers<br>
+- Lead the IT procurement team</p>';
+			$requisition->qualification = '<p>- Bachelor's degree or Master's Degree in Business Management , MIS, Business Computer, IT or related field <br>
+- Preferred more than 8 years of experience in IT procurement specialize in software implementation process and manage the big contract (50M up)<br>
+- Good communication and negotiation skills <br>
+- PC Skills e.g. Work, Excel, PowerPoint</p>';
+			$requisition->note = 'Urgent';
+			$requisition->save();
 
 		for($i=0; $i<100;$i++)
 		{
@@ -23364,12 +23429,269 @@ $this->command->info('Table SLACandidate Seeded');
 $this->command->info('Table PublicHoliday Seeded');
 
 // QUESTION
-		/*DB::table('public_holidays')->insert(array(
-		'date' => new DateTime("1 Jan 2014"),
-		'name' => "New Year's Day"
-		));*/
+		DB::table('questions')->insert(array(
+		'question_id' => 1,
+		'question' => "How long have you worked in banking career?"
+		));
+		DB::table('position_questions')->insert(array(
+		'question_id' => 1,
+		'position_id' => 1808,
+		'is_checked' => 1
+		));
+			DB::table('answers')->insert(array(
+			'answer_id' => 1,
+			'name' => "Never",
+			'point' => -2
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 1,
+				'answer_id' => 1
+				));
+			DB::table('answers')->insert(array(
+			'answer_id' => 2,
+			'name' => "Less than 1 year",
+			'point' => 1
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 1,
+				'answer_id' => 2
+				));
+			DB::table('answers')->insert(array(
+			'answer_id' => 3,
+			'name' => "1-3 years",
+			'point' => 2
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 1,
+				'answer_id' => 3
+				));
+			DB::table('answers')->insert(array(
+			'answer_id' => 4,
+			'name' => "More than 3 years",
+			'point' => 4
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 1,
+				'answer_id' => 4
+				));
+		DB::table('questions')->insert(array(
+		'question_id' => 2,
+		'question' => "Have you ever commited a serious crime?"
+		));
+		DB::table('position_questions')->insert(array(
+		'question_id' => 2,
+		'position_id' => 1808,
+		'is_checked' => 1
+		));
+			DB::table('answers')->insert(array(
+			'answer_id' => 5,
+			'name' => "No, I haven't",
+			'point' => 0
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 2,
+				'answer_id' => 5
+				));
+			DB::table('answers')->insert(array(
+			'answer_id' => 6,
+			'name' => "Yes, I have",
+			'point' => -1000
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 2,
+				'answer_id' => 6
+				));
+		DB::table('questions')->insert(array(
+		'question_id' => 3,
+		'question' => "How many laptops do you have?"
+		));
+		DB::table('position_questions')->insert(array(
+		'question_id' => 3,
+		'position_id' => 1808,
+		'is_checked' => 0
+		));
+			DB::table('answers')->insert(array(
+			'answer_id' => 7,
+			'name' => "No laptops",
+			'point' => 0
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 3,
+				'answer_id' => 7
+				));
+			DB::table('answers')->insert(array(
+			'answer_id' => 8,
+			'name' => "1 laptop",
+			'point' => 2
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 3,
+				'answer_id' => 8
+				));
+			DB::table('answers')->insert(array(
+			'answer_id' => 9,
+			'name' => "More than 1 laptop",
+			'point' => 3
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 3,
+				'answer_id' => 9
+				));
+		DB::table('questions')->insert(array(
+		'question_id' => 4,
+		'question' => "Are you able to work at night?"
+		));
+		DB::table('position_questions')->insert(array(
+		'question_id' => 4,
+		'position_id' => 1808,
+		'is_checked' => 0
+		));
+			DB::table('answers')->insert(array(
+			'answer_id' => 10,
+			'name' => "Yes",
+			'point' => 5
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 4,
+				'answer_id' => 10
+				));
+			DB::table('answers')->insert(array(
+			'answer_id' => 11,
+			'name' => "No",
+			'point' => 0
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 4,
+				'answer_id' => 11
+				));
+		DB::table('questions')->insert(array(
+		'question_id' => 5,
+		'question' => "Did you graduate from an international university?"
+		));
+		DB::table('position_questions')->insert(array(
+		'question_id' => 5,
+		'position_id' => 1808,
+		'is_checked' => 1
+		));
+			DB::table('answers')->insert(array(
+			'answer_id' => 12,
+			'name' => "Yes",
+			'point' => 3
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 5,
+				'answer_id' => 12
+				));
+			DB::table('answers')->insert(array(
+			'answer_id' => 13,
+			'name' => "No",
+			'point' => -1
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 5,
+				'answer_id' => 13
+				));
+		DB::table('questions')->insert(array(
+		'question_id' => 6,
+		'question' => "Do you have an experience in mobile app making?"
+		));
+		DB::table('position_questions')->insert(array(
+		'question_id' => 6,
+		'position_id' => 1808,
+		'is_checked' => 0
+		));
+			DB::table('answers')->insert(array(
+			'answer_id' => 14,
+			'name' => "Yes",
+			'point' => 2
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 6,
+				'answer_id' => 14
+				));
+			DB::table('answers')->insert(array(
+			'answer_id' => 15,
+			'name' => "No",
+			'point' => -1
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 6,
+				'answer_id' => 15
+				));
+		DB::table('questions')->insert(array(
+		'question_id' => 7,
+		'question' => "Are you able to use Microsoft Excel?"
+		));
+		DB::table('position_questions')->insert(array(
+		'question_id' => 7,
+		'position_id' => 1809,
+		'is_checked' => 1
+		));
+			DB::table('answers')->insert(array(
+			'answer_id' => 16,
+			'name' => "Yes",
+			'point' => 4
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 7,
+				'answer_id' => 16
+				));
+			DB::table('answers')->insert(array(
+			'answer_id' => 17,
+			'name' => "No",
+			'point' => -3
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 7,
+				'answer_id' => 17
+				));
+		DB::table('questions')->insert(array(
+		'question_id' => 8,
+		'question' => "How many languages can you speak?"
+		));
+		DB::table('position_questions')->insert(array(
+		'question_id' => 8,
+		'position_id' => 1809,
+		'is_checked' => 0
+		));
+			DB::table('answers')->insert(array(
+			'answer_id' => 18,
+			'name' => "One",
+			'point' => -2
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 8,
+				'answer_id' => 18
+				));
+			DB::table('answers')->insert(array(
+			'answer_id' => 19,
+			'name' => "Two",
+			'point' => 0
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 8,
+				'answer_id' => 19
+				));
+			DB::table('answers')->insert(array(
+			'answer_id' => 20,
+			'name' => "Three",
+			'point' => 2
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 8,
+				'answer_id' => 20
+				));
+			DB::table('answers')->insert(array(
+			'answer_id' => 21,
+			'name' => "More than three",
+			'point' => 3
+			));
+				DB::table('question_answers')->insert(array(
+				'question_id' => 8,
+				'answer_id' => 21
+				));
 
-// $this->command->info('Table Question Seeded');
+$this->command->info('Table Question Seeded');
 
 $this->command->info('** All Table Seeded :) **');
 

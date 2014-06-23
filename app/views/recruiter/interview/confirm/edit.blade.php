@@ -287,7 +287,6 @@ thisIsTitle
           {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
         </div>
         <input id='interviewer_ids' name='interviewer_ids' type="hidden"/>
-        {{ Form::button('Reject Candidate', array('name' => 'approve', 'value' => false, 'type' => 'submit')) }}
         {{ Form::button('Confirm', array('name' => 'approve', 'value' => true, 'type' => 'submit')) }}
       {{ Form::close() }}
     </center>
