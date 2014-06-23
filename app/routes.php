@@ -265,6 +265,7 @@ Route::resource('recruiter-interview-feedback', 'RecruiterInterviewFeedbackContr
 Route::resource('recruiter-prepare-package', 'RecruiterPackageController');
 Route::resource('recruiter-offer-package', 'RecruiterOfferPackageController');
 Route::resource('recruiter-sign', 'RecruiterSignController');
+Route::resource('recruiter-closed-requisition', 'RecruiterClosedRequisitionController');
 
 /*App::missing(function($exception)
 {

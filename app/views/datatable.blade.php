@@ -1,4 +1,4 @@
-<div style="overflow:scroll;overflow-y:hidden;">
+<div style="overflow:scroll;overflow-y:hidden;padding-bottom:2em;margin-left:1px;">
 <table  class="table table-hover table-bordered text-center {{ $class = str_random(8) }}" >
     <colgroup>
         @for ($i = 0; $i < count($columns); $i++)

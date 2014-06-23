@@ -1,6 +1,6 @@
 @extends('admin.layouts.main.recruiter')
 @section('title')
-thisIsTitle
+SCB-recruitment system
 @stop
 
 @section('libs')
