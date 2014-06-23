@@ -16,8 +16,9 @@ class CandidateController extends \BaseController {
 	{
 		return View::make('user.jobDetail')->with('requisition',Requisition::find($id));
 	}
-	public function getJobstatus($id)
+	public function getJobstatus()
 	{	
+		$id=Auth::user()->user_id;
 		$search = trim(Input::get( 'search' ));
         $status = trim(Input::get( 'status' ));
 		$apps=Application::where('candidate_user_id','=',$id);
@@ -43,8 +44,9 @@ class CandidateController extends \BaseController {
 	
 		return View::make('user.jobStatus', compact('applications'))->with(array('search'=>$search,'status'=>$status));	
 	}
-	public function postJobstatus($id)
+	public function postJobstatus()
 	{
+		$id=Auth::user()->user_id;
 		$search = trim(Input::get( 'search' ));
         $status = trim(Input::get( 'status' ));
 		$apps=Application::where('candidate_user_id','=',$id);
@@ -108,12 +110,12 @@ class CandidateController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
-		$candidate = Candidate::find($id);
-		$user=$candidate->user()->first();
-		return View::make('candidate.show', array( 'candidate'=> $candidate,'user'=>$user));
-	}
+	// public function show($id)
+	// {
+	// 	$candidate = Candidate::find($id);
+	// 	$user=$candidate->user()->first();
+	// 	return View::make('candidate.show', array( 'candidate'=> $candidate,'user'=>$user));
+	// }
 	/**
 	 * Show the form for editing the specified candidate.
 	 *
@@ -175,6 +177,30 @@ class CandidateController extends \BaseController {
 				File::delete(public_path().$candidate->filepath_picture);
 				$candidate->filepath_picture = Input::get('filepath_picture');
 			}
+			if(Input::hasFile('filepath_cv')){
+				$cv = Input::file('filepath_cv');
+				$filename = date('Y-m-d-H-i-s')."-".$cv->getClientOriginalName();
+				$uploadSuccess   = $cv->move(public_path().'/cv/candidatecvs/', $filename);
+				// Image::make($image->getRealPath())->save(public_path().'/cv/candidatecvs/'.$filename);
+				File::delete(public_path().$candidate->filepath_cv);
+				$candidate->filepath_cv = '/cv/candidatecvs/'.$filename;
+
+			}else if (Input::has('filepath_cv')) {
+				File::delete(public_path().$candidate->filepath_cv);
+				$candidate->filepath_cv = Input::get('filepath_cv');
+			}
+			if(Input::hasFile('filepath_video')){
+				$video = Input::file('filepath_video');
+				$filename = date('Y-m-d-H-i-s')."-".$video->getClientOriginalName();
+				$uploadSuccess   = $video->move(public_path().'/video/candidatevideos/', $filename);
+				// Image::make($image->getRealPath())->save(public_path().'/cv/candidatecvs/'.$filename);
+				File::delete(public_path().$candidate->filepath_video);
+				$candidate->filepath_cv = '/video/candidatevideos/'.$filename;
+
+			}else if (Input::has('filepath_video')) {
+				File::delete(public_path().$candidate->filepath_video);
+				$candidate->filepath_video = Input::get('filepath_video');
+			}
 			$candidate->idcard = Input::get('idcard');
 			$candidate->passport_number = Input::get('passport_number');
 			$candidate->thai_saluation = Input::get('thai_saluation');
@@ -190,8 +216,6 @@ class CandidateController extends \BaseController {
 			$candidate->full_location = Input::get('full_location');
 			$candidate->current_living_location = Input::get('current_living_location');
 			$candidate->filepath_profile_picture = Input::get('filepath_profile_picture');
-			$candidate->filepath_video = Input::get('filepath_video');
-			$candidate->filepath_cv = Input::get('filepath_cv');
 
 			$candidate->push();
 		return Response::json(array('success' => true));

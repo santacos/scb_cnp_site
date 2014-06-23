@@ -35,9 +35,11 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::guest('login');
+	if ( Auth::guest() ) // If the user is not logged in
+	{
+        	return Redirect::guest('user/login');
+	}
 });
-
 
 Route::filter('auth.basic', function()
 {
@@ -57,9 +59,24 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-	if (Auth::check()) return Redirect::to('/');
+	if (Auth::check()) return Redirect::to('user/login/');
 });
+/*
+|--------------------------------------------------------------------------
+| Role Permissions
+|--------------------------------------------------------------------------
+|
+| Access filters based on roles.
+|
+*/
 
+// Check for role on all admin routes
+// Entrust::routeNeedsRole( 'admin*', array('admin'), Redirect::to('/user/login') );
+// Entrust::routeNeedsRole( 'hm*', array('Hiring Manager'), Redirect::to('/user/login') );
+// Entrust::routeNeedsRole( 'hrbp*', array('HRBP'), Redirect::to('/user/login') );
+// Entrust::routeNeedsRole( 'recruiter*', array('Recruiter'), Redirect::to('/user/login') );
+// Entrust::routeNeedsRole( 'cd*', array('Candidate'), Redirect::to('/user/login') );
+// Check for permissions on admin actions
 /*
 |--------------------------------------------------------------------------
 | CSRF Protection Filter

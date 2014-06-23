@@ -88,11 +88,39 @@ HM-create-requisition
         <div class="form-group">
            {{ Form::label('filepath_picture', 'Image :') }} 
            <pre>
-               <img src="{{asset($candidate->filepath_picture)}}" style="height: 100px; width: 100px;"> <br><br>
+            @if(file_exists($candidate->filepath_picture))
+                 <img src="{{asset($candidate->filepath_picture)}}" style="height: 100px; width: 100px;"> 
+            @elseif(isset($candidate->filepath_picture))
+                  <img src="{{asset($candidate->filepath_picture)}}" style="height: 100px; width: 100px;"> 
+            @endif    
+            <br><br>
                 <input type="radio" name="img_selc" ng-model="img_selc" value="text" checked="checked"/>  URL &nbsp&nbsp
                 <input type="radio" name="img_selc" ng-model="img_selc" value="file"> Upload <br/>
                 <input ng-show="img_selc=='text'"name="filepath_picture" type="text" class="form-control" value="{{$candidate->filepath_picture}}">
                 <input ng-show="img_selc=='file'" name="filepath_picture" type="file" class="form-control" value="{{Input::old('filepath_picture')}}">
+           </pre>
+       </div>
+        <div class="form-group">
+           {{ Form::label('filepath_cv', 'CV :') }} 
+           <pre>
+            @if(file_exists($candidate->filepath_cv))
+           <embed src="{{asset($candidate->filepath_cv)}}" width="500" height="500"> 
+            @endif
+             <br><br>
+                <!-- <input type="radio" name="cv_selc" ng-model="cv_selc" value="text" checked="checked"/>  URL &nbsp&nbsp -->
+                <!-- <input type="radio" name="cv_selc" ng-model="cv_selc" value="file"> Upload <br/> -->
+                <!-- <input ng-show="cv_selc=='text'"name="filepath_cv" type="text" class="form-control" value="{{$candidate->filepath_cv}}"> -->
+                <input  name="filepath_cv" type="file" class="form-control" value="{{Input::old('filepath_cv')}}">
+           </pre>
+       </div>
+        <div class="form-group">
+           {{ Form::label('filepath_video', 'Video :') }} 
+           <pre>
+            @if(isset($candidate->filepath_video))
+             <embed src="{{asset($candidate->filepath_video)}}" allowfullscreen="true" width="500" height="500"> 
+            @endif
+              <br><br>
+               <input name="filepath_video" type="text" class="form-control" value="{{$candidate->filepath_video}}">
            </pre>
        </div>
         
@@ -158,6 +186,7 @@ HM-create-requisition
                     {{ Form::label('country', 'Country :') }}
                     {{ Form::text('country', Input::old('country'), array('class' => 'form-control' )) }}
                 </div>
+
     {{ Form::submit('Save', array('class' => 'btn btn-primary btn-lg btn-block')) }}
 
     {{ Form::close() }}
