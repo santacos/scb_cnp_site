@@ -112,14 +112,14 @@ class RecruiterSignController extends \BaseController {
 
 		if(Input::get('approve')){
 			$starttime = Carbon::createFromFormat('Y-m-d H:i:s',$application->requisition->requisitionLog()->whereActionType(3)->whereSendNumber(2)->first()->action_datetime);
-			$endtime = Carbon::createFromFormat('Y-m-d H:i:s',$application->requisition->requisitionLog()->whereActionType(6)->whereSendNumber(1)->first()->action_datetime);
+			$endtime = Carbon::now();
 			$sla_in_hours = $endtime->diffInHours($starttime);
 
 
 			$target_sla_in_days = 0;
-			$logs = $model->ApplicationLog();
+			$logs = $application->ApplicationLog();
 			foreach($logs as $log){
-				$temp = $model->requisition->corporateTitle->group->SLACandidate()->whereAppCsId($log->action_type)->whereVisitNumber($log->visit_number);
+				$temp = $application->requisition->corporateTitle->group->SLACandidate()->whereAppCsId($log->action_type)->whereVisitNumber($log->visit_number);
 	            if($temp->count() == 0){
 	                $temp = $temp->orWhere('visit_number','>=',1)->orderBy('visit_number','desc')->first()->SLA;
 	            }else{

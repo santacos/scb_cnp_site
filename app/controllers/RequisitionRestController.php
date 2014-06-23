@@ -187,6 +187,10 @@ class RequisitionRestController extends \BaseController {
                     ->addColumn('SLA',function($model)
                         { 
                             $req_cur_stat_id = $model->requisitionCurrentStatus->requisition_current_status_id;
+                            if($req_cur_stat_id == 7){
+                                $preSLA = intval($model->sla_in_hours / 24);
+                                return ($preSLA==0?1:$preSLA).' Days (' . $model->sla_in_hours . 'hours)';
+                            }
                             $SLA = $model->corporateTitle->group->SLARequisition()->whereRequisitionCsId($req_cur_stat_id)->first()->SLA;
                             $start_timestamp = $model->requisitionLog()->orderBy('action_datetime','desc');
                             if($req_cur_stat_id == 3){

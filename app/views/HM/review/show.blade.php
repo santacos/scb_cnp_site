@@ -58,7 +58,7 @@ thisIsTitle
                                           ->render('datatable') }}
                                       </div>
                                       
-                                      {{ Form::model($requisition, array('route' => array('hm-application-review.update', $requisition->requisition_id), 'method' => 'PUT')) }}
+                                      {{ Form::model($requisition, array('route' => array('hm-application-review.update', $requisition->requisition_id), 'method' => 'PUT', 'onsubmit' => 'updateAll(document.getElementById("DataTables_Table_0"))')) }}
                                         <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
                                           {{ Form::label('note', 'Note :') }}
                                           {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
@@ -94,7 +94,7 @@ thisIsTitle
     }else{
       row.style.color = '#AAAAAA';
     }
-    updateAll(document.getElementById('DataTables_Table_0').children[3]);
+    updateAll(document.getElementById('DataTables_Table_0'));
   }
   function toggleCandidate2(x){
     var row = x.parentNode.parentNode.parentNode;
@@ -105,13 +105,13 @@ thisIsTitle
     }else{
       row.style.color = '#AAAAAA';
     }
-    updateAll(document.getElementById('DataTables_Table_0').children[3]);
+    updateAll(document.getElementById('DataTables_Table_0'));
   }
   function updateAll(x){
     document.getElementById('sel_application_ids').value = '';
     document.getElementById('unsel_application_ids').value = '';
-    var rows = x.children;
-    for(var i=0;i<rows.length;i++){
+    var rows = x.rows;
+    for(var i=1;i<rows.length;i++){
       var id = rows[i].children[0].children[1].innerHTML;
       if(rows[i].children[10].firstChild.firstChild.checked){
         document.getElementById('sel_application_ids').value += (document.getElementById('sel_application_ids').value==''?'':',') + id;
