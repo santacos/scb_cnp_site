@@ -7,7 +7,7 @@ SCB-recruitment system
       <link rel="stylesheet" href="<?php echo asset('assets/css/AdminLTE.css')?>">
       <link rel="stylesheet" href="<?php echo asset('css/bootstrap-lightbox.css')?>">
       {{ HTML::style('assets/css/bootstrap.css') }}
-     @include('includes.datatable')
+      @include('includes.datatable')
 @stop
 
 @section('content')
