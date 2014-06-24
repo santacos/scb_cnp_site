@@ -90,6 +90,8 @@ class RecruiterShortlistCandidateController extends \BaseController {
                               	.'score='.(isset($input['score'])?$input['score']:"").'&'
                               	.'score1='.(isset($input['score1'])?$input['score1']:"").'&'
                               	.'score2='.(isset($input['score2'])?$input['score2']:"").'&'
+
+                              	.'resume='.(isset($input['resume'])?$input['resume']:"")
                               	
                               	))
                               ->render('datatable') ;

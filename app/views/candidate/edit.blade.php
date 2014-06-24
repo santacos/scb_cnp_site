@@ -107,10 +107,8 @@ HM-create-requisition
             <?php   $fileArray = pathinfo(public_path().$candidate->filepath_cv);
 
              ?>
-                @if($fileArray['extension']=="pdf")
+                @if(isset($fileArray['extension'])&&$fileArray['extension']=="pdf")
                     <embed src="{{asset($candidate->filepath_cv)}}" width="800" height="500"> 
-                @else
-                    <embed src="{{asset($candidate->filepath_cv)}}" width="800" height="500">
                 @endif
             @endif
              <br><br>
