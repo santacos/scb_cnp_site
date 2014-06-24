@@ -1,7 +1,7 @@
 {{ HTML::style('assets/css/bootstrap.min.css') }}
 
 <form id="f" action="?" method="GET">
-	Add interviewer (by ID) : 
+	Add interviewer (by ID or Name) : 
 	<span>  </span> <input name="query"/> <span>  </span> <input type='submit' value='Add' class='btn btn-sm btn-default'>
 </form>
 <?php

@@ -6,6 +6,7 @@ thisIsTitle
 @section('libs')
       <link rel="stylesheet" href="<?php echo asset('assets/css/AdminLTE.css')?>">
       <link rel="stylesheet" href="<?php echo asset('css/bootstrap-lightbox.css')?>">
+      
 @stop
 
 @section('content')
@@ -170,7 +171,7 @@ thisIsTitle
         </div>
 
         <!--select date-->
-        <div class="panel panel-success">
+        <!-- <div class="panel panel-success">
           <div class="panel-body bg-blue" style="font-size:1.2em;">
             
 
@@ -201,8 +202,41 @@ thisIsTitle
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         <!--end select date-->
+        
+        <div class="panel panel-primary" style="box-shadow: 2px 2px 2px #888888;">
+          <div class="panel-body" style="background-color:#d9edf7;font-size:1.2em;">
+            
+
+            {{ Form::model($application, array('route' => array('recruiter-interview-confirm.update', $application->application_id), 'method' => 'PUT')) }}
+              <?php
+                  $default_date = $application->intOffSchedule()->whereAppCsId(4)->orderBy('visit_number','desc')->first();
+                  if(is_null($default_date) || $visit_number > 1){
+                    $default_date = NULL;
+                  }else{
+                    $default_date = $default_date->datetime;
+                  }
+              ?>
+            
+            <div class="row" style="padding-top:1.2em;">
+              <div class="col col-md-7 col-md-offset-3">
+                <div class="form-group" style="font-weight:bold;font-size:1.2em;">
+                  {{ Form::label('date_time', 'Interview Date/Time :') }}
+                  {{ Form::input('datetime-local', 'date_time','',array('required')) }}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-md-7 col-md-offset-3">
+                <div class="form-group" style="font-weight:bold;font-size:1.2em;">
+                  {{ Form::label('location', 'Location :') }}
+                  {{ Form::input('text', 'location', '', array('placeholder' => 'Interview 4 Room, 17th Floor, SCB Park', 'style' => 'width:350px','required'))}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
 
 
@@ -308,9 +342,6 @@ thisIsTitle
     </div><!-- /.box-->
    
     <div class="well" style="">
-      
-      
-
       <div class="row">
         <div class="col col-md-3"></div>
         <div class="col col-md-4" style="margin-left:25px;">

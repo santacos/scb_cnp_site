@@ -37,30 +37,7 @@ thisIsTitle
                                         
                                       <div style="overflow: auto;">
 
-                                        <table border="1">
-                                          <tr>
-                                            @if(count($applications) > 0)
-                                              @foreach($applications->first()->toArray() as $key => $value)
-                                                <th>{{ $key }}</th>
-                                              @endforeach
-                                              <th>Action</th>
-                                            @endif
-                                          </tr>
-                                          @if(count($applications) > 0)
-                                            @foreach($applications as $application)
-                                              <tr>
-                                                @foreach($application->toArray() as $key => $value)
-                                                  <td>
-                                                    {{ $value }}
-                                                  </td>
-                                                @endforeach
-                                                <td>
-                                                <a href={{ $application->application_id . "/edit" }}>View(popup)</a>
-                                                </td>
-                                              </tr>
-                                            @endforeach
-                                          @endif
-                                        </table>
+                                       
                                         {{  Datatable::table()
                                         ->addColumn( 
                                             'Application ID', 
