@@ -483,8 +483,22 @@ class CandidateController extends \BaseController {
 	public function index()
 	{
 		$candidate = Candidate::find(Auth::user()->user_id);
-		return View::make('user.homeprofile', array( 'candidate'=> $candidate));
+		$active['current']='index';
+		return View::make('user.homeprofile', array( 'candidate'=> $candidate,'active' =>$active));
 	}
+	public function getEditProfile()
+	{
+		$candidate = Candidate::find(Auth::user()->user_id);
+		$active['current']='editprofile';
+		return View::make('user.editProfile', array( 'candidate'=> $candidate,'active' =>$active));
+	}
+	public function getProfile()
+	{
+		$candidate = Candidate::find(Auth::user()->user_id);
+		$active['current']='profile';
+		return View::make('user.profile', array( 'candidate'=> $candidate,'active' =>$active));
+	}
+	
 	public function getJobdetail($id)
 	{
 		$questions = Requisition::find($id)->question()->get();
@@ -515,16 +529,34 @@ class CandidateController extends \BaseController {
 
 		}
 		$applications=$apps->paginate(10);
-	
-		return View::make('user.jobStatus', compact('applications'))->with(array('search'=>$search,'status'=>$status));	
+		$active['current']='jobstatus';
+		return View::make('user.jobStatus', compact('applications','active'))->with(array('search'=>$search,'status'=>$status));	
 	}
-	
 	public function getJobfollow()
 	{
-		$questions = Requisition::find($id)->question()->get();
-		return View::make('user.jobFollow');
-		return View::make('user.jobDetail',compact('questions'))->with('requisition',Requisition::find($id));
+
+		$active['current']='jobfollow';
+		return View::make('user.jobFollow',compact('active'));
 	}
+	public function getJobrecommend()
+	{
+
+		$active['current']='jobrecommend';
+		return View::make('user.jobrecommend',compact('active'));
+	}
+	public function getJobcart()
+	{
+
+		$active['current']='jobcart';
+		return View::make('user.jobcart',compact('active'));
+	}
+	public function getSearchjob()
+	{
+
+		$active['current']='searchjob';
+		return View::make('user.searchjob',compact('active'));
+	}
+	
 	/**
 	 * Show the form for creating a new candidate
 	 *
