@@ -9,6 +9,128 @@ thisIsTitle
 @stop
 
 @section('content')
+      <div class="box box-success">
+        <div class="box-header">
+          <h3 class="box-title"  style="font-size:2.5em;">
+            Prepare package <i class="fa fa-fw fa-clipboard"></i>
+          </h3>
+          <hr><hr>
+        </div>
+        <div class="box-body">
+          <div class="row">
+            <div class="col col-md-12">
+                <div class="panel panel-success">
+                  <div class="panel-heading">
+                    <h3 class="panel-title" style="font-size:1.2em;">
+                        <i class="fa fa-fw fa-info-circle"></i><strong>Information</strong>
+                    </h3>
+                  </div>
+                  <div class="panel-body">
+                    <ul class="list-group">
+                      <li class="list-group-item">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</li>
+                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                    </ul>
+                  </div>
+                </div>
+                
+            </div>
+            <div class="col col-md-12">
+                <div class="well" style="font-size:1.2em;">
+                  <div class="row" >
+                    <div class="col col-md-4 col-md-offset-1">
+                      {{ Form::model($application, array('route' => array('recruiter-prepare-package.update', $application->application_id), 'method' => 'PUT')) }}
+                      <strong>{{ Form::label('current_salary', 'Current Salary :') }}</strong>
+                    </div>
+                    <div class="col col-md-7">
+                        <div class="form-group" style="font-size:1.2em;">
+                          {{ Form::input('text', 'current_salary', Input::old('current_salary')) }}
+                        </div>
+      
+                    </div><!--end col-6-->
+                  </div>
+                  <div class="row">
+                    <div class="col col-md-4 col-md-offset-1">
+                        {{ Form::label('expected_salary', 'Expected Salary :') }}
+                    </div>
+                    <div class="col col-md-7">
+                      <div class="form-group" style="font-size:1.2em;">
+                        {{ Form::input('text', 'expected_salary', Input::old('expected_salary')) }}
+                      </div>
+                    </div><!--end col-6-->
+                    
+                  </div>
+                  <div class="row">
+                    <div class="col col-md-4 col-md-offset-1">
+                        {{ Form::label('position_salary', 'Position Salary :') }}
+                    </div>
+                    <div class="col col-md-6">
+                      <div class="form-group" style="font-size:1.2em;">
+                        {{ Form::input('text', 'position_salary', Input::old('position_salary')) }}
+                      </div>
+                    </div><!--end col-6-->
+                  </div>
+                  <div class="row">
+                    <div class="col col-md-4 col-md-offset-1">
+                        {{ Form::label('cola', 'Cost of Living Allowance :') }}
+                    </div>
+                    <div class="col col-md-7">
+                      <div class="form-group" style="font-size:1.2em;">
+                        {{ Form::input('text', 'cola', Input::old('cola')) }}
+                      </div>
+                    </div><!--end col-6-->
+                  </div>
+                  <div class="row">
+                    <div class="col col-md-4 col-md-offset-1">
+                        {{ Form::label('final_salary', 'Max Final Salary :') }}
+                    </div>
+                    <div class="col col-md-7">
+                      <div class="form-group" style="font-size:1.2em;">
+                        {{ Form::input('text', 'final_salary', Input::old('final_salary')) }}
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="row">
+                    <div class="col col-md-10 col-md-offset-1">
+                      <div class="form-group" style="font-size:1.2em;">
+                        {{ Form::label('note', 'Note :') }}
+                        {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
+                      </div>
+                    
+                    </div>
+                    <div class="col col-md-5">
+                      
+                    </div>
+                  </div> -->
+                  <hr>
+                  <div class="row">
+
+                    <div class="col col-md-offset-4 col-md-5">
+                      {{ Form::button('View package', array('name' => 'approve', 'value' => true, 'type' => 'submit','class'=>'btn btn-lg btn-success','style'=>'width:100%;')) }}
+                      {{ Form::close() }}
+                    </div>
+                  </div>
+                    
+                </div><!--end well-->
+            </div>
+          </div>
+
+        </div><!-- /.box-body -->
+      </div>
+
+    <!--front zone-->
+      <div class="row">
+        <div class="col col-md-6">
+
+
+        </div><!--end col-6-->
+        <div class="col col-md-6">
+
+        </div><!--end col-6-->
+
+
+      </div><!--end first row-->
+
+    <!--end front zone-->
 
     <?php
       $display = array(
@@ -35,7 +157,7 @@ thisIsTitle
 'Updated At' => $requisition->updated_at
       );
     ?>
-    <center>
+    <!-- <center>
       <table>
         <?php $i=0; $col=2?>
         @foreach($display as $key => $value)
@@ -47,7 +169,7 @@ thisIsTitle
         @endforeach
       </table>
 
-      <hr>
+      <hr> -->
 
     <?php
       $display = array(
@@ -70,7 +192,7 @@ thisIsTitle
 'Updated At' => $application->updated_at
       );
     ?>
-    <center>
+    <!-- <center>
 
       <table>
         <?php $i=0; $col=2?>
@@ -139,6 +261,6 @@ thisIsTitle
         </div>
         {{ Form::button('Accept', array('name' => 'approve', 'value' => true, 'type' => 'submit')) }}
       {{ Form::close() }}
-    </center>
+    </center> -->
 
 @stop
