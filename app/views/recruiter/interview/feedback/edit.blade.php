@@ -4,10 +4,10 @@ thisIsTitle
 @stop
 
 @section('libs')
-    <link rel="stylesheet" href="<?php echo asset('assets/css/AdminLTE.css')?>">
+      <link rel="stylesheet" href="<?php echo asset('assets/css/AdminLTE.css')?>">
       <link rel="stylesheet" href="<?php echo asset('css/bootstrap-lightbox.css')?>">
       
-      <script type="text/javascript">
+      <script>
         var feedApp = angular.module('feedApp',[]);
         feedApp.controller('feedCtrl',['$scope', '$http',
           function ($scope, $http) {
@@ -34,34 +34,12 @@ thisIsTitle
           }
         ]);
       </script> 
-      <script src="<?php echo asset('js/jquery.js')?>"></script>
+
      
 @stop
 
 @section('content')
 
-    <?php
-      $displayyyy = array(
-'VISIT NUMBER' => $visit_number,
-'Application ID' => $application->application_id ,
-'Requisition ID' => $application->requisition_id ,
-'Candidate User ID' => $application->candidate_user_id ,
-'Application Current Status ID' => $application->application_current_status_id ,
-'Is In Basket' => $application->is_in_basket ,
-'Question Point' => $application->question_point ,
-'Send Number' => $application->send_number ,
-'Result' => $application->result ,
-'Color' => $application->color ,
-'Note' => $application->note ,
-'Current Salary' => $application->current_salary ,
-'Expected Salary' => $application->expected_salary ,
-'Position Salary' => $application->position_salary ,
-'Cola' => $application->cola ,
-'Final Salary' => $application->final_salary ,
-'Created At' => $application->created_at ,
-'Updated At' => $application->updated_at
-      );
-    ?>
 
         <?php
           $display = array(
@@ -95,7 +73,7 @@ thisIsTitle
          
           <div class="box-body" style="border-color:#00c0ef;">
             <div class="row">
-              
+             
               <div class="col col-md-12">
                 <div class="box box-solid box-info">
                     <div class="box-header">
@@ -148,20 +126,16 @@ thisIsTitle
                                   <div class="col col-md-2">
                                     <strong>Name : </strong>
                                   </div>
-                                  <div class="col col-md-8">COS COSCOSCOS</div>
+                                  <div class="col col-md-8">
+                                    {{ $application->requisition->employee->first }} <span style="visibility:hidden;">.</span> {{ $application->requisition->employee->last }}
+                                  </div>
                                 </div>
                                 <div class="row">
                                   <div class="col col-md-2">
                                     <strong>Tel  : </strong>
-                                    <!-- <div id="external-events">
-                                      <div class="external-event bg-aqua ui-draggable" style="position: relative;">
-                                        Tel :
-                                      </div>
-
-                                    </div> -->
                                   </div>
                                   <div class="col col-md-8">
-                                    <i class="fa fa-fw fa-phone"></i>02-838383838
+                                    <i class="fa fa-fw fa-phone"></i>{{ $application->requisition->employee->contact_number }}
                                   </div>
                                 </div>
                                 <br>
@@ -186,7 +160,9 @@ thisIsTitle
                                   <div class="col col-md-2 col-md-offset-1">
                                     <strong>Name : </strong>
                                   </div>
-                                  <div class="col col-md-8">COS COSCOSCOS</div>
+                                  <div class="col col-md-8">
+                                    {{ $application->candidate->user->first }} <span style="visibility:hidden;">.</span> {{ $application->candidate->user->last }}
+                                  </div>
                                 </div>
                                 <div class="row">
                                   <div class="col col-md-2 col-md-offset-1">
@@ -198,13 +174,13 @@ thisIsTitle
 
                                     </div> -->
                                   </div>
-                                  <div class="col col-md-8"><i class="fa fa-fw fa-phone"></i>02-838383838</div>
+                                  <div class="col col-md-8"><i class="fa fa-fw fa-phone"></i>{{ $application->candidate->user->contact_number }}</div>
                                 </div>
                                 <div class="row">
                                   <div class="col col-md-2 col-md-offset-1">
                                     <strong>Email : </strong>
                                   </div>
-                                  <div class="col col-md-8">santa@hotmail.com</div>
+                                  <div class="col col-md-8">{{ $application->candidate->user->email }}</div>
                                 </div>
                               </div>
                             </div>
@@ -459,5 +435,6 @@ thisIsTitle
             }
           }
         </script>
+        <script src="<?php echo asset('js/jquery.js')?>"></script>
   
 @stop
