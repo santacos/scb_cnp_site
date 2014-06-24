@@ -7,7 +7,7 @@ SCB-recruitment system
       <link rel="stylesheet" href="<?php echo asset('assets/css/AdminLTE.css')?>">
       <link rel="stylesheet" href="<?php echo asset('css/bootstrap-lightbox.css')?>">
       {{ HTML::style('assets/css/bootstrap.css') }}
-     @include('includes.datatable')
+      @include('includes.datatable')
 @stop
 
 @section('content')
@@ -37,30 +37,7 @@ SCB-recruitment system
                                         
                                       <div style="overflow: auto;">
 
-                                        <table border="1">
-                                          <tr>
-                                            @if(count($applications) > 0)
-                                              @foreach($applications->first()->toArray() as $key => $value)
-                                                <th>{{ $key }}</th>
-                                              @endforeach
-                                              <th>Action</th>
-                                            @endif
-                                          </tr>
-                                          @if(count($applications) > 0)
-                                            @foreach($applications as $application)
-                                              <tr>
-                                                @foreach($application->toArray() as $key => $value)
-                                                  <td>
-                                                    {{ $value }}
-                                                  </td>
-                                                @endforeach
-                                                <td>
-                                                <a href={{ $application->application_id . "/edit" }}>View(popup)</a>
-                                                </td>
-                                              </tr>
-                                            @endforeach
-                                          @endif
-                                        </table>
+                                        
                                            {{  Datatable::table()
                                         ->addColumn( 
                                             'Application ID', 

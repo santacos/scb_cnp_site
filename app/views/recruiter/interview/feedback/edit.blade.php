@@ -4,132 +4,392 @@ thisIsTitle
 @stop
 
 @section('libs')
-    <link rel="stylesheet" href="<?php echo asset('assets/css/AdminLTE.css')?>">
+      <link rel="stylesheet" href="<?php echo asset('assets/css/AdminLTE.css')?>">
       <link rel="stylesheet" href="<?php echo asset('css/bootstrap-lightbox.css')?>">
+      
+      <script>
+        var feedApp = angular.module('feedApp',[]);
+        feedApp.controller('feedCtrl',['$scope', '$http',
+          function ($scope, $http) {
+          $scope.cos='cosocoscosocosco';
+          //$scope.result=0;
+          $scope.showGreen=false;
+          $scope.color='';
+          $scope.showInfo=true;
+          $scope.showBoxInfo=true;
+          $scope.setColor = function(){
+            if($scope.result==1){
+              $scope.color='blue';
+            }
+            else if($scope.result==2){
+              $scope.color='green';
+            }
+            else if($scope.result==3){
+              $scope.color='yellow';
+            }
+            else if($scope.result==4){
+              $scope.color='red';
+            }
+          };
+
+
+          }
+        ]);
+      </script> 
+
+     
 @stop
 
 @section('content')
 
-    <?php
-      $display = array(
-'VISIT NUMBER' => $visit_number,
-'Application ID' => $application->application_id ,
-'Requisition ID' => $application->requisition_id ,
-'Candidate User ID' => $application->candidate_user_id ,
-'Application Current Status ID' => $application->application_current_status_id ,
-'Is In Basket' => $application->is_in_basket ,
-'Question Point' => $application->question_point ,
-'Send Number' => $application->send_number ,
-'Result' => $application->result ,
-'Color' => $application->color ,
-'Note' => $application->note ,
-'Current Salary' => $application->current_salary ,
-'Expected Salary' => $application->expected_salary ,
-'Position Salary' => $application->position_salary ,
-'Cola' => $application->cola ,
-'Final Salary' => $application->final_salary ,
-'Created At' => $application->created_at ,
-'Updated At' => $application->updated_at
-      );
-    ?>
-    <center>
 
-      <table>
-        <?php $i=0; $col=2?>
-        @foreach($display as $key => $value)
-          <?php echo (($i%$col==0)?'<tr>':'');?>
-          <td><span style="color:brown; font-size:20px; font-weight:bold; padding:15px;">{{ $key }} : </span>
-          <span style="color:orange; font-size:20px;">{{ $value }}</span></td>
-          <?php echo (($i%$col==$col-1)?'</tr>':'');?>
-          <?php $i++; ?>
-        @endforeach
-      </table>
+        <?php
+          $display = array(
+    'VISIT NUMBER' => $visit_number,
+    ''=>'',
+    'Requisition ID' => $application->requisition_id ,
+    'Application ID' => $application->application_id ,
+    'Job title' => Position::find($application->requisition->position_id)->job_title,
+    'Organization' => Position::find($application->requisition->position_id)->organization,
+    'Division' => Position::find($application->requisition->position_id)->division,
+    'Group' => Position::find($application->requisition->position_id)->group,
+    'Corporate title' => CorporateTitle::find($application->requisition->corporate_title_id)->name ,
+    'Recruitment type' => RecruitmentType::find($application->requisition->recruitment_type_id)->name ,
+    'Created At' => $application->created_at ,
+    'Updated At' => $application->updated_at
+          );
+        ?>
+    <!--front zone-->
 
-      {{ Form::model($application, array('route' => array('recruiter-interview-feedback.update', $application->application_id), 'method' => 'PUT', 'files' => true, 'onsubmit' => 'updateInterviewers()')) }}
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('date_time', 'Interview Date/Time :') }}
-          <?php
-            $ts_val = Carbon::createFromFormat('Y-m-d H:i:s', $application->intOffSchedule()->whereAppCsId(4)->orderBy('visit_number','desc')->first()->datetime);
-          ?>
-          {{ Form::input('datetime-local', 'date_time', ($ts_val->format('Y-m-d') .'T'. $ts_val->format('H:i')) ) }}
+    <div ng-app="feedApp">
+      <div ng-controller="feedCtrl">
+        
+        <div class="box box-info" >
+          <div class="box-header">
+            <div class="box-title" style="font-size:2.5em;">
+              Interview feedback <i class="fa fa-fw fa-comments-o"></i><br>
+            </div>
+            <hr>
+            <hr>
+          </div>
+         
+          <div class="box-body" style="border-color:#00c0ef;" >
+            <div class="row">
+             
+              <div class="col col-md-12">
+                <div class="box box-solid box-info" ng-show="showBoxInfo">
+                    <div class="box-header">
+                      <h3 class="box-title">
+                        <i class="fa fa-fw fa-info-circle"></i><strong>Information</strong>
+                      </h3>
+                      <div class="box-tools pull-right">
+                        <button class="btn btn-info btn-sm" ng-click="showInfo=!showInfo" data-widget="collapse">
+                          <i class="fa fa-minus"></i>
+                        </button>
+                        <button class="btn btn-info btn-sm" ng-click="showBoxInfo=false" data-widget="remove">
+                          <i class="fa fa-times"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="box-body" ng-show="showInfo" style="font-size:1.2em;">
+                      <center>
+                        <table class="table table-hover" >
+                          <tbody>
+                          <?php $i=0; $col=2?>
+                          @foreach($display as $key => $value)
+                            <?php echo (($i%$col==0)?'<tr>':'');?>
+
+                            <td width="15%">
+                              <strong>{{ $key }} {{ $key=='' ? '':':'}} </strong>
+                            </td>
+                            <td width="35%">
+                              <span>{{ $value }}</span>
+                            </td>
+
+                            <?php echo (($i%$col==$col-1)?'</tr>':'');?>
+                            <?php $i++; ?>
+                          @endforeach
+                          </tbody>
+                        </table>
+                      </center>
+
+                      <div class="row" style="margin-top:2em;">
+                        <div class="col col-md-6">
+                          <div class="row">
+                           
+                            <div class="panel panel-info" style="margin-left:10px;margin-right:5px;">
+                              <div class="panel-heading">
+                                <h3 class="panel-title">
+                                 <i class="fa fa-fw fa-user"></i> Hiring manager Detail
+                                </h3>
+                              </div>
+                              <div class="panel-body">
+                                <div class="row">
+                                  <div class="col col-md-2">
+                                    <strong>Name : </strong>
+                                  </div>
+                                  <div class="col col-md-8">
+                                    {{ $application->requisition->employee->first }} <span style="visibility:hidden;">.</span> {{ $application->requisition->employee->last }}
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col col-md-2">
+                                    <strong>Tel  : </strong>
+                                  </div>
+                                  <div class="col col-md-8">
+                                    <i class="fa fa-fw fa-phone"></i>{{ $application->requisition->employee->contact_number }}
+                                  </div>
+                                </div>
+                                <br>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                        <div class="col col-md-6">
+                          <div class="row">
+
+                            <div class="panel panel-info" style="margin-left:5px;margin-right:10px;">
+                              <div class="panel-heading">
+                                <h3 class="panel-title ">
+                                  
+                                    <i class="fa fa-fw fa-user"></i> Candidate Detail 
+                                  
+                                </h3>
+                              </div>
+                              <div class="panel-body ">
+                                <div class="row">
+                                  <div class="col col-md-2 col-md-offset-1">
+                                    <strong>Name : </strong>
+                                  </div>
+                                  <div class="col col-md-8">
+                                    {{ $application->candidate->user->first }} <span style="visibility:hidden;">.</span> {{ $application->candidate->user->last }}
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col col-md-2 col-md-offset-1">
+                                    <strong>Tel  : </strong>
+                                    <!-- <div id="external-events">
+                                      <div class="external-event bg-aqua ui-draggable" style="position: relative;">
+                                        Tel :
+                                      </div>
+
+                                    </div> -->
+                                  </div>
+                                  <div class="col col-md-8"><i class="fa fa-fw fa-phone"></i>{{ $application->candidate->user->contact_number }}</div>
+                                </div>
+                                <div class="row">
+                                  <div class="col col-md-2 col-md-offset-1">
+                                    <strong>Email : </strong>
+                                  </div>
+                                  <div class="col col-md-8">{{ $application->candidate->user->email }}</div>
+                                </div>
+                              </div>
+                            </div>
+                           
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                    </div><!-- /.box-body -->
+                </div>
+                
+              </div>
+              
+            </div>
+
+            <div class="panel panel-primary bg-aqua" style="box-shadow: 2px 2px 2px #888888;">
+              <div class="panel-body" style="font-size:1.2em;">
+                
+                {{ Form::model($application, array('route' => array('recruiter-interview-feedback.update', $application->application_id), 'method' => 'PUT', 'files' => true, 'onsubmit' => 'updateInterviewers()')) }}
+
+                <div class="row" style="padding-top:1.2em;">
+                  <div class="col col-md-7 col-md-offset-3">
+                    <div class="form-group" style="font-weight:bold;font-size:1.2em;">
+                      {{ Form::label('date_time', 'Interview Date/Time :') }}
+                      <?php
+                        $ts_val = Carbon::createFromFormat('Y-m-d H:i:s', $application->intOffSchedule()->whereAppCsId(4)->orderBy('visit_number','desc')->first()->datetime);
+                      ?>
+                      {{ Form::input('datetime-local', 'date_time', ($ts_val->format('Y-m-d') .'T'. $ts_val->format('H:i')) ) }}
+                    
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col col-md-7 col-md-offset-3">
+                    <div class="form-group" style="font-weight:bold;font-size:1.2em;">
+                      {{ Form::label('location', 'Location :') }}
+                      {{ Form::input('text', 'location', $location, array('placeholder' => 'Interview 4 Room, 17th Floor, SCB Park', 'style' => 'width:350px'))}}
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+
+
+            <!--start table for interviewer select-->
+            <div class="row">
+              <!--for selected interviewer-->
+              <div class="col col-md-12" style="padding-right:5px;">
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <strong style="font-size:1.2em;">Selected Interviewer(s)</strong>
+                  </div>
+                  <div class="panel-body">
+                    <table id='selected' style="margin:10px;font-size:1.1em;" class="table">
+                      <thead>
+                          <th>ID</th>
+                          <th>Name</th>
+                          <th>Department</th>
+                          <th>Position</th>
+                          <th>Phone Number</th>
+                          <th>Upload Interview Evaluation Form</th>
+                          <th>Score</th>
+                          <th>Remove</th>
+                      </thead>
+                      <tbody>
+                      <?php
+                        $user_ids = $application->interviewEvaluation()->whereVisitNumber($visit_number)->lists('user_id');
+                        if(count($user_ids) > 0)
+                          $suggests = Employee::whereIn('user_id', $user_ids)->get();
+                        else
+                          $suggests = array();
+                      ?>
+                      @foreach($suggests as $suggest)
+                        <tr>
+                          <td>
+                            {{ $suggest->user_id }}
+                          </td>
+                          <td>
+                            {{ $suggest->user->first . " " . $suggest->user->last }}
+                          </td>
+                          <td>
+                            {{ $suggest->dept->name }}
+                          </td>
+                          <td>
+                            {{ $suggest->position->job_title }}
+                          </td>
+                          <td>
+                            {{ $suggest->user->contact_number }}
+                          </td>
+                          <td>
+                            <input  name={{ 'file'.$suggest->user_id }} type='file'/>
+                          </td>
+                          <td class="center">
+                            <input name={{ 'score'.$suggest->user_id }} type='number' min='0' max='10' step='0.01'/>
+                          </td>
+                          <td>
+                            <input value='Remove' class="btn btn-sm btn-danger" type='button' onclick='removeInterviewer(this)'/>
+                          </td>
+                        </tr>
+                      @endforeach
+                      </tbody>
+                      <col width="5%">
+                      <col width="15%">
+                      <col width="15%">
+                      <col width="15%">
+                      <col width="10%">
+                      <col width="20%">
+                      <col width="10%">
+                      <col width="10%">
+                    </table>
+
+                    <hr>
+                    <div class="col col-md-offset-1 col-md-11">
+                    <iframe src="../../recruiter-interview-confirm-addInterviewer" frameBorder="0" width='600px' height='40px' scrolling='no'></iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+            </div>
+            
+            <!--end table for interviewer select-->
+
+
+
+          </div><!-- /.box-body -->
+        </div><!-- /.box-->
+
+        <div class="well" style="">
+          <div class="row">
+            <div class="col col-md-2" style="">
+            </div>
+            <div class="col col-md-8">
+            
+
+              <div class="panel panel-default" style="background-color:#fff;box-shadow: 2px 2px 2px #888888;">
+                <div class="panel-heading bg-@{{color}}" >
+                  <center style="font-size:2em;"><strong>Result</strong></center>
+                </div>
+                <div class="panel-body">
+                  <div class="form-group" style="font-size:1.2em;">
+                      
+                       <div class="row">
+                          <div class="col col-md-2"></div>
+                          <div class="col col-md-4">  {{ Form::radio('result', '1','',array('ng-model'=>'result','ng-change'=>'setColor()')) }} Pass and Hold a next interview</div>
+                          <div class="col col-md-6" ng-show="result==1">{{ Form::checkbox('redirect1') }} Confirm the next interview now</div>
+                        </div>
+                        <div class="row">
+                          <div class="col col-md-2"></div>
+                          <div class="col col-md-4">  {{ Form::radio('result', '2','',array('ng-model'=>'result','ng-change'=>'setColor()')) }} Accept</div>
+                          <div class="col col-md-6" ng-show="result==2">{{ Form::checkbox('redirect2') }} Prepare package now</div>
+                        </div>
+                        <div class="row">
+                          <div class="col col-md-2"></div>
+                          <div class="col col-md-4">  {{ Form::radio('result', '3','',array('ng-model'=>'result','ng-change'=>'setColor()')) }} Pending</div>
+                        </div>
+                        <div class="row">
+                          <div class="col col-md-2"></div>
+                          <div class="col col-md-4">  {{ Form::radio('result', '4','',array('ng-model'=>'result','ng-change'=>'setColor()')) }} Reject</div>
+                        </div>
+                  </div>
+                </div>
+              </div>
+            
+            <div class="col col-md-2" style="">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col col-md-3">
+            </div>
+            <div class="col col-md-8" style="margin-left:35px;">
+              <div class="form-group" style="font-size:1.2em;font-weight:bold;">
+                {{ Form::label('note', 'Note :', array( 'style' => 'font-size:1.6em;')) }}
+                {{ Form::textarea('note', '', array( 'size' => '55x5','style'=>'')) }}
+              </div>
+              
+            </div>
+            <div class="col col-md-1">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-md-4"></div>
+            <div class="col col-md-4" style="">
+              <input id='interviewer_ids' name='interviewer_ids' type="hidden"/>
+                {{ Form::button('Confirm', array('type' => 'submit','class'=>'btn btn-lg btn-warning','style'=>'width:120%;')) }}
+                {{ Form::close() }}
+            </div>
+          </div>
         </div>
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('location', 'Location :') }}
-          {{ Form::input('text', 'location', $location, array('placeholder' => 'Interview 4 Room, 17th Floor, SCB Park', 'style' => 'width:350px'))}}
-        </div>
-        <table border="1">
-          <tr>
-            <th>
-              <span class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-                Selected Interviewer(s)
-              </span>
-            </th>
-          </tr>
-          <tr>
-              <td>
-                <table id='selected' border="1" style="margin:10px;">
-                  <tr>
-                      <th>ID</th>
-                      <th>Name</th>
-                      <th>Department</th>
-                      <th>Position</th>
-                      <th>Phone Number</th>
-                      <th>Upload Interview Evaluation Form</th>
-                      <th>Score</th>
-                      <th>Remove</th>
-                  </tr>
-                  <?php
-                    $user_ids = $application->interviewEvaluation()->whereVisitNumber($visit_number)->lists('user_id');
-                    if(count($user_ids) > 0)
-                      $suggests = Employee::whereIn('user_id', $user_ids)->get();
-                    else
-                      $suggests = array();
-                  ?>
-                  @foreach($suggests as $suggest)
-                    <tr>
-                      <td>
-                        {{ $suggest->user_id }}
-                      </td>
-                      <td>
-                        {{ $suggest->user->first . " " . $suggest->user->last }}
-                      </td>
-                      <td>
-                        {{ $suggest->dept->name }}
-                      </td>
-                      <td>
-                        {{ $suggest->position->job_title }}
-                      </td>
-                      <td>
-                        {{ $suggest->user->contact_number }}
-                      </td>
-                      <td>
-                        <input name={{ 'file'.$suggest->user_id }} type='file'/>
-                      </td>
-                      <td>
-                        <input name={{ 'score'.$suggest->user_id }} type='number' min='0' max='10' step='0.01'/>
-                      </td>
-                      <td>
-                        <input value='Remove' type='button' onclick='removeInterviewer(this)'/>
-                      </td>
-                    </tr>
-                  @endforeach
-                  <col width="30">
-                  <col width="150">
-                  <col width="100">
-                  <col width="150">
-                  <col width="80">
-                  <col width="220">
-                  <col width="60">
-                  <col width="60">
-                </table>
-              </td>
-              <tr>
-                <td>
-                  <iframe src="../../recruiter-interview-confirm-addInterviewer" frameBorder="0" width='600px' height='40px' scrolling='no'></iframe>
-                </td>
-              </tr>
-          </tr>
-        </table>
+      </div>
+    </div>
+    <!--end front zone cos is here!!!!!!!!!-->
+
+
+
+
+      
         <script>
           function removeInterviewer(x){
             var tableSelect = document.getElementById('selected');
@@ -159,6 +419,7 @@ thisIsTitle
             var btn3 = document.createElement("input");
             btn3.value = 'Remove';
             btn3.type = 'button';
+            btn3.className='btn btn-sm btn-danger';
             btn3.onclick = function(){
               removeInterviewer(this);
             }
@@ -176,19 +437,6 @@ thisIsTitle
             }
           }
         </script>
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('note', 'Note :') }}
-          {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
-        </div>
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('result_title', '----- Result -----') }} <br>
-          {{ Form::radio('result', '1') }} Pass and Hold a next interview {{ Form::checkbox('redirect1') }} Confirm the next interview now<br> 
-          {{ Form::radio('result', '2') }} Accept {{ Form::checkbox('redirect2') }} Prepare package now<br>
-          {{ Form::radio('result', '3') }} Pending <br>
-          {{ Form::radio('result', '4') }} Reject
-        </div>
-        <input id='interviewer_ids' name='interviewer_ids' type="hidden"/>
-        {{ Form::button('Confirm', array('type' => 'submit')) }}
-      {{ Form::close() }}
-    </center>
+        <script src="<?php echo asset('js/jquery.js')?>"></script>
+  
 @stop

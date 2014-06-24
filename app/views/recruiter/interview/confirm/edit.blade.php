@@ -4,8 +4,9 @@ thisIsTitle
 @stop
 
 @section('libs')
-    <link rel="stylesheet" href="<?php echo asset('assets/css/AdminLTE.css')?>">
+      <link rel="stylesheet" href="<?php echo asset('assets/css/AdminLTE.css')?>">
       <link rel="stylesheet" href="<?php echo asset('css/bootstrap-lightbox.css')?>">
+      
 @stop
 
 @section('content')
@@ -13,21 +14,15 @@ thisIsTitle
     <?php
       $display = array(
 'VISIT NUMBER' => $visit_number,
-'Application ID' => $application->application_id ,
+''=>'',
 'Requisition ID' => $application->requisition_id ,
-'Candidate User ID' => $application->candidate_user_id ,
-'Application Current Status ID' => $application->application_current_status_id ,
-'Is In Basket' => $application->is_in_basket ,
-'Question Point' => $application->question_point ,
-'Send Number' => $application->send_number ,
-'Result' => $application->result ,
-'Color' => $application->color ,
-'Note' => $application->note ,
-'Current Salary' => $application->current_salary ,
-'Expected Salary' => $application->expected_salary ,
-'Position Salary' => $application->position_salary ,
-'Cola' => $application->cola ,
-'Final Salary' => $application->final_salary ,
+'Application ID' => $application->application_id ,
+'Job title' => Position::find($application->requisition->position_id)->job_title,
+'Organization' => Position::find($application->requisition->position_id)->organization,
+'Division' => Position::find($application->requisition->position_id)->division,
+'Group' => Position::find($application->requisition->position_id)->group,
+'Corporate title' => CorporateTitle::find($application->requisition->corporate_title_id)->name ,
+'Recruitment type' => RecruitmentType::find($application->requisition->recruitment_type_id)->name ,
 'Created At' => $application->created_at ,
 'Updated At' => $application->updated_at
       );
@@ -35,55 +30,36 @@ thisIsTitle
     
     <div class="box box-primary">
       <div class="box-header">
-        <div class="box-title" style="font-size:2.5em;">Interview appointment<br></div>
-
+        <div class="box-title" style="font-size:2.5em;">
+          Interview appointment <i class="fa fa-fw fa-users"></i><br>
+        </div>
         <hr>
-
         <hr>
       </div>
      
       <div class="box-body">
-
-        <!-- the events -->
-        <!-- <div id="external-events">
-          <div class="external-event bg-green ui-draggable" style="position: relative;">
-            Lunch
-          </div>
-          <div class="external-event bg-red ui-draggable" style="position: relative;">
-            Go home
-          </div>
-          <div class="external-event bg-aqua ui-draggable" style="position: relative;">
-            Do homework
-          </div>
-          <div class="external-event bg-yellow ui-draggable" style="position: relative;">
-            Work on UI design
-          </div>
-          <div class="external-event bg-navy ui-draggable" style="position: relative;">
-            Sleep tight
-          </div>
-        </div> -->
-
-
         <div class="row">
           
           <div class="col col-md-12">
             <div class="panel panel-primary">
               <div class="panel-heading">
-                <h3 class="panel-title"><strong>Candidate detail</strong></h3>
+                <h3 class="panel-title" style="font-size:1.5em;">
+                  <i class="fa fa-fw fa-info-circle"></i><strong>Information</strong>
+                </h3>
               </div>
               <div class="panel-body" style="font-size:1.2em;">
+                <!--table information-->
                 <center>
-                 <table class="table table-hover">
-                     
+                  <table class="table table-hover" >
                     <tbody>
                     <?php $i=0; $col=2?>
                     @foreach($display as $key => $value)
                       <?php echo (($i%$col==0)?'<tr>':'');?>
 
-                      <td width="30%">
-                        <strong>{{ $key }} : </strong>
+                      <td width="15%">
+                        <strong>{{ $key }} {{ $key=='' ? '':':'}} </strong>
                       </td>
-                      <td width="20%">
+                      <td width="35%">
                         <span>{{ $value }}</span>
                       </td>
 
@@ -91,68 +67,189 @@ thisIsTitle
                       <?php $i++; ?>
                     @endforeach
                     </tbody>
-                </table>
+                  </table>
                 </center>
+
+                <!--detail person-->
+                <div class="row" style="margin-top:2em;">
+                  <div class="col col-md-6">
+                    <div class="row">
+                     
+                      <div class="panel panel-info" style="margin-left:10px;margin-right:5px;">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">
+                           <i class="fa fa-fw fa-user"></i> Hiring manager Detail
+                          </h3>
+                        </div>
+                        <div class="panel-body">
+                          <div class="row">
+                            <div class="col col-md-2">
+                              <strong>Name : </strong>
+                            </div>
+                            <div class="col col-md-8">{{ $application->requisition->employee->first }} <span style="visibility:hidden;">.</span> {{ $application->requisition->employee->last }}</div>
+                          </div>
+                          <div class="row">
+                            <div class="col col-md-2">
+                              <strong>Tel  : </strong>
+                              <!-- <div id="external-events">
+                                <div class="external-event bg-aqua ui-draggable" style="position: relative;">
+                                  Tel :
+                                </div>
+
+                              </div> -->
+                            </div>
+                            <div class="col col-md-8">
+                              <i class="fa fa-fw fa-phone"></i>{{ $application->requisition->employee->contact_number }}
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col col-md-11">
+                              <strong>Note (preferred time for interviewing): </strong>
+                            </div>
+                            <div class="col col-md-12">
+                              <div class="panel panel-default">
+                                <div class="panel-body text-center">
+                                  {{ $application->note }}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="col col-md-6">
+                    <div class="row">
+
+                      <div class="panel panel-info" style="height:218px;margin-left:5px;margin-right:10px;">
+                        <div class="panel-heading">
+                          <h3 class="panel-title ">
+                            
+                              <i class="fa fa-fw fa-user"></i> Candidate Detail 
+                            
+                          </h3>
+                        </div>
+                        <div class="panel-body ">
+                          <div class="row">
+                            <div class="col col-md-2 col-md-offset-1">
+                              <strong>Name : </strong>
+                            </div>
+                            <div class="col col-md-8">{{ $application->candidate->user->first }} <span style="visibility:hidden;">.</span> {{ $application->candidate->user->last }}</div>
+                          </div>
+                          <div class="row">
+                            <div class="col col-md-2 col-md-offset-1">
+                              <strong>Tel  : </strong>
+                              <!-- <div id="external-events">
+                                <div class="external-event bg-aqua ui-draggable" style="position: relative;">
+                                  Tel :
+                                </div>
+
+                              </div> -->
+                            </div>
+                            <div class="col col-md-8"><i class="fa fa-fw fa-phone"></i>{{ $application->candidate->user->contact_number }}</div>
+                          </div>
+                          <div class="row">
+                            <div class="col col-md-2 col-md-offset-1">
+                              <strong>Email : </strong>
+                            </div>
+                            <div class="col col-md-8">{{ $application->candidate->user->email }}</div>
+                          </div>
+                        </div>
+                      </div>
+                     
+                    </div>
+                  </div>
+                </div>
+
+
+
               </div>
             </div>
           </div>
-          <div class="col col-md-2">
+          
+        </div>
+
+        <!--select date-->
+        <!-- <div class="panel panel-success">
+          <div class="panel-body bg-blue" style="font-size:1.2em;">
+            
+
+            {{ Form::model($application, array('route' => array('recruiter-interview-confirm.update', $application->application_id), 'method' => 'PUT')) }}
+              <?php
+                  $default_date = $application->intOffSchedule()->whereAppCsId(4)->orderBy('visit_number','desc')->first();
+                  if(is_null($default_date) || $visit_number > 1){
+                    $default_date = NULL;
+                  }else{
+                    $default_date = $default_date->datetime;
+                  }
+              ?>
+            
+            <div class="row" style="padding-top:1.2em;">
+              <div class="col col-md-7 col-md-offset-3">
+                <div class="form-group" style="font-weight:bold;font-size:1.2em;">
+                  {{ Form::label('date_time', 'Interview Date/Time :') }}
+                  {{ Form::input('datetime-local', 'date_time') }}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-md-7 col-md-offset-3">
+                <div class="form-group" style="font-weight:bold;font-size:1.2em;">
+                  {{ Form::label('location', 'Location :') }}
+                  {{ Form::input('text', 'location', '', array('placeholder' => 'Interview 4 Room, 17th Floor, SCB Park', 'style' => 'width:350px'))}}
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col col-md-2">
+        </div> -->
+        <!--end select date-->
+        
+        <div class="panel panel-primary" style="box-shadow: 2px 2px 2px #888888;">
+          <div class="panel-body" style="background-color:#d9edf7;font-size:1.2em;">
+            
+
+            {{ Form::model($application, array('route' => array('recruiter-interview-confirm.update', $application->application_id), 'method' => 'PUT')) }}
+              <?php
+                  $default_date = $application->intOffSchedule()->whereAppCsId(4)->orderBy('visit_number','desc')->first();
+                  if(is_null($default_date) || $visit_number > 1){
+                    $default_date = NULL;
+                  }else{
+                    $default_date = $default_date->datetime;
+                  }
+              ?>
+            
+            <div class="row" style="padding-top:1.2em;">
+              <div class="col col-md-7 col-md-offset-3">
+                <div class="form-group" style="font-weight:bold;font-size:1.2em;">
+                  {{ Form::label('date_time', 'Interview Date/Time :') }}
+                  {{ Form::input('datetime-local', 'date_time','',array('required')) }}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-md-7 col-md-offset-3">
+                <div class="form-group" style="font-weight:bold;font-size:1.2em;">
+                  {{ Form::label('location', 'Location :') }}
+                  {{ Form::input('text', 'location', '', array('placeholder' => 'Interview 4 Room, 17th Floor, SCB Park', 'style' => 'width:350px','required'))}}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-      </div><!-- /.box-body -->
-    </div><!-- /.box-->
-   
 
 
-
-
-
-      
-
-    <center>
-
-      {{ Form::model($application, array('route' => array('recruiter-interview-confirm.update', $application->application_id), 'method' => 'PUT')) }}
-        <?php
-            $default_date = $application->intOffSchedule()->whereAppCsId(4)->orderBy('visit_number','desc')->first();
-            if(is_null($default_date) || $visit_number > 1){
-              $default_date = NULL;
-            }else{
-              $default_date = $default_date->datetime;
-            }
-        ?>
-        @if(!is_null($default_date))
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('note', 'Preferred Interview Date/Time :') }}
-          <span style="color:orange">{{ $default_date }}</span>
-        </div>
-        @endif
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('date_time', 'Interview Date/Time :') }}
-          {{ Form::input('datetime-local', 'date_time') }}
-        </div>
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('location', 'Location :') }}
-          {{ Form::input('text', 'location', '', array('placeholder' => 'Interview 4 Room, 17th Floor, SCB Park', 'style' => 'width:350px'))}}
-        </div>
-        <table border="1">
-          <tr>
-            <th>
-              <span class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
+        <!--start table for interviewer select-->
+        <div class="row">
+          <!--for selected interviewer-->
+          <div class="col col-md-6" style="padding-right:5px;">
+            <div class="panel panel-success">
+              <div class="panel-heading">
                 Selected Interviewer(s)
-              </span>
-            </th>
-            <th>
-              <span class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-                Suggested Interviewer(s)
-              </span>
-            </th>
-          </tr>
-          <tr>
-              <td>
-                <table id='selected' border="1" style="margin:10px;">
+              </div>
+              <div class="panel-body">
+                <table id='selected' style="" class="table">
                   <tr>
                       <th>ID</th>
                       <th>Name</th>
@@ -161,16 +258,29 @@ thisIsTitle
                       <th>Phone Number</th>
                       <th>Deselect</th>
                   </tr>
-                  <col width="30">
-                  <col width="150">
-                  <col width="100">
-                  <col width="150">
-                  <col width="80">
-                  <col width="60">
+                  <col width="5%">
+                  <col width="20%">
+                  <col width="20%">
+                  <col width="25%">
+                  <col width="20%">
+                  <col width="10%">
                 </table>
-              </td>
-              <td>
-                <table id='suggested' border="1" style="margin:10px;">
+
+                <hr>
+                <iframe src="../../recruiter-interview-confirm-addInterviewer" frameBorder="0" width='540px' height='40px' scrolling='no'></iframe>
+                
+              </div>
+            </div>
+          </div>
+
+          <!-- for suggested interviewer-->
+          <div class="col col-md-6" style="padding-left:5px;">
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                Suggested Interviewer(s)
+              </div>
+              <div class="panel-body">
+                <table id='suggested' class="table table-border" style="">
                   <tr>
                       <th>ID</th>
                       <th>Name</th>
@@ -200,7 +310,7 @@ thisIsTitle
                         {{ $suggest->user->contact_number }}
                       </td>
                       <td>
-                        <input value='Select' type='button' onclick='selectInterviewer(this)'/>
+                        <input value='Select' type='button' class="btn btn-sm btn-success" onclick='selectInterviewer(this)'/>
                       </td>
                     </tr>
                     <?php
@@ -210,21 +320,52 @@ thisIsTitle
                       }
                     ?>
                   @endwhile
-                  <col width="30">
-                  <col width="150">
-                  <col width="100">
-                  <col width="150">
-                  <col width="80">
-                  <col width="60">
+                  <col width="5%">
+                  <col width="20%">
+                  <col width="20%">
+                  <col width="25%">
+                  <col width="20%">
+                  <col width="10%">
                 </table>
-              </td>
-              <tr>
-                <td>
-                  <iframe src="../../recruiter-interview-confirm-addInterviewer" frameBorder="0" width='540px' height='40px' scrolling='no'></iframe>
-                </td>
-              </tr>
-          </tr>
-        </table>
+                <hr>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!--end table for interviewer select-->
+
+
+
+      </div><!-- /.box-body -->
+    </div><!-- /.box-->
+   
+    <div class="well" style="">
+      <div class="row">
+        <div class="col col-md-3"></div>
+        <div class="col col-md-4" style="margin-left:25px;">
+          <div class="form-group" style="font-size:1.2em;font-weight:bold;">
+            {{ Form::label('note', 'Note :', array( 'style' => 'font-size:1.6em;')) }}
+            {{ Form::textarea('note', '', array( 'size' => '53x5','style'=>'')) }}
+          </div>
+          <input id='interviewer_ids' name='interviewer_ids' type="hidden"/>
+          {{ Form::button('Confirm', array('name' => 'approve', 'value' => true,'style'=>'width:115%;' , 'type' => 'submit','class'=>'btn btn-lg btn-primary')) }}
+          {{ Form::close() }}
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+      
+
+    <center>
+
+
+        
         <script>
           function selectInterviewer(x){
             var tableSuggest = document.getElementById('suggested');
@@ -238,6 +379,7 @@ thisIsTitle
               deselectInterviewer(this);
             }
             newButton.value = 'Deselect';
+            newButton.className='btn btn-sm btn-danger';
             updateInterviewers();
           }
           function deselectInterviewer(x){
@@ -252,6 +394,7 @@ thisIsTitle
               selectInterviewer(this);
             }
             newButton.value = 'Select';
+            newButton.className='btn btn-sm btn-success';
             updateInterviewers();
           }
           function addInterviewer(v1,v2,v3,v4,v5){ // ID name dept position phone deselect
@@ -265,6 +408,7 @@ thisIsTitle
             var btn = document.createElement("input");
             btn.value = 'Deselect';
             btn.type = 'button';
+            btn.className='btn btn-sm btn-danger';
             btn.onclick = function(){
               deselectInterviewer(this);
             }
@@ -282,12 +426,6 @@ thisIsTitle
             }
           }
         </script>
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('note', 'Note :') }}
-          {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
-        </div>
-        <input id='interviewer_ids' name='interviewer_ids' type="hidden"/>
-        {{ Form::button('Confirm', array('name' => 'approve', 'value' => true, 'type' => 'submit')) }}
-      {{ Form::close() }}
+    
     </center>
 @stop
