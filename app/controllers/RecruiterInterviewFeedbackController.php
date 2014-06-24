@@ -59,6 +59,10 @@ class RecruiterInterviewFeedbackController extends \BaseController {
 	 */
 	public function edit($id)
 	{
+		return $this->edit2($id,false);
+	}
+
+	public function edit2($id,$preview){
 		$application = Application::find($id);
 		$visit_number = $application->interviewLog()->orderBy('visit_number','desc')->first();
 		if(is_null($visit_number)){
@@ -72,7 +76,7 @@ class RecruiterInterviewFeedbackController extends \BaseController {
 		}else{
 			$location = $location->location;
 		}
-		return View::make('recruiter.interview.feedback.edit', compact('application'))->with('visit_number',$visit_number)->with('location',$location);
+		return View::make('recruiter.interview.feedback.edit', compact('application'))->with('visit_number',$visit_number)->with('location',$location)->with('preview',$preview);
 	}
 
 	/**

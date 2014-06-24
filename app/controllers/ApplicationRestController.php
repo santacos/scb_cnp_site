@@ -70,6 +70,178 @@ class ApplicationRestController extends \BaseController {
                    if($special_status == '1a'){
                         $app=$app->where('is_in_basket','=',1);
                    }
+            //degree       
+            $GLOBALS['bachelor']= trim(Input::get( 'bachelor' ));//0 or 1
+            $GLOBALS['master']= trim(Input::get( 'master' ));//0 or 1
+            $GLOBALS['doctor'] = trim(Input::get( 'doctor' ));//0 or 1
+            $GLOBALS['field_of_study'] = trim(Input::get( 'field_of_study' ));//text
+            $GLOBALS['major'] = trim(Input::get( 'major' ));//text
+            $GLOBALS['school_name'] = trim(Input::get( 'school_name' ));//text
+            //experience
+            $GLOBALS['company_name'] = trim(Input::get( 'company_name' ));//text
+            $GLOBALS['position'] = trim(Input::get( 'position' ));//text
+            $GLOBALS['monthly_salary'] = trim(Input::get( 'monthly_salary' ));//มากกว่า น้อยกว่า ระหว่าง
+            $GLOBALS['monthly_salary1'] = trim(Input::get( 'monthly_salary1' ));
+            $GLOBALS['monthly_salary2'] = trim(Input::get( 'monthly_salary2' ));
+            $GLOBALS['location'] = trim(Input::get( 'location' ));//text
+            $GLOBALS['experience'] = trim(Input::get( 'experience' ));//มากกว่าน้อยกว่าระว่าง
+            $GLOBALS['experience1'] = trim(Input::get( 'experience1' ));
+            $GLOBALS['experience2'] = trim(Input::get( 'experience2' ));
+            //skill
+            $GLOBALS['skill'] = trim(Input::get( 'skill' ));//text
+            //score
+            $GLOBALS['score'] = trim(Input::get( 'score' ));//มากกว่าน้อยกว่าระหว่าง
+            $GLOBALS['score1'] = trim(Input::get( 'score1' ));
+            $GLOBALS['score2'] = trim(Input::get( 'score2' ));
+            $app=$app->whereHas('candidate',function($q){
+                
+                $q->whereHas('education',function($r){
+                    if($GLOBALS['bachelor']==1|| $GLOBALS['master']==1|| $GLOBALS['doctor']==1)
+                    {
+                        
+                        $r->where(function($s)
+                        {
+                            if( $GLOBALS['bachelor']==1)
+                            {
+
+                                $s->orWhere('education_degree_id','=',6)->where('education_degree_id','!=',7)->where('education_degree_id','!=',8);
+                            }
+                           if( $GLOBALS['master']==1)
+                            {
+                                $s->orWhere('education_degree_id','=',7)->where('education_degree_id','!=',8);
+                            }
+                            if( $GLOBALS['doctor']==1)
+                            {
+                                $s->orWhere('education_degree_id','=',8);
+                            }
+                        });
+                       
+                    }
+                     if( $GLOBALS['field_of_study']!='')
+                    {
+                            $searchTerms = explode(' ',  $GLOBALS['field_of_study']);
+                        
+                                 $GLOBALS['searchTerms'] = $searchTerms;
+                                $r->where(function($query)
+                                        {
+                                             foreach($GLOBALS['searchTerms'] as $term)
+                                             {$query->orWhere('field_of_study', 'LIKE', '%'.  $term .'%'); }
+                                        });
+                            
+                    }
+                    if($GLOBALS['major']!='')
+                    {
+                            $searchTerms = explode(' ', $GLOBALS['major']);
+                        
+                                 $GLOBALS['searchTerms'] = $searchTerms;
+                                $r->where(function($query)
+                                        {
+                                             foreach($GLOBALS['searchTerms'] as $term)
+                                             {$query->orWhere('major', 'LIKE', '%'.  $term .'%'); }
+                                        });
+                            
+                    }
+                    
+                      if( $GLOBALS['school_name']!='')
+                    {
+                            $searchTerms = explode(' ', $GLOBALS['school_name']);
+                        
+                                 $GLOBALS['searchTerms'] = $searchTerms;
+                                $r->where(function($query)
+                                        {
+                                             foreach($GLOBALS['searchTerms'] as $term)
+                                             {$query->orWhere('school_name', 'LIKE', '%'.  $term .'%'); }
+                                        });
+                            
+                    }
+                });
+                     $q->whereHas('WorkExperience',function($r){
+                            if( $GLOBALS['company_name']!='')
+                            {
+                                    $searchTerms = explode(' ', $GLOBALS['company_name']);
+                                
+                                         $GLOBALS['searchTerms'] = $searchTerms;
+                                        $r->where(function($query)
+                                                {
+                                                     foreach($GLOBALS['searchTerms'] as $term)
+                                                     {$query->orWhere('company_name', 'LIKE', '%'.  $term .'%'); }
+                                                });
+                                    
+                            }
+                             if( $GLOBALS['position']!='')
+                            {
+                                    $searchTerms = explode(' ', $GLOBALS['position']);
+                                
+                                         $GLOBALS['searchTerms'] = $searchTerms;
+                                        $r->where(function($query)
+                                                {
+                                                     foreach($GLOBALS['searchTerms'] as $term)
+                                                     {$query->orWhere('position', 'LIKE', '%'.  $term .'%'); }
+                                                });
+                                    
+                            }
+                             if( $GLOBALS['location']!='')
+                            {
+                                    $searchTerms = explode(' ', $GLOBALS['location']);
+                                
+                                         $GLOBALS['searchTerms'] = $searchTerms;
+                                        $r->where(function($query)
+                                                {
+                                                     foreach($GLOBALS['searchTerms'] as $term)
+                                                     {$query->orWhere('location', 'LIKE', '%'.  $term .'%'); }
+                                                });
+                                    
+                            }
+                             if( $GLOBALS['monthly_salary']!='')
+                            {
+                                if( $GLOBALS['monthly_salary1']!='')
+                                   { 
+
+                                       
+                                     if($GLOBALS['monthly_salary']==0)
+                                       { $r->where('monthly_salary','>=',$GLOBALS['monthly_salary1']);}
+                                   else if($GLOBALS['monthly_salary']==1)
+                                       { $r->where('monthly_salary','<=',$GLOBALS['monthly_salary1']);}
+                                   else if($GLOBALS['monthly_salary']==2&&  $GLOBALS['monthly_salary2']!='')
+                                       { $r->where('monthly_salary','>=',$GLOBALS['monthly_salary1']);
+                                        $r->where('monthly_salary','<=',$GLOBALS['monthly_salary2']);
+                                       }
+                                 }
+                            }
+                             if( $GLOBALS['experience']!='')
+                            {
+                                if( $GLOBALS['experience1']!='')
+                                   { 
+
+                                     if($GLOBALS['experience']==0)
+                                       { $r->where('year_experience','>=',$GLOBALS['experience1']);}
+                                   else if($GLOBALS['experience']==1)
+                                       {  $r->where('year_experience','<=',$GLOBALS['experience1']);}
+                                   else if($GLOBALS['experience']==2&&  $GLOBALS['experience2']!='')
+                                       { $r->where('year_experience','>=',$GLOBALS['experience1']);
+                                        $r->where('year_experience','<=',$GLOBALS['experience2']);
+                                       }
+                                 }
+                            }
+                     });
+            
+
+                if( $GLOBALS['score']!='')
+                            {
+                                if( $GLOBALS['score1']!='')
+                                   { 
+
+                                     if($GLOBALS['score']==0)
+                                       { $q->where('question_point','>=',$GLOBALS['score1']);}
+                                   else if($GLOBALS['score']==1)
+                                       {  $q->where('question_point','<=',$GLOBALS['score1']);}
+                                   else if($GLOBALS['score']==2&&  $GLOBALS['score2']!='')
+                                       { $q->where('question_point','>=',$GLOBALS['score1']);
+                                        $q->where('question_point','<=',$GLOBALS['score2']);
+                                       }
+                                 }
+                            }
+            });     
                    $app=$app->get();
                     $return = Datatable::collection($app)
                     ->addColumn('application_id',function($model)

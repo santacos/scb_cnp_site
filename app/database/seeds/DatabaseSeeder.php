@@ -57,8 +57,11 @@ class AllTableSeeder extends Seeder {
         $work->position = 'IT Security';
         $work->location = 'Silom';
         $work->monthly_salary = 40000;
-        $work->time_period_start = Carbon::now();
-        $work->time_period_end =Carbon::now();
+        $start=Carbon::now()->subYears(5);
+        $work->time_period_start = $start;
+        $stop=Carbon::now();
+        $work->time_period_end = $stop;
+        $work->year_experience=$start->diffInYears($stop);
         $work->reason_leave = 'Want more money';
         $work->job_achieve = 'Experience';
         $work->is_present = 1;
@@ -74,8 +77,11 @@ class AllTableSeeder extends Seeder {
         $work->position = 'IT Security';
         $work->location = 'Siam';
         $work->monthly_salary = 40000;
-        $work->time_period_start = Carbon::now();
-        $work->time_period_end =Carbon::now();
+        $start=Carbon::now()->subYears(3);
+        $work->time_period_start = $start;
+        $stop=Carbon::now();
+        $work->time_period_end = $stop;
+        $work->year_experience=$start->diffInYears($stop);
         $work->reason_leave = 'Not happy';
         $work->job_achieve = 'Management skill';
         $work->is_present = 1;
@@ -91,8 +97,11 @@ class AllTableSeeder extends Seeder {
         $work->position = 'IT Security';
         $work->location = 'Pathumwan';
         $work->monthly_salary = 40000;
-        $work->time_period_start = Carbon::now();
-        $work->time_period_end =Carbon::now();
+        $start=Carbon::now()->subYears(4);
+        $work->time_period_start = $start;
+        $stop=Carbon::now();
+        $work->time_period_end = $stop;
+        $work->year_experience=$start->diffInYears($stop);
         $work->reason_leave = 'location far from my house';
         $work->job_achieve = 'Leader skill';
         $work->is_present = 1;
@@ -108,8 +117,12 @@ class AllTableSeeder extends Seeder {
         $work->position = 'IT Security';
         $work->location = 'Bangrak';
         $work->monthly_salary = 40000;
-        $work->time_period_start = Carbon::now();
-        $work->time_period_end =Carbon::now();
+        $start=Carbon::now()->subYears(6);
+        $work->time_period_start = $start;
+        $stop=Carbon::now();
+        $work->time_period_end = $stop;
+        $work->year_experience=$start->diffInYears($stop);
+        $this->command->info($start->diffInYears($stop));
         $work->reason_leave = 'My Boss';
         $work->job_achieve = 'Nothing';
         $work->is_present = 1;
@@ -22919,7 +22932,7 @@ $this->command->info('Table RecruitmentType Seeded');
 - Build and maintain IT vendor relationship <br>
 - Develop strategy and maintain outsourcing arrangements with IT service providers<br>
 - Lead the IT procurement team</p>';
-			$requisition->qualification = '<p>- Bachelor's degree or Master's Degree in Business Management , MIS, Business Computer, IT or related field <br>
+			$requisition->qualification = '<p>- Bachelor\'s degree or Master\'s Degree in Business Management , MIS, Business Computer, IT or related field <br>
 - Preferred more than 8 years of experience in IT procurement specialize in software implementation process and manage the big contract (50M up)<br>
 - Good communication and negotiation skills <br>
 - PC Skills e.g. Work, Excel, PowerPoint</p>';
@@ -22950,7 +22963,7 @@ $this->command->info('Table RecruitmentType Seeded');
 - Build and maintain IT vendor relationship <br>
 - Develop strategy and maintain outsourcing arrangements with IT service providers<br>
 - Lead the IT procurement team</p>';
-			$requisition->qualification = '<p>- Bachelor's degree or Master's Degree in Business Management , MIS, Business Computer, IT or related field <br>
+			$requisition->qualification = '<p>- Bachelor\'s degree or Master\'s Degree in Business Management , MIS, Business Computer, IT or related field <br>
 - Preferred more than 8 years of experience in IT procurement specialize in software implementation process and manage the big contract (50M up)<br>
 - Good communication and negotiation skills <br>
 - PC Skills e.g. Work, Excel, PowerPoint</p>';

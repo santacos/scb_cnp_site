@@ -10,7 +10,7 @@
 		);
 		protected $primaryKey = array('visit_number','application_id','app_cs_id');
 
-		public function applications(){
+		public function application(){
 			return $this->belongsTo('Application');
 		}
 
