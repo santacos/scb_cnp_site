@@ -104,7 +104,12 @@ HM-create-requisition
            {{ Form::label('filepath_cv', 'CV :') }} 
            <br>
             @if(file_exists(public_path().$candidate->filepath_cv))
-           <embed src="{{asset($candidate->filepath_cv)}}" width="800" height="500"> 
+            <?php   $fileArray = pathinfo(public_path().$candidate->filepath_cv);
+
+             ?>
+                @if(isset($fileArray['extension'])&&$fileArray['extension']=="pdf")
+                    <embed src="{{asset($candidate->filepath_cv)}}" width="800" height="500"> 
+                @endif
             @endif
              <br><br>
                 <!-- <input type="radio" name="cv_selc" ng-model="cv_selc" value="text" checked="checked"/>  URL &nbsp&nbsp -->

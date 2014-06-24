@@ -121,8 +121,8 @@ SCB Recruitment-Home
 				<div class="alert alert-error fade in alert-warning alert-dismissable">
 					<i class="fa fa-cloud-download alert-icon"></i>
 					<button type="button" class="close" data-dismiss="alert">×</button>
-					<h5>Recommend box</h5>
-					<h7>Where did you graduate from?</h7>
+					<h5 data-appear-animation="bounceInRight">Welcome to SCB Recruitment!</h5>
+					<h7>SCB Job seekers information about worldwide jobs, careers and employment.</h7>
 					<br>
 
 					<!-- <button type="button" class="close" data-dismiss="alert">×</button>
@@ -226,7 +226,7 @@ SCB Recruitment-Home
 					  	</div>
 					  	<div class="col col-md-4" style="margin-top:-100px;">
 					  		<div class="row">
-						  		<div class="col-md-10">
+						  		<div class="col-md-8">
 									<div class="bs-docs-example-images">
 										<a class="img-thumbnail img-rounded lightbox" style="padding-bottom:1.3em;" rel="fancybox" href="{{asset('assets/img/avatar3.png')}}" >
 											<img src="{{asset('assets/img/avatar3.png')}}" alt="" title="">
@@ -236,6 +236,45 @@ SCB Recruitment-Home
 										</a>
 									</div>
 								</div>
+								<div class="col col-md-4 pull-left" style="padding-left:0px;padding-right:0px;">
+							  		<button class="btn push-top push-bottom btn-border btn-info" 
+							  		style="width:90%;"data-toggle="modal" data-target="#videoModal">
+										Video resume
+									</button><br>
+									<button class="btn push-top push-bottom btn-border btn-success" 
+									style="width:90%;" data-toggle="modal" data-target="#myModal">
+										View resume
+									</button><br>
+									
+							  	</div>
+							  	<!--modal zone-->
+							  	<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+									  <div class="modal-content">
+										<div class="modal-header">
+										  <a href="#" class="close" data-dismiss="modal" aria-hidden="true">×</a>
+										  <div class="title-box">
+											<h4 class="title">Video resume</h4>
+										  </div>
+										</div>
+										<div class="modal-body">
+											<div class="video-box youtube">
+												<!-- <iframe frameborder="0" allowfullscreen="" src="//www.youtube.com/embed/oNBBijn4JuY?showinfo=0&amp;wmode=opaque"></iframe>
+												 -->
+												 <iframe frameborder="0" allowfullscreen="" src="//www.youtube.com/embed/0oHhD3Bk9Uc"></iframe>
+											
+											</div>
+											
+										</div>
+										<div class="modal-footer">
+										  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										  
+										</div>
+									  </div>
+									</div>
+								</div>
+
+							  	<!--end modal zone-->
 							</div>
 					  	</div>
 				  	</div>
@@ -257,7 +296,7 @@ SCB Recruitment-Home
 				  		<div class="row">
 					  		<!--experience box-->
 					  		<div class="col col-md-6">
-					  			<div class="panel panel-default frame frame-shadow-curved">
+					  			<div class="panel panel-primary frame frame-shadow-curved">
 								  <div class="panel-heading"  >
 									<h3 class="panel-title">Work Experience</h3>
 								  </div>
@@ -326,7 +365,7 @@ SCB Recruitment-Home
 
 					  		<!--skill-->
 					  		<div class="col col-md-6">
-					  			<div class="panel panel-default frame frame-shadow-curved">
+					  			<div class="panel panel-info frame frame-shadow-curved">
 								  <div class="panel-heading"  >
 									<h3 class="panel-title">Skill</h3>
 								  </div>
@@ -370,7 +409,7 @@ SCB Recruitment-Home
 				  		<div class="row">
 					  		<!--education-->
 					  		<div class="col col-md-6">
-					  			<div class="panel panel-default frame-shadow-curved " >
+					  			<div class="panel panel-success frame-shadow-curved " >
 								  <div class="panel-heading"  >
 									<h3 class="panel-title">Education</h3>
 								  </div>
@@ -429,7 +468,7 @@ SCB Recruitment-Home
 
 					  		<!--award-->
 					  		<div class="col col-md-6">
-					  			<div class="panel panel-default frame-shadow-curved">
+					  			<div class="panel panel-warning frame-shadow-curved">
 								  <div class="panel-heading"  >
 									<h3 class="panel-title">Award and Honors</h3>
 								  </div>
@@ -482,7 +521,7 @@ SCB Recruitment-Home
 				  		<!--Professional certificate-->
 				  		<div class="row">
 					  		<div class="col col-md-12">
-					  			<div class="panel panel-default frame frame-shadow-curved" >
+					  			<div class="panel panel-danger frame frame-shadow-curved" >
 								  <div class="panel-heading"  >
 									<h3 class="panel-title">Professional certificate</h3>
 								  </div>

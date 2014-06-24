@@ -10,15 +10,17 @@
 	padding-bottom: 100%;
     border-radius: 50%;
 
-	border:4px solid #63686F;
+	border:4px solid #BF6B0E;
     overflow:hidden;
     
-    background: #B9BCBF; 
+    background: #EEA94E; 
     box-shadow: 0 0 3px gray;
 }
 .round-button-circle:hover {
 	/*background:#30588e;*/
-	background: #B2B5B8;
+	/*background: #B2B5B8;*/
+    background:  #E9C26B;
+   
 }
 .round-button a {
  /*   display:block;

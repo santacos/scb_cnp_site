@@ -93,6 +93,8 @@ class ApplicationRestController extends \BaseController {
             $GLOBALS['score'] = trim(Input::get( 'score' ));//มากกว่าน้อยกว่าระหว่าง
             $GLOBALS['score1'] = trim(Input::get( 'score1' ));
             $GLOBALS['score2'] = trim(Input::get( 'score2' ));
+
+            $GLOBALS['resume'] = trim(Input::get( 'resume' ));
             $app=$app->whereHas('candidate',function($q){
                 
                 $q->whereHas('education',function($r){
@@ -241,6 +243,20 @@ class ApplicationRestController extends \BaseController {
                                        }
                                  }
                             }
+                  if( $GLOBALS['resume']!='')
+                            {
+                                if( $GLOBALS['resume']!='')
+                                   { 
+                                         $searchTerms = explode(' ', $GLOBALS['resume']);
+                                
+                                         $GLOBALS['searchTerms'] = $searchTerms;
+                                        $q->orWhere(function($query)
+                                                {
+                                                     foreach($GLOBALS['searchTerms'] as $term)
+                                                     {$query->orWhere('text_cv', 'LIKE', '%'.  $term .'%'); }
+                                                });
+                                 }
+                            }            
             });     
                    $app=$app->get();
                     $return = Datatable::collection($app)
@@ -392,7 +408,9 @@ class ApplicationRestController extends \BaseController {
 
                                 //return'<a href="' .URL::to('cd/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>';
                                 return '<div class="btn-group-vertical">
-                                            <a href="' .URL::to('cd/' . $model->candidate_user_id).'" style="width:8.5em;" class="btn  btn-warning">Detail</a>
+                                            <a href="' .URL::to('cd/' . $model->candidate_user_id).'" target="_blank" style="width:8.5em;" class="btn  btn-warning">
+                                                <i class="fa fa-fw fa-info-circle"></i>Detail
+                                            </a>
                                         </div>
                                         ';
                             }
@@ -404,7 +422,7 @@ class ApplicationRestController extends \BaseController {
                                             <a href="'.URL::to('recruiter-interview-confirm/' . $model->application_id . '/edit').'" type="button" class="btn btn-warning">
                                                 Confirm
                                             </a>
-                                            <a href="' .URL::to('cd/' . $model->candidate_user_id). '" type="button" class="btn btn-success">
+                                            <a href="' .URL::to('cd/' . $model->candidate_user_id). '" target="_blank" type="button" class="btn btn-success">
                                                 <i class="fa fa-fw fa-info-circle"></i> Detail
                                             </a>
                                         </div>';
@@ -417,7 +435,7 @@ class ApplicationRestController extends \BaseController {
                                             <a href="' .URL::to('recruiter-interview-feedback/' . $model->application_id . '/edit').'" type="button" class="btn btn-warning">
                                                 Feedback
                                             </a>
-                                            <a href="' .URL::to('cd/' . $model->candidate_user_id). '" type="button" class="btn btn-success">
+                                            <a href="' .URL::to('cd/' . $model->candidate_user_id). '" target="_blank" type="button" class="btn btn-success">
                                                 <i class="fa fa-fw fa-info-circle"></i> Detail
                                             </a>
                                             
@@ -425,14 +443,14 @@ class ApplicationRestController extends \BaseController {
                             }
                             else  if($model->application_current_status_id == 5){
 
-                                return'<a href="' .URL::to('cd/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
-                                                '<a href="' .URL::to('recruiter-prepare-package/' . $model->application_id . '/edit').'"><button class="btn btn-sm btn-success">Prepare</button></a>';
+                                // return'<a href="' .URL::to('cd/' . $model->candidate_user_id).'"><button class="btn btn-sm btn-warning">Detail</button></a>'.' '.
+                                //                 '<a href="' .URL::to('recruiter-prepare-package/' . $model->application_id . '/edit').'"><button class="btn btn-sm btn-success">Prepare</button></a>';
                                 return '<div class="btn-group-vertical">
                                             <a href="'.URL::to('recruiter-prepare-package/' . $model->application_id . '/edit').'" 
-                                            type="button" class="btn btn-sm btn-warning">
+                                            type="button" class="btn btn-warning">
                                                 Prepare
                                             </a>
-                                            <a href="'.URL::to('cd/' . $model->candidate_user_id).'" type="button" class="btn btn-sm btn-success">
+                                            <a href="'.URL::to('cd/' . $model->candidate_user_id).'" target="_blank" type="button" class="btn btn-success">
                                                 <i class="fa fa-fw fa-info-circle"></i> Detail
                                             </a>
 
@@ -448,7 +466,7 @@ class ApplicationRestController extends \BaseController {
                                             type="button" class="btn btn-warning">
                                                 Confirm
                                             </a>
-                                            <a href="' .URL::to('cd/' . $model->candidate_user_id).'" type="button" class="btn btn-success">
+                                            <a href="' .URL::to('cd/' . $model->candidate_user_id).'" target="_blank" type="button" class="btn btn-success">
                                                 <i class="fa fa-fw fa-info-circle"></i> Detail
                                             </a>
 
@@ -460,10 +478,10 @@ class ApplicationRestController extends \BaseController {
                                 //                 '<a href="' .URL::to('recruiter-offer-package/' . $model->application_id . '/edit').'"><button class="btn btn-sm btn-success">Offer</button></a>';
                                 return '<div class="btn-group-vertical">
                                             <a href="' .URL::to('recruiter-offer-package/' . $model->application_id . '/edit').'" 
-                                            type="button" class="btn btn-sm btn-warning">
+                                            type="button" class="btn btn-warning">
                                                 Offer
                                             </a>
-                                            <a href="'.URL::to('cd/' . $model->candidate_user_id).'" type="button" class="btn btn-sm btn-success">
+                                            <a href="'.URL::to('cd/' . $model->candidate_user_id).'" target="_blank" type="button" class="btn btn-success">
                                                 <i class="fa fa-fw fa-info-circle"></i> Detail
                                             </a>
 
@@ -478,7 +496,7 @@ class ApplicationRestController extends \BaseController {
                                             type="button" class="btn btn-warning">
                                                 Sign
                                             </a>
-                                            <a href="'.URL::to('cd/' . $model->candidate_user_id).'" type="button" class="btn btn-success">
+                                            <a href="'.URL::to('cd/' . $model->candidate_user_id).'" target="_blank" type="button" class="btn btn-success">
                                                 <i class="fa fa-fw fa-info-circle"></i> Detail
                                             </a>
 
