@@ -253,7 +253,7 @@ class CandidateController extends \BaseController {
 		foreach($questions as $question){
 			$i++;
 			$answer = $question->answer()->skip(Input::get('question_'.$i))->first();
-			$question->application()->attach($question->question_id, array('answer_id' => $answer->answer_id ));
+			$question->application()->attach($application->application_id, array('answer_id' => $answer->answer_id ));
 			$point += $answer->point;
 		}
 		$application->question_point = $point;
