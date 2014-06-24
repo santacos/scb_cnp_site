@@ -93,8 +93,20 @@ class ApplicationRestController extends \BaseController {
                             return '<input type="hidden" name="Language" value="'.$bin.'">'.$model->corporateTitle()->first()->name;
                         })
                     ->addColumn('Point',function($model)
-                        {   return '10'.'/'.'20';
-                            return $model->location()->first()->name;
+                        {   
+                            $bin = sprintf( "%05d",  $model->question_point );
+                            $total = 0;
+                            $questions = $model->requisition->question()->get();
+                            foreach($questions as $question){
+                                $max = $question->answer()->first()->point;
+                                foreach ($question->answer()->get() as $answer) {
+                                    if($answer->point > $max){
+                                        $max = $answer->point;
+                                    }
+                                }
+                                $total += $max;
+                            }
+                            return '<input type="hidden" name="Language" value="'.$bin.'">' . $model->question_point . " / " . $total;
                         })
                     ->addColumn('Application Status',function($model)
                         {   

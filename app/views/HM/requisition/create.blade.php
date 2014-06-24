@@ -241,7 +241,7 @@ HM-create-requisition
                                         <div class="panel panel-default" >
                                             <div class="panel-body" style="">
                                                 <div style="width:100%;max-height:300px; overflow-y: scroll;">
-                                                    <p ng-bind-html="showtext"></p>
+                                                    <p id='responsibility_to_be_copied' ng-bind-html="showtext"></p>
                                                 </div>
                                                 <hr/>
                                                 <a type="button" class="btn btn-success btn-lg pull-right " ng-click="setRespon()">Select</a>
@@ -315,7 +315,7 @@ HM-create-requisition
                                         <div class="panel panel-default" >
                                             <div class="panel-body" style="">
                                                 <div style="width:100%;max-height:300px; overflow-y: scroll;">
-                                                    <p ng-bind-html="showqualtext"></p>
+                                                    <p id='qualification_to_be_copied' ng-bind-html="showqualtext"></p>
                                                 </div>
                                                 <hr/>
                                                 <a type="button" class="btn btn-success btn-lg pull-right " ng-click="setQual()">Select</a>

@@ -21,6 +21,6 @@
 		}
 
 		public function application(){
-			return $this->belongsToMany('Application')->withPivot('answer_id');
+			return $this->belongsToMany('Application','application_question_answers')->withPivot('answer_id');
 		}
 	}
