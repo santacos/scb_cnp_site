@@ -111,14 +111,12 @@
 								</div>
 							</div>
 						</div><!-- /.col -->
-						<div class="col-md-9">
 							<div class="box box-primary">
 								<div class="box-body no-padding">
 									<!-- THE CALENDAR -->
 									<div id="calendar"></div>
 								</div><!-- /.box-body -->
 							</div><!-- /. box -->
-						</div><!-- /.col -->
 					</div><!-- /.row -->
 
 				</section><!-- /.content -->
@@ -187,13 +185,21 @@
 					}*/{}
 					@foreach($events as $event)
 						,{
-							title : '{{ "Interview #" . $event->visit_number . " : " . $event->application->candidate->user->first }}',
+							title : '{{ "Interview : " . $event->application->candidate->user->first . " " . $event->application->candidate->user->last }}',
 							start : '{{ Carbon::createFromFormat("Y-m-d H:i:s", $event->datetime) }}',
-							end : '{{ Carbon::createFromFormat("Y-m-d H:i:s", $event->datetime)->addMinutes(30) }}',
+							end : '{{ Carbon::createFromFormat("Y-m-d H:i:s", $event->datetime)->addMinutes(50) }}',
 							allDay : false,
-							url : 'xx',
-							backgroundColor : "#00c0ef", //Info (aqua)
-							borderColor : "#00c0ef" //Info (aqua)
+							url : "{{'recruiter-interview-feedback/interview-detail/' . $event->application->application_id }}",
+							backgroundColor : "#0099FF",
+							borderColor : "#0066FF",
+							textColor : 'white',
+							className : 'calendar',
+							expanded : false,
+							visitNum : '{{ $event->visit_number }}',
+							candidate : '{{ $event->application->candidate->user->first . " " . $event->application->candidate->user->last }}',
+							location : '{{ $event->location }}',
+							tel : '{{ $event->application->candidate->user->contact_number }}',
+							jobTitle : '{{ $event->application->requisition->job_title }}',
 						}
 					@endforeach
 					],
@@ -228,8 +234,44 @@
 					maxTime : "20:00:00",
 					hiddenDays : [0,6],
 					eventMouseover : function(event, jsEvent, view){
-						
+						if(event.expanded == false){
+							event.expanded = true;
+							$('#calendar').fullCalendar( 'updateEvent', event );
+						}
+						this.firstChild.firstChild.innerHTML = '<center>( '+this.firstChild.firstChild.innerHTML+' )</center>'
+						this.firstChild.children[1].innerHTML = "<span>Interview #"+event.visitNum+"</span><br><span>Job Title : "+event.jobTitle+"</span><br><span>Name : "+event.candidate+"</span><br><span>Location : "+event.location+"</span><br><span>Tel : "+event.tel+"</span>";
+						$(this).animate({	left:'250px',
+											width:'+=100px',
+											left:'-=50px',
+											height:'+=100px',
+											top:'-=50px',
+											borderColor:'black'
+										},400);
+						$(this).animate({
+											backgroundColor:'blue'
+										},600);
+						var xxx = $(this.firstChild.children[1]);
+						xxx.animate({	fontSize:"15px"
+										},400);
+						xxx.animate({	marginLeft:'15px'
+										},450);
+						var yyy = $(this.firstChild.firstChild);
+						yyy.animate({	marginLeft:'-40px'
+										},0);
+						yyy.animate({	fontSize:"18px"
+										},300);
+						yyy.animate({	marginLeft:'0px'
+										},350);
+
 					},
+					eventMouseout : function(event, jsEvent, view){
+						if(event.expanded == true){
+							event.expanded = false;
+							$('#calendar').fullCalendar( 'updateEvent', event );
+						}
+					},
+					contentHeight : 1000,
+					allDaySlot : false,
 				}).fullCalendar( 'changeView', 'agendaWeek' );
 
 				/*/* ADDING EVENTS 

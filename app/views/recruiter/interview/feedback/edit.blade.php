@@ -77,21 +77,21 @@ thisIsTitle
             <div class="row">
              
               <div class="col col-md-12">
-                <div class="box box-solid box-info" ng-show="showBoxInfo">
+                <div class="box box-solid box-info" id="close_div">
                     <div class="box-header">
                       <h3 class="box-title">
                         <i class="fa fa-fw fa-info-circle"></i><strong>Information</strong>
                       </h3>
                       <div class="box-tools pull-right">
-                        <button class="btn btn-info btn-sm" ng-click="showInfo=!showInfo" data-widget="collapse">
+                        <button class="btn btn-info btn-sm" id="minimize_btn" data-widget="collapse">
                           <i class="fa fa-minus"></i>
                         </button>
-                        <button class="btn btn-info btn-sm" ng-click="showBoxInfo=false" data-widget="remove">
+                        <button class="btn btn-info btn-sm" id="close_btn" data-widget="remove">
                           <i class="fa fa-times"></i>
                         </button>
                       </div>
                     </div>
-                    <div class="box-body" ng-show="showInfo" style="font-size:1.2em;">
+                    <div class="box-body" id="minimize_div" style="font-size:1.2em;">
                       <center>
                         <table class="table table-hover" >
                           <tbody>
@@ -438,5 +438,17 @@ thisIsTitle
           }
         </script>
         <script src="<?php echo asset('js/jquery.js')?>"></script>
-  
+        <script> 
+        $(document).ready(function(){
+          $("#minimize_btn").click(function(){
+            $("#minimize_div").slideToggle(700);
+          });
+        });
+        $(document).ready(function(){
+          $("#close_btn").click(function(){
+            $("#minimize_div").slideToggle(300);
+            $("#close_div").fadeOut(300);
+          });
+        });
+        </script>
 @stop
