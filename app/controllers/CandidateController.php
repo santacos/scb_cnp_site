@@ -241,4 +241,24 @@ class CandidateController extends \BaseController {
 		return Response::json(array('success' => true));
 	}
 
+	public function postApply($id){
+		$application = new Application;
+		$application->requisition_id = $id;
+		$application->candidate_user_id = Auth::user()->user_id;
+		$application->application_current_status_id = 1;
+		$application->save();
+		$point = 0;
+		$questions = $application->requisition->question()->get();
+		$i=0;
+		foreach($questions as $question){
+			$i++;
+			$answer = $question->answer()->skip(Input::get('question_'.$i))->first();
+			$question->application()->attach($application->application_id, array('answer_id' => $answer->answer_id ));
+			$point += $answer->point;
+		}
+		$application->question_point = $point;
+		$application->save();
+		$questions = Requisition::find($id)->question()->get();
+		return View::make('user.jobDetail',compact('questions'))->with('requisition',Requisition::find($id))->with('success',true);
+	}
 }

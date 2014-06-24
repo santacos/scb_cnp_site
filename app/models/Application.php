@@ -35,7 +35,7 @@
 		}
 
 		public function question(){
-			return $this->belongsToMany('Question')->withPivot('answer_id');
+			return $this->belongsToMany('Question','application_question_answers')->withPivot('answer_id');
 		}
 
 		public function requisition(){

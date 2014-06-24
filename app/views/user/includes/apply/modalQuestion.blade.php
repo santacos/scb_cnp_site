@@ -11,6 +11,7 @@
 
                     <hr style="margin-top:5px;">
                 </div>
+            {{ Form::open(array('url' => 'cd/apply/' . $requisition->requisition_id, 'method' => 'POST')) }}
                 <div class="modal-body" >
                 	<div class="well" style="padding-bottom:0px;">
 	                   	<div class="row">
@@ -45,12 +46,12 @@
 			                   			<div class="col-md-offset-1">
 			                   				<?php $j=0; ?>
 			                   				@foreach($question->answer()->get() as $answer)
-			                   					<?php $j++; ?>
 												<div class="radio">
 													<label>
 														<input type="radio" name="question_{{ $i }}" value="{{ $j }}">
 														{{ $answer->name }} </label> ({{ $answer->point }})
 												</div>
+			                   					<?php $j++; ?>
 											@endforeach
 										</div>
 									</div>
@@ -65,9 +66,19 @@
                     <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
                     <!-- <button type="button" class="btn btn-success">Apply</button> -->
                 	
-                	<a href="#modalApplySuccess" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-success">Apply</a>
+                	<input type="submit" value="Apply" class="btn btn-success"/>
                 </div>
+            {{ Form::close() }}
             </div>
         </div>
     </div>
+    <a id="successs" style="display:none;" href="#modalApplySuccess" data-toggle="modal" data-dismiss="modal" type="button" class="btn btn-success">Apply</a>
+    <script>
+	    function successs(){
+			document.getElementById("successs").click();
+		}
+		@if(isset($success))
+		setTimeout(successs,1);
+		@endif
+	</script>
 <!--end Modal HTML
