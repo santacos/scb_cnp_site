@@ -83,7 +83,7 @@ thisIsTitle
 
     <div ng-app="feedApp">
       <div ng-controller="feedCtrl">
-        TRY: @{{cos}}
+        
         <div class="box box-info">
           <div class="box-header">
             <div class="box-title" style="font-size:2.5em;">
