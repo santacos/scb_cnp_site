@@ -93,6 +93,8 @@ class ApplicationRestController extends \BaseController {
             $GLOBALS['score'] = trim(Input::get( 'score' ));//มากกว่าน้อยกว่าระหว่าง
             $GLOBALS['score1'] = trim(Input::get( 'score1' ));
             $GLOBALS['score2'] = trim(Input::get( 'score2' ));
+
+            $GLOBALS['resume'] = trim(Input::get( 'resume' ));
             $app=$app->whereHas('candidate',function($q){
                 
                 $q->whereHas('education',function($r){
@@ -241,6 +243,20 @@ class ApplicationRestController extends \BaseController {
                                        }
                                  }
                             }
+                  if( $GLOBALS['resume']!='')
+                            {
+                                if( $GLOBALS['resume']!='')
+                                   { 
+                                         $searchTerms = explode(' ', $GLOBALS['resume']);
+                                
+                                         $GLOBALS['searchTerms'] = $searchTerms;
+                                        $q->orWhere(function($query)
+                                                {
+                                                     foreach($GLOBALS['searchTerms'] as $term)
+                                                     {$query->orWhere('text_cv', 'LIKE', '%'.  $term .'%'); }
+                                                });
+                                 }
+                            }            
             });     
                    $app=$app->get();
                     $return = Datatable::collection($app)

@@ -126,7 +126,12 @@ thisIsTitle
                                        <input ng-show="score==='0'||score==1||score==2"name="score1" type="number" min=0 max=1000 class="form-control" value="{{isset($input['score1'])?$input['score1']:''}}">
                                        <input ng-show="score==2"name="score2" type="number" min=0 max=1000 class="form-control" value="{{isset($input['score2'])?$input['score2']:''}}">
                                       <br>
-                                    
+                                      <!-- reseume -->
+                                       <br>
+                                    {{ Form::label('resume','Resume : ')}}
+                                    <br>
+                                      {{ Form::text('resume', isset($input['resume'])?$input['resume']:'', array('class' => 'form-control','placeholder'=>'search in resume','style'=>'font-size:1.1em;')) }}
+                                   <br>
           
                                    <div class="row">
                                         <div class="col col-md-1">

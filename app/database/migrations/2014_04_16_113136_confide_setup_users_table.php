@@ -188,6 +188,7 @@ class ConfideSetupUsersTable extends Migration {
             $table->string('filepath_profile_picture',500)->nullable()->default(NULL);
             $table->string('filepath_video',500)->nullable()->default(NULL);
             $table->string('filepath_cv',500)->nullable()->default(NULL);
+            $table->string('text_cv',5000)->nullable()->default(NULL);
             $table->primary('user_id');
             $table->timestamps();
         });
