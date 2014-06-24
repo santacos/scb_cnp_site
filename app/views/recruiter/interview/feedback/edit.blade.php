@@ -15,6 +15,8 @@ thisIsTitle
           //$scope.result=0;
           $scope.showGreen=false;
           $scope.color='';
+          $scope.showInfo=true;
+          $scope.showBoxInfo=true;
           $scope.setColor = function(){
             if($scope.result==1){
               $scope.color='blue';
@@ -62,7 +64,7 @@ thisIsTitle
     <div ng-app="feedApp">
       <div ng-controller="feedCtrl">
         
-        <div class="box box-info">
+        <div class="box box-info" >
           <div class="box-header">
             <div class="box-title" style="font-size:2.5em;">
               Interview feedback <i class="fa fa-fw fa-comments-o"></i><br>
@@ -71,25 +73,25 @@ thisIsTitle
             <hr>
           </div>
          
-          <div class="box-body" style="border-color:#00c0ef;">
+          <div class="box-body" style="border-color:#00c0ef;" >
             <div class="row">
              
               <div class="col col-md-12">
-                <div class="box box-solid box-info">
+                <div class="box box-solid box-info" ng-show="showBoxInfo">
                     <div class="box-header">
                       <h3 class="box-title">
                         <i class="fa fa-fw fa-info-circle"></i><strong>Information</strong>
                       </h3>
                       <div class="box-tools pull-right">
-                        <button class="btn btn-info btn-sm" data-widget="collapse">
+                        <button class="btn btn-info btn-sm" ng-click="showInfo=!showInfo" data-widget="collapse">
                           <i class="fa fa-minus"></i>
                         </button>
-                        <button class="btn btn-info btn-sm" data-widget="remove">
+                        <button class="btn btn-info btn-sm" ng-click="showBoxInfo=false" data-widget="remove">
                           <i class="fa fa-times"></i>
                         </button>
                       </div>
                     </div>
-                    <div class="box-body" style="font-size:1.2em;">
+                    <div class="box-body" ng-show="showInfo" style="font-size:1.2em;">
                       <center>
                         <table class="table table-hover" >
                           <tbody>
