@@ -31,13 +31,13 @@
 				<section class="content">
 
 					<div class="row">
-						<div class="col-md-3">
-							<div class="box box-primary">
+					<!--div class="col-md-3">
+							<!-- <div class="box box-primary">
 								<div class="box-header">
 									<h4 class="box-title">Draggable Events</h4>
 								</div>
 								<div class="box-body">
-									<!-- the events -->
+									<!-- the events 
 									<div id='external-events'>
 										<div class='external-event bg-green'>
 											Lunch
@@ -59,8 +59,8 @@
 											<label for='drop-remove'>remove after drop</label>
 										</p>
 									</div>
-								</div><!-- /.box-body -->
-							</div><!-- /. box -->
+								</div><!-- /.box-body 
+							</div><!-- /. box
 							<div class="box box-primary">
 								<div class="box-header">
 									<h3 class="box-title">Create Event</h3>
@@ -99,15 +99,15 @@
 												<a class="text-purple" href="#"><i class="fa fa-square"></i> Purple</a>
 											</li>
 										</ul>
-									</div><!-- /btn-group -->
+									</div><!-- /btn-group
 									<div class="input-group">
 										<input id="new-event" type="text" class="form-control" placeholder="Event Title">
 										<div class="input-group-btn">
 											<button id="add-new-event" type="button" class="btn btn-default btn-flat">
 												Add
 											</button>
-										</div><!-- /btn-group -->
-									</div><!-- /input-group -->
+										</div><!-- /btn-group
+									</div><!-- /input-group
 								</div>
 							</div>
 						</div><!-- /.col -->
@@ -176,48 +176,30 @@
 						day : 'day'
 					},
 					//Random default events
-					events : [{
-						title : 'All Day Event',
-						start : new Date(y, m, 1),
-						backgroundColor : "#f56954", //red
-						borderColor : "#f56954" //red
-					}, {
-						title : 'Long Event',
-						start : new Date(y, m, d - 5),
-						end : new Date(y, m, d - 2),
-						backgroundColor : "#f39c12", //yellow
-						borderColor : "#f39c12" //yellow
-					}, {
-						title : 'Meeting',
-						start : new Date(y, m, d, 10, 30),
-						allDay : false,
-						backgroundColor : "#0073b7", //Blue
-						borderColor : "#0073b7" //Blue
-					}, {
+					events : [/*{
 						title : 'Lunch',
 						start : new Date(y, m, d, 12, 0),
 						end : new Date(y, m, d, 14, 0),
 						allDay : false,
+						url : 'http://google.com/',
 						backgroundColor : "#00c0ef", //Info (aqua)
 						borderColor : "#00c0ef" //Info (aqua)
-					}, {
-						title : 'Birthday Party',
-						start : new Date(y, m, d + 1, 19, 0),
-						end : new Date(y, m, d + 1, 22, 30),
-						allDay : false,
-						backgroundColor : "#00a65a", //Success (green)
-						borderColor : "#00a65a" //Success (green)
-					}, {
-						title : 'Click for Google',
-						start : new Date(y, m, 28),
-						end : new Date(y, m, 29),
-						url : 'http://google.com/',
-						backgroundColor : "#3c8dbc", //Primary (light-blue)
-						borderColor : "#3c8dbc" //Primary (light-blue)
-					}],
-					editable : true,
-					droppable : true, // this allows things to be dropped onto the calendar !!!
-					drop : function(date, allDay) {// this function is called when something is dropped
+					}*/{}
+					@foreach($events as $event)
+						,{
+							title : '{{ "Interview #" . $event->visit_number . " : " . $event->application->candidate->user->first }}',
+							start : '{{ Carbon::createFromFormat("Y-m-d H:i:s", $event->datetime) }}',
+							end : '{{ Carbon::createFromFormat("Y-m-d H:i:s", $event->datetime)->addMinutes(30) }}',
+							allDay : false,
+							url : 'xx',
+							backgroundColor : "#00c0ef", //Info (aqua)
+							borderColor : "#00c0ef" //Info (aqua)
+						}
+					@endforeach
+					],
+					editable : false,
+					droppable : false, // this allows things to be dropped onto the calendar !!!
+					/*drop : function(date, allDay) {// this function is called when something is dropped
 
 						// retrieve the dropped element's stored Event Object
 						var originalEventObject = $(this).data('eventObject');
@@ -241,10 +223,16 @@
 							$(this).remove();
 						}
 
-					}
-				});
+					}*/
+					minTime : "06:00:00",
+					maxTime : "20:00:00",
+					hiddenDays : [0,6],
+					eventMouseover : function(event, jsEvent, view){
+						
+					},
+				}).fullCalendar( 'changeView', 'agendaWeek' );
 
-				/* ADDING EVENTS */
+				/*/* ADDING EVENTS 
 				var currColor = "#f56954";
 				//Red by default
 				//Color chooser button
@@ -282,7 +270,7 @@
 
 					//Remove event from text input
 					$("#new-event").val("");
-				});
+				});*/
 			});
 		</script>
 

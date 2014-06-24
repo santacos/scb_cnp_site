@@ -138,6 +138,11 @@
 			<a href="{{ URL::to('widgets') }}"> <i class="fa fa-fw fa-save"></i><span>  Saved Candidate</span>  </a>
 		
 		</li>
+		<li> 
+		
+			<a href="{{ URL::to('calendar-controller') }}"> <i class="fa fa-fw fa-calendar"></i><span>  Calendar</span>  </a>
+		
+		</li>
 		
 	</ul>
 </section>

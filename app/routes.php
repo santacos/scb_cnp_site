@@ -135,6 +135,7 @@ Route::get('calendar', function()
 {
 	return View::make('admin.layouts.calendar');
 });
+Route::resource('calendar-controller','CalendarController');
 Route::get('buttons', function()
 {
 	return View::make('admin.layouts.ui.buttons');
