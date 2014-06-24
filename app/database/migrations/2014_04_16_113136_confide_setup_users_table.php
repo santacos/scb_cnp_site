@@ -482,6 +482,7 @@ class ConfideSetupUsersTable extends Migration {
             $table->integer('monthly_salary')->nullable()->default(NULL);
             $table->date('time_period_start')->nullable()->default(NULL);
             $table->date('time_period_end')->nullable()->default(NULL);
+            $table->unsignedInteger('year_experience')->nullable()->default(NULL);
             $table->boolean('is_present')->nullable()->default(NULL);
             $table->string('job_achieve',200)->nullable()->default(NULL);
             $table->string('reason_leave',100)->nullable()->default(NULL);
