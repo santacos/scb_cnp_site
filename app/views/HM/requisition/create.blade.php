@@ -205,7 +205,7 @@ HM-create-requisition
                                                 
                                         <div class="form-group">
                                             {{ Form::label('year_of_experience', 'Years of experience :') }}
-                                            {{ Form::input('number','year_of_experience', Input::old('qualification'), array('min'=>'0','max'=>'100','placeholder'=>'0','class' => 'form-control','style'=>'width:300px;','ng-change'=>'checkProgress()','ng-model'=>'year_of_experience', 'required')) }}
+                                            {{ Form::input('number','year_of_experience', Input::old('year_of_experience'), array('min'=>'0','max'=>'100','placeholder'=>'0','class' => 'form-control','style'=>'width:300px;','ng-change'=>'checkProgress()','ng-model'=>'year_of_experience', 'required')) }}
                                         </div>
                                     </div>
                                 </div>
