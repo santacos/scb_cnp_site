@@ -29,31 +29,28 @@ Route::get('testtest',function(){
 
 // Candidate
 
-Route::get('cd/profile',function(){
-    return View::make('user.profile');
-});
+// Route::get('cd/profile',function(){
+//     return View::make('user.profile');
+// });
 
-Route::get('cd/edit-profile',function(){
-    return View::make('user.editProfile');
-});
 
 // Route::get('cd/jobstatus',function(){
 //     return View::make('user.jobStatus');
 // });
 
-Route::get('cd/jobfollow',function(){
-    return View::make('user.jobFollow');
-});
+// Route::get('cd/jobfollow',function(){
+//     return View::make('user.jobFollow');
+// });
 
-Route::get('cd/jobrecommend',function(){
-    return View::make('user.jobRecommend');
-});
-Route::get('cd/jobcart',function(){
-    return View::make('user.jobCart');
-});
-Route::get('cd/searchjob',function(){
-    return View::make('user.searchJob');
-});
+// Route::get('cd/jobrecommend',function(){
+//     return View::make('user.jobRecommend');
+// });
+// Route::get('cd/jobcart',function(){
+//     return View::make('user.jobCart');
+// });
+// Route::get('cd/searchjob',function(){
+//     return View::make('user.searchJob');
+// });
 
 Route::resource('cd', 'CandidateController', ['except' => ['show']]);
 Route::controller('cd', 'CandidateController');
@@ -263,6 +260,7 @@ Route::get('recruiter-interview-confirm-addInterviewer', function(){
     return View::make('recruiter.interview.confirm.addInterviewer');
 });
 Route::resource('recruiter-interview-feedback', 'RecruiterInterviewFeedbackController');
+Route::controller('recruiter-interview-feedback', 'RecruiterInterviewFeedbackController');
 Route::resource('recruiter-prepare-package', 'RecruiterPackageController');
 Route::resource('recruiter-offer-package', 'RecruiterOfferPackageController');
 Route::resource('recruiter-sign', 'RecruiterSignController');
