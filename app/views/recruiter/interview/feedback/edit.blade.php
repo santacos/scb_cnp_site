@@ -118,7 +118,7 @@ thisIsTitle
                               <div class="col col-md-2">
                                 <strong>Name : </strong>
                               </div>
-                              <div class="col col-md-8">COS COSCOSCOS</div>
+                              <div class="col col-md-8">{{ $application->requisition->employee->first }} <span style="visibility:hidden;">.</span> {{ $application->requisition->employee->last }}</div>
                             </div>
                             <div class="row">
                               <div class="col col-md-2">
@@ -131,7 +131,7 @@ thisIsTitle
                                 </div> -->
                               </div>
                               <div class="col col-md-8">
-                                <i class="fa fa-fw fa-phone"></i>02-838383838
+                                <i class="fa fa-fw fa-phone"></i>{{ $application->requisition->employee->contact_number }}
                               </div>
                             </div>
                             <br>
@@ -156,7 +156,7 @@ thisIsTitle
                               <div class="col col-md-2 col-md-offset-1">
                                 <strong>Name : </strong>
                               </div>
-                              <div class="col col-md-8">COS COSCOSCOS</div>
+                              <div class="col col-md-8">{{ $application->candidate->user->first }} <span style="visibility:hidden;">.</span> {{ $application->candidate->user->last }}</div>
                             </div>
                             <div class="row">
                               <div class="col col-md-2 col-md-offset-1">
@@ -168,13 +168,13 @@ thisIsTitle
 
                                 </div> -->
                               </div>
-                              <div class="col col-md-8"><i class="fa fa-fw fa-phone"></i>02-838383838</div>
+                              <div class="col col-md-8"><i class="fa fa-fw fa-phone"></i>{{ $application->candidate->user->contact_number }}</div>
                             </div>
                             <div class="row">
                               <div class="col col-md-2 col-md-offset-1">
                                 <strong>Email : </strong>
                               </div>
-                              <div class="col col-md-8">santa@hotmail.com</div>
+                              <div class="col col-md-8">{{ $application->candidate->user->email }}</div>
                             </div>
                           </div>
                         </div>
