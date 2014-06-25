@@ -13,14 +13,107 @@ SCB Recruitment-Home
 "header header-two"
 @stop
 
+@section('libs')
+<script type="text/javascript">
+var app = angular.module('app',[]);
+app.controller('appCtrl',['$scope', '$http',
+	function ($scope, $http) {
+		$scope.color='rgba(225, 225, 225, 1)';
+		$scope.contact=true;
+		$scope.Experience=true;
+		$scope.skill=true;
+		$scope.education=true;
+		$scope.award=true;
+		$scope.certificate=true;
+		$scope.setShow=function(x){
+			if(x==1){
+				$scope.contact=true;
+				$scope.Experience=true;
+				$scope.skill=true;
+				$scope.education=true;
+				$scope.award=true;
+				$scope.certificate=true;
+
+				$scope.color='rgba(225, 225, 225, 1)';
+			}
+			else if(x==2){
+				$scope.contact=true;
+				$scope.Experience=false;
+				$scope.skill=false;
+				$scope.education=false;
+				$scope.award=false;
+				$scope.certificate=false;
+				$scope.color='rgba(225, 225, 225, 1)';
+			}
+			else if(x==3){
+				$scope.contact=false;
+				$scope.Experience=true;
+				$scope.skill=false;
+				$scope.education=false;
+				$scope.award=false;
+				$scope.certificate=false;
+
+				$scope.color='rgba(66,139,202,1)';
+			}
+			else if(x==4){
+				$scope.contact=false;
+				$scope.Experience=false;
+				$scope.skill=true;
+				$scope.education=false;
+				$scope.award=false;
+				$scope.certificate=false;
+
+
+				$scope.color='rgba(0,152,202,1)';
+			}
+			else if(x==5){
+				$scope.contact=false;
+				$scope.Experience=false;
+				$scope.skill=false;
+				$scope.education=true;
+				$scope.award=false;
+				$scope.certificate=false;
+
+
+				$scope.color='rgba(115,141,0,1)';
+			}
+			else if(x==6){
+				$scope.contact=false;
+				$scope.Experience=false;
+				$scope.skill=false;
+				$scope.education=false;
+				$scope.award=true;
+				$scope.certificate=false;
+
+
+				$scope.color='rgba(248,148,6,1)';
+			}
+			else if(x==7){
+				$scope.contact=false;
+				$scope.Experience=false;
+				$scope.skill=false;
+				$scope.education=false;
+				$scope.award=false;
+				$scope.certificate=true;
+
+				$scope.color='rgba(193,8,65,1)';
+			}
+		}
+        }//before end controller
+
+
+        ]);//end controller
+
+</script>
+@stop
+
 
 
 @section('content')
 
   
-    <div class="row">
+    <div class="row" ng-app="app" ng-controller="appCtrl">
      
-
 	  <!--sidebar-->
 	   	@include('user.includes.sidebar')
 	  <!-- .end sidebar -->
@@ -60,6 +153,13 @@ SCB Recruitment-Home
 					  	<div class="col col-md-7">
 					  		<table class="table text-left" style="font-size:1.1em;">
 							  <tbody>
+							  	<tr>
+				                  <td><strong>Thai saluation:</strong>
+                  				  <td>{{$candidate->user()->first()->thai_saluation}}</td>
+				                  <td><strong>English saluation:</strong>
+				                  <td>{{$candidate->user()->first()->eng_saluation}}</td>
+				                
+				                </tr>
 								<tr>
 								  <td><strong>Firstname:</strong>
 								  <td>{{$candidate->user()->first()->first}}</td>
@@ -164,66 +264,77 @@ SCB Recruitment-Home
 					  	<!--end modal zone-->
 				  	</div>
 				  	
-				  	<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus reprehenderit ad atque cum est. Commodi consequatur soluta officiis veniam nobis corrupti tenetur dolorem reprehenderit sunt vitae iure suscipit adipisci explicabo qui facere! Ea dolore quas maxime facere tenetur illum quibusdam sapiente dolorem nesciunt laudantium necessitatibus accusamus ab libero vel odio.</p>
-				  	 --><!--end personal detail-->
+				  	<div class="well" style="padding-bottom:2px;" ng-style="{'background-color':color}">
+				  	<!-- Nav tabs -->
+					<ul class="nav nav-tabs">
+					  <li ng-click="setShow(1)" class="active"><a href="#All" data-toggle="tab"  style="font-size:1em;">All</a></li>
+					  <li ng-click="setShow(2)"><a href="#Contact" data-toggle="tab" style="font-size:1em;">Contact information</a></li>
+					  <li ng-click="setShow(3)"><a href="#Experience" data-toggle="tab" style="font-size:1em;">Experience</a></li>
+					  <li ng-click="setShow(4)"><a href="#Skill" data-toggle="tab" style="font-size:1em;">Skill</a></li>
+					  <li ng-click="setShow(5)"><a href="#Education" data-toggle="tab" style="font-size:1em;">Education</a></li>
+					  <li ng-click="setShow(6)"><a href="#Award" data-toggle="tab" style="font-size:1em;">Award</a></li>
+					  <li ng-click="setShow(7)"><a href="#Certicate" data-toggle="tab" style="font-size:1em;">Certicate</a></li>
+					</ul>
 
-
+					<!-- Tab panes -->
+					<div class="tab-content">
+					  <!-- <div class="tab-pane active" id="All">...</div>
+					  <div class="tab-pane" id="Experience">...</div>
+					  <div class="tab-pane" id="Skill">...</div>
+					  <div class="tab-pane" id="Education">...</div>
+					  <div class="tab-pane" id="Award">...</div>
+					  <div class="tab-pane" id="Certicate">...</div> -->
+					</div>
+				</div>
 				  	<!--first row for box-->
 				  	<div class="row">
-
-				  		<!-- <div class="col col-md-6">
-				  			<div class="content-block bottom-padding frame frame-shadow-curved">
-				  				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus reprehenderit ad atque cum est. Commodi consequatur soluta officiis veniam nobis corrupti tenetur dolorem reprehenderit sunt vitae iure suscipit adipisci explicabo qui facere! Ea dolore quas maxime facere tenetur illum quibusdam sapiente dolorem nesciunt laudantium necessitatibus accusamus ab libero vel odio.</p>
-				  	
-				  			</div>
-				  		</div> -->
 				  		
 				  		 <!--contact information-->
-                                <div class="col col-md-12">
-                                    <div class="panel panel-default frame frame-shadow-curved">
-                                        <div class="panel-heading"  >
-                                            <h3 class="panel-title"><strong>Contact information</strong></h3>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col col-md-12">
-                                                    <div class="content-block frame border-radius" style="padding:5px;">
-                                                        <!-- <div class="row">
-                                                            <div class="col col-md-6">
-                                                                <p><strong>Job title :</strong>Programmer
-                                                                <br><strong>Time period :</strong>2009 - 2011
-                                                                </p>
-                                                            </div>
-                                                            <div class="col col-md-6">
-                                                                <strong>Company name :</strong>Lotuss
-                                                                <br><strong>Location :</strong>Bangkok
-                                                            </div>
-                                                        </div> -->
-                                                        <div class="row">
-                                                            <div class="col col-md-6">
-                                                                <strong>Email :</strong> {{$candidate->user->email}}<br>
-                                                                <strong>Contact Number :</strong> {{$candidate->user->contact_number}}<br>
-                                                                <!-- <strong>Telephone(Home) :</strong> 029999999<br> -->
-                                                            </div>
-                                                            <div class="col col-md-6">
-                                                                <strong>Current Living Location :</strong>{{$candidate->current_living_location}}<br>
-                                                                <strong>Country :</strong> {{$candidate->country}}<br>
-                                                                <strong>City :</strong> {{$candidate->city}}<br>
-                                                                <strong>Zip/Postal Code :</strong> {{$candidate->zip_code}} <br>
-                                                            </div>
-                                                        </div>
-                                                        
+                        <div ng-show="contact" class="col col-md-12">
+                            <div class="panel panel-default frame frame-shadow-curved">
+                                <div class="panel-heading"  >
+                                    <h3 class="panel-title"><strong>Contact information</strong></h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col col-md-12">
+                                            <div class="content-block frame border-radius" style="padding:5px;">
+                                                <!-- <div class="row">
+                                                    <div class="col col-md-6">
+                                                        <p><strong>Job title :</strong>Programmer
+                                                        <br><strong>Time period :</strong>2009 - 2011
+                                                        </p>
+                                                    </div>
+                                                    <div class="col col-md-6">
+                                                        <strong>Company name :</strong>Lotuss
+                                                        <br><strong>Location :</strong>Bangkok
+                                                    </div>
+                                                </div> -->
+                                                <div class="row">
+                                                    <div class="col col-md-6">
+                                                        <strong>Email :</strong> {{$candidate->user->email}}<br>
+                                                        <strong>Contact Number :</strong> {{$candidate->user->contact_number}}<br>
+                                                        <!-- <strong>Telephone(Home) :</strong> 029999999<br> -->
+                                                    </div>
+                                                    <div class="col col-md-6">
+                                                        <strong>Current Living Location :</strong>{{$candidate->current_living_location}}<br>
+                                                        <strong>Country :</strong> {{$candidate->country}}<br>
+                                                        <strong>City :</strong> {{$candidate->city}}<br>
+                                                        <strong>Zip/Postal Code :</strong> {{$candidate->zip_code}} <br>
                                                     </div>
                                                 </div>
                                                 
-                                            </div><!--end first row for Work Experience-->
-                                            
-                                            
+                                            </div>
                                         </div>
-                                    </div>
+                                        
+                                    </div><!--end first row for Work Experience-->
+                                    
+                                    
                                 </div>
+                            </div>
+                        </div>
 				  		<!--experience box-->
-				  		<div class="col col-md-12">
+				  		<div ng-show="Experience" class="col col-md-12">
 				  			<div class="panel panel-primary frame frame-shadow-curved">
 							  <div class="panel-heading"  >
 								<h3 class="panel-title">Work Experience</h3>
@@ -295,7 +406,7 @@ SCB Recruitment-Home
 				  		</div>
 
 				  		<!--skill-->
-				  		<div class="col col-md-12">
+				  		<div ng-show="skill" class="col col-md-12">
 				  			<div class="panel panel-info frame frame-shadow-curved">
 							  <div class="panel-heading"  >
 								<h3 class="panel-title">Skill</h3>
@@ -333,7 +444,7 @@ SCB Recruitment-Home
 				  		</div>
 
 				  		<!--education-->
-				  		<div class="col col-md-12">
+				  		<div ng-show="education" class="col col-md-12">
 				  			<div class="panel panel-success  frame frame-shadow-curved " >
 							  <div class="panel-heading"  >
 								<h3 class="panel-title">Education</h3>
@@ -386,7 +497,7 @@ SCB Recruitment-Home
 				  		</div>
 
 				  		<!--award-->
-				  		<div class="col col-md-12">
+				  		<div ng-show="award" class="col col-md-12">
 				  			<div class="panel panel-warning  frame frame-shadow-curved">
 							  <div class="panel-heading"  >
 								<h3 class="panel-title">Award and Honors</h3>
@@ -425,7 +536,7 @@ SCB Recruitment-Home
 				  		</div>
 
 				  		<!--Professional certificate-->
-				  		<div class="col col-md-12">
+				  		<div ng-show="certificate" class="col col-md-12">
 				  			<div class="panel panel-danger frame frame-shadow-curved" >
 							  <div class="panel-heading"  >
 								<h3 class="panel-title">Professional certificate</h3>

@@ -64,7 +64,7 @@ Route::get('package/{id}',function($id){
 });
 
 Route::get('tryAngular',function(){
-	return View::make('angular.try8');
+	return View::make('NOTIFICATIONBLUE');
 });
 
 Route::get('showReq',function(){
