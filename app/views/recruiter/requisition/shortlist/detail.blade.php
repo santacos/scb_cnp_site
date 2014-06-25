@@ -212,4 +212,14 @@ thisIsTitle
                 </section><!-- /.content -->
 
             </div><!-- /.right-side -->
+    <script>
+        if(!window.locationbar.visible){
+            $(".left-side").remove();
+            $(".navbar").remove();
+            $(".header").remove();
+            $(".right-side").toggleClass(false);
+            $(".content").animate({opacity:'0'},0);
+            $(".content").animate({marginTop:'0px',opacity:'1'},1000);
+        }
+    </script>
 @stop
