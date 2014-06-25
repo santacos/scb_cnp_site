@@ -64,7 +64,7 @@ Route::get('package/{id}',function($id){
 });
 
 Route::get('tryAngular',function(){
-	return View::make('NOTIFICATIONBLUE');
+	return View::make('angular.try8');
 });
 
 Route::get('showReq',function(){
@@ -331,13 +331,12 @@ Route::get('linkedin/logout', 'LinkedinController@logout');
 // }));
 
 Route::get('analytics',function(){
-	$option = 0;
-	$value = 0;
-	for($i=1;$i<=7;$i++){
+	$param = '';
+	for($i=1;$i<=8;$i++){
 		if(Input::get('option'.$i) > 0){
-			$option = $i;
-			$value = Input::get('option'.$i);
-			break;
+			$param .= '&option'.$i.'='.Input::get('option'.$i);
+		}else{
+			$param .= '&option'.$i.'='.'0';
 		}
 	}
 	if(Input::get('mode') == 'requisition'){
@@ -345,11 +344,13 @@ Route::get('analytics',function(){
             ->addColumn( 
                 'Requisition ID',
                 'Job Title',
-                'Sign'
-                		)->setUrl(URL::to('analytics/requisition?'
-                              	.'option='.$option.'&'
-                              	.'value='.$value
-                              	))->render('datatable');
+                'Sign',
+                'SLA Start',
+                'SLA End',
+                'SLA',
+                'Exceed',
+                'Action'
+                		)->setUrl(URL::to('analytics/requisition?'.$param))->render('datatable');
     }else if(Input::get('mode') == 'application'){
 
     }
@@ -371,6 +372,125 @@ Route::get('analytics/requisition',function(){
             { 
             	$bin = sprintf( "%020d",  $model->total_number-$model->get_number);
                 return '<input type="hidden" value="'.$bin.'">' . $model->get_number . "/" . $model->total_number;
+            })
+	    ->addColumn('SLA Start',function($model)
+            { 
+            	$dec = $model->requisitionLog()->whereActionType(3)->whereSendNumber(2)->first();
+            	if(is_null($dec)){
+            		return '-';
+            	}
+            	$dec = $dec->action_datetime;
+            	return $dec;
+            	$bin = sprintf( "%020d",  $dec);
+                return '<input type="hidden" value="'.$bin.'">' . $dec;
+            })
+	    ->addColumn('SLA End',function($model)
+            { 
+            	$dec = $model->requisitionLog()->whereActionType(6)->whereSendNumber(1)->first();
+            	if(is_null($dec)){
+            		return '-';
+            	}
+            	$dec = $dec->action_datetime;
+            	return $dec;
+            	$bin = sprintf( "%020d",  $dec);
+                return '<input type="hidden" value="'.$bin.'">' . $dec;
+            })
+	    ->addColumn('SLA',function($model)
+            { 
+            	$totalSLA = $model->corporateTitle->group->total_SLA;
+            	$currSLA = $model->sla_in_hours;
+            	if(is_null($currSLA)){
+	                $start_timestamp = $model->requisitionLog()->whereActionType(3)->whereSendNumber(2)->first();
+	            	if(is_null($start_timestamp)){
+	            		return '-';
+	            	}
+	                $start_timestamp = Carbon::createFromFormat('Y-m-d H:i:s',$start_timestamp->action_datetime);
+	                $endtime = Carbon::now();
+					$sla_in_hours = $endtime->diffInHours($start_timestamp);
+					$end_timestamp = $start_timestamp->copy();
+		            $holidays = PublicHoliday::all();
+		            $i=0;
+		            for($i=0; $end_timestamp->diffInSeconds($endtime,false) >= 0; $i++){
+		                if($end_timestamp->toDateString() == $endtime->toDateString()){
+		                    break;
+		                }
+		                $end_timestamp->addDays(1);
+		                if($end_timestamp->isWeekend()){
+		                	$sla_in_hours -= 24;
+		                	$i--; 
+		                }else{
+		                    foreach($holidays as $holiday){
+		                        if($end_timestamp->toDateString() == $holiday->date){
+		                        	$sla_in_hours -= 24;
+		                            $i--;
+		                            break;
+		                        }
+		                    }
+		                }
+		            }
+		            $currSLA = $sla_in_hours;
+            	}
+            	$currSLA = intval($currSLA/24);
+            	if($currSLA == 0) $currSLA++;
+            	$day_left = $totalSLA-$currSLA;
+            	$bin = sprintf( "%020d",  $day_left);
+                return '<input id="table_row'.$model->requisition_id.'" type="hidden" value="'.$bin.'">' . $currSLA . "/" . $totalSLA
+	                .'<script>'
+	                .'var row = document.getElementById("table_row'.$model->requisition_id.'").parentNode.parentNode;'
+	                .'row.className = row.className+" ' . (($day_left+0.001)/($totalSLA+0.001) > 0.3?'':(($day_left+0.001)/($totalSLA+0.001) > 0?'warning':'danger')) . '";'
+	                .'</script>';
+            })
+	    ->addColumn('Exceed',function($model)
+            { 
+            	$totalSLA = $model->corporateTitle->group->total_SLA;
+            	$currSLA = $model->sla_in_hours;
+            	if(is_null($currSLA)){
+	                $start_timestamp = $model->requisitionLog()->whereActionType(3)->whereSendNumber(2)->first();
+	            	if(is_null($start_timestamp)){
+	            		return '-';
+	            	}
+	                $start_timestamp = Carbon::createFromFormat('Y-m-d H:i:s',$start_timestamp->action_datetime);
+	                $endtime = Carbon::now();
+					$sla_in_hours = $endtime->diffInHours($start_timestamp);
+					$end_timestamp = $start_timestamp->copy();
+		            $holidays = PublicHoliday::all();
+		            $i=0;
+		            for($i=0; $end_timestamp->diffInSeconds($endtime,false) >= 0; $i++){
+		                if($end_timestamp->toDateString() == $endtime->toDateString()){
+		                    break;
+		                }
+		                $end_timestamp->addDays(1);
+		                if($end_timestamp->isWeekend()){
+		                	$sla_in_hours -= 24;
+		                	$i--; 
+		                }else{
+		                    foreach($holidays as $holiday){
+		                        if($end_timestamp->toDateString() == $holiday->date){
+		                        	$sla_in_hours -= 24;
+		                            $i--;
+		                            break;
+		                        }
+		                    }
+		                }
+		            }
+		            $currSLA = $sla_in_hours;
+            	}
+            	$currSLA = intval($currSLA/24);
+            	if($currSLA == 0) $currSLA++;
+            	$day_left = $totalSLA-$currSLA;
+            	$bin = sprintf( "%020d",  $day_left);
+                return '<input type="hidden" value="'.$bin.'">' . '<span style="color:' . ($day_left<0?'red':'green') . ';">' . sprintf("%+d",$day_left) . '</span>';
+            })
+	    ->addColumn('Action',function($model)
+            { 
+            	return  '<div class="btn-group-vertical">
+            				<a href="' . URL::to('analytics?mode=application&option1=0&option2=0&option3=0&option4=0&option5=0&option6=0&option7=0&option8=' . $model->requisition_id).'" type="button" class="btn btn-sm btn-default">
+	                            Application Analytics
+	                        </a>
+	                        <a type="button" class="btn btn-sm btn-default" href="recruiter-shortlist/'.$model->requisition_id.'" type="button" class="btn btn-sm btn-default">
+	                            <i class="fa fa-fw fa-info-circle"></i>Detail
+	                        </a>
+	                    </div>';
             });
 	$return=$return->make();
     return $return;

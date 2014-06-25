@@ -34,11 +34,17 @@ thisIsTitle
                                 {{Form::open(array('url' => 'analytics', 'method' => 'get'))}}
                       <script>
                         function changeVal(x){
-                          for(var i=1;i<=7;i++){
+                          /*for(var i=1;i<=8;i++){
                             var e = document.getElementById('option'+i);
                             if(e != x){
                               e.value = 0;
                             }
+                          }*/
+                        }
+                        function resetVal(){
+                          for(var i=1;i<=8;i++){
+                            var e = document.getElementById('option'+i);
+                            e.value = 0;
                           }
                         }
                         function init(){
@@ -48,7 +54,7 @@ thisIsTitle
                           @else
                             0,
                           @endif
-                          @for($i=1;$i<=7;$i++)
+                          @for($i=1;$i<=8;$i++)
                             @if(isset($input['option'.$i]))
                               {{ $input['option'.$i] }},
                             @else
@@ -56,7 +62,7 @@ thisIsTitle
                             @endif
                           @endfor
                           0];
-                          for(var i=1;i<=7;i++){
+                          for(var i=1;i<=8;i++){
                             var e = document.getElementById('option'+i);
                             e.value = val[i];
                           }
@@ -80,6 +86,17 @@ thisIsTitle
                                 <option value="0">-- Not Used --</option>
                                 @foreach(Position::where('position_id','>',0)->get() as $key => $value )
                                 <option value="{{ $value->position_id }}">{{ $value->position_id.":".$value->job_title }}</option>
+                                @endforeach
+                              </select>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group">
+                              <p>By Requisition</p>
+                              <select id="option8" onchange='changeVal(this);' name="option8">
+                                <option value="0">-- Not Used --</option>
+                                @foreach(Requisition::where('requisition_id','>',0)->get() as $key => $value )
+                                <option value="{{ $value->requisition_id }}">{{ $value->requisition_id.":".$value->position->job_title }}</option>
                                 @endforeach
                               </select>
                             </div>
@@ -128,7 +145,9 @@ thisIsTitle
                               <p>By Recruiter</p>
                               <select id="option5" onchange='changeVal(this);' name="option5">
                                 <option value="0">-- Not Used --</option>
-                                <option value="1">-- Super Recruiter User --</option>
+                                @foreach(User::where('username','like','%recruiter%')->get() as $key => $value )
+                                <option value="{{ $value->user_id }}">{{ $value->first . " " . $value->last }}</option>
+                                @endforeach
                               </select>
                             </div>
                           </td>
@@ -160,10 +179,10 @@ thisIsTitle
   <div class="row">
     <div class="col col-md-1">
     </div>
-    <div class="col col-md-4">
+    <div class="col col-md-3">
     </div>
     <div class="col col-md-4">
-      <button class="btn btn-default " style="width:100%;" type="submit">Submit</button>
+      <button class="btn btn-default " style="width:50%;" type="button" onclick="resetVal();">Reset</button> <button class="btn btn-default " style="width:50%;" type="submit">Submit</button>
     </div>
   </div><!--end second row-->
 
