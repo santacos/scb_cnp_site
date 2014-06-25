@@ -493,7 +493,10 @@ class RequisitionRestController extends \BaseController {
                                         $feed = Application::where('application_current_status_id', '=', 4)->where('requisition_id','=',$model->requisition_id)->count();
                                        $prepare = Application::where('application_current_status_id', '=', 5)->where('requisition_id','=',$model->requisition_id)->count();
                                         $offer = Application::where('application_current_status_id', '=', 6)->where('requisition_id','=',$model->requisition_id)->count();
+                                       $basket = Application::where('application_current_status_id', '=', 1)->where('is_in_basket','=','1')->where('requisition_id','=',$model->requisition_id)->count();
+                                        $sent =  Application::where('application_current_status_id', '=', 2)->where('requisition_id','=',$model->requisition_id)->count();
                                        
+
                                         // return
                                         // '<a href="' .URL::to('recruiter-interview-confirm/' . $model->requisition_id).'"><button class="btn btn-sm btn-info">Interview Confirm ('.$confirm.')</button></a>'.'  '.  
                                         // '<a href="' .URL::to('recruiter-interview-feedback/' . $model->requisition_id).'"><button class="btn btn-danger btn-info">Interview Feedback ('.$feed.')</button></a>'.' '.
@@ -507,7 +510,10 @@ class RequisitionRestController extends \BaseController {
                                                     <a href="' .URL::to('recruiter-interview-feedback/' . $model->requisition_id).'" class="btn btn-sm btn-default">Interview Feedback ('.$feed.')</a>
                                                     <a href="' .URL::to('recruiter-prepare-package/' . $model->requisition_id).'" class="btn btn-sm btn-default">Prepare Package ('.$prepare.')</a>
                                                     <a href="' .URL::to('recruiter-offer-package/' . $model->requisition_id).'" class="btn btn-sm btn-default">Offer ('.$offer.')</a>
+                                                    <a href="' .URL::to('recruiter-shortlist-basket/' . $model->requisition_id).'" class="btn btn-sm btn-default" style="width:12em;">Basket ('.$basket.')</a>
+                                                    <a href="' .URL::to('recruiter-shortlist-log/' . $model->requisition_id).'" class="btn btn-sm btn-default" style="width:12em;">Shortlist Sent ('.$sent.')</a>
                                                 </div>
+                                                
                                         ';
                                     }
                                     else 
