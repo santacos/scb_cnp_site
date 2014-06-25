@@ -62,49 +62,61 @@ SCB Recruitment-Home
 							  <tbody>
 								<tr>
 								  <td><strong>Firstname:</strong>
-								  <td>Peepeepee</td>
+								  <td>{{$candidate->user()->first()->first}}</td>
 								  <td><strong>Lastname:</strong>
-								  <td>northnorthnorth</td>
+								  <td>{{$candidate->user()->first()->last}}</td>
 								
 								</tr>
 								<tr>
 								  <td><strong>ชื่อ: </strong>
-								  <td>พีพีพี</td>
+								  <td>{{$candidate->thai_firstname}}</td>
 								  <td><strong>นามสกุล: </strong></td>
-								  <td>นอร์ทนอร์ท</td>
+								  <td>{{$candidate->thai_lastname}}</td>
 								  
 								</tr>
 								<tr>
 								  <td><strong>Gender: </strong></td>
 								  <td>Male</td>
 								  <td><strong>Age: </strong></td>
-								  <td>25&nbsp;&nbsp;years</td>
+								  <td>	@if($candidate->birth_date!='' && $candidate->birth_date!=0)
+								  			{{Carbon::createFromFormat('Y-m-d',$candidate->birth_date)->diffInYears()}}
+								  		@endif
+								  		</td>
 								</tr>
 								<tr>
 								  <td><strong>Date of Birth :</strong></td>
-								  <td>12 July 1988</td>
+								  <td>@if($candidate->birth_date!='' && $candidate->birth_date!=0)
+								  			{{Carbon::createFromFormat('Y-m-d',$candidate->birth_date)->format('j F Y');}}
+								  		@endif
+								  	</td>
 								  <td><strong>Nationality : </strong></td>
-								  <td>Thai</td>
+								  <td>{{$candidate->nationality}}</td>
 								</tr>
 								<tr>
 								  <td><strong>Passport NO:</strong></td>
-								  <td>1100932419323</td>
+								  <td>{{$candidate->passport_number}}</td>
 								  <td><strong>ID Number :</strong></td>
-								  <td>1100932419323</td>
+								  <td>{{$candidate->idcard}}</td>
 								</tr>
 							  </tbody>
 							</table>
 							
 					  	</div>
+					  	<?php
+					  		if(file_exists($candidate->filepath_picture)||isset($candidate->filepath_picture))
+					  		{$picture = asset($candidate->filepath_picture);}
+					  		else
+					  		{$picture = asset('assets/img/avatar3.png');}
+						?>
 					  	<div class="col col-md-3 pull-left" style="padding-left:0px;">
 							<div class="col-md-12">
 								<div class="bs-docs-example-images">
-									<a class="img-thumbnail img-rounded lightbox" style="padding-bottom:1.3em;" rel="fancybox" href="{{asset('assets/img/avatar3.png')}}" >
-										<img src="{{asset('assets/img/avatar3.png')}}" alt="" title="">
-										<span class="bg-images">
-											<i class="fa fa-search"></i>
-										</span>
-									</a>
+									<a class="img-thumbnail img-rounded lightbox" style="padding-bottom:1.3em;" rel="fancybox" href="{{$picture}}" >
+											<img src="{{$picture}}" style="height: 223px; width: 223px;"> 
+											<span class="bg-images">
+												<i class="fa fa-search"></i>
+											</span>
+										</a>
 								</div>
 							</div>
 					  	</div>
@@ -166,7 +178,50 @@ SCB Recruitment-Home
 				  			</div>
 				  		</div> -->
 				  		
-
+				  		 <!--contact information-->
+                                <div class="col col-md-12">
+                                    <div class="panel panel-default frame frame-shadow-curved">
+                                        <div class="panel-heading"  >
+                                            <h3 class="panel-title"><strong>Contact information</strong></h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col col-md-12">
+                                                    <div class="content-block frame border-radius" style="padding:5px;">
+                                                        <!-- <div class="row">
+                                                            <div class="col col-md-6">
+                                                                <p><strong>Job title :</strong>Programmer
+                                                                <br><strong>Time period :</strong>2009 - 2011
+                                                                </p>
+                                                            </div>
+                                                            <div class="col col-md-6">
+                                                                <strong>Company name :</strong>Lotuss
+                                                                <br><strong>Location :</strong>Bangkok
+                                                            </div>
+                                                        </div> -->
+                                                        <div class="row">
+                                                            <div class="col col-md-6">
+                                                                <strong>Email :</strong> {{$candidate->user->email}}<br>
+                                                                <strong>Contact Number :</strong> {{$candidate->user->contact_number}}<br>
+                                                                <!-- <strong>Telephone(Home) :</strong> 029999999<br> -->
+                                                            </div>
+                                                            <div class="col col-md-6">
+                                                                <strong>Current Living Location :</strong>{{$candidate->current_living_location}}<br>
+                                                                <strong>Country :</strong> {{$candidate->country}}<br>
+                                                                <strong>City :</strong> {{$candidate->city}}<br>
+                                                                <strong>Zip/Postal Code :</strong> {{$candidate->zip_code}} <br>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                                
+                                            </div><!--end first row for Work Experience-->
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
 				  		<!--experience box-->
 				  		<div class="col col-md-12">
 				  			<div class="panel panel-primary frame frame-shadow-curved">
@@ -174,31 +229,43 @@ SCB Recruitment-Home
 								<h3 class="panel-title">Work Experience</h3>
 							  </div>
 							  <div class="panel-body">
+									@foreach($candidate->workExperience()->orderBy('time_period_start', 'ASC')->get() as $work_experience)
+										
 									<div class="row">
 							  			<div class="col col-md-12">
 											<div class="content-block frame border-radius" style="padding:5px;">
 												<div class="row">
 													<div class="col col-md-6">
-														<p><strong>Job title :</strong><!--edit-->Programmer
-														<br><strong>Time period</strong><!--edit-->2009 - 2011
+														<p><strong>Job title :</strong><!--edit-->{{$work_experience->position}}
+														<br><strong>Time period</strong><!--edit-->
+																@if($work_experience->time_period_start!='')
+																	{{$work_experience->time_period_start}} - {{$work_experience->time_period_end}}
+																	@endif
 														</p>
 													</div>
 													<div class="col col-md-6">
-														<strong>Company name :</strong><!--edit-->Lotuss
-														<br><strong>Location :</strong><!--edit-->Bangkok
+														<strong>Company name :</strong><!--edit-->{{$work_experience->company_name}}
+														<br><strong>Location :</strong><!--edit-->{{$work_experience->location}}
 													</div>
 												</div>
 												<div class="row">
 													<div class="col col-md-12">
 														<strong>Job Achievement(s) :</strong> 
+														{{$work_experience->job_achieve}}
 													</div>
 												</div>
-												
+												<div class="row">
+														<div class="col col-md-6">
+															<strong>Reasons for Leaving a Job : </strong> 
+															{{$work_experience->reason_leave}}
+														</div>
+												</div>
 											</div>
 										</div>
 										
 									</div><!--end first row for Work Experience-->
 									<br>
+									@endforeach
 									<div class="row">
 							  			<div class="col col-md-12">
 											<div class="content-block frame border-radius" style="padding:5px;">
@@ -235,18 +302,16 @@ SCB Recruitment-Home
 							  </div>
 							  <div class="panel-body">
 							  		<div class="row">
+							  			@foreach($candidate->skill()->get() as $skill)
 							  			<div class="col col-md-6">
 											<div class="content-block frame border-radius" style="padding:5px;">
-												<p><strong>Skill name : </strong><!--edit-->JAVA 
-												<br><strong>Skill branch : </strong><!--edit-->Programming language </p>
+												<p><strong>Skill name : </strong><!--edit-->{{$skill->name}} 
+													<br><strong>Skill branch : </strong><!--edit-->{{$skill->category->name}}
+													<br><strong>level : </strong><!--edit-->{{$skill->pivot->level}}  
+												</p>
 											</div>
 										</div>
-										<div class="col col-md-6">
-											<div class="content-block frame border-radius" style="padding:5px;">
-												<p><strong>Skill name : </strong><!--edit-->JAVA 
-												<br><strong>Skill branch : </strong><!--edit-->Programming language </p>
-											</div>
-										</div>
+										@endforeach
 									</div><!--end first row for skill-->
 									<br>
 									<div class="row">
@@ -277,22 +342,40 @@ SCB Recruitment-Home
 								<div class="row">
 						  			<div class="col col-md-12">
 										<div class="content-block frame border-radius" style="padding:5px;">
+											@foreach($candidate->Education()->orderBy('year_end', 'DESC')->orderBy('education_degree_id', 'DESC')->get() as $education)
+												
+											@if($education->year_start!='')
 											<div class="row">
 												<div class="col col-md-3">
-													<p><strong>2000 - 2004 </strong><!--edit-->
+													<p><strong>{{$education->year_start}} - {{$education->year_end}}</strong><!--edit-->
 													
 													</p>
 												</div>
 												<div class="col col-md-9">
-													<strong>Chulalongkorn university</strong><!--edit-->
-													<br><!--edit-->Degree : Bachelor
-													<br><!--edit-->Field of study : Faculty of Science and Technology
-													<br><!--edit-->Major : Information Technology
-													<br><!--edit-->GPA : 4.00
+													<strong>{{$education->school_name}}</strong><!--edit-->
+													<br><!--edit-->Degree : {{$education->educationDegree()->first()->name}}
+													<br><!--edit-->Field of study : {{$education->field_of_study}}
+													<br><!--edit-->Major : {{$education->major}}
+													<br><!--edit-->GPA : {{$education->GPA}}
 												</div>
 											</div>
-											
-											
+											@else
+													<div class="row">
+														<div class="col col-md-3">
+															<p><strong></strong><!--edit-->
+															
+															</p>
+														</div>
+														<div class="col col-md-9">
+															<strong>{{$education->school_name}}</strong><!--edit-->
+																<br><!--edit-->Degree : {{$education->educationDegree()->first()->name}}
+																<br><!--edit-->Field of study : {{$education->field_of_study}}
+																<br><!--edit-->Major : {{$education->major}}
+																<br><!--edit-->GPA : {{$education->GPA}}
+														</div>
+													</div>
+											@endif
+											@endforeach	
 										</div>
 									</div>
 										
@@ -310,26 +393,31 @@ SCB Recruitment-Home
 							  </div>
 							  <div class="panel-body">
 								<div class="row">
-						  			<div class="col col-md-12">
-										<div class="content-block frame border-radius" style="padding:5px;">
-											<div class="row">
-												<div class="col col-md-3">
-													<p><strong>June 2010 </strong><!--edit-->
-													
-													</p>
+						  			@if($candidate->award()->count()!=0)
+							  			<div class="col col-md-12">
+											<div class="content-block frame border-radius" style="padding:5px;">
+												@foreach($candidate->award()->orderBy('date_get', 'DESC')->get() as $award)
+												
+												<div class="row">
+													<div class="col col-md-3">
+														<p><strong>{{Carbon::createFromFormat('Y-m-d',$award->date_get)->format('F Y');}} </strong><!--edit-->
+														
+														</p>
+													</div>
+													<div class="col col-md-9">
+														<strong>{{$award->title}}</strong><!--edit-->
+														<br><!--edit-->By issuer : {{$award->issuer}}
+														<br><!--edit-->Date: {{Carbon::createFromFormat('Y-m-d',$award->date_get)->format('j F Y');}}
+														<br><!--edit-->Description : <p> {{$award->description}}</p>
+														
+													</div>
 												</div>
-												<div class="col col-md-9">
-													<strong>Award title</strong><!--edit-->
-													<br><!--edit-->By issuer
-													<br><!--edit-->Date: month,year
-													<br><!--edit-->Description : <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus reprehenderit ad</p>
-													
-												</div>
+												
+												@endforeach
 											</div>
-											
-											
 										</div>
-									</div>
+										@endif
+										
 										
 								</div><!--end first row for Award and Honors-->
 							  </div>
@@ -343,26 +431,29 @@ SCB Recruitment-Home
 								<h3 class="panel-title">Professional certificate</h3>
 							  </div>
 							  <div class="panel-body">
-								<div class="row">
-						  			<div class="col col-md-12">
-										<div class="content-block frame border-radius" style="padding:5px;">
-											<div class="row">
-												<div class="col col-md-3">
-													<p><strong>CPA certificate</strong><!--edit-->
+								@foreach($candidate->certificate()->orderBy('date_get', 'DESC')->get() as $certificate)
+									<div class="row">
+							  			<div class="col col-md-12">
+											<div class="content-block frame border-radius" style="padding:5px;">
+												<div class="row">
+													<div class="col col-md-3">
+														<p><strong>{{$certificate->name}}</strong><!--edit-->
+														
+														</p>
+													</div>
+													<div class="col col-md-9">
+														<p>{{$certificate->description}}</p>
 													
-													</p>
-												</div>
-												<div class="col col-md-9">
-													<p>the statutory title of qualified accountants in the United States who have passed the Uniform Certified Public Accountant Examination and have met additional state education and experience requirements for membership in their respective professional accounting bodies and certification as a CPA. Individuals who have</p>
-												
+													</div>
 												</div>
 											</div>
+
+
 										</div>
-
-
-									</div>
-										
-								</div><!--end first row for Professional certificate-->
+											
+									</div><!--end first row for Professional certificate-->
+									@endforeach
+									<!--end first row for Professional certificate-->
 								<div class="row">
 						  			<div class="col col-md-12">
 										<div class="content-block frame border-radius" style="padding:5px;">

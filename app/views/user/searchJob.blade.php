@@ -60,6 +60,7 @@ SCB Recruitment-Home
 				    </div>	
 			  	</header>
 
+			  	{{Form::open(array('url' => 'cd/searchjob', 'method' => 'get'))}}
 			<div class="content-block bottom-padding frame frame-shadow-curved" style="margin-bottom: 40px;">
 				<div class="tabs">
 				  <ul class="nav nav-tabs">
@@ -77,17 +78,9 @@ SCB Recruitment-Home
 							</div>
 							<div class="col col-md-4">
 								<strong>Department :</strong>
-								<select class="form-control" style="font-size:1.1em;">
-									<option value="" class="">Select Department</option>
-									<option value="0">President</option>
-								</select>
-							</div>
-							<div class="col col-md-4">
-								<strong>Job title :</strong>
-								<select class="form-control" style="font-size:1.1em;">
-									<option value="" class="">Select Job title</option>
-									<option value="0">President</option>
-								</select>
+								  {{ Former::select('department','')->addOption('Select Department')
+                           ->fromQuery(Dept::All(), 'name', 'department')->attributes(array('class'=>'form-control scrollable-menu')) }}  
+                               
 							</div>
 						</div>
 						<div class="row">
@@ -96,8 +89,8 @@ SCB Recruitment-Home
 							<div class="col col-md-8">
 								<form class="form" role="form">
 									<div class="form-group">
-									  	<label class="" for="exampleInputEmail2">Search keyword :</label>
-									  	<input type="email" style="font-size:1.1em;" class="form-control" id="exampleInputEmail2" placeholder="Enter keyword">
+										<label class="" for="exampleInputEmail2">Search keyword :</label>
+										{{ Form::text('search', $search, array('class' => 'form-control','placeholder'=>'Search Job','style'=>'font-size:1.1em;')) }}   
 									</div>
 								</form>
 							</div>
@@ -106,24 +99,17 @@ SCB Recruitment-Home
 					  
 					</div>
 					
-					<div class="tab-pane fade in" id="advancedsearch">
+					<!-- <div class="tab-pane fade in" id="advancedsearch">
 						 <div class="row">
 								<div class="col col-md-1">
 								</div>
 								<div class="col col-md-4">
 									<strong>Department :</strong>
-									<select class="form-control" style="font-size:1.1em;">
-										<option value="" class="">Select Department</option>
-										<option value="0">President</option>
-									</select>
+									{{ Former::select('department','')->addOption('Select Department')
+                           ->fromQuery(Dept::All(), 'name', 'department')->attributes(array('class'=>'form-control scrollable-menu')) }}  
+                               
 								</div>
-								<div class="col col-md-4">
-									<strong>Job title :</strong>
-									<select class="form-control" style="font-size:1.1em;">
-										<option value="" class="">Select Job title</option>
-										<option value="0">President</option>
-									</select>
-								</div>
+								
 							</div>
 							<div class="row">
 								<div class="col col-md-1">
@@ -131,17 +117,17 @@ SCB Recruitment-Home
 								<div class="col col-md-8">
 									<form class="form" role="form">
 										<div class="form-group">
-										  	<label class="" for="exampleInputEmail2">Search keyword :</label>
-										  	<input type="email" style="font-size:1.1em;" class="form-control" id="exampleInputEmail2" placeholder="Enter keyword">
+										  <label class="" for="exampleInputEmail2">Search keyword :</label>
+										   {{ Form::text('search', Input::old('search'), array('class' => 'form-control','placeholder'=>'Search Job','style'=>'font-size:1.1em;')) }}   
 										</div>
 									</form>
 								</div>
 							</div>
-						</div>
+						</div> -->
 				  </div><!--end tab content-->
 				</div>
 			</div>
-
+			{{Form::close()}}
 				<!-- <div class="content-block bottom-padding frame frame-shadow-curved" style="margin-bottom: 10px;">
 					
 					<h5><i class="fa fa-fw fa-plus-circle"></i>Add new following job</h5>
@@ -272,7 +258,7 @@ SCB Recruitment-Home
 						  <th style="width:20%;">Action</th>
 						</tr>
 					  </thead>
-					  <tbody  ng-repeat="friend in friends |filter:q ">
+					  <tbody  ng-repeat="requisition in requisitions  ">
 					  	
 							<tr ng-mouseover="show=true;" ng-mouseleave="show=false;" >
 							  	<td>
@@ -282,7 +268,7 @@ SCB Recruitment-Home
 									  
 									</div>
 								</td>
-							  	<td>@{{friend.name}}</td>
+							  	<td></td>
 							  	<td>Subtotal:</td>
 							  	<td>$1.00</td>
 							  	<td>Subtotal:</td>
@@ -348,8 +334,13 @@ SCB Recruitment-Home
 					  </tbody>
 					</table>
 			  	</div>
+			  	{{ $requisitions->appends(array('search' => isset($search)?$search:'','department'=>isset($department)?$department:''))->links() }}
 			  	<!--end table-->
-
+			  	@foreach($requisitions as $requisition)
+			  		<tr>
+							  <td>{{$requisition->requisition_id}}</td>
+					 </tr>
+			  	@endforeach
 			  	<!--list-->
 			  	<div ng-show="isList" class="table-box">
 					<table class="table table-bordered table-striped table-hover text-center" style="font-size:1.2em;">
