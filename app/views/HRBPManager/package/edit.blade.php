@@ -49,7 +49,7 @@ thisIsTitle
                               'Current Salary' => $application->current_salary ,
                               'Expected Salary' => $application->expected_salary ,
                               'Position Salary' => $application->position_salary ,
-                              'Cola' => $application->cola ,
+                              'Allowance' => $application->cola ,
                               'Final Salary' => $application->final_salary 
                                     );
                                   ?>
