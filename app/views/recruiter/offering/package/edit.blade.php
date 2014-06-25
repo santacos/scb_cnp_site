@@ -18,7 +18,7 @@ thisIsTitle
         </div>
         <div class="box-body">
           <div class="row">
-            <div class="col col-md-6">
+            <div class="col col-md-12">
                 <div class="panel panel-success">
                   <div class="panel-heading">
                     <h3 class="panel-title" style="font-size:1.2em;">
@@ -26,84 +26,89 @@ thisIsTitle
                     </h3>
                   </div>
                   <div class="panel-body">
-                    <ul class="list-group">
-                      
-                      <li class="list-group-item">
-                        <h4 class="list-group-item-heading text-muted"><strong>Candidate detail</strong></h4>
-                        <hr>
-                        <?php
-                            $age = '';
-                            $candidate = $application->candidate;
-                            if($candidate->birth_date!='' && $candidate->birth_date!=0){
-                              $age = Carbon::createFromFormat('Y-m-d',$candidate->birth_date)->diffInYears();
-                            }
-                              $display = array(
-                        'Application ID' => $application->application_id ,
-                        ''=>'',
-                        'Candidate name' => $application->candidate->user->first . " " . $application->candidate->user->last,
-                        'Tel' => $application->candidate->user->contact_number,
-                        'Address'=> $application->candidate->current_living_location,
-                        'Age'=> $age,
-                        'Current Salary' => $application->current_salary ,
-                        'Expected Salary' => $application->expected_salary ,
-                        'Position Salary' => $application->position_salary ,
-                        'Cola' => $application->cola ,
-                        'Final Salary' => $application->final_salary 
-                              );
-                            ?>
-                            <center>
-
-                              <table style="font-size:1.1em;width:90%;">
-                                <?php $i=0; $col=2?>
-                                @foreach($display as $key => $value)
-                                  <?php echo (($i%$col==0)?'<tr>':'');?>
-                                  <td><span style="10%"><strong>{{ $key }} {{ $key=='' ? '':':'}} </strong></span></td>
-                                  <td><span style="40%">{{ $value }}</span></td>
-                                  <?php echo (($i%$col==$col-1)?'</tr>':'');?>
-                                  <?php $i++; ?>
-                                @endforeach
-                              </table>
-
-                   <!--            <hr> -->
-
-                              <table class="table">
-                                <tr>
-                                  @if(count($evaluations) > 0)
-                                    @foreach($evaluations->first()->toArray() as $key => $value)
-                                      <th>{{ $key }}</th>
-                                    @endforeach
-                                    <th>Action</th>
-                                  @endif
-                                </tr>
-                                @if(count($evaluations) > 0)
-                                  @foreach($evaluations as $evaluation)
-                                    <tr>
-                                      @foreach($evaluation->toArray() as $key => $value)
-                                        <td>
-                                          {{ $value }}
-                                        </td>
-                                      @endforeach
-                                      <td>
-                                      <a href={{"recruiter-interview-confirm/" . $requisition->requisition_id}}>View(Not Finished Yet)</a>
-                                      </td>
-                                    </tr>
-                                  @endforeach
-                                @endif
-                              </table>
+                    <div class="row">
+                      <div class="col col-md-6">
+                        <div class="panel panel-success">
+                          <div class="panel-body">
+                            <h4 class="list-group-item-heading text-muted"><strong>Candidate detail</strong></h4>
                               <hr>
-                              <div class="row">
-                                <div class="col col-md-12">
-                                  <div class="col col-md-3"></div>
-                                  <div class="col col-md-6">
-                                    <a href="#" class="btn btn-default" style="width:100%;"> View detail</a>
-                                  </div>
-                                </div>
+                              <?php
+                                  $age = '';
+                                  $candidate = $application->candidate;
+                                  if($candidate->birth_date!='' && $candidate->birth_date!=0){
+                                    $age = Carbon::createFromFormat('Y-m-d',$candidate->birth_date)->diffInYears();
+                                  }
+                                    $display = array(
+                              'Application ID' => $application->application_id ,
+                              ''=>'',
+                              'Candidate name' => $application->candidate->user->first . " " . $application->candidate->user->last,
+                              'Tel' => $application->candidate->user->contact_number,
+                              'Address'=> $application->candidate->current_living_location,
+                              'Age'=> $age,
+                              'Current Salary' => $application->current_salary ,
+                              'Expected Salary' => $application->expected_salary ,
+                              'Position Salary' => $application->position_salary ,
+                              'Cola' => $application->cola ,
+                              'Final Salary' => $application->final_salary 
+                                    );
+                                  ?>
+                                  <center>
 
-                              </div>
-                      </li>
-                      <li class="list-group-item">
-                        <h4 class="list-group-item-heading text-muted"><strong>Requisition detail</strong></h4>
-                        <hr>
+                                    <table style="font-size:1.1em;width:90%;">
+                                      <?php $i=0; $col=2?>
+                                      @foreach($display as $key => $value)
+                                        <tr>
+                                        <td><span style="10%"><strong>{{ $key }} {{ $key=='' ? '':':'}} </strong></span></td>
+                                        <td><span style="40%">{{ $value }}</span></td>
+                                       </tr>
+                                        <?php $i++; ?>
+                                      @endforeach
+                                    </table>
+
+                         <!--            <hr> -->
+
+                                    <table class="table">
+                                      <tr>
+                                        @if(count($evaluations) > 0)
+                                          @foreach($evaluations->first()->toArray() as $key => $value)
+                                            <th>{{ $key }}</th>
+                                          @endforeach
+                                          <th>Action</th>
+                                        @endif
+                                      </tr>
+                                      @if(count($evaluations) > 0)
+                                        @foreach($evaluations as $evaluation)
+                                          <tr>
+                                            @foreach($evaluation->toArray() as $key => $value)
+                                              <td>
+                                                {{ $value }}
+                                              </td>
+                                            @endforeach
+                                            <td>
+                                            <a href={{"recruiter-interview-confirm/" . $requisition->requisition_id}}>View(Not Finished Yet)</a>
+                                            </td>
+                                          </tr>
+                                        @endforeach
+                                      @endif
+                                    </table>
+                                    <hr>
+                                    <div class="row">
+                                      <div class="col col-md-12">
+                                        <div class="col col-md-3"></div>
+                                        <div class="col col-md-6">
+                                          <a href="#" class="btn btn-default" style="width:100%;"> View detail</a>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col col-md-6">
+                        <div class="panel panel-success" style="height:400px;">
+                          <div class="panel-body">
+                             <h4 class="list-group-item-heading text-muted"><strong>Requisition detail</strong></h4>
+                              <hr>
                             <?php
                               $display = array(
                         'Position' => $requisition->position->job_title . ' (#'.$requisition->position_id.')' ,
@@ -133,6 +138,7 @@ thisIsTitle
                                   <?php $i++; ?>
                                 @endforeach
                               </table>
+                              <br>
                             </center>
                             <hr>
                             
@@ -143,17 +149,19 @@ thisIsTitle
                                     <a href="#" class="btn btn-default" style="width:100%;"> View detail</a>
                                   </div>
                                 </div>
-
                               </div>
-                            
-                      </li>
-                    </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
                   </div>
                 </div>
                 
             </div>
-            <div class="col col-md-6">
-                <div class="well" style="font-size:1.2em;">
+            <div class="col col-md-12">
+                <div class="panel panel-success" style="font-size:1.2em;">
+                  <div class="panel-heading"><br>
                   <div class="row" >
                     <div class="col col-md-4 col-md-offset-1">
                       {{ Form::model($application, array('route' => array('recruiter-prepare-package.update', $application->application_id), 'method' => 'PUT')) }}
@@ -207,39 +215,30 @@ thisIsTitle
                       </div>
                     </div>
                   </div>
-                  <!-- <div class="row">
-                    <div class="col col-md-10 col-md-offset-1">
-                      <div class="form-group" style="font-size:1.2em;">
-                        {{ Form::label('note', 'Note :') }}
-                        {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
-                      </div>
-                    
-                    </div>
-                    <div class="col col-md-5">
-                      
-                    </div>
-                  </div> -->
+              
                   <hr>
                   <div class="row">
 
-                    <div class="col col-md-offset-4 col-md-5">
+                    <div class="col col-md-offset-4 col-md-4" style="padding-bottom:2em;">
+                      <a class="btn btn-lg btn-success" style="width:100%;" href="javascript:window.open('{{ URL::to('calendar-controller') }}','Calendar','width=1000,height=650,menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,personalbar=no,titlebar=no')"> <i class="fa fa-fw fa-calendar"></i><span>  View package</span>  </a>
+    <!-- 
                       {{ Form::button('View package', array('name' => 'approve', 'value' => true, 'type' => 'submit','class'=>'btn btn-lg btn-success','style'=>'width:100%;')) }}
-                      {{ Form::close() }}
+                      {{ Form::close() }} -->
                     </div>
                   </div>
-                    
-                </div><!--end well-->
+                  </div>  
+                </div><!--end panel-->
 
                 <!--note-->
                 <div class="well" style="padding-bottom:5em;">
                   <div class="row" style="margin-top:3em;">
-                    <div class="col col-md-3">
+                    <div class="col col-md-4">
                     </div>
                     <div class="col col-md-8">
                       <div class="form-group" style="font-size:1.2em;font-weight:bold;">
                         {{ Form::label('note', 'Note ', array( 'style' => 'font-size:1.6em;')) }}
                         <br>
-                        {{ Form::textarea('note', '', array( 'size' => '35x5','style'=>'')) }}
+                        {{ Form::textarea('note', '', array( 'size' => '45x5','style'=>'')) }}
                       </div>
                       
                     </div>
@@ -248,8 +247,8 @@ thisIsTitle
                   </div>
                   <div class="row">
                     <div class="col col-md-4"></div>
-                    <div class="col col-md-4" style="">
-                        {{ Form::button('Accept', array('name' => 'approve','class'=>'btn btn-lg btn-warning','style'=>'width:120%;', 'value' => true, 'type' => 'submit')) }}
+                    <div class="col col-md-3" style="">
+                        {{ Form::button('Accept', array('name' => 'approve','class'=>'btn btn-lg btn-warning','style'=>'width:136%;', 'value' => true, 'type' => 'submit')) }}
                         {{ Form::close() }}
                     </div>
                   </div>
