@@ -465,6 +465,10 @@ thisIsTitle
             $("#minimize_div").slideToggle(300);
             $("#close_div").fadeOut(300);
           });
+          $(".box").animate({marginTop:'+=50px',opacity:'0'},0);
+          $(".panel").animate({marginTop:'+=50px',opacity:'0'},0);
+          $(".box").animate({marginTop:'-=50px',opacity:'1'},2000);
+          $(".panel").animate({marginTop:'-=50px',opacity:'1'},2000);
         });
         </script>
 @stop
