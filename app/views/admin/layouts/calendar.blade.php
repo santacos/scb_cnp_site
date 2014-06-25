@@ -2,30 +2,6 @@
 <html>
 	@include('admin.partials.assets')
 	<body class="skin-black">
-		<!-- header logo: style can be found in header.less -->
-		@include('admin.partials.header')
-		<div class="wrapper row-offcanvas row-offcanvas-left">
-			<!-- Left side column. contains the logo and sidebar -->
-			<aside class="left-side sidebar-offcanvas">
-				<!-- sidebar: style can be found in sidebar.less -->
-				@include('admin.partials.left_sidebar')
-				<!-- /.sidebar -->
-			</aside>
-
-			<!-- Right side column. Contains the navbar and content of the page -->
-			<aside class="right-side">
-				<!-- Content Header (Page header) -->
-				<section class="content-header">
-					<h1> Calendar <small>Control panel</small></h1>
-					<ol class="breadcrumb">
-						<li>
-							<a href="#"><i class="fa fa-dashboard"></i> Home</a>
-						</li>
-						<li class="active">
-							Calendar
-						</li>
-					</ol>
-				</section>
 
 				<!-- Main content -->
 				<section class="content">
@@ -120,8 +96,6 @@
 					</div><!-- /.row -->
 
 				</section><!-- /.content -->
-			</aside><!-- /.right-side -->
-		</div><!-- ./wrapper -->
 
 		@include('admin.partials.footer')
 		<!-- Page Calendar script -->
@@ -230,8 +204,8 @@
 						}
 
 					}*/
-					minTime : "06:00:00",
-					maxTime : "20:00:00",
+					minTime : "07:00:00",
+					maxTime : "19:00:00",
 					hiddenDays : [0,6],
 					eventMouseover : function(event, jsEvent, view){
 						if(event.expanded == false){
