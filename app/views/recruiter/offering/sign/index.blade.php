@@ -56,7 +56,7 @@ thisIsTitle
         <div class="box box-primary">
 
                     <div class="box-header">
-                        <h3 class="box-title"> Offer..</h3>
+                        <h3 class="box-title" style="font-size:2.5em;"> Sign <i class="fa fa-fw fa-edit"></i></h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-primary btn-xs" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -68,6 +68,23 @@ thisIsTitle
                     </div>
 
                    <div class="box-body">
+
+                            @if(isset($success))
+                            <div class="alert alert-{{ $success?'success':'danger' }} alert-bold-border fade in alert-dismissable" style="margin-left:0px;display:none;">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                        <h5><i class="fa fa-fw fa-smile-o"></i><strong>{{ $message }}</strong></h5>
+                                        <p class="text-muted"></p>
+                            </div>
+                            <script>
+                                    $( document ).ready(function() {
+                                      $(".alert").animate({opacity:'0'},0);
+                                      $(".alert").animate({height:'hide'},1);
+                                      $(".alert").animate({opacity:'1'},1500);
+                                      $(".alert").animate({height:'show'},500);
+                                    });
+                            </script>
+                            @endif
+                            
                            <!-- first data table for requisition-->
                            <div class="box box-solid box-primary">
                                 <!-- /.box-header -->
