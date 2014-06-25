@@ -199,10 +199,10 @@ home-recruiter
           $(".small-box").animate({height:'hide',marginTop:'+=50px',opacity:'0'},0);
           $(".panel").animate({marginTop:'+=50px',opacity:'0'},0);
           $(".box").animate({marginTop:'-=50px',opacity:'1'},2000);
-          $(".small-box").animate({height:'show',marginTop:'-=50px',opacity:'1'},2000);
+          $(".small-box").animate({height:'show',marginTop:'-=50px',opacity:'1'},1000);
           $(".panel").animate({marginTop:'-=50px',opacity:'1'},2000);
           $(".alert").animate({opacity:'1'},4000);
-          $(".alert").animate({height:'show'},700);
+          $(".alert").animate({height:'show'},500);
         });
         </script>
 @stop

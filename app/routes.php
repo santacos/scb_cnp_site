@@ -58,10 +58,9 @@ Route::controller('cd', 'CandidateController');
 Route::resource('candidate', 'ShowCandidateController' ,array('except' => array('index','create', 'store','edit', 'update', 'destroy')));
 Route::resource('job', 'ShowJobController',array('except' => array('index','create', 'store','edit', 'update', 'destroy')));
 ///////////////////////////////////////////////////////////
-Route::get('tryView',function(){
-	//return View::make('HM.requisition.newcreate');
-	//return View::make('admin.candidateDetail');
-	return View::make('recruiter.offering.package.option');
+Route::get('package/{id}',function($id){
+	$application = Application::find($id);
+	return View::make('recruiter.offering.package.option',compact('application'));
 });
 
 Route::get('tryAngular',function(){

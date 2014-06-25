@@ -221,7 +221,7 @@ thisIsTitle
                   <div class="row">
 
                     <div class="col col-md-offset-4 col-md-4" style="padding-bottom:2em;">
-                      <a class="btn btn-lg btn-success" style="width:100%;" href="javascript:window.open('{{ URL::to('calendar-controller') }}','Calendar','width=1000,height=650,menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,personalbar=no,titlebar=no')"> <i class="fa fa-fw fa-calendar"></i><span>  View package</span>  </a>
+                      <a class="btn btn-lg btn-success" style="width:100%;" href="javascript:window.open('{{ URL::to('package/'.$application->application_id) }}','Calendar','width=1000,height=650,menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,personalbar=no,titlebar=no')"> <i class="fa fa-fw fa-calendar"></i><span>  View package</span>  </a>
     <!-- 
                       {{ Form::button('View package', array('name' => 'approve', 'value' => true, 'type' => 'submit','class'=>'btn btn-lg btn-success','style'=>'width:100%;')) }}
                       {{ Form::close() }} -->

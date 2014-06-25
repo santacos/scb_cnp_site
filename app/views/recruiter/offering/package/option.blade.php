@@ -35,7 +35,7 @@ thisIsTitle
   <div class="row">
     <div class="col-xs-12">
       <h2 class="page-header">
-         Package for <!--edit-->requisitionID : Job title,Organization,Division,Group<!--edit-->
+         Package for <!--edit-->Requisition (ID#{{ $application->requisition->requisition_id }}) >> {{ $application->requisition->position->job_title }}, {{ $application->requisition->position->organization }}, {{ $application->requisition->position->division }}, {{ $application->requisition->position->group }}<!--edit-->
         <small class="pull-right"><!--edit--> Date: 2/10/2014</small>
       </h2>                            
     </div><!-- /.col -->
@@ -48,23 +48,23 @@ thisIsTitle
         <table class="table">
           <tr>
             <th style="width:50%">Current Salary:</th>
-            <td>$250.30</td>
+            <td>{{ $application->current_salary }}</td>
           </tr>
           <tr>
             <th>Expected Salary:</th>
-            <td>$10.34</td>
+            <td>{{ $application->expected_salary }}</td>
           </tr>
           <tr>
             <th>Position Salary:</th>
-            <td>$5.80</td>
+            <td>{{ $application->position_salary }}</td>
           </tr>
           <tr>
-            <th>Cost of Living Allowance:</th>
-            <td>$265.24</td>
+            <th>Allowance:</th>
+            <td>{{ $application->cola }}</td>
           </tr>
           <tr>
             <th>Max Final Salary:</th>
-            <td>$265.24</td>
+            <td>{{ $application->final_salary }}</td>
           </tr>
         </table>
       </div>
@@ -77,10 +77,10 @@ thisIsTitle
         <div class="panel-body">
           
           <address>
-            795 Folsom Ave, Suite 600<br>
-            San Francisco, CA 94107<br>
-            Phone: (804) 123-5432<br/>
-            Email: info@almasaeedstudio.com
+            Name : {{ $application->candidate->user->first . " " . $application->candidate->user->last }}<br>
+            Location : {{$application->candidate->current_living_location }}<br>
+            Phone: {{ $application->candidate->user->contact_number }}<br/>
+            Email: {{ $application->candidate->user->email }}
           </address>
         </div>
       </div><!--end panel-->
@@ -163,5 +163,14 @@ thisIsTitle
     </div>
   </div>
 </section><!-- /.content -->
-
+<script>
+        if(!window.locationbar.visible){
+            $(".left-side").remove();
+            $(".navbar").remove();
+            $(".header").remove();
+            $(".right-side").toggleClass(false);
+            $(".content").animate({opacity:'0'},0);
+            $(".content").animate({marginTop:'0px',opacity:'1'},1000);
+        }
+</script>
 @stop

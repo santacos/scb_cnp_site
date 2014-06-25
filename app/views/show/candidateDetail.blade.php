@@ -441,6 +441,6 @@ thisIsTitle
             $(".content").animate({opacity:'0'},0);
             $(".content").animate({marginTop:'0px',opacity:'1'},1000);
         }
-    </script>
+</script>
       
 @stop
