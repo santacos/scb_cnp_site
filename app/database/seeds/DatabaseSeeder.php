@@ -23044,10 +23044,10 @@ $this->command->info('Table RequisitionCurrentStatus Seeded');
 							'name' => 'Waiting for Accept Job Offer'
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 9,
-							'name' => 'Pass' //Fail
+							'name' => 'Fail' //Fail
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 10,
-							'name' => 'Fail' //Pass
+							'name' => 'Pass' //Pass
 							));
 		ApplicationCurrentStatus::create(array(	'application_current_status_id' => 11,
 							'name' => 'Pending' //Pending
@@ -23204,7 +23204,7 @@ $this->command->info('Table RecruitmentType Seeded');
 			$requisition->save();
 
 		$count=5;
-		for($i=0; $i<100;$i++)
+		for($ii=0; $ii<50;$ii++)
 		{
 
        		$requisition = new Requisition;
@@ -23273,7 +23273,7 @@ $this->command->info('Table RecruitmentType Seeded');
 			
 			if($requisition->requisition_current_status_id>=5)
 			{
-				for($j=1; $j<=rand(40,100); $j++)
+				for($j=1; $j<=rand(20,50); $j++)
 				{
 					$application = new Application;
 					$application->requisition_id = $requisition->requisition_id;
@@ -23357,7 +23357,8 @@ $this->command->info('Table RecruitmentType Seeded');
 				foreach($applications as $application){
 				// Application Log
 					$id=$application->application_id;
-					 $approve=rand(0,1);
+					 $approve=rand(0,2);
+					 if($approve!=0) {$approve = 1;}
 					$prev_action = ApplicationLog::where('application_id','=',$id)->orderBy('action_datetime','desc');
 					if($prev_action->count() > 0){
 						$prev_action = $prev_action->first();
@@ -23396,7 +23397,8 @@ $this->command->info('Table RecruitmentType Seeded');
 				foreach($applications as $application)
 				{
 							$id=$application->application_id;
-					 		$approve=rand(0,1);
+					 		$approve=rand(0,3);
+					 		if($approve!=0) {$approve = 1;}
 							$prev_action = ApplicationLog::where('application_id','=',$id)->orderBy('action_datetime','desc');
 							if($prev_action->count() > 0){
 								$prev_action = $prev_action->first();
@@ -23546,8 +23548,8 @@ $this->command->info('Table RecruitmentType Seeded');
 				foreach($applications as $application)
 				{
 					$id=$application->application_id;
-					 	$approve=rand(0,1);
-					$application = Application::findOrFail($id);
+					 	$approve=rand(0,4);
+					 	if($approve!=0) {$approve = 1;}
 								$prev_action = ApplicationLog::where('application_id','=',$id)->orderBy('action_datetime','desc');
 								if($prev_action->count() > 0){
 									$prev_action = $prev_action->first();
@@ -23589,8 +23591,8 @@ $this->command->info('Table RecruitmentType Seeded');
 				foreach($applications as $application)
 				{
 						$id=$application->application_id;
-					 	$approve=rand(0,1);
-						$application = Application::findOrFail($id);
+					 	$approve=rand(0,6);
+					 	if($approve!=0) {$approve = 1;}
 							$prev_action = ApplicationLog::where('application_id','=',$id)->orderBy('action_datetime','desc');
 							if($prev_action->count() > 0){
 								$prev_action = $prev_action->first();
@@ -23624,6 +23626,174 @@ $this->command->info('Table RecruitmentType Seeded');
 						$application->save();
 				}
 				//action 7
+					$applications = Application::where('application_current_status_id','=',7)->get();
+				foreach($applications as $application)
+				{		
+						$id=$application->application_id;
+					 	$approve=rand(0,7);
+					 	if($approve!=0) {$approve = 1;}
+						$prev_action = ApplicationLog::where('application_id','=',$id)->orderBy('action_datetime','desc');
+						if($prev_action->count() > 0){
+							$prev_action = $prev_action->first();
+						}else{
+							$prev_action = NULL;
+						}
+						$visit_number = 1;
+						if(is_null($prev_action)){
+							$prev_action_datetime = 0;
+						}else{
+							$prev_action_datetime = $prev_action->action_datetime;
+						}
+						$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addDays(rand(2,6)); 
+						DB::table('application_logs')->insert(array(
+										'action_type' => 7,
+										'application_id' => $application->application_id,
+										'visit_number' => $visit_number,
+										'employee_user_id' => $application->requisition->dept->recruiter_user_id,
+										/**
+										change 'employee_user_id' to real employee id
+										*/
+										'action_datetime' => $timestamp,
+										'prev_action_datetime' => $prev_action_datetime,
+										'result' => $approve,
+										'note' => str_random(20)
+						));
+					// $application->final_salary = Input::get('final_salary');
+					$application->application_current_status_id = $approve?8:9;
+					$application->note = str_random(20);
+					$application->save();
+				}
+				//action 8
+				$this->command->info('action 8'.$ii);
+				$applications = Application::where('application_current_status_id','=',8)->get();
+				foreach($applications as $application)
+				{		
+					if($application->requisition->requisition_current_status_id !=7)
+					{
+						$id=$application->application_id;
+					 	$approve=rand(0,8);
+					 	if($approve!=0) {$approve = 1;}
+					 	$prev_action = ApplicationLog::where('application_id','=',$id)->orderBy('action_datetime','desc');
+							if($prev_action->count() > 0){
+								$prev_action = $prev_action->first();
+							}else{
+								$prev_action = NULL;
+							}
+							$visit_number = 1;
+							if(is_null($prev_action)){
+								$prev_action_datetime = 0;
+							}else{
+								$prev_action_datetime = $prev_action->action_datetime;
+							}
+							$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addDays(rand(2,6)); 
+							DB::table('application_logs')->insert(array(
+											'action_type' => 8,
+											'application_id' => $application->application_id,
+											'visit_number' => $visit_number,
+											'employee_user_id' => $application->requisition->dept->recruiter_user_id,
+											/**
+											change 'employee_user_id' to real employee id
+											*/
+											'action_datetime' => $timestamp,
+											'prev_action_datetime' => $prev_action_datetime,
+											'result' => $approve,
+											'note' => str_random(20)
+							));
+						$application->result = $approve;
+						$application->application_current_status_id = $approve?10:9;
+						$application->note = str_random(20);
+						$application->save();
+
+						$require = $application->requisition->total_number;
+						$current = $application->requisition->application()->whereApplicationCurrentStatusId(10)->count();
+						$application->requisition->get_number = $current;
+						$application->push();
+
+						if($approve){
+							$starttime = Carbon::createFromFormat('Y-m-d H:i:s',$application->requisition->requisitionLog()->whereActionType(3)->whereSendNumber(2)->first()->action_datetime);
+							$endtime = $timestamp;
+							$sla_in_hours = $endtime->diffInHours($starttime);
+
+
+							$target_sla_in_days = 0;
+							$logs = $application->ApplicationLog();
+							foreach($logs as $log){
+								$temp = $application->requisition->corporateTitle->group->SLACandidate()->whereAppCsId($log->action_type)->whereVisitNumber($log->visit_number);
+					            if($temp->count() == 0){
+					                $temp = $temp->orWhere('visit_number','>=',1)->orderBy('visit_number','desc')->first()->SLA;
+					            }else{
+					                $temp = $temp->first()->SLA;
+					            }
+					            $target_sla_in_days += $temp;
+							}
+
+				            $end_timestamp = $starttime->copy();
+				            $holidays = PublicHoliday::all();
+				            $i=0;
+				            for($i=0; $end_timestamp->diffInSeconds($endtime,false) >= 0; $i++){
+				                if($end_timestamp->toDateString() == $endtime->toDateString()){
+				                    $hours_left = $target_sla_in_days*24-$i;
+				                    break;
+				                }
+				                $end_timestamp->addDays(1);
+				                if($end_timestamp->isWeekend()){
+				                	$sla_in_hours -= 24;
+				                	$i--; 
+				                }else{
+				                    foreach($holidays as $holiday){
+				                        if($end_timestamp->toDateString() == $holiday->date){
+				                        	$sla_in_hours -= 24;
+				                            $i--;
+				                            break;
+				                        }
+				                    }
+				                }
+				            }
+
+
+							$application->sla_in_hours = $sla_in_hours;
+							$application->target_sla_in_days = $target_sla_in_days;
+							$application->push();
+							if($current >= $require){
+								$requisition = $application->requisition;
+								$prev_action = RequisitionLog::where('requisition_id','=',$id)->orderBy('action_datetime','desc');
+								if($prev_action->count() > 0){
+									$prev_action = $prev_action->first();
+								}else{
+									$prev_action = NULL;
+								}
+								if(is_null($prev_action)){
+									$prev_action_datetime = 0;
+								}else{
+									$prev_action_datetime = $prev_action->action_datetime;
+								}
+								DB::table('requisition_logs')->insert(array(
+												'action_type' => 6,
+												'requisition_id' => $requisition->requisition_id,
+												'send_number' => 1,
+												'employee_user_id' =>  $application->requisition->dept->recruiter_user_id,
+												/**
+												change 'employee_user_id' to real employee id
+												*/
+												'action_datetime' => $timestamp,
+												'prev_action_datetime' => $prev_action_datetime,
+												'result' => $approve,
+												'note' => str_random(20)
+								));
+								$requisition->requisition_current_status_id = 7;
+								$requisition->sla_in_hours = $sla_in_hours;
+								$application->push();
+								// reject others candidate
+								foreach(Application::where('requisition_id','=',$requisition->requisition_id)->where('application_current_status_id','!=',10)->get() as $app )
+								{
+									$app->application_current_status_id = 9;
+								}
+								$requisition->save();
+							}
+						}
+					}
+				}
+				//end action
 			}
 		}
 $this->command->info('Table Requisiton Seeded');

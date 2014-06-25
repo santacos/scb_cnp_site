@@ -173,7 +173,7 @@ class RecruiterSignController extends \BaseController {
 					$prev_action_datetime = $prev_action->action_datetime;
 				}
 				DB::table('requisition_logs')->insert(array(
-								'action_type' => 6,
+								'action_type' => 7,
 								'requisition_id' => $requisition->requisition_id,
 								'send_number' => 1,
 								'employee_user_id' => Employee::first()->user_id,
@@ -188,6 +188,12 @@ class RecruiterSignController extends \BaseController {
 				$requisition->requisition_current_status_id = 7;
 				$requisition->sla_in_hours = $sla_in_hours;
 				$application->push();
+				//reject others candidate
+								foreach(Application::where('requisition_id','=',$requisition->requisition_id)->where('application_current_status_id','!=',10)->get() as $app )
+								{
+									$app->application_current_status_id = 9;
+								}
+				$requisition->save();
 				$message = "Sign requisition successfully! (Acquire $current from $require vacancy) <br> End SLA : From After HRBP Manager Approve (".$starttime
 					.") - Last Candidate Sign (".$endtime.")  >>  Use total ".$endtime->diffInHours($starttime)
 					."Hour(s) <br> SLA = ".($sla_in_hours<24?1:$sla_in_hours/24)."Day(s) <br>"
