@@ -1,0 +1,18 @@
+<?php
+
+class ShowJobController extends \BaseController {
+
+	/**
+	 * Display a listing of the resource.
+	 * GET /applications
+	 *
+	 * @return Response
+	 */
+
+	public function show($id)
+	{
+		$requisition = Requisition::find($id);
+		return View::make('show.jobDetail', array( 'requisition'=> $requisition));
+	}
+
+}

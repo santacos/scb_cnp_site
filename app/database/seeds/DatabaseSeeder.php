@@ -18911,11 +18911,6 @@ $this->command->info('Table Position Seeded');
 			'hrbp_user_id' => $user->user_id,
 			'recruiter_user_id' => $user4->user_id
 			));
-			Dept::create(array(	'dept_id' => 16,
-			'name' => 'Wholesale Banking Group',
-			'hrbp_user_id' => $user->user_id,
-			'recruiter_user_id' => $user4->user_id
-			));
 $this->command->info('Table Dept Seeded');
 //CORPORRATE TITLE GROUP
 		CorporateTitleGroup::create(array(	'corporate_title_group_id' => 1,

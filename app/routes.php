@@ -54,6 +54,9 @@ Route::get('testtest',function(){
 
 Route::resource('cd', 'CandidateController', ['except' => ['show']]);
 Route::controller('cd', 'CandidateController');
+
+Route::resource('candidate', 'ShowCandidateController' ,array('except' => array('index','create', 'store','edit', 'update', 'destroy')));
+Route::resource('job', 'ShowJobController',array('except' => array('index','create', 'store','edit', 'update', 'destroy')));
 ///////////////////////////////////////////////////////////
 Route::get('tryView',function(){
 	//return View::make('HM.requisition.newcreate');

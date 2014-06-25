@@ -69,8 +69,8 @@ SCB Recruitment-Home
 						<h1>
 							Profile
 							<!--button to link to full profile-->
-							<button class="btn btn-border btn-warning btn-sm">View profile</button>
-							<button class="btn btn-border btn-warning btn-sm " style="margin-left:0px;">Edit profile</button>
+							<a href="{{ URL::to('/cd/profile')}}"><button class="btn btn-border btn-warning btn-sm">View profile</button></a>
+							<a href="{{ URL::to('/cd/edit-profile')}}"><button class="btn btn-border btn-warning btn-sm " style="margin-left:0px;">Edit profile</button></a>
 							<!-- end button-->
 						</h1>
 						<hr style="margin-top:5px;margin-bottom:5px;">
@@ -137,12 +137,18 @@ SCB Recruitment-Home
 							</table>
 							
 					  	</div>
+					  	<?php
+					  		if(file_exists($candidate->filepath_picture)||isset($candidate->filepath_picture))
+					  		{$picture = asset($candidate->filepath_picture);}
+					  		else
+					  		{$picture = asset('assets/img/avatar3.png');}
+						?>
 					  	<div class="col col-md-4" style="margin-top:-100px;">
 					  		<div class="row">
 						  		<div class="col-md-8">
 									<div class="bs-docs-example-images">
-										<a class="img-thumbnail img-rounded lightbox" style="padding-bottom:1.3em;" rel="fancybox" href="{{asset('assets/img/avatar3.png')}}" >
-											<img src="{{asset('assets/img/avatar3.png')}}" alt="" title="">
+										<a class="img-thumbnail img-rounded lightbox" style="padding-bottom:1.3em;" rel="fancybox" href="{{$picture}}" >
+											<img src="{{$picture}}" style="height: 223px; width: 223px;"> 
 											<span class="bg-images">
 												<i class="fa fa-search"></i>
 											</span>
@@ -156,9 +162,12 @@ SCB Recruitment-Home
 									</button><br>
 									<button class="btn push-top push-bottom btn-border btn-success" 
 									style="width:90%;" data-toggle="modal" data-target="#myModal">
-										View resume
+										View resume from file
 									</button><br>
-									
+									<button class="btn push-top push-bottom btn-border btn-warning" 
+									style="width:90%;" data-toggle="modal" data-target="#myModal">
+										Export resume to pdf
+									</button>
 							  	</div>
 							  	<!--modal zone-->
 							  	<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -207,6 +216,50 @@ SCB Recruitment-Home
 				  		</div> -->
 				  		
 				  		<div class="row">
+				  			 <!--contact information-->
+                                <div class="col col-md-12">
+                                    <div class="panel panel-default frame frame-shadow-curved">
+                                        <div class="panel-heading"  >
+                                            <h3 class="panel-title"><strong>Contact information</strong></h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col col-md-12">
+                                                    <div class="content-block frame border-radius" style="padding:5px;">
+                                                        <!-- <div class="row">
+                                                            <div class="col col-md-6">
+                                                                <p><strong>Job title :</strong>Programmer
+                                                                <br><strong>Time period :</strong>2009 - 2011
+                                                                </p>
+                                                            </div>
+                                                            <div class="col col-md-6">
+                                                                <strong>Company name :</strong>Lotuss
+                                                                <br><strong>Location :</strong>Bangkok
+                                                            </div>
+                                                        </div> -->
+                                                       <div class="row">
+                                                            <div class="col col-md-6">
+                                                                <strong>Email :</strong> {{$candidate->user->email}}<br>
+                                                                <strong>Contact Number :</strong> {{$candidate->user->contact_number}}<br>
+                                                                <!-- <strong>Telephone(Home) :</strong> 029999999<br> -->
+                                                            </div>
+                                                            <div class="col col-md-6">
+                                                                <strong>Current Living Location :</strong>{{$candidate->current_living_location}}<br>
+                                                                <strong>Country :</strong> {{$candidate->country}}<br>
+                                                                <strong>City :</strong> {{$candidate->city}}<br>
+                                                                <strong>Zip/Postal Code :</strong> {{$candidate->zip_code}} <br>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                                
+                                            </div><!--end first row for Work Experience-->
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
 					  		<!--experience box-->
 					  		<div class="col col-md-6">
 					  			<div class="panel panel-primary frame frame-shadow-curved">

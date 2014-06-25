@@ -164,7 +164,7 @@ SCB Recruitment-Home
 			  	</header>
 
 			  	<!--filter box-->
-			  	{{Form::open(array('url' => 'cd/jobstatus/'.Auth::user()->user_id, 'method' => 'get'))}}
+			  	{{Form::open(array('url' => 'cd/jobstatus', 'method' => 'get'))}}
 			  	<div class="content-block bottom-padding frame frame-shadow-curved" style="margin-bottom:20px;">
 					<div class="row">
 						<div class="col col-md-1">
@@ -175,7 +175,7 @@ SCB Recruitment-Home
 								  	<label class="" for="exampleInputEmail2">Job title :</label>
 								  	<!-- <input type="email" style="font-size:1.1em;" class="form-control" id="exampleInputEmail2" placeholder="search job title"> -->
 								  	 
-                                     {{ Form::text('search', Input::old('search'), array('class' => 'form-control','placeholder'=>'search job title','style'=>'font-size:1.1em;')) }}   
+                                     {{ Form::text('search', $search, array('class' => 'form-control','placeholder'=>'search job title','style'=>'font-size:1.1em;')) }}   
                                       
 								</div>
 							</form>

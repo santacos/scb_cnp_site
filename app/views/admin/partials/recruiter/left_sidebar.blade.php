@@ -140,7 +140,7 @@
 		</li>
 		<li> 
 		
-			<a href="{{ URL::to('calendar-controller') }}"> <i class="fa fa-fw fa-calendar"></i><span>  Calendar</span>  </a>
+			<a href="javascript:window.open('{{ URL::to('calendar-controller') }}','Calendar','width=1000,height=650,menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,personalbar=no,titlebar=no')"> <i class="fa fa-fw fa-calendar"></i><span>  Calendar</span>  </a>
 		
 		</li>
 		
