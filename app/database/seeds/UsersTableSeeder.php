@@ -182,7 +182,7 @@ class UsersTableSeeder extends Seeder {
                             'first' => 'Next',
                             'last' => 'HM',
                             'contact_number' => '0836253423',
-                            'confirmed' => false,
+                            'confirmed' => true,
                 'confirmation_code' => md5(microtime().Config::get('app.key')),
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime,
@@ -200,9 +200,10 @@ class UsersTableSeeder extends Seeder {
                 'updated_at' => new DateTime,
             )
         );
-
-
+        
         DB::table('users')->insert( $users );
+
+
     }
 
 }
