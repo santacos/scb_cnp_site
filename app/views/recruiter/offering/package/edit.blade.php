@@ -18,7 +18,7 @@ thisIsTitle
         </div>
         <div class="box-body">
           <div class="row">
-            <div class="col col-md-12">
+            <div class="col col-md-6">
                 <div class="panel panel-success">
                   <div class="panel-heading">
                     <h3 class="panel-title" style="font-size:1.2em;">
@@ -27,14 +27,132 @@ thisIsTitle
                   </div>
                   <div class="panel-body">
                     <ul class="list-group">
-                      <li class="list-group-item">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</li>
-                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                      
+                      <li class="list-group-item">
+                        <h4 class="list-group-item-heading text-muted"><strong>Candidate detail</strong></h4>
+                        <hr>
+                        <?php
+                            $age = '';
+                            $candidate = $application->candidate;
+                            if($candidate->birth_date!='' && $candidate->birth_date!=0){
+                              $age = Carbon::createFromFormat('Y-m-d',$candidate->birth_date)->diffInYears();
+                            }
+                              $display = array(
+                        'Application ID' => $application->application_id ,
+                        ''=>'',
+                        'Candidate name' => $application->candidate->user->first . " " . $application->candidate->user->last,
+                        'Tel' => $application->candidate->user->contact_number,
+                        'Address'=> $application->candidate->current_living_location,
+                        'Age'=> $age,
+                        'Current Salary' => $application->current_salary ,
+                        'Expected Salary' => $application->expected_salary ,
+                        'Position Salary' => $application->position_salary ,
+                        'Cola' => $application->cola ,
+                        'Final Salary' => $application->final_salary 
+                              );
+                            ?>
+                            <center>
+
+                              <table style="font-size:1.1em;width:90%;">
+                                <?php $i=0; $col=2?>
+                                @foreach($display as $key => $value)
+                                  <?php echo (($i%$col==0)?'<tr>':'');?>
+                                  <td><span style="10%"><strong>{{ $key }} {{ $key=='' ? '':':'}} </strong></span></td>
+                                  <td><span style="40%">{{ $value }}</span></td>
+                                  <?php echo (($i%$col==$col-1)?'</tr>':'');?>
+                                  <?php $i++; ?>
+                                @endforeach
+                              </table>
+
+                   <!--            <hr> -->
+
+                              <table class="table">
+                                <tr>
+                                  @if(count($evaluations) > 0)
+                                    @foreach($evaluations->first()->toArray() as $key => $value)
+                                      <th>{{ $key }}</th>
+                                    @endforeach
+                                    <th>Action</th>
+                                  @endif
+                                </tr>
+                                @if(count($evaluations) > 0)
+                                  @foreach($evaluations as $evaluation)
+                                    <tr>
+                                      @foreach($evaluation->toArray() as $key => $value)
+                                        <td>
+                                          {{ $value }}
+                                        </td>
+                                      @endforeach
+                                      <td>
+                                      <a href={{"recruiter-interview-confirm/" . $requisition->requisition_id}}>View(Not Finished Yet)</a>
+                                      </td>
+                                    </tr>
+                                  @endforeach
+                                @endif
+                              </table>
+                              <hr>
+                              <div class="row">
+                                <div class="col col-md-12">
+                                  <div class="col col-md-3"></div>
+                                  <div class="col col-md-6">
+                                    <a href="#" class="btn btn-default" style="width:100%;"> View detail</a>
+                                  </div>
+                                </div>
+
+                              </div>
+                      </li>
+                      <li class="list-group-item">
+                        <h4 class="list-group-item-heading text-muted"><strong>Requisition detail</strong></h4>
+                        <hr>
+                            <?php
+                              $display = array(
+                        'Position' => $requisition->position->job_title . ' (#'.$requisition->position_id.')' ,
+                        ''=>'',
+                        'Group' => $requisition->dept->name . ' (#'.$requisition->dept_id.')' ,
+                        ' '=>' ',
+                        'Requisition ID' => $requisition->requisition_id ,
+                        'Job Title' => $requisition->job_title ,
+                        'Hiring Manager' => $requisition->employee->first . ' ' . $requisition->employee->last . ' (#'.$requisition->employee_user_id.')' ,
+                        'Location' => $requisition->location->name . ' (#'.$requisition->location_id.')' ,
+                        
+                        
+                        'Corporate Title' => $requisition->corporateTitle->name . ' (#'.$requisition->corporate_title_id.')' ,
+                        ''=>'',
+                        'Recruitment Type' => $requisition->recruitmentType->name . ' (#'.$requisition->recruitment_type_id.')' ,
+                        'Year Of Experience' => $requisition->year_of_experience . ' Year(s)' ,
+                              );
+                            ?>
+                            <center>
+                              <table style="font-size:1.1em;">
+                                <?php $i=0; $col=2?>
+                                @foreach($display as $key => $value)
+                                  <tr>
+                                  <td class="text-left"><span style="width:50%;"><strong>{{ $key }} {{ ($key=='')||($key==' ') ? '':':'}}</strong></span></td>
+                                  <td><span style="width:50%;">  {{ $value }}</span></td>
+                                  </tr>
+                                  <?php $i++; ?>
+                                @endforeach
+                              </table>
+                            </center>
+                            <hr>
+                            
+                              <div class="row">
+                                <div class="col col-md-12">
+                                  <div class="col col-md-3"></div>
+                                  <div class="col col-md-6">
+                                    <a href="#" class="btn btn-default" style="width:100%;"> View detail</a>
+                                  </div>
+                                </div>
+
+                              </div>
+                            
+                      </li>
                     </ul>
                   </div>
                 </div>
                 
             </div>
-            <div class="col col-md-12">
+            <div class="col col-md-6">
                 <div class="well" style="font-size:1.2em;">
                   <div class="row" >
                     <div class="col col-md-4 col-md-offset-1">
@@ -111,24 +229,37 @@ thisIsTitle
                   </div>
                     
                 </div><!--end well-->
+
+                <!--note-->
+                <div class="well" style="padding-bottom:5em;">
+                  <div class="row" style="margin-top:3em;">
+                    <div class="col col-md-3">
+                    </div>
+                    <div class="col col-md-8">
+                      <div class="form-group" style="font-size:1.2em;font-weight:bold;">
+                        {{ Form::label('note', 'Note ', array( 'style' => 'font-size:1.6em;')) }}
+                        <br>
+                        {{ Form::textarea('note', '', array( 'size' => '35x5','style'=>'')) }}
+                      </div>
+                      
+                    </div>
+                    <div class="col col-md-1">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col col-md-4"></div>
+                    <div class="col col-md-4" style="">
+                        {{ Form::button('Accept', array('name' => 'approve','class'=>'btn btn-lg btn-warning','style'=>'width:120%;', 'value' => true, 'type' => 'submit')) }}
+                        {{ Form::close() }}
+                    </div>
+                  </div>
+                </div>
+                <!--end note-->
             </div>
           </div>
 
         </div><!-- /.box-body -->
       </div>
-
-    <!--front zone-->
-      <div class="row">
-        <div class="col col-md-6">
-
-
-        </div><!--end col-6-->
-        <div class="col col-md-6">
-
-        </div><!--end col-6-->
-
-
-      </div><!--end first row-->
 
     <!--end front zone-->
 
@@ -157,20 +288,6 @@ thisIsTitle
 'Updated At' => $requisition->updated_at
       );
     ?>
-    <!-- <center>
-      <table>
-        <?php $i=0; $col=2?>
-        @foreach($display as $key => $value)
-          <?php echo (($i%$col==0)?'<tr>':'');?>
-          <td><span style="color:brown; font-size:20px; font-weight:bold; padding:15px;">{{ $key }} : </span>
-          <span style="color:orange; font-size:20px;">{{ $value }}</span></td>
-          <?php echo (($i%$col==$col-1)?'</tr>':'');?>
-          <?php $i++; ?>
-        @endforeach
-      </table>
-
-      <hr> -->
-
     <?php
       $display = array(
 'Application ID' => $application->application_id ,
@@ -192,75 +309,6 @@ thisIsTitle
 'Updated At' => $application->updated_at
       );
     ?>
-    <!-- <center>
 
-      <table>
-        <?php $i=0; $col=2?>
-        @foreach($display as $key => $value)
-          <?php echo (($i%$col==0)?'<tr>':'');?>
-          <td><span style="color:brown; font-size:20px; font-weight:bold; padding:15px;">{{ $key }} : </span>
-          <span style="color:orange; font-size:20px;">{{ $value }}</span></td>
-          <?php echo (($i%$col==$col-1)?'</tr>':'');?>
-          <?php $i++; ?>
-        @endforeach
-      </table>
-
-      <hr>
-
-      <table border="1">
-        <tr>
-          @if(count($evaluations) > 0)
-            @foreach($evaluations->first()->toArray() as $key => $value)
-              <th>{{ $key }}</th>
-            @endforeach
-            <th>Action</th>
-          @endif
-        </tr>
-        @if(count($evaluations) > 0)
-          @foreach($evaluations as $evaluation)
-            <tr>
-              @foreach($evaluation->toArray() as $key => $value)
-                <td>
-                  {{ $value }}
-                </td>
-              @endforeach
-              <td>
-              <a href={{"recruiter-interview-confirm/" . $requisition->requisition_id}}>View(Not Finished Yet)</a>
-              </td>
-            </tr>
-          @endforeach
-        @endif
-      </table>
-
-      <hr>
-
-      {{ Form::model($application, array('route' => array('recruiter-prepare-package.update', $application->application_id), 'method' => 'PUT')) }}
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('current_salary', 'Current Salary :') }}
-          {{ Form::input('text', 'current_salary', Input::old('current_salary')) }}
-        </div>
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('expected_salary', 'Expected Salary :') }}
-          {{ Form::input('text', 'expected_salary', Input::old('expected_salary')) }}
-        </div>
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('position_salary', 'Position Salary :') }}
-          {{ Form::input('text', 'position_salary', Input::old('position_salary')) }}
-        </div>
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('cola', 'Cost of Living Allowance (change to something??) :') }}
-          {{ Form::input('text', 'cola', Input::old('cola')) }}
-        </div>
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('final_salary', 'Max Final Salary :') }}
-          {{ Form::input('text', 'final_salary', Input::old('final_salary')) }}
-        </div>
-        <div class="form-group" style="color:brown; font-size:20px; font-weight:bold; padding:15px;">
-          {{ Form::label('note', 'Note :') }}
-          {{ Form::textarea('note', '', array( 'size' => '30x5')) }}
-        </div>
-        {{ Form::button('Accept', array('name' => 'approve', 'value' => true, 'type' => 'submit')) }}
-      {{ Form::close() }}
-    </center> -->
 
 @stop
