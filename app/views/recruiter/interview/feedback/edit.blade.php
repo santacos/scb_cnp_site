@@ -212,7 +212,7 @@ thisIsTitle
                       <?php
                         $ts_val = Carbon::createFromFormat('Y-m-d H:i:s', $application->intOffSchedule()->whereAppCsId(4)->orderBy('visit_number','desc')->first()->datetime);
                       ?>
-                      {{ Form::input('datetime-local', 'date_time', ($ts_val->format('Y-m-d') .'T'. $ts_val->format('H:i')) ) }}
+                      {{ Form::input('datetime-local', 'date_time', ($ts_val->format('Y-m-d') .'T'. $ts_val->format('H:i')) , (isset($preview)&&$preview)?array('disabled'):array() ) }}
                     
                     </div>
                   </div>
@@ -222,7 +222,11 @@ thisIsTitle
                   <div class="col col-md-7 col-md-offset-3">
                     <div class="form-group" style="font-weight:bold;font-size:1.2em;">
                       {{ Form::label('location', 'Location :') }}
+                      @if(isset($preview)&&$preview)
+                      {{ Form::input('text', 'location', $location, array('placeholder' => 'Interview 4 Room, 17th Floor, SCB Park', 'style' => 'width:350px', 'disabled'))}}
+                      @else
                       {{ Form::input('text', 'location', $location, array('placeholder' => 'Interview 4 Room, 17th Floor, SCB Park', 'style' => 'width:350px'))}}
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -279,13 +283,13 @@ thisIsTitle
                             {{ $suggest->user->contact_number }}
                           </td>
                           <td>
-                            <input  name={{ 'file'.$suggest->user_id }} type='file'/>
+                            <input  name={{ 'file'.$suggest->user_id }} type='file' {{ (isset($preview)&&$preview)?'disabled':'' }} />
                           </td>
                           <td class="center">
-                            <input name={{ 'score'.$suggest->user_id }} type='number' min='0' max='10' step='0.01'/>
+                            <input name={{ 'score'.$suggest->user_id }} type='number' min='0' max='10' step='0.01' {{ (isset($preview)&&$preview)?'disabled':'' }} />
                           </td>
                           <td>
-                            <input value='Remove' class="btn btn-sm btn-danger" type='button' onclick='removeInterviewer(this)'/>
+                            <input value='Remove' class="btn btn-sm btn-danger" type='button' onclick='removeInterviewer(this)' {{ (isset($preview)&&$preview)?'disabled':'' }} />
                           </td>
                         </tr>
                       @endforeach
@@ -302,7 +306,9 @@ thisIsTitle
 
                     <hr>
                     <div class="col col-md-offset-1 col-md-11">
-                    <iframe src="../../recruiter-interview-confirm-addInterviewer" frameBorder="0" width='600px' height='40px' scrolling='no'></iframe>
+                      @if(!(isset($preview)&&$preview))
+                    <iframe src="../../recruiter-interview-confirm-addInterviewer" frameBorder="0" width='600px' height='40px' scrolling='no' ></iframe>
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -326,7 +332,7 @@ thisIsTitle
             </div>
             <div class="col col-md-8">
             
-
+              @if(!(isset($preview)&&$preview))
               <div class="panel panel-default" style="background-color:#fff;box-shadow: 2px 2px 2px #888888;">
                 <div class="panel-heading bg-@{{color}}" >
                   <center style="font-size:2em;"><strong>Result</strong></center>
@@ -355,11 +361,12 @@ thisIsTitle
                   </div>
                 </div>
               </div>
+              @endif
             
             <div class="col col-md-2" style="">
             </div>
           </div>
-
+          @if(!(isset($preview)&&$preview))
           <div class="row">
             <div class="col col-md-3">
             </div>
@@ -373,6 +380,8 @@ thisIsTitle
             <div class="col col-md-1">
             </div>
           </div>
+          @endif
+          @if(!(isset($preview)&&$preview))
           <div class="row">
             <div class="col col-md-4"></div>
             <div class="col col-md-4" style="">
@@ -381,6 +390,7 @@ thisIsTitle
                 {{ Form::close() }}
             </div>
           </div>
+          @endif
         </div>
       </div>
     </div>
@@ -443,12 +453,22 @@ thisIsTitle
           $("#minimize_btn").click(function(){
             $("#minimize_div").slideToggle(700);
           });
-        });
-        $(document).ready(function(){
+          @if($preview)
+          $(".left-side").remove();
+          $(".navbar").remove();
+          $(".header").remove();
+          $(".right-side").toggleClass(false);
+          $(".content").animate({opacity:'0'},0);
+          $(".content").animate({marginTop:'0px',opacity:'1'},1000);
+          @endif
           $("#close_btn").click(function(){
             $("#minimize_div").slideToggle(300);
             $("#close_div").fadeOut(300);
           });
+          $(".box").animate({marginTop:'+=50px',opacity:'0'},0);
+          $(".panel").animate({marginTop:'+=50px',opacity:'0'},0);
+          $(".box").animate({marginTop:'-=50px',opacity:'1'},2000);
+          $(".panel").animate({marginTop:'-=50px',opacity:'1'},2000);
         });
         </script>
 @stop

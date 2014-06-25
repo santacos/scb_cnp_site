@@ -9,7 +9,7 @@ home-recruiter
 
 @section('content')
 <!--welcome box-->
-        <div class="alert alert-info alert-bold-border fade in alert-dismissable" style="margin-left:0px;">
+        <div class="alert alert-info alert-bold-border fade in alert-dismissable" style="margin-left:0px;display:none;">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <h3><i class="fa fa-fw fa-smile-o"></i><strong>Welcome to SCB recruitment system!</strong></h3>
             <p class="text-muted"></p>
@@ -191,5 +191,18 @@ home-recruiter
                     </div>
 
                     <!--end HOT EVENT-->
-
+        <script>
+        $( document ).ready(function() {
+          $(".alert").animate({opacity:'0'},0);
+          $(".alert").animate({height:'hide'},1);
+          $(".box").animate({marginTop:'+=50px',opacity:'0'},0);
+          $(".small-box").animate({height:'hide',marginTop:'+=50px',opacity:'0'},0);
+          $(".panel").animate({marginTop:'+=50px',opacity:'0'},0);
+          $(".box").animate({marginTop:'-=50px',opacity:'1'},2000);
+          $(".small-box").animate({height:'show',marginTop:'-=50px',opacity:'1'},1000);
+          $(".panel").animate({marginTop:'-=50px',opacity:'1'},2000);
+          $(".alert").animate({opacity:'1'},4000);
+          $(".alert").animate({height:'show'},500);
+        });
+        </script>
 @stop

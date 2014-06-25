@@ -72,6 +72,9 @@ class RecruiterSignController extends \BaseController {
 	 */
 	public function update($id)
 	{
+
+
+
 		// Application Log
 			$application = Application::findOrFail($id);
 			$prev_action = ApplicationLog::where('application_id','=',$id)->orderBy('action_datetime','desc');
@@ -193,7 +196,23 @@ class RecruiterSignController extends \BaseController {
 		/**
 			Redirect Requisition Summary Page(s)
 		*/
-		return Response::json(array('success' => true));//->with('require',$require)->with('current',$current);
+		//return Response::json(array('success' => true));//->with('require',$require)->with('current',$current);
+		$requisitions = Requisition::whereHas('application', function($q) {
+		$q->whereApplicationCurrentStatusId(8);
+		})->where('requisition_current_status_id','=',6)->get();
+		foreach($requisitions as $requisition) {
+			$requisition['waiting_for_sign'] = $requisition->application()->whereApplicationCurrentStatusId(8)->count();
+		}
+		if(Input::get('approve')){
+			$message = "Sign requisition successfully! (Acquire $current from $require vacancy)";
+		}else{
+
+			$message = "Decline candidate successfully! (Acquire $current from $require vacancy)";
+		}
+		return View::make('recruiter.offering.sign.index', compact('requisitions'))->with('success',Input::get('approve'))->with('message',$message);
+
+
+
 	}
 
 	/**
