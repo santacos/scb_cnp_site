@@ -91,12 +91,13 @@ thisIsTitle
                                         @endforeach
                                       @endif
                                     </table>
+                                    <br><br>
                                     <hr>
                                     <div class="row">
                                       <div class="col col-md-12">
                                         <div class="col col-md-3"></div>
                                         <div class="col col-md-6">
-                                          <a href="#" class="btn btn-default" style="width:100%;"> View detail</a>
+                                          <a href="javascript:window.open('{{ URL::to('candidate/'.$application->candidate->user_id) }}','Calendar','width=1000,height=650,menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,personalbar=no,titlebar=no')" class="btn btn-default" style="width:100%;"> View detail</a>
                                         </div>
                                       </div>
 
@@ -105,7 +106,7 @@ thisIsTitle
                         </div>
                       </div>
                       <div class="col col-md-6">
-                        <div class="panel panel-success" style="height:400px;">
+                        <div class="panel panel-success" style="">
                           <div class="panel-body">
                              <h4 class="list-group-item-heading text-muted"><strong>Requisition detail</strong></h4>
                               <hr>
@@ -146,7 +147,7 @@ thisIsTitle
                                 <div class="col col-md-12">
                                   <div class="col col-md-3"></div>
                                   <div class="col col-md-6">
-                                    <a href="#" class="btn btn-default" style="width:100%;"> View detail</a>
+                                    <a href="javascript:window.open('{{ URL::to('recruiter-shortlist/'.$requisition->requisition_id) }}','Calendar','width=1000,height=650,menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,personalbar=no,titlebar=no')" class="btn btn-default" style="width:100%;"> View detail</a>
                                   </div>
                                 </div>
                               </div>

@@ -121,19 +121,19 @@ thisIsTitle
                             <tbody>
                               <tr>
                                   <td><strong>Total got number</strong></td>
-                                  <td>1</td>
+                                  <td>{{ $requisition->application()->whereApplicationCurrentStatusId(10)->count() }}</td>
                               </tr>
                               <tr>
                                   <td><strong class="text-yellow">Required number</strong></td>
-                                  <td class="text-yellow">3</td>
+                                  <td class="text-yellow">{{ $requisition->total_number }}</td>
                               </tr>
                               <tr>
-                                  <td><strong>Sent Number</strong></td>
-                                  <td>5</td>
+                                  <td><strong>Sent number</strong></td>
+                                  <td>{{ $requisition->application()->where('application_current_status_id','>=',2)->count() }}</td>
                               </tr>
                               <tr>
-                                  <td><strong class="text-yellow">number of Application</strong></td>
-                                  <td class="text-yellow">60</td>
+                                  <td><strong class="text-yellow">Number of application</strong></td>
+                                  <td class="text-yellow">{{ $requisition->application()->count() }}</td>
                               </tr>
                                 
                             </tbody>
@@ -164,8 +164,8 @@ thisIsTitle
                               <tbody>
                                 
                                 <tr>
-                                    <td style="width:40%;">5</td>
-                                    <td style="width:60%;">3</td>
+                                    <td style="width:40%;">{{ $requisition->application()->where('application_current_status_id','>=',2)->count() }}</td>
+                                    <td style="width:60%;">{{ $requisition->application()->has('InterviewLog')->count() }}</td>
                                 </tr>
   
                               </tbody>
@@ -188,9 +188,9 @@ thisIsTitle
                               </thead>
                               <tbody>
                                 <tr>
-                                    <td>2</td>
-                                    <td>-</td>
-                                    <td>1</td>
+                                    <td>{{ $requisition->application()->where('application_current_status_id','==',9)->count() }}</td>
+                                    <td>{{ $requisition->application()->where('application_current_status_id','==',11)->count() }}</td>
+                                    <td>{{ $requisition->application()->where('application_current_status_id','>=',5)->count() }}</td>
                                 </tr>
                               </tbody>
                           </table>
@@ -271,5 +271,18 @@ thisIsTitle
             </div>
           </div>
         </div>
-
+<script>
+        $( document ).ready(function() {
+          $(".alert").animate({opacity:'0'},0);
+          $(".alert").animate({height:'hide'},1);
+          $(".box").animate({marginTop:'+=50px',opacity:'0'},0);
+          $(".small-box").animate({height:'hide',marginTop:'+=50px',opacity:'0'},0);
+          $(".panel").animate({marginTop:'+=50px',opacity:'0'},0);
+          $(".box").animate({marginTop:'-=50px',opacity:'1'},2000);
+          $(".small-box").animate({height:'show',marginTop:'-=50px',opacity:'1'},2000);
+          $(".panel").animate({marginTop:'-=50px',opacity:'1'},2000);
+          $(".alert").animate({opacity:'1'},4000);
+          $(".alert").animate({height:'show'},700);
+        });
+</script>
 @stop
