@@ -329,3 +329,49 @@ Route::get('linkedin/logout', 'LinkedinController@logout');
 //     // logout
 //     $provider->logout();
 // }));
+
+Route::get('analytics',function(){
+	$option = 0;
+	$value = 0;
+	for($i=1;$i<=7;$i++){
+		if(Input::get('option'.$i) > 0){
+			$option = $i;
+			$value = Input::get('option'.$i);
+			break;
+		}
+	}
+	if(Input::get('mode') == 'requisition'){
+		$datatable = Datatable::table()
+            ->addColumn( 
+                'Requisition ID',
+                'Job Title',
+                'Sign'
+                		)->setUrl(URL::to('analytics/requisition?'
+                              	.'option='.$option.'&'
+                              	.'value='.$value
+                              	))->render('datatable');
+    }else if(Input::get('mode') == 'application'){
+
+    }
+	return View::make('recruiter.analytics.index',compact('datatable'))->with('input',Input::all());
+});
+Route::get('analytics/requisition',function(){
+	$req = Requisition::all();
+	$return = Datatable::collection($req)
+	    ->addColumn('Requisition',function($model)
+	        {
+	            $bin = sprintf( "%020d",  $model->requisition_id);
+	            return '<input type="hidden" value="'.$bin.'"><span class="badge bg-grey">'.$model->requisition_id.'</span>';
+	        })
+	    ->addColumn('Job Title',function($model)
+            {
+                return $model->position()->first()->job_title;
+            })
+	    ->addColumn('Sign',function($model)
+            { 
+            	$bin = sprintf( "%020d",  $model->total_number-$model->get_number);
+                return '<input type="hidden" value="'.$bin.'">' . $model->get_number . "/" . $model->total_number;
+            });
+	$return=$return->make();
+    return $return;
+});

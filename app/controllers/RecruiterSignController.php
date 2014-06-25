@@ -188,9 +188,11 @@ class RecruiterSignController extends \BaseController {
 				$requisition->requisition_current_status_id = 7;
 				$requisition->sla_in_hours = $sla_in_hours;
 				$application->push();
-				return "Finish : End SLA ... From After HRBP Manager Approve (".$starttime.") - Last Candidate Sign (".$endtime.")  >>  Use total ".$endtime->diffInHours($starttime)."Hour(s) ... SLA = "
-				.($sla_in_hours<24?1:$sla_in_hours/24)."Day(s) <br>"
-				."get/require = ".$requisition->get_number."/".$requisition->total_number;
+				$message = "Sign requisition successfully! (Acquire $current from $require vacancy) <br> End SLA : From After HRBP Manager Approve (".$starttime
+					.") - Last Candidate Sign (".$endtime.")  >>  Use total ".$endtime->diffInHours($starttime)
+					."Hour(s) <br> SLA = ".($sla_in_hours<24?1:$sla_in_hours/24)."Day(s) <br>"
+					."get/require = ".$requisition->get_number."/".$requisition->total_number;
+				return View::make('recruiter.offering.sign.index', compact('requisitions'))->with('success',Input::get('approve'))->with('message',$message);
 			}
 		}
 		/**
