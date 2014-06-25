@@ -87,6 +87,7 @@ class UserController extends BaseController {
         {
             // If user is logged, redirect to internal 
             // page, change it to '/admin', '/dashboard' or something
+            
             return Redirect::to('/home');
         }
         else

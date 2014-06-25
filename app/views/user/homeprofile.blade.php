@@ -148,7 +148,7 @@ SCB Recruitment-Home
 						  		<div class="col-md-8">
 									<div class="bs-docs-example-images">
 										<a class="img-thumbnail img-rounded lightbox" style="padding-bottom:1.3em;" rel="fancybox" href="{{$picture}}" >
-											<img src="{{$picture}}" style="height: 223px; width: 223px;"> 
+											<img src="{{$picture}}" style=""> 
 											<span class="bg-images">
 												<i class="fa fa-search"></i>
 											</span>

@@ -1,4 +1,12 @@
+      <!--angular zone-->
+      <script src="<?php echo asset('vendor/angular.min.js')?>"></script> 
+      <script src="<?php echo asset('vendor/ui-bootstrap-tpls-0.11.0.min.js')?>"></script>
 
+      <script src="<?php echo asset('vendor/ui-utils.js')?>"></script> 
+      <script src="<?php echo asset('vendor/ui-utils.min.js')?>"></script>
+
+      <script src="<?php echo asset('js/jquery.js')?>"></script> 
+      <!--end angular zone-->
 
   <meta class="viewport" name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
