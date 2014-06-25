@@ -336,8 +336,8 @@ thisIsTitle
                                                   }
                                                   if($first){
                                                     $max = '-'; $min = '-'; $ave = '-';
-                                                    $maxH = '';
-                                                    $minH = '';
+                                                    $maxH = '-';
+                                                    $minH = '-';
                                                   }else{
                                                     $maxH = $max;
                                                     $minH = $min;
