@@ -156,6 +156,72 @@ $this->command->info('Table SkillCategory Seeded');
 $this->command->info('Table Skill Seeded');
 
 //CANDIDATE
+		
+		 for($i=5; $i<=100; $i++)
+        {  
+        	$user=User::where('username','=','candidate'.$i)->first();
+            $candidate = new Candidate;
+            $candidate->idcard='110'.rand(0,9).rand(0,9).rand(0,9).rand(0,9).rand(0,9).rand(0,9).rand(0,9).rand(0,9).rand(0,9).rand(0,9);
+            $candidate->passport_number = 'AA'.rand(0,9).rand(0,9).rand(0,9).rand(0,9).rand(0,9).rand(0,9);
+            $candidate->is_male = rand(0,1);
+            $candidate->thai_saluation = ($candidate->is_male)?'นาย':'นางสาว';
+            $candidate->thai_firstname = 'ชื่อ แคนดิเดต '.$i;
+            $candidate->thai_lastname = 'นามสมกุล แคนดิเดต '.$i;
+            $candidate->eng_saluation =($candidate->is_male)?'Mr.':'Miss';
+            $candidate->birth_date = '19'.rand(8,9).rand(0,4).'-'.rand(1,12).'-'.rand(1,28);
+            $candidate->nationality = 'Thai';
+            $candidate->country = 'Thailand';
+            $candidate->city = 'Bangkok';
+            $candidate->zip_code = '10'.rand(0,9).rand(0,9).rand(0,9);
+            $candidate->full_location = str_random(40);
+            $candidate->current_living_location =str_random(40);
+            $candidate->user_id = $user->user_id;
+             
+            $candidate->save();
+
+            $candidate= Candidate::find($user->user_id);
+            for($j=1;$j<=rand(1,3);$j++)
+	        { 
+           		$candidate->Skill()->attach(rand($j*2-1,$j*2),array('level' => rand(1,5)) );
+        	}
+        	$candidate->save();
+
+            $work= new WorkExperience;
+	        $work->candidate_user_id=$user->user_id;
+	        $work->company_name = str_random(5);
+	        $work->position = str_random(40);
+	        $work->location = str_random(10);
+	        $work->monthly_salary = rand(2,5).rand(0,9).rand(0,9).'00';
+	        $start=Carbon::now()->subYears(rand(1,5));
+	        $work->time_period_start = $start;
+	        $stop=Carbon::now();
+	        $work->time_period_end = $stop;
+	        $work->year_experience=$start->diffInYears($stop);
+	        $work->reason_leave = str_random(40);
+	        $work->job_achieve = str_random(40);
+	        $work->is_present = 1;
+	        $work->save();
+
+	        for($j=1;$j<=rand(1,5);$j++)
+	        { 	$certificate=new Certificate;
+		        $certificate->candidate_user_id=$user->user_id;
+		        $certificate->name = str_random(20);
+		        $certificate->description= str_random(100);
+		        $certificate->date_get = '20'.rand(0,1).rand(0,9).'-'.rand(1,12).'-'.rand(1,28);
+		        $certificate->save();
+	    	}
+
+	         for($j=1;$j<=rand(1,5);$j++)
+	        {	$award= new Award;
+		        $award->candidate_user_id=$user->user_id;
+		        $award->title = str_random(5);
+		        $award->issuer = str_random(20);
+		        $award->description= str_random(100);
+		        $award->date_get = '20'.rand(0,1).rand(0,9).'-'.rand(1,12).'-'.rand(1,28);
+		        $award->save();
+	        }
+        }
+
 		$user = User::where('username','=','candidate1')->first();
 		$candidate = new Candidate;
         $candidate->user_id = $user->user_id;
@@ -418,13 +484,35 @@ Earning an MCSE: Server Infrastructure certification will qualify you for such j
         $education_degree=new EducationDegree;
         $education_degree->name='Doctoral\'s degree';
         $education_degree->save();
-		$user = User::where('username','=','candidate1')->first();
+		
 		$education_degree1 = EducationDegree::where('name','=','Bachelor\'s degree')->first();
 		$education_degree2 = EducationDegree::where('name','=','Secondary education')->first();
 		$education_degree3 = EducationDegree::where('name','=','Upper secondary education')->first();
 		$education_degree4 = EducationDegree::where('name','=','Lower secondary education')->first();
 		$education_degree5 = EducationDegree::where('name','=','Primary education')->first();
 		$education_degree6 = EducationDegree::where('name','=','None')->first();
+
+		$edu[0]='Chulalongkorn University';
+		$edu[1]='Thammasat University';
+		$edu[2]='Kasetsart University';
+		$edu[3]='King Mongkut\'s Institute of Technology Ladkrabang';
+		$edu[4]='King Mongkut\'s University of Technology Thonburi';
+		for($i=5;$i<=100;$i++)
+		{
+			$user=User::where('username','=','candidate'.$i)->first();
+			Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => $edu[rand(0,4)],
+							'year_start' => '200'.rand(7,9).'-'.rand(1,12).'-'.rand(1,28),
+							'year_end' => '201'.rand(0,2).'-'.rand(1,12).'-'.rand(1,28),
+							'education_degree_id' => $education_degree1->education_degree_id,
+							'field_of_study' => str_random(20),
+							'major' => str_random(20),
+							'GPA' => rand(2,3).'.'.rand(0,9).rand(0,9)
+							));
+
+		}
+		$user = User::where('username','=','candidate1')->first();
 		Education::create(array(	
 							'candidate_user_id' => $user->user_id,
 							'school_name' => 'Chulalongkorn',
@@ -23115,47 +23203,429 @@ $this->command->info('Table RecruitmentType Seeded');
 			$requisition->note = 'Urgent';
 			$requisition->save();
 
-		// for($i=0; $i<100;$i++)
-		// {
-  //       	$user = User::where('username','=','candidate'.rand(1,4))->first();
-  //      		$requisition = new Requisition;
-		// 	$requisition->total_number=rand(1, 10);
-		// 	$requisition->get_number=0;
-		// 	$requisition->employee_user_id = User::where('username','=',(rand(1,2)==1)?('hiringmanager'):('hrbp'.rand(1,2)))->first()->user_id;
-		// 	$requisition->datetime_create = Carbon::now();
-		// 	$requisition->location_id = 976;
-		// 	$requisition->corporate_title_id = rand(1, 17);
-		// 	$requisition->position_id =  rand(1, 2643);
-		// 	$dep= $requisition->position()->first()->group;
-		// 	$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
-		// 	$requisition->dept_id =$a;
-		// 	$requisition->requisition_current_status_id =rand(1, 7);
-		// 	//Input::get('requisition_current_status_id');
-		// 	$requisition->recruitment_type_id = rand(1, 2);
-		// 	$requisition->recruitment_obj_template_id=rand(1, 2);
-		// 	$requisition->recruitment_objective = str_random(40);
-		// 	$requisition->year_of_experience = rand(1, 5);
-		// 	//$requisition->recruitment_objective = Input::get('recruitment_objective');
-		// 	$requisition->responsibility = str_random(40);
-		// 	$requisition->qualification = str_random(40);
-		// 	$requisition->note = str_random(40);
-		// 	$requisition->save();
-		// 	if($requisition->requisition_current_status_id>=5)
-		// 	{
-		// 		for($j=0; $j<20; $j++)
-		// 		{
-		// 			$application = new Application;
-		// 			$application->requisition_id = $requisition->requisition_id;
-		// 			$application->candidate_user_id = User::where('username','=','candidate'.rand(1,4))->first()->user_id;
-		// 			$application->application_current_status_id = rand(1,11);
-		// 			if($application->application_current_status_id >=2)
-		// 				{$application->send_number = rand(1,4);}
-		// 			$application->is_in_basket = false;
-		// 			$application->save();
-		// 		}
-		// 	}
-		// }
+		$count=5;
+		for($i=0; $i<100;$i++)
+		{
+
+       		$requisition = new Requisition;
+			$requisition->total_number=rand(1, 5);
+			$requisition->get_number=0;
+			$requisition->employee_user_id =$user3->user_id;
+			// User::where('username','=',(rand(1,2)==1)?('hiringmanager'):('hrbp'.rand(1,2)))->first()->user_id;
+			$requisition->datetime_create = Carbon::now()->subWeeks(rand(10,15));
+			$requisition->location_id = 976;
+			$requisition->corporate_title_id = rand(1, 17);
+			$requisition->position_id =  rand(1, 2643);
+			$dep= $requisition->position()->first()->group;
+			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
+			$requisition->dept_id =$a;
+			$jtt= $requisition->position()->first()->job_title;
+			$requisition->job_title=$jtt;
+			$requisition->job_description = str_random(50); 
+			$requisition->requisition_current_status_id =rand(1, 7);
+			//Input::get('requisition_current_status_id');
+			$requisition->recruitment_type_id = rand(1, 2);
+			$requisition->recruitment_obj_template_id=1;
+			$requisition->recruitment_objective = 'Mr. '.str_random(10);
+			$requisition->year_of_experience = rand(1, 5);
+			//$requisition->recruitment_objective = Input::get('recruitment_objective');
+			$requisition->responsibility = str_random(40);
+			$requisition->qualification = str_random(40);
+			$requisition->note = str_random(40);
+			$requisition->save();
+
+			$requisition = Requisition::orderBy('requisition_id', 'DESC')->first() ;
+			$id=$requisition->requisition_id;
+			if($requisition->requisition_current_status_id>=4)
+			{
+				
+				$prev_action = RequisitionLog::where('requisition_id','=',$id)->orderBy('action_datetime','desc');
 			
+					if($prev_action->count() > 0){
+					$prev_action = $prev_action->first();
+				}else{
+					$prev_action = NULL;
+				}
+				if(is_null($prev_action)){
+					$prev_action_datetime = 0;
+					$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$requisition->datetime_create)->addDays(rand(1,2)); 
+				}else{
+					$prev_action_datetime = $prev_action->action_datetime;
+					$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addDays(rand(1,2)); 
+				}
+
+				
+					DB::table('requisition_logs')->insert(array(
+							'action_type' => 3,
+							'requisition_id' => $id,
+							'send_number' => 2,// Number 2 Because of HRBP Manager
+							'employee_user_id' => Employee::first()->user_id,
+							/**
+							change 'employee_user_id' to real employee id
+							*/
+							'action_datetime' => $timestamp,
+							'prev_action_datetime' => $prev_action_datetime,
+							'result' => 1,
+							'note' => str_random(20)
+				));
+				
+			}
+			
+			if($requisition->requisition_current_status_id>=5)
+			{
+				for($j=1; $j<=rand(40,100); $j++)
+				{
+					$application = new Application;
+					$application->requisition_id = $requisition->requisition_id;
+					$application->candidate_user_id = User::where('username','=','candidate'.$count)->first()->user_id;
+					$application->application_current_status_id = 1;
+					$application->is_in_basket = rand(0,1);
+					$application->question_point = rand(1,10);
+					$application->save();
+					$count=$count+1;
+					if($count>100){$count=5;}
+				}
+				$requisition = Requisition::findOrFail($id);
+				$prev_action = RequisitionLog::where('requisition_id','=',$id)->orderBy('action_datetime','desc');
+				if($prev_action->count() > 0){
+					$prev_action = $prev_action->first();
+				}else{
+					$prev_action = NULL;
+				}
+				
+				$send_number = 1;
+				if(is_null($prev_action)){
+					$prev_action_datetime = 0;
+				}else{
+					$prev_action_datetime = $prev_action->action_datetime;
+					if($prev_action->action_type == 5){
+						$send_number = $prev_action->send_number+1;
+					}
+				}
+				$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addDays(rand(9,15)); 
+				DB::table('requisition_logs')->insert(array(
+								'action_type' => 5,
+								'requisition_id' => $id,
+								'send_number' => $send_number,
+								'employee_user_id' => $requisition->dept->hrbp_user_id,
+								/**
+								change 'employee_user_id' to real employee id
+								*/
+								'action_datetime' => $timestamp,
+								'prev_action_datetime' => $prev_action_datetime,
+								'result' => true,
+								'note' => str_random(20)
+				));
+				// Application Log
+				$applications = $requisition->application()->whereIsInBasket(1)->whereNull('send_number')->get();
+				foreach($applications as $application){
+					$prev_action = ApplicationLog::where('application_id','=',$application->application_id)->orderBy('action_datetime','desc');
+					if($prev_action->count() > 0){
+						$prev_action = $prev_action->first();
+					}else{
+						$prev_action = NULL;
+					}
+					
+					if(is_null($prev_action)){
+						$prev_action_datetime = 0;
+					}else{
+						$prev_action_datetime = $prev_action->action_datetime;
+					}
+					DB::table('application_logs')->insert(array(
+									'action_type' => 1,
+									'application_id' => $application->application_id,
+									'visit_number' => 1,
+									'employee_user_id' => $application->requisition->dept->recruiter_user_id,
+									/**
+									change 'employee_user_id' to real employee id
+									*/
+									'action_datetime' => $timestamp,
+									'prev_action_datetime' => $application->requisition->requisitionLog()->whereActionType(3)->whereSendNumber(2)->first()->action_datetime,
+									'result' => true,
+									'note' => str_random(20)
+					));
+					$application->send_number = $send_number;
+					$application->application_current_status_id = 2;
+					$application->note = str_random(20);
+					$application->save();
+				}
+			}
+			if($requisition->requisition_current_status_id>=6)
+			{
+
+				$applications = Application::where('application_current_status_id','=',2)->get();
+				foreach($applications as $application){
+				// Application Log
+					$id=$application->application_id;
+					 $approve=rand(0,1);
+					$prev_action = ApplicationLog::where('application_id','=',$id)->orderBy('action_datetime','desc');
+					if($prev_action->count() > 0){
+						$prev_action = $prev_action->first();
+					}else{
+						$prev_action = NULL;
+					}
+					
+					if(is_null($prev_action)){
+						$prev_action_datetime = 0;
+					}else{
+						$prev_action_datetime = $prev_action->action_datetime;
+					}
+					$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addDays(rand(4,8)); 
+					DB::table('application_logs')->insert(array(
+									'action_type' => 2,
+									'application_id' => $application->application_id,
+									'visit_number' => 1,
+									'employee_user_id' => Employee::first()->user_id,
+									/**
+									change 'employee_user_id' to real employee id
+									*/
+									'action_datetime' => $timestamp,
+									'prev_action_datetime' => $prev_action_datetime,
+									'result' => $approve,
+									'note' => str_random(20)
+					));
+				$application->application_current_status_id = $approve?3:9;
+				if($approve == false){
+					$application->result = false;
+				}
+				$application->note = str_random(20);
+				$application->save();
+				}
+					//action 3
+				$applications = Application::where('application_current_status_id','=',3)->get();
+				foreach($applications as $application)
+				{
+							$id=$application->application_id;
+					 		$approve=rand(0,1);
+							$prev_action = ApplicationLog::where('application_id','=',$id)->orderBy('action_datetime','desc');
+							if($prev_action->count() > 0){
+								$prev_action = $prev_action->first();
+							}else{
+								$prev_action = NULL;
+							}
+							$visit_number = $application->interviewLog()->orderBy('visit_number','desc')->first();
+							if(is_null($visit_number)){
+								$visit_number = 1;
+							}else{
+								$visit_number = $visit_number->visit_number+1;
+							}
+							if(is_null($prev_action)){
+								$prev_action_datetime = 0;
+							}else{
+								$prev_action_datetime = $prev_action->action_datetime;
+							}
+							$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addDays(rand(6,10)); 
+							DB::table('application_logs')->insert(array(
+											'action_type' => 3,
+											'application_id' => $application->application_id,
+											'visit_number' => $visit_number,
+											'employee_user_id' => $application->requisition->dept->recruiter_user_id,
+											/**
+											change 'employee_user_id' to real employee id
+											*/
+											'action_datetime' => $timestamp,
+											'prev_action_datetime' => $prev_action_datetime,
+											'result' => $approve,
+											'note' => str_random(20)
+							));
+						$application->application_current_status_id = $approve?4:9;
+						if(Input::get('approve') == false){
+							$application->result = false;
+						}
+						$application->note = str_random(20);
+						$application->save();
+						// $int_visit_number = $application->applicationLog()->whereActionType(4)->orderBy('visit_number','desc');
+						// 	if($int_visit_number->count() > 0){
+						// 		$int_visit_number = $prev_int_visit_number->first()->send_number+1;
+						// 	}else{
+						// 		$int_visit_number = 1;
+						// 	}
+						$application->intOffSchedule()->whereAppCsId(4)->whereVisitNumber($visit_number)->delete();
+						DB::table('int_off_schedules')->insert(array(
+										'app_cs_id' => 4,
+										'visit_number' => $visit_number,
+										'application_id' => $application->application_id,
+										'datetime' => $timestamp->addHours(rand(72,168)),
+										'location' => 'interview room '.rand(1,5)
+						));
+						$interviewers = Employee::whereIn('user_id', explode(',',$application->requisition->employee_user_id.','.$application->requisition->dept->hrbp_user_id.','.$application->requisition->dept->recruiter_user_id))->get();
+						foreach($interviewers as $interviewer){
+							DB::table('interview_evaluations')->insert(array(
+									'app_id' => $application->application_id,
+									'user_id' => $interviewer->user_id,
+									'visit_number' => $visit_number
+							));
+						}
+
+				}
+						//action 4
+				$applications = Application::where('application_current_status_id','=',4)->get();
+				foreach($applications as $application)
+				{
+						$id=$application->application_id;
+					 	$result=rand(1,4);
+						$prev_action = ApplicationLog::where('application_id','=',$id)->orderBy('action_datetime','desc');
+						if($prev_action->count() > 0){
+							$prev_action = $prev_action->first();
+						}else{
+							$prev_action = NULL;
+						}
+						
+						$visit_number = $application->interviewLog()->orderBy('visit_number','desc')->first();
+						if(is_null($visit_number)){
+							$visit_number = 1;
+						}else{
+							$visit_number = $visit_number->visit_number+1;
+						}
+						if(is_null($prev_action)){
+							$prev_action_datetime = 0;
+						}else{
+							$prev_action_datetime = $prev_action->action_datetime;
+						}
+						$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addDays(rand(6,10)); 
+						DB::table('application_logs')->insert(array(
+										'action_type' => 4,
+										'application_id' => $application->application_id,
+										'visit_number' => $visit_number,
+										'employee_user_id' =>  $application->requisition->dept->recruiter_user_id,
+										/**
+										change 'employee_user_id' to real employee id
+										*/
+										'action_datetime' => $timestamp,
+										'prev_action_datetime' => $prev_action_datetime,
+										'result' => ($result != 4),
+										'note' => str_random(20)
+						));
+					if($result == 1){
+						$application->application_current_status_id = 3;
+					}else if($result == 2){
+						$application->application_current_status_id = 5;
+					}else if($result == 3){
+						$application->application_current_status_id = 11;
+					}else if($result == 4){
+						$application->application_current_status_id = 9;
+						$application->result = false;
+					}
+					$application->note =  str_random(20);
+					$application->save();
+
+					$application->intOffSchedule()->whereAppCsId(4)->whereVisitNumber($visit_number)->delete();
+					$date_time=$timestamp->addHours(rand(72,168));
+					DB::table('int_off_schedules')->insert(array(
+									'app_cs_id' => 4,
+									'visit_number' => $visit_number,
+									'application_id' => $application->application_id,
+									'datetime' => $date_time,
+									'location' => 'interview room '.rand(1,5)
+					));
+					$application->interviewEvaluation()->whereVisitNumber($visit_number)->delete();
+					$interviewers = Employee::whereIn('user_id', explode(',',$application->requisition->employee_user_id.','.$application->requisition->dept->hrbp_user_id.','.$application->requisition->dept->recruiter_user_id))->get();
+					foreach($interviewers as $interviewer){
+						DB::table('interview_evaluations')->insert(array(
+								'app_id' => $application->application_id,
+								'user_id' => $interviewer->user_id,
+								'visit_number' => $visit_number,
+								// 'filepath_interview' => Input::hasFile('file'.$interviewer->user_id)?Input::file('file'.$interviewer->user_id)->getRealPath():NULL,
+								'score' => rand(6,10)
+						));
+					}
+					/**
+						Move File to some location before adding to database
+					*/
+					DB::table('interview_logs')->insert(array(
+									'visit_number' => $visit_number,
+									'application_id' => $application->application_id,
+									'interview_datetime' => $date_time,
+									'result' => $result,
+									'note' => str_random(20)
+					));
+				}
+
+				//action 5
+				$applications = Application::where('application_current_status_id','=',5)->get();
+				foreach($applications as $application)
+				{
+					$id=$application->application_id;
+					 	$approve=rand(0,1);
+					$application = Application::findOrFail($id);
+								$prev_action = ApplicationLog::where('application_id','=',$id)->orderBy('action_datetime','desc');
+								if($prev_action->count() > 0){
+									$prev_action = $prev_action->first();
+								}else{
+									$prev_action = NULL;
+								}
+								
+								$visit_number = 1;
+								if(is_null($prev_action)){
+									$prev_action_datetime = 0;
+								}else{
+									$prev_action_datetime = $prev_action->action_datetime;
+								}
+								$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addDays(rand(1,5)); 
+								DB::table('application_logs')->insert(array(
+												'action_type' => 5,
+												'application_id' => $application->application_id,
+												'visit_number' => $visit_number,
+												'employee_user_id' => $application->requisition->dept->recruiter_user_id,
+												/**
+												change 'employee_user_id' to real employee id
+												*/
+												'action_datetime' => $timestamp,
+												'prev_action_datetime' => $prev_action_datetime,
+												'result' => $approve,
+												'note' => str_random(20)
+								));
+							$application->current_salary =rand(3,5).rand(5,9).'000';
+							$application->expected_salary = $application->current_salary+(rand(1,5).'000');
+							$application->position_salary = $application->current_salary+(rand(1,5).'000');
+							$application->final_salary = $application->current_salary+(rand(1,5).'000');
+							$application->cola = $application->current_salary+(rand(1,5).'000');
+							$application->application_current_status_id = $approve?6:9;
+							$application->note = str_random(20);
+							$application->save();
+				}
+				//action 6
+					$applications = Application::where('application_current_status_id','=',6)->get();
+				foreach($applications as $application)
+				{
+						$id=$application->application_id;
+					 	$approve=rand(0,1);
+						$application = Application::findOrFail($id);
+							$prev_action = ApplicationLog::where('application_id','=',$id)->orderBy('action_datetime','desc');
+							if($prev_action->count() > 0){
+								$prev_action = $prev_action->first();
+							}else{
+								$prev_action = NULL;
+							}
+							
+							$visit_number = 1;
+							if(is_null($prev_action)){
+								$prev_action_datetime = 0;
+							}else{
+								$prev_action_datetime = $prev_action->action_datetime;
+							}
+							$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addDays(rand(3,8)); 
+							DB::table('application_logs')->insert(array(
+											'action_type' => 6,
+											'application_id' => $application->application_id,
+											'visit_number' => $visit_number,
+											'employee_user_id' =>  $application->requisition->dept->hrbp_user_id,
+											/**
+											change 'employee_user_id' to real employee id
+											*/
+											'action_datetime' => $timestamp,
+											'prev_action_datetime' => $prev_action_datetime,
+											'result' =>$approve,
+											'note' => str_random(20)
+							));
+						$application->final_salary = $application->expected_salary;
+						$application->application_current_status_id = $approve?7:9;
+						$application->note = str_random(20);
+						$application->save();
+				}
+				//action 7
+			}
+		}
 $this->command->info('Table Requisiton Seeded');
 //Application
 		// for($i=0; $i<20; $i++)

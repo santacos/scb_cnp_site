@@ -65,6 +65,30 @@ class RolesTableSeeder extends Seeder {
         $user->attachRole( $Role );
         $user = User::where('username','=','candidate4')->first();
         $user->attachRole( $Role );
+
+         for($i=5; $i<=100; $i++)
+        {   
+            $users = array(
+                  array(
+                 'username' => 'candidate'.$i,
+                            'email' => 'candidate'.$i.'@hotmail.com',
+                            'password' => Hash::make('test'),
+                            'first' => 'first name '.$i,
+                            'last' => 'last name '.$i,
+                            'contact_number' => '08'.rand(0,9).rand(0,9).rand(0,9).rand(0,9).rand(0,9).rand(0,9).rand(0,9).rand(0,9),
+                            'confirmed' => true,
+                'confirmation_code' => md5(microtime().Config::get('app.key')),
+                'created_at' => Carbon::now()->timestamp,
+                'updated_at' =>  Carbon::now()->timestamp,
+                 )
+             );
+            DB::table('users')->insert( $users );
+            $user=User::where('username','=','candidate'.$i)->first();
+            // $this->command->info($user->user_id);
+            $user->attachRole( $Role ); 
+            $user->save();
+           
+        }
     }
 
 }
