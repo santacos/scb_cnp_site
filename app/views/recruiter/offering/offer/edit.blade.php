@@ -189,7 +189,7 @@ thisIsTitle
                     <div class="col col-md-4"></div>
                     <div class="col col-md-3" style="">
 
-                        {{ Form::button('Accept', array('name' => 'approve','class'=>'btn btn-lg btn-info','style'=>'width:136%;', 'value' => true, 'type' => 'submit')) }}
+                        {{ Form::button('Accept', array('name' => 'approve','class'=>'btn btn-lg btn-primary','style'=>'width:136%;', 'value' => true, 'type' => 'submit')) }}
                         {{ Form::close() }}
                     </div>
                   </div>
