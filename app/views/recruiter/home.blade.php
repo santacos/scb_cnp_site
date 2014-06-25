@@ -191,5 +191,18 @@ home-recruiter
                     </div>
 
                     <!--end HOT EVENT-->
-
+        <script>
+        $( document ).ready(function() {
+          $(".alert").animate({opacity:'0'},0);
+          $(".box").animate({marginTop:'+=50px',opacity:'0'},0);
+          $(".small-box").animate({height:'hide',marginTop:'+=50px',opacity:'0'},0);
+          $(".panel").animate({marginTop:'+=50px',opacity:'0'},0);
+          $(".box").animate({marginTop:'-=50px',opacity:'1'},2000);
+          $(".small-box").animate({height:'show',marginTop:'-=50px',opacity:'1'},2000);
+          $(".panel").animate({marginTop:'-=50px',opacity:'1'},2000);
+          $(".alert").animate({height:'hide'},1);
+          $(".alert").animate({opacity:'1'},2000);
+          $(".alert").animate({height:'show'},700);
+        });
+        </script>
 @stop
