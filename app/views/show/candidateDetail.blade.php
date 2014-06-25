@@ -26,7 +26,7 @@ thisIsTitle
                         <div class="col-xs-12">
                             <h1 class="page-header">
                                 <!--edit-->
-                                <i class="fa fa-fw fa-user"></i> Peepeepee northnorth
+                                <i class="fa fa-fw fa-user"></i>{{$candidate->eng_saluation}} {{$candidate->user()->first()->first}} {{$candidate->user()->first()->last}}
                             </h1>                            
                         </div><!-- /.col -->
                     </div>

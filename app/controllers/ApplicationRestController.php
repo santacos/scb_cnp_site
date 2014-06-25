@@ -95,6 +95,25 @@ class ApplicationRestController extends \BaseController {
             $GLOBALS['score2'] = trim(Input::get( 'score2' ));
 
             $GLOBALS['resume'] = trim(Input::get( 'resume' ));
+            if( $GLOBALS['resume']!='')
+                {   
+                    $app=$app->where(function($s)
+                        {   $s->whereHas('candidate',function($q){
+                                     $searchTerms = explode(' ', $GLOBALS['resume']);
+                                
+                                         $GLOBALS['searchTerms'] = $searchTerms;
+                                         foreach($GLOBALS['searchTerms'] as $term)
+                                        {   $GLOBALS['term']=$term;
+                                            $q->Where(function($query)
+                                                    {
+                                                         $query->orwhere('text_cv', 'LIKE', '%'.   $GLOBALS['term'] .'%'); 
+                                                    });
+                                         }      
+                             
+                            });
+                    });
+                }
+            else{
             $app=$app->whereHas('candidate',function($q){
                 
                 $q->whereHas('education',function($r){
@@ -243,21 +262,10 @@ class ApplicationRestController extends \BaseController {
                                        }
                                  }
                             }
-                  if( $GLOBALS['resume']!='')
-                            {
-                                if( $GLOBALS['resume']!='')
-                                   { 
-                                         $searchTerms = explode(' ', $GLOBALS['resume']);
-                                
-                                         $GLOBALS['searchTerms'] = $searchTerms;
-                                        $q->orWhere(function($query)
-                                                {
-                                                     foreach($GLOBALS['searchTerms'] as $term)
-                                                     {$query->orWhere('text_cv', 'LIKE', '%'.  $term .'%'); }
-                                                });
-                                 }
-                            }            
+
             });     
+            }
+            
                    $app=$app->get();
                     $return = Datatable::collection($app)
                     ->addColumn('application_id',function($model)

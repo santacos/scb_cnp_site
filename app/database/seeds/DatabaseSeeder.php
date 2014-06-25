@@ -45,18 +45,129 @@ class AllTableSeeder extends Seeder {
 		DB::table('position_questions')->delete();
 		DB::table('question_answers')->delete();
 
+//SKILL CATEGORY
+		SkillCategory::create(array(	'skill_category_id' => 1,
+							'name' => 'Programming Language'
+							));
+		SkillCategory::create(array(	'skill_category_id' => 2,
+							'name' => 'Sport'
+							));
+		SkillCategory::create(array(	'skill_category_id' => 3,
+							'name' => 'English Test Score'
+							));
+		SkillCategory::create(array(	'skill_category_id' => 4,
+							'name' => 'Communication'
+							));
+		SkillCategory::create(array(	'skill_category_id' => 5,
+							'name' => 'Banking'
+							));
+$this->command->info('Table SkillCategory Seeded');
+//SKILL
+		Skill::create(array(	
+							'name' => 'JAVA',
+							'skill_category_id' => 1,
+							'is_star' => true
+							));
+		Skill::create(array(	
+							'name' => 'PHP',
+							'skill_category_id' => 1,
+							'is_star' => true
+							));
+		Skill::create(array(	
+							'name' => 'C',
+							'skill_category_id' => 1,
+							'is_star' => true
+							));
+		Skill::create(array(	
+							'name' => 'JavaScript',
+							'skill_category_id' => 1,
+							'is_star' => true
+							));
+		Skill::create(array(	
+							'name' => 'CSS',
+							'skill_category_id' => 1,
+							'is_star' => true
+							));
+		Skill::create(array(	
+							'name' => 'HTML',
+							'skill_category_id' => 1,
+							'is_star' => true
+							));
+		Skill::create(array(	
+							'name' => 'Running',
+							'skill_category_id' => 2,
+							'is_star' => true
+							));
+		Skill::create(array(	
+							'name' => 'Swimming',
+							'skill_category_id' => 2,
+							'is_star' => true
+							));
+		Skill::create(array(	
+							'name' => 'Scuba Diving',
+							'skill_category_id' => 2,
+							'is_star' => true
+							));
+		Skill::create(array(	
+							'name' => 'TOFEL',
+							'skill_category_id' => 3,
+							'is_star' => false
+							));
+		Skill::create(array(
+							'name' => 'CU-TEP',
+							'skill_category_id' => 3,
+							'is_star' => false
+							));
+		Skill::create(array(	
+							'name' => 'Negotiation',
+							'skill_category_id' => 4,
+							'is_star' => true
+							));
+		Skill::create(array(	
+							'name' => 'Price Bargain',
+							'skill_category_id' => 4,
+							'is_star' => true
+							));
+		Skill::create(array(	
+							'name' => 'Persuasion',
+							'skill_category_id' => 4,
+							'is_star' => true
+							));
+		Skill::create(array(	
+							'name' => 'Compromise',
+							'skill_category_id' => 4,
+							'is_star' => true
+							));
+		Skill::create(array(	
+							'name' => 'Taking on Loan',
+							'skill_category_id' => 5,
+							'is_star' => true
+							));
+		Skill::create(array(	
+							'name' => 'Stock Market',
+							'skill_category_id' => 5,
+							'is_star' => true
+							));
+		Skill::create(array(	
+							'name' => 'Credit Analysis',
+							'skill_category_id' => 5,
+							'is_star' => true
+							));
+$this->command->info('Table Skill Seeded');
 
 //CANDIDATE
 		$user = User::where('username','=','candidate1')->first();
 		$candidate = new Candidate;
         $candidate->user_id = $user->user_id;
+        $candidate->filepath_picture = '/img/candidatepics/Peerapat.jpg';
+        $candidate->filepath_cv = '/cv/candidatecvs/Peerapat.pdf';
         $candidate->save();
         $work= new WorkExperience;
         $work->candidate_user_id=$user->user_id;
         $work->company_name = 'IBM';
         $work->position = 'IT Security';
         $work->location = 'Silom';
-        $work->monthly_salary = 40000;
+        $work->monthly_salary = 35000;
         $start=Carbon::now()->subYears(5);
         $work->time_period_start = $start;
         $stop=Carbon::now();
@@ -68,15 +179,40 @@ class AllTableSeeder extends Seeder {
         $work->save();
 
         $user = User::where('username','=','candidate2')->first();
+        
 		$candidate = new Candidate;
+		$candidate->filepath_picture = '/img/candidatepics/Napat.jpg';
+			$candidate->idcard='1103701409550';
+			$candidate->passport_number = 'AA737222';
+			$candidate->thai_saluation = 'นาย';
+			$candidate->thai_firstname = 'ณภัทร';
+			$candidate->thai_lastname = 'ลิปิมงคล';
+			$candidate->eng_saluation = 'Mr.';
+			$candidate->is_male = 1;
+			$candidate->birth_date = '1994-06-27';
+			$candidate->nationality = 'Thai';
+			$candidate->country = 'Thailand';
+			$candidate->city = 'Bangkok';
+			$candidate->zip_code = '10400';
+			$candidate->full_location = 'Rachatevi Petchaburi Road';
+			$candidate->current_living_location ='Rachatevi Petchaburi Road';
         $candidate->user_id = $user->user_id;
+        $this->command->info($candidate->user_id);
         $candidate->save();
+
+        $candidate= Candidate::find($user->user_id);
+        $candidate->Skill()->attach(3,array('level' => 4) );
+        $candidate->Skill()->attach(1,array('level' => 2) );
+        $candidate->Skill()->attach(2,array('level' => 2) );
+        $candidate->Skill()->attach(4,array('level' => 1) );
+        $candidate->save();
+
         $work= new WorkExperience;
         $work->candidate_user_id=$user->user_id;
         $work->company_name = 'Microsoft';
         $work->position = 'IT Security';
-        $work->location = 'Siam';
-        $work->monthly_salary = 40000;
+        $work->location = 'Siamsquare';
+        $work->monthly_salary = 36000;
         $start=Carbon::now()->subYears(3);
         $work->time_period_start = $start;
         $stop=Carbon::now();
@@ -87,16 +223,96 @@ class AllTableSeeder extends Seeder {
         $work->is_present = 1;
         $work->save();
 
+        $certificate=new Certificate;
+        $certificate->candidate_user_id=$user->user_id;
+        $certificate->name = 'Microsoft Technology Associate (MTA)';
+        $certificate->description= 'Microsoft Technology Associate (MTA) is a recommended entry point into IT certification and job preparation. If you are just starting your IT career path or are looking to enhance your understanding of IT fundamentals, MTA certification can validate your core knowledge. And, as an industry-recognized credential, it can also enhance your credibility.';
+        $certificate->date_get = '2013-03-19';
+        $certificate->save();
+
+        $certificate=new Certificate;
+        $certificate->candidate_user_id=$user->user_id;
+        $certificate->name = 'MCSE: Data Platform';
+        $certificate->description= 'The globally recognized standard for IT professionals
+Demonstrate your broad skill sets in building and administrating enterprise-scale data solutions both on-premises and in cloud environments.
+Earning an MCSE: Data Platform certification will qualify you for such jobs as database analyst and database designer.';
+        $certificate->date_get = '2013-05-19';
+        $certificate->save();
+
+        $award= new Award;
+        $award->candidate_user_id=$user->user_id;
+        $award->title = 'POSN';
+        $award->issuer = 'Thammasat University';
+        $award->description= 'Experienced POSN Computer Camp (Second Round) for 2 weeks at Thammasat University';
+        $award->date_get = '2011-03-20';
+        $award->save();
+
+        $award= new Award;
+        $award->candidate_user_id=$user->user_id;
+        $award->title = 'O-NET';
+        $award->issuer = 'NIETS';
+        $award->description= 'Perfect Score on Mathematics O-NET (M.6) National Exam (100 out of 100 points)';
+        $award->date_get = '2012-05-20';
+        $award->save();
+
+        $award= new Award;
+        $award->candidate_user_id=$user->user_id;
+        $award->title = 'GPA';
+        $award->issuer = 'Chulalongkorn University';
+        $award->description= 'Outstanding Academic Award:Highest GPA(4.00) from 700+ students in the 1st year';
+        $award->date_get = '2013-04-20';
+        $award->save();
+
         $user = User::where('username','=','candidate3')->first();
-		$candidate = new Candidate;
+		 $candidate = new Candidate;
+		$candidate->filepath_picture = '/img/candidatepics/Amornthip.jpg';
+			$candidate->idcard='1100400110220';
+			$candidate->passport_number = 'AA123234';
+			$candidate->thai_saluation = 'นางสาว';
+			$candidate->thai_firstname = 'อมรทิพย์';
+			$candidate->thai_lastname = 'รักความสุข';
+			$candidate->eng_saluation = 'Miss.';
+			$candidate->is_male = 1;
+			$candidate->birth_date = '1994-07-08';
+			$candidate->nationality = 'Thai';
+			$candidate->country = 'Thailand';
+			$candidate->city = 'Bangkok';
+			$candidate->zip_code = '10589';
+			$candidate->full_location = 'Ladplao Road Nongjok';
+			$candidate->current_living_location ='Ladplao Road Nongjok';
         $candidate->user_id = $user->user_id;
+        $this->command->info($candidate->user_id);
         $candidate->save();
+
+        $candidate= Candidate::find($user->user_id);
+        $candidate->Skill()->attach(3,array('level' => 5) );
+        $candidate->Skill()->attach(1,array('level' => 2) );
+        $candidate->Skill()->attach(2,array('level' => 2) );
+        $candidate->Skill()->attach(6,array('level' => 1) );
+        $candidate->save();
+
+        $certificate=new Certificate;
+        $certificate->candidate_user_id=$user->user_id;
+        $certificate->name = 'Microsoft Technology Associate (MTA)';
+        $certificate->description= 'Microsoft Technology Associate (MTA) is a recommended entry point into IT certification and job preparation. If you are just starting your IT career path or are looking to enhance your understanding of IT fundamentals, MTA certification can validate your core knowledge. And, as an industry-recognized credential, it can also enhance your credibility.';
+        $certificate->date_get = '2013-03-19';
+        $certificate->save();
+
+        $certificate=new Certificate;
+        $certificate->candidate_user_id=$user->user_id;
+        $certificate->name = 'MCSE: Server Infrastructure';
+        $certificate->description= 'The globally recognized standard for IT professionals
+The Microsoft Certified Solutions Expert (MCSE): Server Infrastructure certification validates that you have the skills needed to run a highly efficient and modern data center, with expertise in identity management, systems management, virtualization, storage, and networking.
+Earning an MCSE: Server Infrastructure certification will qualify you for such jobs as computer support specialist and information security analyst.';
+        $certificate->date_get = '2013-08-19';
+        $certificate->save();
+
         $work= new WorkExperience;
         $work->candidate_user_id=$user->user_id;
         $work->company_name = 'Google';
         $work->position = 'IT Security';
         $work->location = 'Pathumwan';
-        $work->monthly_salary = 40000;
+        $work->monthly_salary = 32000;
         $start=Carbon::now()->subYears(4);
         $work->time_period_start = $start;
         $stop=Carbon::now();
@@ -107,16 +323,64 @@ class AllTableSeeder extends Seeder {
         $work->is_present = 1;
         $work->save();
 
+        $award= new Award;
+        $award->candidate_user_id=$user->user_id;
+        $award->title = 'Samsung Galaxy Mobile Development Academy';
+        $award->issuer = 'Samsung';
+        $award->description= 'Samsung Galaxy Mobile Development Academy, for mobile application "Eat here"';
+        $award->date_get = '2013-07-25';
+        $award->save();
+
+        $award= new Award;
+        $award->candidate_user_id=$user->user_id;
+        $award->title = 'TRUE Young Webmaster';
+        $award->issuer = 'TRUE';
+        $award->description= 'TRUE Young Webmaster Camp , learn how to create website and SEO for marketing website.';
+        $award->date_get = '2013-08-25';
+        $award->save();
+
+        $award= new Award;
+        $award->candidate_user_id=$user->user_id;
+        $award->title = 'Developer team of Chulalongkorn Business Administration\'s website';
+        $award->issuer = 'CBA';
+        $award->description= 'Member of back-end developer team of Chulalongkorn Business Administration\'s website';
+        $award->date_get = '2014-01-25';
+        $award->save();
+
         $user = User::where('username','=','candidate4')->first();
 		$candidate = new Candidate;
+		$candidate->filepath_picture = '/img/candidatepics/Boonjira.jpg';
+			$candidate->idcard='1103718235243';
+			$candidate->passport_number = 'AA123234';
+			$candidate->thai_saluation = 'นางสาว';
+			$candidate->thai_firstname = 'บุญจิรา';
+			$candidate->thai_lastname = 'อังศุมาลิน';
+			$candidate->eng_saluation = 'Miss.';
+			$candidate->is_male = 1;
+			$candidate->birth_date = '1994-05-11';
+			$candidate->nationality = 'Thai';
+			$candidate->country = 'Thailand';
+			$candidate->city = 'Bangkok';
+			$candidate->zip_code = '10200';
+			$candidate->full_location = 'Silom Road Bangrak';
+			$candidate->current_living_location ='Silom Road Bangrak';
         $candidate->user_id = $user->user_id;
+        $this->command->info($candidate->user_id);
         $candidate->save();
+
+        $candidate= Candidate::find($user->user_id);
+        $candidate->Skill()->attach(3,array('level' => 5) );
+        $candidate->Skill()->attach(1,array('level' => 2) );
+        $candidate->Skill()->attach(2,array('level' => 5) );
+        $candidate->Skill()->attach(6,array('level' => 3) );
+        $candidate->save();
+
         $work= new WorkExperience;
         $work->candidate_user_id=$user->user_id;
         $work->company_name = 'Yahoo';
         $work->position = 'IT Security';
         $work->location = 'Bangrak';
-        $work->monthly_salary = 40000;
+        $work->monthly_salary = 34000;
         $start=Carbon::now()->subYears(6);
         $work->time_period_start = $start;
         $stop=Carbon::now();
@@ -127,6 +391,7 @@ class AllTableSeeder extends Seeder {
         $work->job_achieve = 'Nothing';
         $work->is_present = 1;
         $work->save();
+
 
 //EDUCATION
         $education_degree=new EducationDegree;
@@ -156,168 +421,139 @@ class AllTableSeeder extends Seeder {
 		$user = User::where('username','=','candidate1')->first();
 		$education_degree1 = EducationDegree::where('name','=','Bachelor\'s degree')->first();
 		$education_degree2 = EducationDegree::where('name','=','Secondary education')->first();
-		$education_degree3 = EducationDegree::where('name','=','Primary education')->first();
-		$education_degree4 = EducationDegree::where('name','=','None')->first();
+		$education_degree3 = EducationDegree::where('name','=','Upper secondary education')->first();
+		$education_degree4 = EducationDegree::where('name','=','Lower secondary education')->first();
+		$education_degree5 = EducationDegree::where('name','=','Primary education')->first();
+		$education_degree6 = EducationDegree::where('name','=','None')->first();
 		Education::create(array(	
 							'candidate_user_id' => $user->user_id,
-							'school_name' => 'CU',
+							'school_name' => 'Chulalongkorn',
+							'year_start' => '2012-06-06',
+							'year_end' => '2016-06-06',
 							'education_degree_id' => $education_degree1->education_degree_id,
-							'field_of_study' => 'engineering',
-							'major' => 'computer',
+							'field_of_study' => 'Engineering',
+							'major' => 'Computer',
 							'GPA' => 3.23
 							));
 		Education::create(array(	
 							'candidate_user_id' => $user->user_id,
-							'school_name' => 'mini bear nursery school',
-							'year_start' => null,
-							'year_end' => null,
-							'education_degree_id' => $education_degree4->education_degree_id,
-							'field_of_study' => null,
+							'school_name' => 'Debsirin School',
+							'year_start' => '2006-05-16',
+							'year_end' => '2012-05-16',
+							'education_degree_id' => $education_degree2->education_degree_id,
+							'field_of_study' => 'Math-Science',
 							'major' => null,
-							'GPA' => 3.98
+							'GPA' => 3.88
 							));
 		Education::create(array(	
 							'candidate_user_id' => $user->user_id,
-							'school_name' => 'kob monkey temple',
-							'year_start' => null,
-							'year_end' => null,
-							'education_degree_id' => $education_degree3->education_degree_id,
+							'school_name' => 'Rachawinit School',
+							'year_start' => '2000-05-16',
+							'year_end' => '2006-03-11',
+							'education_degree_id' => $education_degree5->education_degree_id,
 							'field_of_study' => null,
 							'major' => null,
 							'GPA' => 4.00
-							));
-		Education::create(array(	
-							'candidate_user_id' => $user->user_id,
-							'school_name' => 'noname',
-							'year_start' => null,
-							'year_end' => null,
-							'education_degree_id' => $education_degree2->education_degree_id,
-							'field_of_study' => 'math-science',
-							'major' => null,
-							'GPA' => 3.36
 							));
 		
 		$user = User::where('username','=','candidate2')->first();
 		$education_degree = EducationDegree::where('name','=','Bachelor\'s degree')->first();
 		Education::create(array(	
 							'candidate_user_id' => $user->user_id,
-							'school_name' => 'CU',
+							'school_name' => 'Chulalongkorn',
+							'year_start' => '2012-06-06',
+							'year_end' => '2016-06-06',
 							'education_degree_id' => $education_degree1->education_degree_id,
-							'field_of_study' => 'engineering',
-							'major' => 'computer',
-							'GPA' => 2.73
-							));
-		Education::create(array(	
-							'candidate_user_id' => $user->user_id,
-							'school_name' => 'mini bear nursery school',
-							'year_start' => null,
-							'year_end' => null,
-							'education_degree_id' => $education_degree4->education_degree_id,
-							'field_of_study' => null,
-							'major' => null,
-							'GPA' => 3.98
-							));
-		Education::create(array(	
-							'candidate_user_id' => $user->user_id,
-							'school_name' => 'kob monkey temple',
-							'year_start' => null,
-							'year_end' => null,
-							'education_degree_id' => $education_degree3->education_degree_id,
-							'field_of_study' => null,
-							'major' => null,
+							'field_of_study' => 'Engineering',
+							'major' => 'Computer',
 							'GPA' => 4.00
 							));
 		Education::create(array(	
 							'candidate_user_id' => $user->user_id,
-							'school_name' => 'noname',
-							'year_start' => null,
-							'year_end' => null,
+							'school_name' => 'Samsenwittayalai School',
+							'year_start' => '2006-05-16',
+							'year_end' => '2012-05-16',
 							'education_degree_id' => $education_degree2->education_degree_id,
-							'field_of_study' => 'math-science',
+							'field_of_study' => 'Math-Science',
 							'major' => null,
-							'GPA' => 3.36
+							'GPA' => 3.68
+							));
+		Education::create(array(	
+							'candidate_user_id' => $user->user_id,
+							'school_name' => 'Saint Dominic school',
+							'year_start' => '2000-05-16',
+							'year_end' => '2006-03-11',
+							'education_degree_id' => $education_degree5->education_degree_id,
+							'field_of_study' => null,
+							'major' => null,
+							'GPA' => 4.00
 							));
 		
 		$user = User::where('username','=','candidate3')->first();
 		$education_degree = EducationDegree::where('name','=','Bachelor\'s degree')->first();
 		Education::create(array(	
 							'candidate_user_id' => $user->user_id,
-							'school_name' => 'CU',
+							'school_name' => 'Chulalongkorn',
+							'year_start' => '2012-06-06',
+							'year_end' => '2016-06-06',
 							'education_degree_id' => $education_degree1->education_degree_id,
-							'field_of_study' => 'engineering',
-							'major' => 'computer',
-							'GPA' => 4.00
+							'field_of_study' => 'Engineering',
+							'major' => 'Computer',
+							'GPA' => 3.55
 							));
+		
 		Education::create(array(	
 							'candidate_user_id' => $user->user_id,
-							'school_name' => 'mini bear nursery school',
-							'year_start' => null,
-							'year_end' => null,
-							'education_degree_id' => $education_degree4->education_degree_id,
-							'field_of_study' => null,
+							'school_name' => 'Triam Udom Suksa School',
+							'year_start' => '2009-05-16',
+							'year_end' => '2012-05-16',
+							'education_degree_id' => $education_degree3->education_degree_id,
+							'field_of_study' => 'Math-Science',
 							'major' => null,
-							'GPA' => 3.98
+							'GPA' => 3.77
 							));
 		Education::create(array(	
 							'candidate_user_id' => $user->user_id,
-							'school_name' => 'kob monkey temple',
-							'year_start' => null,
-							'year_end' => null,
+							'school_name' => 'Bodindecha(sing singhaseni) school',
+							'year_start' => '2006-05-16',
+							'year_end' => '2009-05-16',
 							'education_degree_id' => $education_degree3->education_degree_id,
 							'field_of_study' => null,
 							'major' => null,
-							'GPA' => 4.00
-							));
-		Education::create(array(	
-							'candidate_user_id' => $user->user_id,
-							'school_name' => 'noname',
-							'year_start' => null,
-							'year_end' => null,
-							'education_degree_id' => $education_degree2->education_degree_id,
-							'field_of_study' => 'math-science',
-							'major' => null,
-							'GPA' => 0.36
+							'GPA' => 3.98
 							));
 		
 		$user = User::where('username','=','candidate4')->first();
 		$education_degree = EducationDegree::where('name','=','Bachelor\'s degree')->first();
 		Education::create(array(	
 							'candidate_user_id' => $user->user_id,
-							'school_name' => 'CU',
+							'school_name' => 'Chulalongkorn',
+							'year_start' => '2012-06-06',
+							'year_end' => '2016-06-06',
 							'education_degree_id' => $education_degree1->education_degree_id,
-							'field_of_study' => 'engineering',
-							'major' => 'computer',
-							'GPA' => 3.83
+							'field_of_study' => 'Engineering',
+							'major' => 'Computer',
+							'GPA' => 3.18
 							));
 		Education::create(array(	
 							'candidate_user_id' => $user->user_id,
-							'school_name' => 'mini bear nursery school',
-							'year_start' => null,
-							'year_end' => null,
-							'education_degree_id' => $education_degree4->education_degree_id,
-							'field_of_study' => null,
+							'school_name' => 'Triam Udom Suksa School',
+							'year_start' => '2009-05-16',
+							'year_end' => '2012-05-16',
+							'education_degree_id' => $education_degree3->education_degree_id,
+							'field_of_study' => 'Math-Science',
 							'major' => null,
-							'GPA' => 3.98
+							'GPA' => 3.66
 							));
 		Education::create(array(	
 							'candidate_user_id' => $user->user_id,
-							'school_name' => 'kob monkey temple',
-							'year_start' => null,
-							'year_end' => null,
+							'school_name' => 'Bodindecha(sing singhaseni) school',
+							'year_start' => '2006-05-16',
+							'year_end' => '2009-05-16',
 							'education_degree_id' => $education_degree3->education_degree_id,
 							'field_of_study' => null,
 							'major' => null,
 							'GPA' => 4.00
-							));
-		Education::create(array(	
-							'candidate_user_id' => $user->user_id,
-							'school_name' => 'noname',
-							'year_start' => null,
-							'year_end' => null,
-							'education_degree_id' => $education_degree2->education_degree_id,
-							'field_of_study' => 'math-science',
-							'major' => null,
-							'GPA' => 2.36
 							));
 		
 $this->command->info('Table Education Seeded');
@@ -22669,105 +22905,7 @@ $this->command->info('Table Location Seeded');
 							'next_level_user_id' => null
 							));
 $this->command->info('Table Employee Seeded');
-//SKILL CATEGORY
-		SkillCategory::create(array(	'skill_category_id' => 1,
-							'name' => 'Programming Language'
-							));
-		SkillCategory::create(array(	'skill_category_id' => 2,
-							'name' => 'Sport'
-							));
-		SkillCategory::create(array(	'skill_category_id' => 3,
-							'name' => 'English Test Score'
-							));
-		SkillCategory::create(array(	'skill_category_id' => 4,
-							'name' => 'Communication'
-							));
-		SkillCategory::create(array(	'skill_category_id' => 5,
-							'name' => 'Banking'
-							));
-$this->command->info('Table SkillCategory Seeded');
-//SKILL
-		Skill::create(array(	'skill_id' => 1,
-							'name' => 'JAVA',
-							'skill_category_id' => 1,
-							'is_star' => true
-							));
-		Skill::create(array(	'skill_id' => 2,
-							'name' => 'PHP',
-							'skill_category_id' => 1,
-							'is_star' => true
-							));
-		Skill::create(array(	'skill_id' => 3,
-							'name' => 'C',
-							'skill_category_id' => 1,
-							'is_star' => true
-							));
-		Skill::create(array(	'skill_id' => 4,
-							'name' => 'JavaScript',
-							'skill_category_id' => 1,
-							'is_star' => true
-							));
-		Skill::create(array(	'skill_id' => 5,
-							'name' => 'Running',
-							'skill_category_id' => 2,
-							'is_star' => true
-							));
-		Skill::create(array(	'skill_id' => 6,
-							'name' => 'Swimming',
-							'skill_category_id' => 2,
-							'is_star' => true
-							));
-		Skill::create(array(	'skill_id' => 7,
-							'name' => 'Scuba Diving',
-							'skill_category_id' => 2,
-							'is_star' => true
-							));
-		Skill::create(array(	'skill_id' => 8,
-							'name' => 'TOFEL',
-							'skill_category_id' => 3,
-							'is_star' => false
-							));
-		Skill::create(array(	'skill_id' => 9,
-							'name' => 'CU-TEP',
-							'skill_category_id' => 3,
-							'is_star' => false
-							));
-		Skill::create(array(	'skill_id' => 10,
-							'name' => 'Negotiation',
-							'skill_category_id' => 4,
-							'is_star' => true
-							));
-		Skill::create(array(	'skill_id' => 11,
-							'name' => 'Price Bargain',
-							'skill_category_id' => 4,
-							'is_star' => true
-							));
-		Skill::create(array(	'skill_id' => 12,
-							'name' => 'Persuasion',
-							'skill_category_id' => 4,
-							'is_star' => true
-							));
-		Skill::create(array(	'skill_id' => 13,
-							'name' => 'Compromise',
-							'skill_category_id' => 4,
-							'is_star' => true
-							));
-		Skill::create(array(	'skill_id' => 14,
-							'name' => 'Taking on Loan',
-							'skill_category_id' => 5,
-							'is_star' => true
-							));
-		Skill::create(array(	'skill_id' => 15,
-							'name' => 'Stock Market',
-							'skill_category_id' => 5,
-							'is_star' => true
-							));
-		Skill::create(array(	'skill_id' => 16,
-							'name' => 'Credit Analysis',
-							'skill_category_id' => 5,
-							'is_star' => true
-							));
-$this->command->info('Table Skill Seeded');
+
 
 //REQUISITION CURRENT STATUS
 		RequisitionCurrentStatus::create(array(	'requisition_current_status_id' => 1,
@@ -22848,7 +22986,7 @@ $this->command->info('Table RecruitmentObjectiveTemplate Seeded');
 							));
 $this->command->info('Table RecruitmentType Seeded');
 //Requisition
-		$user3 = User::where('username','=','hiringmanager')->first();
+		$user3 = User::where('username','=','hiringmanager')->first();//1
        		$requisition = new Requisition;
 			$requisition->total_number=2;
 			$requisition->get_number=0;
@@ -22904,59 +23042,71 @@ $this->command->info('Table RecruitmentType Seeded');
 				$application->save();
 			}
 
-	$user3 = User::where('username','=','hiringmanager')->first();
+			$user3 = User::where('username','=','hiringmanager')->first();//2
        		$requisition = new Requisition;
-			$requisition->total_number=1;
+       		$requisition->job_title='IT Procurement Officer';
+       		$requisition->job_description = 'Procurement officer is a commonly used term that describes someone who works full time in the field of procurement or purchasing. There are specific education, certification, and experience requirements to get a job as a procurement officer. This role is most commonly found in large organizations or businesses with a centralized purchasing department.';
+       		$requisition->total_number=2;
 			$requisition->get_number=0;
 			$requisition->employee_user_id = $user3->user_id;
 			$requisition->datetime_create = Carbon::now();
 			$requisition->location_id = 976; //รัชโยธิน
-			$requisition->corporate_title_id = 11; //AVP
-			$requisition->position_id =  165;
+			$requisition->corporate_title_id = 8; //Officer
+			$requisition->position_id =  163;
 			$dep= $requisition->position()->first()->group;
 			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
 			$requisition->dept_id =$a;
-			$requisition->requisition_current_status_id =1;
+			$requisition->requisition_current_status_id =5;
 			//Input::get('requisition_current_status_id');
 			$requisition->recruitment_type_id = 1;
 			$requisition->recruitment_obj_template_id=1;
-			$requisition->recruitment_objective = 'Mr.AA BB';
-			$requisition->year_of_experience = 8;
+			$requisition->recruitment_objective = 'Mr.CC DD';
+			$requisition->year_of_experience = 2;
 			//$requisition->recruitment_objective = Input::get('recruitment_objective');
-			$requisition->responsibility = '<p>- Responsible for procurement plan and manage contracts for IT services <br>
-- Build and maintain IT vendor relationship <br>
-- Develop strategy and maintain outsourcing arrangements with IT service providers<br>
-- Lead the IT procurement team</p>';
-			$requisition->qualification = '<p>- Bachelor\'s degree or Master\'s Degree in Business Management , MIS, Business Computer, IT or related field <br>
-- Preferred more than 8 years of experience in IT procurement specialize in software implementation process and manage the big contract (50M up)<br>
-- Good communication and negotiation skills <br>
-- PC Skills e.g. Work, Excel, PowerPoint</p>';
+			$requisition->responsibility = '<p>- Receive user request and finalize detailed requirements with user<br />
+- Support and co-ordinate for working group activities i.e. working group meeting , refine requirements with user unit, procurement requirement planning cycle meeting , procurement committee meeting etc.<br />
+- Study and analyze the market and competitive environment i.e. business trends, market conditions, supplier cost structure and benchmarks for supply market.<br />
+- Develop sourcing plan for resources and activities vendor evaluation method<br />
+- To be the secretary of the IT procurement committee meeting<br />
+- Part of team to evaluate vendor and select vendor<br />
+- Define procurement data setup requirement<br />
+- Develop the Approval document to CIO or CEO for their approval to purchase<br />
+- Request Procurement Administration Division for issuing PO to the Winner of the bidding<br />
+- Inform the progress / result to requested users<br />
+- Input purchasing data into IPR system.</p>';
+			$requisition->qualification = '<p>- Bachelor\'s degree or Master\'s Degree in Business Management , MIS, Business Computer, IT or related field <br />
+- Preferred 2-5 years of experience in IT procurement <br />
+- Good communication and negotiation skills <br />
+- PC Skills e.g. Work, Excel, PowerPoint<br />
+- Good command of English both written and verbal</p>';
 			$requisition->note = 'Urgent';
 			$requisition->save();
 
 			
 			$user3 = User::where('username','=','hiringmanager')->first();
        		$requisition = new Requisition;
+       		$requisition->job_title='IT Procurement Manager (VP)';
+       		$requisition->job_description = 'Procurement managers, also known as purchasing managers, work for large companies and are in charge of managing and coordinating procurement agents, buyers or purchasing agents, as well as working on the most complex purchases for the company. They research, evaluate and buy products for companies to either resell to customers or use in their everyday operations.';
 			$requisition->total_number=1;
 			$requisition->get_number=0;
 			$requisition->employee_user_id = $user3->user_id;
 			$requisition->datetime_create = Carbon::now();
 			$requisition->location_id = 976; //รัชโยธิน
-			$requisition->corporate_title_id = 11; //AVP
+			$requisition->corporate_title_id = 11; //VP
 			$requisition->position_id =  165;
 			$dep= $requisition->position()->first()->group;
 			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
 			$requisition->dept_id =$a;
-			$requisition->requisition_current_status_id =1;
+			$requisition->requisition_current_status_id =5;
 			//Input::get('requisition_current_status_id');
 			$requisition->recruitment_type_id = 1;
 			$requisition->recruitment_obj_template_id=1;
 			$requisition->recruitment_objective = 'Mr.AA BB';
 			$requisition->year_of_experience = 8;
 			//$requisition->recruitment_objective = Input::get('recruitment_objective');
-			$requisition->responsibility = '<p>- Responsible for procurement plan and manage contracts for IT services <br>
-- Build and maintain IT vendor relationship <br>
-- Develop strategy and maintain outsourcing arrangements with IT service providers<br>
+			$requisition->responsibility = '<p>- Responsible for procurement plan and manage contracts for IT services <br />
+- Build and maintain IT vendor relationship <br />
+- Develop strategy and maintain outsourcing arrangements with IT service providers<br />
 - Lead the IT procurement team</p>';
 			$requisition->qualification = '<p>- Bachelor\'s degree or Master\'s Degree in Business Management , MIS, Business Computer, IT or related field <br>
 - Preferred more than 8 years of experience in IT procurement specialize in software implementation process and manage the big contract (50M up)<br>
@@ -22965,46 +23115,46 @@ $this->command->info('Table RecruitmentType Seeded');
 			$requisition->note = 'Urgent';
 			$requisition->save();
 
-		for($i=0; $i<100;$i++)
-		{
-        	$user = User::where('username','=','candidate'.rand(1,4))->first();
-       		$requisition = new Requisition;
-			$requisition->total_number=rand(1, 10);
-			$requisition->get_number=0;
-			$requisition->employee_user_id = User::where('username','=',(rand(1,2)==1)?('hiringmanager'):('hrbp'.rand(1,2)))->first()->user_id;
-			$requisition->datetime_create = Carbon::now();
-			$requisition->location_id = 976;
-			$requisition->corporate_title_id = rand(1, 17);
-			$requisition->position_id =  rand(1, 2643);
-			$dep= $requisition->position()->first()->group;
-			$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
-			$requisition->dept_id =$a;
-			$requisition->requisition_current_status_id =rand(1, 7);
-			//Input::get('requisition_current_status_id');
-			$requisition->recruitment_type_id = rand(1, 2);
-			$requisition->recruitment_obj_template_id=rand(1, 2);
-			$requisition->recruitment_objective = str_random(40);
-			$requisition->year_of_experience = rand(1, 5);
-			//$requisition->recruitment_objective = Input::get('recruitment_objective');
-			$requisition->responsibility = str_random(40);
-			$requisition->qualification = str_random(40);
-			$requisition->note = str_random(40);
-			$requisition->save();
-			if($requisition->requisition_current_status_id>=5)
-			{
-				for($j=0; $j<20; $j++)
-				{
-					$application = new Application;
-					$application->requisition_id = $requisition->requisition_id;
-					$application->candidate_user_id = User::where('username','=','candidate'.rand(1,4))->first()->user_id;
-					$application->application_current_status_id = rand(1,11);
-					if($application->application_current_status_id >=2)
-						{$application->send_number = rand(1,4);}
-					$application->is_in_basket = false;
-					$application->save();
-				}
-			}
-		}
+		// for($i=0; $i<100;$i++)
+		// {
+  //       	$user = User::where('username','=','candidate'.rand(1,4))->first();
+  //      		$requisition = new Requisition;
+		// 	$requisition->total_number=rand(1, 10);
+		// 	$requisition->get_number=0;
+		// 	$requisition->employee_user_id = User::where('username','=',(rand(1,2)==1)?('hiringmanager'):('hrbp'.rand(1,2)))->first()->user_id;
+		// 	$requisition->datetime_create = Carbon::now();
+		// 	$requisition->location_id = 976;
+		// 	$requisition->corporate_title_id = rand(1, 17);
+		// 	$requisition->position_id =  rand(1, 2643);
+		// 	$dep= $requisition->position()->first()->group;
+		// 	$a = Dept::where('name','=',$dep)->firstOrFail()->dept_id;
+		// 	$requisition->dept_id =$a;
+		// 	$requisition->requisition_current_status_id =rand(1, 7);
+		// 	//Input::get('requisition_current_status_id');
+		// 	$requisition->recruitment_type_id = rand(1, 2);
+		// 	$requisition->recruitment_obj_template_id=rand(1, 2);
+		// 	$requisition->recruitment_objective = str_random(40);
+		// 	$requisition->year_of_experience = rand(1, 5);
+		// 	//$requisition->recruitment_objective = Input::get('recruitment_objective');
+		// 	$requisition->responsibility = str_random(40);
+		// 	$requisition->qualification = str_random(40);
+		// 	$requisition->note = str_random(40);
+		// 	$requisition->save();
+		// 	if($requisition->requisition_current_status_id>=5)
+		// 	{
+		// 		for($j=0; $j<20; $j++)
+		// 		{
+		// 			$application = new Application;
+		// 			$application->requisition_id = $requisition->requisition_id;
+		// 			$application->candidate_user_id = User::where('username','=','candidate'.rand(1,4))->first()->user_id;
+		// 			$application->application_current_status_id = rand(1,11);
+		// 			if($application->application_current_status_id >=2)
+		// 				{$application->send_number = rand(1,4);}
+		// 			$application->is_in_basket = false;
+		// 			$application->save();
+		// 		}
+		// 	}
+		// }
 			
 $this->command->info('Table Requisiton Seeded');
 //Application

@@ -206,7 +206,7 @@ SCB Recruitment-Home
 												  {name:'Samantha', age:60, gender:'girl'}
 												]">
 					<!-- <h2 class="title">edit79 Results</h2> -->
-					<h3>7 Results
+					<h3>{{$requisitions->count()}} Results
 						
 						
 						<!-- <div class="icon pull-right" title="apple-logo">
@@ -249,33 +249,26 @@ SCB Recruitment-Home
 					<table class="table table-bordered table-striped table-hover text-center" style="font-size:1.2em;">
 					  <thead>
 						<tr>
-						  <th style="width:5%;"></th>
-						  <th style="width:10%;">Date post</th>
 						  <th style="width:10%;">Job ID</th>
+						  
+						  
 						  <th style="width:20%;">Job Title</th>
 						  <th style="width:20%;">Department</th>
 						  <th style="width:15%;">Job Location</th>
-						  <th style="width:20%;">Action</th>
+						  <th style="width:10%;">Date post</th>
 						</tr>
 					  </thead>
-					  <tbody  ng-repeat="requisition in requisitions  ">
+					  @foreach($requisitions as $requisition)
+					  <tbody>
 					  	
-							<tr ng-mouseover="show=true;" ng-mouseleave="show=false;" >
-							  	<td>
-								  	<div class="checkbox">
-									  
-										<input type="checkbox" value="">
-									  
-									</div>
-								</td>
-							  	<td></td>
-							  	<td>Subtotal:</td>
-							  	<td>$1.00</td>
-							  	<td>Subtotal:</td>
-							  	<td>$1.00</td>
-							  	<td>Subtotal:</td>
+							<tr ng-mouseover="show{{$requisition->requisition_id}}=true;" ng-mouseleave="show{{$requisition->requisition_id}}=false;" >
+							  	<td>{{$requisition->requisition_id}}</td>
+							  	<td>{{$requisition->job_title}}</td>
+							  	<td>{{$requisition->dept->name}}</td>
+							  	<td>{{$requisition->location->name}}</td>
+							  	<td>26 - 06 - 2014</td>
 							</tr>
-							<tr ng-show="show" ng-mouseover="show=true;" ng-mouseleave="show=false;">
+							<tr ng-show="show{{$requisition->requisition_id}}" ng-mouseover="show{{$requisition->requisition_id}}=true;" ng-mouseleave="show{{$requisition->requisition_id}}=false;">
 								<td colspan=7>
 									<div class="row">
 										<div class="col col-md-3">
@@ -283,19 +276,19 @@ SCB Recruitment-Home
 											<img src="<?php echo asset('img/content/hero.jpg')?>" class="img-rounded" 
 												width="150" height="100" alt="" style="padding-top:2px;padding-bottom:10px;">
 											<br>
-											<a href="{{URL::to('/cd/jobdetail')}}" target="_blank" class="btn btn-sm btn-default" style="width:60%">View detail</a>
+											<a href="{{URL::to('/cd/jobdetail/'.$requisition->requisition_id)}}" target="_blank" class="btn btn-sm btn-default" style="width:60%">View detail</a>
 										</div>
 										<div class="col col-md-6 text-left" style="font-size:0.9em;">
 											<br>
 											<strong>Job summary :</strong>
 											<p>
-												Sublime Text is a sophisticated text editor for code, markup and prose. You'll love the slick user interface, extraordinary features and amazing performance.
+												{{$requisition->job_description}}
 											</p>
 											
 											<strong>Job location:</strong>
-											<p>SCB Head office</p>
+											<p>{{$requisition->location->name}}</p>
 										</div>
-										<div class="col col-md-3">
+										<!-- <div class="col col-md-3">
 											<div class="list-group text-left">
 												<a href="#" class="list-group-item ">
 													<i class="fa fa-fw fa-check-square-o"></i> Apply
@@ -310,7 +303,7 @@ SCB Recruitment-Home
 												</a>
 												
 											</div>
-										</div>
+										</div> -->
 									</div>
 								</td>
 							</tr>
@@ -332,15 +325,11 @@ SCB Recruitment-Home
 						</tr> -->
 					
 					  </tbody>
+					  @endforeach
 					</table>
 			  	</div>
-			  	{{ $requisitions->appends(array('search' => isset($search)?$search:'','department'=>isset($department)?$department:''))->links() }}
+			  
 			  	<!--end table-->
-			  	@foreach($requisitions as $requisition)
-			  		<tr>
-							  <td>{{$requisition->requisition_id}}</td>
-					 </tr>
-			  	@endforeach
 			  	<!--list-->
 			  	<div ng-show="isList" class="table-box">
 					<table class="table table-bordered table-striped table-hover text-center" style="font-size:1.2em;">
@@ -355,8 +344,14 @@ SCB Recruitment-Home
 						  <th style="width:20%;">Action</th>
 						</tr>
 					  </thead> -->
+					  <tr ng-repeat="requisition in requisitions">
+
+					  	sdasdasd
+					  </tr>
 					  <tbody >
-					  		<tr ng-repeat="friend in friends |filter:q ">
+
+					  		@foreach($requisitions as $requisition)
+					  			<tr>
 								<td colspan=7>
 									<div class="row" style="padding-bottom:1.5em;">
 										<div class="col col-md-3">
@@ -370,7 +365,7 @@ SCB Recruitment-Home
 											<br>
 											<strong>Job summary :</strong>
 											<p>
-												Sublime Text is a sophisticated text editor for code, markup and prose. You'll love the slick user interface, extraordinary features and amazing performance.
+												{{$requisition->job_description}}
 											</p>
 											
 											<strong>Job location:</strong>
@@ -394,22 +389,24 @@ SCB Recruitment-Home
 										</div>
 									</div>
 								</td>
-							</tr>
+								</tr>
+								@endforeach
+							
 					  </tbody>
 					</table>
 			  	</div>
 			  	<!--end list-->
 
-
+			  		{{ $requisitions->appends(array('search' => isset($search)?$search:'','department'=>isset($department)?$department:''))->links() }}
 			  	<div class="row">
 			  		<div class="col col-sm-2 col-md-5">
 			  		
 			  		</div>
-			  		<div class="col col-sm-10 col-md-7 pull-right">
+			  		<!-- <div class="col col-sm-10 col-md-7 pull-right">
 			  			<button class="btn btn-danger " style="width:30%;">Add to job basket</button>
 						<button class="btn btn-warning " style="width:30%;">Follow</button>
 						<button class="btn btn-success " style="width:30%;">Apply</button>
-			  		</div>
+			  		</div> -->
 			  	</div>
 			</section>
       	

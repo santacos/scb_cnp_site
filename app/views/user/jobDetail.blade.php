@@ -106,7 +106,7 @@ SCB Recruitment-Home
 									<div class="row pull-right" >
 											<i>
 											<strong>Post date :</strong> 
-											<!--edit-->12 - 3 - 2555
+											<!--edit-->26 - 06 - 2014
 											</i>
 									</div>
 									

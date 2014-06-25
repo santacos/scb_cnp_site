@@ -231,7 +231,7 @@ class ConfideSetupUsersTable extends Migration {
             $table->unsignedInteger('corporate_title_id');
             $table->foreign('corporate_title_id')->references('corporate_title_id')->on('corporate_titles')->onDelete('cascade')->onUpdate('cascade');
             $table->string('job_title',100)->nullable()->default(NULL);
-            $table->string('job_description',500)->nullable()->default(NULL);
+            $table->string('job_description',1500)->nullable()->default(NULL);
             $table->unsignedInteger('position_id');
             $table->foreign('position_id')->references('position_id')->on('positions')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('dept_id');
@@ -244,8 +244,8 @@ class ConfideSetupUsersTable extends Migration {
             $table->unsignedInteger('recruitment_obj_template_id');
             $table->foreign('recruitment_obj_template_id')->references('recruitment_objective_template_id')->on('recruitment_objective_templates')->onDelete('cascade')->onUpdate('cascade');
             $table->string('recruitment_objective',100)->nullable();
-            $table->string('responsibility',1000);
-            $table->string('qualification',1000); 
+            $table->string('responsibility',3000);
+            $table->string('qualification',3000); 
             $table->string('note',100)->nullable()->default(NULL);
             $table->integer('sla_in_hours')->nullable()->default(NULL);
             $table->timestamps();
@@ -420,7 +420,7 @@ class ConfideSetupUsersTable extends Migration {
             $table->foreign('is_in_folder_id')->references('folder_id')->on('folders')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('employee_user_id')->nullable();
             $table->foreign('employee_user_id')->references('user_id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('description',100)->nullable()->default(NULL);
+            $table->string('description',500)->nullable()->default(NULL);
             $table->timestamps();
         });
           Schema::create('candidate_folders', function($table)
@@ -516,8 +516,8 @@ class ConfideSetupUsersTable extends Migration {
             $table->unsignedInteger('candidate_user_id');
             $table->foreign('candidate_user_id')->references('user_id')->on('candidates')->onDelete('cascade')->onUpdate('cascade');
             $table->string('title',100);
-            $table->string('issuer',50)->nullable()->default(NULL);
-            $table->string('description',200)->nullable()->default(NULL);
+            $table->string('issuer',100)->nullable()->default(NULL);
+            $table->string('description',500)->nullable()->default(NULL);
             $table->date('date_get')->nullable()->default(NULL);
             $table->timestamps();
         }); 
@@ -538,7 +538,7 @@ class ConfideSetupUsersTable extends Migration {
             $table->unsignedInteger('candidate_user_id');
             $table->foreign('candidate_user_id')->references('user_id')->on('candidates')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name',100);
-            $table->string('description',200)->nullable()->default(NULL);
+            $table->string('description',500)->nullable()->default(NULL);
             $table->date('date_get')->nullable()->default(NULL);
             $table->string('filepath_certificate',100)->nullable()->default(NULL);
             $table->timestamps();

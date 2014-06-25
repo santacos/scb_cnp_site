@@ -502,7 +502,7 @@ class CandidateController extends \BaseController {
 	public function getJobdetail($id)
 	{
 		$questions = Requisition::find($id)->question()->get();
-		$active['current']='profile';
+		$active['current']='no';
 		return View::make('user.jobDetail',compact('questions','active'))->with('requisition',Requisition::find($id));
 	}
 	public function getJobstatus()
@@ -571,25 +571,36 @@ class CandidateController extends \BaseController {
 		if($search!='')
 		{		
 			$searchTerms = explode(' ', $search);
-			 foreach($searchTerms as $term)
-			    {	 $GLOBALS['term'] = $term;
+				 $GLOBALS['searchTerms'] = $searchTerms;
 			    	$reqs->where(function($r){
 				    	
-				    	 $r->orWhere('responsibility', 'LIKE', '%'.  $GLOBALS['term'] .'%');
-				    	 $r->orWhere('qualification', 'LIKE', '%'.  $GLOBALS['term'] .'%');
-				    	  $r->orWhereHas('dept', function($q) {
-					   			$q->orWhere('name', 'LIKE', '%'.  $GLOBALS['term'] .'%');
-					     });
-				    	 //    $r->WhereHas('position', function($q) {
-						   	// 	$q->orWhere('job_title', 'LIKE', '%'.  $GLOBALS['term'] .'%');
-						   	// 	$q->orWhere('division', 'LIKE', '%'.  $GLOBALS['term'] .'%');
-						   	// 	$q->orWhere('organization', 'LIKE', '%'.  $GLOBALS['term'] .'%');
-					     // });
+				    	
+			    		 foreach($GLOBALS['searchTerms'] as $term)
+						 {
+						 	$GLOBALS['term'] = $term;
+					    	  $r->orWhereHas('dept', function($q) {
+						   					
+						   			$q->Where('name', 'LIKE', '%'.  $GLOBALS['term'] .'%');
+						   			
+						     });
+					    	 $r->orWhere('responsibility', 'LIKE', '%'.  $GLOBALS['term'] .'%');
+				    		 $r->orWhere('qualification', 'LIKE', '%'.  $GLOBALS['term'] .'%');
+				    		 $r->orWhereHas('position', function($q) {
+						   		$q->Where('job_title', 'LIKE', '%'.  $GLOBALS['term'] .'%');
+					    	 });
+					    	 $r->orWhereHas('position', function($q) {
+						   		$q->where('division', 'LIKE', '%'.  $GLOBALS['term'] .'%');
+					    	 });
+					    	 $r->orWhereHas('position', function($q) {
+						   		$q->where('organization', 'LIKE', '%'.  $GLOBALS['term'] .'%');
+					    	 });
+				    	 }
+				    	
 				    	 
 				 	});
 				      	
 					   
-			    }
+			    
 
 		}
 		$requisitions=$reqs->paginate(10);
@@ -786,6 +797,7 @@ class CandidateController extends \BaseController {
 		$application->question_point = $point;
 		$application->save();
 		$questions = Requisition::find($id)->question()->get();
-		return View::make('user.jobDetail',compact('questions'))->with('requisition',Requisition::find($id))->with('success',true);
+		$active['current']='no';
+		return View::make('user.jobDetail',compact('questions','active'))->with('requisition',Requisition::find($id))->with('success',true);
 	}
 }
