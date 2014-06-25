@@ -332,14 +332,17 @@ Route::get('linkedin/logout', 'LinkedinController@logout');
 
 Route::get('analytics',function(){
 	$param = '';
-	for($i=1;$i<=8;$i++){
+	for($i=1;$i<=9;$i++){
 		if(Input::get('option'.$i) > 0){
 			$param .= '&option'.$i.'='.Input::get('option'.$i);
 		}else{
 			$param .= '&option'.$i.'='.'0';
 		}
 	}
-	if(Input::get('mode') == 'requisition'){
+	$custom = 0;
+	if(Input::get('option9') > 0){
+		$custom = 2;
+	}else if(Input::get('mode') == 'requisition'){
 		$datatable = Datatable::table()
             ->addColumn( 
                 'Requisition ID',
@@ -351,10 +354,21 @@ Route::get('analytics',function(){
                 'Exceed',
                 'Action'
                 		)->setUrl(URL::to('analytics/requisition?'.$param))->render('datatable');
+        $custom = 0;
     }else if(Input::get('mode') == 'application'){
-
+		/*$datatable = Datatable::table()
+            ->addColumn( 
+                'Process',
+                'Max',
+                'Min',
+                'Average',
+                'Target SLA',
+                'Candidate Number',
+                'Action'
+                		)->setUrl(URL::to('analytics/application?'.$param))->render('datatable');*/
+		$custom = 1;
     }
-	return View::make('recruiter.analytics.index',compact('datatable'))->with('input',Input::all());
+	return View::make('recruiter.analytics.index',compact('datatable'))->with('input',Input::all())->with('custom',$custom);
 });
 Route::get('analytics/requisition',function(){
 	$req = Requisition::all();

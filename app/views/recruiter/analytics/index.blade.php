@@ -223,7 +223,64 @@ thisIsTitle
                                     <div class="box-body table-responsive no-padding">
                                         
                                       <div style="overflow: auto;">
+                                        @if(!isset($custom) || $custom == 0)
                                             {{ isset($datatable)?$datatable:'Please Submit to see analytics' }}
+                                        @elseif($custom == 1)
+                                            <?php
+                                              $applications = Application::where('application_id','>',0);
+                                              $app_ids = $applications->lists('application_id');
+                                            ?>
+                                            <table class='table'>
+                                              <tr>
+                                                <th>Process</th><th>Max</th><th>Min</th><th>Average</th><th>Candidate</th><th>Action</th>
+                                              </tr>
+                                              <tr>
+                                                <th>Just Apply</th>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>{{ $applications->whereApplicationCurrentStatusId(1)->count() }}</td>
+                                                <td></td>
+                                              </tr>
+                                              <tr>
+                                                <th>Send Shortlist</th>
+                                                <?php
+                                                  $logs = ApplicationLog::whereIn('application_id',$app_ids)->whereActionType(1)->whereVisitNumber(1)->get();
+                                                  $first = true;
+                                                  $max = 0; $min = 0; $count = 0; $sum = 0;
+                                                  foreach($logs as $log){
+                                                    $start = Carbon::createFromFormat('Y-m-d H:i:s', $log->prev_action_datetime);
+                                                    $end = Carbon::createFromFormat('Y-m-d H:i:s', $log->prev_action_datetime);
+                                                    $hour = $end->diffInHours($start);
+                                                    if($first){
+                                                      $first = false;
+                                                      $max = $hour;
+                                                      $min = $hour;
+                                                    }else{
+                                                      if($hour > $max){
+                                                        $max = $hour;
+                                                      }
+                                                      if($hour < $min){
+                                                        $min = $hour;
+                                                      }
+                                                    }
+                                                    $sum += $hour;
+                                                    $count++;
+                                                  }
+                                                  $ave = $sum/$count;
+                                                ?>
+                                                <td>{{ $max }}</td>
+                                                <td>{{ $min }}</td>
+                                                <td>{{ $ave }}</td>
+                                                <td>{{ $applications->whereApplicationCurrentStatusId(2)->count() }}</td>
+                                                <td><a href="{{'analytics?mode=application&option1='.Input::get('option1').'&option2='.Input::get('option2').'&option3='.Input::get('option3').'&option4='.Input::get('option4').'&option5='.Input::get('option5').'&option6='.Input::get('option6').'&option7='.Input::get('option7').'&option8='.Input::get('option8').'&option9=0'}}" type="button" class="btn btn-sm btn-default">
+                                                    Process Analytics
+                                                </a></td>
+                                              </tr>
+                                            </table>
+                                        @elseif($custom == 2)
+                                            yyy
+                                        @endif
                                       </div>
                                     </div><!-- /.box-body -->
                         </div><!-- /.box -->
