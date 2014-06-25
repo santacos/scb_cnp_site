@@ -222,11 +222,23 @@ app.controller('appCtrl',['$scope', '$http',
                       <div id="scoreSearch" class="panel-collapse collapse">
                         <div class="panel-body" style="padding-bottom:2em;">
                           <div class="row">
-                            <div class="col col-md-10 col-md-offset-1">
+                            <div class="col col-md-3 col-md-offset-1">
                               {{Former::select('score','Score :')->addOption('Select Range')->options(array('>=','<=','between'))->attributes(array('ng-model'=>'score'))}}
-                              <input ng-show="score==='0'||score==1||score==2"name="score1" type="number" min=0 max=1000 class="form-control" value="{{isset($input['score1'])?$input['score1']:''}}">
-                              <input ng-show="score==2"name="score2" type="number" min=0 max=1000 class="form-control" value="{{isset($input['score2'])?$input['score2']:''}}">
+                              <div class="row">
+                                <div class="col col-md-5 ">
+                                  <input ng-show="score==='0'||score==1||score==2"name="score1" type="number" min=0 max=1000 class="form-control" value="{{isset($input['score1'])?$input['score1']:''}}">
+                                </div>
+                                <div ng-show="score==2" class="col col-md-1">
+                                 - 
+                                </div>
+                                <div class="col col-md-5">
+                                  <input ng-show="score==2" name="score2" type="number" min=0 max=1000 class="form-control" value="{{isset($input['score2'])?$input['score2']:''}}">
+                                </div>
+                              </div>
+                              <!-- <input ng-show="score==='0'||score==1||score==2"name="score1" type="number" min=0 max=1000 class="form-control" value="{{isset($input['score1'])?$input['score1']:''}}">
                               <br>
+                              <input ng-show="score==2"name="score2" type="number" min=0 max=1000 class="form-control" value="{{isset($input['score2'])?$input['score2']:''}}">
+                              <br> -->
                             </div>
                           </div>
                         </div>
