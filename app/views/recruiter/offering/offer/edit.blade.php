@@ -75,7 +75,8 @@ thisIsTitle
                                       <div class="col col-md-12">
                                         <div class="col col-md-3"></div>
                                         <div class="col col-md-6">
-                                          <a href="#" class="btn btn-default" style="width:100%;"> View detail</a>
+                                          <a href="javascript:window.open('{{ URL::to('candidate/'.$application->candidate->user_id) }}','Calendar','width=1500,height=1200,menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,personalbar=no,titlebar=no')" class="btn btn-default" style="width:100%;"> View detail</a>
+                                          
                                         </div>
                                       </div>
 
@@ -126,7 +127,7 @@ thisIsTitle
                                 <div class="col col-md-12">
                                   <div class="col col-md-3"></div>
                                   <div class="col col-md-6">
-                                    <a href="#" class="btn btn-default" style="width:100%;"> View detail</a>
+                                    <a href="javascript:window.open('{{ URL::to('recruiter-shortlist/'.$requisition->requisition_id) }}','Calendar','width=1500,height=1250,menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,personalbar=no,titlebar=no')" class="btn btn-default" style="width:100%;"> View detail</a>
                                   </div>
                                 </div>
                               </div>
