@@ -64,7 +64,7 @@ Route::get('package/{id}',function($id){
 });
 
 Route::get('tryAngular',function(){
-	return View::make('emailtemplate');
+	return View::make('angular.try8');
 });
 
 Route::get('showReq',function(){
@@ -331,13 +331,12 @@ Route::get('linkedin/logout', 'LinkedinController@logout');
 // }));
 
 Route::get('analytics',function(){
-	$option = 0;
-	$value = 0;
+	$param = '';
 	for($i=1;$i<=8;$i++){
 		if(Input::get('option'.$i) > 0){
-			$option = $i;
-			$value = Input::get('option'.$i);
-			break;
+			$param .= '&option'.$i.'='.Input::get('option'.$i);
+		}else{
+			$param .= '&option'.$i.'='.'0';
 		}
 	}
 	if(Input::get('mode') == 'requisition'){
@@ -351,10 +350,7 @@ Route::get('analytics',function(){
                 'SLA',
                 'Exceed',
                 'Action'
-                		)->setUrl(URL::to('analytics/requisition?'
-                              	.'option='.$option.'&'
-                              	.'value='.$value
-                              	))->render('datatable');
+                		)->setUrl(URL::to('analytics/requisition?'.$param))->render('datatable');
     }else if(Input::get('mode') == 'application'){
 
     }
@@ -488,13 +484,12 @@ Route::get('analytics/requisition',function(){
 	    ->addColumn('Action',function($model)
             { 
             	return  '<div class="btn-group-vertical">
-            				<a href="' .URL::to('analytics?mode=application&option1=0&option2=0&option3=0&option4=0&option5=0&option6=0&option7=0&option8=' . $model->requisition_id).'" type="button" class="btn btn-sm btn-default">
+            				<a href="' . URL::to('analytics?mode=application&option1=0&option2=0&option3=0&option4=0&option5=0&option6=0&option7=0&option8=' . $model->requisition_id).'" type="button" class="btn btn-sm btn-default">
 	                            Application Analytics
 	                        </a>
-	                        <a type="button" class="btn btn-sm btn-default" href="javascript:window.open("'. URL::to('recruiter-shortlist/'.$model->requisition_id) .'","Calendar","width=1500,height=1250,menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,personalbar=no,titlebar=no")" type="button" class="btn btn-sm btn-default">
+	                        <a type="button" class="btn btn-sm btn-default" href="recruiter-shortlist/'.$model->requisition_id.'" type="button" class="btn btn-sm btn-default">
 	                            <i class="fa fa-fw fa-info-circle"></i>Detail
 	                        </a>
-	                        
 	                    </div>';
             });
 	$return=$return->make();
