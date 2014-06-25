@@ -60,7 +60,8 @@ Route::resource('job', 'ShowJobController',array('except' => array('index','crea
 ///////////////////////////////////////////////////////////
 Route::get('tryView',function(){
 	//return View::make('HM.requisition.newcreate');
-	return View::make('admin.candidateDetail');
+	//return View::make('admin.candidateDetail');
+	return View::make('recruiter.offering.package.option');
 });
 
 Route::get('tryAngular',function(){
