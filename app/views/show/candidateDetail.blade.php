@@ -37,7 +37,7 @@ thisIsTitle
                         <div class="col col-md-10">
                             <!--personal detail-->
                             <div class="row">
-                                <div class="col col-md-8">
+                                <div class="col col-xs-8">
                                     <table class="table text-left" style="font-size:1.1em;">
                                             <tbody>
                                             <tr>
@@ -82,68 +82,63 @@ thisIsTitle
                                     </table>
                                 </div>
                                 <!--for photo resume file-->
-                                                    <?php
-                            if(file_exists($candidate->filepath_picture)||isset($candidate->filepath_picture))
-                            {$picture = asset($candidate->filepath_picture);}
-                            else
-                            {$picture = asset('assets/img/avatar3.png');}
-                        ?>
-                        <div class="col col-md-4" style="margin-top:-100px;">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="bs-docs-example-images">
-                                        <a class="img-thumbnail img-rounded lightbox" style="padding-bottom:1.3em;" rel="fancybox" href="{{$picture}}" >
-                                            <img src="{{$picture}}" style="height: 223px; width: 223px;"> 
-                                            <span class="bg-images">
-                                                <i class="fa fa-search"></i>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col col-md-4 pull-left" style="padding-left:0px;padding-right:0px;">
-                                    <button class="btn push-top push-bottom btn-border btn-info" 
-                                    style="width:90%;"data-toggle="modal" data-target="#videoModal">
-                                        Video resume
-                                    </button><br>
-                                    <button class="btn push-top push-bottom btn-border btn-success" 
-                                    style="width:90%;" data-toggle="modal" data-target="#myModal">
-                                        View resume from file
-                                    </button><br>
-                                    <button class="btn push-top push-bottom btn-border btn-warning" 
-                                    style="width:90%;" data-toggle="modal" data-target="#myModal">
-                                        Export resume to pdf
-                                    </button>
-                                </div>
-                                <!--modal zone-->
-                                <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <a href="#" class="close" data-dismiss="modal" aria-hidden="true">×</a>
-                                          <div class="title-box">
-                                            <h4 class="title">Video resume</h4>
-                                          </div>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="video-box youtube">
-                                                <!-- <iframe frameborder="0" allowfullscreen="" src="//www.youtube.com/embed/oNBBijn4JuY?showinfo=0&amp;wmode=opaque"></iframe>
-                                                 -->
-                                                 <iframe frameborder="0" allowfullscreen="" src="//www.youtube.com/embed/0oHhD3Bk9Uc"></iframe>
-                                            
+                                <?php
+                                if(file_exists($candidate->filepath_picture)||isset($candidate->filepath_picture))
+                                {$picture = asset($candidate->filepath_picture);}
+                                else
+                                {$picture = asset('assets/img/avatar3.png');}
+                                ?>
+                                <div class="col col-xs-4" >
+                                    <div class="row">
+                                        <div class="col-xs-8">
+                                            <div class="bs-docs-example-images">
+                                                    <img src="{{$picture}}" > 
                                             </div>
-                                            
                                         </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                          
+                                        <div class="col col-xs-4 no-print pull-right" >
+                                            <button class="btn push-top push-bottom btn-border btn-info" 
+                                            style="width:11em;margin-left:2em;" data-toggle="modal" data-target="#videoModal">
+                                                Video resume
+                                            </button><br>
+                                            <button class="btn push-top push-bottom btn-border btn-success" 
+                                            style="width:11em;margin-left:2em;" data-toggle="modal" data-target="#myModal">
+                                                View resume from file
+                                            </button><br>
+                                            <button class="btn push-top push-bottom btn-border btn-warning" 
+                                            style="width:11em;margin-left:2em;" data-toggle="modal" data-target="#myModal">
+                                                Export resume to pdf
+                                            </button>
                                         </div>
-                                      </div>
+                                        <!--modal zone-->
+                                        <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <a href="#" class="close" data-dismiss="modal" aria-hidden="true">×</a>
+                                                  <div class="title-box">
+                                                    <h4 class="title">Video resume</h4>
+                                                  </div>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="video-box youtube">
+                                                        <!-- <iframe frameborder="0" allowfullscreen="" src="//www.youtube.com/embed/oNBBijn4JuY?showinfo=0&amp;wmode=opaque"></iframe>
+                                                         -->
+                                                         <iframe frameborder="0" allowfullscreen="" src="//www.youtube.com/embed/0oHhD3Bk9Uc"></iframe>
+                                                    
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                  
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </div>
+
+                                        <!--end modal zone-->
                                     </div>
                                 </div>
-
-                                <!--end modal zone-->
-                            </div>
-                        </div>
                             </div>
                             
                             <!--first row for box-->
@@ -414,11 +409,8 @@ thisIsTitle
                             <!--end first row-->
 
                         </div><!--end col-md-10-->
-                                  
-                            
-                        
-                    
-                    <!--end short detail-->
+
+                        <!--end short detail-->
 
                         <!-- this row will not appear when printing -->
                         <div class="row no-print">
@@ -428,6 +420,7 @@ thisIsTitle
                             <div class="col-xs-6">
                              </div>
                         </div>
+                    </div>
                 </section><!-- /.content -->
 
         </div><!-- /.right-side -->

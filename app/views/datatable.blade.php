@@ -34,7 +34,8 @@
                  width="5%"
             @elseif ($c == 'Action')
                  width="10%"
-
+            @elseif ($c == 'Sign')
+                 width="5%"
 
 
 
