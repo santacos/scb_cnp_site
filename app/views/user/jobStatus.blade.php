@@ -251,8 +251,8 @@ SCB Recruitment-Home
 						  	<td>20-4-2557</td>
 						  	<td>16-4-2557</td>
 						</tr>
-						
-							@foreach($applications as $application)
+						<!-- $application->applicationCurrentStatus->application_current_status_id -->
+							@foreach($applications as $application) 
 							 <tr>
 							  <td>{{$application->application_id}}</td>
 							  	<td>{{$application->requisition->job_title}}</td>
