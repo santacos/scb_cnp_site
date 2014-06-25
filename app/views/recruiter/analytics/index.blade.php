@@ -128,7 +128,9 @@ thisIsTitle
                               <p>By Recruiter</p>
                               <select id="option5" onchange='changeVal(this);' name="option5">
                                 <option value="0">-- Not Used --</option>
-                                <option value="1">-- Super Recruiter User --</option>
+                                @foreach(User::where('username','like','%recruiter%')->get() as $key => $value )
+                                <option value="{{ $value->user_id }}">{{ $value->first . " " . $value->last }}</option>
+                                @endforeach
                               </select>
                             </div>
                           </td>

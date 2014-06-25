@@ -36,6 +36,12 @@
                  width="10%"
             @elseif ($c == 'Sign')
                  width="5%"
+            @elseif ($c == 'SLA Start')
+                 width="5%"
+            @elseif ($c == 'SLA End')
+                 width="5%"
+            @elseif ($c == 'Exceed')
+                 width="2.5%"
 
 
 
