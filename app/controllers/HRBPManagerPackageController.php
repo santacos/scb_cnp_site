@@ -106,7 +106,10 @@ class HRBPManagerPackageController extends \BaseController {
 		$application->note = Input::get('note');
 		$application->save();
 		
-		return Response::json(array('success' => true));
+		//return Response::json(array('success' => true));
+		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(6)->get();
+		return View::make('HRBPManager.package.show', compact('applications'))->with('requisition_id',$application->requisition_id);
+	
 	}
 
 	/**

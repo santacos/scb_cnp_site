@@ -119,7 +119,10 @@ class RecruiterPackageController extends \BaseController {
 						'location' => Input::get('location')
 		));*/
 
-		return Response::json(array('success' => true));
+		// return Response::json(array('success' => true));
+		$applications = Requisition::find($id)->application()->whereApplicationCurrentStatusId(5)->get();
+		return View::make('recruiter.offering.package.show', compact('applications'))->with('requisition_id',$application->requisition_id);
+	
 	}
 
 	/**
