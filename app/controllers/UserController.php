@@ -137,7 +137,7 @@ class UserController extends BaseController {
            //          {$is_male=1;}
            //      else{$is_male=0;}
            // }
-           return View::make('pages.user.signup')
+           return View::make('user.signup')
             ->with('email',$userProfile->email)
             ->with('first',$userProfile->firstName)
             ->with('last',$userProfile->lastName)
@@ -154,7 +154,7 @@ class UserController extends BaseController {
         else
         {
             Auth::loginUsingId($user->user_id);
-            return Redirect::intended('/home');
+            return Redirect::intended('/cd');
         }
         echo "Connected with: <b>{$provider->id}</b><br />";
     echo "As: <b>{$userProfile->identifier}</b><br />";
