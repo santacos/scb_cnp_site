@@ -23136,6 +23136,7 @@ $this->command->info('Table RecruitmentType Seeded');
        		$requisition->job_description = 'Procurement officer is a commonly used term that describes someone who works full time in the field of procurement or purchasing. There are specific education, certification, and experience requirements to get a job as a procurement officer. This role is most commonly found in large organizations or businesses with a centralized purchasing department.';
        		$requisition->total_number=2;
 			$requisition->get_number=0;
+			$requisition->datetime_create = Carbon::now()->subHours(rand(10*7*24,15*7*24));
 			$requisition->employee_user_id = $user3->user_id;
 			$requisition->datetime_create = Carbon::now();
 			$requisition->location_id = 976; //รัชโยธิน
@@ -23169,6 +23170,42 @@ $this->command->info('Table RecruitmentType Seeded');
 - Good command of English both written and verbal</p>';
 			$requisition->note = 'Urgent';
 			$requisition->save();
+			$requisition = Requisition::orderBy('requisition_id', 'DESC')->first() ;
+			$id=$requisition->requisition_id;
+			if($requisition->requisition_current_status_id>=4)
+			{
+				
+				$prev_action = RequisitionLog::where('requisition_id','=',$id)->orderBy('action_datetime','desc');
+			
+					if($prev_action->count() > 0){
+					$prev_action = $prev_action->first();
+				}else{
+					$prev_action = NULL;
+				}
+				if(is_null($prev_action)){
+					$prev_action_datetime = 0;
+					$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$requisition->datetime_create)->addHours(rand(24,48)); 
+				}else{
+					$prev_action_datetime = $prev_action->action_datetime;
+					$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addHours(rand(24,48)); 
+				}
+
+				
+					DB::table('requisition_logs')->insert(array(
+							'action_type' => 3,
+							'requisition_id' => $id,
+							'send_number' => 2,// Number 2 Because of HRBP Manager
+							'employee_user_id' => Employee::first()->user_id,
+							/**
+							change 'employee_user_id' to real employee id
+							*/
+							'action_datetime' => $timestamp,
+							'prev_action_datetime' => $prev_action_datetime,
+							'result' => 1,
+							'note' => str_random(20)
+				));
+				
+			}
 
 			
 			$user3 = User::where('username','=','hiringmanager')->first();
@@ -23176,6 +23213,7 @@ $this->command->info('Table RecruitmentType Seeded');
        		$requisition->job_title='IT Procurement Manager (VP)';
        		$requisition->job_description = 'Procurement managers, also known as purchasing managers, work for large companies and are in charge of managing and coordinating procurement agents, buyers or purchasing agents, as well as working on the most complex purchases for the company. They research, evaluate and buy products for companies to either resell to customers or use in their everyday operations.';
 			$requisition->total_number=1;
+			$requisition->datetime_create = Carbon::now()->subHours(rand(10*7*24,15*7*24));
 			$requisition->get_number=0;
 			$requisition->employee_user_id = $user3->user_id;
 			$requisition->datetime_create = Carbon::now();
@@ -23202,7 +23240,42 @@ $this->command->info('Table RecruitmentType Seeded');
 - PC Skills e.g. Work, Excel, PowerPoint</p>';
 			$requisition->note = 'Urgent';
 			$requisition->save();
+			$requisition = Requisition::orderBy('requisition_id', 'DESC')->first() ;
+			$id=$requisition->requisition_id;
+			if($requisition->requisition_current_status_id>=4)
+			{
+				
+				$prev_action = RequisitionLog::where('requisition_id','=',$id)->orderBy('action_datetime','desc');
+			
+					if($prev_action->count() > 0){
+					$prev_action = $prev_action->first();
+				}else{
+					$prev_action = NULL;
+				}
+				if(is_null($prev_action)){
+					$prev_action_datetime = 0;
+					$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$requisition->datetime_create)->addHours(rand(24,48)); 
+				}else{
+					$prev_action_datetime = $prev_action->action_datetime;
+					$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addHours(rand(24,48)); 
+				}
 
+				
+					DB::table('requisition_logs')->insert(array(
+							'action_type' => 3,
+							'requisition_id' => $id,
+							'send_number' => 2,// Number 2 Because of HRBP Manager
+							'employee_user_id' => Employee::first()->user_id,
+							/**
+							change 'employee_user_id' to real employee id
+							*/
+							'action_datetime' => $timestamp,
+							'prev_action_datetime' => $prev_action_datetime,
+							'result' => 1,
+							'note' => str_random(20)
+				));
+				
+			}
 		$count=5;
 		for($ii=0; $ii<50;$ii++)
 		{
@@ -23212,7 +23285,7 @@ $this->command->info('Table RecruitmentType Seeded');
 			$requisition->get_number=0;
 			$requisition->employee_user_id =$user3->user_id;
 			// User::where('username','=',(rand(1,2)==1)?('hiringmanager'):('hrbp'.rand(1,2)))->first()->user_id;
-			$requisition->datetime_create = Carbon::now()->subWeeks(rand(10,15));
+			$requisition->datetime_create = Carbon::now()->subHours(rand(10*7*24,15*7*24));
 			$requisition->location_id = 976;
 			$requisition->corporate_title_id = rand(1, 17);
 			$requisition->position_id =  rand(1, 2643);
@@ -23222,9 +23295,14 @@ $this->command->info('Table RecruitmentType Seeded');
 			$jtt= $requisition->position()->first()->job_title;
 			$requisition->job_title=$jtt;
 			$requisition->job_description = str_random(50); 
-			$requisition->requisition_current_status_id =rand(1, 7);
+			$radd=rand(1,4);
+			if($radd==1)
+			{	$requisition->requisition_current_status_id =rand(1, 3);}
+			else{
+				$requisition->requisition_current_status_id =rand(4, 7);
+			}
 			//Input::get('requisition_current_status_id');
-			$requisition->recruitment_type_id = rand(1, 2);
+			$requisition->recruitment_type_id = 1;
 			$requisition->recruitment_obj_template_id=1;
 			$requisition->recruitment_objective = 'Mr. '.str_random(10);
 			$requisition->year_of_experience = rand(1, 5);
@@ -23248,10 +23326,10 @@ $this->command->info('Table RecruitmentType Seeded');
 				}
 				if(is_null($prev_action)){
 					$prev_action_datetime = 0;
-					$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$requisition->datetime_create)->addDays(rand(1,2)); 
+					$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$requisition->datetime_create)->addHours(rand(24,48)); 
 				}else{
 					$prev_action_datetime = $prev_action->action_datetime;
-					$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addDays(rand(1,2)); 
+					$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addHours(rand(24,48)); 
 				}
 
 				
@@ -23273,7 +23351,7 @@ $this->command->info('Table RecruitmentType Seeded');
 			
 			if($requisition->requisition_current_status_id>=5)
 			{
-				for($j=1; $j<=rand(20,50); $j++)
+				for($j=1; $j<=rand(30,70); $j++)
 				{
 					$application = new Application;
 					$application->requisition_id = $requisition->requisition_id;
@@ -23302,7 +23380,7 @@ $this->command->info('Table RecruitmentType Seeded');
 						$send_number = $prev_action->send_number+1;
 					}
 				}
-				$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addDays(rand(9,15)); 
+				$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addHours(rand(9*24,15*24)); 
 				DB::table('requisition_logs')->insert(array(
 								'action_type' => 5,
 								'requisition_id' => $id,
@@ -23357,6 +23435,7 @@ $this->command->info('Table RecruitmentType Seeded');
 				foreach($applications as $application){
 				// Application Log
 					$id=$application->application_id;
+
 					 $approve=rand(0,2);
 					 if($approve!=0) {$approve = 1;}
 					$prev_action = ApplicationLog::where('application_id','=',$id)->orderBy('action_datetime','desc');
@@ -23371,7 +23450,7 @@ $this->command->info('Table RecruitmentType Seeded');
 					}else{
 						$prev_action_datetime = $prev_action->action_datetime;
 					}
-					$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addDays(rand(4,8)); 
+					$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addHours(rand(4*24,9*24)); 
 					DB::table('application_logs')->insert(array(
 									'action_type' => 2,
 									'application_id' => $application->application_id,
@@ -23416,7 +23495,7 @@ $this->command->info('Table RecruitmentType Seeded');
 							}else{
 								$prev_action_datetime = $prev_action->action_datetime;
 							}
-							$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addDays(rand(6,10)); 
+							$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addHours(rand(6*24,10*24)); 
 							DB::table('application_logs')->insert(array(
 											'action_type' => 3,
 											'application_id' => $application->application_id,
@@ -23484,7 +23563,7 @@ $this->command->info('Table RecruitmentType Seeded');
 						}else{
 							$prev_action_datetime = $prev_action->action_datetime;
 						}
-						$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addDays(rand(6,10)); 
+						$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addHours(rand(6*24,10*24)); 
 						DB::table('application_logs')->insert(array(
 										'action_type' => 4,
 										'application_id' => $application->application_id,
@@ -23563,7 +23642,7 @@ $this->command->info('Table RecruitmentType Seeded');
 								}else{
 									$prev_action_datetime = $prev_action->action_datetime;
 								}
-								$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addDays(rand(1,5)); 
+								$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addHours(rand(1*24,5*24)); 
 								DB::table('application_logs')->insert(array(
 												'action_type' => 5,
 												'application_id' => $application->application_id,
@@ -23606,7 +23685,7 @@ $this->command->info('Table RecruitmentType Seeded');
 							}else{
 								$prev_action_datetime = $prev_action->action_datetime;
 							}
-							$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addDays(rand(3,8)); 
+							$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addHours(rand(3*24,8*24)); 
 							DB::table('application_logs')->insert(array(
 											'action_type' => 6,
 											'application_id' => $application->application_id,
@@ -23644,7 +23723,7 @@ $this->command->info('Table RecruitmentType Seeded');
 						}else{
 							$prev_action_datetime = $prev_action->action_datetime;
 						}
-						$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addDays(rand(2,6)); 
+						$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addHours(rand(2*24,6*24)); 
 						DB::table('application_logs')->insert(array(
 										'action_type' => 7,
 										'application_id' => $application->application_id,
@@ -23685,7 +23764,7 @@ $this->command->info('Table RecruitmentType Seeded');
 							}else{
 								$prev_action_datetime = $prev_action->action_datetime;
 							}
-							$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addDays(rand(2,6)); 
+							$timestamp =Carbon::createFromFormat('Y-m-d H:i:s',$prev_action_datetime)->addHours(rand(2*24,6*24)); 
 							DB::table('application_logs')->insert(array(
 											'action_type' => 8,
 											'application_id' => $application->application_id,
