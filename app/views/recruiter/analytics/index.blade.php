@@ -352,7 +352,7 @@ thisIsTitle
                                                 <td>{{ $min }} ({{$minH}} Hour(s))</td>
                                                 <td>{{ sprintf("%.2f",$ave/24) }} ({{sprintf("%.2f",$ave)}} Hour(s))</td>
                                                 <td>{{ $count }}</td>
-                                                <td>{{ Application::whereIn('application_id',$app_ids)->where('application_current_status_id','=',$xqx+1)->count() }}</td>
+                                                <td>{{ $xqx<8?Application::whereIn('application_id',$app_ids)->where('application_current_status_id','=',$xqx+1)->count():'-' }}</td>
                                                 <td><a href="{{'analytics?mode=application&option1='.Input::get('option1').'&option2='.Input::get('option2').'&option3='.Input::get('option3').'&option4='.Input::get('option4').'&option5='.Input::get('option5').'&option6='.Input::get('option6').'&option7='.Input::get('option7').'&option8='.Input::get('option8').'&option9='.$xqx}}" type="button" class="btn btn-sm btn-default">
                                                     Process Analytics
                                                 </a></td>
