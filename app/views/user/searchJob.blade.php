@@ -67,9 +67,7 @@ SCB Recruitment-Home
 					<li class="active">
 					  <a href="#simplesearch" data-toggle="tab"><h6><i class="fa fa-gears"></i> Quick search</h6></a>
 					</li>
-					<li>
-					  <a href="#advancedsearch" data-toggle="tab"><h6><i class="fa fa-fw fa-search"></i> Advanced search</h6></a>
-					</li>
+					
 				  </ul>
 				  <div class="tab-content">
 					<div class="tab-pane active fade in" id="simplesearch">

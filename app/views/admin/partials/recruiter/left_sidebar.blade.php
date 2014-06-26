@@ -96,7 +96,7 @@
 			<ul class="treeview-menu">
 				<li>
 					<a href="{{URL::to('recruiter-interview-confirm')}}"><i class="fa fa-fw fa-phone"></i> Interview Confirm
-						<small class="badge pull-right bg-red"> {{$a[3]}}</small>
+						<small class="badge pull-right bg-yellow"> {{$a[3]}}</small>
 					</a>
 				</li>
 
@@ -108,7 +108,7 @@
 
 				<li>
 					<a href="{{URL::to('recruiter-prepare-package')}}"><i class="fa fa-fw fa-inbox"></i> Prepare Package
-						<small class="badge pull-right bg-red"> {{$a[5]}}</small>
+						<small class="badge pull-right bg-yellow"> {{$a[5]}}</small>
 					</a>
 				</li>
 
@@ -119,23 +119,23 @@
 				</li>
 				<li>
 					<a href="{{URL::to('recruiter-sign')}}"><i class="fa fa-fw fa-dollar"></i> Sign
-						<small class="badge pull-right bg-red"> {{$a[8]}}</small>
+						<small class="badge pull-right bg-yellow"> {{$a[8]}}</small>
 					</a>
 				</li>
 				<li>
-					<a href="{{ URL::to('icons') }}"><i class="fa fa-fw fa-book"></i> Closed Candidate</a>
+					<a href="{{ URL::to('recruiter-closed-requisition') }}"><i class="fa fa-fw fa-book"></i> Closed Candidate</a>
 				</li>
 
 			</ul>
 		</li>
 		<li>
 			
-			<a href="{{ URL::to('widgets') }}"> <i class="fa fa-fw fa-search"></i><span>  Search Candidate</span> </a>
+			<a href="#"> <i class="fa fa-fw fa-search"></i><span>  Search Candidate</span> </a>
 		
 		</li>
 		<li> 
 		
-			<a href="{{ URL::to('widgets') }}"> <i class="fa fa-fw fa-save"></i><span>  Saved Candidate</span>  </a>
+			<a href="#"> <i class="fa fa-fw fa-save"></i><span>  Saved Candidate</span>  </a>
 		
 		</li>
 		<li> 
