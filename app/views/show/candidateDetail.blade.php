@@ -421,6 +421,46 @@ thisIsTitle
                              </div>
                         </div>
                     </div>
+                    <br>
+                    <div class="table-box">
+                    <table class="table table-bordered table-striped table-hover text-center" style="font-size:1.2em;">
+                      <thead>
+                        <tr>
+                          <th style="width:10%;">Application id</th>
+                          <th style="width:20%;">Job title</th>
+                          <th style="width:20%;">Application status</th>
+                          <th style="width:20%;">Application Detail</th>
+                          <th style="width:15%;">Date update</th>
+                          <th style="width:15%;">Date applied</th>
+                          
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        
+                        
+                        <!-- $application->applicationCurrentStatus->application_current_status_id -->
+                            @foreach($applications as $application) 
+                             <tr>
+                              <td>{{$application->application_id}}</td>
+                                <td>{{$application->requisition->job_title}}</td>
+                                <td>
+                                    {{$application->applicationCurrentStatus()->first()->name}}
+
+                                </td>
+                                <td>
+                                    -
+                                </td>
+                                <td>20-4-2557</td>
+                                <td>{{Carbon::createFromTimestamp(strtotime($application->created_at))->format('j F Y')}}</td>
+
+                             </tr>
+                            @endforeach
+                        
+                      </tbody>
+                    </table>
+                    {{ $applications->appends(array('search' => isset($search)?$search:'','status'=>isset($status)?$status:''))->links() }}
+                </div><!--end table-->
                 </section><!-- /.content -->
 
         </div><!-- /.right-side -->

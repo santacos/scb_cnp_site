@@ -269,11 +269,16 @@ class ApplicationRestController extends \BaseController {
                    $app=$app->get();
                     $return = Datatable::collection($app)
                     ->addColumn('application_id',function($model)
-                        {
+                        {   
+                            $count=Application::where('candidate_user_id','=',$model->candidate()->first()->user_id)->count();
 
                             $bin = sprintf( "%020d",  $model->application_id);
-                                return '<input type="hidden" name="Language" value="'.$bin.'"><span class="badge bg-grey">'.$model->application_id.'</span>';
-                                // }
+                             if($count>1)
+                             {return '<input type="hidden" name="Language" value="'.$bin.'"><span class="badge bg-red">'.$model->application_id.'</span>';
+                                        }
+                                else
+                                {return '<input type="hidden" name="Language" value="'.$bin.'"><span class="badge bg-grey">'.$model->application_id.'</span>';
+                                                                }// }
                                     // return '<span class="badge bg-grey">'.$model->application_id.'</span>';
                         })
                     ->addColumn('Name',function($model)

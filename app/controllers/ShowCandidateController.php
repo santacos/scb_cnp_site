@@ -12,6 +12,8 @@ class ShowCandidateController extends \BaseController {
 	public function show($id)
 	{
 		$candidate = Candidate::find($id);
-		return View::make('show.candidateDetail', array( 'candidate'=> $candidate));
+		$apps=Application::where('candidate_user_id','=',$id);
+		$applications=$apps->paginate(10);
+		return View::make('show.candidateDetail', array( 'candidate'=> $candidate,'applications' => $applications));
 	}
 }
