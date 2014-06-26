@@ -223,7 +223,170 @@ thisIsTitle
                                     <div class="box-body table-responsive no-padding">
                                         
                                       <div style="overflow: auto;">
+                                        @if(!isset($custom) || $custom == 0)
+                                            <?php $thname = array('Just Apply',
+                                                                    'Send Shortlist',//1
+                                                                    'Review Resume',//2
+                                                                    'Interview Appointment',//3
+                                                                    'Interview Feedback',//4
+                                                                    'Prepare Package',//5
+                                                                    'Approve Package',//6
+                                                                    'Offer Package',//7
+                                                                    'Sign Contract'//8
+                                                                    );
+                                              ?>
+                                              @if(Input::get('option9') > 0)
+                                              <center><h1>Process : {{ $thname[Input::get('option9')] }}</h1></center>
+                                              @endif
                                             {{ isset($datatable)?$datatable:'Please Submit to see analytics' }}
+                                        @elseif($custom == 1)
+                                            <?php
+  $req = Requisition::where('requisition_id','>',0);
+  if(Input::get('option7') == 0){
+    if(Input::get('option1') > 0){
+      $req = $req->whereHas('Position',function($q){
+        $q->wherePositionId(Input::get('option1'));
+      });
+    }
+    if(Input::get('option2') > 0){
+      $temp = Position::find(Input::get('option2'))->division;
+      $req = $req->whereHas('Position',function($q) use ($temp){
+        $q->whereDivision($temp);
+      });
+    }
+    if(Input::get('option3') > 0){
+      $temp = Position::find(Input::get('option3'))->group;
+      $req = $req->whereHas('Position',function($q) use ($temp){
+        $q->whereGroup($temp);
+      });
+    }
+    if(Input::get('option4') > 0){
+      $temp = Position::find(Input::get('option4'))->organization;
+      $req = $req->whereHas('Position',function($q) use ($temp){
+        $q->whereOrganization($temp);
+      });
+    }
+    if(Input::get('option5') > 0){
+      $req = $req->whereHas('Dept',function($q){
+        $q->whereRecruiterUserId(Input::get('option5'));
+      });
+    }
+    if(Input::get('option6') > 0){
+      $req = $req->whereCorporateTitleId(Input::get('option6'));
+    }
+    if(Input::get('option8') > 0){
+      $req = $req->whereRequisitionId(Input::get('option8'));
+    }
+  }
+  $req_ids = $req->lists('requisition_id');
+  if(count($req_ids) == 0) $req_ids = array(0);
+  $applications = Application::whereIn('requisition_id',$req_ids)->get();
+                                              $app_ids = $applications->lists('application_id');
+                                              if(count($app_ids) == 0) $app_ids = array(0);
+                                            ?>
+                                            <table class='table'>
+                                              <tr>
+                                                <th>Process</th><th>Max</th><th>Min</th><th>Average</th><th>Record</th><th>Candidate</th><th>Action</th>
+                                              </tr>
+                                              <tr>
+                                                <th>Just Apply</th>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>{{ Application::whereIn('application_id',$app_ids)->whereApplicationCurrentStatusId(1)->count() }}</td>
+                                                <td></td>
+                                              </tr>
+                                              <?php $thname = array('Just Apply',
+                                                                    'Send Shortlist',//1
+                                                                    'Review Resume',//2
+                                                                    'Interview Appointment',//3
+                                                                    'Interview Feedback',//4
+                                                                    'Prepare Package',//5
+                                                                    'Approve Package',//6
+                                                                    'Offer Package',//7
+                                                                    'Sign Contract'//8
+                                                                    );
+                                              ?>
+                                              @for($xqx=1;$xqx<=8;$xqx++)
+                                              <tr>
+                                                <th>{{ $thname[$xqx] }}</th>
+                                                <?php
+                                                  $logs = ApplicationLog::whereIn('application_id',$app_ids)->whereActionType($xqx)->whereVisitNumber(1)->get();
+                                                  $first = true;
+                                                  $max = 0; $min = 0; $count = 0; $sum = 0;
+                                                  foreach($logs as $log){
+                                                    $start = Carbon::createFromFormat('Y-m-d H:i:s', $log->prev_action_datetime);
+                                                    $end = Carbon::createFromFormat('Y-m-d H:i:s', $log->action_datetime);
+                                                    $hour = $end->diffInHours($start);
+                                                    if($first){
+                                                      $first = false;
+                                                      $max = $hour;
+                                                      $min = $hour;
+                                                    }else{
+                                                      if($hour > $max){
+                                                        $max = $hour;
+                                                      }
+                                                      if($hour < $min){
+                                                        $min = $hour;
+                                                      }
+                                                    }
+                                                    $sum += $hour;
+                                                    $count++;
+                                                  }
+                                                  if($first){
+                                                    $max = '-'; $min = '-'; $ave = '-';
+                                                    $maxH = '-';
+                                                    $minH = '-';
+                                                  }else{
+                                                    $maxH = $max;
+                                                    $minH = $min;
+                                                    $max = intval($max/24);
+                                                    $min = intval($min/24);
+                                                    $max = $max==0?1:$max;
+                                                    $min = $min==0?1:$min;
+                                                    $ave = $sum/$count;
+                                                  }
+                                                ?>
+                                                <td>{{ $max }} ({{$maxH}} Hour(s))</td>
+                                                <td>{{ $min }} ({{$minH}} Hour(s))</td>
+                                                <td>{{ sprintf("%.2f",$ave/24) }} ({{sprintf("%.2f",$ave)}} Hour(s))</td>
+                                                <td>{{ $count }}</td>
+                                                <td>{{ $xqx<8?Application::whereIn('application_id',$app_ids)->where('application_current_status_id','=',$xqx+1)->count():'-' }}</td>
+                                                <td><a href="{{'analytics?mode=application&option1='.Input::get('option1').'&option2='.Input::get('option2').'&option3='.Input::get('option3').'&option4='.Input::get('option4').'&option5='.Input::get('option5').'&option6='.Input::get('option6').'&option7='.Input::get('option7').'&option8='.Input::get('option8').'&option9='.$xqx}}" type="button" class="btn btn-sm btn-default">
+                                                    Process Analytics
+                                                </a></td>
+                                              </tr>
+                                              @endfor
+                                              <tr>
+                                                <th>Pass</th>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>{{ Application::whereIn('application_id',$app_ids)->whereApplicationCurrentStatusId(10)->count() }}</td>
+                                                <td></td>
+                                              </tr>
+                                              <tr>
+                                                <th>Pending</th>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>{{ Application::whereIn('application_id',$app_ids)->whereApplicationCurrentStatusId(11)->count() }}</td>
+                                                <td></td>
+                                              </tr>
+                                              <tr>
+                                                <th>Fail</th>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>{{ Application::whereIn('application_id',$app_ids)->whereApplicationCurrentStatusId(9)->count() }}</td>
+                                                <td></td>
+                                              </tr>
+                                            </table>
+                                        @endif
                                       </div>
                                     </div><!-- /.box-body -->
                         </div><!-- /.box -->

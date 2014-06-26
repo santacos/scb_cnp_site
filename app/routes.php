@@ -332,14 +332,27 @@ Route::get('linkedin/logout', 'LinkedinController@logout');
 
 Route::get('analytics',function(){
 	$param = '';
-	for($i=1;$i<=8;$i++){
+	for($i=1;$i<=9;$i++){
 		if(Input::get('option'.$i) > 0){
 			$param .= '&option'.$i.'='.Input::get('option'.$i);
 		}else{
 			$param .= '&option'.$i.'='.'0';
 		}
 	}
-	if(Input::get('mode') == 'requisition'){
+	$custom = 0;
+	if(Input::get('option9') > 0){
+		$datatable = Datatable::table()
+            ->addColumn( 
+                'Candidate ID',
+                'Candidate Name',
+                'Job Title',
+                'Start',
+                'End',
+                'SLA',
+                'Actual Time',
+                'Detail'
+                		)->setUrl(URL::to('analytics/process?'.$param))->render('datatable');
+	}else if(Input::get('mode') == 'requisition'){
 		$datatable = Datatable::table()
             ->addColumn( 
                 'Requisition ID',
@@ -351,13 +364,51 @@ Route::get('analytics',function(){
                 'Exceed',
                 'Action'
                 		)->setUrl(URL::to('analytics/requisition?'.$param))->render('datatable');
+        $custom = 0;
     }else if(Input::get('mode') == 'application'){
-
+		$custom = 1;
     }
-	return View::make('recruiter.analytics.index',compact('datatable'))->with('input',Input::all());
+	return View::make('recruiter.analytics.index',compact('datatable'))->with('input',Input::all())->with('custom',$custom);
 });
 Route::get('analytics/requisition',function(){
-	$req = Requisition::all();
+	$req = Requisition::where('requisition_id','>',0);
+	if(Input::get('option7') == 0){
+		if(Input::get('option1') > 0){
+			$req = $req->whereHas('Position',function($q){
+				$q->wherePositionId(Input::get('option1'));
+			});
+		}
+		if(Input::get('option2') > 0){
+			$temp = Position::find(Input::get('option2'))->division;
+			$req = $req->whereHas('Position',function($q) use ($temp){
+				$q->whereDivision($temp);
+			});
+		}
+		if(Input::get('option3') > 0){
+			$temp = Position::find(Input::get('option3'))->group;
+			$req = $req->whereHas('Position',function($q) use ($temp){
+				$q->whereGroup($temp);
+			});
+		}
+		if(Input::get('option4') > 0){
+			$temp = Position::find(Input::get('option4'))->organization;
+			$req = $req->whereHas('Position',function($q) use ($temp){
+				$q->whereOrganization($temp);
+			});
+		}
+		if(Input::get('option5') > 0){
+			$req = $req->whereHas('Dept',function($q){
+				$q->whereRecruiterUserId(Input::get('option5'));
+			});
+		}
+		if(Input::get('option6') > 0){
+			$req = $req->whereCorporateTitleId(Input::get('option6'));
+		}
+		if(Input::get('option8') > 0){
+			$req = $req->whereRequisitionId(Input::get('option8'));
+		}
+	}
+	$req = $req->get();
 	$return = Datatable::collection($req)
 	    ->addColumn('Requisition',function($model)
 	        {
@@ -492,6 +543,189 @@ Route::get('analytics/requisition',function(){
 	                        </a>
 	                    </div>';
             });
+	$return=$return->make();
+    return $return;
+});
+/*'Candidate ID',
+'Candidate Name',
+'Job Title',
+'Start',
+'End',
+'SLA',
+'Actual Time'*/
+Route::get('analytics/process',function(){
+	$req = Requisition::where('requisition_id','>',0);
+	if(Input::get('option7') == 0){
+		if(Input::get('option1') > 0){
+			$req = $req->whereHas('Position',function($q){
+				$q->wherePositionId(Input::get('option1'));
+			});
+		}
+		if(Input::get('option2') > 0){
+			$temp = Position::find(Input::get('option2'))->division;
+			$req = $req->whereHas('Position',function($q) use ($temp){
+				$q->whereDivision($temp);
+			});
+		}
+		if(Input::get('option3') > 0){
+			$temp = Position::find(Input::get('option3'))->group;
+			$req = $req->whereHas('Position',function($q) use ($temp){
+				$q->whereGroup($temp);
+			});
+		}
+		if(Input::get('option4') > 0){
+			$temp = Position::find(Input::get('option4'))->organization;
+			$req = $req->whereHas('Position',function($q) use ($temp){
+				$q->whereOrganization($temp);
+			});
+		}
+		if(Input::get('option5') > 0){
+			$req = $req->whereHas('Dept',function($q){
+				$q->whereRecruiterUserId(Input::get('option5'));
+			});
+		}
+		if(Input::get('option6') > 0){
+			$req = $req->whereCorporateTitleId(Input::get('option6'));
+		}
+		if(Input::get('option8') > 0){
+			$req = $req->whereRequisitionId(Input::get('option8'));
+		}
+	}
+	$req_ids = $req->lists('requisition_id');
+	if(count($req_ids) == 0) $req_ids = array(0);
+	$app = Application::whereIn('requisition_id',$req_ids)->get();
+	$return = Datatable::collection($app)
+	    ->addColumn('Candidate ID',function($model)
+	        {
+	            $bin = sprintf( "%020d",  $model->candidate->user_id);
+	            return '<input type="hidden" value="'.$bin.'"><span class="badge bg-grey">'.$model->candidate->user_id.'</span>';
+	        })
+	    ->addColumn('Candidate Name',function($model)
+            {
+                return $model->candidate->user->first . " " . $model->candidate->user->last;
+            })
+	    ->addColumn('Job Title',function($model)
+            {
+                return $model->requisition->position->job_title;
+            })
+	    ->addColumn('Start',function($model)
+            { 
+            	$dec = $model->applicationLog()->whereActionType(Input::get('option9'))->whereVisitNumber(1)->first();
+            	if(is_null($dec)){
+            		return '-';
+            	}
+            	$dec = $dec->prev_action_datetime;
+            	return $dec;
+            	$bin = sprintf( "%020d",  $dec);
+                return '<input type="hidden" value="'.$bin.'">' . $dec;
+            })
+	    ->addColumn('End',function($model)
+            { 
+            	$dec = $model->applicationLog()->whereActionType(Input::get('option9'))->whereVisitNumber(1)->first();
+            	if(is_null($dec)){
+            		return '-';
+            	}
+            	$dec = $dec->action_datetime;
+            	return $dec;
+            	$bin = sprintf( "%020d",  $dec);
+                return '<input type="hidden" value="'.$bin.'">' . $dec;
+            })
+	    ->addColumn('SLA',function($model)
+            { 
+            	$start_timestamp = $model->applicationLog()->whereActionType(Input::get('option9'))->whereVisitNumber(1)->first();
+            	if(is_null($start_timestamp)){
+            		return '-';
+            	}
+            	$start_timestamp = Carbon::createFromFormat('Y-m-d H:i:s',$start_timestamp->prev_action_datetime);
+
+                $SLA = $model->requisition->corporateTitle->group->SLACandidate()->whereAppCsId(Input::get('option9'))->whereVisitNumber(1);
+                $SLA = $SLA->first()->SLA;
+
+                $end_timestamp = $start_timestamp->copy();
+                $holidays = PublicHoliday::all();
+                $enddate = $model->applicationLog()->whereActionType(Input::get('option9'))->whereVisitNumber(1)->first();
+                if(is_null($enddate)){
+                	$enddate = Carbon::now();
+                }else{
+                	$enddate = Carbon::createFromFormat("Y-m-d H:i:s", $enddate->action_datetime);
+                }
+                for($i=0; $end_timestamp->diffInSeconds($enddate,false) >= 0; $i++){
+                    if($end_timestamp->toDateString() == $enddate->toDateString()){
+                        $day_left = $SLA-$i;
+                        return '<input id="table_row'.$model->application_id.'" type="hidden" name="sla" value="'.sprintf("%06d",$day_left).'">'
+                        . $i . " / " . $SLA
+                        .'<script>'
+                        .'var row = document.getElementById("table_row'.$model->application_id.'").parentNode.parentNode;'
+                        .'row.className = row.className+" ' . (($day_left+0.001)/($SLA+0.001) > 0.3?'':(($day_left+0.001)/($SLA+0.001) > 0?'warning':'danger')) . '";'
+                        .'</script>';
+                    }
+                    $end_timestamp->addDays(1);
+                    if($end_timestamp->isWeekend()){
+                       $i--; 
+                    }else{
+                        foreach($holidays as $holiday){
+                            if($end_timestamp->toDateString() == $holiday->date){
+                                $i--;
+                                break;
+                            }
+                        }
+                    }
+                }
+                return ('<input type="hidden" name="sla" value="'."999999".'">')
+                        . "SLA = " . $SLA;
+            })
+	    ->addColumn('Actual Time',function($model)
+            { 
+            	$start_timestamp = $model->applicationLog()->whereActionType(Input::get('option9'))->whereVisitNumber(1)->first();
+            	if(is_null($start_timestamp)){
+            		return '-';
+            	}
+            	$start_timestamp = Carbon::createFromFormat('Y-m-d H:i:s',$start_timestamp->prev_action_datetime);
+
+                $SLA = $model->requisition->corporateTitle->group->SLACandidate()->whereAppCsId(Input::get('option9'))->whereVisitNumber(1);
+                $SLA = $SLA->first()->SLA;
+                $end_timestamp = $start_timestamp->copy();
+                $holidays = PublicHoliday::all();
+                $enddate = $model->applicationLog()->whereActionType(Input::get('option9'))->whereVisitNumber(1)->first();
+                if(is_null($enddate)){
+                	$enddate = Carbon::now();
+                }else{
+                	$enddate = Carbon::createFromFormat("Y-m-d H:i:s", $enddate->action_datetime);
+                }
+                $sla_in_hours = $enddate->diffInHours($start_timestamp);
+                for($i=0; $end_timestamp->diffInSeconds($enddate,false) >= 0; $i++){
+                    if($end_timestamp->toDateString() == $enddate->toDateString()){
+                        return '<input type="hidden" name="sla" value="'.sprintf("%06d",$sla_in_hours).'">'
+                        . $sla_in_hours . " Hour(s)";
+                    }
+                    $end_timestamp->addDays(1);
+                    if($end_timestamp->isWeekend()){
+                    	$sla_in_hours -= 24;
+                       $i--; 
+                    }else{
+                        foreach($holidays as $holiday){
+                            if($end_timestamp->toDateString() == $holiday->date){
+                            	$sla_in_hours -= 24;
+                                $i--;
+                                break;
+                            }
+                        }
+                    }
+                }
+                return ('<input type="hidden" name="sla" value="'."999999".'">')
+                        . "SLA = " . $SLA;
+            })
+		->addColumn('Detail',function($model)
+            { 
+            	return  '<div class="btn-group-vertical">
+	                        <a type="button" class="btn btn-sm btn-default" href="recruiter-shortlist/'.$model->requisition->requisition_id.'" type="button" class="btn btn-sm btn-default">
+	                            <i class="fa fa-fw fa-info-circle"></i>Requisition
+	                        </a>
+	                        <a type="button" class="btn btn-sm btn-default" href="candidate/'.$model->candidate_user_id.'" type="button" class="btn btn-sm btn-default">
+	                            <i class="fa fa-fw fa-info-circle"></i>Candidate
+	                        </a>
+	                    </div>';
+            });;
 	$return=$return->make();
     return $return;
 });
