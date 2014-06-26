@@ -15,14 +15,16 @@ thisIsTitle
 @section('content')
          <!--row two for TO DO REQUISITION-->
          <div ng-app="app">
-        <div class="box box-primary" ng-controller="appCtrl" >
+        <div class="box box-solid box-info" ng-controller="appCtrl" >
                     <div class="box-header" >
-                        <h3 class="box-title"> Analytics Search </h3>
+                        <div class="box-title" style="font-size:2.3em;">
+                          Analytics Search <i class="fa fa-fw fa-search"></i>
+                        </div>
                         <div class="box-tools pull-right">
-                            <button class="btn btn-primary btn-xs" data-widget="collapse">
+                            <button class="btn btn-info btn-xs" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
                             </button>
-                            <button class="btn btn-primary btn-xs" data-widget="remove">
+                            <button class="btn btn-info btn-xs" data-widget="remove">
                                 <i class="fa fa-times"></i>
                             </button>
                         </div>
@@ -32,45 +34,47 @@ thisIsTitle
                            <div class="box box-solid box-primary">
                                 <!-- /.box-header -->
                                 {{Form::open(array('url' => 'analytics', 'method' => 'get'))}}
-                      <script>
-                        function changeVal(x){
-                          /*for(var i=1;i<=8;i++){
-                            var e = document.getElementById('option'+i);
-                            if(e != x){
-                              e.value = 0;
-                            }
-                          }*/
-                        }
-                        function resetVal(){
-                          for(var i=1;i<=8;i++){
-                            var e = document.getElementById('option'+i);
-                            e.value = 0;
-                          }
-                        }
-                        function init(){
-                          var val = [
-                          @if(isset($input['mode']))
-                            "{{ $input['mode'] }}",
-                          @else
-                            0,
-                          @endif
-                          @for($i=1;$i<=8;$i++)
-                            @if(isset($input['option'.$i]))
-                              {{ $input['option'.$i] }},
-                            @else
-                              0,
-                            @endif
-                          @endfor
-                          0];
-                          for(var i=1;i<=8;i++){
-                            var e = document.getElementById('option'+i);
-                            e.value = val[i];
-                          }
-                        }
-                        setTimeout(function(){init();},1000);
-                      </script>
+                                  <script>
+                                    function changeVal(x){
+                                      /*for(var i=1;i<=8;i++){
+                                        var e = document.getElementById('option'+i);
+                                        if(e != x){
+                                          e.value = 0;
+                                        }
+                                      }*/
+                                    }
+                                    function resetVal(){
+                                      for(var i=1;i<=8;i++){
+                                        var e = document.getElementById('option'+i);
+                                        e.value = 0;
+                                      }
+                                    }
+                                    function init(){
+                                      var val = [
+                                      @if(isset($input['mode']))
+                                        "{{ $input['mode'] }}",
+                                      @else
+                                        0,
+                                      @endif
+                                      @for($i=1;$i<=8;$i++)
+                                        @if(isset($input['option'.$i]))
+                                          {{ $input['option'.$i] }},
+                                        @else
+                                          0,
+                                        @endif
+                                      @endfor
+                                      0];
+                                      for(var i=1;i<=8;i++){
+                                        var e = document.getElementById('option'+i);
+                                        e.value = val[i];
+                                      }
+                                    }
+                                    setTimeout(function(){init();},1000);
+                                  </script>
 
-                      <div class="form-group">
+                      <div class="panel panel-primary">
+                        <div class="panel-body">
+                          <div class="form-group">
                         Mode : 
                         <input type="radio" name="mode" value="requisition" {{ isset($input['mode'])&&$input['mode']=='requisition'?'checked':'' }}>View Requisition
                         <span style="visibility: hidden;">..</span>
@@ -173,16 +177,20 @@ thisIsTitle
                           </td>
                         </tr>
                       </table>
+                        </div>
+                      </div>
+                      
 
 
           
-  <div class="row">
-    <div class="col col-md-1">
-    </div>
-    <div class="col col-md-3">
-    </div>
+  <div class="row" style="padding-bottom:2em;">
     <div class="col col-md-4">
-      <button class="btn btn-default " style="width:50%;" type="button" onclick="resetVal();">Reset</button> <button class="btn btn-default " style="width:50%;" type="submit">Submit</button>
+    </div>
+    <div class="col col-md-2">
+      <button class="btn btn-info btn-lg" style="width:100%;" type="button" onclick="resetVal();">Reset</button> 
+    </div>
+    <div class="col col-md-2">
+      <button class="btn btn-info btn-lg" style="width:100%;" type="submit">Submit</button>
     </div>
   </div><!--end second row-->
 
