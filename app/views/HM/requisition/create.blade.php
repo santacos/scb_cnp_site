@@ -215,6 +215,68 @@ HM-create-requisition
                 </div>
                 <!--end second panel-->
 
+                <!--skill-->
+                <div class="row">
+                    <div class="col-md-7 col-md-offset-1" style="margin-top:10px;">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <i class="fa fa-fw fa-info-circle"></i>Skill
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="relatedSkill">Related skill :</label>
+                                    <!-- buttob add-->
+                                    <button type="button" class="btn btn-sm btn-default" ng-click="isShowSkill=!isShowSkill">
+                                        <span class="glyphicon glyphicon-plus-sign"></span>
+                                    </button><br><br>
+
+                                    <!-- show suggest skill-->
+                                    <div class="row" ng-repeat="skill in skills">
+
+                                        <div class="col-sm-1">
+
+                                        </div>
+
+                                        <div class="col-sm-11">
+                                            <div class="panel panel-success">
+                                              <div class="panel-heading">
+                                                <h3 class="panel-title">@{{skill.category}}</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                @{{skill.name}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- add skill -->
+                                <div ng-show="isShowSkill">
+                                    <br>
+                                    <div class="well">
+
+                                        <label for="skillBranch">Skill branch :</label>
+                                        <input type="text" ng-model="tempBranch" class="form-control" id="skillBranch" placeholder="enter skill branch">
+                                        <br>
+                                        <label for="skillName">Skill name :</label>
+                                        <input type="text" ng-model="tempName" class="form-control" id="skillName" placeholder="enter skill name">
+
+                                        <br>
+                                        <button type="button" class="btn btn-info" ng-click="addSkill()">Add</button>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+
                 <!-- hide template-->
                 <div class="row" ng-show="showtemp">
                     <div class="col col-md-11 col-md-offset-1">

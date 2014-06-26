@@ -24,7 +24,8 @@ class UserController extends BaseController {
      */
     public function create()
     {
-        return View::make('pages.user.signup');
+        //return View::make('pages.user.signup');
+        return View::make('user.signup');
     }
 
     /**
@@ -52,7 +53,7 @@ class UserController extends BaseController {
             // before saving. This field will be used in Ardent's
             // auto validation.
             $user->password_confirmation = Input::get( 'password_confirmation' );
-            $user->ability( 'Candidate'); 
+           
             // Save if valid. Password field will be hashed before save
             $user->save();
 
@@ -60,6 +61,9 @@ class UserController extends BaseController {
             {
                 $candidate = new candidate;
                 $candidate->user_id = $user->user_id;
+                $user = User::find($user->user_id);
+                 $rolec= Role::where('name','=','Candidate')->get()->first();
+                 $user->attachRole( $rolec); 
                 $candidate->save();
                 // Redirect with success message, You may replace "Lang::get(..." for your custom message.
                             return Redirect::action('UserController@login')

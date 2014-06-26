@@ -763,7 +763,10 @@ class CandidateController extends \BaseController {
 			$candidate->filepath_profile_picture = Input::get('filepath_profile_picture');
 
 			$candidate->push();
-		return Response::json(array('success' => true));
+		//return Response::json(array('success' => true));
+		$candidate = Candidate::find(Auth::user()->user_id);
+		$active['current']='editprofile';
+		return View::make('user.editProfile', array( 'candidate'=> $candidate,'active' =>$active));
 	}
 
 	/**

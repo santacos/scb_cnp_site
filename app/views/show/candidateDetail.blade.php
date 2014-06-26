@@ -92,7 +92,7 @@ thisIsTitle
                                     <div class="row">
                                         <div class="col-xs-8">
                                             <div class="bs-docs-example-images">
-                                                    <img src="{{$picture}}" > 
+                                                    <img src="{{$picture}}" style="width:230px;height:230px;" > 
                                             </div>
                                         </div>
                                         <div class="col col-xs-4 no-print pull-right" >
@@ -100,10 +100,10 @@ thisIsTitle
                                             style="width:11em;margin-left:2em;" data-toggle="modal" data-target="#videoModal">
                                                 Video resume
                                             </button><br>
-                                            <button class="btn push-top push-bottom btn-border btn-success" 
+                                            <a href="{{ URL::to($candidate->filepath_cv) }}"><button class="btn push-top push-bottom btn-border btn-success" 
                                             style="width:11em;margin-left:2em;" data-toggle="modal" data-target="#myModal">
                                                 View resume from file
-                                            </button><br>
+                                            </button></a><br>
                                             <button class="btn push-top push-bottom btn-border btn-warning" 
                                             style="width:11em;margin-left:2em;" data-toggle="modal" data-target="#myModal">
                                                 Export resume to pdf
