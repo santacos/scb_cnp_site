@@ -42,25 +42,25 @@ SCB Recruitment-Home
 											  <td>
 											  	<strong>Job title :</strong>
 											  </td>
-											  <td>Programmer</td><!--edit-->
+											  <td id="v1">Programmer</td><!--edit-->
 											  
 											</tr>
 											<tr>
 											  <td><strong>Department : </strong>
-											  </td><td>Technology and Operation Group</td><!--edit-->
+											  </td><td id="v2">Technology and Operation Group</td><!--edit-->
 											
 											</tr>
 											<tr>
 											  <td><strong>Date Applied: </strong></td>
-											  <td>18 - 4 -2557</td>
+											  <td id="v3">18 - 4 -2557</td>
 											</tr>
 											<tr>
 											  <td><strong>Date Update: </strong></td>
-											  <td>18 - 4 -2557</td>
+											  <td id="v4">18 - 4 -2557</td>
 											</tr>
 											<tr>
 											  <td><strong>Status:</strong></td>
-											  <td>appointment of interview</td>
+											  <td id="v5">appointment of interview</td>
 											</tr>
 										  </tbody>
 										</table>
@@ -72,7 +72,7 @@ SCB Recruitment-Home
 									<div class="col col-md-11 col-sm-11">
 										<div class="panel panel-primary frame border-radius">
 											<div class="panel-heading"><strong>Message :</strong></div>
-											<div class="panel-body" style="font-size:1.2em;">
+											<div id="v6" class="panel-body" style="font-size:1.2em;">
 												
 												<!--edit-->																							
 												<div class="row" style="font-size:1.1em;">
@@ -140,8 +140,8 @@ SCB Recruitment-Home
                 </div>
             </div>
         <!--end Modal HTML-->
-	<!-- end Modal area-->
-
+	<!-- end Modal area-->	
+	@include('user.includes.modalCongra')
   
     <div class="row">
      
@@ -224,46 +224,68 @@ SCB Recruitment-Home
 						</tr>
 					  </thead>
 					  <tbody>
-						<tr class="warning">
-						  	<td>123e32</td>
-						  	<td>Programmer</td>
-						  	<td>
-						  		waiting for interview
-
-						  	</td>
-						  	<td>
-						  		<a href="#ModalStatus" data-toggle="modal">
-						  		<i class="fa fa-fw fa-envelope-o"></i></a>Appointment
-						  	</td>
-						  	<td>29-4-2557</td>
-						  	<td>18-4-2557</td>
-						</tr>
-						<tr>
-						  	<td>f53e37</td>
-						  	<td>Programmer</td>
-						  	<td>
-						  		waiting for appointment
-
-						  	</td>
-						  	<td>
-						  		-
-						  	</td>
-						  	<td>20-4-2557</td>
-						  	<td>16-4-2557</td>
-						</tr>
 						<!-- $application->applicationCurrentStatus->application_current_status_id -->
+							<script>
+								function changeModal(v1,v2,v3,v4,v5,v6,v7,v8,v9){
+									document.getElementById("v1").innerHTML = v1;
+									document.getElementById("v2").innerHTML = v2;
+									document.getElementById("v3").innerHTML = v3;
+									document.getElementById("v4").innerHTML = v4;
+									document.getElementById("v5").innerHTML = v5;
+									if(v7){
+										document.getElementById("v6").style.display = 'inline';
+									}else{
+										document.getElementById("v6").style.display = 'none';
+									}
+							</script>
 							@foreach($applications as $application) 
 							 <tr>
 							  <td>{{$application->application_id}}</td>
-							  	<td>{{$application->requisition->job_title}}</td>
+							  	<td>{{$application->requisition->position->job_title}}</td>
 							  	<td>
-							  		{{$application->applicationCurrentStatus()->first()->name}}
+							  		@if($application->application_current_status_id == 1)
+							  			Waiting for candidate selection
+							  		@elseif($application->application_current_status_id == 4)
+							  			Waiting for candidate interview
+							  		@elseif($application->application_current_status_id == 5)
+							  			Pass interview
+							  		@else
+							  			{{$application->applicationCurrentStatus->name}}
+							  		@endif
+							  	</td>
+							  	<td>
+							  		@if($application->application_current_status_id == 1)
+							  		We will contact you back soon
+							  		@elseif($application->application_current_status_id == 2)
 
+							  		@elseif($application->application_current_status_id == 3)
+
+							  		@elseif($application->application_current_status_id == 4)
+							  		<a href="#ModalStatus" data-toggle="modal">
+						  			<i class="fa fa-fw fa-envelope-o"></i></a>Appointment
+							  		@elseif($application->application_current_status_id == 5)
+							  		<a href="#modalCongrat" data-toggle="modal">
+						  			<i class="fa fa-fw fa-envelope-o"></i></a>Message
+							  		@elseif($application->application_current_status_id == 6)
+
+							  		@elseif($application->application_current_status_id == 7)
+
+							  		@elseif($application->application_current_status_id == 8)
+
+							  		@elseif($application->application_current_status_id == 9)
+
+							  		@elseif($application->application_current_status_id == 10)
+
+							  		@elseif($application->application_current_status_id == 11)
+
+							  		@else
+
+							  		@endif
 							  	</td>
-							  	<td>
-							  		-
-							  	</td>
-							  	<td>20-4-2557</td>
+							  	<?php
+							  		$update_time = $application->applicationLog()->orderBy('action_datetime','desc')->first();
+							  	?>
+							  	<td>{{ is_null($update_time)?'-':Carbon::createFromTimestamp(strtotime($update_time))->format('j F Y') }}</td>
 							  	<td>{{Carbon::createFromTimestamp(strtotime($application->created_at))->format('j F Y')}}</td>
 
 							 </tr>

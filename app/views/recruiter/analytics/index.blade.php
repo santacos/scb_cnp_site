@@ -132,8 +132,8 @@ thisIsTitle
                               <p>By Organization</p>
                               <select id="option4" onchange='changeVal(this);' name="option4">
                                 <option value="0">-- Not Used --</option>
-                                @foreach(Position::where('position_id','>',0)->distinct()->get(array('group')) as $key => $value )
-                                <option value="{{ Position::whereGroup($value->group)->first()->position_id }}">{{ $value->group }}</option>
+                                @foreach(Position::where('position_id','>',0)->distinct()->get(array('organization')) as $key => $value )
+                                <option value="{{ Position::whereOrganization($value->organization)->first()->position_id }}">{{ $value->organization }}</option>
                                 @endforeach
                               </select>
                             </div>
