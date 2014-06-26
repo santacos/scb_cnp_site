@@ -31,7 +31,7 @@
 
 
 		<li>
-			<a href="{{ URL::to('widgets') }}"> <i class="fa fa-fw fa-bar-chart-o"></i> <span>Analytics</span> <small class="badge pull-right bg-green">new</small> </a>
+			<a href="{{ URL::to('analytics') }}"> <i class="fa fa-fw fa-bar-chart-o"></i> <span>Analytics</span> <small class="badge pull-right bg-green">new</small> </a>
 		</li>
 		<?php $r[4]=Requisition::where('requisition_current_status_id', '=', 4)->count();
 			$r[5]=Requisition::where('requisition_current_status_id', '=', 5)->count();
