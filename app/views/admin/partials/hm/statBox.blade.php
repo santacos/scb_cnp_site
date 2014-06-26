@@ -57,7 +57,9 @@
 
 		<div class="col-lg-3 col-xs-6">
 			<!-- small box -->
-			<a href="{{URL::to('recruiter-interview-feedback')}}" class="small-box bg-red">
+			<!-- <a href="javascript:window.open('{{ URL::to('calendar-controller') }}','Calendar','width=1000,height=650,menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,personalbar=no,titlebar=no')"> <i class="fa fa-fw fa-calendar"></i><span>  Calendar</span>  </a>
+		 -->
+			<a href="javascript:window.open('{{ URL::to('calendar-controller') }}','Calendar','width=1000,height=650,menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,personalbar=no,titlebar=no')" class="small-box bg-red">
 				<div class="inner">
 					<h3> Interview<br>. </h3>
 				</div>

@@ -92,7 +92,7 @@ thisIsTitle
                                     <div class="row">
                                         <div class="col-xs-8">
                                             <div class="bs-docs-example-images">
-                                                    <img src="{{$picture}}" > 
+                                                    <img src="{{$picture}}" style="width:230px;height:230px;" > 
                                             </div>
                                         </div>
                                         <div class="col col-xs-4 no-print pull-right" >
