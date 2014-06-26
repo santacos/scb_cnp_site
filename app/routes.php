@@ -64,7 +64,9 @@ Route::get('package/{id}',function($id){
 });
 
 Route::get('tryAngular',function(){
-	return View::make('angular.try8');
+	//return View::make('emailtemplate');
+	//return View::make('user.signup');
+	return View::make('HM.create');
 });
 
 Route::get('showReq',function(){
