@@ -130,7 +130,7 @@
 			<a href="{{URL::to('recruiter-sign')}}" class="small-box bg-maroon">
 				<div class="inner">
 					<!-- <h3> Total<br>{{$a[0]+$a[1]+$a[2]+$a[3]+$a[4]+$a[5]+$a[6]}}</h3> -->
-					<h3>Sign <br> candidate</h3>
+					<h3>Sign <br> Contract </h3>
 				</div>
 				<div class="icon">
 					<i class="ion ion-stats-bars"></i>

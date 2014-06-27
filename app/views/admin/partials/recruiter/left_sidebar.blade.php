@@ -26,7 +26,7 @@
 	<!-- sidebar menu: : style can be found in sidebar.less -->
 	<ul class="sidebar-menu">
 		<li class="active">
-			<a href="{{ URL::to('/') }}"> <i class="fa fa-fw fa-home"></i> <span>Home</span> </a>
+			<a href="{{ URL::to('/recruiter') }}"> <i class="fa fa-fw fa-home"></i> <span>Home</span> </a>
 		</li>
 
 

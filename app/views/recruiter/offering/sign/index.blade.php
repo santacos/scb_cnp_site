@@ -11,48 +11,7 @@ thisIsTitle
 @stop
 
 @section('content')
-       <!--   row two for TO DO REQUISITION
-         <table cellpadding="3" cellspacing="0" border="0" style="width: 67%; margin: 0 auto 2em auto;">
-        <thead>
-            <tr>
-                <th>Target</th>
-                <th>Filter text</th>
-                <th>Treat as regex</th>
-                <th>Use smart filter</th>
-            </tr>
-        </thead>
- 
-        <tbody>
-            <tr id="filter_global">
-                <td>Global filtering</td>
-                <td align="center"><input type="text" class="global_filter" id="global_filter"></td>
-            </tr>
-            <tr id="filter_col1" data-column="0">
-                <td>Requisition ID</td>
-                <td align="center"><input type="text" class="column_filter" id="col0_filter"></td>
-            </tr>
-            <tr id="filter_col2" data-column="1">
-                <td>Job Title</td>
-                <td align="center"><input type="text" class="column_filter" id="col1_filter"></td>
-            </tr>
-            <tr id="filter_col3" data-column="2">
-                <td>Corporate Title</td>
-                <td align="center"><input type="text" class="column_filter" id="col2_filter"></td>
-            </tr>
-            <tr id="filter_col4" data-column="3">
-                <td>Location</td>
-                <td align="center"><input type="text" class="column_filter" id="col3_filter"></td>
-            </tr>
-            <tr id="filter_col5" data-column="4">
-                <td>Status</td>
-                <td align="center"><input type="text" class="column_filter" id="col4_filter"></td>
-            </tr>
-            <tr id="filter_col6" data-column="5">
-                <td>Date Order</td>
-                <td align="center"><input type="text" class="column_filter" id="col5_filter"></td>
-            </tr>
-        </tbody>
-    </table> -->
+       
         <div class="box box-primary">
 
                     <div class="box-header">
@@ -94,30 +53,7 @@ thisIsTitle
                                
                                        <div style="overflow: auto;">
 
-                                        <!-- <table border="1">
-                                          <tr>
-                                            @if(count($requisitions) > 0)
-                                              @foreach($requisitions->first()->toArray() as $key => $value)
-                                                <th>{{ $key }}</th>
-                                              @endforeach
-                                              <th>Action</th>
-                                            @endif
-                                          </tr>
-                                          @if(count($requisitions) > 0)
-                                            @foreach($requisitions as $requisition)
-                                              <tr>
-                                                @foreach($requisition->toArray() as $key => $value)
-                                                  <td>
-                                                    {{ $value }}
-                                                  </td>
-                                                @endforeach
-                                                <td>
-                                                <a href={{"recruiter-sign/" . $requisition->requisition_id}}>View(popup)</a>
-                                                </td>
-                                              </tr>
-                                            @endforeach
-                                          @endif
-                                        </table> -->
+                                       
                                         {{  Datatable::table()
                                             ->addColumn( 'Requisition ID',
                                                         'Job Title',

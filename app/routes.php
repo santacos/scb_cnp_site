@@ -651,7 +651,7 @@ Route::get('analytics/process',function(){
                 }else{
                 	$enddate = Carbon::createFromFormat("Y-m-d H:i:s", $enddate->action_datetime);
                 }
-                for($i=0; $end_timestamp->diffInSeconds($enddate,false) >= -10000; $i++){
+                for($i=0; $end_timestamp->diffInSeconds($enddate,false) >= -100000; $i++){
                     if($end_timestamp->toDateString() == $enddate->toDateString()){
                         $day_left = $SLA-$i;
                         return '<input id="table_row'.$model->application_id.'" type="hidden" name="sla" value="'.sprintf("%06d",$day_left).'">'
@@ -695,7 +695,7 @@ Route::get('analytics/process',function(){
                 	$enddate = Carbon::createFromFormat("Y-m-d H:i:s", $enddate->action_datetime);
                 }
                 $sla_in_hours = $enddate->diffInHours($start_timestamp);
-                for($i=0; $end_timestamp->diffInSeconds($enddate,false) >= -10000; $i++){
+                for($i=0; $end_timestamp->diffInSeconds($enddate,false) >= -100000; $i++){
                     if($end_timestamp->toDateString() == $enddate->toDateString()){
                         return '<input type="hidden" name="sla" value="'.sprintf("%06d",$sla_in_hours).'">'
                         . $sla_in_hours . " Hour(s)";
